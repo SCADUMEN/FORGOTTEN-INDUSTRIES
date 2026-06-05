@@ -9,6 +9,9 @@ The source of truth is human-readable YAML in `src/`. The build step converts th
 
 This follows the same architectural pattern as Tyler Etters' discography repo: edit canonical YAML first, generate typed and machine-readable output second, let websites and packages consume the generated archive later.
 
+He has found what I always failed to fully grasp: my voice. 
+My Brother's Keeper, indeed ~ Thank you, Tyler. 
+
 ## Setup
 
 No dependency install is required for the current build.
