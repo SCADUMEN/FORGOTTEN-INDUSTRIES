@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-05T09:47:31Z",
+  "generatedAt": "2026-06-05T09:53:52Z",
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / lab journal / technical blog",
@@ -504,6 +504,56 @@
     }
   ],
   "socialPosts": [
+    {
+      "id": "FI-SOC-IG-001",
+      "source": "instagram",
+      "source_id": "BDHmcW3BXWB",
+      "shortcode": "BDHmcW3BXWB",
+      "source_url": "https://www.instagram.com/p/BDHmcW3BXWB/",
+      "slug": "instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red",
+      "title": "Instagram BDHmcW3BXWB",
+      "date": "2016-03-19",
+      "timestamp": "2016-03-19T00:00:00Z",
+      "body": "Late post today but here is a shot of the hardware going into Red. Caption recovered from local filename; original caption may be longer.\n",
+      "tags": [
+
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg",
+          "source_url": "https://www.instagram.com/p/BDHmcW3BXWB/",
+          "width": 1080,
+          "height": 810
+        }
+      ],
+      "post_path": "posts/social/2016-03-19-instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.md"
+    },
+    {
+      "id": "FI-SOC-IG-002",
+      "source": "instagram",
+      "source_id": "BDRoKH-BXTu",
+      "shortcode": "BDRoKH-BXTu",
+      "source_url": "https://www.instagram.com/p/BDRoKH-BXTu/",
+      "slug": "instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will",
+      "title": "Instagram BDRoKH-BXTu",
+      "date": "2016-03-23",
+      "timestamp": "2016-03-23T00:00:00Z",
+      "body": "The elusive 535. Managed to find a pair of these for Redeemer. Caption recovered from local filename; original caption may be longer.\n",
+      "tags": [
+
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "assets/social/instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will.jpg",
+          "source_url": "https://www.instagram.com/p/BDRoKH-BXTu/",
+          "width": 1080,
+          "height": 1080
+        }
+      ],
+      "post_path": "posts/social/2016-03-23-instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will.md"
+    },
     {
       "id": "FI-SOC-TUMBLR-001",
       "source": "tumblr",
