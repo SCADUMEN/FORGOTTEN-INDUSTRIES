@@ -42,6 +42,10 @@ Then visit `http://localhost:8000`.
 4. Inspect `dist/forgotten-industries.json` for downstream consumers.
 5. Inspect `dist/index.ts` for TypeScript consumers.
 
+## Reference Docs
+
+- `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
+
 ## Import Social Posts
 
 ```bash
@@ -96,6 +100,7 @@ The archive is not published yet. When it is ready to become an npm package:
 - `assets/social/` - downloaded local media from imported social posts.
 - `assets/initial-photos/` - initial local photo batch for archive intake.
 - `posts/social/` - generated Markdown posts from imported social content.
+- `docs/archive-photo-procedure.md` - archive photography and object intake procedure.
 - `templates/field-log.md` - Markdown field log template.
 - `templates/inventory-item.md` - Markdown inventory item template.
 
