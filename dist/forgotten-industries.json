@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-05T09:53:52Z",
+  "generatedAt": "2026-06-05T10:03:25Z",
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / lab journal / technical blog",
@@ -553,6 +553,81 @@
         }
       ],
       "post_path": "posts/social/2016-03-23-instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will.md"
+    },
+    {
+      "id": "FI-SOC-IG-003",
+      "source": "instagram",
+      "source_id": "recovered-20141115-top-post",
+      "source_url": "https://www.instagram.com/forgottenindustries/",
+      "slug": "instagram-20141115-recovered-top-post-case-panel",
+      "title": "Instagram Recovered Case Panel Post",
+      "date": "2014-11-15",
+      "timestamp": "2014-11-15T00:00:00Z",
+      "body": "#pcgaming #4960x #sli #nvidia #watercooled #watercooledpc #liquidcooled #ekwb #asus #pcmasterrace #custompc\nRecovered from a 2026-06-04 Messages screenshot of the old Forgotten Industries Instagram feed. Date is inferred from adjacent screenshot context and needs confirmation against the original Instagram post.\n",
+      "tags": [
+        "pcgaming",
+        "4960x",
+        "sli",
+        "nvidia",
+        "watercooled",
+        "watercooledpc",
+        "liquidcooled",
+        "ekwb",
+        "asus",
+        "pcmasterrace",
+        "custompc"
+      ],
+      "like_count": 39,
+      "media": [
+        {
+          "type": "image",
+          "path": "assets/social/recovered/instagram-20141115-fi-top-post-crop.png",
+          "source_url": "https://www.instagram.com/forgottenindustries/",
+          "width": 1320,
+          "height": 765
+        },
+        {
+          "type": "image",
+          "path": "assets/social/recovered/instagram-20141115-fi-posts-screenshot.png",
+          "source_url": "https://www.instagram.com/forgottenindustries/",
+          "width": 1320,
+          "height": 2868
+        }
+      ],
+      "post_path": "posts/social/2014-11-15-instagram-20141115-recovered-top-post-case-panel.md"
+    },
+    {
+      "id": "FI-SOC-IG-004",
+      "source": "instagram",
+      "source_id": "recovered-20141115-case-loop",
+      "source_url": "https://www.instagram.com/forgottenindustries/",
+      "slug": "instagram-20141115-recovered-case-loop",
+      "title": "Instagram Recovered Case Loop",
+      "date": "2014-11-15",
+      "timestamp": "2014-11-15T00:00:00Z",
+      "body": "Recovered from a 2026-06-04 Messages screenshot of the old Forgotten Industries Instagram feed. The screenshot visibly dates this post to November 15, 2014. Original caption is not visible in the recovered image.\n",
+      "tags": [
+
+      ],
+      "like_count": 18,
+      "comment_count": 1,
+      "media": [
+        {
+          "type": "image",
+          "path": "assets/social/recovered/instagram-20141115-fi-case-loop-crop.png",
+          "source_url": "https://www.instagram.com/forgottenindustries/",
+          "width": 1320,
+          "height": 1320
+        },
+        {
+          "type": "image",
+          "path": "assets/social/recovered/instagram-20141115-fi-posts-screenshot.png",
+          "source_url": "https://www.instagram.com/forgottenindustries/",
+          "width": 1320,
+          "height": 2868
+        }
+      ],
+      "post_path": "posts/social/2014-11-15-instagram-20141115-recovered-case-loop.md"
     },
     {
       "id": "FI-SOC-TUMBLR-001",
