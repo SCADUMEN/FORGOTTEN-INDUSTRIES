@@ -152,6 +152,508 @@ items:
     keep_sell_archive: keep pending test
     date_logged: "2026-06-05"
 
+  - id: FI-RED-CASE-001
+    name: REDEEMER NZXT H440 white mid-tower
+    category: case
+    manufacturer: NZXT
+    model: H440 Mid-Tower White
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160303-BCezr6kBXaS-test-fitting-our-stripped-nzxt-h440-with-a-front-360mm-radiator-p.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      REDEEMER chassis identified by the formal May 8, 2016 Instagram component
+      list and earlier H440 radiator-fitment posts. Record as evidence-backed,
+      not as confirmed present in storage.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-MB-001
+    name: REDEEMER ASUS Z170-Deluxe motherboard
+    category: motherboard
+    manufacturer: ASUS
+    model: Z170-Deluxe
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160324-BDUM-iPhXcV-motherboard-fitted-and-ready-for-tubing-what-do-you-think-let-us.jpg
+      - assets/social/instagram-20160426-BErTjnihXaY-love-the-heatsinks-on-this-mobo-practicing-a-little-macro-photo.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Board appears in direct REDEEMER build evidence and the formal May 8,
+      2016 component list. Later physical inventory should confirm whether this
+      board survived intact or was parted out.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-CPU-001
+    name: REDEEMER Intel Core i7-6700K
+    category: processor
+    manufacturer: Intel
+    model: Core i7-6700K
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160220-BB_2r09hXdj-ek-supremacy-evo-csq-installed-on-i7-6700k-asus-z-170-deluxe-but.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      CPU is named in the May 8, 2016 REDEEMER spec and appears in the earlier
+      EK-Supremacy/Z170-Deluxe post. Physical location and post-build
+      disposition remain unknown.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-MEM-001
+    name: REDEEMER Kingston HyperX Predator DDR4 kit
+    category: memory
+    manufacturer: Kingston
+    model: HyperX Predator 16GB 3000MHz DDR4
+    quantity: 1 kit / 4x4GB
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160329-BDhKejJhXbB-sometimes-you-find-a-brand-new-ram-water-block-in-your-office-so.jpg
+      - assets/social/instagram-20160331-BDmjov-BXcI-almost-finished-prepping-the-hyper-x-for-liquid-cooling-what-do-y.jpg
+      - assets/social/instagram-20160401-BDpOg3VBXfN-finished-preparing-the-ram-all-ready-for-tubing.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence alternates between HyperX Predator and Hyper-X DDR4.
+      The recovered spec resolves the REDEEMER kit as 16GB 3000MHz DDR4,
+      likely 4x4GB based on prep posts.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-GPU-001
+    name: REDEEMER EVGA GeForce GTX 980 Ti K|NGP|N
+    category: graphics card
+    manufacturer: EVGA
+    model: GeForce GTX 980 Ti 6GB K|NGP|N
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160225-BCNE612hXVw-getting-ready-to-liquid-cool-this-evga-980ti-kingpin-our-ekwb-wat.jpg
+      - assets/social/instagram-20160228-BCWRBKPhXYD-getting-ready-to-give-this-evga-980ti-kingpin-pcb-a-shiny-new-hom.jpg
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      GPU is present in the formal REDEEMER spec and multiple prep posts.
+      Treat as a high-priority physical confirmation target because the card,
+      waterblock, and backplate are distinct archive-relevant objects.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-STOR-001
+    name: REDEEMER Intel 535 Series SSD pair
+    category: storage
+    manufacturer: Intel
+    model: 535 Series SSD 480GB
+    quantity: 2 / RAID0
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Instagram caption identifies a pair of Intel 535 480GB SSDs for
+      REDEEMER, intended for RAID0 as the main drive. Preserve as a paired
+      record unless later physical evidence separates them.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-PSU-001
+    name: REDEEMER Corsair AX1200i power supply
+    category: power supply
+    manufacturer: Corsair
+    model: AX1200i Digital ATX 1200W 80 Plus Platinum
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160318-BDEwbVoBXVH-we-ve-chosen-to-repurpose-a-1200w-power-supply-from-our-test-benc.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption states the AX1200i was repurposed from the test bench for
+      REDEEMER. Later intake should confirm whether this PSU is still in the
+      archive, in a different machine, or gone.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-LIGHT-001
+    name: REDEEMER NZXT HUE+ lighting controller
+    category: lighting controller
+    manufacturer: NZXT
+    model: HUE+ Smart RGB LED
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160513-BFVa8odBXfF-the-hue-totally-blew-me-away-nzxt-nzxtbuilds-intel-gamingpc-custo-poster.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Named in the May 8, 2016 component list and shown in the May 13 HUE+
+      lighting video. Store video path with the social post record rather than
+      duplicating it here.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-BLOCK-CPU-001
+    name: REDEEMER EK-Supremacy EVO CPU block
+    category: water block
+    manufacturer: EK
+    model: EK-Supremacy EVO Nickel CSQ
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160220-BB_2r09hXdj-ek-supremacy-evo-csq-installed-on-i7-6700k-asus-z-170-deluxe-but.jpg
+      - assets/social/instagram-20160220-BB_88dTBXWE-another-shot-of-the-z170-deluxe-with-ekwaterblocks-cpu-block-inst.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      CPU block is documented before REDEEMER is named and then appears in the
+      formal REDEEMER spec. Confirm whether the block stayed with the Z170
+      platform after teardown.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-BLOCK-RAM-001
+    name: REDEEMER EK-RAM Monarch memory cooling assembly
+    category: water block
+    manufacturer: EK
+    model: EK-RAM Monarch Module / EK-RAM Monarch X4 Nickel
+    quantity: 1 assembly for 4 modules
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160329-BDhKejJhXbB-sometimes-you-find-a-brand-new-ram-water-block-in-your-office-so.jpg
+      - assets/social/instagram-20160331-BDmjov-BXcI-almost-finished-prepping-the-hyper-x-for-liquid-cooling-what-do-y.jpg
+      - assets/social/instagram-20160401-BDpOg3VBXfN-finished-preparing-the-ram-all-ready-for-tubing.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Captions identify EK-RAM Monarch Module - Black and EK-RAM Monarch X4 -
+      Nickel used on the Kingston HyperX DDR4 kit. Quantity is recorded as one
+      functional cooling assembly until parts are physically counted.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-BLOCK-GPU-001
+    name: REDEEMER EK-FC980 GTX Ti Classy KPE GPU block
+    category: water block
+    manufacturer: EK
+    model: EK-FC980 GTX Ti Classy KPE Nickel
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160228-BCWRBKPhXYD-getting-ready-to-give-this-evga-980ti-kingpin-pcb-a-shiny-new-hom.jpg
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      GPU block is tied to the EVGA 980 Ti K|NGP|N/Classified KPE platform in
+      the recovered captions. Confirm exact acrylic/acetal variant during
+      physical intake.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-BACKPLATE-001
+    name: REDEEMER EK-FC980 GTX Ti Classy KPE backplate
+    category: backplate
+    manufacturer: EK
+    model: EK-FC980 GTX Ti Classy KPE Backplate Nickel
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Backplate is named separately in the formal May 8, 2016 REDEEMER list.
+      Keep separate from the GPU block for future compatibility and value
+      tracking.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-PUMP-D5-001
+    name: REDEEMER EK-D5 Vario motor pair
+    category: pump
+    manufacturer: EK
+    model: EK-D5 Vario Motor
+    quantity: 2
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160413-BEKLbZrBXVm-the-shortest-and-most-difficult-tubing-run-in-redeemer-pictured-e.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Final REDEEMER list names EK-D5 Vario Motor x2. The May 8 final list
+      conflicts with earlier DDC pump evidence, so preserve the D5 pair as the
+      final spec while retaining the DDC assembly as its own evidence record.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-PUMPTOP-D5-001
+    name: REDEEMER EK dual D5 pump top
+    category: pump top
+    manufacturer: EK
+    model: EK-D5 Dual Top G1/4 CSQ Acetal / EK-XTOP Dual D5 PWM
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160413-BEKLbZrBXVm-the-shortest-and-most-difficult-tubing-run-in-redeemer-pictured-e.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence names EK-XTOP Dual D5 PWM, while the formal list names
+      EK-D5 Dual Top G1/4 CSQ - Acetal. Treat as the same functional dual-D5
+      pump-top evidence until a physical part number confirms the exact model.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-PUMP-DDC-001
+    name: REDEEMER Swiftech MCP35X DDC pump assembly
+    category: pump
+    manufacturer: Swiftech / EK
+    model: MCP35X DDC with EK-XTOP DDC Plexi and EK-DDC Heatsink Housing Nickel
+    quantity: 2
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: early REDEEMER evidence / possibly superseded by final D5 spec
+    photos:
+      - assets/social/instagram-20160316-BDB9Y11hXbo-dual-water-pumps-going-into-redeemer-looking-super-clean-with-ekw.jpg
+    notes: >
+      March 16, 2016 caption directly states dual water pumps going into
+      REDEEMER and identifies Swiftech MCP35X DDC pumps with EK tops and
+      heatsink housings. Because the formal May 8 list names D5 hardware, this
+      may be an early configuration, staged hardware, or a separate pump set.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-RES-001
+    name: REDEEMER EK-RES X3 250 white reservoir
+    category: reservoir
+    manufacturer: EK
+    model: EK-RES X3 250 White
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160316-BC_jrmLhXa2-progress-dry-fit-some-fittings-and-mounted-brackets-for-our-reser.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Reservoir appears in loop planning and the formal REDEEMER list. Confirm
+      brackets, tube condition, end caps, and color during physical intake.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-FIT-001
+    name: REDEEMER EK-ACF compression fittings
+    category: fitting
+    manufacturer: EK
+    model: EK-ACF Compression 10/16mm Nickel
+    quantity: 16
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160314-BC8c2wrBXdw-fittings-we-will-be-using-in-our-new-flagship-build-entitled-rede.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Fittings are named in the March 14 REDEEMER launch post and the formal
+      May 8 component list. Quantity of 16 comes from the final list.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-FIT-002
+    name: REDEEMER EK-PSC angled adapters
+    category: fitting
+    manufacturer: EK
+    model: EK-PSC Adapter 45 G1/4 and EK-PSC Adapter 90 G1/4
+    quantity: quantity unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160314-BC8c2wrBXdw-fittings-we-will-be-using-in-our-new-flagship-build-entitled-rede.jpg
+    notes: >
+      March 14, 2016 REDEEMER fittings post names both 45 and 90 degree EK-PSC
+      adapters. Final count is not available from caption evidence.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-TUBE-001
+    name: REDEEMER EK-Tube ZMT matte black tubing
+    category: tubing
+    manufacturer: EK
+    model: EK-Tube ZMT Matte Black 10/16mm
+    quantity: length unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160407-BD4PAlwhXRJ-tubing-has-started-really-liking-the-matte-black-and-nickel-combi.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence names EK-Tube ZMT Matte Black 16/10mm; formal list uses
+      10/16mm. Treat as the same tubing size notation until packaging or
+      physical measurement confirms it.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-RAD-240-001
+    name: REDEEMER EK-CoolStream XE 240 radiator
+    category: radiator
+    manufacturer: EK
+    model: CoolStream XE 240mm
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160308-BCs3a-ohXbv-next-up-240mm-top-installed-as-intake-push-what-do-you-think-let.jpg
+      - assets/social/instagram-20160310-BCyqnvRhXfI-another-shot-of-our-installed-ek-pe-coolstream-240mm-360mm-in-a-n.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Formal list identifies an EK-CoolStream XE 240mm. Earlier captions show a
+      240mm top radiator installed; one caption calls the installed pair PE,
+      while the formal list resolves the final spec as XE.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-RAD-360-001
+    name: REDEEMER EK-CoolStream XE 360 radiator
+    category: radiator
+    manufacturer: EK
+    model: CoolStream XE 360mm
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160303-BCezr6kBXaS-test-fitting-our-stripped-nzxt-h440-with-a-front-360mm-radiator-p.jpg
+      - assets/social/instagram-20160310-BCyqnvRhXfI-another-shot-of-our-installed-ek-pe-coolstream-240mm-360mm-in-a-n.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Formal list identifies an EK-CoolStream XE 360mm. Earlier H440 posts show
+      front 360mm fitment before the finished REDEEMER spec was posted.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-FAN-001
+    name: REDEEMER EK-Vardar white radiator fans
+    category: fan
+    manufacturer: EK
+    model: Vardar F4-120ER 2200rpm White
+    quantity: 6
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Fan model and count come from the formal May 8, 2016 REDEEMER component
+      list. No separate fan-only intake post is currently linked.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-COOLANT-001
+    name: REDEEMER EK-Ekoolant Pastel White
+    category: coolant
+    manufacturer: EK
+    model: EK-Ekoolant Pastel White
+    quantity: quantity unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / consumed or physical custody unknown
+    status: recovered Instagram evidence / consumable record
+    photos:
+      - assets/social/instagram-20160412-BEFLlXSBXRm-loop-is-filled-running-8-hours-no-leaks.jpg
+    notes: >
+      Loop-fill post identifies EK-Ekoolant Pastel White and records an 8+ hour
+      no-leak run. Treat as consumable evidence rather than expected surviving
+      inventory.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-CABLE-001
+    name: REDEEMER Mainframe Customs Teleios white cable set
+    category: cable set
+    manufacturer: Mainframe Customs
+    model: Teleios White custom cables / extensions
+    quantity: 1 set
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160424-BEkazzMhXdZ-mainframe-customs-pulled-through-with-some-lovely-cables-for-rede.jpg
+      - assets/social/instagram-20160426-BEp20SZhXab-just-some-cable-porn-for-today.jpg
+    notes: >
+      Captions document Mainframe Customs cables for REDEEMER and a Teleios
+      White detail shot. Earlier April 19 caption mentions ordered extensions,
+      so confirm whether this was a full PSU set, extensions, or both.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-RED-DISPLAY-001
+    name: REDEEMER 65-inch curved Samsung test display
+    category: display
+    manufacturer: Samsung
+    model: 65-inch curved display
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: context object for final REDEEMER test
+    photos:
+      - assets/social/instagram-20160517-BFgBwMfhXfM-time-to-test-redeemer-with-some-survival-horror-action-on-the-65-poster.jpg
+    notes: >
+      May 17, 2016 test post places REDEEMER on a 65-inch curved Samsung
+      display. This is a context object rather than a core PC component, but it
+      anchors the final recovered test evidence.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
   - id: FI-DRONE-001
     name: Perry 1 / PEREGRINE-A01
     category: drone aircraft

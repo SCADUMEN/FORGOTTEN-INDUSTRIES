@@ -153,17 +153,31 @@ projects:
       - REDEEMER
       - NZXT H440
     artifacts:
-      - BFgBwMfhXfM
-      - BFVa8odBXfF
-      - BFVTCRwBXTy
-      - BFKAtXeBXT8
-      - BFAd9IqhXex
-      - BEosSHFBXVt
-      - BEkazzMhXdZ
-      - BEKLbZrBXVm
-      - BDRoKH-BXTu
-      - BDHmcW3BXWB
-      - BC8c2wrBXdw
+      - FI-RED-CASE-001
+      - FI-RED-MB-001
+      - FI-RED-CPU-001
+      - FI-RED-MEM-001
+      - FI-RED-GPU-001
+      - FI-RED-STOR-001
+      - FI-RED-PSU-001
+      - FI-RED-LIGHT-001
+      - FI-RED-BLOCK-CPU-001
+      - FI-RED-BLOCK-RAM-001
+      - FI-RED-BLOCK-GPU-001
+      - FI-RED-BACKPLATE-001
+      - FI-RED-PUMP-D5-001
+      - FI-RED-PUMPTOP-D5-001
+      - FI-RED-PUMP-DDC-001
+      - FI-RED-RES-001
+      - FI-RED-FIT-001
+      - FI-RED-FIT-002
+      - FI-RED-TUBE-001
+      - FI-RED-RAD-240-001
+      - FI-RED-RAD-360-001
+      - FI-RED-FAN-001
+      - FI-RED-COOLANT-001
+      - FI-RED-CABLE-001
+      - FI-RED-DISPLAY-001
     documentation_style:
       - Treat Instagram captions as primary evidence
       - Preserve exact timestamps and source post links
