@@ -1,0 +1,102 @@
+aircraft:
+  - id: PEREGRINE-A01
+    name: Perry 1
+    archive_id: FI-DRONE-001
+    manufacturer: DJI
+    model: Mini 4K
+    role: crash/recovery bird
+    status: grounded pending inspection
+    condition:
+      summary: crashed / recovered / needs physical inspection
+      known_concerns:
+        - Error 30210
+        - back-right arm damage
+        - abnormal motor resistance
+        - possible propeller mismatch
+        - possible propeller screw overtightening
+        - ESC/power hardware remains in diagnostic tree
+    lore:
+      - roof/awning recovery
+      - 3 AM "yeeted into the abyss" recovery sequence
+    inspection_priority:
+      - photograph before repair
+      - preserve app error screen
+      - inspect back-right arm and motor
+      - confirm propeller type and package pairing
+      - confirm screw condition and seating
+      - inspect battery bay and contacts
+      - inspect shell deformation and wiring strain
+    needs_confirmation:
+      - exact crash timestamp
+      - exact Error 30210 message text
+      - propeller package history
+      - screw reuse or replacement history
+      - back-right motor resistance compared to other motors
+
+  - id: PEREGRINE-A02
+    name: Perry 2
+    archive_id: FI-DRONE-002
+    manufacturer: DJI
+    model: Mini 3
+    controller: DJI RC
+    role: newer active platform
+    status: active platform pending baseline documentation
+    visual_identity:
+      mark: assets/projects/peregrine/peregrine-a02.png
+      description: PEREGRINE-A02 white mark on black field
+    condition:
+      summary: needs baseline intake
+      known_concerns: []
+    baseline_priority:
+      - serial number
+      - firmware version
+      - DJI Fly app version
+      - controller model and firmware
+      - battery count and serials
+      - propeller package compatibility
+      - accessory list
+    needs_confirmation:
+      - serial number
+      - firmware version
+      - battery inventory
+      - propeller and screw package source
+
+  - id: PEREGRINE-A03
+    name: Perry 3
+    archive_id: FI-DRONE-003
+    manufacturer: DJI
+    model: Mini 3
+    role: planned replacement aircraft
+    status: planned / not acquired
+    condition:
+      summary: target platform for next PEREGRINE aircraft
+      known_concerns: []
+    acquisition_priority:
+      - acquisition source
+      - aircraft serial
+      - controller pairing
+      - firmware baseline
+      - battery inventory
+      - propeller and screw package source
+      - first flight log
+    needs_confirmation:
+      - acquisition source
+      - included controller or controller pairing plan
+      - battery count and condition
+      - accessory list
+
+sources:
+  official_dji:
+    - title: DJI Mini 2 Propellers
+      url: https://store.dji.com/product/mini-2-propellers
+      relevance: DJI Mini 4K compatibility and propeller replacement guidance
+    - title: DJI Mini 3 Propellers
+      url: https://store.dji.com/product/dji-mini-3-propellers
+      relevance: Mini 3 propeller placement and package guidance
+
+standing_rules:
+  - Ground damaged aircraft first.
+  - Document the physical state before calibration.
+  - Keep removed propellers and screws grouped by motor position.
+  - Mark uncertain details as NEEDS_CONFIRMATION instead of inventing them.
+  - Prefer official DJI guidance over community reports for safety-critical repair steps.

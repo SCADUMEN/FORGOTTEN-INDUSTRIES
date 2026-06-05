@@ -151,3 +151,62 @@ items:
     estimated_value:
     keep_sell_archive: keep pending test
     date_logged: "2026-06-05"
+
+  - id: FI-DRONE-001
+    name: Perry 1 / PEREGRINE-A01
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 4K
+    quantity: 1
+    associated_project: FI-PROJ-004
+    condition: crashed / recovered / needs physical inspection
+    status: grounded pending arm, motor, propeller, and ESC/power diagnostics
+    photos: []
+    notes: >
+      Crash/recovery bird from the roof and awning recovery sequence, including
+      the 3 AM "yeeted into the abyss" retrieval. Known concerns include Error
+      30210, back-right arm damage, motor resistance, propeller mismatch
+      possibility, and overtightening risk. Treat as grounded until physical
+      inspection clears the arm, motor, propellers, screws, wiring, and
+      ESC/power path.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: "2026-06-05"
+
+  - id: FI-DRONE-002
+    name: Perry 2 / PEREGRINE-A02
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 3 with DJI RC
+    quantity: 1
+    associated_project: FI-PROJ-004
+    condition: newer platform / needs baseline intake
+    status: active platform pending baseline documentation
+    photos:
+      - assets/projects/peregrine/peregrine-a02.png
+    notes: >
+      Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is
+      the DJI Mini 3, not the Mini 3 Pro. Accessory set, firmware state, battery
+      inventory, and serial details should still be confirmed before
+      compatibility assumptions are locked into the archive.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: "2026-06-05"
+
+  - id: FI-DRONE-003
+    name: Perry 3 / PEREGRINE-A03
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 3
+    quantity: 1 planned
+    associated_project: FI-PROJ-004
+    condition: planned replacement / not acquired
+    status: target platform for next PEREGRINE aircraft
+    photos: []
+    notes: >
+      Planned Mini 3 replacement aircraft for Perry 3. Track acquisition,
+      baseline inspection, firmware, battery inventory, propeller package, and
+      first flight as separate archive events once the aircraft is in hand.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: "2026-06-05"

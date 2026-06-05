@@ -78,3 +78,59 @@ field_logs:
           The technical record protects the emotional truth from performance.
           Evidence first. Interpretation later.
     signature: Forgotten Industries // Method Note // 2026.06.05
+
+  - id: FI-LOG-002
+    slug: peregrine-a01-crash-recovery-intake
+    title: PEREGRINE-A01 Crash Recovery Intake
+    date: "2026-06-05"
+    timestamp: "2026-06-05 04:39 CT"
+    category: field-log
+    associated_project: FI-PROJ-004
+    object: Perry 1 / PEREGRINE-A01
+    system: DJI Mini 4K aircraft / crash recovery and repair diagnostics
+    status: grounded / physical inspection before calibration
+    tags:
+      - PEREGRINE
+      - drone
+      - crash recovery
+      - diagnostics
+      - field repair
+    sections:
+      - heading: Condition Found
+        body: >
+          PEREGRINE-A01 is recorded as the DJI Mini 4K crash/recovery bird.
+          The incident includes roof and awning recovery lore and the 3 AM
+          "yeeted into the abyss" recovery sequence. Known damage notes include
+          back-right arm damage and abnormal motor resistance.
+      - heading: Observations
+        body: >
+          Error 30210 is present in the working diagnostic tree. Treat the error
+          as a hardware-adjacent warning until the aircraft has been physically
+          inspected. Propeller mismatch and overtightened propeller screws remain
+          active concerns.
+      - heading: Methods
+        body: >
+          Photograph the aircraft before repair. Capture close photos of each
+          arm, motor, propeller pair, screw, battery bay, gimbal, shell seam,
+          and app error screen. Compare motor free-spin by corner. Keep removed
+          propellers and screws grouped by motor position.
+      - heading: Restoration Notes
+        body: >
+          Calibration should be secondary to physical inspection. DJI guidance
+          for Mini-series propellers emphasizes correct frame-arm placement,
+          same-package propeller pairing, replacement screws where specified,
+          and avoiding mixed propeller types or packages.
+      - heading: What It Means / Reflection
+        body: >
+          PEREGRINE belongs in the archive because it is a field system, not a
+          toy record. The flight, the crash, the recovery route, the repair
+          uncertainty, and the next launch all become part of the machine's
+          evidence trail.
+      - heading: Next Actions
+        body: >
+          Ground A01. Complete photo intake. Confirm exact propeller sets and
+          screw condition. Inspect the back-right arm and motor for resistance,
+          wiring damage, shell deformation, and ESC/power symptoms. Create the
+          first clean baseline log for A02 as a DJI Mini 3. Track Perry 3 /
+          PEREGRINE-A03 as a planned Mini 3 replacement before acquisition.
+    signature: Forgotten Industries // Field Log // 2026.06.05

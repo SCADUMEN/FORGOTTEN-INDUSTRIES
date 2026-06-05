@@ -97,3 +97,34 @@ projects:
       - Use methods, observations, and findings when they help
       - Keep reflection grounded in objects and actions
       - Let the technical documentation carry the emotion
+
+  - id: FI-PROJ-004
+    slug: peregrine-drone-experiments
+    title: PEREGRINE Drone Experiments
+    working_title: PERRY / PEREGRINE Aircraft Dossier
+    category: Drone Field Systems
+    status: active / grounded pending inspection
+    started: "2026"
+    summary: >
+      Small aircraft experimentation and recovery dossier covering Perry 1 /
+      PEREGRINE-A01 as the DJI Mini 4K crash/recovery bird and Perry 2 /
+      PEREGRINE-A02 as the DJI Mini 3 platform with DJI RC. Perry 3 /
+      PEREGRINE-A03 is tracked as the planned Mini 3 replacement aircraft. The
+      archive preserves flight logs, crash reports, maintenance notes, recovery
+      routes, error codes, and uncertain details as evidence.
+    themes:
+      - small aircraft recovery
+      - flight logging
+      - crash diagnostics
+      - field repair
+      - roof and awning retrieval
+      - evidence before calibration
+    artifacts:
+      - FI-DRONE-001
+      - FI-DRONE-002
+      - FI-DRONE-003
+    documentation_style:
+      - Preserve flight conditions, error codes, and recovery route before interpretation
+      - Treat calibration as secondary until physical damage is inspected
+      - Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION
+      - Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair

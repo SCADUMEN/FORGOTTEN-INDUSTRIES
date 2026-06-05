@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-05T02:56:09Z",
+  "generatedAt": "2026-06-05T09:47:31Z",
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / lab journal / technical blog",
@@ -128,6 +128,35 @@
         "Use methods, observations, and findings when they help",
         "Keep reflection grounded in objects and actions",
         "Let the technical documentation carry the emotion"
+      ]
+    },
+    {
+      "id": "FI-PROJ-004",
+      "slug": "peregrine-drone-experiments",
+      "title": "PEREGRINE Drone Experiments",
+      "working_title": "PERRY / PEREGRINE Aircraft Dossier",
+      "category": "Drone Field Systems",
+      "status": "active / grounded pending inspection",
+      "started": "2026",
+      "summary": "Small aircraft experimentation and recovery dossier covering Perry 1 / PEREGRINE-A01 as the DJI Mini 4K crash/recovery bird and Perry 2 / PEREGRINE-A02 as the DJI Mini 3 platform with DJI RC. Perry 3 / PEREGRINE-A03 is tracked as the planned Mini 3 replacement aircraft. The archive preserves flight logs, crash reports, maintenance notes, recovery routes, error codes, and uncertain details as evidence.\n",
+      "themes": [
+        "small aircraft recovery",
+        "flight logging",
+        "crash diagnostics",
+        "field repair",
+        "roof and awning retrieval",
+        "evidence before calibration"
+      ],
+      "artifacts": [
+        "FI-DRONE-001",
+        "FI-DRONE-002",
+        "FI-DRONE-003"
+      ],
+      "documentation_style": [
+        "Preserve flight conditions, error codes, and recovery route before interpretation",
+        "Treat calibration as secondary until physical damage is inspected",
+        "Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION",
+        "Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair"
       ]
     }
   ],
@@ -293,6 +322,60 @@
       "estimated_value": null,
       "keep_sell_archive": "keep pending test",
       "date_logged": "2026-06-05"
+    },
+    {
+      "id": "FI-DRONE-001",
+      "name": "Perry 1 / PEREGRINE-A01",
+      "category": "drone aircraft",
+      "manufacturer": "DJI",
+      "model": "Mini 4K",
+      "quantity": 1,
+      "associated_project": "FI-PROJ-004",
+      "condition": "crashed / recovered / needs physical inspection",
+      "status": "grounded pending arm, motor, propeller, and ESC/power diagnostics",
+      "photos": [
+
+      ],
+      "notes": "Crash/recovery bird from the roof and awning recovery sequence, including the 3 AM \"yeeted into the abyss\" retrieval. Known concerns include Error 30210, back-right arm damage, motor resistance, propeller mismatch possibility, and overtightening risk. Treat as grounded until physical inspection clears the arm, motor, propellers, screws, wiring, and ESC/power path.\n",
+      "estimated_value": null,
+      "keep_sell_archive": "archive",
+      "date_logged": "2026-06-05"
+    },
+    {
+      "id": "FI-DRONE-002",
+      "name": "Perry 2 / PEREGRINE-A02",
+      "category": "drone aircraft",
+      "manufacturer": "DJI",
+      "model": "Mini 3 with DJI RC",
+      "quantity": 1,
+      "associated_project": "FI-PROJ-004",
+      "condition": "newer platform / needs baseline intake",
+      "status": "active platform pending baseline documentation",
+      "photos": [
+        "assets/projects/peregrine/peregrine-a02.png"
+      ],
+      "notes": "Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is the DJI Mini 3, not the Mini 3 Pro. Accessory set, firmware state, battery inventory, and serial details should still be confirmed before compatibility assumptions are locked into the archive.\n",
+      "estimated_value": null,
+      "keep_sell_archive": "archive",
+      "date_logged": "2026-06-05"
+    },
+    {
+      "id": "FI-DRONE-003",
+      "name": "Perry 3 / PEREGRINE-A03",
+      "category": "drone aircraft",
+      "manufacturer": "DJI",
+      "model": "Mini 3",
+      "quantity": "1 planned",
+      "associated_project": "FI-PROJ-004",
+      "condition": "planned replacement / not acquired",
+      "status": "target platform for next PEREGRINE aircraft",
+      "photos": [
+
+      ],
+      "notes": "Planned Mini 3 replacement aircraft for Perry 3. Track acquisition, baseline inspection, firmware, battery inventory, propeller package, and first flight as separate archive events once the aircraft is in hand.\n",
+      "estimated_value": null,
+      "keep_sell_archive": "keep pending test",
+      "date_logged": "2026-06-05"
     }
   ],
   "fieldLogs": [
@@ -372,6 +455,52 @@
         }
       ],
       "signature": "Forgotten Industries // Method Note // 2026.06.05"
+    },
+    {
+      "id": "FI-LOG-002",
+      "slug": "peregrine-a01-crash-recovery-intake",
+      "title": "PEREGRINE-A01 Crash Recovery Intake",
+      "date": "2026-06-05",
+      "timestamp": "2026-06-05 04:39 CT",
+      "category": "field-log",
+      "associated_project": "FI-PROJ-004",
+      "object": "Perry 1 / PEREGRINE-A01",
+      "system": "DJI Mini 4K aircraft / crash recovery and repair diagnostics",
+      "status": "grounded / physical inspection before calibration",
+      "tags": [
+        "PEREGRINE",
+        "drone",
+        "crash recovery",
+        "diagnostics",
+        "field repair"
+      ],
+      "sections": [
+        {
+          "heading": "Condition Found",
+          "body": "PEREGRINE-A01 is recorded as the DJI Mini 4K crash/recovery bird. The incident includes roof and awning recovery lore and the 3 AM \"yeeted into the abyss\" recovery sequence. Known damage notes include back-right arm damage and abnormal motor resistance.\n"
+        },
+        {
+          "heading": "Observations",
+          "body": "Error 30210 is present in the working diagnostic tree. Treat the error as a hardware-adjacent warning until the aircraft has been physically inspected. Propeller mismatch and overtightened propeller screws remain active concerns.\n"
+        },
+        {
+          "heading": "Methods",
+          "body": "Photograph the aircraft before repair. Capture close photos of each arm, motor, propeller pair, screw, battery bay, gimbal, shell seam, and app error screen. Compare motor free-spin by corner. Keep removed propellers and screws grouped by motor position.\n"
+        },
+        {
+          "heading": "Restoration Notes",
+          "body": "Calibration should be secondary to physical inspection. DJI guidance for Mini-series propellers emphasizes correct frame-arm placement, same-package propeller pairing, replacement screws where specified, and avoiding mixed propeller types or packages.\n"
+        },
+        {
+          "heading": "What It Means / Reflection",
+          "body": "PEREGRINE belongs in the archive because it is a field system, not a toy record. The flight, the crash, the recovery route, the repair uncertainty, and the next launch all become part of the machine's evidence trail.\n"
+        },
+        {
+          "heading": "Next Actions",
+          "body": "Ground A01. Complete photo intake. Confirm exact propeller sets and screw condition. Inspect the back-right arm and motor for resistance, wiring damage, shell deformation, and ESC/power symptoms. Create the first clean baseline log for A02 as a DJI Mini 3. Track Perry 3 / PEREGRINE-A03 as a planned Mini 3 replacement before acquisition.\n"
+        }
+      ],
+      "signature": "Forgotten Industries // Field Log // 2026.06.05"
     }
   ],
   "socialPosts": [
