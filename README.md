@@ -70,6 +70,8 @@ The archive is not published yet. When it is ready to become an npm package:
 - `scripts/build.rb` - YAML-to-JSON and YAML-to-TypeScript build script.
 - `dist/forgotten-industries.json` - generated complete archive data.
 - `dist/index.ts` - generated TypeScript module exporting the archive.
+- `AGENTS.md` - short pointer for future coding agents.
+- `ATLAS.md` - project operating identity, voice, archive priorities, and decision rules.
 - `index.html` - raw HTML entry point.
 - `archive.html` - raw archive index.
 - `inventory.html` - raw inventory page.
@@ -78,7 +80,9 @@ The archive is not published yet. When it is ready to become an npm package:
 - `contact.html` - raw contact page.
 - `social-posts.html` - raw HTML index for imported social posts.
 - `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
+- `assets/favicon/` - favicon and web app icon assets used by the raw HTML pages.
 - `assets/social/` - downloaded local media from imported social posts.
+- `assets/initial-photos/` - initial local photo batch for archive intake.
 - `posts/social/` - generated Markdown posts from imported social content.
 - `templates/field-log.md` - Markdown field log template.
 - `templates/inventory-item.md` - Markdown inventory item template.
