@@ -163,12 +163,11 @@ items:
     status: grounded pending arm, motor, propeller, and ESC/power diagnostics
     photos: []
     notes: >
-      Crash/recovery bird from the roof and awning recovery sequence, including
-      the 3 AM "yeeted into the abyss" retrieval. Known concerns include Error
-      30210, back-right arm damage, motor resistance, propeller mismatch
-      possibility, and overtightening risk. Treat as grounded until physical
-      inspection clears the arm, motor, propellers, screws, wiring, and
-      ESC/power path.
+      First PEREGRINE aircraft. A01 got stuck on the awning, was recovered, and
+      then became the troubleshooting bird. Known concerns include Error 30210,
+      back-right arm damage, motor resistance, propeller mismatch possibility,
+      and overtightening risk. Treat as grounded until physical inspection
+      clears the arm, motor, propellers, screws, wiring, and ESC/power path.
     estimated_value:
     keep_sell_archive: archive
     date_logged: "2026-06-05"
@@ -180,15 +179,17 @@ items:
     model: Mini 3 with DJI RC
     quantity: 1
     associated_project: FI-PROJ-004
-    condition: newer platform / needs baseline intake
-    status: active platform pending baseline documentation
+    condition: lost / likely on roof / not recovered
+    status: no unsafe roof recovery; replace before risking a climb
     photos:
       - assets/projects/peregrine/peregrine-a02.png
     notes: >
       Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is
-      the DJI Mini 3, not the Mini 3 Pro. Accessory set, firmware state, battery
-      inventory, and serial details should still be confirmed before
-      compatibility assumptions are locked into the archive.
+      the DJI Mini 3, not the Mini 3 Pro. After the A01 recovery and new flight
+      confidence, A02 was flown at roughly 3 AM and lost, described in the field
+      record as "yeeted into the abyss." The likely location is the roof.
+      Recovery is explicitly deferred: replacing the aircraft is preferable to
+      an unsafe high-roof climb.
     estimated_value:
     keep_sell_archive: archive
     date_logged: "2026-06-05"

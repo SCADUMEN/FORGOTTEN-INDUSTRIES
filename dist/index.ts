@@ -129,7 +129,7 @@ export interface ForgottenIndustriesArchive {
 
 export const archive = {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-05T10:03:25Z",
+  "generatedAt": "2026-06-05T10:14:40Z",
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / lab journal / technical blog",
@@ -265,15 +265,16 @@ export const archive = {
       "title": "PEREGRINE Drone Experiments",
       "working_title": "PERRY / PEREGRINE Aircraft Dossier",
       "category": "Drone Field Systems",
-      "status": "active / grounded pending inspection",
+      "status": "active / A01 grounded / A02 lost / A03 planned",
       "started": "2026",
-      "summary": "Small aircraft experimentation and recovery dossier covering Perry 1 / PEREGRINE-A01 as the DJI Mini 4K crash/recovery bird and Perry 2 / PEREGRINE-A02 as the DJI Mini 3 platform with DJI RC. Perry 3 / PEREGRINE-A03 is tracked as the planned Mini 3 replacement aircraft. The archive preserves flight logs, crash reports, maintenance notes, recovery routes, error codes, and uncertain details as evidence.\n",
+      "summary": "Small aircraft experimentation and recovery dossier covering Perry 1 / PEREGRINE-A01 as the DJI Mini 4K awning recovery and troubleshooting bird, Perry 2 / PEREGRINE-A02 as the DJI Mini 3 lost after a 3 AM roof incident, and Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement aircraft. The archive preserves flight logs, crash reports, maintenance notes, recovery routes, error codes, safety calls, and uncertain details as evidence.\n",
       "themes": [
         "small aircraft recovery",
         "flight logging",
         "crash diagnostics",
         "field repair",
-        "roof and awning retrieval",
+        "awning retrieval",
+        "roof loss and no-unsafe-recovery decisions",
         "evidence before calibration"
       ],
       "artifacts": [
@@ -465,7 +466,7 @@ export const archive = {
       "photos": [
 
       ],
-      "notes": "Crash/recovery bird from the roof and awning recovery sequence, including the 3 AM \"yeeted into the abyss\" retrieval. Known concerns include Error 30210, back-right arm damage, motor resistance, propeller mismatch possibility, and overtightening risk. Treat as grounded until physical inspection clears the arm, motor, propellers, screws, wiring, and ESC/power path.\n",
+      "notes": "First PEREGRINE aircraft. A01 got stuck on the awning, was recovered, and then became the troubleshooting bird. Known concerns include Error 30210, back-right arm damage, motor resistance, propeller mismatch possibility, and overtightening risk. Treat as grounded until physical inspection clears the arm, motor, propellers, screws, wiring, and ESC/power path.\n",
       "estimated_value": null,
       "keep_sell_archive": "archive",
       "date_logged": "2026-06-05"
@@ -478,12 +479,12 @@ export const archive = {
       "model": "Mini 3 with DJI RC",
       "quantity": 1,
       "associated_project": "FI-PROJ-004",
-      "condition": "newer platform / needs baseline intake",
-      "status": "active platform pending baseline documentation",
+      "condition": "lost / likely on roof / not recovered",
+      "status": "no unsafe roof recovery; replace before risking a climb",
       "photos": [
         "assets/projects/peregrine/peregrine-a02.png"
       ],
-      "notes": "Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is the DJI Mini 3, not the Mini 3 Pro. Accessory set, firmware state, battery inventory, and serial details should still be confirmed before compatibility assumptions are locked into the archive.\n",
+      "notes": "Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is the DJI Mini 3, not the Mini 3 Pro. After the A01 recovery and new flight confidence, A02 was flown at roughly 3 AM and lost, described in the field record as \"yeeted into the abyss.\" The likely location is the roof. Recovery is explicitly deferred: replacing the aircraft is preferable to an unsafe high-roof climb.\n",
       "estimated_value": null,
       "keep_sell_archive": "archive",
       "date_logged": "2026-06-05"
@@ -606,7 +607,7 @@ export const archive = {
       "sections": [
         {
           "heading": "Condition Found",
-          "body": "PEREGRINE-A01 is recorded as the DJI Mini 4K crash/recovery bird. The incident includes roof and awning recovery lore and the 3 AM \"yeeted into the abyss\" recovery sequence. Known damage notes include back-right arm damage and abnormal motor resistance.\n"
+          "body": "PEREGRINE-A01 is recorded as the DJI Mini 4K crash/recovery bird. The incident chain for A01 is awning first: the aircraft got stuck on the awning, was recovered, and then became the troubleshooting bird. Known damage notes include back-right arm damage and abnormal motor resistance.\n"
         },
         {
           "heading": "Observations",
@@ -626,7 +627,49 @@ export const archive = {
         },
         {
           "heading": "Next Actions",
-          "body": "Ground A01. Complete photo intake. Confirm exact propeller sets and screw condition. Inspect the back-right arm and motor for resistance, wiring damage, shell deformation, and ESC/power symptoms. Create the first clean baseline log for A02 as a DJI Mini 3. Track Perry 3 / PEREGRINE-A03 as a planned Mini 3 replacement before acquisition.\n"
+          "body": "Ground A01. Complete photo intake. Confirm exact propeller sets and screw condition. Inspect the back-right arm and motor for resistance, wiring damage, shell deformation, and ESC/power symptoms. Create the A02 loss record separately. Track Perry 3 / PEREGRINE-A03 as a planned Mini 3 replacement before acquisition.\n"
+        }
+      ],
+      "signature": "Forgotten Industries // Field Log // 2026.06.05"
+    },
+    {
+      "id": "FI-LOG-003",
+      "slug": "peregrine-a02-loss-no-roof-recovery",
+      "title": "PEREGRINE-A02 Loss / No Roof Recovery Rule",
+      "date": "2026-06-05",
+      "timestamp": "2026-06-05 03:00 CT",
+      "category": "field-log",
+      "associated_project": "FI-PROJ-004",
+      "object": "Perry 2 / PEREGRINE-A02",
+      "system": "DJI Mini 3 aircraft / loss record and recovery decision",
+      "status": "lost / likely roof / recovery deferred for safety",
+      "tags": [
+        "PEREGRINE",
+        "drone",
+        "loss record",
+        "roof recovery",
+        "safety call"
+      ],
+      "sections": [
+        {
+          "heading": "Condition Found",
+          "body": "PEREGRINE-A02 is recorded as the DJI Mini 3 platform with DJI RC. After recovering A01 and gaining confidence with new flight skills, A02 was flown at roughly 3 AM and lost. The working field description is \"yeeted into the abyss.\"\n"
+        },
+        {
+          "heading": "Observations",
+          "body": "The aircraft is believed to be on the roof, but that location remains unconfirmed. The important record is not only where the aircraft may be; it is the decision not to create a second incident by climbing a high roof for a replaceable machine.\n"
+        },
+        {
+          "heading": "Recovery Decision",
+          "body": "No unsafe roof recovery. No nighttime roof recovery. No solo climb. Replacement cost is preferable to a fall risk. A future recovery can be reconsidered only with safe access, daylight, stable equipment, and a reason stronger than saving the aircraft.\n"
+        },
+        {
+          "heading": "What It Means / Reflection",
+          "body": "Confidence is part of the log too. A01 taught recovery and repair; A02 marks the boundary where field work becomes risk management. The archive preserves the loss without demanding a dangerous retrieval.\n"
+        },
+        {
+          "heading": "Next Actions",
+          "body": "Treat A02 as lost unless recovered under safe conditions. Preserve the A02 visual mark and loss record. Track Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement, with acquisition, baseline inspection, and first flight logged separately.\n"
         }
       ],
       "signature": "Forgotten Industries // Field Log // 2026.06.05"

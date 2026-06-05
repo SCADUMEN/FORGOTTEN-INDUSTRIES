@@ -16,8 +16,8 @@ aircraft:
         - possible propeller screw overtightening
         - ESC/power hardware remains in diagnostic tree
     lore:
-      - roof/awning recovery
-      - 3 AM "yeeted into the abyss" recovery sequence
+      - got stuck on the awning
+      - recovered and became the troubleshooting bird
     inspection_priority:
       - photograph before repair
       - preserve app error screen
@@ -39,23 +39,35 @@ aircraft:
     manufacturer: DJI
     model: Mini 3
     controller: DJI RC
-    role: newer active platform
-    status: active platform pending baseline documentation
+    role: lost aircraft / roof-loss record
+    status: lost / likely on roof / no unsafe recovery
     visual_identity:
       mark: assets/projects/peregrine/peregrine-a02.png
       description: PEREGRINE-A02 white mark on black field
     condition:
-      summary: needs baseline intake
-      known_concerns: []
-    baseline_priority:
-      - serial number
-      - firmware version
-      - DJI Fly app version
-      - controller model and firmware
-      - battery count and serials
-      - propeller package compatibility
-      - accessory list
+      summary: lost after roughly 3 AM confidence flight
+      known_concerns:
+        - likely on roof
+        - not recovered
+        - unsafe high-roof recovery is not justified
+    lore:
+      - flown after A01 recovery and new skill confidence
+      - roughly 3 AM loss
+      - "yeeted into the abyss"
+    recovery_rule:
+      - no unsafe roof recovery
+      - no nighttime roof recovery
+      - no solo climb
+      - replace before risking a high-roof fall
+    loss_record_priority:
+      - approximate launch time
+      - likely roof location
+      - last known control state
+      - battery state if known
+      - weather and wind if known
+      - safe access options only
     needs_confirmation:
+      - whether aircraft is actually on the roof
       - serial number
       - firmware version
       - battery inventory
@@ -69,7 +81,7 @@ aircraft:
     role: planned replacement aircraft
     status: planned / not acquired
     condition:
-      summary: target platform for next PEREGRINE aircraft
+      summary: target platform for next PEREGRINE aircraft after A02 loss
       known_concerns: []
     acquisition_priority:
       - acquisition source

@@ -18,8 +18,8 @@ until it has been confirmed.
 
 ## Current Aircraft
 
-- Perry 1 / PEREGRINE-A01: DJI Mini 4K crash/recovery bird.
-- Perry 2 / PEREGRINE-A02: DJI Mini 3 with DJI RC.
+- Perry 1 / PEREGRINE-A01: DJI Mini 4K awning recovery and troubleshooting bird.
+- Perry 2 / PEREGRINE-A02: DJI Mini 3 with DJI RC, lost after the 3 AM roof incident.
 - Perry 3 / PEREGRINE-A03: planned DJI Mini 3 replacement aircraft.
 
 ## Visual Assets
@@ -30,5 +30,8 @@ until it has been confirmed.
 
 Ground damaged aircraft first. Document the physical state before calibration,
 repair, or interpretation.
+
+Do not climb a high roof for a replaceable aircraft. Recovery waits for safe
+access, or the aircraft stays in the loss record.
 
 A thing documented is a thing not yet lost.

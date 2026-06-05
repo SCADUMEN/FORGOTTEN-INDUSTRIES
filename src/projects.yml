@@ -103,21 +103,23 @@ projects:
     title: PEREGRINE Drone Experiments
     working_title: PERRY / PEREGRINE Aircraft Dossier
     category: Drone Field Systems
-    status: active / grounded pending inspection
+    status: active / A01 grounded / A02 lost / A03 planned
     started: "2026"
     summary: >
       Small aircraft experimentation and recovery dossier covering Perry 1 /
-      PEREGRINE-A01 as the DJI Mini 4K crash/recovery bird and Perry 2 /
-      PEREGRINE-A02 as the DJI Mini 3 platform with DJI RC. Perry 3 /
-      PEREGRINE-A03 is tracked as the planned Mini 3 replacement aircraft. The
-      archive preserves flight logs, crash reports, maintenance notes, recovery
-      routes, error codes, and uncertain details as evidence.
+      PEREGRINE-A01 as the DJI Mini 4K awning recovery and troubleshooting
+      bird, Perry 2 / PEREGRINE-A02 as the DJI Mini 3 lost after a 3 AM roof
+      incident, and Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement
+      aircraft. The archive preserves flight logs, crash reports, maintenance
+      notes, recovery routes, error codes, safety calls, and uncertain details
+      as evidence.
     themes:
       - small aircraft recovery
       - flight logging
       - crash diagnostics
       - field repair
-      - roof and awning retrieval
+      - awning retrieval
+      - roof loss and no-unsafe-recovery decisions
       - evidence before calibration
     artifacts:
       - FI-DRONE-001

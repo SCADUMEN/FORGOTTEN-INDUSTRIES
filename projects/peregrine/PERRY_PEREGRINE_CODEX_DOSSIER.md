@@ -20,7 +20,7 @@ checked before the next launch.
 - Role: crash/recovery bird.
 - Archive ID: FI-DRONE-001.
 - Status: grounded pending inspection.
-- Known lore: roof/awning recovery and the 3 AM "yeeted into the abyss" recovery chaos.
+- Known lore: got stuck on the awning, was recovered, and became the troubleshooting bird.
 - Current concerns:
   - Error 30210.
   - Back-right arm damage.
@@ -32,11 +32,14 @@ checked before the next launch.
 ### Perry 2 / PEREGRINE-A02
 
 - Platform: DJI Mini 3 with DJI RC.
-- Role: newer active platform.
+- Role: lost aircraft / roof-loss record.
 - Archive ID: FI-DRONE-002.
-- Status: active platform pending baseline documentation.
+- Status: lost / likely on roof / no unsafe recovery.
 - Visual mark: `assets/projects/peregrine/peregrine-a02.png`.
+- Known lore: after the A01 recovery and new confidence, A02 was flown at roughly 3 AM and "yeeted into the abyss."
+- Recovery rule: replace the aircraft before risking an unsafe high-roof climb.
 - Needs confirmation:
+  - Whether the aircraft is actually on the roof.
   - Firmware state.
   - Battery count and serials.
   - Propeller package compatibility.
@@ -48,6 +51,7 @@ checked before the next launch.
 - Role: next active PEREGRINE aircraft.
 - Archive ID: FI-DRONE-003.
 - Status: planned / not acquired.
+- Planning note: replacement target after A02 loss; expected replacement cost roughly $400.
 - Needs confirmation:
   - Acquisition source.
   - Aircraft serial.
@@ -78,6 +82,13 @@ https://store.dji.com/product/dji-mini-3-propellers
 Community repair reports often associate Error 30210 with ESC/power hardware,
 motor, or arm damage. Keep those reports as leads, not proof, until the aircraft
 is inspected.
+
+## Loss / Recovery Safety
+
+A02 is a loss record, not a recovery mandate. The likely roof location is noted,
+but the safety decision is part of the archive: do not climb a high roof for a
+replaceable aircraft. Recovery can wait for safe access, or the aircraft can
+remain lost while Perry 3 takes the line forward.
 
 ## Visual Identity
 
@@ -173,7 +184,7 @@ next safe test.
 - Exact Error 30210 wording and DJI Fly screen state.
 - A01 propeller package source and screw history.
 - A01 back-right arm photos and motor spin comparison.
-- A02 serial, firmware, battery inventory, and accessory list.
+- A02 roof location, serial, firmware, battery inventory, and accessory list.
 - A03 acquisition source, serial, battery inventory, and baseline inspection.
 
 -- Forgotten Industries // PEREGRINE Dossier // 2026.06.05
