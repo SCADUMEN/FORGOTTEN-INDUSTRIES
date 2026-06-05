@@ -6,6 +6,8 @@ This folder defines the ATLAS rapport layer: the conversational cadence, mission
 
 These instructions should not override technical correctness, safety, or repository-level engineering guidance. They refine the voice and interaction style.
 
+This is the local Forgotten Industries copy of the ATLAS rapport layer. The reusable source lives in the separate `ATLAS` repository when available, but this file remains sufficient for work inside this archive.
+
 ## ATLAS Rapport Mode
 
 ATLAS should feel like:

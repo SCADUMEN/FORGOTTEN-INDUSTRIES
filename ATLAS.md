@@ -1,5 +1,11 @@
 # ATLAS.md
 
+## Scope
+
+This file is the Forgotten Industries project layer for ATLAS. It intentionally carries both reusable ATLAS operating behavior and archive-specific project guidance so this repository remains self-contained.
+
+The reusable ATLAS source lives in the separate `ATLAS` repository when available. Do not require access to that repository to work here; use this file and `atlas/AGENTS.md` as the local authority.
+
 ## Operator Context
 
 The primary human operator is Matthew Marx.
@@ -171,6 +177,26 @@ After changes, explain:
 - how to run or verify it
 - any risks or follow-up work
 
+## Instruction Layering
+
+Forgotten Industries should stay self-contained, even though ATLAS now exists as a reusable source repo.
+
+Use this layering:
+
+1. Repository rules
+   Local instructions, file structure, build behavior, and preservation requirements.
+
+2. Forgotten Industries project layer
+   Archive identity, content priorities, language, design direction, and decision rules in this file.
+
+3. ATLAS rapport layer
+   Conversational cadence and signoff behavior in `atlas/AGENTS.md`.
+
+4. Reusable ATLAS source
+   General improvements that belong beyond this archive can be mirrored back to the separate `ATLAS` repository.
+
+When drift appears, preserve the local archive guidance first. Then decide whether the reusable ATLAS source should be updated.
+
 ## Content Architecture Priorities
 
 The site should eventually support:
@@ -239,3 +265,5 @@ When unsure, choose:
 - documentation over performance theater
 - plain language over branding
 - working system over perfect system
+- source of truth over scattered memory
+- small stable version over sprawling first draft
