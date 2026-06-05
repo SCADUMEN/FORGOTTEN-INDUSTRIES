@@ -45,6 +45,7 @@ Then visit `http://localhost:8000`.
 ## Reference Docs
 
 - `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
+- `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
 
 ## Import Social Posts
 
@@ -101,6 +102,7 @@ The archive is not published yet. When it is ready to become an npm package:
 - `assets/initial-photos/` - initial local photo batch for archive intake.
 - `posts/social/` - generated Markdown posts from imported social content.
 - `docs/archive-photo-procedure.md` - archive photography and object intake procedure.
+- `docs/obs-archive-station-procedure.md` - fixed-camera OBS archive station procedure.
 - `templates/field-log.md` - Markdown field log template.
 - `templates/inventory-item.md` - Markdown inventory item template.
 
