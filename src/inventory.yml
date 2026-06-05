@@ -713,3 +713,262 @@ items:
     estimated_value:
     keep_sell_archive: keep pending test
     date_logged: "2026-06-05"
+
+  - id: FI-PHOTO-001
+    name: Initial local archive photo batch
+    category: photo evidence set
+    manufacturer: Matthew Marx / Forgotten Industries
+    model: initial local export set
+    quantity: 129 files
+    associated_project: FI-PROJ-001
+    condition: preserved local files / mixed JPEG, MOV, and PNG sources
+    status: raw photographic evidence / needs object-level mapping
+    photos:
+      - assets/initial-photos/forgotten-industries.jpeg
+      - assets/initial-photos/matthewmarx-001.jpeg
+      - assets/initial-photos/matthewmarx-002.jpeg
+      - assets/initial-photos/matthewmarx-003.jpeg
+      - assets/initial-photos/matthewmarx-004.jpeg
+      - assets/initial-photos/matthewmarx-005.jpeg
+      - assets/initial-photos/matthewmarx-006.jpeg
+      - assets/initial-photos/matthewmarx-007.jpeg
+      - assets/initial-photos/matthewmarx-008.jpeg
+      - assets/initial-photos/matthewmarx-009.jpeg
+      - assets/initial-photos/matthewmarx-010.jpeg
+      - assets/initial-photos/matthewmarx-011.jpeg
+      - assets/initial-photos/matthewmarx-012.jpeg
+      - assets/initial-photos/matthewmarx-013.jpeg
+      - assets/initial-photos/matthewmarx-014.jpeg
+      - assets/initial-photos/matthewmarx-015.jpeg
+      - assets/initial-photos/matthewmarx-016.jpeg
+      - assets/initial-photos/matthewmarx-017.jpeg
+      - assets/initial-photos/matthewmarx-018.jpeg
+      - assets/initial-photos/matthewmarx-019.jpeg
+      - assets/initial-photos/matthewmarx-020.jpeg
+      - assets/initial-photos/matthewmarx-021.jpeg
+      - assets/initial-photos/matthewmarx-022.jpeg
+      - assets/initial-photos/matthewmarx-023.jpeg
+      - assets/initial-photos/matthewmarx-024.jpeg
+      - assets/initial-photos/matthewmarx-025.jpeg
+      - assets/initial-photos/matthewmarx-026.jpeg
+      - assets/initial-photos/matthewmarx-027.jpeg
+      - assets/initial-photos/matthewmarx-028.jpeg
+      - assets/initial-photos/matthewmarx-029.jpeg
+      - assets/initial-photos/matthewmarx-030.jpeg
+      - assets/initial-photos/matthewmarx-031.jpeg
+      - assets/initial-photos/matthewmarx-032.jpeg
+      - assets/initial-photos/matthewmarx-033.jpeg
+      - assets/initial-photos/matthewmarx-034.jpeg
+      - assets/initial-photos/matthewmarx-035.jpeg
+      - assets/initial-photos/matthewmarx-036.jpeg
+      - assets/initial-photos/matthewmarx-037.jpeg
+      - assets/initial-photos/matthewmarx-038.jpeg
+      - assets/initial-photos/matthewmarx-039.jpeg
+      - assets/initial-photos/matthewmarx-040.jpeg
+      - assets/initial-photos/matthewmarx-041.jpeg
+      - assets/initial-photos/matthewmarx-042.jpeg
+      - assets/initial-photos/matthewmarx-043.jpeg
+      - assets/initial-photos/matthewmarx-044.jpeg
+      - assets/initial-photos/matthewmarx-045.jpeg
+      - assets/initial-photos/matthewmarx-046.jpeg
+      - assets/initial-photos/matthewmarx-047.jpeg
+      - assets/initial-photos/matthewmarx-048.jpeg
+      - assets/initial-photos/matthewmarx-049.jpeg
+      - assets/initial-photos/matthewmarx-050.jpeg
+      - assets/initial-photos/matthewmarx-051.jpeg
+      - assets/initial-photos/matthewmarx-052.jpeg
+      - assets/initial-photos/matthewmarx-053.jpeg
+      - assets/initial-photos/matthewmarx-054.jpeg
+      - assets/initial-photos/matthewmarx-055.jpeg
+      - assets/initial-photos/matthewmarx-056.jpeg
+      - assets/initial-photos/matthewmarx-057.jpeg
+      - assets/initial-photos/matthewmarx-058.jpeg
+      - assets/initial-photos/matthewmarx-059.jpeg
+      - assets/initial-photos/matthewmarx-060.jpeg
+      - assets/initial-photos/matthewmarx-061.jpeg
+      - assets/initial-photos/matthewmarx-062.jpeg
+      - assets/initial-photos/matthewmarx-063.jpeg
+      - assets/initial-photos/matthewmarx-064.jpeg
+      - assets/initial-photos/matthewmarx-065.jpeg
+      - assets/initial-photos/matthewmarx-066.jpeg
+      - assets/initial-photos/matthewmarx-067.jpeg
+      - assets/initial-photos/matthewmarx-068.jpeg
+      - assets/initial-photos/matthewmarx-069.jpeg
+      - assets/initial-photos/matthewmarx-070.jpeg
+      - assets/initial-photos/matthewmarx-071.mov
+      - assets/initial-photos/matthewmarx-072.jpeg
+      - assets/initial-photos/matthewmarx-073.jpeg
+      - assets/initial-photos/matthewmarx-074.jpeg
+      - assets/initial-photos/matthewmarx-075.jpeg
+      - assets/initial-photos/matthewmarx-076.jpeg
+      - assets/initial-photos/matthewmarx-077.jpeg
+      - assets/initial-photos/matthewmarx-078.jpeg
+      - assets/initial-photos/matthewmarx-079.jpeg
+      - assets/initial-photos/matthewmarx-080.jpeg
+      - assets/initial-photos/matthewmarx-081.jpeg
+      - assets/initial-photos/matthewmarx-082.jpeg
+      - assets/initial-photos/matthewmarx-083.jpeg
+      - assets/initial-photos/matthewmarx-084.jpeg
+      - assets/initial-photos/matthewmarx-085.jpeg
+      - assets/initial-photos/matthewmarx-086.jpeg
+      - assets/initial-photos/matthewmarx-087.jpeg
+      - assets/initial-photos/matthewmarx-088.jpeg
+      - assets/initial-photos/matthewmarx-089.jpeg
+      - assets/initial-photos/matthewmarx-090.jpeg
+      - assets/initial-photos/matthewmarx-091.jpeg
+      - assets/initial-photos/matthewmarx-092.jpeg
+      - assets/initial-photos/matthewmarx-093.jpeg
+      - assets/initial-photos/matthewmarx-094.jpeg
+      - assets/initial-photos/matthewmarx-095.jpeg
+      - assets/initial-photos/matthewmarx-096.jpeg
+      - assets/initial-photos/matthewmarx-097.jpeg
+      - assets/initial-photos/matthewmarx-098.jpeg
+      - assets/initial-photos/matthewmarx-099.jpeg
+      - assets/initial-photos/matthewmarx-100.jpeg
+      - assets/initial-photos/matthewmarx-101.jpeg
+      - assets/initial-photos/matthewmarx-102.jpeg
+      - assets/initial-photos/matthewmarx-103.jpeg
+      - assets/initial-photos/matthewmarx-104.jpeg
+      - assets/initial-photos/matthewmarx-105.jpeg
+      - assets/initial-photos/matthewmarx-106.jpeg
+      - assets/initial-photos/matthewmarx-107.jpeg
+      - assets/initial-photos/matthewmarx-108.jpeg
+      - assets/initial-photos/matthewmarx-109.jpeg
+      - assets/initial-photos/matthewmarx-110.jpeg
+      - assets/initial-photos/matthewmarx-111.jpeg
+      - assets/initial-photos/matthewmarx-112.jpeg
+      - assets/initial-photos/matthewmarx-113.jpeg
+      - assets/initial-photos/matthewmarx-114.jpeg
+      - assets/initial-photos/matthewmarx-115.mov
+      - assets/initial-photos/matthewmarx-116.jpeg
+      - assets/initial-photos/matthewmarx-117.jpeg
+      - assets/initial-photos/matthewmarx-118.jpeg
+      - assets/initial-photos/matthewmarx-119.jpeg
+      - assets/initial-photos/matthewmarx-120.jpeg
+      - assets/initial-photos/matthewmarx-121.jpeg
+      - assets/initial-photos/matthewmarx-122.jpeg
+      - assets/initial-photos/matthewmarx-123.jpeg
+      - assets/initial-photos/matthewmarx-124.jpeg
+      - assets/initial-photos/matthewmarx-125.jpeg
+      - assets/initial-photos/matthewmarx-126.jpeg
+      - assets/initial-photos/matthewmarx-127.jpeg
+      - assets/initial-photos/screenshot-2026-06-04-21-27-09.png
+    notes: >
+      Local first-pass photo asset batch currently present in the private
+      archive working tree. Matthew referenced this body as the first
+      150-photo set; the checked-in local folder currently contains 129 files:
+      126 JPEG, 2 MOV, and 1 PNG. Contact-sheet review of rendered stills
+      shows CaseLabs chassis and panel evidence, radiator and fan hardware,
+      filters, trays, packaging, cable and component context, room/process
+      context, and the Forgotten Industries identity asset. See
+      docs/intake/2026-06-05-initial-photos.md,
+      docs/intake/2026-06-05-initial-photos-files.csv, and
+      docs/intake/2026-06-05-initial-photos.sha256 before renaming, moving, or
+      deriving public assets.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"
+
+  - id: FI-PHOTO-002
+    name: 2026-06-05 Splunking raw photo intake
+    category: photo evidence set
+    manufacturer: Matthew Marx / Apple iPhone
+    model: HEIF/PNG camera-roll intake
+    quantity: 80 files
+    associated_project: FI-PROJ-002
+    condition: preserved raw intake / originals untouched
+    status: raw photographic evidence / pending curated previews and object-level mapping
+    photos:
+      - Splunking/IMG_1080.HEIC
+      - Splunking/IMG_1081.HEIC
+      - Splunking/IMG_1082.HEIC
+      - Splunking/IMG_1083.HEIC
+      - Splunking/IMG_1084.HEIC
+      - Splunking/IMG_1085.HEIC
+      - Splunking/IMG_1086.HEIC
+      - Splunking/IMG_1087.HEIC
+      - Splunking/IMG_1088.HEIC
+      - Splunking/IMG_1089.HEIC
+      - Splunking/IMG_1090.HEIC
+      - Splunking/IMG_1091.HEIC
+      - Splunking/IMG_1092.HEIC
+      - Splunking/IMG_1093.HEIC
+      - Splunking/IMG_1094.HEIC
+      - Splunking/IMG_1095.HEIC
+      - Splunking/IMG_1096.HEIC
+      - Splunking/IMG_1097.HEIC
+      - Splunking/IMG_1098.HEIC
+      - Splunking/IMG_1099.HEIC
+      - Splunking/IMG_1100.HEIC
+      - Splunking/IMG_1101.HEIC
+      - Splunking/IMG_1102.HEIC
+      - Splunking/IMG_1103.HEIC
+      - Splunking/IMG_1104.HEIC
+      - Splunking/IMG_1105.HEIC
+      - Splunking/IMG_1106.HEIC
+      - Splunking/IMG_1107.HEIC
+      - Splunking/IMG_1108.HEIC
+      - Splunking/IMG_1109.HEIC
+      - Splunking/IMG_1110.HEIC
+      - Splunking/IMG_1111.HEIC
+      - Splunking/IMG_1112.HEIC
+      - Splunking/IMG_1113.HEIC
+      - Splunking/IMG_1114.HEIC
+      - Splunking/IMG_1115.HEIC
+      - Splunking/IMG_1116.HEIC
+      - Splunking/IMG_1117.HEIC
+      - Splunking/IMG_1118.HEIC
+      - Splunking/IMG_1119.HEIC
+      - Splunking/IMG_1120.HEIC
+      - Splunking/IMG_1121.HEIC
+      - Splunking/IMG_1122.HEIC
+      - Splunking/IMG_1123.HEIC
+      - Splunking/IMG_1124.HEIC
+      - Splunking/IMG_1125.HEIC
+      - Splunking/IMG_1126.HEIC
+      - Splunking/IMG_1127.HEIC
+      - Splunking/IMG_1128.HEIC
+      - Splunking/IMG_1129.HEIC
+      - Splunking/IMG_1130.HEIC
+      - Splunking/IMG_1131.HEIC
+      - Splunking/IMG_1132.HEIC
+      - Splunking/IMG_1133.HEIC
+      - Splunking/IMG_1134.HEIC
+      - Splunking/IMG_1135.HEIC
+      - Splunking/IMG_1136.HEIC
+      - Splunking/IMG_1137.HEIC
+      - Splunking/IMG_1138.HEIC
+      - Splunking/IMG_1139.HEIC
+      - Splunking/IMG_1140.HEIC
+      - Splunking/IMG_1141.HEIC
+      - Splunking/IMG_1142.HEIC
+      - Splunking/IMG_1143.HEIC
+      - Splunking/IMG_1144.HEIC
+      - Splunking/IMG_1145.HEIC
+      - Splunking/IMG_1146.HEIC
+      - Splunking/IMG_1147.HEIC
+      - Splunking/IMG_1148.HEIC
+      - Splunking/IMG_1149.HEIC
+      - Splunking/IMG_1150.HEIC
+      - Splunking/IMG_1151.HEIC
+      - Splunking/IMG_1152.HEIC
+      - Splunking/IMG_1153.HEIC
+      - Splunking/IMG_1154.HEIC
+      - Splunking/IMG_1155.HEIC
+      - Splunking/IMG_1156.HEIC
+      - Splunking/IMG_1157.HEIC
+      - Splunking/IMG_1158.PNG
+      - Splunking/IMG_1159.HEIC
+    notes: >
+      Raw iCloud Splunking intake copied into the local repository on
+      2026-06-05. Contains 80 files: IMG_1080.HEIC through IMG_1159.HEIC,
+      with 79 HEIC files and 1 PNG totaling 423,137,971 bytes. Originals are
+      preserved untouched for custody and later object-level mapping. The
+      current environment did not produce trustworthy HEIC visual previews, so
+      identification should happen from native viewing tools or curated
+      derivatives. See docs/intake/2026-06-05-splunking.md,
+      docs/intake/2026-06-05-splunking-files.csv, and
+      docs/intake/2026-06-05-splunking.sha256.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: "2026-06-05"

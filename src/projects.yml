@@ -32,6 +32,7 @@ projects:
       - FI-PUMP-001
       - FI-CTRL-001
       - FI-RES-001
+      - FI-PHOTO-001
     layout_goals:
       - Right-side full window
       - Visible pumps and reservoir
@@ -74,6 +75,8 @@ projects:
       - documentation before action
       - finding the buried map
       - repair as memory
+    artifacts:
+      - FI-PHOTO-002
     documentation_style:
       - Photograph the object as found
       - Preserve uncertainty in the record
