@@ -4,6 +4,8 @@ Source: Forgotten Industries photo archive chat export, 2026-06-05.
 
 Use this procedure when cataloging newly recovered hardware, parts, panels, accessories, or unknown objects. The goal is to preserve evidence before interpretation. Photograph first, sort second, clean later.
 
+For high-volume fixed-camera intake, use this with `docs/obs-archive-station-procedure.md`.
+
 ## Core Rule
 
 The build is the artifact. The archive is the project.
