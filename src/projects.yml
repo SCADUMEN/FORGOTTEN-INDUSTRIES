@@ -130,3 +130,42 @@ projects:
       - Treat calibration as secondary until physical damage is inspected
       - Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION
       - Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair
+
+  - id: FI-PROJ-005
+    slug: redeemer-nzxt-h440-watercooled-build
+    title: REDEEMER NZXT H440 Watercooled Build
+    working_title: REDEEMER Instagram Recovery Dossier
+    category: Build Dossier
+    status: archived / recovered from Instagram
+    started: "2016"
+    revived: "2026"
+    summary: >
+      Instagram-recovered build dossier for REDEEMER, the Forgotten Industries
+      white NZXT H440 mid-tower custom liquid-cooled PC. The recovered evidence
+      documents the March-May 2016 build sequence, including component staging,
+      watercooling assembly, leak testing, custom cabling, Windows install, HUE+
+      lighting, and final gameplay testing.
+    themes:
+      - custom watercooling
+      - Instagram recovery
+      - build chronology
+      - component evidence
+      - REDEEMER
+      - NZXT H440
+    artifacts:
+      - BFgBwMfhXfM
+      - BFVa8odBXfF
+      - BFVTCRwBXTy
+      - BFKAtXeBXT8
+      - BFAd9IqhXex
+      - BEosSHFBXVt
+      - BEkazzMhXdZ
+      - BEKLbZrBXVm
+      - BDRoKH-BXTu
+      - BDHmcW3BXWB
+      - BC8c2wrBXdw
+    documentation_style:
+      - Treat Instagram captions as primary evidence
+      - Preserve exact timestamps and source post links
+      - Separate direct REDEEMER mentions from build-adjacent support posts
+      - Keep component list tied to the recovered May 8, 2016 post

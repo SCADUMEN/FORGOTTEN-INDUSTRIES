@@ -62,6 +62,9 @@ def ext_from_response(response, fallback)
 end
 
 def download_media(url, stem, fallback_ext)
+  fallback_path = File.join(ASSET_DIR, "#{stem}#{fallback_ext}")
+  return "assets/social/#{File.basename(fallback_path)}" if File.exist?(fallback_path)
+
   response = fetch(url, { "user-agent" => "Mozilla/5.0" })
   ext = ext_from_response(response, fallback_ext)
   path = File.join(ASSET_DIR, "#{stem}#{ext}")
@@ -74,8 +77,30 @@ rescue FetchError => error
   nil
 end
 
+def existing_instagram_media(shortcode, media_kind)
+  files = Dir.glob(File.join(ASSET_DIR, "instagram-*#{shortcode}*")).sort
+  file =
+    case media_kind
+    when "video"
+      files.find { |path| File.extname(path) == ".mp4" }
+    when "poster"
+      files.find { |path| File.basename(path).include?("-poster.") && [".jpg", ".png", ".webp"].include?(File.extname(path)) }
+    else
+      files.find do |path|
+        [".jpg", ".png", ".webp"].include?(File.extname(path)) &&
+          !File.basename(path).include?("-poster.")
+      end
+    end
+
+  file ? "assets/social/#{File.basename(file)}" : nil
+end
+
 def markdown_escape(text)
-  text.to_s.gsub("\r\n", "\n").strip
+  text.to_s.gsub("\r\n", "\n").lines.map(&:rstrip).join.strip
+end
+
+def clean_text(text)
+  markdown_escape(text)
 end
 
 def write_markdown_post(record)
@@ -142,7 +167,7 @@ def tumblr_posts
       "title" => "Tumblr Photo #{source_id}",
       "date" => time.utc.strftime("%Y-%m-%d"),
       "timestamp" => time.utc.iso8601,
-      "body" => caption,
+      "body" => clean_text(caption),
       "tags" => [],
       "media" => media
     }
@@ -256,6 +281,93 @@ def instagram_posts
   records
 end
 
+def existing_posts(source)
+  return [] unless File.exist?(SRC_FILE)
+
+  data = YAML.safe_load(
+    File.read(SRC_FILE),
+    permitted_classes: [Date, Time],
+    aliases: false
+  )
+
+  data.fetch("social_posts", []).select { |record| record["source"] == source }
+rescue Errno::ENOENT, Psych::Exception
+  []
+end
+
+def instagram_recovery_posts(path)
+  data = JSON.parse(File.read(path))
+
+  data.fetch("posts").sort_by { |post| post.fetch("timestamp") }.map.with_index(1) do |post, index|
+    time = Time.parse(post.fetch("timestamp"))
+    caption = clean_text(post.fetch("caption"))
+    shortcode = post.fetch("shortcode")
+    slug_base = slugify(caption.split("\n").first)
+    slug = "instagram-#{time.utc.strftime("%Y%m%d")}-#{shortcode}"
+    slug = "#{slug}-#{slug_base}" unless slug_base.empty?
+    slug = slug[0, 96].gsub(/-$/, "")
+    media = []
+
+    if post["og_video_url"].to_s != ""
+      poster_url = post["profile_image_url"].to_s.empty? ? post["og_image_url"] : post["profile_image_url"]
+      poster = existing_instagram_media(shortcode, "poster")
+      poster ||= poster_url.to_s.empty? ? nil : download_media(poster_url, "#{slug}-poster", ".jpg")
+      video = existing_instagram_media(shortcode, "video")
+      video ||= download_media(post.fetch("og_video_url"), slug, ".mp4")
+      video_width = post["page_image_width"].to_i >= 300 ? post["page_image_width"] : 640
+      video_height = post["page_image_height"].to_i >= 300 ? post["page_image_height"] : 640
+      media << {
+        "type" => "video",
+        "path" => video,
+        "poster" => poster,
+        "source_url" => post.fetch("og_video_url"),
+        "poster_source_url" => poster_url,
+        "width" => video_width,
+        "height" => video_height
+      }.compact
+    else
+      image_url =
+        if !post["profile_image_url"].to_s.empty?
+          post["profile_image_url"]
+        elsif !post["page_image_url"].to_s.empty?
+          post["page_image_url"]
+        else
+          post["og_image_url"]
+        end
+      image = existing_instagram_media(shortcode, "image")
+      image ||= image_url.to_s.empty? ? nil : download_media(image_url, slug, ".jpg")
+      media << {
+        "type" => "image",
+        "path" => image,
+        "source_url" => image_url,
+        "width" => post["page_image_width"],
+        "height" => post["page_image_height"]
+      }.compact if image
+    end
+
+    permalink_type = post["kind"] == "reel" ? "reel" : "p"
+
+    record = {
+      "id" => "FI-SOC-IG-#{index.to_s.rjust(3, "0")}",
+      "source" => "instagram",
+      "source_id" => post.fetch("source_id").to_s,
+      "shortcode" => shortcode,
+      "source_url" => "https://www.instagram.com/#{permalink_type}/#{shortcode}/",
+      "slug" => slug,
+      "title" => "Instagram #{shortcode}",
+      "date" => time.utc.strftime("%Y-%m-%d"),
+      "timestamp" => time.utc.iso8601,
+      "body" => caption,
+      "tags" => caption.scan(/#[[:alnum:]_]+/).map { |tag| tag.delete_prefix("#") },
+      "like_count" => post["like_count"],
+      "comment_count" => post["comment_count"],
+      "media" => media
+    }
+
+    record.compact
+  end
+end
+
 def write_social_index(records)
   items = records.sort_by { |record| record.fetch("timestamp") }.reverse.map do |record|
     media = record.fetch("media").first
@@ -267,7 +379,7 @@ def write_social_index(records)
       else
         ""
       end
-    body = record.fetch("body").to_s.strip
+    body = clean_text(record.fetch("body"))
     body_html = body.empty? ? "" : "<p>#{CGI.escapeHTML(body)}</p>"
 
     <<~HTML
@@ -307,7 +419,13 @@ end
 FileUtils.mkdir_p(ASSET_DIR)
 FileUtils.mkdir_p(POST_DIR)
 
-records = tumblr_posts + instagram_posts
+instagram_recovery_json = ENV["INSTAGRAM_RECOVERY_JSON"]
+records =
+  if instagram_recovery_json && !instagram_recovery_json.empty?
+    existing_posts("tumblr") + instagram_recovery_posts(instagram_recovery_json)
+  else
+    tumblr_posts + instagram_posts
+  end
 records = records.sort_by { |record| [record.fetch("timestamp"), record.fetch("source"), record.fetch("source_id")] }.reverse
 records.each do |record|
   record["post_path"] = write_markdown_post(record)
