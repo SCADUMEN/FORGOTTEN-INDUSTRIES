@@ -1,0 +1,74 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build site artifact
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build archive data
+        run: npm run build
+
+      - name: Stage static site
+        run: |
+          mkdir -p _site
+          mkdir -p _site/assets
+          cp -R \
+            index.html \
+            about.html \
+            archive.html \
+            contact.html \
+            field-log-template.html \
+            inventory.html \
+            social-posts.html \
+            dist \
+            docs \
+            posts \
+            src \
+            _site/
+          cp assets/forgotten-industries.jpeg _site/assets/
+          cp -R assets/favicon _site/assets/
+          cp -R assets/social _site/assets/
+          if [ -d assets/projects ]; then
+            cp -R assets/projects _site/assets/
+          fi
+          touch _site/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
