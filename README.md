@@ -1,0 +1,88 @@
+# Forgotten Industries
+
+Canonical archive data and raw HTML reference pages for Forgotten Industries.
+
+The source of truth is human-readable YAML in `src/`. The build step converts that archive into package-ready outputs in `dist/`:
+
+- `dist/forgotten-industries.json`
+- `dist/index.ts`
+
+This follows the same architectural pattern as Tyler Etters' discography repo: edit canonical YAML first, generate typed and machine-readable output second, let websites and packages consume the generated archive later.
+
+## Setup
+
+No dependency install is required for the current build.
+
+```bash
+npm run build
+```
+
+The build uses Ruby's standard YAML parser, which is available on macOS by default. If `npm` is not installed yet, run the converter directly:
+
+```bash
+ruby scripts/build.rb
+```
+
+To view the raw HTML pages:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then visit `http://localhost:8000`.
+
+## Update Workflow
+
+1. Edit `src/projects.yml`, `src/inventory.yml`, or `src/field-logs.yml`.
+2. If the data shape changes, update `src/types.ts`.
+3. Run `npm run build`.
+4. Inspect `dist/forgotten-industries.json` for downstream consumers.
+5. Inspect `dist/index.ts` for TypeScript consumers.
+
+## Import Social Posts
+
+```bash
+ruby scripts/import_social.rb
+ruby scripts/build.rb
+```
+
+The importer reads public Tumblr and Instagram data for Forgotten Industries, saves local media into `assets/social/`, writes Markdown posts into `posts/social/`, writes canonical records to `src/social-posts.yml`, and regenerates `social-posts.html`.
+
+Tumblr currently exposes 2 public posts through its feed. Instagram reports 59 public posts, but unauthenticated access may rate-limit or require login while paginating older posts. When that happens, the importer keeps the posts it can verify and can be rerun later.
+
+## Publishing Later
+
+The archive is not published yet. When it is ready to become an npm package:
+
+1. Choose a final package name and license.
+2. Add tests for schema validation.
+3. Add a `prepublishOnly` script that runs `npm run build`.
+4. Run `npm publish --access public` if publishing a scoped public package.
+
+## Files
+
+- `src/projects.yml` - canonical restoration projects and category records.
+- `src/inventory.yml` - canonical machines, parts, accessories, condition, and disposition.
+- `src/field-logs.yml` - canonical field logs and method notes.
+- `src/social-posts.yml` - imported Tumblr and Instagram posts with source URLs, dates, captions, local media, and generated Markdown paths.
+- `src/types.ts` - TypeScript schema for the generated archive.
+- `scripts/import_social.rb` - public Tumblr/Instagram importer for social posts and media.
+- `scripts/build.rb` - YAML-to-JSON and YAML-to-TypeScript build script.
+- `dist/forgotten-industries.json` - generated complete archive data.
+- `dist/index.ts` - generated TypeScript module exporting the archive.
+- `index.html` - raw HTML entry point.
+- `archive.html` - raw archive index.
+- `inventory.html` - raw inventory page.
+- `field-log-template.html` - raw field log template.
+- `about.html` - raw project origin note.
+- `contact.html` - raw contact page.
+- `social-posts.html` - raw HTML index for imported social posts.
+- `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
+- `assets/social/` - downloaded local media from imported social posts.
+- `posts/social/` - generated Markdown posts from imported social content.
+- `templates/field-log.md` - Markdown field log template.
+- `templates/inventory-item.md` - Markdown inventory item template.
+
+## Archive Principle
+
+Do not trap the work inside a theme. Keep the archive durable first. The website, Ghost theme, static site, or npm package can all come later.

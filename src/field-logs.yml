@@ -1,0 +1,80 @@
+field_logs:
+  - id: FI-LOG-001
+    slug: rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule
+    title: Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule
+    date: "2026-06-05"
+    timestamp: "2026-06-05 HH:MM CT"
+    category: field-log
+    associated_project: FI-PROJ-001
+    object: CaseLabs Mercury S8 + pedestal
+    system: custom watercooling restoration
+    status: revived / documentation first
+    tags:
+      - CaseLabs Archive
+      - restoration
+      - watercooling
+      - garage archaeology
+    sections:
+      - heading: Condition Found
+        body: >
+          White powder-coated chassis and pedestal recovered after roughly a
+          decade in storage. The object should be photographed as found before
+          dust, missing fasteners, or provisional assemblies are disturbed.
+      - heading: Observations
+        body: >
+          The case appears to be the core archive object. Some STH-10
+          accessories may be present. Watercooling parts include EK 360
+          radiators, Aqua Computer D5 Aquabus pumps, DDC pumps with clear tops,
+          an Aquaero 6 XT, a large EK cylinder reservoir, and approximately
+          twenty or more white Noiseblocker eLoop PWM fans.
+      - heading: Methods
+        body: >
+          Identify panel by panel. Assign temporary removable labels to unknown
+          parts. Separate fasteners by location. Photograph each assembly before
+          cleaning. Record uncertainty directly instead of smoothing it out.
+      - heading: Restoration Notes
+        body: >
+          Start with a serviceable serial loop using EPDM tubing, barbs, and
+          clamps. Keep the pedestal radiator path and quick-disconnect
+          pass-throughs accessible. Function comes first; copper or hardline can
+          become an aesthetic evolution later.
+      - heading: What It Means / Reflection
+        body: >
+          This is not only a computer case. It is an interrupted map. The
+          restoration matters because it turns private discontinuity into visible
+          evidence: the hands still know how to build.
+      - heading: Next Actions
+        body: >
+          Complete photo pass. Confirm exact panel configuration. Leak-test
+          radiators. Test fans and pumps. Build the inventory record before
+          deciding what stays, what sells, and what remains archive only.
+    signature: Forgotten Industries // Field Log // 2026.06.05
+
+  - id: FI-METHOD-001
+    slug: photograph-before-cleaning
+    title: Photograph Before Cleaning
+    date: "2026-06-05"
+    timestamp: "2026-06-05 HH:MM CT"
+    category: method
+    associated_project: FI-PROJ-002
+    object: recovered hardware and tools
+    system: archive practice
+    status: standing method
+    tags:
+      - Garage Archaeology
+      - methods
+      - documentation
+    sections:
+      - heading: Principle
+        body: >
+          Recovery starts with the object as found. Dust, missing hardware, bad
+          assumptions, and provisional assemblies are part of the record.
+      - heading: Method
+        body: >
+          Photograph the object before cleaning. Label uncertainty. Record what
+          is visible, what is missing, and what cannot yet be known.
+      - heading: Finding
+        body: >
+          The technical record protects the emotional truth from performance.
+          Evidence first. Interpretation later.
+    signature: Forgotten Industries // Method Note // 2026.06.05

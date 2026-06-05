@@ -1,0 +1,153 @@
+items:
+  - id: FI-CASE-001
+    name: CaseLabs Mercury S8
+    category: case
+    manufacturer: CaseLabs
+    model: Mercury S8
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: stored / needs inspection and cleaning
+    status: core archive object
+    photos: []
+    notes: >
+      White powder-coated Mercury S8. First pass should identify panels,
+      fasteners, window configuration, and any missing hardware before cleaning.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: "2026-06-05"
+
+  - id: FI-PED-001
+    name: CaseLabs pedestal
+    category: case accessory
+    manufacturer: CaseLabs
+    model: S8 pedestal
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: stored / needs inspection
+    status: core restoration object
+    photos: []
+    notes: >
+      Pedestal planned for radiator capacity, QDC pass-throughs, and service
+      drain. Confirm exact accessory configuration before layout decisions.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: "2026-06-05"
+
+  - id: FI-RAD-001
+    name: EK XTX 360 radiator
+    category: radiator
+    manufacturer: EK
+    model: XTX 360
+    quantity: 3
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and leak test
+    status: candidate for restored loop
+    photos: []
+    notes: >
+      Heavy cooling overhead from the original watercooling plan. Needs flush,
+      exterior cleaning, thread inspection, and leak test.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: "2026-06-05"
+
+  - id: FI-RAD-002
+    name: EK 360 slim radiator
+    category: radiator
+    manufacturer: EK
+    model: 360 slim
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and leak test
+    status: needs inspection
+    photos: []
+    notes: >
+      Thin 360 radiator present in the recovered cooling inventory. Confirm
+      exact model and fitment.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: "2026-06-05"
+
+  - id: FI-FAN-001
+    name: Noiseblocker eLoop white PWM fans
+    category: fan
+    manufacturer: Noiseblocker
+    model: eLoop white PWM
+    quantity: approximately 20+
+    associated_project: FI-PROJ-001
+    condition: needs testing
+    status: inventory / possible reuse or sale
+    photos: []
+    notes: >
+      Test bearing noise, PWM response, cable condition, and visual yellowing.
+      Decide later which units remain with the archive.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: "2026-06-05"
+
+  - id: FI-PUMP-001
+    name: Aqua Computer D5 Aquabus pumps
+    category: pump
+    manufacturer: Aqua Computer
+    model: D5 Aquabus
+    quantity: 2
+    associated_project: FI-PROJ-001
+    condition: needs electrical and wet test
+    status: candidate for restored loop
+    photos: []
+    notes: >
+      Intended for a dual-pump layout with Aquaero control. Test before any
+      loop planning becomes final.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: "2026-06-05"
+
+  - id: FI-PUMP-002
+    name: DDC pumps with EK clear tops
+    category: pump
+    manufacturer: EK / unknown pump manufacturer
+    model: DDC with clear tops
+    quantity: multiple
+    associated_project: FI-PROJ-001
+    condition: needs identification and testing
+    status: needs inspection
+    photos: []
+    notes: >
+      Identify exact pump variants and top condition. Record unknowns rather
+      than guessing.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: "2026-06-05"
+
+  - id: FI-CTRL-001
+    name: Aquaero 6 XT
+    category: controller
+    manufacturer: Aqua Computer
+    model: Aquaero 6 XT
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: needs power-on test
+    status: candidate for restored loop
+    photos: []
+    notes: >
+      Controller for pumps, fans, and sensors. Confirm display, buttons, headers,
+      and Aquabus behavior.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: "2026-06-05"
+
+  - id: FI-RES-001
+    name: Large EK cylinder reservoir
+    category: reservoir
+    manufacturer: EK
+    model: cylinder reservoir
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: needs inspection and cleaning
+    status: candidate for restored loop
+    photos: []
+    notes: >
+      Intended to remain visible through the right-side window. Inspect acrylic,
+      threads, brackets, and O-rings.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: "2026-06-05"

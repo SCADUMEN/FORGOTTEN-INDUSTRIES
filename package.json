@@ -1,0 +1,33 @@
+{
+  "name": "@forgotten-industries/archive",
+  "version": "0.1.0",
+  "description": "Canonical archive data for Forgotten Industries machines, parts, field logs, and restoration projects.",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.ts",
+      "default": "./dist/index.ts"
+    },
+    "./data": "./dist/forgotten-industries.json"
+  },
+  "scripts": {
+    "build": "ruby scripts/build.rb"
+  },
+  "keywords": [
+    "archive",
+    "restoration",
+    "hardware",
+    "lab-journal",
+    "forgotten-industries"
+  ],
+  "author": "Matthew Taylor Marx",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  }
+}
