@@ -28,10 +28,21 @@ projects:
       - FI-CASE-001
       - FI-PED-001
       - FI-RAD-001
+      - FI-RAD-002
       - FI-FAN-001
+      - FI-FAN-002
       - FI-PUMP-001
+      - FI-PUMP-002
       - FI-CTRL-001
       - FI-RES-001
+      - FI-PSU-001
+      - FI-BLOCK-MOSFET-001
+      - FI-FIT-QDC-001
+      - FI-CASE-PANEL-001
+      - FI-CASE-FRAME-001
+      - FI-CASE-TRAY-001
+      - FI-CASE-PLATE-001
+      - FI-CASE-FILTER-001
       - FI-PHOTO-001
     layout_goals:
       - Right-side full window
