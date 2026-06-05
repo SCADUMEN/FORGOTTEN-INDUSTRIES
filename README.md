@@ -53,6 +53,15 @@ The importer reads public Tumblr and Instagram data for Forgotten Industries, sa
 
 Tumblr currently exposes 2 public posts through its feed. Instagram reports 59 public posts, but unauthenticated access may rate-limit or require login while paginating older posts. When that happens, the importer keeps the posts it can verify and can be rerun later.
 
+For browser-assisted Instagram recovery, scrape the profile into a JSON payload and import it explicitly:
+
+```bash
+INSTAGRAM_RECOVERY_JSON=/path/to/forgotten-instagram-recovered.json ruby scripts/import_social.rb
+ruby scripts/build.rb
+```
+
+That mode preserves existing Tumblr records from `src/social-posts.yml` and rebuilds the Instagram archive from the recovered JSON.
+
 ## Publishing Later
 
 The archive is not published yet. When it is ready to become an npm package:
