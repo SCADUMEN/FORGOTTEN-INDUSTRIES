@@ -39,8 +39,10 @@ Then visit `http://localhost:8000`.
 The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
 
 - `posts/index.html` - curated post index.
-- `posts/2026-06-06-perspective-peregrine-and-pang.html` - first post scaffold.
-- `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the first post.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the prelude.
+
+The visible top-level shelves are Restoration Logs, Field Notes, Project Dossiers, Essays, and Technical References. Each has one placeholder on the live index until real entries are promoted.
 
 The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
 
@@ -106,8 +108,8 @@ The archive is not published yet. When it is ready to become an npm package:
 - `about.html` - raw project origin note.
 - `contact.html` - raw contact page.
 - `posts/index.html` - hand-curated post index.
-- `posts/2026-06-06-perspective-peregrine-and-pang.html` - first curated post scaffold.
-- `posts/2026-06-06-perspective-peregrine-and-pang.md` - Markdown source for the first curated post.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - Markdown source for the prelude.
 - `social-posts.html` - raw HTML index for imported social posts.
 - `site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
 - `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
