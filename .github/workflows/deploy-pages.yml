@@ -53,6 +53,9 @@ jobs:
           if [ -d assets/projects ]; then
             cp -R assets/projects _site/assets/
           fi
+          if [ -f CNAME ]; then
+            cp CNAME _site/
+          fi
           touch _site/.nojekyll
 
       - name: Configure Pages

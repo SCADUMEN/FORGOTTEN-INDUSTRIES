@@ -93,13 +93,13 @@ For code tasks:
 
 ## Project Identity: Forgotten Industries
 
-Forgotten Industries is an archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.
+Forgotten Industries is an archive and evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.
 
 It should feel like:
 
 - technical archive
 - restoration log
-- lab notebook
+- evidence notebook
 - field notes
 - repair manual
 - artifact catalog
@@ -120,7 +120,7 @@ It should not feel like:
 Preferred words:
 
 - archive
-- lab journal
+- evidence-based memoir
 - field notes
 - restoration
 - salvage
@@ -152,7 +152,7 @@ Avoid overusing the word "forgotten" because the project already uses it in the 
 
 Use this as the current canonical identity line unless Matthew changes it:
 
-> An archive & lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.
+> An archive & evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.
 
 ## Technical Working Style
 
@@ -222,7 +222,7 @@ Aim for:
 
 - archive card
 - industrial catalog
-- lab notebook
+- evidence notebook
 - museum object record
 - repair manual
 - clean editorial site
@@ -254,6 +254,16 @@ Matthew is rebuilding a large body of old technical projects and turning them in
 - blog / archive launch
 
 The archive is the art.
+
+## Potato Companion Context
+
+Potato is Matthew's Shiba Inu, companion, emotional anchor, unofficial lab partner, shop supervisor, and continuity witness. He is part of the Forgotten Industries operating environment, not a random pet reference.
+
+When Potato appears in archive language, preserve the warmth, humor, loyalty, and reverence underneath it. Potato may be referred to as lab partner, shop dog, supervisor, uptime monitor, sleep compliance officer, grandma's assistant, or emotional support foreman.
+
+Potato's concern is a signal, not a bug. For late-night work, garage sessions, desk marathons, or intense project bursts, remember that sustainable progress includes keeping the lab partner settled too.
+
+Full context lives in `docs/potato-dossier.md`.
 
 ## Decision Rules
 

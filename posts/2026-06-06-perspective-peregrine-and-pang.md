@@ -46,7 +46,7 @@ This is not the first true entry. This is the prelude: the signal check before t
 
 Early public evidence: Matthew Marx, Forgotten Industries, October 2014.
 
-Forgotten Industries is the collective body of work of Matthew T. Marx, established in 2014 after the unexpected death of my father, Eric Hugh Marx, on January 10, 2014. My grandmother, Marjorie Marx, passed away weeks later in that frigid spring.
+Forgotten Industries is the collective body of my work. My name is Matthew T. Marx. I established it in 2014 after the unexpected death of my father, Eric Hugh Marx, on January 10, 2014. My grandmother, Marjorie Marx, passed away weeks later in that frigid spring.
 
 My father had nothing. He lived with substance use disorder, alcoholism specifically, and was eventually diagnosed with Wernicke-Korsakoff syndrome. That condition contributed to the opiate overdose that is presumed to be his cause of death. My grandparents' estate leapfrogged my dead dad, and I found myself sitting on half a million dollars in my early twenties.
 
@@ -66,11 +66,15 @@ CaseLabs evidence, November 2014. Watercooling was not a metaphor. It was where 
 
 Recovered social-media crop: the old loop, the old excess, the old proof.
 
-After a thirty-day inpatient program, and with the support, love, and guidance of my brother-in-soul Alex, I found myself through and out the other side of my disease. It has been years since I have had a drink. I do not keep track.
+After a thirty-day inpatient program, I found myself through and out the other side of my disease. It has been years since I have had a drink. I do not keep track.
+
+This is a blanket note of gratitude, not a credits roll. There are people whose support, love, guidance, connections, patience, and plain human steadiness helped me survive that era and move through recovery when I was still learning what recovery meant for me. I am not naming everyone yet. Names deserve care.
+
+My mom, who is literally an angel, is the exception. Years later, when the route narrowed, she helped give me a safe and compatible place to finish the undergraduate degree I never got.
 
 So. COVID-19. Yeah.
 
-I was working at a methadone and Suboxone treatment center for people with opiate use disorder in Chicagoland, very much thanks to Alex's connections in the recovery community and my own new interest in the subject, having very recently begun to understand my own.
+I was working at a methadone and Suboxone treatment center for people with opiate use disorder in Chicagoland, through recovery-community connections and my own new interest in the subject, having very recently begun to understand my own.
 
 COVID again. Two of the three counselors I worked with died.
 
@@ -113,6 +117,27 @@ And Pang.
 PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker.
 
 This archive does not begin with a clean heroic arc. It begins with the pang: the sharp, specific feeling of finding the machines again and realizing the things I abandoned were still there. They remembered more honestly than I could. They waited without forgiving or accusing. They simply remained.
+
+The mark for pang is `∴`.
+
+Read it as: therefore, now look.
+
+Definition: a pang is the physical hit of recognition that arrives when an abandoned object becomes evidence again. It is not nostalgia. It is not proof by itself. It is the signal that something in the archive deserves to be stopped over, photographed, named, and handled with care.
+
+Tutorial:
+
+1. When the pang hits, stop moving.
+2. Photograph the object before cleaning, sorting, selling, repairing, or explaining it.
+3. Write the object name if you know it. If not, write what is visible.
+4. Record the date, place, condition, and what the object made you remember.
+5. Separate evidence from interpretation.
+6. Then continue.
+
+If Potato, my Shiba Inu, wanders into the frame, Potato stays in the record. He is not a random pet reference. He is lab partner, shop supervisor, sleep compliance officer, and living continuity proof. Companions are part of the evidence too.
+
+Line open. Signal clean. What are we untangling?
+
+That is the state of the archive now: not solved, not healed, not perfectly ordered, but reachable.
 
 So the work now is simple.
 

@@ -58,6 +58,7 @@ The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-
 
 - `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
 - `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
+- `docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
 
 ## Import Social Posts
 
@@ -119,6 +120,7 @@ The archive is not published yet. When it is ready to become an npm package:
 - `posts/social/` - generated Markdown posts from imported social content.
 - `docs/archive-photo-procedure.md` - archive photography and object intake procedure.
 - `docs/obs-archive-station-procedure.md` - fixed-camera OBS archive station procedure.
+- `docs/potato-dossier.md` - companion / lab partner context for Potato.
 - `templates/field-log.md` - Markdown field log template.
 - `templates/inventory-item.md` - Markdown inventory item template.
 
