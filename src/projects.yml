@@ -94,9 +94,9 @@ projects:
       - Record storage state, condition, missing hardware, and first hypotheses
 
   - id: FI-PROJ-003
-    slug: lab-journal
-    title: Lab Journal
-    category: Lab Journal
+    slug: field-notes
+    title: Field Notes
+    category: Field Notes
     status: active
     started: "2026"
     summary: >

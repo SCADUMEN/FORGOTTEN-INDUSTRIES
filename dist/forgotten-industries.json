@@ -1,10 +1,10 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-05T20:53:34Z",
+  "generatedAt": "2026-06-06T02:31:00Z",
   "meta": {
     "name": "Forgotten Industries",
-    "type": "archive / lab journal / technical blog",
-    "tagline": "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
+    "type": "archive / evidence-based memoir / technical blog",
+    "tagline": "An archive and evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
     "voice": "intimate, precise, archival, technical, emotionally honest",
     "sourceFiles": [
       {
@@ -127,9 +127,9 @@
     },
     {
       "id": "FI-PROJ-003",
-      "slug": "lab-journal",
-      "title": "Lab Journal",
-      "category": "Lab Journal",
+      "slug": "field-notes",
+      "title": "Field Notes",
+      "category": "Field Notes",
       "status": "active",
       "started": "2026",
       "summary": "Process notes, experiments, methods, failures, findings, and design decisions for technical recovery through craft.\n",
