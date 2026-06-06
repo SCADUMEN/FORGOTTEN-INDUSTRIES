@@ -34,6 +34,18 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
+## Curated Posts
+
+The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
+
+- `posts/index.html` - curated post index.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the prelude.
+
+The visible top-level shelves are Restoration Logs, Field Notes, Project Dossiers, Essays, and Technical References. Each has one placeholder on the live index until real entries are promoted.
+
+The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
+
 ## Update Workflow
 
 1. Edit `src/projects.yml`, `src/inventory.yml`, or `src/field-logs.yml`.
@@ -45,6 +57,7 @@ Then visit `http://localhost:8000`.
 ## Reference Docs
 
 - `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
+- `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
 
 ## Import Social Posts
 
@@ -94,13 +107,18 @@ The archive is not published yet. When it is ready to become an npm package:
 - `field-log-template.html` - raw field log template.
 - `about.html` - raw project origin note.
 - `contact.html` - raw contact page.
+- `posts/index.html` - hand-curated post index.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - Markdown source for the prelude.
 - `social-posts.html` - raw HTML index for imported social posts.
+- `site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
 - `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
 - `assets/favicon/` - favicon and web app icon assets used by the raw HTML pages.
 - `assets/social/` - downloaded local media from imported social posts.
 - `assets/initial-photos/` - initial local photo batch for archive intake.
 - `posts/social/` - generated Markdown posts from imported social content.
 - `docs/archive-photo-procedure.md` - archive photography and object intake procedure.
+- `docs/obs-archive-station-procedure.md` - fixed-camera OBS archive station procedure.
 - `templates/field-log.md` - Markdown field log template.
 - `templates/inventory-item.md` - Markdown inventory item template.
 
