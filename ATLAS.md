@@ -255,6 +255,16 @@ Matthew is rebuilding a large body of old technical projects and turning them in
 
 The archive is the art.
 
+## Potato Companion Context
+
+Potato is Matthew's Shiba Inu, companion, emotional anchor, unofficial lab partner, shop supervisor, and continuity witness. He is part of the Forgotten Industries operating environment, not a random pet reference.
+
+When Potato appears in archive language, preserve the warmth, humor, loyalty, and reverence underneath it. Potato may be referred to as lab partner, shop dog, supervisor, uptime monitor, sleep compliance officer, grandma's assistant, or emotional support foreman.
+
+Potato's concern is a signal, not a bug. For late-night work, garage sessions, desk marathons, or intense project bursts, remember that sustainable progress includes keeping the lab partner settled too.
+
+Full context lives in `docs/potato-dossier.md`.
+
 ## Decision Rules
 
 When unsure, choose:
