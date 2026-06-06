@@ -183,3 +183,75 @@ field_logs:
           planned Mini 3 replacement, with acquisition, baseline inspection, and
           first flight logged separately.
     signature: Forgotten Industries // Field Log // 2026.06.05
+
+  - id: FI-LOG-004
+    slug: mercury-s8-proof-of-concept-build-strategy
+    title: Mercury S8 Restoration Proof-of-Concept Build Strategy
+    date: "2026-06-06"
+    timestamp: "2026-06-06 HH:MM CT"
+    category: field-log
+    associated_project: FI-PROJ-001
+    object: CaseLabs Mercury S8 + pedestal
+    system: custom watercooling restoration / proof-of-concept build
+    status: strategic note / inventory before sale decision
+    tags:
+      - CaseLabs Archive
+      - restoration strategy
+      - proof of concept
+      - watercooling
+      - inventory
+      - valuation
+    sections:
+      - heading: Strategic Realization
+        body: >
+          The Mercury S8 plus pedestal restoration may have more value as a
+          completed, functioning showcase system than as a collection of parts.
+          The CPU and GPU are not the value center. The rare value is the
+          complete Mercury S8 plus pedestal, restored CaseLabs hardware,
+          functional Aquaero ecosystem, dual-D5 infrastructure, QDC-integrated
+          pedestal loop, documentation, provenance, and Forgotten Industries
+          restoration story.
+      - heading: Proof-of-Concept Build
+        body: >
+          Use any functioning CPU platform and GPU hardware already available in
+          storage. Assemble the cooling loop, verify pumps, verify the Aquaero,
+          verify sensors, confirm the QDC architecture, confirm pedestal
+          integration, and run stress tests. The proof statement is simple: this
+          machine works today, and the internals can be upgraded tomorrow.
+      - heading: Time Capsule Option
+        body: >
+          A period-correct enthusiast build may carry collector appeal even if
+          it is not performance-optimal by modern standards. Candidate hardware
+          includes X79 or X99 platforms, GTX 780 Ti, Titan, GTX 970, or GTX 980
+          Ti era graphics hardware, EK blocks, Aquaero 6 XT, dual D5 pumps, and
+          Noiseblocker eLoop fans. The appeal is preservation of a golden-era
+          custom watercooling system, not benchmark superiority.
+      - heading: Inventory Pattern
+        body: >
+          The restoration has already shown a repeated pattern: a missing
+          component is feared, inventory continues, and the component or an
+          equivalent support part is later discovered. Examples include
+          radiators, fan inventory, pump inventory, Aquaero hardware, and
+          mounting hardware. Do not assume parts are missing until the complete
+          inventory is finished.
+      - heading: Financial Reality
+        body: >
+          Money is needed now, but selling restoration-critical components before
+          inventory is complete may be shortsighted. The immediate pressure is
+          real; the archive still needs sequence discipline. The hard-to-replace
+          value is the restored chassis and watercooling infrastructure, not any
+          single commodity compute component.
+      - heading: Decision Order
+        body: >
+          Complete inventory. Complete chassis restoration. Verify the
+          infrastructure. Evaluate market value. Then decide whether to keep it,
+          archive-build it, modern-build it, or sell it as a complete system.
+          Do not decide whether to sell the ship while it is still in dry dock.
+      - heading: Next Actions
+        body: >
+          Continue garage inventory before liquidation decisions. Account for
+          remaining GPUs, platforms, fittings, blocks, cables, fasteners, and
+          watercooling support parts. Treat the proof-of-concept build as a
+          validation path: pumps, Aquaero, sensors, QDCs, radiators, pedestal,
+          leak testing, thermal testing, and documented stable operation.
+    signature: Forgotten Industries // Field Log // 2026.06.06

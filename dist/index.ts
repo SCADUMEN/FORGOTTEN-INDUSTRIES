@@ -129,7 +129,7 @@ export interface ForgottenIndustriesArchive {
 
 export const archive = {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-06T02:31:00Z",
+  "generatedAt": "2026-06-06T07:29:08Z",
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / evidence-based memoir / technical blog",
@@ -204,7 +204,8 @@ export const archive = {
         "Visible pumps and reservoir",
         "Pedestal radiator and QDC pass-throughs",
         "Low RPM, excessive cooling overhead",
-        "Clean serial loop before experimenting with complexity"
+        "Clean serial loop before experimenting with complexity",
+        "Functioning proof-of-concept system before any sale decision"
       ],
       "loop_concept": {
         "route": [
@@ -223,6 +224,23 @@ export const archive = {
           "Hardline or copper possible later as aesthetic evolution",
           "Serviceability matters"
         ]
+      },
+      "proof_of_concept": {
+        "thesis": "The restored Mercury S8 plus pedestal may be more valuable as a complete, functioning showcase system than as a collection of separate parts. The rare value is the chassis, restored CaseLabs hardware, Aquaero ecosystem, dual-D5 infrastructure, QDC-integrated pedestal loop, documentation, and Forgotten Industries provenance; CPU and GPU hardware can be replaced by a future owner.\n",
+        "build_direction": [
+          "Use any functioning CPU/platform already available in storage",
+          "Use any functioning GPU or GPU set already available in storage",
+          "Fully assemble and fill the cooling loop",
+          "Verify pumps, Aquaero, sensors, QDC path, and pedestal integration",
+          "Run stress tests and document stable operation"
+        ],
+        "time_capsule_option": [
+          "X79 or X99 platform",
+          "GTX 780 Ti, Titan, GTX 970, or GTX 980 Ti era graphics hardware",
+          "EK waterblocks and period-correct loop hardware",
+          "Aquaero 6 XT, dual D5 pumps, and Noiseblocker eLoops"
+        ],
+        "decision_rule": "Complete inventory and chassis restoration before selling any restoration-critical component. Do not decide whether to sell the ship while it is still in dry dock.\n"
       },
       "documentation_style": [
         "Photograph before cleaning",
@@ -1789,6 +1807,57 @@ export const archive = {
         }
       ],
       "signature": "Forgotten Industries // Field Log // 2026.06.05"
+    },
+    {
+      "id": "FI-LOG-004",
+      "slug": "mercury-s8-proof-of-concept-build-strategy",
+      "title": "Mercury S8 Restoration Proof-of-Concept Build Strategy",
+      "date": "2026-06-06",
+      "timestamp": "2026-06-06 HH:MM CT",
+      "category": "field-log",
+      "associated_project": "FI-PROJ-001",
+      "object": "CaseLabs Mercury S8 + pedestal",
+      "system": "custom watercooling restoration / proof-of-concept build",
+      "status": "strategic note / inventory before sale decision",
+      "tags": [
+        "CaseLabs Archive",
+        "restoration strategy",
+        "proof of concept",
+        "watercooling",
+        "inventory",
+        "valuation"
+      ],
+      "sections": [
+        {
+          "heading": "Strategic Realization",
+          "body": "The Mercury S8 plus pedestal restoration may have more value as a completed, functioning showcase system than as a collection of parts. The CPU and GPU are not the value center. The rare value is the complete Mercury S8 plus pedestal, restored CaseLabs hardware, functional Aquaero ecosystem, dual-D5 infrastructure, QDC-integrated pedestal loop, documentation, provenance, and Forgotten Industries restoration story.\n"
+        },
+        {
+          "heading": "Proof-of-Concept Build",
+          "body": "Use any functioning CPU platform and GPU hardware already available in storage. Assemble the cooling loop, verify pumps, verify the Aquaero, verify sensors, confirm the QDC architecture, confirm pedestal integration, and run stress tests. The proof statement is simple: this machine works today, and the internals can be upgraded tomorrow.\n"
+        },
+        {
+          "heading": "Time Capsule Option",
+          "body": "A period-correct enthusiast build may carry collector appeal even if it is not performance-optimal by modern standards. Candidate hardware includes X79 or X99 platforms, GTX 780 Ti, Titan, GTX 970, or GTX 980 Ti era graphics hardware, EK blocks, Aquaero 6 XT, dual D5 pumps, and Noiseblocker eLoop fans. The appeal is preservation of a golden-era custom watercooling system, not benchmark superiority.\n"
+        },
+        {
+          "heading": "Inventory Pattern",
+          "body": "The restoration has already shown a repeated pattern: a missing component is feared, inventory continues, and the component or an equivalent support part is later discovered. Examples include radiators, fan inventory, pump inventory, Aquaero hardware, and mounting hardware. Do not assume parts are missing until the complete inventory is finished.\n"
+        },
+        {
+          "heading": "Financial Reality",
+          "body": "Money is needed now, but selling restoration-critical components before inventory is complete may be shortsighted. The immediate pressure is real; the archive still needs sequence discipline. The hard-to-replace value is the restored chassis and watercooling infrastructure, not any single commodity compute component.\n"
+        },
+        {
+          "heading": "Decision Order",
+          "body": "Complete inventory. Complete chassis restoration. Verify the infrastructure. Evaluate market value. Then decide whether to keep it, archive-build it, modern-build it, or sell it as a complete system. Do not decide whether to sell the ship while it is still in dry dock.\n"
+        },
+        {
+          "heading": "Next Actions",
+          "body": "Continue garage inventory before liquidation decisions. Account for remaining GPUs, platforms, fittings, blocks, cables, fasteners, and watercooling support parts. Treat the proof-of-concept build as a validation path: pumps, Aquaero, sensors, QDCs, radiators, pedestal, leak testing, thermal testing, and documented stable operation.\n"
+        }
+      ],
+      "signature": "Forgotten Industries // Field Log // 2026.06.06"
     }
   ],
   "socialPosts": [

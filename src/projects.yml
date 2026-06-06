@@ -50,6 +50,7 @@ projects:
       - Pedestal radiator and QDC pass-throughs
       - Low RPM, excessive cooling overhead
       - Clean serial loop before experimenting with complexity
+      - Functioning proof-of-concept system before any sale decision
     loop_concept:
       route:
         - Pumps in mid-right chamber
@@ -65,6 +66,29 @@ projects:
         - EPDM tubing first for function
         - Hardline or copper possible later as aesthetic evolution
         - Serviceability matters
+    proof_of_concept:
+      thesis: >
+        The restored Mercury S8 plus pedestal may be more valuable as a complete,
+        functioning showcase system than as a collection of separate parts. The
+        rare value is the chassis, restored CaseLabs hardware, Aquaero ecosystem,
+        dual-D5 infrastructure, QDC-integrated pedestal loop, documentation, and
+        Forgotten Industries provenance; CPU and GPU hardware can be replaced by
+        a future owner.
+      build_direction:
+        - Use any functioning CPU/platform already available in storage
+        - Use any functioning GPU or GPU set already available in storage
+        - Fully assemble and fill the cooling loop
+        - Verify pumps, Aquaero, sensors, QDC path, and pedestal integration
+        - Run stress tests and document stable operation
+      time_capsule_option:
+        - X79 or X99 platform
+        - GTX 780 Ti, Titan, GTX 970, or GTX 980 Ti era graphics hardware
+        - EK waterblocks and period-correct loop hardware
+        - Aquaero 6 XT, dual D5 pumps, and Noiseblocker eLoops
+      decision_rule: >
+        Complete inventory and chassis restoration before selling any
+        restoration-critical component. Do not decide whether to sell the ship
+        while it is still in dry dock.
     documentation_style:
       - Photograph before cleaning
       - Identify panel by panel
