@@ -42,10 +42,13 @@ jobs:
             dist \
             docs \
             posts \
+            projects \
+            site-snapshots \
             src \
             _site/
           cp assets/forgotten-industries.jpeg _site/assets/
           cp -R assets/favicon _site/assets/
+          cp -R assets/initial-photos _site/assets/
           cp -R assets/social _site/assets/
           if [ -d assets/projects ]; then
             cp -R assets/projects _site/assets/

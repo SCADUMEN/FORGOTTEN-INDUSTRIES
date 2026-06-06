@@ -34,6 +34,16 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
+## Curated Posts
+
+The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
+
+- `posts/index.html` - curated post index.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - first post scaffold.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the first post.
+
+The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
+
 ## Update Workflow
 
 1. Edit `src/projects.yml`, `src/inventory.yml`, or `src/field-logs.yml`.
@@ -95,7 +105,11 @@ The archive is not published yet. When it is ready to become an npm package:
 - `field-log-template.html` - raw field log template.
 - `about.html` - raw project origin note.
 - `contact.html` - raw contact page.
+- `posts/index.html` - hand-curated post index.
+- `posts/2026-06-06-perspective-peregrine-and-pang.html` - first curated post scaffold.
+- `posts/2026-06-06-perspective-peregrine-and-pang.md` - Markdown source for the first curated post.
 - `social-posts.html` - raw HTML index for imported social posts.
+- `site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
 - `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
 - `assets/favicon/` - favicon and web app icon assets used by the raw HTML pages.
 - `assets/social/` - downloaded local media from imported social posts.
