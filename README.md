@@ -81,6 +81,7 @@ The existing root HTML pages remain checked in as durable, inspectable archive p
 - `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
 - `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
 - `docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
+- `docs/repository-architecture.md` - repo split and naming map for `FI (src)`, `FI (pub)`, and private `secrets de mysterie` staging.
 
 ## Import Social Posts
 
