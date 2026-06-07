@@ -6,7 +6,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("projects");
   eleventyConfig.addPassthroughCopy("src");
   eleventyConfig.addPassthroughCopy("site/CNAME");
-  eleventyConfig.addPassthroughCopy("site/css");
 
   eleventyConfig.addPassthroughCopy({
     "about.html": "about.html",

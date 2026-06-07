@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@source "../**/*.njk";
+
 :root {
   color-scheme: light;
   --paper: #f7f4ee;
@@ -17,7 +20,11 @@
 
 body {
   margin: 0;
-  background: var(--paper);
+  background:
+    linear-gradient(90deg, rgba(23, 23, 23, 0.018) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(23, 23, 23, 0.014) 1px, transparent 1px),
+    var(--paper);
+  background-size: 23px 23px, 29px 29px, auto;
   color: var(--ink);
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 18px;
