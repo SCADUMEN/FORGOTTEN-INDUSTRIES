@@ -4,6 +4,8 @@ Third-party reference shelf for fragile external knowledge that supports Forgott
 
 This area is for manuals, diagrams, photos, forum images, review assets, and other external references that help reconstruct how abandoned or unsupported hardware goes back together.
 
+The purpose is two-way: credit the people and sources that kept the knowledge alive, then turn the recovered reference into useful restoration wisdom. Credit is the signal; no hidden telemetry is needed.
+
 ## Rules
 
 - Preserve source provenance before using the asset in a public-facing document.

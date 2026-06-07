@@ -13,8 +13,9 @@
   --blueprint: #67e8ff;
   --white: #081327;
   --focus: #fff275;
-  --utility-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --utility-font: Andale Mono, Monaco, Consolas, "Liberation Mono", monospace;
+  --mono-font: Andale Mono, Monaco, Consolas, "Liberation Mono", monospace;
+  --headline-font: Georgia, "Times New Roman", Times, serif;
   --stencil-font: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
 }
 
@@ -30,9 +31,9 @@ body {
     var(--paper);
   background-size: 23px 23px, 29px 29px, auto;
   color: var(--ink);
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--mono-font);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 a {
@@ -85,10 +86,11 @@ img {
 }
 
 .site-header {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.55fr) minmax(12rem, 0.45fr);
+  align-items: start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 1rem 0;
   border-bottom: 2px solid var(--line);
 }
@@ -109,34 +111,70 @@ img {
 }
 
 .site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.35rem 0.7rem;
+  display: grid;
+  gap: 0.08rem;
+  justify-content: end;
   font-family: var(--mono-font);
-  font-size: 0.86rem;
+  font-size: 0.72rem;
   font-weight: 700;
+  line-height: 1.05;
+  text-align: right;
+  text-transform: uppercase;
 }
 
 .site-nav a {
+  display: block;
   color: var(--blueprint);
+  text-decoration: none;
+}
+
+.site-nav a::before {
+  content: "// ";
+  color: var(--oxide);
+}
+
+.site-nav a::after {
+  content: " //";
+  color: var(--oxide);
+}
+
+.site-nav a:nth-child(1),
+.site-nav a:nth-child(6) {
+  font-size: 0.86rem;
+}
+
+.site-nav a:nth-child(2),
+.site-nav a:nth-child(7) {
+  font-size: 0.66rem;
 }
 
 .masthead {
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 2rem;
 }
 
 .masthead-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
-  align-items: end;
+  grid-template-columns: minmax(320px, 48%) minmax(0, 1fr);
+  align-items: center;
   gap: 3rem;
+}
+
+.masthead-grid > div {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.masthead-grid > .hero-image {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .masthead h1 {
   margin: 0;
-  font-size: 5.5rem;
-  line-height: 0.95;
+  font-family: var(--headline-font);
+  font-size: clamp(3.25rem, 6.4vw, 5rem);
+  font-weight: 900;
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
@@ -144,13 +182,17 @@ img {
   max-width: 760px;
   margin: 1.2rem 0 0;
   color: var(--muted);
-  font-size: 1.25rem;
+  font-family: var(--mono-font);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.62;
 }
 
 .hero-image {
   border: 1px solid var(--line);
   background: var(--white);
   filter: invert(1) contrast(1.08);
+  width: 100%;
 }
 
 .reference-masthead .masthead-grid {
@@ -221,7 +263,9 @@ img {
 
 h2 {
   margin: 0;
-  font-size: 2.4rem;
+  font-family: var(--headline-font);
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+  font-weight: 900;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -229,18 +273,19 @@ h2 {
 .band-grid > :first-child h2,
 .field-heading {
   color: var(--ink);
-  font-family: var(--utility-font);
-  font-size: clamp(0.98rem, 1.05vw, 1.12rem);
+  font-family: var(--mono-font);
+  font-size: clamp(0.92rem, 1vw, 1.02rem);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.42;
 }
 
 h3 {
   margin: 0 0 0.35rem;
   color: var(--steel);
-  font-family: var(--utility-font);
-  font-size: 0.88rem;
+  font-family: var(--stencil-font);
+  font-size: 0.92rem;
+  font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -537,14 +582,24 @@ h3 {
   }
 
   .site-header,
-  .masthead-grid,
   .footer-grid {
     display: block;
+  }
+
+  .masthead-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .masthead-grid > .hero-image,
+  .masthead-grid > .reference-figure {
+    order: -1;
   }
 
   .site-nav {
     justify-content: flex-start;
     margin-top: 0.8rem;
+    text-align: left;
   }
 
   .footer-nav {
@@ -553,11 +608,11 @@ h3 {
   }
 
   .hero-image {
-    margin-top: 1.5rem;
+    margin: 0 0 1.5rem;
   }
 
   .masthead h1 {
-    font-size: 3.3rem;
+    font-size: 3rem;
   }
 
   .tagline {
@@ -610,7 +665,7 @@ h3 {
   }
 
   .masthead h1 {
-    font-size: 2.7rem;
+    font-size: 2.6rem;
   }
 
   .stat strong {

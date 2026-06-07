@@ -31,7 +31,7 @@
     </a>
     <nav class="site-nav" aria-label="Primary">
       {% for item in site.primaryNav %}
-      <a href="{{ item.href }}">{{ item.label }}</a>
+      <a href="{{ item.href }}"><span>{{ item.label }}</span></a>
       {% endfor %}
     </nav>
   </header>

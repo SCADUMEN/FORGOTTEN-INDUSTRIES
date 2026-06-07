@@ -13,7 +13,7 @@ module.exports = {
     googleMeasurementId: ""
   },
   supportUrl: "",
-  assetVersion: "2026-06-07-site-spine",
+  assetVersion: "2026-06-07-public-spine-type",
   tagline: "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
   primaryNav: [
     { label: "THE ARCHIVE", href: "/archive.html" },
@@ -22,8 +22,7 @@ module.exports = {
     { label: "Projects", href: "/#projects" },
     { label: "Manuscripts", href: "/#manuscripts" },
     { label: "Technical References", href: "/hang-on-to-each-other/" },
-    { label: "What About Art?", href: "/#what-about-art" },
-    { label: "About", href: "/about.html" }
+    { label: "What ABOUT Art?", href: "/about.html" }
   ],
   shelves: [
     {
@@ -75,12 +74,12 @@ module.exports = {
       note: "The manual shelf. Featured public reference: Hang On To Each Other."
     },
     {
-      label: "What About Art?",
+      label: "What ABOUT Art?",
       slug: "what-about-art",
-      href: "/#what-about-art",
-      purpose: "Music, design, photography, visual experiments, fiction fragments, aesthetic notes, humor, taste, weird screenshots, and nontechnical art/life observations.",
+      href: "/about.html",
+      purpose: "Matthew Marx, the art life, and the nontechnical current running through the archive: music, design, photography, visual experiments, fiction fragments, aesthetic notes, humor, taste, and symbolic object writing.",
       tone: "Free, weird, alive, playful, serious when needed.",
-      note: "Some of it can just be art because Matthew said so."
+      note: "The about page is allowed to ask the question instead of flattening the answer."
     }
   ]
 };

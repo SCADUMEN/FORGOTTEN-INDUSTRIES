@@ -16,7 +16,7 @@ The organizing principle is:
 4. Projects
 5. Manuscripts
 6. Technical References
-7. What About Art?
+7. What ABOUT Art?
 
 These are the canonical current categories unless Matthew explicitly changes them.
 
@@ -172,18 +172,19 @@ Use for:
 - Measurement standards
 - OBS/webcam/photo station setup
 - Tooling notes
+- Third-party source credit and reconstruction notes
 - Repeatable workflows
 - Practical documentation other people could use
 
 Tone: clear, practical, precise, reusable.
 
-This is the manual shelf.
+This is the manual shelf. `Hang On To Each Other` is the credit-and-wisdom layer inside it: give credit, preserve source trails, and turn fragile references into useful instructions.
 
-## 7. What About Art?
+## 7. What ABOUT Art?
 
-The final catch-all category for everything non-science, nontechnical, and creatively alive.
+The final category and about-page surface for everything non-science, nontechnical, personal, and creatively alive.
 
-This category gives Forgotten Industries permission to breathe outside engineering, restoration, medicine, or documentation.
+This category gives Forgotten Industries permission to breathe outside engineering, restoration, medicine, or documentation. It also cleanly carries Matthew's about-me context without reducing the project to biography.
 
 Use for:
 
@@ -201,6 +202,7 @@ Use for:
 - Non-science posts
 - Nontechnical art/life observations
 - "Salmon bag" energy
+- Matthew Marx / about-me context
 - Anything that belongs to the artistic side of Forgotten Industries
 
 Tone: free, weird, alive, playful, serious when needed.
@@ -212,5 +214,5 @@ Key idea:
 ## Canonical Top Navigation
 
 ```text
-THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Notes | Projects | Manuscripts | Technical References | What About Art? | About
+THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Notes | Projects | Manuscripts | Technical References | What ABOUT Art?
 ```
