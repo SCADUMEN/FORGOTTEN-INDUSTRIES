@@ -1,13 +1,13 @@
 ---
 layout: base.njk
 title: Forgotten Industries
-description: An Eleventy-built mirror for the Forgotten Industries archive, domain, and GitHub source.
+description: An archive and lab journal exploring old machines, abandoned projects, and the parts of ourselves we once thought lost.
 canonical: https://forgotten-industries.net/
 ---
 <section class="masthead">
   <div class="section-inner masthead-grid">
     <div>
-      <p class="section-label">Archive mirror / established MMXIV</p>
+      <p class="section-label">Archive & lab journal / established MMXIV</p>
       <h1>{{ site.name }}</h1>
       <p class="tagline">{{ site.tagline }}</p>
     </div>
@@ -87,7 +87,7 @@ canonical: https://forgotten-industries.net/
 <section class="source-band" aria-labelledby="field-notes-heading">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Field Notes</p>
+      <p class="section-label">Field Lab Journal</p>
       <h2 id="field-notes-heading">A continuity channel for the archive.</h2>
     </div>
     <div class="callout">
@@ -102,29 +102,16 @@ canonical: https://forgotten-industries.net/
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Shelves</p>
-      <h2 id="shelves-heading">The archive stays readable before it gets elaborate.</h2>
+      <h2 id="shelves-heading">The site spine is an archive map.</h2>
     </div>
     <ul class="shelf-list">
+      {% for shelf in site.shelves %}
       <li>
-        <h3>Restoration Logs</h3>
-        <p>Long-running rebuilds such as the CaseLabs Mercury S8 and related watercooling hardware.</p>
+        <h3 id="{{ shelf.slug }}">{% if shelf.href %}<a href="{{ shelf.href }}">{{ shelf.label }}</a>{% else %}{{ shelf.label }}{% endif %}</h3>
+        <p>{{ shelf.purpose }}</p>
+        <p class="shelf-note">{{ shelf.tone }} {{ shelf.note }}</p>
       </li>
-      <li>
-        <h3>Field Notes</h3>
-        <p>Short observations, garage archaeology, measurements, discoveries, failures, and small wins.</p>
-      </li>
-      <li>
-        <h3>Project Dossiers</h3>
-        <p>Structured records for parts, photos, history, compatibility notes, diagrams, and status.</p>
-      </li>
-      <li>
-        <h3>Essays</h3>
-        <p>Reflective writing grounded in machines, memory, recovery, and technical identity.</p>
-      </li>
-      <li>
-        <h3>Technical References</h3>
-        <p>Inventories, part lists, dimensions, compatibility tables, restoration methods, and diagrams.</p>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 </section>

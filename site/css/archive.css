@@ -112,8 +112,10 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.35rem 0.85rem;
-  font-size: 0.92rem;
+  gap: 0.35rem 0.7rem;
+  font-family: var(--mono-font);
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
 .site-nav a {
@@ -296,6 +298,11 @@ h3 {
 .link-list p {
   margin: 0.2rem 0 0;
   color: var(--muted);
+}
+
+.shelf-note {
+  font-family: var(--mono-font);
+  font-size: 0.82rem;
 }
 
 .entry-note {

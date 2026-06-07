@@ -51,7 +51,7 @@ The live site now starts cleanly from `index.html` and points to hand-curated po
 - `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
 - `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the prelude.
 
-The visible top-level shelves are Restoration Logs, Field Notes, Project Dossiers, Essays, and Technical References. Each has one placeholder on the live index until real entries are promoted.
+The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
 
 The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
 
@@ -82,6 +82,7 @@ The existing root HTML pages remain checked in as durable, inspectable archive p
 - `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
 - `docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
 - `docs/repository-architecture.md` - public-safe repo split and naming map for `FI (src)`, `FI (pub)`, and private staging boundaries.
+- `docs/site-architecture-dossier.md` - canonical top-level site spine, navigation, and category tone rules.
 
 ## Import Social Posts
 
