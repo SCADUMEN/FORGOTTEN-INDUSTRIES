@@ -16,7 +16,10 @@
     "./data": "./dist/forgotten-industries.json"
   },
   "scripts": {
-    "build": "ruby scripts/build.rb"
+    "build": "ruby scripts/build.rb",
+    "build:archive": "ruby scripts/build.rb",
+    "build:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs",
+    "serve:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs --serve"
   },
   "keywords": [
     "archive",
@@ -27,6 +30,9 @@
   ],
   "author": "Matthew Taylor Marx",
   "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  },
   "engines": {
     "node": ">=18"
   }

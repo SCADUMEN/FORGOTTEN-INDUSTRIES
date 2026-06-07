@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}{% if title != site.name %} - {{ site.name }}{% endif %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or site.tagline }}">
+  <link rel="canonical" href="{{ canonical or site.domainUrl + page.url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/css/archive.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <a class="site-mark" href="/" aria-label="{{ site.name }} home">
+      <img src="/assets/favicon/android-chrome-512x512.png" alt="">
+      <span>{{ site.name }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/archive.html">Archive</a>
+      <a href="/inventory.html">Inventory</a>
+      <a href="/posts/">Posts</a>
+      <a href="{{ site.githubUrl }}">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ site.name }} mirrors <a href="{{ site.domainUrl }}">{{ site.domainHost }}</a> and <a href="{{ site.githubUrl }}">{{ site.repository }}</a>.</p>
+  </footer>
+</body>
+</html>
