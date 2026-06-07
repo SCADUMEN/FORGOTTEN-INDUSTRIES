@@ -13,6 +13,7 @@ module.exports = {
     googleMeasurementId: ""
   },
   supportUrl: "",
+  assetVersion: "2026-06-07-site-spine",
   tagline: "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
   primaryNav: [
     { label: "THE ARCHIVE", href: "/archive.html" },
