@@ -12,6 +12,15 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/css/archive.css">
+  {% if site.analytics.googleMeasurementId %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.googleMeasurementId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "{{ site.analytics.googleMeasurementId }}");
+  </script>
+  {% endif %}
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -24,7 +33,8 @@
       <a href="/archive.html">Archive</a>
       <a href="/inventory.html">Inventory</a>
       <a href="/posts/">Posts</a>
-      <a href="{{ site.githubUrl }}">GitHub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
     </nav>
   </header>
 
@@ -33,7 +43,30 @@
   </main>
 
   <footer class="site-footer">
-    <p>{{ site.name }} mirrors <a href="{{ site.domainUrl }}">{{ site.domainHost }}</a> and <a href="{{ site.githubUrl }}">{{ site.repository }}</a>.</p>
+    <div class="footer-grid">
+      <p>{{ site.name }} keeps the archive at <a href="{{ site.domainUrl }}">{{ site.domainHost }}</a>.</p>
+      <nav class="footer-nav" aria-label="External routes">
+        <a href="{{ site.githubUrl }}" data-track="outbound-github">GitHub</a>
+        <a href="{{ site.elevityUrl }}" data-track="outbound-elevity">Elevity</a>
+        <a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Field Notes</a>
+        <a href="mailto:{{ site.contact }}" data-track="contact-email">Contact</a>
+        {% if site.supportUrl %}
+        <a href="{{ site.supportUrl }}" data-track="support">Support</a>
+        {% endif %}
+      </nav>
+    </div>
   </footer>
+  {% if site.analytics.googleMeasurementId %}
+  <script>
+    document.querySelectorAll("[data-track]").forEach(function(link) {
+      link.addEventListener("click", function() {
+        gtag("event", link.dataset.track, {
+          link_url: link.href,
+          link_text: link.textContent.trim()
+        });
+      });
+    });
+  </script>
+  {% endif %}
 </body>
 </html>

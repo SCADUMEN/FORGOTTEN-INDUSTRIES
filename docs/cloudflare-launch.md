@@ -88,6 +88,55 @@ Check these paths after DNS and HTTPS finish provisioning:
 - `https://forgotten-industries.net/assets/favicon/favicon-32x32.png`
 - `https://forgotten-industries.net/dist/forgotten-industries.json`
 
+## Phase 1 Coherence Setup
+
+The public archive has one canonical spine:
+
+- Domain: `https://forgotten-industries.net`
+- Contact: `contact@forgotten-industries.net`
+- Archive mail: `archive@forgotten-industries.net`
+- Field Notes mail: `fieldnotes@forgotten-industries.net`
+- GitHub source: `https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES`
+- Elevity route: `https://elevity.com`
+
+The live site renders GitHub, Elevity, contact, and Field Notes links from `site/_data/site.cjs`.
+
+### Email
+
+Use Cloudflare Email Routing for receive-only forwarding if the domain is managed in Cloudflare. Route:
+
+- `contact@forgotten-industries.net`
+- `archive@forgotten-industries.net`
+- `fieldnotes@forgotten-industries.net`
+
+If sending as `@forgotten-industries.net` becomes important, move to a mailbox provider such as Google Workspace, Fastmail, or Proton and update the domain DNS records accordingly.
+
+### Analytics
+
+The base layout has optional GA4 support. To activate it, add the measurement ID in `site/_data/site.cjs`:
+
+```js
+analytics: {
+  googleMeasurementId: "G-XXXXXXXXXX"
+}
+```
+
+Tracked link hooks already exist through `data-track` attributes for GitHub, Elevity, contact, and Field Notes subscription clicks.
+
+### Subscription List
+
+Phase 1 uses a domain email link for Field Notes. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `site/_data/site.cjs` with the provider-hosted subscription URL.
+
+Recommended public framing:
+
+```text
+Field notes from the Forgotten Industries archive.
+```
+
+### Monetization
+
+Do not place ads on the archive in Phase 1. Keep `supportUrl` blank until there is a clear support destination, such as GitHub Sponsors or a dedicated support page for restoration costs.
+
 ## Notes
 
 The Eleventy mirror should remain thin. Preserve the raw archive pages and generated data as the source of truth; use Eleventy to assemble the public surface, not to bury the evidence.
