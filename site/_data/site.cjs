@@ -21,7 +21,7 @@ module.exports = {
     { label: "Field Lab Journal", href: "/#field-lab-journal" },
     { label: "Project Dossiers", href: "/#project-dossiers" },
     { label: "Manuscripts", href: "/#manuscripts" },
-    { label: "Technical References", href: "/#technical-references" },
+    { label: "Technical References", href: "/hang-on-to-each-other/" },
     { label: "What About Art?", href: "/#what-about-art" },
     { label: "About", href: "/about.html" }
   ],
@@ -69,10 +69,10 @@ module.exports = {
     {
       label: "Technical References",
       slug: "technical-references",
-      href: "/#technical-references",
+      href: "/hang-on-to-each-other/",
       purpose: "Evergreen practical docs, guides, measurement standards, restoration methods, repeatable workflows, and technical references other people could use.",
       tone: "Clear, practical, precise, reusable.",
-      note: "The manual shelf."
+      note: "The manual shelf. Current public reference: Hang On To Each Other."
     },
     {
       label: "What About Art?",
