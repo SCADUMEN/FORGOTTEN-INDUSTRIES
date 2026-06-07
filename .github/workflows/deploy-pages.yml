@@ -24,39 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build archive data
-        run: npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-      - name: Stage static site
-        run: |
-          mkdir -p _site
-          mkdir -p _site/assets
-          cp -R \
-            index.html \
-            about.html \
-            archive.html \
-            contact.html \
-            field-log-template.html \
-            inventory.html \
-            social-posts.html \
-            dist \
-            docs \
-            posts \
-            projects \
-            site-snapshots \
-            src \
-            _site/
-          cp assets/forgotten-industries.jpeg _site/assets/
-          cp -R assets/favicon _site/assets/
-          cp -R assets/initial-photos _site/assets/
-          cp -R assets/social _site/assets/
-          if [ -d assets/projects ]; then
-            cp -R assets/projects _site/assets/
-          fi
-          if [ -f CNAME ]; then
-            cp CNAME _site/
-          fi
-          touch _site/.nojekyll
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Eleventy mirror
+        run: npm run build:site
+
+      - name: Preserve GitHub Pages marker
+        run: touch _site/.nojekyll
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

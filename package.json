@@ -16,17 +16,25 @@
     "./data": "./dist/forgotten-industries.json"
   },
   "scripts": {
-    "build": "ruby scripts/build.rb"
+    "build": "ruby scripts/build.rb",
+    "build:archive": "ruby scripts/build.rb",
+    "build:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs && tailwindcss -i ./site/css/archive.css -o ./_site/css/archive.css --minify",
+    "serve:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs && tailwindcss -i ./site/css/archive.css -o ./_site/css/archive.css && eleventy --config=eleventy.config.cjs --serve"
   },
   "keywords": [
     "archive",
     "restoration",
     "hardware",
-    "lab-journal",
+    "field-notes",
     "forgotten-industries"
   ],
   "author": "Matthew Taylor Marx",
   "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "@tailwindcss/cli": "4.3.0",
+    "tailwindcss": "4.3.0"
+  },
   "engines": {
     "node": ">=18"
   }

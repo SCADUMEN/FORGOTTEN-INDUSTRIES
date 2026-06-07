@@ -1,6 +1,6 @@
 # Forgotten Industries
 
-Canonical archive data and raw HTML reference pages for Forgotten Industries.
+Canonical archive data, raw HTML reference pages, and an Eleventy mirror for Forgotten Industries.
 
 The source of truth is human-readable YAML in `src/`. The build step converts that archive into package-ready outputs in `dist/`:
 
@@ -14,7 +14,7 @@ My Brother's Keeper, indeed ~ Thank you, Tyler.
 
 ## Setup
 
-No dependency install is required for the current build.
+No dependency install is required for the archive data build.
 
 ```bash
 npm run build
@@ -26,7 +26,16 @@ The build uses Ruby's standard YAML parser, which is available on macOS by defau
 ruby scripts/build.rb
 ```
 
-To view the raw HTML pages:
+To build the Eleventy mirror:
+
+```bash
+npm install
+npm run build:site
+```
+
+This writes the deployable site to `_site/`. The Eleventy home page mirrors the canonical domain and GitHub repository while preserving the raw HTML pages as visible reference shelves.
+
+To view the raw HTML pages without Eleventy:
 
 ```bash
 python3 -m http.server 8000
@@ -46,6 +55,19 @@ The visible top-level shelves are Restoration Logs, Field Notes, Project Dossier
 
 The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
 
+## Eleventy Mirror
+
+The Eleventy source lives under `site/`:
+
+- `site/index.njk` - generated public home page.
+- `site/_includes/base.njk` - shared HTML shell.
+- `site/_data/site.cjs` - domain, GitHub, contact, and identity data.
+- `site/_data/archive.cjs` - reads `dist/forgotten-industries.json`.
+- `site/css/archive.css` - restrained archive styling.
+- `site/CNAME` - portability marker for `forgotten-industries.net`.
+
+The existing root HTML pages remain checked in as durable, inspectable archive pages. GitHub Pages deploys the Eleventy output from `_site/`.
+
 ## Update Workflow
 
 1. Edit `src/projects.yml`, `src/inventory.yml`, or `src/field-logs.yml`.
@@ -59,6 +81,7 @@ The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-
 - `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
 - `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
 - `docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
+- `docs/repository-architecture.md` - repo split and naming map for `FI (src)`, `FI (pub)`, and private `secrets de mysterie` staging.
 
 ## Import Social Posts
 
@@ -98,6 +121,8 @@ The archive is not published yet. When it is ready to become an npm package:
 - `src/types.ts` - TypeScript schema for the generated archive.
 - `scripts/import_social.rb` - public Tumblr/Instagram importer for social posts and media.
 - `scripts/build.rb` - YAML-to-JSON and YAML-to-TypeScript build script.
+- `eleventy.config.cjs` - Eleventy build configuration for the public mirror.
+- `site/` - Eleventy source for the domain/GitHub mirror.
 - `dist/forgotten-industries.json` - generated complete archive data.
 - `dist/index.ts` - generated TypeScript module exporting the archive.
 - `AGENTS.md` - short pointer for future coding agents.

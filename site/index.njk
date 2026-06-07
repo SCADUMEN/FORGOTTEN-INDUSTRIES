@@ -1,0 +1,135 @@
+---
+layout: base.njk
+title: Forgotten Industries
+description: An Eleventy-built mirror for the Forgotten Industries archive, domain, and GitHub source.
+canonical: https://forgotten-industries.net/
+---
+<section class="masthead">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">Archive mirror / established MMXIV</p>
+      <h1>{{ site.name }}</h1>
+      <p class="tagline">{{ site.tagline }}</p>
+    </div>
+    <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
+  </div>
+</section>
+
+<section class="mirror-band" aria-labelledby="mirror-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Signal</p>
+      <h2 id="mirror-heading">Domain and source stay tied to the same record.</h2>
+    </div>
+    <div>
+      <dl class="ledger">
+        <div>
+          <dt>Canonical domain</dt>
+          <dd><a href="{{ site.domainUrl }}">{{ site.domainHost }}</a></dd>
+        </div>
+        <div>
+          <dt>GitHub source</dt>
+          <dd><a href="{{ site.githubUrl }}">{{ site.repository }}</a></dd>
+        </div>
+        <div>
+          <dt>Contact</dt>
+          <dd><a href="mailto:{{ site.contact }}">{{ site.contact }}</a></dd>
+        </div>
+      </dl>
+
+      <div class="stats" aria-label="Archive counts">
+        <div class="stat">
+          <strong>{{ archive.projects | count }}</strong>
+          <span>Projects</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.inventory | count }}</strong>
+          <span>Inventory records</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.fieldLogs | count }}</strong>
+          <span>Field logs</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.socialPosts | count }}</strong>
+          <span>Social evidence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="current-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Current</p>
+      <h2 id="current-heading">One entry on the bench.</h2>
+    </div>
+    <div>
+      <h3>Entry 000</h3>
+      <p class="entry-note"><a href="/posts/2026-06-06-perspective-peregrine-and-pang.html">Prelude: Perspective, Peregrine, and Pang</a> / rough body draft / <a href="/posts/2026-06-06-perspective-peregrine-and-pang.md">Markdown source</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="shelves-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Shelves</p>
+      <h2 id="shelves-heading">The archive stays readable before it gets elaborate.</h2>
+    </div>
+    <ul class="shelf-list">
+      <li>
+        <h3>Restoration Logs</h3>
+        <p>Long-running rebuilds such as the CaseLabs Mercury S8 and related watercooling hardware.</p>
+      </li>
+      <li>
+        <h3>Field Notes</h3>
+        <p>Short observations, garage archaeology, measurements, discoveries, failures, and small wins.</p>
+      </li>
+      <li>
+        <h3>Project Dossiers</h3>
+        <p>Structured records for parts, photos, history, compatibility notes, diagrams, and status.</p>
+      </li>
+      <li>
+        <h3>Essays</h3>
+        <p>Reflective writing grounded in machines, memory, recovery, and technical identity.</p>
+      </li>
+      <li>
+        <h3>Technical References</h3>
+        <p>Inventories, part lists, dimensions, compatibility tables, restoration methods, and diagrams.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="evidence-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Evidence</p>
+      <h2 id="evidence-heading">Raw shelves remain visible.</h2>
+    </div>
+    <ul class="link-list">
+      <li>
+        <h3><a href="/archive.html">Archive index</a></h3>
+        <p>Top-level routing into posts, snapshots, inventory, and source files.</p>
+      </li>
+      <li>
+        <h3><a href="/inventory.html">Inventory</a></h3>
+        <p>Canonical machine, part, accessory, condition, and disposition records.</p>
+      </li>
+      <li>
+        <h3><a href="/social-posts.html">Imported social evidence</a></h3>
+        <p>Recovered Tumblr and Instagram posts with local media and Markdown sources.</p>
+      </li>
+      <li>
+        <h3><a href="/dist/forgotten-industries.json">Generated archive JSON</a></h3>
+        <p>Machine-readable output generated from the source YAML.</p>
+      </li>
+      <li>
+        <h3><a href="/site-snapshots/github-pages-trial-2026-06-06/index.html">Stowed GitHub Pages trial snapshot</a></h3>
+        <p>The pre-reset static surface preserved as evidence, not discarded history.</p>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -28,16 +28,29 @@ projects:
       - FI-CASE-001
       - FI-PED-001
       - FI-RAD-001
+      - FI-RAD-002
       - FI-FAN-001
+      - FI-FAN-002
       - FI-PUMP-001
+      - FI-PUMP-002
       - FI-CTRL-001
       - FI-RES-001
+      - FI-PSU-001
+      - FI-BLOCK-MOSFET-001
+      - FI-FIT-QDC-001
+      - FI-CASE-PANEL-001
+      - FI-CASE-FRAME-001
+      - FI-CASE-TRAY-001
+      - FI-CASE-PLATE-001
+      - FI-CASE-FILTER-001
+      - FI-PHOTO-001
     layout_goals:
       - Right-side full window
       - Visible pumps and reservoir
       - Pedestal radiator and QDC pass-throughs
       - Low RPM, excessive cooling overhead
       - Clean serial loop before experimenting with complexity
+      - Functioning proof-of-concept system before any sale decision
     loop_concept:
       route:
         - Pumps in mid-right chamber
@@ -53,6 +66,29 @@ projects:
         - EPDM tubing first for function
         - Hardline or copper possible later as aesthetic evolution
         - Serviceability matters
+    proof_of_concept:
+      thesis: >
+        The restored Mercury S8 plus pedestal may be more valuable as a complete,
+        functioning showcase system than as a collection of separate parts. The
+        rare value is the chassis, restored CaseLabs hardware, Aquaero ecosystem,
+        dual-D5 infrastructure, QDC-integrated pedestal loop, documentation, and
+        Forgotten Industries provenance; CPU and GPU hardware can be replaced by
+        a future owner.
+      build_direction:
+        - Use any functioning CPU/platform already available in storage
+        - Use any functioning GPU or GPU set already available in storage
+        - Fully assemble and fill the cooling loop
+        - Verify pumps, Aquaero, sensors, QDC path, and pedestal integration
+        - Run stress tests and document stable operation
+      time_capsule_option:
+        - X79 or X99 platform
+        - GTX 780 Ti, Titan, GTX 970, or GTX 980 Ti era graphics hardware
+        - EK waterblocks and period-correct loop hardware
+        - Aquaero 6 XT, dual D5 pumps, and Noiseblocker eLoops
+      decision_rule: >
+        Complete inventory and chassis restoration before selling any
+        restoration-critical component. Do not decide whether to sell the ship
+        while it is still in dry dock.
     documentation_style:
       - Photograph before cleaning
       - Identify panel by panel
@@ -74,15 +110,17 @@ projects:
       - documentation before action
       - finding the buried map
       - repair as memory
+    artifacts:
+      - FI-PHOTO-002
     documentation_style:
       - Photograph the object as found
       - Preserve uncertainty in the record
       - Record storage state, condition, missing hardware, and first hypotheses
 
   - id: FI-PROJ-003
-    slug: lab-journal
-    title: Lab Journal
-    category: Lab Journal
+    slug: field-notes
+    title: Field Notes
+    category: Field Notes
     status: active
     started: "2026"
     summary: >

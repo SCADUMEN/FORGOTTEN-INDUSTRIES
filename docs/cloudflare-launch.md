@@ -4,12 +4,13 @@ Domain target: `forgotten-industries.net`
 
 ## Current Site Shape
 
-Forgotten Industries is currently a static HTML archive deployed through GitHub Pages.
+Forgotten Industries is currently a static archive with an Eleventy public mirror deployed through GitHub Pages.
 
-- No install step is required.
-- The site entry point is `index.html`.
-- Static pages and assets live at the repository root and in `assets/`.
-- `npm run build` regenerates archive data in `dist/` before the GitHub Pages artifact is assembled.
+- The raw HTML pages remain checked in at the repository root as durable reference shelves.
+- The Eleventy entry point lives at `site/index.njk`.
+- The deployable site is written to `_site/`.
+- `npm run build` regenerates archive data in `dist/`.
+- `npm run build:site` regenerates archive data and builds the Eleventy mirror.
 
 ## GitHub Pages Settings
 
@@ -21,7 +22,7 @@ Use GitHub Pages with the checked-in Actions workflow.
 - Custom domain: `forgotten-industries.net`
 - HTTPS: enforce after GitHub provisions the certificate
 
-The workflow stages a static `_site` artifact and deploys it with `actions/deploy-pages`.
+The workflow installs dependencies, runs `npm run build:site`, preserves `_site/.nojekyll`, and deploys the `_site` artifact with `actions/deploy-pages`.
 
 ## Domain Registration
 
@@ -73,6 +74,8 @@ Recommended canonical host:
 https://forgotten-industries.net
 ```
 
+The GitHub Pages custom-domain setting remains the source of truth for the deployed Actions artifact. `site/CNAME` is kept as a portability marker and is copied into `_site/` by the Eleventy build.
+
 ## Launch Verification
 
 Check these paths after DNS and HTTPS finish provisioning:
@@ -83,7 +86,8 @@ Check these paths after DNS and HTTPS finish provisioning:
 - `https://forgotten-industries.net/inventory.html`
 - `https://forgotten-industries.net/social-posts.html`
 - `https://forgotten-industries.net/assets/favicon/favicon-32x32.png`
+- `https://forgotten-industries.net/dist/forgotten-industries.json`
 
 ## Notes
 
-Do not move the archive into a heavier site generator just for launch. Publish the stable static version first, then improve structure once the first post and domain are alive.
+The Eleventy mirror should remain thin. Preserve the raw archive pages and generated data as the source of truth; use Eleventy to assemble the public surface, not to bury the evidence.

@@ -28,3 +28,7 @@ Existing recovered social-media assets remain tracked through `src/social-posts.
 ## Next Pass
 
 Use the collection records as the source of truth for file custody. Object-level mapping should happen later by assigning specific filenames to hardware records, dossiers, or field logs after visual identification is done from native viewers or curated derivatives.
+
+## Object Mapping Update
+
+First object-level mapping was completed in `docs/intake/2026-06-05-photo-object-map.md`. The pass added distinct inventory records for confirmed physical objects and temporary grouped records for CaseLabs panels, frames, trays, plates, and filter inserts.
