@@ -1539,7 +1539,7 @@ export const archive = {
         "assets/initial-photos/matthewmarx-127.jpeg",
         "assets/initial-photos/screenshot-2026-06-04-21-27-09.png"
       ],
-      "notes": "Local first-pass photo asset batch currently present in the private archive working tree. Matthew referenced this body as the first 150-photo set; the checked-in local folder currently contains 129 files: 126 JPEG, 2 MOV, and 1 PNG. Contact-sheet review of rendered stills shows CaseLabs chassis and panel evidence, radiator and fan hardware, filters, trays, packaging, cable and component context, room/process context, and the Forgotten Industries identity asset. See docs/intake/2026-06-05-initial-photos.md, docs/intake/2026-06-05-initial-photos-files.csv, and docs/intake/2026-06-05-initial-photos.sha256 before renaming, moving, or deriving public assets.\n",
+      "notes": "Local first-pass photo asset batch currently present in the local archive working tree. Matthew referenced this body as the first 150-photo set; the checked-in local folder currently contains 129 files: 126 JPEG, 2 MOV, and 1 PNG. Contact-sheet review of rendered stills shows CaseLabs chassis and panel evidence, radiator and fan hardware, filters, trays, packaging, cable and component context, room/process context, and the Forgotten Industries identity asset. See docs/intake/2026-06-05-initial-photos.md, docs/intake/2026-06-05-initial-photos-files.csv, and docs/intake/2026-06-05-initial-photos.sha256 before renaming, moving, or deriving public assets.\n",
       "estimated_value": null,
       "keep_sell_archive": "archive evidence",
       "date_logged": "2026-06-05"

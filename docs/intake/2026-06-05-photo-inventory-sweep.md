@@ -3,7 +3,7 @@
 ## Sweep Summary
 
 - Sweep ID: `FI-2026-06-05-PHOTO-SWEEP`
-- Branch/workflow context: private Secrets de Mysterie working branch
+- Branch/workflow context: private staging branch
 - Inventory date: 2026-06-05
 - Status: local photographic evidence sets registered as collection-level inventory.
 
