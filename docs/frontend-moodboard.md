@@ -15,6 +15,7 @@ The site should feel like a technical archive, restoration log, evidence noteboo
 - Classically trained scientist with field-radio rapport.
 - Antique, yellowed, dusted, noisy, but clear.
 - Impactful, altruistic, evidence-based, and optimistic despite the record.
+- Naturally accessible: high-contrast first, not high-contrast as an afterthought.
 
 ## Inspiration Research
 
@@ -62,17 +63,19 @@ Design translation:
 
 ## Palette
 
-- Paper: `#f7f4ee`
-- Ink: `#171717`
-- Muted: `#59544b`
-- Line: `#c9c0b2`
-- Steel: `#33424a`
-- Oxide: `#7f3026`
-- Brass: `#876f33`
-- Blueprint: `#1f4e5f`
-- White: `#fffdfa`
+- Paper: `#02040a`
+- Ink: `#fff9e8`
+- Muted: `#d7d1ff`
+- Line: `#4f8cff`
+- Steel: `#84eaff`
+- Oxide: `#ff5bd6`
+- Brass: `#fff275`
+- Blueprint: `#67e8ff`
+- White / surface: `#081327`
 
-Use the warm paper base for archive continuity, then balance it with steel, oxide, brass, blueprint, and black so the site does not collapse into a beige theme.
+Use a dark archive surface by default, with warm ink, cyan-blue links, magenta evidence labels, and yellow focus states. The reference point is old operating-system high contrast: blue, pink, yellow, and black, but calmer and more readable.
+
+The background may carry a faint scan/grid texture, but `prefers-contrast: more` should strip the texture back to a plain black surface and strengthen contrast.
 
 ## Typography
 
@@ -81,6 +84,9 @@ Use the warm paper base for archive continuity, then balance it with steel, oxid
 - Monospace only for short machine-readable IDs, source notes, statuses, or file-like references.
 - Keep letter spacing at `0`.
 - Avoid over-stylizing the typography. The page should read like an archive, not a poster.
+- Section rail headers should read like research-paper figure legends: `FIGURE 1`, compact ATLAS dispatch sentence, visually quieter than the evidence column.
+- Stencil energy belongs in stamps and project marks, not body copy: `ON BENCH`, `RECOVERED`, `ENTRY 000`, `FIELD LOG`, `DOSSIER`.
+- Fixed-width type should carry metadata and evidence structure, not the whole page.
 
 ## Component Grammar
 
