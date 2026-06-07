@@ -8,9 +8,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/CNAME");
 
   eleventyConfig.addPassthroughCopy({
-    "about.html": "about.html",
     "archive.html": "archive.html",
-    "contact.html": "contact.html",
     "field-log-template.html": "field-log-template.html",
     "inventory.html": "inventory.html",
     "social-posts.html": "social-posts.html",

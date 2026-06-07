@@ -29,11 +29,19 @@ canonical: https://forgotten-industries.net/
         </div>
         <div>
           <dt>GitHub source</dt>
-          <dd><a href="{{ site.githubUrl }}">{{ site.repository }}</a></dd>
+          <dd><a href="{{ site.githubUrl }}" data-track="outbound-github">{{ site.repository }}</a></dd>
+        </div>
+        <div>
+          <dt>Professional lane</dt>
+          <dd><a href="{{ site.elevityUrl }}" data-track="outbound-elevity">Elevity</a></dd>
         </div>
         <div>
           <dt>Contact</dt>
-          <dd><a href="mailto:{{ site.contact }}">{{ site.contact }}</a></dd>
+          <dd><a href="mailto:{{ site.contact }}" data-track="contact-email">{{ site.contact }}</a></dd>
+        </div>
+        <div>
+          <dt>Field Notes</dt>
+          <dd><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Subscribe by email</a></dd>
         </div>
       </dl>
 
@@ -68,6 +76,20 @@ canonical: https://forgotten-industries.net/
     <div>
       <h3>Entry 000</h3>
       <p class="entry-note"><a href="/posts/2026-06-06-perspective-peregrine-and-pang.html">Prelude: Perspective, Peregrine, and Pang</a> / rough body draft / <a href="/posts/2026-06-06-perspective-peregrine-and-pang.md">Markdown source</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-notes-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Field Notes</p>
+      <h2 id="field-notes-heading">A continuity channel for the archive.</h2>
+    </div>
+    <div class="callout">
+      <h3>Subscribe</h3>
+      <p>Short dispatches from the bench: restoration logs, evidence finds, measurements, recovered posts, and notes that do not need a full dossier yet.</p>
+      <p class="action-row"><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Subscribe to Field Notes</a></p>
     </div>
   </div>
 </section>
