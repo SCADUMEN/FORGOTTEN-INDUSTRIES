@@ -11,9 +11,9 @@ The organizing principle is:
 ## Current Top-Level Site Spine
 
 1. THE ARCHIVE
-2. Recovery & Restorations
-3. Field Lab Journal
-4. Project Dossiers
+2. Recoveries, Restorations, & Redemptions
+3. Field Notes
+4. Projects
 5. Manuscripts
 6. Technical References
 7. What About Art?
@@ -44,7 +44,7 @@ Tone: precise, reverent, archival, curious.
 
 This is the museum wing.
 
-## 2. Recovery & Restorations
+## 2. Recoveries, Restorations, & Redemptions
 
 This merges the original build logs concept with the deeper personal restoration and redemption layer.
 
@@ -70,11 +70,11 @@ Key idea:
 
 > The restoration is not separate from the recovery. The machine coming back is part of the human coming back.
 
-## 3. Field Lab Journal
+## 3. Field Notes
 
 Formerly Lab Notes.
 
-This category is for shorter active-process notes from the bench, garage, field, desk, or improvised lab environment.
+This category is the Matthew Marx live feed: shorter active-process notes from the bench, garage, field, desk, or improvised lab environment.
 
 Use for:
 
@@ -99,7 +99,7 @@ Key idea:
 
 > Not every post needs to be polished. Some posts are field notes.
 
-## 4. Project Dossiers
+## 4. Projects
 
 Structured context packets for Codex, GitHub, the site, and long-running continuity.
 
@@ -212,5 +212,5 @@ Key idea:
 ## Canonical Top Navigation
 
 ```text
-THE ARCHIVE | Recovery & Restorations | Field Lab Journal | Project Dossiers | Manuscripts | Technical References | What About Art? | About
+THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Notes | Projects | Manuscripts | Technical References | What About Art? | About
 ```
