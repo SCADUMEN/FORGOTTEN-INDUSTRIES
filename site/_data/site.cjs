@@ -17,9 +17,9 @@ module.exports = {
   tagline: "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
   primaryNav: [
     { label: "THE ARCHIVE", href: "/archive.html" },
-    { label: "Recovery & Restorations", href: "/#recovery-restorations" },
-    { label: "Field Lab Journal", href: "/#field-lab-journal" },
-    { label: "Project Dossiers", href: "/#project-dossiers" },
+    { label: "Recoveries, Restorations, & Redemptions", href: "/#recoveries-restorations-redemptions" },
+    { label: "Field Notes", href: "/#field-notes" },
+    { label: "Projects", href: "/#projects" },
     { label: "Manuscripts", href: "/#manuscripts" },
     { label: "Technical References", href: "/hang-on-to-each-other/" },
     { label: "What About Art?", href: "/#what-about-art" },
@@ -35,25 +35,25 @@ module.exports = {
       note: "The museum wing."
     },
     {
-      label: "Recovery & Restorations",
-      slug: "recovery-restorations",
-      href: "/#recovery-restorations",
+      label: "Recoveries, Restorations, & Redemptions",
+      slug: "recoveries-restorations-redemptions",
+      href: "/#recoveries-restorations-redemptions",
       purpose: "Machines coming back, and the human recovery that moves with them: rebuilds, repair arcs, watercooling resurrection, and restoration essays tied directly to project work.",
       tone: "Grounded, emotional, technical, redemptive.",
       note: "The workbench and the soul are allowed to appear in the same post."
     },
     {
-      label: "Field Lab Journal",
-      slug: "field-lab-journal",
-      href: "/#field-lab-journal",
-      purpose: "Short active-process notes from the bench, garage, field, desk, or improvised lab environment.",
+      label: "Field Notes",
+      slug: "field-notes",
+      href: "/#field-notes",
+      purpose: "Matthew Marx live feed: short active-process notes from the bench, garage, field, desk, or improvised lab environment.",
       tone: "Immediate, practical, exploratory.",
       note: "Not every post needs to be polished. Some posts are field notes."
     },
     {
-      label: "Project Dossiers",
-      slug: "project-dossiers",
-      href: "/#project-dossiers",
+      label: "Projects",
+      slug: "projects",
+      href: "/#projects",
       purpose: "Structured context packets for Codex, GitHub, the site, and long-running continuity.",
       tone: "Structured, durable, clear, importable.",
       note: "The context vault."
@@ -72,7 +72,7 @@ module.exports = {
       href: "/hang-on-to-each-other/",
       purpose: "Evergreen practical docs, guides, measurement standards, restoration methods, repeatable workflows, and technical references other people could use.",
       tone: "Clear, practical, precise, reusable.",
-      note: "The manual shelf. Current public reference: Hang On To Each Other."
+      note: "The manual shelf. Featured public reference: Hang On To Each Other."
     },
     {
       label: "What About Art?",

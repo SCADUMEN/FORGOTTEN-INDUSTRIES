@@ -338,6 +338,44 @@ h3 {
   line-height: 1.5;
 }
 
+.lane-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.lane-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  list-style: none;
+}
+
+.lane-list li {
+  min-height: 9.5rem;
+  padding: 1rem;
+  background: var(--white);
+}
+
+.lane-list span {
+  display: block;
+  margin-bottom: 1.35rem;
+  color: var(--oxide);
+  font-family: var(--mono-font);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.lane-list p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
 .mini-progress {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -535,11 +573,13 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .lane-list,
   .mini-progress,
   .progression-list {
     grid-template-columns: 1fr;
   }
 
+  .lane-list li,
   .progression-list li {
     min-height: auto;
   }
