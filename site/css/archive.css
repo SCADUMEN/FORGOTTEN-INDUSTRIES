@@ -2,16 +2,20 @@
 @source "../**/*.njk";
 
 :root {
-  color-scheme: light;
-  --paper: #f7f4ee;
-  --ink: #171717;
-  --muted: #59544b;
-  --line: #c9c0b2;
-  --steel: #33424a;
-  --oxide: #7f3026;
-  --brass: #876f33;
-  --blueprint: #1f4e5f;
-  --white: #fffdfa;
+  color-scheme: dark;
+  --paper: #02040a;
+  --ink: #fff9e8;
+  --muted: #d7d1ff;
+  --line: #4f8cff;
+  --steel: #84eaff;
+  --oxide: #ff5bd6;
+  --brass: #fff275;
+  --blueprint: #67e8ff;
+  --white: #081327;
+  --focus: #fff275;
+  --utility-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --stencil-font: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
 }
 
 * {
@@ -21,8 +25,8 @@
 body {
   margin: 0;
   background:
-    linear-gradient(90deg, rgba(23, 23, 23, 0.018) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(23, 23, 23, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 91, 214, 0.055) 1px, transparent 1px),
     var(--paper);
   background-size: 23px 23px, 29px 29px, auto;
   color: var(--ink);
@@ -41,6 +45,18 @@ a:hover {
   color: var(--oxide);
 }
 
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 0.18rem;
+  color: var(--ink);
+  background: #001f4d;
+}
+
+::selection {
+  background: var(--focus);
+  color: #02040a;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -52,8 +68,9 @@ img {
   position: absolute;
   top: -4rem;
   z-index: 10;
-  background: var(--white);
-  border: 1px solid var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--focus);
+  color: var(--ink);
 }
 
 .skip-link:focus {
@@ -73,7 +90,7 @@ img {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--line);
 }
 
 .site-mark {
@@ -100,7 +117,7 @@ img {
 }
 
 .site-nav a {
-  color: var(--muted);
+  color: var(--blueprint);
 }
 
 .masthead {
@@ -131,6 +148,7 @@ img {
 .hero-image {
   border: 1px solid var(--line);
   background: var(--white);
+  filter: invert(1) contrast(1.08);
 }
 
 .mirror-band,
@@ -146,15 +164,28 @@ img {
 
 .band-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
   padding: 2rem 0;
+}
+
+.band-grid > :first-child {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 48rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.band-grid > :last-child {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .section-label {
   margin: 0 0 0.4rem;
   color: var(--oxide);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--mono-font);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -168,10 +199,20 @@ h2 {
   letter-spacing: 0;
 }
 
+.band-grid > :first-child h2,
+.field-heading {
+  color: var(--ink);
+  font-family: var(--utility-font);
+  font-size: clamp(0.98rem, 1.05vw, 1.12rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.42;
+}
+
 h3 {
   margin: 0 0 0.35rem;
   color: var(--steel);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--utility-font);
   font-size: 0.88rem;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -193,7 +234,7 @@ h3 {
 
 .ledger dt {
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--mono-font);
   font-size: 0.83rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -216,7 +257,7 @@ h3 {
 .stat {
   min-height: 7.5rem;
   padding: 1rem;
-  background: var(--paper);
+  background: var(--white);
 }
 
 .stat strong {
@@ -229,7 +270,7 @@ h3 {
   display: block;
   margin-top: 0.55rem;
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--mono-font);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -260,6 +301,9 @@ h3 {
 .entry-note {
   margin: 0;
   color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .callout {
@@ -274,10 +318,37 @@ h3 {
 }
 
 .action-row {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--mono-font);
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.stamp-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 0.75rem;
+}
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.32rem 0.56rem 0.28rem;
+  border: 2px solid currentColor;
+  background: rgba(255, 91, 214, 0.12);
+  color: var(--oxide);
+  font-family: var(--stencil-font);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.stamp-muted {
+  background: rgba(132, 234, 255, 0.10);
+  color: var(--steel);
 }
 
 .site-footer {
@@ -290,7 +361,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--line);
   padding-top: 1rem;
 }
 
@@ -303,7 +374,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.35rem 0.85rem;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--mono-font);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -320,7 +391,6 @@ h3 {
 
   .site-header,
   .masthead-grid,
-  .band-grid,
   .footer-grid {
     display: block;
   }
@@ -383,5 +453,46 @@ h3 {
 
   .stat strong {
     font-size: 2.7rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --paper: #000;
+    --ink: #fff;
+    --muted: #f4f0ff;
+    --line: #8fefff;
+    --steel: #9ff5ff;
+    --oxide: #ff7ee3;
+    --brass: #fff86b;
+    --blueprint: #8ff3ff;
+    --white: #000b1d;
+  }
+
+  body {
+    background: var(--paper);
+  }
+
+  a {
+    text-decoration-thickness: 0.14em;
+  }
+
+  .mirror-band,
+  .evidence-band,
+  .source-band,
+  .site-header,
+  .footer-grid {
+    border-color: var(--line);
+  }
+}
+
+@media (forced-colors: active) {
+  .hero-image,
+  .site-mark img {
+    filter: none;
+  }
+
+  .stamp {
+    border-color: CanvasText;
   }
 }
