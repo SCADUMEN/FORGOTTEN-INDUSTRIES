@@ -1,5 +1,5 @@
 ---
-title: "Prelude: Perspective, Peregrine, and Pang"
+title: "Prelude: Perspective, Peregrines, & 'Pang'"
 date: 2026-06-06
 status: rough body draft
 category: prelude / manifesto / field note
@@ -12,7 +12,7 @@ related_projects:
   - FI-PROJ-004
 ---
 
-# Prelude: Perspective, Peregrine, and Pang
+# Prelude: Perspective, Peregrines, & 'Pang'
 
 Forgotten Industries // Prelude // Entry 000 // 2026.06.06
 
@@ -24,7 +24,7 @@ _Reader note: death, substance use, recovery, and grief._
 >
 > Old systems do not wake by force. They wake by sequence.
 
-## 00. Pang
+## 00// 'Pang'
 
 _Ground yourself. Tell the truth. Dare to be brave enough to look directly at what survived._
 
