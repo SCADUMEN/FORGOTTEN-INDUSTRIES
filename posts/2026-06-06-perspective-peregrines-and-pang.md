@@ -1,5 +1,5 @@
 ---
-Prelude: Perspective, Peregrines, and Pang
+Prelude: Perspective, Peregrines, & 'Pang'
 Home / Posts / HTML source
 
 Forgotten Industries // Prelude // Entry 000 // 2026.06.06
