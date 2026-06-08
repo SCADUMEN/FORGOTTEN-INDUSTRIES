@@ -1,35 +1,45 @@
 ---
-Prelude: Perspective, Peregrines, & 'Pang'
-Home / Posts / HTML source
+title: "Perspective, Peregrines, & “Pang”"
+slug: "perspective-peregrines-and-pang"
+category: "Perspective, Peregrines, & “Pang”"
+type: "Prelude"
+entry: "000"
+date: "2026-06-06"
+status: "draft"
+description: "The Forgotten Industries prelude: perspective, Peregrine, pang, evidence, and the strange mercy of seeing wreckage clearly."
+tags:
+  - perspective
+  - peregrine
+  - pang
+  - memoir
+  - recovery
+  - watercooling
+  - forgotten-industries
+---
 
-Forgotten Industries // Prelude // Entry 000 // 2026.06.06
+# Perspective, Peregrines, & “Pang”
 
-Reader note: death, substance use, recovery, and grief.
+*Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06*
 
-A thing documented is a thing not yet lost.
+*Reader note: death, substance use, recovery, and grief.*
 
-The archive remembers what panic forgets.
+> A thing documented is a thing not yet lost.
+> The archive remembers what panic forgets.
+> Old systems do not wake by force. They wake by sequence.
 
-Old systems do not wake by force. They wake by sequence.
+## 00. Pang
 
-Forgotten Industries is an archive and evidence-based memoir exploring what happens to the things we leave behind: abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.
-
-This is the record of recoveries, restorations, and Le Redempteur. It is a study of thing, things, and the proper Thing.
-
-00. Pang
-Ground yourself. Stand tall and tell the truth. Dare to be brave enough to look directly at what survived.
+*Ground yourself. Tell the truth. Dare to be brave enough to look directly at what survived.*
 
 Always tell the truth and you shall be untouchable.
 
-That had been my modus operandi throughout my return to higher education. In 2020, near the end of the first brutal wave of the COVID-19 pandemic, I was just about to turn thirty years old. I had been less than a year sober from alcohol following my penultimate rock bottom: the make-or-break decision arc.
+That has been my modus operandi throughout my return to higher education. In 2020, near the end of the first brutal wave of the COVID-19 pandemic, I was just about to turn thirty years old. I had been less than a year sober from alcohol following my penultimate rock bottom, the make-or-break decision arc.
 
-2014 to 2018/2019 is mostly unknown to me. And, to be clear, my personal story of recovery is not the focus of this archive. It is necessary background for what comes next.
+2014 to 2018, maybe 2019, is mostly unknown to me. And, to be clear, my personal story of recovery is not the focus of this archive. It is necessary background for what comes next.
 
-What happens to the things we leave behind?
-
-Is anything ever truly lost?
-
-What remains, and what will be left of us?
+> What happens to the things we have left behind?
+> Is anything ever truly lost?
+> What remains, and what will be left of them?
 
 This is not the first true entry. This is the prelude: the signal check before the archive starts numbering itself.
 
@@ -37,27 +47,25 @@ This is not the first true entry. This is the prelude: the signal check before t
 
 *Early public evidence: Matthew Marx, Forgotten Industries, October 2014.*
 
-Forgotten Industries is the collective body of my work. My name is Matthew T. Marx. I established it in 2014 after the unexpected death of my father, Eric Hugh Marx, on January 10, 2014. My grandmother, Marjorie Marx, passed away weeks later in that frigid spring. My grandparents' estate leapfrogged my dead dad, and I found myself sitting on half a million dollars in my early twenties.
+Forgotten Industries is the collective body of my work. My name is Matthew T. Marx. I established it in 2014 after the unexpected death of my father, Eric Hugh Marx, on January 10, 2014. My grandmother, Marjorie Marx, passed away weeks later in that frigid spring.
 
-Have you ever blacked out at a party? Got way too drunk?
+My father had nothing. He lived with substance use disorder, alcoholism specifically, and was eventually diagnosed with Wernicke-Korsakoff syndrome. That condition contributed to the opiate overdose that is presumed to be his cause of death. My grandparents' estate leapfrogged my dead dad, and I found myself sitting on half a million dollars in my early twenties.
+
+Have you ever blacked out from overconsumption?
 
 That is the best way I can explain what happened to me next. Except I did not lose a night. I lost four years.
 
-One memory is distinctly burned into my brain. At what I would now consider the height of severity of my alcoholism, I had been on a bourbon kick. WhistlePig. One-hundred-something proof, straight. Have you ever heard the phrase “brushing your teeth with it”? Hair of the dog.
-
-So I am standing over my kitchen sink at probably seven in the morning, eyes locked with a freshly poured eye-opener. I was thinking that I did not want it. I was thinking about all the different ways it was a bad idea, and how badly I wanted to not drink it. I remember that train of thought continuing as I slammed it back, threw up in my sink, realized I had just lost the booze, suppressed my gag reflex, and torpedoed a replacement slug of liquid courage.
-
 I dissociated fully into booze and fucking watercooling. I probably spent fifty thousand dollars of my inheritance on hardware, fittings, blocks, pumps, cases, radiators, fans, and systems I never used. Some of it became work. Some of it became evidence. A lot of it became unopened boxes and machines waiting in storage for a version of me who did not know how to come back yet.
 
-What survives the shelf can survive the rebuild.
+*What survives the shelf can survive the rebuild.*
 
-White CaseLabs watercooled build from the 2014 Forgotten Industries Instagram archive.
+![White CaseLabs watercooled build from the 2014 Forgotten Industries Instagram archive.](../assets/social/instagram-20141116-veK079hXRX-caselabs-sth10-watercooledpc-liquidcooled-buildlog-ocn-overclock-g.jpg)
 
-CaseLabs evidence, November 2014. Watercooling was not a metaphor. It was where the money went.
+*CaseLabs evidence, November 2014. Watercooling was not a metaphor. It was where the money went.*
 
-Recovered Instagram crop of a CaseLabs watercooling loop with radiators and fans.
+![Recovered Instagram crop of a CaseLabs watercooling loop with radiators and fans.](../assets/social/recovered/instagram-20141115-fi-case-loop-crop.png)
 
-Recovered social-media crop: the old loop, the old excess, the old proof.
+*Recovered social-media crop: the old loop, the old excess, the old proof.*
 
 After a thirty-day inpatient program, I found myself through and out the other side of my disease. It has been years since I have had a drink. I do not keep track.
 
@@ -67,7 +75,7 @@ My mom, who is literally an angel, is the exception. Years later, when the route
 
 So. COVID-19. Yeah.
 
-I was working at a methadone and Suboxone treatment center for people with opioid use disorder in Chicagoland, through recovery-community connections and my own new interest in the subject, having very recently begun to understand my own.
+I was working at a methadone and Suboxone treatment center for people with opiate use disorder in Chicagoland, through recovery-community connections and my own new interest in the subject, having very recently begun to understand my own.
 
 COVID again. Two of the three counselors I worked with died.
 
@@ -75,7 +83,7 @@ I lost my job.
 
 I returned to Starbucks as a Plan D fallback. I made coffee part time for the next four years, transferred stores, and moved in with my mom and stepdad in Wichita, Kansas, away from every friend and thing I had ever known, so I could have a safe and compatible environment to finish the undergraduate degree I never got.
 
-May 2024. I graduated from ASU with a B.S. in Biological Sciences, biomedical concentration. I had a minor in Philosophy with a focus on medical ethics. I graduated cum laude at the age of thirty-four. I walked the stage in Arizona with my mother present. She asked. I was happy to oblige, this time around.
+May 2024. I graduated from ASU with a B.S. in Biological Sciences, biomedical concentration. I had a minor in Philosophy with a focus on medical ethics. I graduated Cum Laude at the age of thirty-four. I walked the stage in Arizona with my mother present. She asked. I was happy to oblige, this time around.
 
 I decided before the degree choice that if I was going to try to go back to school, holy shit, almost thirty and nothing to show, I might as well shoot as high as possible. I did not know what else to do, still so young out of recovery. I only knew I wanted to be better than I was.
 
@@ -85,23 +93,23 @@ Doctor?
 
 Can I be a fucking doctor?
 
-Turns out, yes. Yes, I could. I was accepted to the University of Kansas School of Medicine MD program, class of 2029, at the age of thirty-four. Holy shit again. My class was mostly twenty-two-year-olds.
+Turns out, yes. Yes, I could. I was accepted to the University of Kansas School of Medicine MD program, class of 2029, at the age of thirty-four. Holy shit. My class was mostly twenty-two-year-olds.
 
-Recovery is not lightning. It is voltage held steady.
+*Recovery is not lightning. It is voltage held steady.*
 
-Wide intake scene with recovered parts laid out for review.
+![Wide intake scene with recovered parts laid out for review.](../assets/initial-photos/matthewmarx-096.jpeg)
 
-2026 intake: the machines did not disappear. They waited long enough to become evidence.
+*2026 intake: the machines did not disappear. They waited long enough to become evidence.*
 
-Recovered EK radiator hardware resting on white CaseLabs parts.
+![Recovered EK radiator hardware resting on white CaseLabs parts.](../assets/initial-photos/matthewmarx-014.jpeg)
 
-Recovered hardware, before cleaning. The archive begins before the object gets improved.
+*Recovered hardware, before cleaning. The archive begins before the object gets improved.*
 
 What came then?
 
 Perspective.
 
-Peregrines.
+Peregrine.
 
 And Pang.
 
@@ -109,11 +117,31 @@ And Pang.
 
 *PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker.*
 
+This archive does not begin with a clean heroic arc. It begins with the pang: the sharp, specific feeling of finding the machines again and realizing the things I abandoned were still there. They remembered more honestly than I could. They waited without forgiving or accusing. They simply remained.
+
+The mark for pang is ∴ .
+
+Read it as: therefore, now look.
+
+Definition: a pang is the physical hit of recognition that arrives when an abandoned object becomes evidence again. It is not nostalgia. It is not proof by itself. It is the signal that something in the archive deserves to be stopped over, photographed, named, and handled with care.
+
+Tutorial:
+
+1. When the pang hits, stop moving.
+2. Photograph the object before cleaning, sorting, selling, repairing, or explaining it.
+3. Write the object name if you know it. If not, write what is visible.
+4. Record the date, place, condition, and what the object made you remember.
+5. Separate evidence from interpretation.
+6. Then continue.
+
+If Potato, my Shiba Inu, wanders into the frame, Potato stays in the record. He is not a random pet reference. He is lab partner, shop supervisor, sleep compliance officer, and living continuity proof. Companions are part of the evidence too.
+
 Line open. Signal clean. What are we untangling?
 
 That is the state of the archive now: not solved, not healed, not perfectly ordered, but reachable.
 
-So the work now is simple -
+So the work now is simple.
+
 Photograph before cleaning. Tell the truth before interpretation. Preserve the dump before curation. Publish one post at a time.
 
 No map is built from motion alone. Stop, mark, continue.
