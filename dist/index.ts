@@ -133,8 +133,8 @@ export const archive = {
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / evidence-based memoir / technical blog",
-    "tagline": "An archive and evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
-    "voice": "intimate, precise, archival, technical, emotionally honest",
+    "tagline": "An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.",
+    "voice": "intimate, scientific, medical, precise, archival, technical, emotionally honest",
     "sourceFiles": [
       {
         "label": "projects",
@@ -155,21 +155,22 @@ export const archive = {
     ]
   },
   "projects": [
-    {
-      "id": "FI-PROJ-001",
-      "slug": "caselabs-mercury-s8-pedestal-restoration",
-      "title": "CaseLabs Mercury S8 + Pedestal Restoration",
-      "working_title": "Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule",
-      "category": "CaseLabs Archive",
-      "status": "revived",
-      "started": "2015",
-      "revived": "2026",
-      "summary": "Documentation and restoration of a white powder-coated CaseLabs Mercury S8 with pedestal, stored for roughly a decade and returned to the bench as part hardware archive, part recovery log, part proof of life.\n",
-      "origin": {
-        "purchased": "around 2015",
-        "stored_for": "roughly a decade",
-        "context": "The project paused after Matthew's father died and returned in 2026 as part of rebuilding life, hobbies, and identity.\n"
-      },
+   {
+  "id": "FI-PROJ-001",
+  "slug": "caselabs-mercury-s8-pedestal-restoration",
+  "title": "Finding Value in the Wreckage",
+  "working_title": "Archiving a CaseLabs Mercury S8 + Pedestal",
+  "summary": "An exploration of rarity, preservation, and the things we leave behind.",
+  "category": "Hardware Archive",     
+  "status": "revived",
+  "started": "2015",
+  "revived": "2026",
+  "origin": {
+    "purchased": "around 2015",
+    "stored_for": "roughly a decade",
+    "context": "The project paused after Matthew's father died and returned in 2026 as part of rebuilding life, hobbies, and identity."
+  }
+},
       "themes": [
         "enthusiast hardware history",
         "custom watercooling",
