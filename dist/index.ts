@@ -133,7 +133,7 @@ export const archive = {
   "meta": {
     "name": "Forgotten Industries",
     "type": "archive / evidence-based memoir / technical blog",
-    "tagline": "An archive and evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
+    "tagline": "An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.",
     "voice": "intimate, precise, archival, technical, emotionally honest",
     "sourceFiles": [
       {
