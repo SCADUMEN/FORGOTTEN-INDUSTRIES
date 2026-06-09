@@ -1,6 +1,13 @@
 module.exports = {
   name: "Forgotten Industries",
   url: "https://forgotten-industries.net",
+  domainUrl: "https://forgotten-industries.net",
+  domainHost: "forgotten-industries.net",
+  githubUrl: "https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES",
+  repository: "Forgotten-Industries/FORGOTTEN-INDUSTRIES",
+  elevityUrl: "https://www.elevity.com/",
+  contact: "officalmtmarx@gmail.com",
+  fieldNotesSubscribeUrl: "https://bsky.app/profile/forgotten-industry.bsky.social",
   author: "Matthew Marx",
 
   tagline:
@@ -46,7 +53,7 @@ module.exports = {
       slug: "field-notes",
       href: "/#field-notes",
       purpose:
-        "Matthew Marx live feed: short active-process notes from the bench, garage, field, desk, or improvised lab environment.",
+        "Archived field notes: short active-process notes from the bench, garage, field, desk, or improvised lab environment.",
       tone: "Immediate, practical, exploratory.",
       note: "Not every post needs to be polished. Some posts are field notes.",
     },
