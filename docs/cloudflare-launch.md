@@ -28,7 +28,7 @@ The workflow installs dependencies, runs `npm run build:site`, preserves `_site/
 
 Register `forgotten-industries.net` through Cloudflare Registrar if available.
 
-Cloudflare will perform the definitive availability check during purchase. Domains registered through Cloudflare Registrar use Cloudflare nameservers, which is fine for this project because DNS and redirects can live in the same account while GitHub Pages serves the site.
+Cloudflare will perform the definitive availability check during purchase. Domains registered through Cloudflare Registrar use Cloudflare nameservers, which is fine for this project because DNS and the site are coupled by design.
 
 ## DNS Setup
 
@@ -97,9 +97,9 @@ The public archive has one canonical spine:
 - Archive mail: `archive@forgotten-industries.net`
 - Field Notes mail: `fieldnotes@forgotten-industries.net`
 - GitHub source: `https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES`
-- Elevity route: `https://elevity.com`
+- Eleventy static site generator: `https://www.11ty.dev/`
 
-The live site renders GitHub, Elevity, contact, and Field Notes links from `site/_data/site.cjs`.
+The live site renders GitHub, Eleventy, contact, and Field Notes links from `site/_data/site.cjs`.
 
 ### Email
 
@@ -121,7 +121,7 @@ analytics: {
 }
 ```
 
-Tracked link hooks already exist through `data-track` attributes for GitHub, Elevity, contact, and Field Notes subscription clicks.
+Tracked link hooks already exist through `data-track` attributes for GitHub, Eleventy, contact, and Field Notes subscription clicks.
 
 ### Subscription List
 
