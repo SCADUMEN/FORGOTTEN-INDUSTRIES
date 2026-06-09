@@ -5,7 +5,8 @@ module.exports = {
   domainHost: "forgotten-industries.net",
   githubUrl: "https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES",
   repository: "Forgotten-Industries/FORGOTTEN-INDUSTRIES",
-  eleventyUrl: "https://www.11ty.dev/",  contact: "officalmtmarx@gmail.com",
+  eleventyUrl: "https://www.11ty.dev/",
+  contact: "officalmtmarx@gmail.com",
   fieldNotesSubscribeUrl: "https://bsky.app/profile/forgotten-industry.bsky.social",
   author: "Matthew Marx",
 
@@ -34,7 +35,7 @@ module.exports = {
       slug: "the-archive",
       href: "/archive.html",
       purpose:
-        "The historical record: documentation, provenance, research, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigations.",
+        "The historical record: documentation, provenance, research, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigation.",
       tone: "Precise, reverent, scientific/medical, archival, curious.",
       note: "The museum wing.",
     },
