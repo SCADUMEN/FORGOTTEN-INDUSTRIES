@@ -2,7 +2,7 @@ module.exports = {
   name: "Forgotten Industries",
   domainHost: "forgotten-industries.net",
   domainUrl: "https://forgotten-industries.net",
-  elevityUrl: "https://elevity.com",
+  elevityUrl: "https://11ty.dev",
   githubUrl: "https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES",
   repository: "Forgotten-Industries/FORGOTTEN-INDUSTRIES",
   contact: "contact@forgotten-industries.net",
@@ -14,10 +14,10 @@ module.exports = {
   },
   supportUrl: "",
   assetVersion: "2026-06-07-public-spine-type",
-  tagline: "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
+ tagline: "An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.",
   primaryNav: [
-    { label: "THE ARCHIVE", href: "/archive.html" },
-    { label: "Recoveries, Restorations, & Redemptions", href: "/#recoveries-restorations-redemptions" },
+    { label: "L'ARCHIVE", href: "/archive.html" },
+    { label: "Recoveries, Restorations, & 'Le Rédempteur'", href: "/#recoveries-restorations-redemptions" },   
     { label: "Field Notes", href: "/#field-notes" },
     { label: "Projects", href: "/#projects" },
     { label: "Manuscripts", href: "/#manuscripts" },
@@ -26,7 +26,7 @@ module.exports = {
   ],
   shelves: [
     {
-      label: "THE ARCHIVE",
+      label: "L'ARCHIVE",
       slug: "the-archive",
       href: "/archive.html",
       purpose: "The historical record: documentation, provenance, research, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigations.",
