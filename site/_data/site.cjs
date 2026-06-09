@@ -5,8 +5,7 @@ module.exports = {
   domainHost: "forgotten-industries.net",
   githubUrl: "https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES",
   repository: "Forgotten-Industries/FORGOTTEN-INDUSTRIES",
-  elevityUrl: "https://www.elevity.com/",
-  contact: "officalmtmarx@gmail.com",
+  eleventyUrl: "https://www.11ty.dev/",  contact: "officalmtmarx@gmail.com",
   fieldNotesSubscribeUrl: "https://bsky.app/profile/forgotten-industry.bsky.social",
   author: "Matthew Marx",
 
