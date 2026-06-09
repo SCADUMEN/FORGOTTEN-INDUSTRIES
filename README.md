@@ -31,18 +31,19 @@ To build the Eleventy mirror:
 ```bash
 npm install
 npm run build:site
-```
+## Curated Posts
 
-This writes the deployable site to `_site/`. The Eleventy home page mirrors the canonical domain and GitHub repository while preserving the raw HTML pages as visible reference shelves.
+The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
 
-To view the raw HTML pages without Eleventy:
+- `posts/index.html` - curated post index.
+- `posts/2026-06-06-perspective-peregrines-and-pang.html` - Entry 000 prelude.
+- `posts/2026-06-06-perspective-peregrines-and-pang.md` - editable Markdown source for Entry 000.
+- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.html` - recovery/restoration manifesto.
+- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - editable Markdown source for the recovery/restoration manifesto.
 
-```bash
-python3 -m http.server 8000
-```
+The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
 
-Then visit `http://localhost:8000`.
-
+The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
 ## Curated Posts
 
 The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
@@ -122,9 +123,10 @@ The archive is not published yet. When it is ready to become an npm package:
 - `src/types.ts` - TypeScript schema for the generated archive.
 - `scripts/import_social.rb` - public Tumblr/Instagram importer for social posts and media.
 - `scripts/build.rb` - YAML-to-JSON and YAML-to-TypeScript build script.
-- `eleventy.config.cjs` - Eleventy build configuration for the public mirror.
-- `site/` - Eleventy source for the domain/GitHub mirror.
-- `dist/forgotten-industries.json` - generated complete archive data.
+- `posts/2026-06-06-perspective-peregrines-and-pang.html` - Entry 000 prelude.
+- `posts/2026-06-06-perspective-peregrines-and-pang.md` - Markdown source for Entry 000.
+- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.html` - recovery/restoration manifesto.
+- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - Markdown source for the recovery/restoration manifesto.- `dist/forgotten-industries.json` - generated complete archive data.
 - `dist/index.ts` - generated TypeScript module exporting the archive.
 - `AGENTS.md` - short pointer for future coding agents.
 - `ATLAS.md` - project operating identity, voice, archive priorities, and decision rules.
