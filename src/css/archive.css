@@ -20,6 +20,26 @@
     Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif;
 }
 
+/* Expose the archive design tokens to Tailwind so utilities like
+   text-oxide, bg-paper, and font-headline resolve to the system above.
+   New components should be styled with these utilities; the legacy
+   classes below remain for existing pages. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-steel: var(--steel);
+  --color-oxide: var(--oxide);
+  --color-brass: var(--brass);
+  --color-blueprint: var(--blueprint);
+  --color-focus: var(--focus);
+  --font-utility: var(--utility-font);
+  --font-mono: var(--mono-font);
+  --font-headline: var(--headline-font);
+  --font-stencil: var(--stencil-font);
+}
+
 * {
   box-sizing: border-box;
 }
