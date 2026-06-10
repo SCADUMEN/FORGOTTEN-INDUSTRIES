@@ -1,0 +1,9 @@
+**/.git
+.vscode
+.tools
+_site
+dist
+node_modules
+package-lock.json
+src/site-snapshots
+intake

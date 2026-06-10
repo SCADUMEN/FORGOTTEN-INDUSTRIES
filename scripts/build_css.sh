@@ -8,6 +8,6 @@ if [ -x ".tools/bin/node" ]; then
 fi
 
 exec "$NODE_BIN" node_modules/@tailwindcss/cli/dist/index.mjs \
-  -i ./site/css/archive.css \
+  -i ./src/css/archive.css \
   -o ./_site/css/archive.css \
   "$@"

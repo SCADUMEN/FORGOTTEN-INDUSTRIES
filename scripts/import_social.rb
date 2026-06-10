@@ -11,10 +11,10 @@ require "uri"
 require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
-ASSET_DIR = File.join(ROOT, "assets/social")
-POST_DIR = File.join(ROOT, "posts/social")
-SRC_FILE = File.join(ROOT, "src/social-posts.yml")
-SOCIAL_INDEX = File.join(ROOT, "social-posts.html")
+ASSET_DIR = File.join(ROOT, "src/assets/social")
+POST_DIR = File.join(ROOT, "src/posts/social")
+SRC_FILE = File.join(ROOT, "src/data/social-posts.yml")
+SOCIAL_INDEX = File.join(ROOT, "src/social-posts.html")
 
 INSTAGRAM_USER_ID = "1562795348"
 INSTAGRAM_USERNAME = "forgottenindustries"
@@ -436,6 +436,6 @@ write_social_index(records)
 
 puts "Imported #{records.count { |record| record.fetch("source") == "tumblr" }} Tumblr posts"
 puts "Imported #{records.count { |record| record.fetch("source") == "instagram" }} Instagram posts"
-puts "Wrote src/social-posts.yml"
-puts "Wrote posts/social/*.md"
-puts "Wrote social-posts.html"
+puts "Wrote src/data/social-posts.yml"
+puts "Wrote src/posts/social/*.md"
+puts "Wrote src/social-posts.html"

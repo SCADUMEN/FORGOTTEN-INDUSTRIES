@@ -1,0 +1,1322 @@
+items:
+  - id: FI-CASE-001
+    name: CaseLabs Mercury S8
+    category: case
+    manufacturer: CaseLabs
+    model: Mercury S8
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: stored / needs inspection and cleaning
+    status: core archive object
+    photos:
+      - assets/initial-photos/matthewmarx-046.jpeg
+      - assets/initial-photos/matthewmarx-047.jpeg
+      - assets/initial-photos/matthewmarx-048.jpeg
+      - assets/initial-photos/matthewmarx-049.jpeg
+      - assets/initial-photos/matthewmarx-050.jpeg
+      - assets/initial-photos/matthewmarx-055.jpeg
+      - assets/initial-photos/matthewmarx-056.jpeg
+      - assets/initial-photos/matthewmarx-098.jpeg
+      - assets/initial-photos/matthewmarx-100.jpeg
+      - assets/initial-photos/matthewmarx-107.jpeg
+      - assets/initial-photos/matthewmarx-108.jpeg
+      - assets/initial-photos/matthewmarx-109.jpeg
+      - assets/initial-photos/matthewmarx-110.jpeg
+      - assets/initial-photos/matthewmarx-111.jpeg
+      - assets/initial-photos/matthewmarx-112.jpeg
+      - assets/initial-photos/matthewmarx-113.jpeg
+      - assets/initial-photos/matthewmarx-114.jpeg
+    notes: >
+      White powder-coated Mercury S8. First photo mapping now ties broad
+      chassis, tray, rear-panel, and table-layout evidence to this core
+      object. Continue identifying panels, fasteners, window configuration, and
+      any missing hardware before cleaning.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-PED-001
+    name: CaseLabs pedestal
+    category: case accessory
+    manufacturer: CaseLabs
+    model: S8 pedestal
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: stored / needs inspection
+    status: core restoration object
+    photos: []
+    notes: >
+      Pedestal planned for radiator capacity, QDC pass-throughs, and service
+      drain. Confirm exact accessory configuration before layout decisions.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-RAD-001
+    name: EK XTX 360 radiator
+    category: radiator
+    manufacturer: EK
+    model: XTX 360
+    quantity: 3
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and leak test
+    status: candidate for restored loop
+    photos:
+      - assets/initial-photos/matthewmarx-002.jpeg
+      - assets/initial-photos/matthewmarx-003.jpeg
+      - assets/initial-photos/matthewmarx-004.jpeg
+      - assets/initial-photos/matthewmarx-005.jpeg
+      - assets/initial-photos/matthewmarx-006.jpeg
+      - assets/initial-photos/matthewmarx-007.jpeg
+      - assets/initial-photos/matthewmarx-008.jpeg
+      - assets/initial-photos/matthewmarx-009.jpeg
+      - assets/initial-photos/matthewmarx-010.jpeg
+      - assets/initial-photos/matthewmarx-011.jpeg
+      - assets/initial-photos/matthewmarx-012.jpeg
+      - assets/initial-photos/matthewmarx-013.jpeg
+      - assets/initial-photos/matthewmarx-014.jpeg
+      - assets/initial-photos/matthewmarx-016.jpeg
+      - assets/initial-photos/matthewmarx-116.jpeg
+      - assets/initial-photos/matthewmarx-119.jpeg
+      - assets/initial-photos/matthewmarx-120.jpeg
+      - assets/initial-photos/matthewmarx-121.jpeg
+      - assets/initial-photos/matthewmarx-122.jpeg
+      - assets/initial-photos/matthewmarx-123.jpeg
+      - assets/initial-photos/matthewmarx-124.jpeg
+      - assets/initial-photos/matthewmarx-126.jpeg
+      - assets/initial-photos/matthewmarx-127.jpeg
+    notes: >
+      Heavy cooling overhead from the original watercooling plan. First photo
+      mapping shows used EK radiators with visible fin dust/debris and fan
+      assemblies. Needs flush, exterior cleaning, thread inspection, fin check,
+      and leak test.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-RAD-002
+    name: EK 360 slim radiator
+    category: radiator
+    manufacturer: EK
+    model: 360 slim
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and leak test
+    status: needs inspection
+    photos: []
+    notes: >
+      Thin 360 radiator present in the recovered cooling inventory. Confirm
+      exact model and fitment.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-05'
+
+  - id: FI-FAN-001
+    name: Noiseblocker eLoop white PWM fans
+    category: fan
+    manufacturer: Noiseblocker
+    model: eLoop white PWM
+    quantity: approximately 20+
+    associated_project: FI-PROJ-001
+    condition: needs testing
+    status: inventory / possible reuse or sale
+    photos: []
+    notes: >
+      Test bearing noise, PWM response, cable condition, and visual yellowing.
+      Decide later which units remain with the archive.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-05'
+
+  - id: FI-PUMP-001
+    name: Aqua Computer D5 Aquabus pumps
+    category: pump
+    manufacturer: Aqua Computer
+    model: D5 Aquabus
+    quantity: 2
+    associated_project: FI-PROJ-001
+    condition: needs electrical and wet test
+    status: candidate for restored loop
+    photos:
+      - assets/initial-photos/matthewmarx-024.jpeg
+      - assets/initial-photos/matthewmarx-040.jpeg
+      - assets/initial-photos/matthewmarx-044.jpeg
+      - assets/initial-photos/matthewmarx-045.jpeg
+    notes: >
+      Intended for a dual-pump layout with Aquaero control. Photo closeups
+      confirm Aqua Computer Aquabus markings and show paired pump/fitting
+      context. Test before any loop planning becomes final.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-PUMP-002
+    name: DDC pumps with EK clear tops
+    category: pump
+    manufacturer: EK / unknown pump manufacturer
+    model: DDC with clear tops
+    quantity: multiple
+    associated_project: FI-PROJ-001
+    condition: needs identification and testing
+    status: needs inspection
+    photos: []
+    notes: >
+      Identify exact pump variants and top condition. Record unknowns rather
+      than guessing.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-05'
+
+  - id: FI-CTRL-001
+    name: Aquaero 6 XT
+    category: controller
+    manufacturer: Aqua Computer
+    model: Aquaero 6 XT
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: needs power-on test
+    status: candidate for restored loop
+    photos:
+      - assets/initial-photos/matthewmarx-033.jpeg
+      - assets/initial-photos/matthewmarx-034.jpeg
+      - assets/initial-photos/matthewmarx-035.jpeg
+      - assets/initial-photos/matthewmarx-036.jpeg
+      - assets/initial-photos/matthewmarx-037.jpeg
+      - assets/initial-photos/matthewmarx-038.jpeg
+      - assets/initial-photos/matthewmarx-039.jpeg
+    notes: >
+      Controller for pumps, fans, and sensors. First photo mapping shows the
+      display, front controls, and exposed PCB/header side. Confirm display,
+      buttons, headers, and Aquabus behavior.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-RES-001
+    name: Large EK cylinder reservoir
+    category: reservoir
+    manufacturer: EK
+    model: cylinder reservoir
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: needs inspection and cleaning
+    status: candidate for restored loop
+    photos:
+      - assets/initial-photos/matthewmarx-117.jpeg
+      - assets/initial-photos/matthewmarx-118.jpeg
+      - assets/initial-photos/matthewmarx-126.jpeg
+      - assets/initial-photos/matthewmarx-127.jpeg
+      - Splunking/IMG_1080.HEIC
+      - Splunking/IMG_1081.HEIC
+      - Splunking/IMG_1082.HEIC
+      - Splunking/IMG_1083.HEIC
+      - Splunking/IMG_1084.HEIC
+      - Splunking/IMG_1085.HEIC
+      - Splunking/IMG_1086.HEIC
+      - Splunking/IMG_1087.HEIC
+    notes: >
+      Intended to remain visible through the right-side window. Photo mapping
+      now includes initial stills plus the 2026-06-05 detail rotation from the
+      Splunking intake. Inspect acrylic, threads, brackets, and O-rings.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-PSU-001
+    name: Corsair AX1500i power supply
+    category: power supply
+    manufacturer: Corsair
+    model: AX1500i
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: stored in plastic bin / needs cable inventory and electrical test
+    status: physical custody evidence / needs testing
+    photos:
+      - assets/initial-photos/matthewmarx-066.jpeg
+    notes: >
+      Physical AX1500i label documented in the initial photo batch. Keep
+      separate from the Instagram-documented REDEEMER AX1200i record until
+      cable set, serial, modular leads, and electrical status are confirmed.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-BLOCK-MOSFET-001
+    name: EK-MOSFET MSI X99 XPower water block
+    category: water block
+    manufacturer: EK
+    model: EK-MOSFET MSI X99 XPower
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: boxed / needs contents verification
+    status: inventory / needs board compatibility confirmation
+    photos:
+      - assets/initial-photos/matthewmarx-017.jpeg
+      - assets/initial-photos/matthewmarx-018.jpeg
+    notes: >
+      Box label identifies EK-MOSFET MSI X99 XPower. Confirm whether the block,
+      thermal pads, screws, manual, and any seals are present before assigning
+      value or compatibility.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-05'
+
+  - id: FI-FAN-002
+    name: Corsair radiator-mounted 120mm fans
+    category: fan
+    manufacturer: Corsair
+    model: 120mm radiator fan / exact model pending label check
+    quantity: at least 7 visible
+    associated_project: FI-PROJ-001
+    condition: used / dusty / needs testing
+    status: physical custody evidence / needs count and model confirmation
+    photos:
+      - assets/initial-photos/matthewmarx-019.jpeg
+      - assets/initial-photos/matthewmarx-020.jpeg
+      - assets/initial-photos/matthewmarx-116.jpeg
+      - assets/initial-photos/matthewmarx-125.jpeg
+      - assets/initial-photos/matthewmarx-126.jpeg
+      - assets/initial-photos/matthewmarx-127.jpeg
+    notes: >
+      Visible fan labels and center caps identify Corsair fans, separate from
+      the remembered Noiseblocker eLoop set. Record as a separate fan group
+      until every radiator/fan assembly is counted and labels are photographed.
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-05'
+
+  - id: FI-FIT-QDC-001
+    name: Quick-disconnect fitting pair
+    category: fitting
+    manufacturer: unknown
+    model: quick-disconnect pair / likely G1/4 liquid-cooling fittings
+    quantity: 1 pair visible
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and O-ring inspection
+    status: needs manufacturer identification and leak test
+    photos:
+      - assets/initial-photos/matthewmarx-040.jpeg
+      - assets/initial-photos/matthewmarx-041.jpeg
+      - assets/initial-photos/matthewmarx-042.jpeg
+      - assets/initial-photos/matthewmarx-043.jpeg
+      - assets/initial-photos/matthewmarx-045.jpeg
+    notes: >
+      Pair photographed beside the Aqua Computer pump detail shots with ruler
+      scale. Identify manufacturer and thread type before reuse; inspect
+      internal seals and perform a leak test.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-CASE-PANEL-001
+    name: CaseLabs white window and vent panel set
+    category: case panel
+    manufacturer: CaseLabs
+    model: Mercury S8 side/window/vent panels
+    quantity: multiple panels
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and fitment sorting
+    status: temporary grouped panel record / needs exact position mapping
+    photos:
+      - assets/initial-photos/matthewmarx-021.jpeg
+      - assets/initial-photos/matthewmarx-022.jpeg
+      - assets/initial-photos/matthewmarx-023.jpeg
+      - assets/initial-photos/matthewmarx-025.jpeg
+      - assets/initial-photos/matthewmarx-029.jpeg
+      - assets/initial-photos/matthewmarx-030.jpeg
+      - assets/initial-photos/matthewmarx-031.jpeg
+      - assets/initial-photos/matthewmarx-032.jpeg
+      - assets/initial-photos/matthewmarx-060.jpeg
+      - assets/initial-photos/matthewmarx-086.jpeg
+      - assets/initial-photos/matthewmarx-098.jpeg
+      - assets/initial-photos/matthewmarx-102.jpeg
+      - assets/initial-photos/matthewmarx-103.jpeg
+      - assets/initial-photos/matthewmarx-104.jpeg
+      - assets/initial-photos/matthewmarx-105.jpeg
+      - Splunking/IMG_1134.HEIC
+      - Splunking/IMG_1135.HEIC
+      - Splunking/IMG_1136.HEIC
+      - Splunking/IMG_1137.HEIC
+      - Splunking/IMG_1138.HEIC
+      - Splunking/IMG_1139.HEIC
+      - Splunking/IMG_1140.HEIC
+      - Splunking/IMG_1141.HEIC
+      - Splunking/IMG_1142.HEIC
+      - Splunking/IMG_1143.HEIC
+      - Splunking/IMG_1144.HEIC
+      - Splunking/IMG_1145.HEIC
+    notes: >
+      White CaseLabs panels with window cutouts, ventilation mesh, and
+      fastener holes. This is a temporary grouped record: next pass should map
+      each panel to exact chassis side, orientation, window/mesh configuration,
+      and missing fasteners.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-CASE-FRAME-001
+    name: CaseLabs white frame and rail set
+    category: case frame
+    manufacturer: CaseLabs
+    model: frame / rail / panel support pieces
+    quantity: multiple pieces
+    associated_project: FI-PROJ-001
+    condition: used / needs sorting and hardware check
+    status: temporary grouped frame record / needs fitment confirmation
+    photos:
+      - assets/initial-photos/matthewmarx-026.jpeg
+      - assets/initial-photos/matthewmarx-027.jpeg
+      - assets/initial-photos/matthewmarx-053.jpeg
+      - assets/initial-photos/matthewmarx-101.jpeg
+      - Splunking/IMG_1153.HEIC
+      - Splunking/IMG_1154.HEIC
+      - Splunking/IMG_1155.HEIC
+      - Splunking/IMG_1156.HEIC
+      - Splunking/IMG_1157.HEIC
+    notes: >
+      White structural frames/rails photographed in both the initial batch and
+      the Splunking intake. Treat as a temporary grouped record until each
+      rail/frame is laid against the chassis and assigned a stable position.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-CASE-TRAY-001
+    name: CaseLabs motherboard tray and midplate assembly
+    category: case internal panel
+    manufacturer: CaseLabs
+    model: motherboard tray / midplate
+    quantity: multiple related pieces
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and alignment check
+    status: temporary grouped internal-panel record
+    photos:
+      - assets/initial-photos/matthewmarx-061.jpeg
+      - assets/initial-photos/matthewmarx-062.jpeg
+      - assets/initial-photos/matthewmarx-064.jpeg
+      - assets/initial-photos/matthewmarx-065.jpeg
+      - assets/initial-photos/matthewmarx-107.jpeg
+      - assets/initial-photos/matthewmarx-109.jpeg
+      - assets/initial-photos/matthewmarx-110.jpeg
+      - assets/initial-photos/matthewmarx-111.jpeg
+      - assets/initial-photos/matthewmarx-112.jpeg
+      - assets/initial-photos/matthewmarx-113.jpeg
+      - assets/initial-photos/matthewmarx-114.jpeg
+    notes: >
+      White internal CaseLabs tray/midplate pieces with pass-through openings,
+      fan/vent sections, and visible wear. Confirm exact S8 position,
+      standoff layout, pass-through grommets, and missing fasteners.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-CASE-PLATE-001
+    name: CaseLabs small white accessory plate set
+    category: case accessory
+    manufacturer: CaseLabs
+    model: small plates / brackets / covers
+    quantity: multiple pieces
+    associated_project: FI-PROJ-001
+    condition: used / mixed hardware bags visible
+    status: temporary grouped small-parts record
+    photos:
+      - Splunking/IMG_1088.HEIC
+      - Splunking/IMG_1089.HEIC
+      - Splunking/IMG_1090.HEIC
+      - Splunking/IMG_1091.HEIC
+      - Splunking/IMG_1092.HEIC
+      - Splunking/IMG_1093.HEIC
+      - Splunking/IMG_1094.HEIC
+      - Splunking/IMG_1095.HEIC
+      - Splunking/IMG_1096.HEIC
+      - Splunking/IMG_1097.HEIC
+      - Splunking/IMG_1098.HEIC
+      - Splunking/IMG_1099.HEIC
+      - Splunking/IMG_1100.HEIC
+      - Splunking/IMG_1101.HEIC
+      - Splunking/IMG_1102.HEIC
+      - Splunking/IMG_1103.HEIC
+      - Splunking/IMG_1104.HEIC
+      - Splunking/IMG_1105.HEIC
+      - Splunking/IMG_1106.HEIC
+      - Splunking/IMG_1107.HEIC
+      - Splunking/IMG_1108.HEIC
+      - Splunking/IMG_1109.HEIC
+      - Splunking/IMG_1110.HEIC
+      - Splunking/IMG_1111.HEIC
+      - Splunking/IMG_1112.HEIC
+      - Splunking/IMG_1113.HEIC
+      - Splunking/IMG_1114.HEIC
+      - Splunking/IMG_1115.HEIC
+      - Splunking/IMG_1116.HEIC
+      - Splunking/IMG_1117.HEIC
+      - Splunking/IMG_1118.HEIC
+      - Splunking/IMG_1119.HEIC
+      - Splunking/IMG_1120.HEIC
+      - Splunking/IMG_1121.HEIC
+      - Splunking/IMG_1122.HEIC
+      - Splunking/IMG_1123.HEIC
+      - Splunking/IMG_1124.HEIC
+      - Splunking/IMG_1125.HEIC
+      - Splunking/IMG_1126.HEIC
+      - Splunking/IMG_1146.HEIC
+      - Splunking/IMG_1147.HEIC
+      - Splunking/IMG_1148.HEIC
+      - Splunking/IMG_1149.HEIC
+      - Splunking/IMG_1150.HEIC
+      - Splunking/IMG_1151.HEIC
+      - Splunking/IMG_1152.HEIC
+    notes: >
+      Small white plates, covers, brackets, and hardware bags from the
+      Splunking station pass. Several pieces repeat from multiple angles; do
+      not assume count from photo count. Assign individual temporary IDs during
+      the next bench sort.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-CASE-FILTER-001
+    name: CaseLabs white mesh/filter insert group
+    category: case filter
+    manufacturer: CaseLabs
+    model: perforated mesh/filter panels
+    quantity: multiple pieces
+    associated_project: FI-PROJ-001
+    condition: used / visible dust and handling marks
+    status: temporary grouped filter record / needs exact fitment mapping
+    photos:
+      - Splunking/IMG_1127.HEIC
+      - Splunking/IMG_1128.HEIC
+      - Splunking/IMG_1129.HEIC
+      - Splunking/IMG_1130.HEIC
+      - Splunking/IMG_1131.HEIC
+      - Splunking/IMG_1132.HEIC
+      - Splunking/IMG_1133.HEIC
+    notes: >
+      Perforated/mesh white CaseLabs inserts photographed separately during
+      Splunking. Treat as a temporary filter/panel subgroup until exact chassis
+      position, orientation, and retained hardware are confirmed.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-CASE-001
+    name: REDEEMER NZXT H440 white mid-tower
+    category: case
+    manufacturer: NZXT
+    model: H440 Mid-Tower White
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160303-BCezr6kBXaS-test-fitting-our-stripped-nzxt-h440-with-a-front-360mm-radiator-p.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      REDEEMER chassis identified by the formal May 8, 2016 Instagram component
+      list and earlier H440 radiator-fitment posts. Record as evidence-backed,
+      not as confirmed present in storage.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-MB-001
+    name: REDEEMER ASUS Z170-Deluxe motherboard
+    category: motherboard
+    manufacturer: ASUS
+    model: Z170-Deluxe
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160324-BDUM-iPhXcV-motherboard-fitted-and-ready-for-tubing-what-do-you-think-let-us.jpg
+      - assets/social/instagram-20160426-BErTjnihXaY-love-the-heatsinks-on-this-mobo-practicing-a-little-macro-photo.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Board appears in direct REDEEMER build evidence and the formal May 8,
+      2016 component list. Later physical inventory should confirm whether this
+      board survived intact or was parted out.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-CPU-001
+    name: REDEEMER Intel Core i7-6700K
+    category: processor
+    manufacturer: Intel
+    model: Core i7-6700K
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160220-BB_2r09hXdj-ek-supremacy-evo-csq-installed-on-i7-6700k-asus-z-170-deluxe-but.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      CPU is named in the May 8, 2016 REDEEMER spec and appears in the earlier
+      EK-Supremacy/Z170-Deluxe post. Physical location and post-build
+      disposition remain unknown.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-MEM-001
+    name: REDEEMER Kingston HyperX Predator DDR4 kit
+    category: memory
+    manufacturer: Kingston
+    model: HyperX Predator 16GB 3000MHz DDR4
+    quantity: 1 kit / 4x4GB
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160329-BDhKejJhXbB-sometimes-you-find-a-brand-new-ram-water-block-in-your-office-so.jpg
+      - assets/social/instagram-20160331-BDmjov-BXcI-almost-finished-prepping-the-hyper-x-for-liquid-cooling-what-do-y.jpg
+      - assets/social/instagram-20160401-BDpOg3VBXfN-finished-preparing-the-ram-all-ready-for-tubing.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence alternates between HyperX Predator and Hyper-X DDR4.
+      The recovered spec resolves the REDEEMER kit as 16GB 3000MHz DDR4,
+      likely 4x4GB based on prep posts.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-GPU-001
+    name: REDEEMER EVGA GeForce GTX 980 Ti K|NGP|N
+    category: graphics card
+    manufacturer: EVGA
+    model: GeForce GTX 980 Ti 6GB K|NGP|N
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160225-BCNE612hXVw-getting-ready-to-liquid-cool-this-evga-980ti-kingpin-our-ekwb-wat.jpg
+      - assets/social/instagram-20160228-BCWRBKPhXYD-getting-ready-to-give-this-evga-980ti-kingpin-pcb-a-shiny-new-hom.jpg
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      GPU is present in the formal REDEEMER spec and multiple prep posts.
+      Treat as a high-priority physical confirmation target because the card,
+      waterblock, and backplate are distinct archive-relevant objects.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-STOR-001
+    name: REDEEMER Intel 535 Series SSD pair
+    category: storage
+    manufacturer: Intel
+    model: 535 Series SSD 480GB
+    quantity: 2 / RAID0
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160323-BDRoKH-BXTu-the-elusive-535-managed-to-find-a-pair-of-these-for-redeemer-will.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Instagram caption identifies a pair of Intel 535 480GB SSDs for
+      REDEEMER, intended for RAID0 as the main drive. Preserve as a paired
+      record unless later physical evidence separates them.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-PSU-001
+    name: REDEEMER Corsair AX1200i power supply
+    category: power supply
+    manufacturer: Corsair
+    model: AX1200i Digital ATX 1200W 80 Plus Platinum
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160318-BDEwbVoBXVH-we-ve-chosen-to-repurpose-a-1200w-power-supply-from-our-test-benc.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption states the AX1200i was repurposed from the test bench for
+      REDEEMER. Later intake should confirm whether this PSU is still in the
+      archive, in a different machine, or gone.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-LIGHT-001
+    name: REDEEMER NZXT HUE+ lighting controller
+    category: lighting controller
+    manufacturer: NZXT
+    model: HUE+ Smart RGB LED
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160513-BFVa8odBXfF-the-hue-totally-blew-me-away-nzxt-nzxtbuilds-intel-gamingpc-custo-poster.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Named in the May 8, 2016 component list and shown in the May 13 HUE+
+      lighting video. Store video path with the social post record rather than
+      duplicating it here.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-BLOCK-CPU-001
+    name: REDEEMER EK-Supremacy EVO CPU block
+    category: water block
+    manufacturer: EK
+    model: EK-Supremacy EVO Nickel CSQ
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160220-BB_2r09hXdj-ek-supremacy-evo-csq-installed-on-i7-6700k-asus-z-170-deluxe-but.jpg
+      - assets/social/instagram-20160220-BB_88dTBXWE-another-shot-of-the-z170-deluxe-with-ekwaterblocks-cpu-block-inst.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      CPU block is documented before REDEEMER is named and then appears in the
+      formal REDEEMER spec. Confirm whether the block stayed with the Z170
+      platform after teardown.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-BLOCK-RAM-001
+    name: REDEEMER EK-RAM Monarch memory cooling assembly
+    category: water block
+    manufacturer: EK
+    model: EK-RAM Monarch Module / EK-RAM Monarch X4 Nickel
+    quantity: 1 assembly for 4 modules
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160329-BDhKejJhXbB-sometimes-you-find-a-brand-new-ram-water-block-in-your-office-so.jpg
+      - assets/social/instagram-20160331-BDmjov-BXcI-almost-finished-prepping-the-hyper-x-for-liquid-cooling-what-do-y.jpg
+      - assets/social/instagram-20160401-BDpOg3VBXfN-finished-preparing-the-ram-all-ready-for-tubing.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Captions identify EK-RAM Monarch Module - Black and EK-RAM Monarch X4 -
+      Nickel used on the Kingston HyperX DDR4 kit. Quantity is recorded as one
+      functional cooling assembly until parts are physically counted.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-BLOCK-GPU-001
+    name: REDEEMER EK-FC980 GTX Ti Classy KPE GPU block
+    category: water block
+    manufacturer: EK
+    model: EK-FC980 GTX Ti Classy KPE Nickel
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160228-BCWRBKPhXYD-getting-ready-to-give-this-evga-980ti-kingpin-pcb-a-shiny-new-hom.jpg
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      GPU block is tied to the EVGA 980 Ti K|NGP|N/Classified KPE platform in
+      the recovered captions. Confirm exact acrylic/acetal variant during
+      physical intake.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-BACKPLATE-001
+    name: REDEEMER EK-FC980 GTX Ti Classy KPE backplate
+    category: backplate
+    manufacturer: EK
+    model: EK-FC980 GTX Ti Classy KPE Backplate Nickel
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160319-BDHmcW3BXWB-late-post-today-but-here-is-a-shot-of-the-hardware-going-into-red.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Backplate is named separately in the formal May 8, 2016 REDEEMER list.
+      Keep separate from the GPU block for future compatibility and value
+      tracking.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-PUMP-D5-001
+    name: REDEEMER EK-D5 Vario motor pair
+    category: pump
+    manufacturer: EK
+    model: EK-D5 Vario Motor
+    quantity: 2
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160413-BEKLbZrBXVm-the-shortest-and-most-difficult-tubing-run-in-redeemer-pictured-e.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Final REDEEMER list names EK-D5 Vario Motor x2. The May 8 final list
+      conflicts with earlier DDC pump evidence, so preserve the D5 pair as the
+      final spec while retaining the DDC assembly as its own evidence record.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-PUMPTOP-D5-001
+    name: REDEEMER EK dual D5 pump top
+    category: pump top
+    manufacturer: EK
+    model: EK-D5 Dual Top G1/4 CSQ Acetal / EK-XTOP Dual D5 PWM
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160413-BEKLbZrBXVm-the-shortest-and-most-difficult-tubing-run-in-redeemer-pictured-e.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence names EK-XTOP Dual D5 PWM, while the formal list names
+      EK-D5 Dual Top G1/4 CSQ - Acetal. Treat as the same functional dual-D5
+      pump-top evidence until a physical part number confirms the exact model.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-PUMP-DDC-001
+    name: REDEEMER Swiftech MCP35X DDC pump assembly
+    category: pump
+    manufacturer: Swiftech / EK
+    model: MCP35X DDC with EK-XTOP DDC Plexi and EK-DDC Heatsink Housing Nickel
+    quantity: 2
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: early REDEEMER evidence / possibly superseded by final D5 spec
+    photos:
+      - assets/social/instagram-20160316-BDB9Y11hXbo-dual-water-pumps-going-into-redeemer-looking-super-clean-with-ekw.jpg
+    notes: >
+      March 16, 2016 caption directly states dual water pumps going into
+      REDEEMER and identifies Swiftech MCP35X DDC pumps with EK tops and
+      heatsink housings. Because the formal May 8 list names D5 hardware, this
+      may be an early configuration, staged hardware, or a separate pump set.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-RES-001
+    name: REDEEMER EK-RES X3 250 white reservoir
+    category: reservoir
+    manufacturer: EK
+    model: EK-RES X3 250 White
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160316-BC_jrmLhXa2-progress-dry-fit-some-fittings-and-mounted-brackets-for-our-reser.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Reservoir appears in loop planning and the formal REDEEMER list. Confirm
+      brackets, tube condition, end caps, and color during physical intake.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-FIT-001
+    name: REDEEMER EK-ACF compression fittings
+    category: fitting
+    manufacturer: EK
+    model: EK-ACF Compression 10/16mm Nickel
+    quantity: 16
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160314-BC8c2wrBXdw-fittings-we-will-be-using-in-our-new-flagship-build-entitled-rede.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Fittings are named in the March 14 REDEEMER launch post and the formal
+      May 8 component list. Quantity of 16 comes from the final list.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-FIT-002
+    name: REDEEMER EK-PSC angled adapters
+    category: fitting
+    manufacturer: EK
+    model: EK-PSC Adapter 45 G1/4 and EK-PSC Adapter 90 G1/4
+    quantity: quantity unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160314-BC8c2wrBXdw-fittings-we-will-be-using-in-our-new-flagship-build-entitled-rede.jpg
+    notes: >
+      March 14, 2016 REDEEMER fittings post names both 45 and 90 degree EK-PSC
+      adapters. Final count is not available from caption evidence.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-TUBE-001
+    name: REDEEMER EK-Tube ZMT matte black tubing
+    category: tubing
+    manufacturer: EK
+    model: EK-Tube ZMT Matte Black 10/16mm
+    quantity: length unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160407-BD4PAlwhXRJ-tubing-has-started-really-liking-the-matte-black-and-nickel-combi.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Caption evidence names EK-Tube ZMT Matte Black 16/10mm; formal list uses
+      10/16mm. Treat as the same tubing size notation until packaging or
+      physical measurement confirms it.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-RAD-240-001
+    name: REDEEMER EK-CoolStream XE 240 radiator
+    category: radiator
+    manufacturer: EK
+    model: CoolStream XE 240mm
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160308-BCs3a-ohXbv-next-up-240mm-top-installed-as-intake-push-what-do-you-think-let.jpg
+      - assets/social/instagram-20160310-BCyqnvRhXfI-another-shot-of-our-installed-ek-pe-coolstream-240mm-360mm-in-a-n.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Formal list identifies an EK-CoolStream XE 240mm. Earlier captions show a
+      240mm top radiator installed; one caption calls the installed pair PE,
+      while the formal list resolves the final spec as XE.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-RAD-360-001
+    name: REDEEMER EK-CoolStream XE 360 radiator
+    category: radiator
+    manufacturer: EK
+    model: CoolStream XE 360mm
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160303-BCezr6kBXaS-test-fitting-our-stripped-nzxt-h440-with-a-front-360mm-radiator-p.jpg
+      - assets/social/instagram-20160310-BCyqnvRhXfI-another-shot-of-our-installed-ek-pe-coolstream-240mm-360mm-in-a-n.jpg
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Formal list identifies an EK-CoolStream XE 360mm. Earlier H440 posts show
+      front 360mm fitment before the finished REDEEMER spec was posted.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-FAN-001
+    name: REDEEMER EK-Vardar white radiator fans
+    category: fan
+    manufacturer: EK
+    model: Vardar F4-120ER 2200rpm White
+    quantity: 6
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160508-BFKAtXeBXT8-forgotten-industries-redeemer.jpg
+    notes: >
+      Fan model and count come from the formal May 8, 2016 REDEEMER component
+      list. No separate fan-only intake post is currently linked.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-COOLANT-001
+    name: REDEEMER EK-Ekoolant Pastel White
+    category: coolant
+    manufacturer: EK
+    model: EK-Ekoolant Pastel White
+    quantity: quantity unknown
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / consumed or physical custody unknown
+    status: recovered Instagram evidence / consumable record
+    photos:
+      - assets/social/instagram-20160412-BEFLlXSBXRm-loop-is-filled-running-8-hours-no-leaks.jpg
+    notes: >
+      Loop-fill post identifies EK-Ekoolant Pastel White and records an 8+ hour
+      no-leak run. Treat as consumable evidence rather than expected surviving
+      inventory.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-CABLE-001
+    name: REDEEMER Mainframe Customs Teleios white cable set
+    category: cable set
+    manufacturer: Mainframe Customs
+    model: Teleios White custom cables / extensions
+    quantity: 1 set
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: recovered Instagram evidence / needs physical confirmation
+    photos:
+      - assets/social/instagram-20160424-BEkazzMhXdZ-mainframe-customs-pulled-through-with-some-lovely-cables-for-rede.jpg
+      - assets/social/instagram-20160426-BEp20SZhXab-just-some-cable-porn-for-today.jpg
+    notes: >
+      Captions document Mainframe Customs cables for REDEEMER and a Teleios
+      White detail shot. Earlier April 19 caption mentions ordered extensions,
+      so confirm whether this was a full PSU set, extensions, or both.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-RED-DISPLAY-001
+    name: REDEEMER 65-inch curved Samsung test display
+    category: display
+    manufacturer: Samsung
+    model: 65-inch curved display
+    quantity: 1
+    associated_project: FI-PROJ-005
+    condition: Instagram-documented / physical custody unknown
+    status: context object for final REDEEMER test
+    photos:
+      - assets/social/instagram-20160517-BFgBwMfhXfM-time-to-test-redeemer-with-some-survival-horror-action-on-the-65-poster.jpg
+    notes: >
+      May 17, 2016 test post places REDEEMER on a 65-inch curved Samsung
+      display. This is a context object rather than a core PC component, but it
+      anchors the final recovered test evidence.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-DRONE-001
+    name: Perry 1 / PEREGRINE-A01
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 4K
+    quantity: 1
+    associated_project: FI-PROJ-004
+    condition: crashed / recovered / needs physical inspection
+    status: grounded pending arm, motor, propeller, and ESC/power diagnostics
+    photos: []
+    notes: >
+      First PEREGRINE aircraft. A01 got stuck on the awning, was recovered, and
+      then became the troubleshooting bird. Known concerns include Error 30210,
+      back-right arm damage, motor resistance, propeller mismatch possibility,
+      and overtightening risk. Treat as grounded until physical inspection
+      clears the arm, motor, propellers, screws, wiring, and ESC/power path.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-DRONE-002
+    name: Perry 2 / PEREGRINE-A02
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 3 with DJI RC
+    quantity: 1
+    associated_project: FI-PROJ-004
+    condition: lost / likely on roof / not recovered
+    status: no unsafe roof recovery; replace before risking a climb
+    photos:
+      - assets/projects/peregrine/peregrine-a02.png
+    notes: >
+      Newer PEREGRINE platform with DJI RC. Corrected archive identity: A02 is
+      the DJI Mini 3, not the Mini 3 Pro. After the A01 recovery and new flight
+      confidence, A02 was flown at roughly 3 AM and lost, described in the field
+      record as "yeeted into the abyss." The likely location is the roof.
+      Recovery is explicitly deferred: replacing the aircraft is preferable to
+      an unsafe high-roof climb.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-05'
+
+  - id: FI-DRONE-003
+    name: Perry 3 / PEREGRINE-A03
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 3
+    quantity: 1 planned
+    associated_project: FI-PROJ-004
+    condition: planned replacement / not acquired
+    status: target platform for next PEREGRINE aircraft
+    photos: []
+    notes: >
+      Planned Mini 3 replacement aircraft for Perry 3. Track acquisition,
+      baseline inspection, firmware, battery inventory, propeller package, and
+      first flight as separate archive events once the aircraft is in hand.
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-06-05'
+
+  - id: FI-PHOTO-001
+    name: Initial local archive photo batch
+    category: photo evidence set
+    manufacturer: Matthew Marx / Forgotten Industries
+    model: initial local export set
+    quantity: 129 files
+    associated_project: FI-PROJ-001
+    condition: preserved local files / mixed JPEG, MOV, and PNG sources
+    status: raw photographic evidence / needs object-level mapping
+    photos:
+      - assets/initial-photos/forgotten-industries.jpeg
+      - assets/initial-photos/matthewmarx-001.jpeg
+      - assets/initial-photos/matthewmarx-002.jpeg
+      - assets/initial-photos/matthewmarx-003.jpeg
+      - assets/initial-photos/matthewmarx-004.jpeg
+      - assets/initial-photos/matthewmarx-005.jpeg
+      - assets/initial-photos/matthewmarx-006.jpeg
+      - assets/initial-photos/matthewmarx-007.jpeg
+      - assets/initial-photos/matthewmarx-008.jpeg
+      - assets/initial-photos/matthewmarx-009.jpeg
+      - assets/initial-photos/matthewmarx-010.jpeg
+      - assets/initial-photos/matthewmarx-011.jpeg
+      - assets/initial-photos/matthewmarx-012.jpeg
+      - assets/initial-photos/matthewmarx-013.jpeg
+      - assets/initial-photos/matthewmarx-014.jpeg
+      - assets/initial-photos/matthewmarx-015.jpeg
+      - assets/initial-photos/matthewmarx-016.jpeg
+      - assets/initial-photos/matthewmarx-017.jpeg
+      - assets/initial-photos/matthewmarx-018.jpeg
+      - assets/initial-photos/matthewmarx-019.jpeg
+      - assets/initial-photos/matthewmarx-020.jpeg
+      - assets/initial-photos/matthewmarx-021.jpeg
+      - assets/initial-photos/matthewmarx-022.jpeg
+      - assets/initial-photos/matthewmarx-023.jpeg
+      - assets/initial-photos/matthewmarx-024.jpeg
+      - assets/initial-photos/matthewmarx-025.jpeg
+      - assets/initial-photos/matthewmarx-026.jpeg
+      - assets/initial-photos/matthewmarx-027.jpeg
+      - assets/initial-photos/matthewmarx-028.jpeg
+      - assets/initial-photos/matthewmarx-029.jpeg
+      - assets/initial-photos/matthewmarx-030.jpeg
+      - assets/initial-photos/matthewmarx-031.jpeg
+      - assets/initial-photos/matthewmarx-032.jpeg
+      - assets/initial-photos/matthewmarx-033.jpeg
+      - assets/initial-photos/matthewmarx-034.jpeg
+      - assets/initial-photos/matthewmarx-035.jpeg
+      - assets/initial-photos/matthewmarx-036.jpeg
+      - assets/initial-photos/matthewmarx-037.jpeg
+      - assets/initial-photos/matthewmarx-038.jpeg
+      - assets/initial-photos/matthewmarx-039.jpeg
+      - assets/initial-photos/matthewmarx-040.jpeg
+      - assets/initial-photos/matthewmarx-041.jpeg
+      - assets/initial-photos/matthewmarx-042.jpeg
+      - assets/initial-photos/matthewmarx-043.jpeg
+      - assets/initial-photos/matthewmarx-044.jpeg
+      - assets/initial-photos/matthewmarx-045.jpeg
+      - assets/initial-photos/matthewmarx-046.jpeg
+      - assets/initial-photos/matthewmarx-047.jpeg
+      - assets/initial-photos/matthewmarx-048.jpeg
+      - assets/initial-photos/matthewmarx-049.jpeg
+      - assets/initial-photos/matthewmarx-050.jpeg
+      - assets/initial-photos/matthewmarx-051.jpeg
+      - assets/initial-photos/matthewmarx-052.jpeg
+      - assets/initial-photos/matthewmarx-053.jpeg
+      - assets/initial-photos/matthewmarx-054.jpeg
+      - assets/initial-photos/matthewmarx-055.jpeg
+      - assets/initial-photos/matthewmarx-056.jpeg
+      - assets/initial-photos/matthewmarx-057.jpeg
+      - assets/initial-photos/matthewmarx-058.jpeg
+      - assets/initial-photos/matthewmarx-059.jpeg
+      - assets/initial-photos/matthewmarx-060.jpeg
+      - assets/initial-photos/matthewmarx-061.jpeg
+      - assets/initial-photos/matthewmarx-062.jpeg
+      - assets/initial-photos/matthewmarx-063.jpeg
+      - assets/initial-photos/matthewmarx-064.jpeg
+      - assets/initial-photos/matthewmarx-065.jpeg
+      - assets/initial-photos/matthewmarx-066.jpeg
+      - assets/initial-photos/matthewmarx-067.jpeg
+      - assets/initial-photos/matthewmarx-068.jpeg
+      - assets/initial-photos/matthewmarx-069.jpeg
+      - assets/initial-photos/matthewmarx-070.jpeg
+      - assets/initial-photos/matthewmarx-071.mov
+      - assets/initial-photos/matthewmarx-072.jpeg
+      - assets/initial-photos/matthewmarx-073.jpeg
+      - assets/initial-photos/matthewmarx-074.jpeg
+      - assets/initial-photos/matthewmarx-075.jpeg
+      - assets/initial-photos/matthewmarx-076.jpeg
+      - assets/initial-photos/matthewmarx-077.jpeg
+      - assets/initial-photos/matthewmarx-078.jpeg
+      - assets/initial-photos/matthewmarx-079.jpeg
+      - assets/initial-photos/matthewmarx-080.jpeg
+      - assets/initial-photos/matthewmarx-081.jpeg
+      - assets/initial-photos/matthewmarx-082.jpeg
+      - assets/initial-photos/matthewmarx-083.jpeg
+      - assets/initial-photos/matthewmarx-084.jpeg
+      - assets/initial-photos/matthewmarx-085.jpeg
+      - assets/initial-photos/matthewmarx-086.jpeg
+      - assets/initial-photos/matthewmarx-087.jpeg
+      - assets/initial-photos/matthewmarx-088.jpeg
+      - assets/initial-photos/matthewmarx-089.jpeg
+      - assets/initial-photos/matthewmarx-090.jpeg
+      - assets/initial-photos/matthewmarx-091.jpeg
+      - assets/initial-photos/matthewmarx-092.jpeg
+      - assets/initial-photos/matthewmarx-093.jpeg
+      - assets/initial-photos/matthewmarx-094.jpeg
+      - assets/initial-photos/matthewmarx-095.jpeg
+      - assets/initial-photos/matthewmarx-096.jpeg
+      - assets/initial-photos/matthewmarx-097.jpeg
+      - assets/initial-photos/matthewmarx-098.jpeg
+      - assets/initial-photos/matthewmarx-099.jpeg
+      - assets/initial-photos/matthewmarx-100.jpeg
+      - assets/initial-photos/matthewmarx-101.jpeg
+      - assets/initial-photos/matthewmarx-102.jpeg
+      - assets/initial-photos/matthewmarx-103.jpeg
+      - assets/initial-photos/matthewmarx-104.jpeg
+      - assets/initial-photos/matthewmarx-105.jpeg
+      - assets/initial-photos/matthewmarx-106.jpeg
+      - assets/initial-photos/matthewmarx-107.jpeg
+      - assets/initial-photos/matthewmarx-108.jpeg
+      - assets/initial-photos/matthewmarx-109.jpeg
+      - assets/initial-photos/matthewmarx-110.jpeg
+      - assets/initial-photos/matthewmarx-111.jpeg
+      - assets/initial-photos/matthewmarx-112.jpeg
+      - assets/initial-photos/matthewmarx-113.jpeg
+      - assets/initial-photos/matthewmarx-114.jpeg
+      - assets/initial-photos/matthewmarx-115.mov
+      - assets/initial-photos/matthewmarx-116.jpeg
+      - assets/initial-photos/matthewmarx-117.jpeg
+      - assets/initial-photos/matthewmarx-118.jpeg
+      - assets/initial-photos/matthewmarx-119.jpeg
+      - assets/initial-photos/matthewmarx-120.jpeg
+      - assets/initial-photos/matthewmarx-121.jpeg
+      - assets/initial-photos/matthewmarx-122.jpeg
+      - assets/initial-photos/matthewmarx-123.jpeg
+      - assets/initial-photos/matthewmarx-124.jpeg
+      - assets/initial-photos/matthewmarx-125.jpeg
+      - assets/initial-photos/matthewmarx-126.jpeg
+      - assets/initial-photos/matthewmarx-127.jpeg
+      - assets/initial-photos/screenshot-2026-06-04-21-27-09.png
+    notes: >
+      Local first-pass photo asset batch currently present in the local archive
+      working tree. Matthew referenced this body as the first
+      150-photo set; the checked-in local folder currently contains 129 files:
+      126 JPEG, 2 MOV, and 1 PNG. Contact-sheet review of rendered stills
+      shows CaseLabs chassis and panel evidence, radiator and fan hardware,
+      filters, trays, packaging, cable and component context, room/process
+      context, and the Forgotten Industries identity asset. See
+      docs/intake/2026-06-05-initial-photos.md,
+      docs/intake/2026-06-05-initial-photos-files.csv, and
+      docs/intake/2026-06-05-initial-photos.sha256 before renaming, moving, or
+      deriving public assets.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'
+
+  - id: FI-PHOTO-002
+    name: 2026-06-05 Splunking raw photo intake
+    category: photo evidence set
+    manufacturer: Matthew Marx / Apple iPhone
+    model: HEIF/PNG camera-roll intake
+    quantity: 80 files
+    associated_project: FI-PROJ-002
+    condition: preserved raw intake / originals untouched
+    status: raw photographic evidence / pending curated previews and object-level mapping
+    photos:
+      - Splunking/IMG_1080.HEIC
+      - Splunking/IMG_1081.HEIC
+      - Splunking/IMG_1082.HEIC
+      - Splunking/IMG_1083.HEIC
+      - Splunking/IMG_1084.HEIC
+      - Splunking/IMG_1085.HEIC
+      - Splunking/IMG_1086.HEIC
+      - Splunking/IMG_1087.HEIC
+      - Splunking/IMG_1088.HEIC
+      - Splunking/IMG_1089.HEIC
+      - Splunking/IMG_1090.HEIC
+      - Splunking/IMG_1091.HEIC
+      - Splunking/IMG_1092.HEIC
+      - Splunking/IMG_1093.HEIC
+      - Splunking/IMG_1094.HEIC
+      - Splunking/IMG_1095.HEIC
+      - Splunking/IMG_1096.HEIC
+      - Splunking/IMG_1097.HEIC
+      - Splunking/IMG_1098.HEIC
+      - Splunking/IMG_1099.HEIC
+      - Splunking/IMG_1100.HEIC
+      - Splunking/IMG_1101.HEIC
+      - Splunking/IMG_1102.HEIC
+      - Splunking/IMG_1103.HEIC
+      - Splunking/IMG_1104.HEIC
+      - Splunking/IMG_1105.HEIC
+      - Splunking/IMG_1106.HEIC
+      - Splunking/IMG_1107.HEIC
+      - Splunking/IMG_1108.HEIC
+      - Splunking/IMG_1109.HEIC
+      - Splunking/IMG_1110.HEIC
+      - Splunking/IMG_1111.HEIC
+      - Splunking/IMG_1112.HEIC
+      - Splunking/IMG_1113.HEIC
+      - Splunking/IMG_1114.HEIC
+      - Splunking/IMG_1115.HEIC
+      - Splunking/IMG_1116.HEIC
+      - Splunking/IMG_1117.HEIC
+      - Splunking/IMG_1118.HEIC
+      - Splunking/IMG_1119.HEIC
+      - Splunking/IMG_1120.HEIC
+      - Splunking/IMG_1121.HEIC
+      - Splunking/IMG_1122.HEIC
+      - Splunking/IMG_1123.HEIC
+      - Splunking/IMG_1124.HEIC
+      - Splunking/IMG_1125.HEIC
+      - Splunking/IMG_1126.HEIC
+      - Splunking/IMG_1127.HEIC
+      - Splunking/IMG_1128.HEIC
+      - Splunking/IMG_1129.HEIC
+      - Splunking/IMG_1130.HEIC
+      - Splunking/IMG_1131.HEIC
+      - Splunking/IMG_1132.HEIC
+      - Splunking/IMG_1133.HEIC
+      - Splunking/IMG_1134.HEIC
+      - Splunking/IMG_1135.HEIC
+      - Splunking/IMG_1136.HEIC
+      - Splunking/IMG_1137.HEIC
+      - Splunking/IMG_1138.HEIC
+      - Splunking/IMG_1139.HEIC
+      - Splunking/IMG_1140.HEIC
+      - Splunking/IMG_1141.HEIC
+      - Splunking/IMG_1142.HEIC
+      - Splunking/IMG_1143.HEIC
+      - Splunking/IMG_1144.HEIC
+      - Splunking/IMG_1145.HEIC
+      - Splunking/IMG_1146.HEIC
+      - Splunking/IMG_1147.HEIC
+      - Splunking/IMG_1148.HEIC
+      - Splunking/IMG_1149.HEIC
+      - Splunking/IMG_1150.HEIC
+      - Splunking/IMG_1151.HEIC
+      - Splunking/IMG_1152.HEIC
+      - Splunking/IMG_1153.HEIC
+      - Splunking/IMG_1154.HEIC
+      - Splunking/IMG_1155.HEIC
+      - Splunking/IMG_1156.HEIC
+      - Splunking/IMG_1157.HEIC
+      - Splunking/IMG_1158.PNG
+      - Splunking/IMG_1159.HEIC
+    notes: >
+      Raw iCloud Splunking intake copied into the local repository on
+      2026-06-05. Contains 80 files: IMG_1080.HEIC through IMG_1159.HEIC,
+      with 79 HEIC files and 1 PNG totaling 423,137,971 bytes. Originals are
+      preserved untouched for custody and later object-level mapping. The
+      current environment did not produce trustworthy HEIC visual previews, so
+      identification should happen from native viewing tools or curated
+      derivatives. See docs/intake/2026-06-05-splunking.md,
+      docs/intake/2026-06-05-splunking-files.csv, and
+      docs/intake/2026-06-05-splunking.sha256.
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-06-05'

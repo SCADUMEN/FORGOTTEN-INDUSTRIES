@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+<article class="mx-auto w-[min(760px,calc(100%-32px))] py-12">
+  <header class="mb-10">
+    <p class="mb-2 font-mono text-[0.74rem] font-bold text-oxide">
+      {{ type or "Post" }}{% if entry %} / Entry {{ entry }}{% endif %}
+    </p>
+    <h1 class="font-stencil text-3xl font-black text-ink uppercase">{{ title }}</h1>
+    <p class="mt-3 font-mono text-[0.9rem] text-muted">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      / <a href="/posts/">Posts</a>
+    </p>
+  </header>
+  <div class="post-body">{{ content | safe }}</div>
+</article>
