@@ -15,10 +15,18 @@ export default function (eleventyConfig) {
     },
   })
 
-  eleventyConfig.addPassthroughCopy('assets')
+  // Published verbatim at their root URLs (Eleventy strips the input dir).
+  // The markdown and yaml inside are documents, not templates — ignored.
+  eleventyConfig.addPassthroughCopy('src/assets')
+  eleventyConfig.addPassthroughCopy('src/docs')
+  eleventyConfig.addPassthroughCopy('src/projects')
+  eleventyConfig.addPassthroughCopy('src/site-snapshots')
+  eleventyConfig.ignores.add('src/assets/**')
+  eleventyConfig.ignores.add('src/docs/**')
+  eleventyConfig.ignores.add('src/projects/**')
+  eleventyConfig.ignores.add('src/site-snapshots/**')
+
   eleventyConfig.addPassthroughCopy('dist')
-  eleventyConfig.addPassthroughCopy('docs')
-  eleventyConfig.addPassthroughCopy('projects')
   eleventyConfig.addPassthroughCopy('src/CNAME')
 
   // Curated markdown posts render through the post layout; their raw
@@ -43,7 +51,6 @@ export default function (eleventyConfig) {
     'src/field-log-template.html': 'field-log-template.html',
     'src/inventory.html': 'inventory.html',
     'src/social-posts.html': 'social-posts.html',
-    'site-snapshots': 'site-snapshots',
   })
 
   // Authoring templates are source material, not site content.
