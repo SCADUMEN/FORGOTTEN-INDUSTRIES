@@ -74,8 +74,8 @@ archive = {
   "generatedAt" => Time.now.utc.iso8601,
   "meta" => {
     "name" => "Forgotten Industries",
-    "type" => "archive / lab journal / technical blog",
-    "tagline" => "An archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
+    "type" => "archive / evidence-based memoir / technical blog",
+    "tagline" => "An archive and evidence-based memoir that explores what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.",
     "voice" => "intimate, precise, archival, technical, emotionally honest",
     "sourceFiles" => SOURCE_FILES
   },
