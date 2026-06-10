@@ -13,13 +13,18 @@ export default function (eleventyConfig) {
     'src/types.ts': 'src/types.ts',
   })
 
+  // Raw hand-authored archive pages are static documents, not templates.
+  // html is excluded from templateFormats, so these are copied verbatim.
   eleventyConfig.addPassthroughCopy({
-    'archive.html': 'archive.html',
-    'field-log-template.html': 'field-log-template.html',
-    'inventory.html': 'inventory.html',
-    'social-posts.html': 'social-posts.html',
+    'src/archive.html': 'archive.html',
+    'src/field-log-template.html': 'field-log-template.html',
+    'src/inventory.html': 'inventory.html',
+    'src/social-posts.html': 'social-posts.html',
     'site-snapshots': 'site-snapshots',
   })
+
+  // Authoring templates are source material, not site content.
+  eleventyConfig.ignores.add('src/templates/**')
 
   eleventyConfig.addFilter('count', function (value) {
     return Array.isArray(value) ? value.length : 0
@@ -32,8 +37,7 @@ export default function (eleventyConfig) {
       includes: '_includes',
       data: '_data',
     },
-    htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
-    templateFormats: ['njk', 'md', 'html'],
+    templateFormats: ['njk', 'md'],
   }
 }
