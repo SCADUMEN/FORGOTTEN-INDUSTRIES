@@ -1,0 +1,223 @@
+projects:
+  - id: FI-PROJ-001
+    slug: caselabs-mercury-s8-pedestal-restoration
+    title: CaseLabs Mercury S8 + Pedestal Restoration
+    working_title: Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule
+    category: CaseLabs Archive
+    status: revived
+    started: '2015'
+    revived: '2026'
+    summary: >
+      Documentation and restoration of a white powder-coated CaseLabs Mercury S8
+      with pedestal, stored for roughly a decade and returned to the bench as
+      part hardware archive, part recovery log, part proof of life.
+    origin:
+      purchased: around 2015
+      stored_for: roughly a decade
+      context: >
+        The project paused after Matthew's father died and returned in 2026 as
+        part of rebuilding life, hobbies, and identity.
+    themes:
+      - enthusiast hardware history
+      - custom watercooling
+      - inventory and identification
+      - restoration
+      - forum culture
+      - technical nostalgia without sentimentality
+    artifacts:
+      - FI-CASE-001
+      - FI-PED-001
+      - FI-RAD-001
+      - FI-RAD-002
+      - FI-FAN-001
+      - FI-FAN-002
+      - FI-PUMP-001
+      - FI-PUMP-002
+      - FI-CTRL-001
+      - FI-RES-001
+      - FI-PSU-001
+      - FI-BLOCK-MOSFET-001
+      - FI-FIT-QDC-001
+      - FI-CASE-PANEL-001
+      - FI-CASE-FRAME-001
+      - FI-CASE-TRAY-001
+      - FI-CASE-PLATE-001
+      - FI-CASE-FILTER-001
+      - FI-PHOTO-001
+    layout_goals:
+      - Right-side full window
+      - Visible pumps and reservoir
+      - Pedestal radiator and QDC pass-throughs
+      - Low RPM, excessive cooling overhead
+      - Clean serial loop before experimenting with complexity
+      - Functioning proof-of-concept system before any sale decision
+    loop_concept:
+      route:
+        - Pumps in mid-right chamber
+        - Top/right radiator
+        - CPU/GPU components
+        - Down through midplate to pedestal via QDCs
+        - Pedestal radiator and service drain
+        - Back up via pass-through
+        - Top-left/front radiator
+        - Reservoir return
+      preferences:
+        - Barbs and clamps over excessive angled fittings
+        - EPDM tubing first for function
+        - Hardline or copper possible later as aesthetic evolution
+        - Serviceability matters
+    proof_of_concept:
+      thesis: >
+        The restored Mercury S8 plus pedestal may be more valuable as a complete,
+        functioning showcase system than as a collection of separate parts. The
+        rare value is the chassis, restored CaseLabs hardware, Aquaero ecosystem,
+        dual-D5 infrastructure, QDC-integrated pedestal loop, documentation, and
+        Forgotten Industries provenance; CPU and GPU hardware can be replaced by
+        a future owner.
+      build_direction:
+        - Use any functioning CPU/platform already available in storage
+        - Use any functioning GPU or GPU set already available in storage
+        - Fully assemble and fill the cooling loop
+        - Verify pumps, Aquaero, sensors, QDC path, and pedestal integration
+        - Run stress tests and document stable operation
+      time_capsule_option:
+        - X79 or X99 platform
+        - GTX 780 Ti, Titan, GTX 970, or GTX 980 Ti era graphics hardware
+        - EK waterblocks and period-correct loop hardware
+        - Aquaero 6 XT, dual D5 pumps, and Noiseblocker eLoops
+      decision_rule: >
+        Complete inventory and chassis restoration before selling any
+        restoration-critical component. Do not decide whether to sell the ship
+        while it is still in dry dock.
+    documentation_style:
+      - Photograph before cleaning
+      - Identify panel by panel
+      - Mark unknown parts temporarily with removable labels
+      - Write logs as observations, not just progress updates
+
+  - id: FI-PROJ-002
+    slug: garage-archaeology
+    title: Garage Archaeology
+    category: Garage Archaeology
+    status: active
+    started: '2026'
+    summary: >
+      Recovered objects, parts, machines, tools, and forgotten projects treated
+      as artifacts. The record begins before the object is cleaned or assigned a
+      final meaning.
+    themes:
+      - object permanence
+      - documentation before action
+      - finding the buried map
+      - repair as memory
+    artifacts:
+      - FI-PHOTO-002
+    documentation_style:
+      - Photograph the object as found
+      - Preserve uncertainty in the record
+      - Record storage state, condition, missing hardware, and first hypotheses
+
+  - id: FI-PROJ-003
+    slug: field-notes
+    title: Field Notes
+    category: Field Notes
+    status: active
+    started: '2026'
+    summary: >
+      Process notes, experiments, methods, failures, findings, and design
+      decisions for technical recovery through craft.
+    themes:
+      - methods
+      - observations
+      - iteration
+      - systems thinking
+    documentation_style:
+      - Use methods, observations, and findings when they help
+      - Keep reflection grounded in objects and actions
+      - Let the technical documentation carry the emotion
+
+  - id: FI-PROJ-004
+    slug: peregrine-drone-experiments
+    title: PEREGRINE Drone Experiments
+    working_title: PERRY / PEREGRINE Aircraft Dossier
+    category: Drone Field Systems
+    status: active / A01 grounded / A02 lost / A03 planned
+    started: '2026'
+    summary: >
+      Small aircraft experimentation and recovery dossier covering Perry 1 /
+      PEREGRINE-A01 as the DJI Mini 4K awning recovery and troubleshooting
+      bird, Perry 2 / PEREGRINE-A02 as the DJI Mini 3 lost after a 3 AM roof
+      incident, and Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement
+      aircraft. The archive preserves flight logs, crash reports, maintenance
+      notes, recovery routes, error codes, safety calls, and uncertain details
+      as evidence.
+    themes:
+      - small aircraft recovery
+      - flight logging
+      - crash diagnostics
+      - field repair
+      - awning retrieval
+      - roof loss and no-unsafe-recovery decisions
+      - evidence before calibration
+    artifacts:
+      - FI-DRONE-001
+      - FI-DRONE-002
+      - FI-DRONE-003
+    documentation_style:
+      - Preserve flight conditions, error codes, and recovery route before interpretation
+      - Treat calibration as secondary until physical damage is inspected
+      - Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION
+      - Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair
+
+  - id: FI-PROJ-005
+    slug: redeemer-nzxt-h440-watercooled-build
+    title: REDEEMER NZXT H440 Watercooled Build
+    working_title: REDEEMER Instagram Recovery Dossier
+    category: Build Dossier
+    status: archived / recovered from Instagram
+    started: '2016'
+    revived: '2026'
+    summary: >
+      Instagram-recovered build dossier for REDEEMER, the Forgotten Industries
+      white NZXT H440 mid-tower custom liquid-cooled PC. The recovered evidence
+      documents the March-May 2016 build sequence, including component staging,
+      watercooling assembly, leak testing, custom cabling, Windows install, HUE+
+      lighting, and final gameplay testing.
+    themes:
+      - custom watercooling
+      - Instagram recovery
+      - build chronology
+      - component evidence
+      - REDEEMER
+      - NZXT H440
+    artifacts:
+      - FI-RED-CASE-001
+      - FI-RED-MB-001
+      - FI-RED-CPU-001
+      - FI-RED-MEM-001
+      - FI-RED-GPU-001
+      - FI-RED-STOR-001
+      - FI-RED-PSU-001
+      - FI-RED-LIGHT-001
+      - FI-RED-BLOCK-CPU-001
+      - FI-RED-BLOCK-RAM-001
+      - FI-RED-BLOCK-GPU-001
+      - FI-RED-BACKPLATE-001
+      - FI-RED-PUMP-D5-001
+      - FI-RED-PUMPTOP-D5-001
+      - FI-RED-PUMP-DDC-001
+      - FI-RED-RES-001
+      - FI-RED-FIT-001
+      - FI-RED-FIT-002
+      - FI-RED-TUBE-001
+      - FI-RED-RAD-240-001
+      - FI-RED-RAD-360-001
+      - FI-RED-FAN-001
+      - FI-RED-COOLANT-001
+      - FI-RED-CABLE-001
+      - FI-RED-DISPLAY-001
+    documentation_style:
+      - Treat Instagram captions as primary evidence
+      - Preserve exact timestamps and source post links
+      - Separate direct REDEEMER mentions from build-adjacent support posts
+      - Keep component list tied to the recovered May 8, 2016 post

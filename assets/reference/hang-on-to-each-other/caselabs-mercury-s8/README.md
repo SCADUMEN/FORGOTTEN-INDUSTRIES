@@ -4,9 +4,9 @@ Part of `Hang On To Each Other`, the Forgotten Industries third-party reference 
 
 ## Files
 
-| Archive filename | Original local filename | SHA-256 | Source status |
-| --- | --- | --- | --- |
-| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif` | `SLUSH/45L6WTm.gif` | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Confirmed as embedded in the ExtremeRigs CaseLabs Mercury S8 review. |
+| Archive filename                                          | Original local filename | SHA-256                                                            | Source status                                                        |
+| --------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif` | `SLUSH/45L6WTm.gif`     | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Confirmed as embedded in the ExtremeRigs CaseLabs Mercury S8 review. |
 
 ## Source
 

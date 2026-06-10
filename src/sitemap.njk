@@ -1,0 +1,19 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for entry in collections.all %}
+{%- if entry.url and (entry.url.endsWith('/') or entry.url.endsWith('.html')) %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ entry.url }}</loc>
+  </url>
+{%- endif %}
+{%- endfor %}
+{%- for url in ['/posts/', '/archive.html', '/inventory.html', '/social-posts.html'] %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ url }}</loc>
+  </url>
+{%- endfor %}
+</urlset>

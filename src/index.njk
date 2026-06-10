@@ -1,0 +1,192 @@
+---
+layout: base.njk
+title: Forgotten Industries
+description: An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.
+canonical: https://forgotten-industries.net/
+---
+
+<section class="masthead">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">Archive & evidence-based memoir / established MMXIV</p>
+      <h1>{{ site.name }}</h1>
+      <p class="tagline">{{ site.tagline }}</p>
+    </div>
+    <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
+  </div>
+</section>
+
+<section class="mirror-band" aria-labelledby="mirror-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Figure 1</p>
+      <h2 id="mirror-heading">Signal clean. Domain and source remain one record.</h2>
+    </div>
+
+    <div>
+      <dl class="ledger">
+        <div>
+          <dt>Canonical domain</dt>
+          <dd><a href="{{ site.domainUrl }}">{{ site.domainHost }}</a></dd>
+        </div>
+        <div>
+          <dt>GitHub source</dt>
+          <dd><a href="{{ site.githubUrl }}" data-track="outbound-github">{{ site.repository }}</a></dd>
+        </div>
+        <div>
+          <dt>Static site generator</dt>
+          <dd><a href="https://www.11ty.dev/" data-track="outbound-eleventy">Eleventy</a></dd>
+        </div>
+        <div>
+          <dt>Contact</dt>
+          <dd><a href="mailto:{{ site.contact }}" data-track="contact-email">{{ site.contact }}</a></dd>
+        </div>
+        <div>
+          <dt>Matthew Marx / Live Feed</dt>
+          <dd><a href="https://bsky.app/profile/forgotten-industry.bsky.social" data-track="outbound-bluesky">Bluesky field signal</a></dd>
+        </div>
+      </dl>
+
+      <div class="stats" aria-label="Archive counts">
+        <div class="stat">
+          <strong>{{ archive.projects | count }}</strong>
+          <span>Projects</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.inventory | count }}</strong>
+          <span>Inventory records</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.fieldLogs | count }}</strong>
+          <span>Field logs</span>
+        </div>
+        <div class="stat">
+          <strong>{{ archive.socialPosts | count }}</strong>
+          <span>Social evidence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="featured-lanes-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Public Spine</p>
+      <h2 id="featured-lanes-heading">Entry 000 stays first.</h2>
+    </div>
+
+    <div class="lane-stack">
+      <p class="stamp-row" aria-label="Entry status">
+        <span class="stamp">Manuscripts</span>
+        <span class="stamp stamp-muted">Entry 000</span>
+      </p>
+
+      <h3>A Thing Documented Is a Thing Not Yet Lost</h3>
+      <p class="entry-note">
+        <a href="/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html">Read Entry 000</a>
+        / long-form origin manuscript /
+        <a href="/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md">Markdown source</a>
+      </p>
+
+      <h3>Perspective, Peregrines, &amp; “Pang”</h3>
+      <p class="entry-note">
+        <a href="/posts/2026-06-10-perspective-peregrines-and-pang.html">Read Entry 001</a>
+        / first field doctrine /
+        <a href="/posts/2026-06-10-perspective-peregrines-and-pang.md">Markdown source</a>
+      </p>
+
+      <p class="entry-note">
+        <a href="/posts/index.html">View all curated posts</a>
+      </p>
+
+      <ul class="lane-list" aria-label="Public lane highlights">
+        <li>
+          <span>Manuals</span>
+          <h3><a href="/hang-on-to-each-other/">Hang On To Each Other</a></h3>
+          <p>Manual 001: recovered CaseLabs Mercury S8 assembly reference and living instruction shelf.</p>
+        </li>
+        <li>
+          <span>Matthew Marx / Live Feed</span>
+          <h3><a href="https://bsky.app/profile/forgotten-industry.bsky.social" data-track="outbound-bluesky">Bluesky field signal</a></h3>
+          <p>Short live dispatches from the bench: evidence finds, measurements, restoration notes, and active process.</p>
+        </li>
+        <li>
+          <span>Projects</span>
+          <h3><a href="/#projects">Dossiers and continuity</a></h3>
+          <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-notes-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Field Notes</p>
+      <h2 id="field-notes-heading">A continuity channel for the archive.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>Subscribe</h3>
+      <p>Short dispatches from the bench: restoration logs, evidence finds, measurements, recovered posts, and notes that do not need a full dossier yet.</p>
+      <p class="action-row"><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Subscribe to Field Notes</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="shelves-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Shelves</p>
+      <h2 id="shelves-heading">The site spine is an archive map.</h2>
+    </div>
+
+    <ul class="shelf-list">
+      {% for shelf in site.shelves %}
+      <li>
+        <h3 id="{{ shelf.slug }}">{% if shelf.href %}<a href="{{ shelf.href }}">{{ shelf.label }}</a>{% else %}{{ shelf.label }}{% endif %}</h3>
+        <p>{{ shelf.purpose }}</p>
+        <p class="shelf-note">{{ shelf.tone }} {{ shelf.note }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="evidence-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Evidence</p>
+      <h2 id="evidence-heading">Raw shelves remain visible.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3><a href="/archive.html">Archive index</a></h3>
+        <p>Top-level routing into posts, snapshots, inventory, and source files.</p>
+      </li>
+      <li>
+        <h3><a href="/inventory.html">Inventory</a></h3>
+        <p>Canonical machine, part, accessory, condition, and disposition records.</p>
+      </li>
+      <li>
+        <h3><a href="/social-posts.html">Imported social evidence</a></h3>
+        <p>Recovered Tumblr and Instagram posts with local media and Markdown sources.</p>
+      </li>
+      <li>
+        <h3><a href="/dist/forgotten-industries.json">Generated archive JSON</a></h3>
+        <p>Machine-readable output generated from the source YAML.</p>
+      </li>
+      <li>
+        <h3><a href="/site-snapshots/github-pages-trial-2026-06-06/index.html">Stowed GitHub Pages trial snapshot</a></h3>
+        <p>The pre-reset static surface preserved as evidence, not discarded history.</p>
+      </li>
+      <li>
+        <h3><a href="/docs/process/2026-06-07-public-spine-and-manual-shelf.md">Process record</a></h3>
+        <p>The public spine, manual shelf, and design-language decisions documented as part of the archive itself.</p>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -22,12 +22,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version-file: .nvmrc
 
       - name: Install dependencies
         run: npm install
@@ -38,16 +38,21 @@ jobs:
       - name: Preserve GitHub Pages marker
         run: touch _site/.nojekyll
 
+      # Pages is only enabled on the canonical org repo. Forks build as a CI
+      # check but must not configure or claim the custom domain.
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        if: github.repository == 'Forgotten-Industries/FORGOTTEN-INDUSTRIES'
+        uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        if: github.repository == 'Forgotten-Industries/FORGOTTEN-INDUSTRIES'
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
   deploy:
     name: Deploy to GitHub Pages
+    if: github.repository == 'Forgotten-Industries/FORGOTTEN-INDUSTRIES'
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -57,4 +62,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

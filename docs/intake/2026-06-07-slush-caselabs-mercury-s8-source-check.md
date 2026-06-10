@@ -10,12 +10,12 @@
 
 ## Local Files Reviewed
 
-| Local path | Type | Size | SHA-256 | Evidence note |
-| --- | --- | ---: | --- | --- |
-| `SLUSH/45L6WTm.gif` | GIF, 500 x 507 | 5.0M | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Assembly timelapse/diagram image embedded in the ExtremeRigs Mercury S8 review. The page identifies it as a case-construction timelapse by `cpachris` from OCN. |
-| `SLUSH/147042.0421a1111f4221130873401dc8418a8e.512.webp` | WebP | 20K | `d084c734379cf6d78796742e54f87c5f87e3eea7bab429edc5059d91838f701f` | Finished white CaseLabs watercooled build reference. Source not yet confirmed from local metadata. |
-| `SLUSH/Unconfirmed 548651.crdownload` | WebP, 3072 x 1728 | 262K | `28d04e0e3d8aba9aaf4d3ef0017ec8c62e76c84d5c48b889d3192fb858aa681e` | White CaseLabs frame interior with XSPC radiator/fan assembly. Browser partial-download name remains; source not yet confirmed from local metadata. |
-| `SLUSH/Unconfirmed 198218.crdownload` | WebP, 2698 x 1517 | 268K | `aa0bc10b5d88273884c14fbd91924d97db800700dab2d058699ac6dea5b4cd55` | White CaseLabs frame with motherboard and top radiator/fan assembly. Browser partial-download name remains; source not yet confirmed from local metadata. |
+| Local path                                               | Type              | Size | SHA-256                                                            | Evidence note                                                                                                                                                   |
+| -------------------------------------------------------- | ----------------- | ---: | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SLUSH/45L6WTm.gif`                                      | GIF, 500 x 507    | 5.0M | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Assembly timelapse/diagram image embedded in the ExtremeRigs Mercury S8 review. The page identifies it as a case-construction timelapse by `cpachris` from OCN. |
+| `SLUSH/147042.0421a1111f4221130873401dc8418a8e.512.webp` | WebP              |  20K | `d084c734379cf6d78796742e54f87c5f87e3eea7bab429edc5059d91838f701f` | Finished white CaseLabs watercooled build reference. Source not yet confirmed from local metadata.                                                              |
+| `SLUSH/Unconfirmed 548651.crdownload`                    | WebP, 3072 x 1728 | 262K | `28d04e0e3d8aba9aaf4d3ef0017ec8c62e76c84d5c48b889d3192fb858aa681e` | White CaseLabs frame interior with XSPC radiator/fan assembly. Browser partial-download name remains; source not yet confirmed from local metadata.             |
+| `SLUSH/Unconfirmed 198218.crdownload`                    | WebP, 2698 x 1517 | 268K | `aa0bc10b5d88273884c14fbd91924d97db800700dab2d058699ac6dea5b4cd55` | White CaseLabs frame with motherboard and top radiator/fan assembly. Browser partial-download name remains; source not yet confirmed from local metadata.       |
 
 ## Source Notes
 

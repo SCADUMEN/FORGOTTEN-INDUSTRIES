@@ -19,8 +19,9 @@
     "build": "ruby scripts/build.rb",
     "build:archive": "ruby scripts/build.rb",
     "build:css": "sh scripts/build_css.sh --minify",
-    "build:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs && sh scripts/build_css.sh --minify",
-    "serve:site": "ruby scripts/build.rb && eleventy --config=eleventy.config.cjs && sh scripts/build_css.sh && eleventy --config=eleventy.config.cjs --serve"
+    "build:site": "ruby scripts/build.rb && eleventy && sh scripts/build_css.sh --minify",
+    "serve:site": "ruby scripts/build.rb && eleventy && sh scripts/build_css.sh && eleventy --serve",
+    "pretty": "prettier --write ."
   },
   "keywords": [
     "archive",
@@ -33,10 +34,14 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-plugin-rss": "3.0.0",
     "@tailwindcss/cli": "4.3.0",
+    "prettier": "3.8.3",
+    "prettier-plugin-tailwindcss": "0.8.0",
     "tailwindcss": "4.3.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": "24.13.0",
+    "npm": ">=10.0.0"
   }
 }
