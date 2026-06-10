@@ -3,7 +3,7 @@
 
 :root {
   color-scheme: dark;
-  --paper: #02040a;
+  --paper: #000000;
   --ink: #fff9e8;
   --muted: #d7d1ff;
   --line: #4f8cff;
@@ -15,9 +15,9 @@
   --focus: #fff275;
   --utility-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
   --mono-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
-  --headline-font: Georgia, 'Times New Roman', Times, serif;
-  --stencil-font:
-    Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif;
+  --mono-size: 0.85rem;
+  --headline-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --stencil-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Expose the archive design tokens to Tailwind so utilities like
@@ -46,14 +46,7 @@
 
 body {
   margin: 0;
-  background:
-    linear-gradient(90deg, rgba(103, 232, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 91, 214, 0.055) 1px, transparent 1px),
-    var(--paper);
-  background-size:
-    23px 23px,
-    29px 29px,
-    auto;
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--mono-font);
   font-size: 16px;
@@ -139,7 +132,7 @@ img {
   gap: 0.08rem;
   justify-content: end;
   font-family: var(--mono-font);
-  font-size: 0.72rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   line-height: 1.05;
   text-align: right;
@@ -162,14 +155,8 @@ img {
   color: var(--oxide);
 }
 
-.site-nav a:nth-child(1),
-.site-nav a:nth-child(6) {
-  font-size: 0.86rem;
-}
-
-.site-nav a:nth-child(2),
-.site-nav a:nth-child(7) {
-  font-size: 0.66rem;
+.site-nav a:hover {
+  color: var(--oxide);
 }
 
 .masthead {
@@ -207,13 +194,12 @@ img {
   margin: 1.2rem 0 0;
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.62;
 }
 
 .hero-image {
-  border: 1px solid var(--line);
   background: var(--white);
   filter: invert(1) contrast(1.08);
   width: 100%;
@@ -240,7 +226,7 @@ img {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.72rem;
+  font-size: var(--mono-size);
   line-height: 1.45;
 }
 
@@ -279,7 +265,7 @@ img {
   margin: 0 0 0.4rem;
   color: var(--oxide);
   font-family: var(--mono-font);
-  font-size: 0.74rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -298,7 +284,7 @@ h2 {
 .field-heading {
   color: var(--ink);
   font-family: var(--mono-font);
-  font-size: clamp(0.92rem, 1vw, 1.02rem);
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   line-height: 1.42;
@@ -308,7 +294,7 @@ h3 {
   margin: 0 0 0.35rem;
   color: var(--steel);
   font-family: var(--stencil-font);
-  font-size: 0.92rem;
+  font-size: 1.15rem;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -331,7 +317,7 @@ h3 {
 .ledger dt {
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.83rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -367,7 +353,7 @@ h3 {
   margin-top: 0.55rem;
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.78rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -396,14 +382,14 @@ h3 {
 
 .shelf-note {
   font-family: var(--mono-font);
-  font-size: 0.82rem;
+  font-size: var(--mono-size);
 }
 
 .entry-note {
   margin: 0;
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.9rem;
+  font-size: var(--mono-size);
   line-height: 1.5;
 }
 
@@ -434,7 +420,7 @@ h3 {
   margin-bottom: 1.35rem;
   color: var(--oxide);
   font-family: var(--mono-font);
-  font-size: 0.72rem;
+  font-size: var(--mono-size);
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -455,7 +441,7 @@ h3 {
   border: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.68rem;
+  font-size: var(--mono-size);
   font-weight: 800;
   letter-spacing: 0;
   list-style: none;
@@ -499,7 +485,7 @@ h3 {
   margin-bottom: 1.8rem;
   color: var(--muted);
   font-family: var(--mono-font);
-  font-size: 0.78rem;
+  font-size: var(--mono-size);
   font-weight: 800;
 }
 
@@ -535,7 +521,7 @@ h3 {
 
 .action-row {
   font-family: var(--mono-font);
-  font-size: 0.9rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -556,7 +542,7 @@ h3 {
   background: rgba(255, 91, 214, 0.12);
   color: var(--oxide);
   font-family: var(--stencil-font);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 900;
   line-height: 1;
   text-transform: uppercase;
@@ -570,7 +556,7 @@ h3 {
 .site-footer {
   padding: 1.5rem 0 2rem;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: var(--mono-size);
 }
 
 .footer-grid {
@@ -591,7 +577,7 @@ h3 {
   justify-content: flex-end;
   gap: 0.35rem 0.85rem;
   font-family: var(--mono-font);
-  font-size: 0.78rem;
+  font-size: var(--mono-size);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -736,4 +722,33 @@ h3 {
   .stamp {
     border-color: CanvasText;
   }
+}
+
+/* Rendered markdown posts: restore vertical rhythm that the Tailwind
+   preflight reset removes. */
+.post-body > * {
+  margin-bottom: 1.1rem;
+}
+
+.post-body h2,
+.post-body h3 {
+  margin-top: 2rem;
+}
+
+.post-body img,
+.post-body video {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 1.1rem;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--oxide);
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+.post-body li {
+  margin-bottom: 0.35rem;
 }

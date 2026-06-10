@@ -11,7 +11,7 @@ require "uri"
 require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
-ASSET_DIR = File.join(ROOT, "assets/social")
+ASSET_DIR = File.join(ROOT, "src/assets/social")
 POST_DIR = File.join(ROOT, "src/posts/social")
 SRC_FILE = File.join(ROOT, "src/data/social-posts.yml")
 SOCIAL_INDEX = File.join(ROOT, "src/social-posts.html")
