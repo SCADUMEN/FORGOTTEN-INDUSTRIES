@@ -24,8 +24,9 @@ tags:
 <<<<<<<< HEAD:src/posts/2026-06-06-perspective-peregrines-and-pang.md
 _Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06_
 ========
-*Forgotten Industries // Signal Check // Prelude // Entry 000 // 2026.06.06*
->>>>>>>> origin/main:src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md
+_Forgotten Industries // Signal Check // Prelude // Entry 000 // 2026.06.06_
+
+> > > > > > > > origin/main:src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md
 
 _Reader note: death, substance use, recovery, and grief._
 

@@ -21,7 +21,7 @@ tags:
 
 # Perspective, Peregrines, & “Pang”
 
-*Forgotten Industries // First Field Doctrine // Entry 001 // 2026.06.10*
+_Forgotten Industries // First Field Doctrine // Entry 001 // 2026.06.10_
 
 > ∴ Therefore, now look.
 
@@ -143,7 +143,7 @@ The peregrine falcon is my favorite animal. It has been since grade school. I di
 
 I digress again.
 
-Did you know that the peregrine falcon is the fastest animal in *the fucking world*?
+Did you know that the peregrine falcon is the fastest animal in _the fucking world_?
 
 Not the fastest bird.
 
@@ -181,7 +181,7 @@ Peregrine was not merely a drone. Peregrine was a method of seeing. A pocket-siz
 
 ![PEREGRINE-A02 title graphic.](../assets/projects/peregrine/peregrine-a02.png)
 
-*PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker.*
+_PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker._
 
 And then came the roof.
 

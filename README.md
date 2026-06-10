@@ -46,9 +46,9 @@ npm run build:site
 
 Posts are Markdown files in `src/posts/` with front matter (`title`, `date`, `description`, `tags`). Eleventy renders each through the post layout at `/posts/<filename>.html`, publishes the raw Markdown alongside at `/posts/<filename>.md`, and generates the post index at `/posts/` from the collection. To publish a post, add a dated Markdown file to `src/posts/` and rebuild.
 
-- `src/posts/2026-06-06-perspective-peregrines-and-pang.md` - Entry 000 prelude.
-- `src/posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - recovery/restoration manifesto.
-- The earlier hand-written HTML versions of these posts remain in `src/posts/` as preserved artifacts.
+- `src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md` - Entry 000 prelude.
+- `src/posts/2026-06-10-perspective-peregrines-and-pang.md` - Entry 001 field doctrine.
+- The hand-written HTML versions of these posts remain in `src/posts/` as preserved artifacts.
 
 The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
 
@@ -122,8 +122,8 @@ The archive is not published yet. When it is ready to become an npm package:
 - `src/types.ts` - TypeScript schema for the generated archive.
 - `scripts/import_social.rb` - public Tumblr/Instagram importer for social posts and media.
 - `scripts/build.rb` - YAML-to-JSON and YAML-to-TypeScript build script.
-- `src/posts/2026-06-06-perspective-peregrines-and-pang.md` - Entry 000 prelude (rendered to `/posts/...html`).
-- `src/posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - recovery/restoration manifesto (rendered to `/posts/...html`).
+- `src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md` - Entry 000 prelude (rendered to `/posts/...html`).
+- `src/posts/2026-06-10-perspective-peregrines-and-pang.md` - Entry 001 field doctrine (rendered to `/posts/...html`).
 - `dist/forgotten-industries.json` - generated complete archive data (not tracked).
 - `dist/index.ts` - generated TypeScript module exporting the archive (not tracked).
 - `AGENTS.md` - short pointer for future coding agents.
