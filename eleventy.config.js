@@ -27,7 +27,6 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add('src/site-snapshots/**')
 
   eleventyConfig.addPassthroughCopy('dist')
-  eleventyConfig.addPassthroughCopy('src/CNAME')
 
   // Curated markdown posts render through the post layout; their raw
   // markdown stays published alongside at the same /posts/*.md URLs.
