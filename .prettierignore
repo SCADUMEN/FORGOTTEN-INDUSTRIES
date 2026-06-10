@@ -5,4 +5,5 @@ _site
 dist
 node_modules
 package-lock.json
-site-snapshots
+src/site-snapshots
+intake

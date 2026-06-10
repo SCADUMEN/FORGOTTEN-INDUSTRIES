@@ -36,7 +36,7 @@ npm run build:site
 ## Tooling
 
 - Node is pinned to `24.13.0` via `.nvmrc` and `.node-version`; CI reads the same file.
-- Prettier formats the repo (`prettier.config.js`, with the Tailwind class-sorting plugin). Run `npm run pretty` before committing. Generated and preserved artifacts (`dist/`, `_site/`, `site-snapshots/`) are excluded via `.prettierignore`.
+- Prettier formats the repo (`prettier.config.js`, with the Tailwind class-sorting plugin). Run `npm run pretty` before committing. Generated and preserved artifacts (`dist/`, `_site/`, `src/site-snapshots/`) are excluded via `.prettierignore`.
 - The Eleventy config is ESM (`eleventy.config.js`).
 - GitHub Actions builds every push to `main`, but only the org repo (`Forgotten-Industries/FORGOTTEN-INDUSTRIES`) deploys to GitHub Pages — forks run the build as a CI check.
 - Tailwind 4 styles the site. The archive design tokens are exposed via `@theme inline` in `src/css/archive.css`, so new components use utilities (`text-oxide`, `font-headline`); the legacy classes remain for existing pages.
@@ -50,9 +50,9 @@ Posts are Markdown files in `src/posts/` with front matter (`title`, `date`, `de
 - `src/posts/2026-06-10-perspective-peregrines-and-pang.md` - Entry 001 field doctrine.
 - The hand-written HTML versions of these posts remain in `src/posts/` as preserved artifacts.
 
-The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
+The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `src/docs/site-architecture-dossier.md`.
 
-The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
+The old GitHub Pages trial surface is preserved at `src/site-snapshots/github-pages-trial-2026-06-06/`.
 
 ## Eleventy Mirror
 
@@ -78,11 +78,11 @@ The hand-authored raw HTML pages live in `src/` as durable, inspectable archive 
 
 ## Reference Docs
 
-- `docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
-- `docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
-- `docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
-- `docs/repository-architecture.md` - public-safe repo split and naming map for `FI (src)`, `FI (pub)`, and private staging boundaries.
-- `docs/site-architecture-dossier.md` - canonical top-level site spine, navigation, and category tone rules.
+- `src/docs/archive-photo-procedure.md` - field procedure for cataloging and photographing recovered parts before cleaning, sorting, or restoration.
+- `src/docs/obs-archive-station-procedure.md` - fixed-camera OBS procedure for fast, repeatable archive intake screenshots.
+- `src/docs/potato-dossier.md` - companion / lab partner context for Potato's role in the archive and operating environment.
+- `src/docs/repository-architecture.md` - public-safe repo split and naming map for `FI (src)`, `FI (pub)`, and private staging boundaries.
+- `src/docs/site-architecture-dossier.md` - canonical top-level site spine, navigation, and category tone rules.
 
 ## Import Social Posts
 
@@ -91,7 +91,7 @@ ruby scripts/import_social.rb
 ruby scripts/build.rb
 ```
 
-The importer reads public Tumblr and Instagram data for Forgotten Industries, saves local media into `assets/social/`, writes Markdown posts into `src/posts/social/`, writes canonical records to `src/data/social-posts.yml`, and regenerates `src/social-posts.html`.
+The importer reads public Tumblr and Instagram data for Forgotten Industries, saves local media into `src/assets/social/`, writes Markdown posts into `src/posts/social/`, writes canonical records to `src/data/social-posts.yml`, and regenerates `src/social-posts.html`.
 
 Tumblr currently exposes 2 public posts through its feed. Instagram reports 59 public posts, but unauthenticated access may rate-limit or require login while paginating older posts. When that happens, the importer keeps the posts it can verify and can be rerun later.
 
@@ -137,17 +137,19 @@ The archive is not published yet. When it is ready to become an npm package:
 - `src/about.html` - raw project origin note, preserved.
 - `src/contact.html` - raw contact page, preserved.
 - `src/posts/index.html` - earlier hand-curated post index, preserved (the live index is generated from the collection).
-- `site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
-- `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
-- `assets/favicon/` - favicon and web app icon assets used by the raw HTML pages.
-- `assets/social/` - downloaded local media from imported social posts.
-- `assets/initial-photos/` - initial local photo batch for archive intake.
+- `src/site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
+- `src/assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
+- `src/assets/favicon/` - favicon and web app icon assets used by the raw HTML pages.
+- `src/assets/social/` - downloaded local media from imported social posts.
+- `src/assets/initial-photos/` - initial local photo batch for archive intake.
 - `src/posts/social/` - generated Markdown posts from imported social content, copied verbatim to `/posts/social/`.
-- `docs/archive-photo-procedure.md` - archive photography and object intake procedure.
-- `docs/obs-archive-station-procedure.md` - fixed-camera OBS archive station procedure.
-- `docs/potato-dossier.md` - companion / lab partner context for Potato.
+- `src/docs/archive-photo-procedure.md` - archive photography and object intake procedure.
+- `src/docs/obs-archive-station-procedure.md` - fixed-camera OBS archive station procedure.
+- `src/docs/potato-dossier.md` - companion / lab partner context for Potato.
 - `src/templates/field-log.md` - Markdown field log template.
 - `src/templates/inventory-item.md` - Markdown inventory item template.
+- `intake/SLUSH/` - working drafts and scratch material awaiting cataloging.
+- `intake/Splunking/` - raw evidence photos from intake, not yet processed into the archive.
 
 ## Archive Principle
 
