@@ -4,8 +4,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs')
   eleventyConfig.addPassthroughCopy('posts')
   eleventyConfig.addPassthroughCopy('projects')
-  eleventyConfig.addPassthroughCopy('src')
-  eleventyConfig.addPassthroughCopy('site/CNAME')
+  eleventyConfig.addPassthroughCopy('src/CNAME')
+
+  // Publish the canonical archive sources for inspection, preserving the
+  // /src/... URLs linked from archive.html.
+  eleventyConfig.addPassthroughCopy({
+    'src/data': 'src/data',
+    'src/types.ts': 'src/types.ts',
+  })
 
   eleventyConfig.addPassthroughCopy({
     'archive.html': 'archive.html',
@@ -21,7 +27,7 @@ export default function (eleventyConfig) {
 
   return {
     dir: {
-      input: 'site',
+      input: 'src',
       output: '_site',
       includes: '_includes',
       data: '_data',
