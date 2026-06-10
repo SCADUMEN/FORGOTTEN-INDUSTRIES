@@ -22,9 +22,9 @@ tags:
 # Prelude: A Thing Documented Is a Thing Not Yet Lost
 
 <<<<<<<< HEAD:src/posts/2026-06-06-perspective-peregrines-and-pang.md
-_Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06_
+_Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000_
 ========
-_Forgotten Industries // Signal Check // Prelude // Entry 000 // 2026.06.06_
+_Forgotten Industries // Signal Check // Prelude // Entry 000_
 
 > > > > > > > > origin/main:src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md
 
@@ -161,4 +161,4 @@ Perspective changes the view. Peregrine gives the archive an eye above the hill.
 
 The line is open. Signal clean. Entry 001 begins with the view.
 
--- Forgotten Industries // Prelude // Entry 000 // 2026.06.06
+-- Forgotten Industries // Prelude // Entry 000

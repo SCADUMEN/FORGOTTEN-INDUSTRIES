@@ -21,7 +21,7 @@ tags:
 
 # Perspective, Peregrines, & “Pang”
 
-_Forgotten Industries // First Field Doctrine // Entry 001 // 2026.06.10_
+_Forgotten Industries // First Field Doctrine // Entry 001_
 
 > ∴ Therefore, now look.
 
@@ -360,4 +360,4 @@ Mark.
 Continue.
 No map is built from motion alone.
 
--- Forgotten Industries // First Field Doctrine // Entry 001 // 2026.06.10
+-- Forgotten Industries // First Field Doctrine // Entry 001

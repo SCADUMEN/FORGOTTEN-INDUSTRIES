@@ -58,10 +58,7 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('readableDate', function (value) {
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'long',
-      timeZone: 'UTC',
-    }).format(value)
+    return value.toISOString().split('T')[0].replaceAll('-', '.')
   })
 
   return {
