@@ -28,9 +28,18 @@ ruby scripts/build.rb
 
 To build the Eleventy mirror:
 
-````bash
+```bash
 npm install
 npm run build:site
+```
+
+## Tooling
+
+- Node is pinned to `24.13.0` via `.nvmrc` and `.node-version`; CI reads the same file.
+- Prettier formats the repo (`prettier.config.js`, with the Tailwind class-sorting plugin). Run `npm run pretty` before committing. Generated and preserved artifacts (`dist/`, `_site/`, `site-snapshots/`) are excluded via `.prettierignore`.
+- The Eleventy config is ESM (`eleventy.config.js`).
+- GitHub Actions builds every push to `main`, but only the org repo (`Forgotten-Industries/FORGOTTEN-INDUSTRIES`) deploys to GitHub Pages — forks run the build as a CI check.
+
 ## Curated Posts
 
 The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
@@ -40,17 +49,6 @@ The live site now starts cleanly from `index.html` and points to hand-curated po
 - `posts/2026-06-06-perspective-peregrines-and-pang.md` - editable Markdown source for Entry 000.
 - `posts/2026-06-06-recoveries-restorations-and-le-redempteur.html` - recovery/restoration manifesto.
 - `posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - editable Markdown source for the recovery/restoration manifesto.
-
-The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
-
-The old GitHub Pages trial surface is preserved at `site-snapshots/github-pages-trial-2026-06-06/`.
-## Curated Posts
-
-The live site now starts cleanly from `index.html` and points to hand-curated posts under `posts/`.
-
-- `posts/index.html` - curated post index.
-- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
-- `posts/2026-06-06-perspective-peregrine-and-pang.md` - editable Markdown source for the prelude.
 
 The visible top-level shelves are THE ARCHIVE, Recovery & Restorations, Field Lab Journal, Project Dossiers, Manuscripts, Technical References, and What About Art? The canonical category map lives in `docs/site-architecture-dossier.md`.
 
@@ -90,7 +88,7 @@ The existing root HTML pages remain checked in as durable, inspectable archive p
 ```bash
 ruby scripts/import_social.rb
 ruby scripts/build.rb
-````
+```
 
 The importer reads public Tumblr and Instagram data for Forgotten Industries, saves local media into `assets/social/`, writes Markdown posts into `posts/social/`, writes canonical records to `src/social-posts.yml`, and regenerates `social-posts.html`.
 
@@ -126,7 +124,8 @@ The archive is not published yet. When it is ready to become an npm package:
 - `posts/2026-06-06-perspective-peregrines-and-pang.html` - Entry 000 prelude.
 - `posts/2026-06-06-perspective-peregrines-and-pang.md` - Markdown source for Entry 000.
 - `posts/2026-06-06-recoveries-restorations-and-le-redempteur.html` - recovery/restoration manifesto.
-- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - Markdown source for the recovery/restoration manifesto.- `dist/forgotten-industries.json` - generated complete archive data.
+- `posts/2026-06-06-recoveries-restorations-and-le-redempteur.md` - Markdown source for the recovery/restoration manifesto.
+- `dist/forgotten-industries.json` - generated complete archive data.
 - `dist/index.ts` - generated TypeScript module exporting the archive.
 - `AGENTS.md` - short pointer for future coding agents.
 - `ATLAS.md` - project operating identity, voice, archive priorities, and decision rules.
@@ -137,8 +136,6 @@ The archive is not published yet. When it is ready to become an npm package:
 - `about.html` - raw project origin note.
 - `contact.html` - raw contact page.
 - `posts/index.html` - hand-curated post index.
-- `posts/2026-06-06-perspective-peregrine-and-pang.html` - Entry 000 prelude draft.
-- `posts/2026-06-06-perspective-peregrine-and-pang.md` - Markdown source for the prelude.
 - `social-posts.html` - raw HTML index for imported social posts.
 - `site-snapshots/github-pages-trial-2026-06-06/` - stowed copy of the pre-reset GitHub Pages trial surface.
 - `assets/forgotten-industries.jpeg` - local Forgotten Industries logo image used by the raw HTML pages.
