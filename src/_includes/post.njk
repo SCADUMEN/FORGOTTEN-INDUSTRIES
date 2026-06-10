@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <div class="section-inner">
+    <p class="section-label">
+      {{ type or "Post" }}{% if entry %} / Entry {{ entry }}{% endif %}
+    </p>
+    <h1>{{ title }}</h1>
+    <p class="entry-note">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      / <a href="/posts/">Posts</a>
+      / <a href="{{ page.url | replace('.html', '.md') }}">Markdown source</a>
+    </p>
+    {{ content | safe }}
+  </div>
+</article>
