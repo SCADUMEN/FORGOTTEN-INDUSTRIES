@@ -15,11 +15,11 @@ GitHub repository slugs cannot reliably carry spaces and parentheses, so use the
 
 ## Proposed Repository Map
 
-| Human name | Suggested slug | Visibility | Role |
-| --- | --- | --- | --- |
-| `FI (src)` | `fi-src` or `FORGOTTEN-INDUSTRIES` | private or restricted public | Canonical YAML, markdown drafts, archive notes, build scripts, generated data package. |
-| `FI (pub)` | `fi-pub` or `forgotten-industries.net` | public | Eleventy/static public shell, public pages, deploy workflows, public assets, domain/CNAME. |
-| Private staging | not public | private | Sensitive raw staging, credentials, private identity/account material, unredacted intake. |
+| Human name      | Suggested slug                         | Visibility                   | Role                                                                                       |
+| --------------- | -------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `FI (src)`      | `fi-src` or `FORGOTTEN-INDUSTRIES`     | private or restricted public | Canonical YAML, markdown drafts, archive notes, build scripts, generated data package.     |
+| `FI (pub)`      | `fi-pub` or `forgotten-industries.net` | public                       | Eleventy/static public shell, public pages, deploy workflows, public assets, domain/CNAME. |
+| Private staging | not public                             | private                      | Sensitive raw staging, credentials, private identity/account material, unredacted intake.  |
 
 ## Boundary Rules
 

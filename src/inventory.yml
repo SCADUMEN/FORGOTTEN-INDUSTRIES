@@ -33,7 +33,7 @@ items:
       any missing hardware before cleaning.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PED-001
     name: CaseLabs pedestal
@@ -50,7 +50,7 @@ items:
       drain. Confirm exact accessory configuration before layout decisions.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RAD-001
     name: EK XTX 360 radiator
@@ -92,7 +92,7 @@ items:
       and leak test.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RAD-002
     name: EK 360 slim radiator
@@ -109,7 +109,7 @@ items:
       exact model and fitment.
     estimated_value:
     keep_sell_archive: undecided
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-FAN-001
     name: Noiseblocker eLoop white PWM fans
@@ -126,7 +126,7 @@ items:
       Decide later which units remain with the archive.
     estimated_value:
     keep_sell_archive: undecided
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PUMP-001
     name: Aqua Computer D5 Aquabus pumps
@@ -148,7 +148,7 @@ items:
       context. Test before any loop planning becomes final.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PUMP-002
     name: DDC pumps with EK clear tops
@@ -165,7 +165,7 @@ items:
       than guessing.
     estimated_value:
     keep_sell_archive: undecided
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CTRL-001
     name: Aquaero 6 XT
@@ -190,7 +190,7 @@ items:
       buttons, headers, and Aquabus behavior.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RES-001
     name: Large EK cylinder reservoir
@@ -220,7 +220,7 @@ items:
       Splunking intake. Inspect acrylic, threads, brackets, and O-rings.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PSU-001
     name: Corsair AX1500i power supply
@@ -239,7 +239,7 @@ items:
       cable set, serial, modular leads, and electrical status are confirmed.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-BLOCK-MOSFET-001
     name: EK-MOSFET MSI X99 XPower water block
@@ -259,7 +259,7 @@ items:
       value or compatibility.
     estimated_value:
     keep_sell_archive: undecided
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-FAN-002
     name: Corsair radiator-mounted 120mm fans
@@ -283,7 +283,7 @@ items:
       until every radiator/fan assembly is counted and labels are photographed.
     estimated_value:
     keep_sell_archive: undecided
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-FIT-QDC-001
     name: Quick-disconnect fitting pair
@@ -306,7 +306,7 @@ items:
       internal seals and perform a leak test.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CASE-PANEL-001
     name: CaseLabs white window and vent panel set
@@ -352,7 +352,7 @@ items:
       and missing fasteners.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CASE-FRAME-001
     name: CaseLabs white frame and rail set
@@ -379,7 +379,7 @@ items:
       rail/frame is laid against the chassis and assigned a stable position.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CASE-TRAY-001
     name: CaseLabs motherboard tray and midplate assembly
@@ -408,7 +408,7 @@ items:
       standoff layout, pass-through grommets, and missing fasteners.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CASE-PLATE-001
     name: CaseLabs small white accessory plate set
@@ -473,7 +473,7 @@ items:
       the next bench sort.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-CASE-FILTER-001
     name: CaseLabs white mesh/filter insert group
@@ -498,7 +498,7 @@ items:
       position, orientation, and retained hardware are confirmed.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-CASE-001
     name: REDEEMER NZXT H440 white mid-tower
@@ -518,7 +518,7 @@ items:
       not as confirmed present in storage.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-MB-001
     name: REDEEMER ASUS Z170-Deluxe motherboard
@@ -539,7 +539,7 @@ items:
       board survived intact or was parted out.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-CPU-001
     name: REDEEMER Intel Core i7-6700K
@@ -559,7 +559,7 @@ items:
       disposition remain unknown.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-MEM-001
     name: REDEEMER Kingston HyperX Predator DDR4 kit
@@ -581,7 +581,7 @@ items:
       likely 4x4GB based on prep posts.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-GPU-001
     name: REDEEMER EVGA GeForce GTX 980 Ti K|NGP|N
@@ -603,7 +603,7 @@ items:
       waterblock, and backplate are distinct archive-relevant objects.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-STOR-001
     name: REDEEMER Intel 535 Series SSD pair
@@ -623,7 +623,7 @@ items:
       record unless later physical evidence separates them.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-PSU-001
     name: REDEEMER Corsair AX1200i power supply
@@ -643,7 +643,7 @@ items:
       archive, in a different machine, or gone.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-LIGHT-001
     name: REDEEMER NZXT HUE+ lighting controller
@@ -663,7 +663,7 @@ items:
       duplicating it here.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-BLOCK-CPU-001
     name: REDEEMER EK-Supremacy EVO CPU block
@@ -684,7 +684,7 @@ items:
       platform after teardown.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-BLOCK-RAM-001
     name: REDEEMER EK-RAM Monarch memory cooling assembly
@@ -706,7 +706,7 @@ items:
       functional cooling assembly until parts are physically counted.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-BLOCK-GPU-001
     name: REDEEMER EK-FC980 GTX Ti Classy KPE GPU block
@@ -727,7 +727,7 @@ items:
       physical intake.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-BACKPLATE-001
     name: REDEEMER EK-FC980 GTX Ti Classy KPE backplate
@@ -747,7 +747,7 @@ items:
       tracking.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-PUMP-D5-001
     name: REDEEMER EK-D5 Vario motor pair
@@ -767,7 +767,7 @@ items:
       final spec while retaining the DDC assembly as its own evidence record.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-PUMPTOP-D5-001
     name: REDEEMER EK dual D5 pump top
@@ -787,7 +787,7 @@ items:
       pump-top evidence until a physical part number confirms the exact model.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-PUMP-DDC-001
     name: REDEEMER Swiftech MCP35X DDC pump assembly
@@ -807,7 +807,7 @@ items:
       may be an early configuration, staged hardware, or a separate pump set.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-RES-001
     name: REDEEMER EK-RES X3 250 white reservoir
@@ -826,7 +826,7 @@ items:
       brackets, tube condition, end caps, and color during physical intake.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-FIT-001
     name: REDEEMER EK-ACF compression fittings
@@ -845,7 +845,7 @@ items:
       May 8 component list. Quantity of 16 comes from the final list.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-FIT-002
     name: REDEEMER EK-PSC angled adapters
@@ -863,7 +863,7 @@ items:
       adapters. Final count is not available from caption evidence.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-TUBE-001
     name: REDEEMER EK-Tube ZMT matte black tubing
@@ -883,7 +883,7 @@ items:
       physical measurement confirms it.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-RAD-240-001
     name: REDEEMER EK-CoolStream XE 240 radiator
@@ -904,7 +904,7 @@ items:
       while the formal list resolves the final spec as XE.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-RAD-360-001
     name: REDEEMER EK-CoolStream XE 360 radiator
@@ -924,7 +924,7 @@ items:
       front 360mm fitment before the finished REDEEMER spec was posted.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-FAN-001
     name: REDEEMER EK-Vardar white radiator fans
@@ -942,7 +942,7 @@ items:
       list. No separate fan-only intake post is currently linked.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-COOLANT-001
     name: REDEEMER EK-Ekoolant Pastel White
@@ -961,7 +961,7 @@ items:
       inventory.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-CABLE-001
     name: REDEEMER Mainframe Customs Teleios white cable set
@@ -981,7 +981,7 @@ items:
       so confirm whether this was a full PSU set, extensions, or both.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-RED-DISPLAY-001
     name: REDEEMER 65-inch curved Samsung test display
@@ -1000,7 +1000,7 @@ items:
       anchors the final recovered test evidence.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-DRONE-001
     name: Perry 1 / PEREGRINE-A01
@@ -1020,7 +1020,7 @@ items:
       clears the arm, motor, propellers, screws, wiring, and ESC/power path.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-DRONE-002
     name: Perry 2 / PEREGRINE-A02
@@ -1042,7 +1042,7 @@ items:
       an unsafe high-roof climb.
     estimated_value:
     keep_sell_archive: archive
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-DRONE-003
     name: Perry 3 / PEREGRINE-A03
@@ -1060,7 +1060,7 @@ items:
       first flight as separate archive events once the aircraft is in hand.
     estimated_value:
     keep_sell_archive: keep pending test
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PHOTO-001
     name: Initial local archive photo batch
@@ -1215,7 +1215,7 @@ items:
       deriving public assets.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'
 
   - id: FI-PHOTO-002
     name: 2026-06-05 Splunking raw photo intake
@@ -1319,4 +1319,4 @@ items:
       docs/intake/2026-06-05-splunking.sha256.
     estimated_value:
     keep_sell_archive: archive evidence
-    date_logged: "2026-06-05"
+    date_logged: '2026-06-05'

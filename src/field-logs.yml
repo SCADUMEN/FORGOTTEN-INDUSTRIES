@@ -2,8 +2,8 @@ field_logs:
   - id: FI-LOG-001
     slug: rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule
     title: Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule
-    date: "2026-06-05"
-    timestamp: "2026-06-05 HH:MM CT"
+    date: '2026-06-05'
+    timestamp: '2026-06-05 HH:MM CT'
     category: field-log
     associated_project: FI-PROJ-001
     object: CaseLabs Mercury S8 + pedestal
@@ -53,8 +53,8 @@ field_logs:
   - id: FI-METHOD-001
     slug: photograph-before-cleaning
     title: Photograph Before Cleaning
-    date: "2026-06-05"
-    timestamp: "2026-06-05 HH:MM CT"
+    date: '2026-06-05'
+    timestamp: '2026-06-05 HH:MM CT'
     category: method
     associated_project: FI-PROJ-002
     object: recovered hardware and tools
@@ -82,8 +82,8 @@ field_logs:
   - id: FI-LOG-002
     slug: peregrine-a01-crash-recovery-intake
     title: PEREGRINE-A01 Crash Recovery Intake
-    date: "2026-06-05"
-    timestamp: "2026-06-05 04:39 CT"
+    date: '2026-06-05'
+    timestamp: '2026-06-05 04:39 CT'
     category: field-log
     associated_project: FI-PROJ-004
     object: Perry 1 / PEREGRINE-A01
@@ -139,8 +139,8 @@ field_logs:
   - id: FI-LOG-003
     slug: peregrine-a02-loss-no-roof-recovery
     title: PEREGRINE-A02 Loss / No Roof Recovery Rule
-    date: "2026-06-05"
-    timestamp: "2026-06-05 03:00 CT"
+    date: '2026-06-05'
+    timestamp: '2026-06-05 03:00 CT'
     category: field-log
     associated_project: FI-PROJ-004
     object: Perry 2 / PEREGRINE-A02
@@ -187,8 +187,8 @@ field_logs:
   - id: FI-LOG-004
     slug: mercury-s8-proof-of-concept-build-strategy
     title: Mercury S8 Restoration Proof-of-Concept Build Strategy
-    date: "2026-06-06"
-    timestamp: "2026-06-06 HH:MM CT"
+    date: '2026-06-06'
+    timestamp: '2026-06-06 HH:MM CT'
     category: field-log
     associated_project: FI-PROJ-001
     object: CaseLabs Mercury S8 + pedestal

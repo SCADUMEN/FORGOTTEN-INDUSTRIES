@@ -9,8 +9,8 @@ The source of truth is human-readable YAML in `src/`. The build step converts th
 
 This follows the same architectural pattern as Tyler Etters' discography repo: edit canonical YAML first, generate typed and machine-readable output second, let websites and packages consume the generated archive later.
 
-He has found what I always failed to fully grasp: my voice. 
-My Brother's Keeper, indeed ~ Thank you, Tyler. 
+He has found what I always failed to fully grasp: my voice.
+My Brother's Keeper, indeed ~ Thank you, Tyler.
 
 ## Setup
 
@@ -28,7 +28,7 @@ ruby scripts/build.rb
 
 To build the Eleventy mirror:
 
-```bash
+````bash
 npm install
 npm run build:site
 ## Curated Posts
@@ -90,7 +90,7 @@ The existing root HTML pages remain checked in as durable, inspectable archive p
 ```bash
 ruby scripts/import_social.rb
 ruby scripts/build.rb
-```
+````
 
 The importer reads public Tumblr and Instagram data for Forgotten Industries, saves local media into `assets/social/`, writes Markdown posts into `posts/social/`, writes canonical records to `src/social-posts.yml`, and regenerates `social-posts.html`.
 

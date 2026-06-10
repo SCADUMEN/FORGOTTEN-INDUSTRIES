@@ -19,9 +19,9 @@ tags:
 
 # Perspective, Peregrines, & “Pang”
 
-*Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06*
+_Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06_
 
-*Reader note: death, substance use, recovery, and grief.*
+_Reader note: death, substance use, recovery, and grief._
 
 > A thing documented is a thing not yet lost.
 > The archive remembers what panic forgets.
@@ -29,7 +29,7 @@ tags:
 
 ## 00. Pang
 
-*Ground yourself. Tell the truth. Dare to be brave enough to look directly at what survived.*
+_Ground yourself. Tell the truth. Dare to be brave enough to look directly at what survived._
 
 Always tell the truth and you shall be untouchable.
 
@@ -45,7 +45,7 @@ This is not the first true entry. This is the prelude: the signal check before t
 
 ![Matthew Marx Forgotten Industries badge from the 2014 Tumblr archive.](../assets/social/tumblr-100605260122.jpg)
 
-*Early public evidence: Matthew Marx, Forgotten Industries, October 2014.*
+_Early public evidence: Matthew Marx, Forgotten Industries, October 2014._
 
 Forgotten Industries is the collective body of my work. My name is Matthew T. Marx. I established it in 2014 after the unexpected death of my father, Eric Hugh Marx, on January 10, 2014. My grandmother, Marjorie Marx, passed away weeks later in that frigid spring.
 
@@ -57,15 +57,15 @@ That is the best way I can explain what happened to me next. Except I did not lo
 
 I dissociated fully into booze and fucking watercooling. I probably spent fifty thousand dollars of my inheritance on hardware, fittings, blocks, pumps, cases, radiators, fans, and systems I never used. Some of it became work. Some of it became evidence. A lot of it became unopened boxes and machines waiting in storage for a version of me who did not know how to come back yet.
 
-*What survives the shelf can survive the rebuild.*
+_What survives the shelf can survive the rebuild._
 
 ![White CaseLabs watercooled build from the 2014 Forgotten Industries Instagram archive.](../assets/social/instagram-20141116-veK079hXRX-caselabs-sth10-watercooledpc-liquidcooled-buildlog-ocn-overclock-g.jpg)
 
-*CaseLabs evidence, November 2014. Watercooling was not a metaphor. It was where the money went.*
+_CaseLabs evidence, November 2014. Watercooling was not a metaphor. It was where the money went._
 
 ![Recovered Instagram crop of a CaseLabs watercooling loop with radiators and fans.](../assets/social/recovered/instagram-20141115-fi-case-loop-crop.png)
 
-*Recovered social-media crop: the old loop, the old excess, the old proof.*
+_Recovered social-media crop: the old loop, the old excess, the old proof._
 
 After a thirty-day inpatient program, I found myself through and out the other side of my disease. It has been years since I have had a drink. I do not keep track.
 
@@ -95,15 +95,15 @@ Can I be a fucking doctor?
 
 Turns out, yes. Yes, I could. I was accepted to the University of Kansas School of Medicine MD program, class of 2029, at the age of thirty-four. Holy shit. My class was mostly twenty-two-year-olds.
 
-*Recovery is not lightning. It is voltage held steady.*
+_Recovery is not lightning. It is voltage held steady._
 
 ![Wide intake scene with recovered parts laid out for review.](../assets/initial-photos/matthewmarx-096.jpeg)
 
-*2026 intake: the machines did not disappear. They waited long enough to become evidence.*
+_2026 intake: the machines did not disappear. They waited long enough to become evidence._
 
 ![Recovered EK radiator hardware resting on white CaseLabs parts.](../assets/initial-photos/matthewmarx-014.jpeg)
 
-*Recovered hardware, before cleaning. The archive begins before the object gets improved.*
+_Recovered hardware, before cleaning. The archive begins before the object gets improved._
 
 What came then?
 
@@ -115,7 +115,7 @@ And Pang.
 
 ![PEREGRINE-A02 title graphic.](../assets/projects/peregrine/peregrine-a02.png)
 
-*PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker.*
+_PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker._
 
 This archive does not begin with a clean heroic arc. It begins with the pang: the sharp, specific feeling of finding the machines again and realizing the things I abandoned were still there. They remembered more honestly than I could. They waited without forgiving or accusing. They simply remained.
 

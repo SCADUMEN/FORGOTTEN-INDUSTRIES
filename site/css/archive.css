@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@source "../**/*.njk";
+@import 'tailwindcss';
+@source '../**/*.njk';
 
 :root {
   color-scheme: dark;
@@ -13,10 +13,11 @@
   --blueprint: #67e8ff;
   --white: #081327;
   --focus: #fff275;
-  --utility-font: Andale Mono, Monaco, Consolas, "Liberation Mono", monospace;
-  --mono-font: Andale Mono, Monaco, Consolas, "Liberation Mono", monospace;
-  --headline-font: Georgia, "Times New Roman", Times, serif;
-  --stencil-font: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
+  --utility-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
+  --mono-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
+  --headline-font: Georgia, 'Times New Roman', Times, serif;
+  --stencil-font:
+    Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif;
 }
 
 * {
@@ -26,10 +27,13 @@
 body {
   margin: 0;
   background:
-    linear-gradient(90deg, rgba(103, 232, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 255, 0.1) 1px, transparent 1px),
     linear-gradient(0deg, rgba(255, 91, 214, 0.055) 1px, transparent 1px),
     var(--paper);
-  background-size: 23px 23px, 29px 29px, auto;
+  background-size:
+    23px 23px,
+    29px 29px,
+    auto;
   color: var(--ink);
   font-family: var(--mono-font);
   font-size: 16px;
@@ -129,12 +133,12 @@ img {
 }
 
 .site-nav a::before {
-  content: "// ";
+  content: '// ';
   color: var(--oxide);
 }
 
 .site-nav a::after {
-  content: " //";
+  content: ' //';
   color: var(--oxide);
 }
 
@@ -539,7 +543,7 @@ h3 {
 }
 
 .stamp-muted {
-  background: rgba(132, 234, 255, 0.10);
+  background: rgba(132, 234, 255, 0.1);
   color: var(--steel);
 }
 

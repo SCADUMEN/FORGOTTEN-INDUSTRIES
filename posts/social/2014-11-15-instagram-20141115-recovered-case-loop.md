@@ -5,22 +5,22 @@ source_id: recovered-20141115-case-loop
 source_url: https://www.instagram.com/forgottenindustries/
 slug: instagram-20141115-recovered-case-loop
 title: Instagram Recovered Case Loop
-date: '2014-11-15'
-timestamp: '2014-11-15T00:00:00Z'
+date: "2014-11-15"
+timestamp: "2014-11-15T00:00:00Z"
 tags: []
 like_count: 18
 comment_count: 1
 media:
-- type: image
-  path: assets/social/recovered/instagram-20141115-fi-case-loop-crop.png
-  source_url: https://www.instagram.com/forgottenindustries/
-  width: 1320
-  height: 1320
-- type: image
-  path: assets/social/recovered/instagram-20141115-fi-posts-screenshot.png
-  source_url: https://www.instagram.com/forgottenindustries/
-  width: 1320
-  height: 2868
+  - type: image
+    path: assets/social/recovered/instagram-20141115-fi-case-loop-crop.png
+    source_url: https://www.instagram.com/forgottenindustries/
+    width: 1320
+    height: 1320
+  - type: image
+    path: assets/social/recovered/instagram-20141115-fi-posts-screenshot.png
+    source_url: https://www.instagram.com/forgottenindustries/
+    width: 1320
+    height: 2868
 ---
 
 ![Instagram Recovered Case Loop](../../assets/social/recovered/instagram-20141115-fi-case-loop-crop.png)

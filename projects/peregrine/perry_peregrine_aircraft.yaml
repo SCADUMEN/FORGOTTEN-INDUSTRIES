@@ -53,7 +53,7 @@ aircraft:
     lore:
       - flown after A01 recovery and new skill confidence
       - roughly 3 AM loss
-      - "yeeted into the abyss"
+      - 'yeeted into the abyss'
     recovery_rule:
       - no unsafe roof recovery
       - no nighttime roof recovery

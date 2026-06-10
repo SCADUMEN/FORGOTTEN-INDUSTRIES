@@ -1,31 +1,31 @@
 ---
 id: FI-SOC-IG-008
 source: instagram
-source_id: '872124766650464221'
+source_id: "872124766650464221"
 shortcode: waaNrEBXfd
 source_url: https://www.instagram.com/p/waaNrEBXfd/
 slug: instagram-20141210-waaNrEBXfd-3840x2160-60hz31-asus-pq321q-ffxiv-logitech-orionspark-g910-g600-m
 title: Instagram waaNrEBXfd
-date: '2014-12-10'
-timestamp: '2014-12-10T04:23:15Z'
+date: "2014-12-10"
+timestamp: "2014-12-10T04:23:15Z"
 tags:
-- asus
-- pq321q
-- ffxiv
-- logitech
-- orionspark
-- g910
-- g600
-- mmo
-- custompc
+  - asus
+  - pq321q
+  - ffxiv
+  - logitech
+  - orionspark
+  - g910
+  - g600
+  - mmo
+  - custompc
 like_count: 9
 comment_count: 1
 media:
-- type: image
-  path: assets/social/instagram-20141210-waaNrEBXfd-3840x2160-60hz.jpg
-  source_url: https://instagram.fmci1-4.fna.fbcdn.net/v/t51.82787-15/632309229_18558685837043349_1673003306345855710_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=ODcyMTI0NzY2NjUwNDY0MjIx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuNjQwLnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=BhiThsDC1DAQ7kNvwGA60gk&_nc_oc=AdrQ7NIb3V0gE7zp5W7lrOFeQ9CdiYTqCJTOKypYcL6DB0bwUCOzINwGJrDt2U3ojHHLh87R7_pM3mm9lfDhb7vW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmci1-4.fna&_nc_gid=jUEmZtpuDdqwBK7JC-LSYw&_nc_ss=7a22e&oh=00_Af9mpVOQNRdTHUkS94CYt0o2DfzFvMfQJ1HzxqrDxI1TxA&oe=6A2871DF
-  width: 640
-  height: 640
+  - type: image
+    path: assets/social/instagram-20141210-waaNrEBXfd-3840x2160-60hz.jpg
+    source_url: https://instagram.fmci1-4.fna.fbcdn.net/v/t51.82787-15/632309229_18558685837043349_1673003306345855710_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=ODcyMTI0NzY2NjUwNDY0MjIx.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuNjQwLnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=BhiThsDC1DAQ7kNvwGA60gk&_nc_oc=AdrQ7NIb3V0gE7zp5W7lrOFeQ9CdiYTqCJTOKypYcL6DB0bwUCOzINwGJrDt2U3ojHHLh87R7_pM3mm9lfDhb7vW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmci1-4.fna&_nc_gid=jUEmZtpuDdqwBK7JC-LSYw&_nc_ss=7a22e&oh=00_Af9mpVOQNRdTHUkS94CYt0o2DfzFvMfQJ1HzxqrDxI1TxA&oe=6A2871DF
+    width: 640
+    height: 640
 ---
 
 ![Instagram waaNrEBXfd](../../assets/social/instagram-20141210-waaNrEBXfd-3840x2160-60hz.jpg)
