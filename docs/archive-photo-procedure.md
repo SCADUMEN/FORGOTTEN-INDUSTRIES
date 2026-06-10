@@ -57,7 +57,7 @@ P002
 P003
 ```
 
-Keep the ID visible in the photo when possible. A paper card, painter's tape label, or temporary tag is enough. The ID should later map to `src/inventory.yml` or a project dossier.
+Keep the ID visible in the photo when possible. A paper card, painter's tape label, or temporary tag is enough. The ID should later map to `src/data/inventory.yml` or a project dossier.
 
 Recommended minimum notes for each ID:
 

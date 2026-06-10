@@ -7,7 +7,7 @@ Domain target: `forgotten-industries.net`
 Forgotten Industries is currently a static archive with an Eleventy public mirror deployed through GitHub Pages.
 
 - The raw HTML pages remain checked in at the repository root as durable reference shelves.
-- The Eleventy entry point lives at `site/index.njk`.
+- The Eleventy entry point lives at `src/index.njk`.
 - The deployable site is written to `_site/`.
 - `npm run build` regenerates archive data in `dist/`.
 - `npm run build:site` regenerates archive data and builds the Eleventy mirror.
@@ -99,7 +99,7 @@ The public archive has one canonical spine:
 - GitHub source: `https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES`
 - Eleventy static site generator: `https://www.11ty.dev/`
 
-The live site renders GitHub, Eleventy, contact, and Field Notes links from `site/_data/site.cjs`.
+The live site renders GitHub, Eleventy, contact, and Field Notes links from `src/_data/site.cjs`.
 
 ### Email
 
@@ -113,7 +113,7 @@ If sending as `@forgotten-industries.net` becomes important, move to a mailbox p
 
 ### Analytics
 
-The base layout has optional GA4 support. To activate it, add the measurement ID in `site/_data/site.cjs`:
+The base layout has optional GA4 support. To activate it, add the measurement ID in `src/_data/site.cjs`:
 
 ```js
 analytics: {
@@ -125,7 +125,7 @@ Tracked link hooks already exist through `data-track` attributes for GitHub, Ele
 
 ### Subscription List
 
-Phase 1 uses a domain email link for Field Notes. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `site/_data/site.cjs` with the provider-hosted subscription URL.
+Phase 1 uses a domain email link for Field Notes. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `src/_data/site.cjs` with the provider-hosted subscription URL.
 
 Recommended public framing:
 
