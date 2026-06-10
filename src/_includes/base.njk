@@ -44,16 +44,24 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <p>{{ site.name }} keeps the archive at <a href="{{ site.domainUrl }}">{{ site.domainHost }}</a>.</p>
-      <nav class="footer-nav" aria-label="External routes">
+      <nav class="footer-nav" aria-label="Routes">
         <a href="{{ site.githubUrl }}" data-track="outbound-github">GitHub</a>
         <a href="{{ site.eleventyUrl }}" data-track="outbound-eleventy">Eleventy</a>
         <a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Field Notes</a>
         <a href="mailto:{{ site.contact }}" data-track="contact-email">Contact</a>
+        <a href="/feed.xml" data-track="feed">RSS</a>
+        <a href="/sitemap.xml" data-track="sitemap">Sitemap</a>
         {% if site.supportUrl %}
         <a href="{{ site.supportUrl }}" data-track="support">Support</a>
         {% endif %}
       </nav>
     </div>
+    <p class="mt-3 font-mono text-[0.78rem] text-muted">
+      Source Code:
+      <a href="{{ site.githubUrl }}/commit/{{ site.gitHash }}" data-track="outbound-commit">{{ site.gitHashShort }}</a>
+      / Build Time:
+      <time datetime="{{ site.buildTime }}">{{ site.buildTime }}</time>
+    </p>
   </footer>
   {% if site.analytics.googleMeasurementId %}
   <script>
