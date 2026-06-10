@@ -1,5 +1,22 @@
+const { execSync } = require('child_process')
+
 module.exports = {
   name: 'Forgotten Industries',
+  buildTime: new Date().toISOString(),
+  gitHash: (() => {
+    try {
+      return execSync('git rev-parse HEAD').toString().trim()
+    } catch {
+      return 'unknown'
+    }
+  })(),
+  gitHashShort: (() => {
+    try {
+      return execSync('git rev-parse --short HEAD').toString().trim()
+    } catch {
+      return 'unknown'
+    }
+  })(),
   url: 'https://forgotten-industries.net',
   domainUrl: 'https://forgotten-industries.net',
   domainHost: 'forgotten-industries.net',
