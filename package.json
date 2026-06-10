@@ -34,6 +34,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-plugin-rss": "3.0.0",
     "@tailwindcss/cli": "4.3.0",
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",

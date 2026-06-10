@@ -1,4 +1,20 @@
+import { feedPlugin } from '@11ty/eleventy-plugin-rss'
+
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: 'atom',
+    outputPath: '/feed.xml',
+    collection: { name: 'posts', limit: 0 },
+    metadata: {
+      title: 'Forgotten Industries',
+      subtitle:
+        'An archive and evidence-based memoir that explores what happens to the things we leave behind.',
+      language: 'en',
+      base: 'https://forgotten-industries.net/',
+      author: { name: 'Matthew Marx' },
+    },
+  })
+
   eleventyConfig.addPassthroughCopy('assets')
   eleventyConfig.addPassthroughCopy('dist')
   eleventyConfig.addPassthroughCopy('docs')
