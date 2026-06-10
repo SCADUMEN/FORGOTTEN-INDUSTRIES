@@ -1,13 +1,15 @@
 ---
-title: "Perspective, Peregrines, & “Pang”"
-slug: "perspective-peregrines-and-pang"
-category: "Perspective, Peregrines, & “Pang”"
+title: "A Thing Documented Is a Thing Not Yet Lost"
+slug: "a-thing-documented-is-a-thing-not-yet-lost"
+category: "Prelude"
 type: "Prelude"
 entry: "000"
 date: "2026-06-06"
 status: "draft"
-description: "The Forgotten Industries prelude: perspective, Peregrine, pang, evidence, and the strange mercy of seeing wreckage clearly."
+description: "The Forgotten Industries prelude: death, inheritance, recovery, watercooling, evidence, and the strange mercy of finding what survived."
 tags:
+  - prelude
+  - signal-check
   - perspective
   - peregrine
   - pang
@@ -17,9 +19,13 @@ tags:
   - forgotten-industries
 ---
 
-# Perspective, Peregrines, & “Pang”
+# Prelude: A Thing Documented Is a Thing Not Yet Lost
 
+<<<<<<<< HEAD:src/posts/2026-06-06-perspective-peregrines-and-pang.md
 _Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000 // 2026.06.06_
+========
+*Forgotten Industries // Signal Check // Prelude // Entry 000 // 2026.06.06*
+>>>>>>>> origin/main:src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md
 
 _Reader note: death, substance use, recovery, and grief._
 
@@ -27,7 +33,7 @@ _Reader note: death, substance use, recovery, and grief._
 > The archive remembers what panic forgets.
 > Old systems do not wake by force. They wake by sequence.
 
-## 00. Pang
+## 00. Signal Check
 
 _Ground yourself. Tell the truth. Dare to be brave enough to look directly at what survived._
 
@@ -113,6 +119,8 @@ Peregrine.
 
 And Pang.
 
+Those are not the whole story of the prelude. They are the doorway out of it.
+
 ![PEREGRINE-A02 title graphic.](../assets/projects/peregrine/peregrine-a02.png)
 
 _PEREGRINE enters as field system, aircraft record, crash log, loss record, and boundary marker._
@@ -145,5 +153,11 @@ So the work now is simple.
 Photograph before cleaning. Tell the truth before interpretation. Preserve the dump before curation. Publish one post at a time.
 
 No map is built from motion alone. Stop, mark, continue.
+
+What came next requires its own field doctrine.
+
+Perspective changes the view. Peregrine gives the archive an eye above the hill. Pang teaches the body when an object has become evidence again.
+
+The line is open. Signal clean. Entry 001 begins with the view.
 
 -- Forgotten Industries // Prelude // Entry 000 // 2026.06.06
