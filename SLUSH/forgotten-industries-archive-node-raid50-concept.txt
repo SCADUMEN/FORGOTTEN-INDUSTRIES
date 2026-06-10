@@ -1,0 +1,119 @@
+FORGOTTEN INDUSTRIES — ARCHIVE NODE / DATA VAULT CONCEPT
+
+Working title ideas:
+- Forgotten Industries Archive Node
+- The Archive Engine
+- Peregrine Cold Storage
+- The Data Vault
+- Recovery & Restorations: Storage Infrastructure Phase
+
+Core realization:
+The CaseLabs Mercury S8 + pedestal was never just supposed to be a display PC or watercooling monument. The original dream was a serious storage center: a physical archive machine. The old version was hilarious and insane — a lot of tiny high-RPM drives, something like 8–12 drives, possibly old 10,000 RPM enterprise Seagate screamers around 70 GB each, creating a ridiculous baby data-center inside a boutique case.
+
+Modern interpretation:
+Build the S8/pedestal into a Forgotten Industries archive box: a workstation plus storage vault for raw project evidence, build footage, extracted stills, manuals, scans, GitHub assets, blog drafts, photos, old project files, and everything that is too large or too raw to live directly in GitHub.
+
+Why this matters:
+The 286 MB OBS video immediately proved the need for local archive infrastructure. GitHub has small file limits and should hold curated documentation, not raw footage. Raw media needs a vault.
+
+Proposed architecture:
+
+1. Main cube — Workstation / Control Chamber
+- Active PC hardware
+- NVMe/SSD working drive for editing and processing
+- OBS/video/photo ingest workflow
+- Card reader / USB hub / capture workflow
+- Fan and sensor control, possibly Aquaero for the old watercooling/control aesthetic
+- Optional watercooling museum/revival loop if desired
+
+2. Pedestal — Storage Vault / Lower Archive Chamber
+- 8–12 HDD bays if physically possible
+- Quiet airflow across the drives
+- Vibration isolation where practical
+- Drive labels like evidence tags
+- Cable routing treated like an archive infrastructure build
+- Potential serviceability focus: easy drive swaps, clean SATA/SAS routing, clear power distribution
+
+RAID / Pool fantasy:
+The emotional dream is 8–12 drives in something RAID 50-like: striped RAID 5 groups for capacity plus redundancy. It has the right energy: absurd, technical, excessive, and very Forgotten Industries.
+
+Practical modern equivalents to evaluate:
+- True RAID 50 with a hardware RAID card
+- ZFS pool using RAIDZ2 / mirrored vdevs
+- Unraid with parity disks
+- Linux mdadm RAID 6 / RAID 10 / RAID 50-style layout
+- TrueNAS if this becomes more of a dedicated storage server
+
+Important note:
+RAID is not backup. RAID helps survive a drive failure. It does not protect against deletion, corruption, theft, fire, formatting the wrong disk, or software mistakes. The real archive plan needs at least one separate backup target.
+
+Suggested storage model:
+
+- Fast working storage:
+  NVMe/SSD for active editing, OBS footage processing, ffmpeg work, and current project files.
+
+- Archive pool:
+  Large HDD array for raw video, original photos, extracted stills, manuals, scans, old project files, and evidence dumps.
+
+- Curated public repo:
+  GitHub holds markdown, compressed images, selected stills, diagrams, notes, and documentation. Not raw giant video files.
+
+- Backup layer:
+  External HDD, second machine, iCloud/Drive, Backblaze, or another physically separate copy.
+
+Old dream vs new dream:
+
+Old dream:
+- 8–12 tiny 10k drives
+- Possibly around 70 GB each
+- Ridiculous noise
+- Ridiculous heat
+- Extremely small capacity by modern standards
+- Incredible data-center aesthetic
+
+New dream:
+- 8–12 large SATA HDDs or mixed archive drives
+- Actually useful capacity
+- Quiet enough to live with
+- Still has the giant archive-machine energy
+- Supports Forgotten Industries as a real long-term project
+
+Narrative framing:
+This is not a distraction from the blog/archive. This is the infrastructure layer for the archive. The case becomes the physical memory palace. The pedestal becomes the lower vault. The machine stores the evidence of its own resurrection.
+
+Possible blog/dossier title:
+"The Archive Engine: Returning the CaseLabs S8 to Its Original Purpose"
+
+Possible subtitle:
+"From 10,000 RPM chaos to a modern cold-storage node for Forgotten Industries."
+
+Short mission statement:
+The Forgotten Industries Archive Node is a resurrected CaseLabs Mercury S8 + pedestal rebuilt as a workstation and storage vault for raw evidence, restoration media, build logs, scans, manuals, and project history. GitHub receives the curated record; the Archive Node preserves the raw proof.
+
+Immediate next steps:
+1. Inventory existing drive cages, rails, brackets, and pedestal mounting points.
+2. Photograph the pedestal interior and measure possible HDD bay layouts.
+3. Decide whether this is one combined workstation/storage build or a dedicated NAS-style archive server.
+4. Determine realistic drive count: 8, 10, or 12.
+5. Decide software direction: TrueNAS, Unraid, Linux/ZFS, or Windows storage workflow.
+6. Build a GitHub-friendly media policy: raw video local, selected stills public, compressed previews only.
+7. Create a folder structure for raw evidence and curated outputs.
+
+Potential folder structure:
+
+/Forgotten-Industries-Archive
+  /00_INBOX_raw_imports
+  /01_raw_video
+  /02_extracted_stills
+  /03_selected_photos
+  /04_manuals_scans_pdfs
+  /05_case_parts_inventory
+  /06_blog_assets
+  /07_github_exports
+  /99_cold_storage
+
+Core rule:
+GitHub is the museum placard. The Archive Node is the evidence locker.
+
+Final line:
+The 286 MB OBS file was not a problem. It was the first alarm bell from the future: build the vault.

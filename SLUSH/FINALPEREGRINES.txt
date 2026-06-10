@@ -1,0 +1,83 @@
+An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.
+
+Finding Value in the Wreckage
+What a derelict garage taught me about rarity, memory, and the things we leave behind.
+
+
+thing, things, and proper Thing
+
+
+recoveries, restorations, & 'Le Redempteur'
+
+perspective, peregrines, & 'Pang'
+
+ },
+  "projects": [
+   {
+  "id": "FI-PROJ-001",
+  "slug": "caselabs-mercury-s8-pedestal-restoration",
+  "title": "Finding Value in the Wreckage",
+  "working_title": "Archiving a CaseLabs Mercury S8 + Pedestal",
+  "summary": "An exploration of rarity, preservation, and the things we leave behind.",
+  "category": "Hardware Archive",     
+  "status": "revived",
+  "started": "2015",
+  "revived": "2026",
+  "origin": {
+    "purchased": "around 2015",
+    "stored_for": "roughly a decade",
+    "context": "The project paused after Matthew's father died and returned in 2026 as part of rebuilding life, hobbies, and identity."
+  }
+},
+
+Perspective, Peregrines, & 'Pang'
+
+PERSPECTIVE 
+
+Changes everything. The magnitude of that change; is directly porportional to the magnitude of, the change in the view.
+
+Your view. My view. Our view. 
+
+How far did I climb up this hill before I turned around to see? To see. Perspective, to me, is deeply linked to vision. When we turn our head around to see how far we've come up that hill, we will see a view that was different than the view at the bottom. If we climb halfway, we turn around and see a modest rise; we've translated (ourselves, the object) in the sagital and coronal planes (x-axis and y-axis). We went forward and up. 
+
+Now lets say we climbed to the top, this time. The change in verticality would not simply be the effect of twice that before, no, the extra elevation provides our eyes a much broader viewpoint. Our eyes, to see. Our eyes. 
+
+So, then, when we have come a very long way, we are afforded a view of a very different path behind. Can I run a mile, and still see where I had began? What about 5, or 10? 100? Surely not. 
+
+I have spent the last six years running. 
+
+With everything I had.
+
+The view from where I stand now... is simply beyond words. I feel as though I could do anything in the entire world. I know I could. I can. 
+
+These hands will move mountains. 
+
+
+PEREGRINES
+
+In my persuit of advancing my newfound perspective, I found myself gradually returning to old hobbies, interests, and other earthly persuits. I had been living my daily life essentially under "survival mode" since 2020. Medical school was a lofty goal. The rat race that surrounds and surmises the application process, and before that, the competitiveness one must maintain during undergrad, is like nothing I have ever experienced. I digress.
+
+So, peregrines. The peregrine falcon is my favourite animal. It has been since grade school. I distinctly remember Tyler and I /with greg/ deciding ours. Tyler was a Bald Eagle, Greg, A wolf. 
+
+PANG
+
+This archive does not begin with a clean heroic arc. It begins with the pang: the sharp, specific feeling of finding the machines again and realizing the things I abandoned were still there. They remembered more honestly than I could. They waited without forgiving or accusing. They simply remained.
+
+The mark for pang is ∴ .
+
+Read it as: therefore, now look.
+
+Definition: a pang is the physical hit of recognition that arrives when an abandoned object becomes evidence again. It is not nostalgia. It is not proof by itself. It is the signal that something in the archive deserves to be stopped over, photographed, named, and handled with care.
+
+Tutorial:
+
+1. When the pang hits, stop moving.
+2. Photograph the object before cleaning, sorting, selling, repairing, or explaining it.
+3. Write the object name if you know it. If not, write what is visible.
+4. Record the date, place, condition, and what the object made you remember.
+5. Separate evidence from interpretation.
+6. Then continue.
+
+If Potato, my Shiba Inu, wanders into the frame, Potato stays in the record. He is not a random pet reference. He is lab partner, shop supervisor, sleep compliance officer, and living continuity proof. Companions are part of the evidence too.
+
+  
