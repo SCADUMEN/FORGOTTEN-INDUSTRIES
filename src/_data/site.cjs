@@ -1,22 +1,28 @@
 const { execSync } = require('child_process')
 
+const gitHash = (() => {
+  try {
+    return execSync('git rev-parse HEAD').toString().trim()
+  } catch {
+    return 'unknown'
+  }
+})()
+
+const gitHashShort = (() => {
+  try {
+    return execSync('git rev-parse --short HEAD').toString().trim()
+  } catch {
+    return 'unknown'
+  }
+})()
+
 module.exports = {
   name: 'Forgotten Industries',
   buildTime: new Date().toISOString(),
-  gitHash: (() => {
-    try {
-      return execSync('git rev-parse HEAD').toString().trim()
-    } catch {
-      return 'unknown'
-    }
-  })(),
-  gitHashShort: (() => {
-    try {
-      return execSync('git rev-parse --short HEAD').toString().trim()
-    } catch {
-      return 'unknown'
-    }
-  })(),
+  gitHash,
+  gitHashShort,
+  // Cache-busting token for static assets (see base.njk). Changes every commit.
+  assetVersion: gitHashShort,
   url: 'https://forgotten-industries.net',
   domainUrl: 'https://forgotten-industries.net',
   domainHost: 'forgotten-industries.net',
