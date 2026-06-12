@@ -1,0 +1,63 @@
+---
+layout: base.njk
+title: Field Notes
+description: Short active-process dispatches from the Forgotten Industries bench, garage, field, desk, and improvised lab.
+permalink: /field-notes/index.html
+eleventyExcludeFromCollections: true
+---
+
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Field Notes / imported signal</p>
+    <h1>Field Notes</h1>
+    <p class="tagline">{{ description }}</p>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-notes-status">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Source</p>
+      <h2 id="field-notes-status">Bluesky remains the live input. This page keeps the archive copy.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>Live Feed</h3>
+      <p>Newest public dispatches are imported from <a href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">@forgotten-industry.bsky.social</a> at build time.</p>
+      <p class="action-row"><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Open live Bluesky feed</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="field-notes-list">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Dispatches</p>
+      <h2 id="field-notes-list">Bench notes, evidence finds, measurements, and active process.</h2>
+    </div>
+
+    {% if fieldnotes.length %}
+    <ol class="field-note-list">
+      {% for note in fieldnotes %}
+      <li class="field-note-card">
+        <header>
+          <time datetime="{{ note.createdAt | isoDate }}">{{ note.createdAt | readableDate }}</time>
+          <a href="{{ note.url }}" data-track="outbound-field-note">Source</a>
+        </header>
+        <p>{{ note.text | escape | nl2br | safe }}</p>
+        <footer aria-label="Bluesky engagement">
+          <span>{{ note.replyCount }} replies</span>
+          <span>{{ note.repostCount }} reposts</span>
+          <span>{{ note.likeCount }} likes</span>
+        </footer>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <div class="callout field-note-empty">
+      <h3>Import Pending</h3>
+      <p>The page route is active, but no dispatches were available during this build. The live feed remains available on Bluesky.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
