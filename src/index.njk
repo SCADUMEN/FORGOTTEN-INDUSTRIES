@@ -20,31 +20,22 @@ canonical: https://forgotten-industries.net/
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Figure 1</p>
-      <h2 id="mirror-heading">Signal clean. Domain and source remain one record.</h2>
+      <h2 id="mirror-heading">Seven routes. One archive map.</h2>
     </div>
 
     <div>
       <dl class="ledger">
+        {% for item in site.nav %}
         <div>
-          <dt>Canonical domain</dt>
-          <dd><a href="{{ site.domainUrl }}">{{ site.domainHost }}</a></dd>
+          <dt>
+            <span class="ledger-english">{{ item.english or item.label }}</span>
+            {% if item.french %}
+            <span class="ledger-french"><i>{{ item.french }}</i></span>
+            {% endif %}
+          </dt>
+          <dd><a href="{{ item.href }}">{{ item.summary }}</a></dd>
         </div>
-        <div>
-          <dt>GitHub source</dt>
-          <dd><a href="{{ site.githubUrl }}" data-track="outbound-github">{{ site.repository }}</a></dd>
-        </div>
-        <div>
-          <dt>Static site generator</dt>
-          <dd><a href="https://www.11ty.dev/" data-track="outbound-eleventy">Eleventy</a></dd>
-        </div>
-        <div>
-          <dt>Contact</dt>
-          <dd><a href="mailto:{{ site.contact }}" data-track="contact-email">{{ site.contact }}</a></dd>
-        </div>
-        <div>
-          <dt>Matthew Marx / Live Feed</dt>
-          <dd><a href="https://bsky.app/profile/forgotten-industry.bsky.social" data-track="outbound-bluesky">Bluesky field signal</a></dd>
-        </div>
+        {% endfor %}
       </dl>
 
       <div class="stats" aria-label="Archive counts">
@@ -101,9 +92,9 @@ canonical: https://forgotten-industries.net/
           <p>Manual 001: recovered CaseLabs Mercury S8 assembly reference and living instruction shelf.</p>
         </li>
         <li>
-          <span>Matthew Marx / Live Feed</span>
-          <h3><a href="https://bsky.app/profile/forgotten-industry.bsky.social" data-track="outbound-bluesky">Bluesky field signal</a></h3>
-          <p>Short live dispatches from the bench: evidence finds, measurements, restoration notes, and active process.</p>
+          <span>Field Notes</span>
+          <h3><a href="/field-notes/">Imported field signal</a></h3>
+          <p>Short dispatches from the bench: evidence finds, measurements, restoration notes, and active process archived on-site.</p>
         </li>
         <li>
           <span>Projects</span>
@@ -125,7 +116,7 @@ canonical: https://forgotten-industries.net/
     <div class="callout">
       <h3>Subscribe</h3>
       <p>Short dispatches from the bench: restoration logs, evidence finds, measurements, recovered posts, and notes that do not need a full dossier yet.</p>
-      <p class="action-row"><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Subscribe to Field Notes</a></p>
+      <p class="action-row"><a href="/field-notes/">Open Field Notes</a></p>
     </div>
   </div>
 </section>

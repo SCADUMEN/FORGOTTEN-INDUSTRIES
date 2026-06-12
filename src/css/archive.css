@@ -104,8 +104,8 @@ img {
 
 .site-header {
   display: grid;
-  grid-template-columns: minmax(9rem, 0.55fr) minmax(12rem, 0.45fr);
-  align-items: start;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
   padding: 1rem 0;
@@ -129,33 +129,52 @@ img {
 
 .site-nav {
   display: grid;
-  gap: 0.08rem;
-  justify-content: end;
+  gap: 0.18rem 0;
   font-family: var(--mono-font);
   font-size: var(--mono-size);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.25;
   text-align: right;
   text-transform: uppercase;
 }
 
-.site-nav a {
-  display: block;
+.site-nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: end;
+}
+
+.site-nav-row::before,
+.site-nav-row::after {
+  color: var(--oxide);
+}
+
+.site-nav-row::before {
+  content: '//';
+  margin-right: 0.55rem;
+}
+
+.site-nav-row::after {
+  content: '//';
+  margin-left: 0.55rem;
+}
+
+.site-nav-row a {
+  display: inline-flex;
+  align-items: center;
   color: var(--blueprint);
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.site-nav a::before {
-  content: '// ';
+.site-nav-row a + a::before {
+  content: '//';
   color: var(--oxide);
+  margin: 0 0.55rem;
 }
 
-.site-nav a::after {
-  content: ' //';
-  color: var(--oxide);
-}
-
-.site-nav a:hover {
+.site-nav-row a:hover {
   color: var(--oxide);
 }
 
@@ -320,6 +339,27 @@ h3 {
   font-size: var(--mono-size);
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.ledger-english,
+.ledger-french {
+  display: block;
+}
+
+.ledger-english {
+  font-size: 1.05rem;
+  line-height: 1.1;
+}
+
+.ledger-french {
+  margin-top: 0.12rem;
+  color: var(--steel);
+  font-family: var(--headline-font);
+  font-size: 0.86rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: none;
 }
 
 .ledger dd {
@@ -519,6 +559,56 @@ h3 {
   color: var(--muted);
 }
 
+.field-notes-heading {
+  max-width: 48rem;
+  padding: 2rem 0 1.2rem;
+}
+
+.field-note-list {
+  display: grid;
+  gap: 1px;
+  margin: 0 0 2rem;
+  padding: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  list-style: none;
+}
+
+.field-note-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+}
+
+.field-note-card header,
+.field-note-card footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.45rem 0.85rem;
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.field-note-card p {
+  max-width: 58rem;
+  margin: 0;
+  white-space: normal;
+}
+
+.field-note-card footer {
+  justify-content: flex-start;
+  color: var(--steel);
+}
+
+.field-note-empty {
+  margin-bottom: 2rem;
+}
+
 .action-row {
   font-family: var(--mono-font);
   font-size: var(--mono-size);
@@ -607,9 +697,12 @@ h3 {
   }
 
   .site-nav {
-    justify-content: flex-start;
     margin-top: 0.8rem;
     text-align: left;
+  }
+
+  .site-nav-row {
+    justify-content: flex-start;
   }
 
   .footer-nav {
