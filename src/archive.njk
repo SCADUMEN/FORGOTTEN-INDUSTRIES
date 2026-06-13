@@ -17,6 +17,222 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
+<section class="archive-search-band" aria-labelledby="archive-search-heading">
+  <div class="section-inner">
+    <div class="archive-search-shell">
+      <div class="archive-search-intro">
+        <p class="section-label">L'Index</p>
+        <h2 id="archive-search-heading">Search L'Archive</h2>
+        <p class="entry-note">
+          Last indexed:
+          <span id="archive-search-indexed">{{ site.archiveState }}</span>
+          / Query language:
+          <code>title:"Pang"</code>
+          <code>tag:watercooling</code>
+          <code>date&gt;2026-06-01</code>
+        </p>
+        <p class="archive-search-meta">
+          Archive State: <time datetime="{{ site.archiveState }}">{{ site.archiveState }}</time>
+          / Build Time: <time datetime="{{ site.buildTime }}">{{ site.buildTime }}</time>
+          / Source Commit:
+          <a href="{{ site.githubUrl }}/commit/{{ site.gitHash }}">{{ site.gitHashShort }}</a>
+          / Generator: {{ site.generator }}
+          / Colophon: <a href="/colophon/">/colophon/</a>
+        </p>
+      </div>
+
+      <form id="archive-search-form" class="archive-search-form" role="search">
+        <label class="sr-only" for="archive-search-input">Search L'Archive</label>
+        <input
+          id="archive-search-input"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder='Search the retrieval layer, or try tag:watercooling type:doctrine'
+        >
+        <button type="submit">Search</button>
+      </form>
+
+      <noscript>
+        <p class="archive-search-status">JavaScript is required for search.</p>
+      </noscript>
+
+      <p id="archive-search-status" class="archive-search-status">Loading L'INDEX...</p>
+      <ol id="archive-search-results" class="archive-search-results" aria-live="polite"></ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var form = document.getElementById('archive-search-form');
+    var input = document.getElementById('archive-search-input');
+    var status = document.getElementById('archive-search-status');
+    var results = document.getElementById('archive-search-results');
+    var indexed = document.getElementById('archive-search-indexed');
+    var documents = [];
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, function(character) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        })[character];
+      });
+    }
+
+    function parseQuery(query) {
+      var filters = [];
+      var terms = [];
+      var pattern = /([a-z]+)(:|>=|<=|>|<)(?:"([^"]+)"|(\S+))|"([^"]+)"|(\S+)/gi;
+      var match;
+
+      while ((match = pattern.exec(query)) !== null) {
+        if (match[1]) {
+          filters.push({
+            field: match[1].toLowerCase(),
+            op: match[2],
+            value: String(match[3] || match[4] || '').toLowerCase()
+          });
+        } else {
+          terms.push(String(match[5] || match[6] || '').toLowerCase());
+        }
+      }
+
+      return { filters: filters, terms: terms };
+    }
+
+    function fieldValue(document, field) {
+      if (field === 'tag') field = 'tags';
+      if (field === 'shelf') field = 'category';
+      if (field === 'after' || field === 'before') field = 'date';
+      var value = document[field];
+      return Array.isArray(value) ? value.join(' ') : String(value || '');
+    }
+
+    function matchesFilter(document, filter) {
+      var value = fieldValue(document, filter.field).toLowerCase();
+      var filterValue = filter.value;
+
+      if (filter.field === 'after') return String(document.date || '') > filterValue;
+      if (filter.field === 'before') return String(document.date || '') < filterValue;
+      if (filter.field === 'date' && filter.op === '>') return String(document.date || '') > filterValue;
+      if (filter.field === 'date' && filter.op === '<') return String(document.date || '') < filterValue;
+      if (filter.field === 'date' && filter.op === '>=') return String(document.date || '') >= filterValue;
+      if (filter.field === 'date' && filter.op === '<=') return String(document.date || '') <= filterValue;
+
+      return value.indexOf(filterValue) !== -1;
+    }
+
+    function scoreDocument(document, terms) {
+      if (!terms.length) return 1;
+      var title = String(document.title || '').toLowerCase();
+      var summary = String(document.summary || '').toLowerCase();
+      var tokens = String(document.tokens || '').toLowerCase();
+      var score = 0;
+
+      for (var i = 0; i < terms.length; i += 1) {
+        var term = terms[i];
+        if (title.indexOf(term) !== -1) score += 5;
+        if (summary.indexOf(term) !== -1) score += 3;
+        if (tokens.indexOf(term) !== -1) score += 1;
+        if (tokens.indexOf(term) === -1) return 0;
+      }
+
+      return score;
+    }
+
+    function runSearch(query) {
+      var parsed = parseQuery(query);
+      var matches = documents
+        .map(function(document) {
+          if (!parsed.filters.every(function(filter) { return matchesFilter(document, filter); })) {
+            return null;
+          }
+
+          var score = scoreDocument(document, parsed.terms);
+          if (!score) return null;
+          return { document: document, score: score };
+        })
+        .filter(Boolean)
+        .sort(function(a, b) {
+          if (b.score !== a.score) return b.score - a.score;
+          return String(b.document.date || '').localeCompare(String(a.document.date || ''));
+        })
+        .slice(0, 24);
+
+      renderResults(matches, query);
+    }
+
+    function renderResults(matches, query) {
+      if (!query.trim()) {
+        status.textContent = documents.length + ' indexed records / ready';
+        results.innerHTML = '';
+        return;
+      }
+
+      var label = matches.length + ' result' + (matches.length === 1 ? '' : 's');
+      status.textContent = label;
+      results.innerHTML = matches.map(function(match) {
+        var document = match.document;
+        var meta = [document.date, document.type, document.category].filter(Boolean).join(' / ');
+        var tags = (document.tags || []).slice(0, 8).map(function(tag) {
+          return '<span>' + escapeHtml(tag) + '</span>';
+        }).join('');
+
+        return [
+          '<li>',
+          '<p class="entry-note">' + escapeHtml(meta || document.id) + '</p>',
+          '<h3><a href="' + escapeHtml(document.url) + '">' + escapeHtml(document.title) + '</a></h3>',
+          '<p>' + escapeHtml(document.summary || document.body || 'Indexed archive record.') + '</p>',
+          tags ? '<footer aria-label="Search result tags">' + tags + '</footer>' : '',
+          '</li>'
+        ].join('');
+      }).join('');
+    }
+
+    function syncQuery(query) {
+      input.value = query;
+      runSearch(query);
+    }
+
+    fetch('/dist/search-index.json?v={{ site.assetVersion }}')
+      .then(function(response) { return response.json(); })
+      .then(function(index) {
+        documents = index.documents || [];
+        if (index.archiveState) indexed.textContent = index.archiveState;
+        var params = new URLSearchParams(window.location.search);
+        syncQuery(params.get('q') || '');
+      })
+      .catch(function() {
+        status.textContent = "L'INDEX failed to load.";
+      });
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var query = input.value.trim();
+      var url = new URL(window.location.href);
+      if (query) {
+        url.searchParams.set('q', query);
+      } else {
+        url.searchParams.delete('q');
+      }
+      window.history.replaceState({}, '', url);
+      runSearch(query);
+    });
+
+    input.addEventListener('input', function() {
+      window.clearTimeout(input.searchTimer);
+      input.searchTimer = window.setTimeout(function() {
+        runSearch(input.value.trim());
+      }, 120);
+    });
+  })();
+</script>
+
 <section class="mirror-band" aria-labelledby="archive-counts-heading">
   <div class="section-inner band-grid">
     <div>
@@ -46,19 +262,25 @@ eleventyExcludeFromCollections: true
 
       <ul class="lane-list mt-6" aria-label="Primary archive routes">
         <li>
-          <span>Public writing</span>
-          <h3><a href="/archive/posts/">Le Signal</a></h3>
-          <p>Curated essays, field doctrine, and long-form entries.</p>
+          <a class="panel-link" href="/archive/posts/">
+            <span>Public writing</span>
+            <h3>Le Signal</h3>
+            <p>Curated essays, field doctrine, and long-form entries.</p>
+          </a>
         </li>
         <li>
-          <span>Feed</span>
-          <h3><a href="/archive/feed/">RSS / Atom</a></h3>
-          <p>The public writing feed. Inventory remains indexed here.</p>
+          <a class="panel-link" href="/archive/feed/">
+            <span>Feed</span>
+            <h3>RSS / Atom</h3>
+            <p>The public writing feed. Inventory remains indexed here.</p>
+          </a>
         </li>
         <li>
-          <span>Data</span>
-          <h3><a href="/archive/data/">Archive JSON</a></h3>
-          <p>Generated from canonical YAML for inspection and reuse.</p>
+          <a class="panel-link" href="/archive/data/">
+            <span>Data</span>
+            <h3>Archive JSON</h3>
+            <p>Generated from canonical YAML for inspection and reuse.</p>
+          </a>
         </li>
       </ul>
     </div>

@@ -17,6 +17,7 @@ tags:
 ---
 
 # Doctrine 001 — Contre l'Oubli
+
 ## Toward an Architecture of Memory
 
 _Forgotten Industries // Systems Doctrine // Doctrine 001 // 2026.06.13_

@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: En Direct
+description: "The live Forgotten Industries channel: imported Bluesky field notes and short daily field logs."
+permalink: /en-direct/index.html
+eleventyExcludeFromCollections: true
+---
+
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">En Direct / live channel</p>
+    <h1>En Direct</h1>
+    <p class="tagline">{{ description }}</p>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="en-direct-lanes">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Two Inputs</p>
+      <h2 id="en-direct-lanes">One live route, two short-form streams.</h2>
+    </div>
+
+    <ul class="lane-list" aria-label="En Direct channels">
+      <li>
+        <a class="panel-link" href="/field-notes/">
+          <span>Field Notes</span>
+          <h3>Bluesky Signal</h3>
+          <p>Imported dispatches from the live Bluesky feed, archived on-site as the public signal copy.</p>
+        </a>
+      </li>
+      <li>
+        <a class="panel-link" href="/field-logs/">
+          <span>Field Logs</span>
+          <h3>Daily Short Writings</h3>
+          <p>Authored daily notes from the bench: observations, process fragments, and small dated records.</p>
+        </a>
+      </li>
+      <li>
+        <a class="panel-link" href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">
+          <span>Live Source</span>
+          <h3>Bluesky</h3>
+          <p>Open the external live feed for the newest field signal before the next site build imports it.</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
