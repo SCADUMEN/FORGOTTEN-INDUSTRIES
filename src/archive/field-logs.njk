@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: L'Archive / Field Logs
+description: Structured Forgotten Industries field logs and bench evidence records.
+permalink: /archive/field-logs/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Field Logs</p>
+    <h1>Field Logs</h1>
+    <p class="tagline">
+      Structured bench notes, recovery records, object states, observations,
+      methods, and next verification steps.
+    </p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ archive.fieldLogs | count }} records</p>
+      <h2>Evidence before interpretation.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for log in archive.fieldLogs | reverse %}
+      <li>
+        <p class="entry-note">{{ log.id }} / {{ log.date }} / {{ log.category }}</p>
+        <h3>{{ log.title }}</h3>
+        <p>{{ log.object }}. {{ log.status }}.</p>
+        {% if log.tags and log.tags.length %}
+        <p class="entry-note">{{ log.tags | join(', ') }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

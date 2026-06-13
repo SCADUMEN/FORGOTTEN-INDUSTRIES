@@ -8,4 +8,4 @@ It is also a credit shelf. If a diagram, review, photo, forum post, or fragment 
 
 ## Current Manuals
 
-- `caselabs-mercury-s8-assembly-restoration.md` - first-pass Mercury S8 assembly instruction reconstruction.
+- `caselabs-mercury-s8-assembly-restoration.md` - Manual 001: integrated CaseLabs Mercury S8 + pedestal assembly reference and recovery manual.
