@@ -34,15 +34,7 @@
       {% for row in site.navRows %}
       <div class="site-nav-row">
         {% for item in row %}
-        <a href="{{ item.href }}" {% if item.navStyle == "split" %}class="site-nav-split"{% endif %}>
-          {% if item.navStyle == "split" %}
-          <span class="site-nav-secondary">{{ item.english or item.label }}</span>
-          <span class="site-nav-separator" aria-hidden="true">//</span>
-          <span class="site-nav-primary">{{ item.french or item.label }}</span>
-          {% else %}
-          <span>{{ item.label }}</span>
-          {% endif %}
-        </a>
+        <a href="{{ item.href }}"><span>{{ item.label }}</span></a>
         {% endfor %}
       </div>
       {% endfor %}

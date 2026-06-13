@@ -180,36 +180,6 @@ img {
   color: var(--oxide);
 }
 
-.site-nav-split {
-  gap: 0.36rem;
-}
-
-.site-nav-primary {
-  color: var(--ink);
-  font-family: var(--headline-font);
-  font-size: 1.08rem;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: none;
-}
-
-.site-nav-separator,
-.site-nav-secondary {
-  color: var(--blueprint);
-  font-family: var(--mono-font);
-  font-size: var(--mono-size);
-  font-weight: 800;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.site-nav-split:hover .site-nav-primary,
-.site-nav-split:hover .site-nav-separator,
-.site-nav-split:hover .site-nav-secondary {
-  color: var(--oxide);
-}
-
 .masthead {
   padding: 3rem 0 2rem;
 }
