@@ -24,37 +24,39 @@ canonical: https://forgotten-industries.net/
     </div>
 
     <div>
-      <dl class="ledger">
+      <ul class="ledger" aria-label="Archive routes">
         {% for item in site.nav %}
-        <div>
-          <dt>
-            <span class="ledger-english">{{ item.english or item.label }}</span>
-            {% if item.french %}
-            <span class="ledger-french"><i>{{ item.french }}</i></span>
-            {% endif %}
-          </dt>
-          <dd><a href="{{ item.href }}">{{ item.summary }}</a></dd>
-        </div>
+        <li>
+          <a class="ledger-link" href="{{ item.href }}">
+            <span class="ledger-term">
+              <span class="ledger-english">{{ item.english or item.label }}</span>
+              {% if item.french %}
+              <span class="ledger-french"><i>{{ item.french }}</i></span>
+              {% endif %}
+            </span>
+            <span class="ledger-summary">{{ item.summary }}</span>
+          </a>
+        </li>
         {% endfor %}
-      </dl>
+      </ul>
 
       <div class="stats" aria-label="Archive counts">
-        <div class="stat">
+        <a class="stat" href="/archive/projects/">
           <strong>{{ archive.projects | count }}</strong>
           <span>Projects</span>
-        </div>
-        <div class="stat">
+        </a>
+        <a class="stat" href="/archive/inventory/">
           <strong>{{ archive.inventory | count }}</strong>
           <span>Inventory records</span>
-        </div>
-        <div class="stat">
+        </a>
+        <a class="stat" href="/archive/field-logs/">
           <strong>{{ archive.fieldLogs | count }}</strong>
           <span>Field logs</span>
-        </div>
-        <div class="stat">
+        </a>
+        <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
           <span>Social evidence</span>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -87,19 +89,25 @@ canonical: https://forgotten-industries.net/
 
       <ul class="lane-list mt-8" aria-label="Public lane highlights">
         <li>
-          <span>Manuals</span>
-          <h3><a href="/hang-on-to-each-other/">Hang On To Each Other</a></h3>
-          <p>Manual 001: recovered CaseLabs Mercury S8 assembly reference and living instruction shelf.</p>
+          <a class="panel-link" href="/hang-on-to-each-other/">
+            <span>Manuals</span>
+            <h3>Hang On To Each Other</h3>
+            <p>Manual 001: recovered CaseLabs Mercury S8 assembly reference and living instruction shelf.</p>
+          </a>
         </li>
         <li>
-          <span>Field Notes</span>
-          <h3><a href="/field-notes/">Imported field signal</a></h3>
-          <p>Short dispatches from the bench: evidence finds, measurements, restoration notes, and active process archived on-site.</p>
+          <a class="panel-link" href="/field-notes/">
+            <span>Field Notes</span>
+            <h3>Imported field signal</h3>
+            <p>Short dispatches from the bench: evidence finds, measurements, restoration notes, and active process archived on-site.</p>
+          </a>
         </li>
         <li>
-          <span>Projects</span>
-          <h3><a href="/#projects">Dossiers and continuity</a></h3>
-          <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
+          <a class="panel-link" href="/archive/projects/">
+            <span>Projects</span>
+            <h3>Dossiers and continuity</h3>
+            <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
+          </a>
         </li>
       </ul>
     </div>
