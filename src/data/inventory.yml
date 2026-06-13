@@ -193,10 +193,10 @@ items:
     date_logged: '2026-06-05'
 
   - id: FI-RES-001
-    name: Large EK cylinder reservoir
+    name: EK-Multioption RES X2 - 250 Advanced
     category: reservoir
     manufacturer: EK
-    model: cylinder reservoir
+    model: Multioption RES X2 - 250 Advanced
     quantity: 1
     associated_project: FI-PROJ-001
     condition: needs inspection and cleaning
@@ -215,9 +215,13 @@ items:
       - Splunking/IMG_1086.HEIC
       - Splunking/IMG_1087.HEIC
     notes: >
-      Intended to remain visible through the right-side window. Photo mapping
-      now includes initial stills plus the 2026-06-05 detail rotation from the
-      Splunking intake. Inspect acrylic, threads, brackets, and O-rings.
+      Intended to remain visible through the right-side window. L'Archive
+      contact sheet pass identifies the detail rotation as EK-Multioption RES
+      X2 - 250 Advanced, EK SKU/EAN 3831109840085. Vendor page lists 250 mm
+      installation height, 60 mm diameter, 285 ml capacity, acrylic tube with
+      POM acetal ends, EPDM seals, and eight G1/4 port options on the Advanced
+      version. Inspect acrylic, threads, brackets, plugs, inserts, anti-cyclone,
+      and O-rings.
     estimated_value:
     keep_sell_archive: keep pending test
     date_logged: '2026-06-05'
@@ -474,6 +478,141 @@ items:
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-06-05'
+
+  - id: FI-CASE-SSD-001
+    name: CaseLabs SSD tray
+    category: case accessory
+    manufacturer: CaseLabs
+    model: Mercury S8 / 2.5 inch SSD tray
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and screw check
+    status: L'Archive test entry / extracted from grouped small-parts record
+    photos:
+      - L-Archive/IMG_1088.HEIC
+      - L-Archive/IMG_1089.HEIC
+      - L-Archive/IMG_1090.HEIC
+      - L-Archive/IMG_1091.HEIC
+      - L-Archive/IMG_1092.HEIC
+      - L-Archive/IMG_1093.HEIC
+    notes: >
+      Human-confirmed from L'Archive Contact Sheet 1, pics 9-14. Treat as one
+      SSD tray with six alternate views. Local Mercury S8 manual corroborates
+      under-tray storage for 2.5 inch SSDs; direct CaseLabs accessory-page
+      source remains pending.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-12'
+
+  - id: FI-CASE-FLEX-001
+    name: CaseLabs solid blank Flex-Bay panel
+    category: case accessory
+    manufacturer: CaseLabs
+    model: Flex-Bay solid blank panel
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: bagged / needs hardware count
+    status: L'Archive test entry / extracted from grouped small-parts record
+    photos:
+      - L-Archive/IMG_1094.HEIC
+      - L-Archive/IMG_1095.HEIC
+      - L-Archive/IMG_1096.HEIC
+      - L-Archive/IMG_1097.HEIC
+      - L-Archive/IMG_1098.HEIC
+    notes: >
+      Human-confirmed from L'Archive Contact Sheet 1, pics 15-19. Solid blank
+      panel for the CaseLabs Flex-Bay/front 5.25 inch bay column, photographed
+      bagged with small hardware. Direct online CaseLabs accessory-page source
+      remains pending.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-12'
+
+  - id: FI-CASE-FLOOR-001
+    name: CaseLabs floor 120mm cutout blank
+    category: case accessory
+    manufacturer: CaseLabs
+    model: floor 120mm cutout blank
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and fitment confirmation
+    status: L'Archive test entry / extracted from grouped small-parts record
+    photos:
+      - L-Archive/IMG_1099.HEIC
+      - L-Archive/IMG_1100.HEIC
+      - L-Archive/IMG_1101.HEIC
+      - L-Archive/IMG_1102.HEIC
+      - L-Archive/IMG_1103.HEIC
+      - L-Archive/IMG_1104.HEIC
+      - L-Archive/IMG_1105.HEIC
+      - L-Archive/IMG_1106.HEIC
+    notes: >
+      Human-confirmed from L'Archive Contact Sheet 1, pics 20-25, plus Contact
+      Sheet 2, pics 1-2. CaseLabs floor blank with 120 mm cutout pattern.
+      Confirm exact Mercury S8 floor or pedestal position during bench fitment.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-12'
+
+  - id: FI-CASE-FLOOR-002
+    name: CaseLabs 120-space blank mount / floor mount panel
+    category: case accessory
+    manufacturer: CaseLabs
+    model: 120mm-space floor mount blank
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / needs cleaning and fitment confirmation
+    status: L'Archive test entry / extracted from grouped small-parts record
+    photos:
+      - L-Archive/IMG_1107.HEIC
+      - L-Archive/IMG_1108.HEIC
+      - L-Archive/IMG_1109.HEIC
+      - L-Archive/IMG_1110.HEIC
+      - L-Archive/IMG_1111.HEIC
+      - L-Archive/IMG_1112.HEIC
+      - L-Archive/IMG_1113.HEIC
+      - L-Archive/IMG_1114.HEIC
+      - L-Archive/IMG_1115.HEIC
+      - L-Archive/IMG_1116.HEIC
+      - L-Archive/IMG_1117.HEIC
+      - L-Archive/IMG_1118.HEIC
+      - L-Archive/IMG_1119.HEIC
+      - L-Archive/IMG_1120.HEIC
+      - L-Archive/IMG_1121.HEIC
+      - L-Archive/IMG_1122.HEIC
+      - L-Archive/IMG_1123.HEIC
+      - L-Archive/IMG_1124.HEIC
+      - L-Archive/IMG_1125.HEIC
+      - L-Archive/IMG_1126.HEIC
+    notes: >
+      Human-confirmed from L'Archive Contact Sheet 2, pics 3-22. Floor blank
+      mount panel made for mounting hardware into a 120 mm space. Long photo
+      run is duplicate/alternate-angle evidence of one part.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-12'
+
+  - id: FI-CASE-FLEX-002
+    name: CaseLabs Flex-Bay vent
+    category: case filter
+    manufacturer: CaseLabs
+    model: Flex-Bay front vent panel
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / visible dust and handling marks
+    status: L'Archive test entry / extracted from grouped filter record
+    photos:
+      - L-Archive/IMG_1127.HEIC
+      - L-Archive/IMG_1128.HEIC
+      - L-Archive/IMG_1129.HEIC
+      - L-Archive/IMG_1130.HEIC
+    notes: >
+      Human-confirmed from L'Archive Contact Sheet 2 final transition and
+      Contact Sheet 3 first image. Front Flex-Bay vent panel intended for
+      fan-backed airflow in the bay stack.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-06-12'
 
   - id: FI-CASE-FILTER-001
     name: CaseLabs white mesh/filter insert group
