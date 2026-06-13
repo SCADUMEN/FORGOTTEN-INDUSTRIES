@@ -32,7 +32,7 @@ const navRows = [
       label: 'LES PROJETS',
       french: 'Les Projets',
       english: 'Projects',
-      href: '/#projects',
+      href: '/projects/',
       summary:
         'Active dossiers, rebuilds, object records, and continuity packets.',
     },
@@ -65,8 +65,9 @@ const navRows = [
       label: 'EN DIRECT',
       french: 'En Direct',
       english: 'Live',
-      href: '/field-notes/',
-      summary: 'Bluesky dispatches imported on-site as live field notes.',
+      href: '/en-direct/',
+      summary:
+        'The live channel: Bluesky field notes and short daily field logs.',
     },
     {
       label: 'LE RÉDEMPTEUR',
@@ -81,6 +82,8 @@ const navRows = [
 module.exports = {
   name: 'Forgotten Industries',
   buildTime: new Date().toISOString(),
+  archiveState: new Date().toISOString().slice(0, 10),
+  generator: "L'ARCHIVE Builder",
   gitHash,
   gitHashShort,
   // Cache-busting token for static assets (see base.njk). Changes every commit.
@@ -126,14 +129,23 @@ module.exports = {
       slug: 'field-notes',
       href: '/field-notes/',
       purpose:
-        'Archived dispatches imported from the live field signal: short active-process notes from the bench, garage, field, desk, or improvised lab environment.',
+        'Archived Bluesky dispatches imported from the live field signal.',
       tone: 'Immediate, practical, exploratory.',
-      note: 'Not every post needs to be polished. Some posts are field notes.',
+      note: 'The radio channel.',
+    },
+    {
+      label: 'Field Logs',
+      slug: 'field-logs',
+      href: '/field-logs/',
+      purpose:
+        'Short daily writings from the bench: small observations, process notes, and pieces that are too immediate for a full post.',
+      tone: 'Brief, dated, grounded, useful.',
+      note: 'The pocket notebook.',
     },
     {
       label: 'Projects',
       slug: 'projects',
-      href: '/#projects',
+      href: '/projects/',
       purpose:
         'Structured context packets for Codex, GitHub, the site, and long-running continuity.',
       tone: 'Organized, durable, clear, exportable.',
