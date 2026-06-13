@@ -1,20 +1,24 @@
 ---
 layout: base.njk
-title: Posts
-description: Manuscripts, manifestos, and curated entries from the Forgotten Industries archive.
+title: Le Signal
+description: "Curated public writing from Forgotten Industries: essays, field doctrine, and long-form entries suitable for the public feed."
 permalink: /posts/index.html
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Manuscripts</p>
-    <h1>Posts</h1>
+    <p class="section-label">Public writing / RSS</p>
+    <h1>Le Signal</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
 
 <section class="evidence-band">
   <div class="section-inner">
+    <p class="entry-note mb-5">
+      <a href="/feed.xml">Subscribe to the public writing feed</a>. L'Archive
+      remains the complete master record.
+    </p>
     <ul class="lane-list" aria-label="All posts">
       {% for post in collections.posts | reverse %}
       <li>

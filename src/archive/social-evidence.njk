@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: L'Archive / Social Evidence
+description: Recovered Forgotten Industries social posts and imported public evidence.
+permalink: /archive/social-evidence/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Social Evidence</p>
+    <h1>Social Evidence</h1>
+    <p class="tagline">
+      Imported Tumblr and Instagram records with source links, captions, local
+      media references, and generated Markdown evidence files.
+    </p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ archive.socialPosts | count }} records</p>
+      <h2>Imported posts remain visible as source records.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for post in archive.socialPosts | reverse %}
+      <li>
+        <p class="entry-note">{{ post.date }} / {{ post.source }} / {{ post.source_id }}</p>
+        <h3>
+          <a href="/{{ post.post_path }}">{{ post.title }}</a>
+        </h3>
+        <p>{{ post.body | truncate(220) }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

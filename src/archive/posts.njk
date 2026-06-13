@@ -1,0 +1,41 @@
+---
+layout: base.njk
+title: L'Archive / Curated Posts
+description: Curated public writing records from Forgotten Industries.
+permalink: /archive/posts/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Curated Posts</p>
+    <h1>Le Signal</h1>
+    <p class="tagline">
+      The public writing shelf: essays, field doctrine, long-form entries, and
+      the feed-facing surface of the archive.
+    </p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ collections.posts | count }} records</p>
+      <h2>The feed is selective. The archive is complete.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for post in collections.posts | reverse %}
+      <li>
+        <p class="entry-note">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+          / post{% if post.data.type %} / {{ post.data.type }}{% endif %}
+        </p>
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        {% if post.data.description %}
+        <p>{{ post.data.description }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

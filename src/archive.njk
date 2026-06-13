@@ -1,0 +1,241 @@
+---
+layout: base.njk
+title: L'Archive
+description: "La premiere providence: the master record for Forgotten Industries inventory, entries, projects, field logs, and recovered evidence."
+permalink: /archive.html
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">La premiere providence</p>
+    <h1>L'Archive</h1>
+    <p class="tagline">
+      The master record: inventory items, project dossiers, field logs, curated
+      writing, recovered social evidence, source sets, and machine-readable
+      archive outputs.
+    </p>
+  </div>
+</section>
+
+<section class="mirror-band" aria-labelledby="archive-counts-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Record State</p>
+      <h2 id="archive-counts-heading">Every public route returns here.</h2>
+    </div>
+
+    <div>
+      <div class="stats" aria-label="Archive record counts">
+        <a class="stat" href="/archive/inventory/">
+          <strong>{{ archive.inventory | count }}</strong>
+          <span>Inventory</span>
+        </a>
+        <a class="stat" href="/archive/posts/">
+          <strong>{{ collections.posts | count }}</strong>
+          <span>Curated posts</span>
+        </a>
+        <a class="stat" href="/archive/field-logs/">
+          <strong>{{ archive.fieldLogs | count }}</strong>
+          <span>Field logs</span>
+        </a>
+        <a class="stat" href="/archive/social-evidence/">
+          <strong>{{ archive.socialPosts | count }}</strong>
+          <span>Social evidence</span>
+        </a>
+      </div>
+
+      <ul class="lane-list mt-6" aria-label="Primary archive routes">
+        <li>
+          <span>Public writing</span>
+          <h3><a href="/archive/posts/">Le Signal</a></h3>
+          <p>Curated essays, field doctrine, and long-form entries.</p>
+        </li>
+        <li>
+          <span>Feed</span>
+          <h3><a href="/archive/feed/">RSS / Atom</a></h3>
+          <p>The public writing feed. Inventory remains indexed here.</p>
+        </li>
+        <li>
+          <span>Data</span>
+          <h3><a href="/archive/data/">Archive JSON</a></h3>
+          <p>Generated from canonical YAML for inspection and reuse.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="writing-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Curated Public Writing</p>
+      <h2 id="writing-heading">The feed is selective. The archive is complete.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for post in collections.posts | reverse %}
+      <li>
+        <p class="entry-note">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+          / post{% if post.data.type %} / {{ post.data.type }}{% endif %}
+        </p>
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        {% if post.data.description %}
+        <p>{{ post.data.description }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="inventory-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Inventory</p>
+      <h2 id="inventory-heading">Canonical object records.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for item in archive.inventory %}
+      <li>
+        <p class="entry-note">
+          {{ item.id }} / {{ item.category }} / {{ item.associated_project }}
+        </p>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.condition }}. {{ item.status }}.</p>
+        <p class="entry-note">
+          logged {{ item.date_logged }}{% if item.photos and item.photos.length %}
+          / {{ item.photos.length }} photo{% if item.photos.length != 1 %}s{% endif %}{% endif %}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="projects-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Projects</p>
+      <h2 id="projects-heading">Dossiers and continuity packets.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for project in archive.projects %}
+      <li>
+        <p class="entry-note">
+          {{ project.id }} / {{ project.category }} / {{ project.status }}
+        </p>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.summary }}</p>
+        {% if project.working_title %}
+        <p class="entry-note">{{ project.working_title }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-log-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Field Logs</p>
+      <h2 id="field-log-heading">Evidence before interpretation.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for log in archive.fieldLogs | reverse %}
+      <li>
+        <p class="entry-note">{{ log.id }} / {{ log.date }} / {{ log.category }}</p>
+        <h3>{{ log.title }}</h3>
+        <p>{{ log.object }}. {{ log.status }}.</p>
+        {% if log.tags and log.tags.length %}
+        <p class="entry-note">{{ log.tags | join(', ') }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="source-sets-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Source Sets</p>
+      <h2 id="source-sets-heading">Raw evidence registered, not flattened.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      <li>
+        <p class="entry-note">FI-2026-06-12-L-ARCHIVE / local photo intake</p>
+        <h3><a href="/docs/intake/2026-06-12-l-archive.md">L'Archive local photo dump</a></h3>
+        <p>259 local media files copied into `intake/L-Archive/`; raw evidence remains unpublished until curated.</p>
+      </li>
+      <li>
+        <p class="entry-note">FI-2026-06-05-PHOTO-SWEEP / photo evidence sets</p>
+        <h3><a href="/docs/intake/2026-06-05-photo-inventory-sweep.md">First photo inventory sweep</a></h3>
+        <p>Collection-level registration for the initial local photo evidence sets.</p>
+      </li>
+      <li>
+        <p class="entry-note">2014-2026 / imported public social evidence</p>
+        <h3><a href="/social-posts.html">Recovered social shelf</a></h3>
+        <p>Tumblr and Instagram records with local media, source URLs, and generated Markdown.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="social-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Recovered Social Evidence</p>
+      <h2 id="social-heading">Imported posts remain visible as source records.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for post in archive.socialPosts | reverse %}
+      <li>
+        <p class="entry-note">{{ post.date }} / {{ post.source }} / {{ post.source_id }}</p>
+        <h3>
+          <a href="/{{ post.post_path }}">{{ post.title }}</a>
+        </h3>
+        <p>{{ post.body | truncate(220) }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="machine-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Machine-Readable Archive</p>
+      <h2 id="machine-heading">The source remains inspectable.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3><a href="/dist/forgotten-industries.json">forgotten-industries.json</a></h3>
+        <p>Generated complete archive data.</p>
+      </li>
+      <li>
+        <h3><a href="/dist/index.ts">index.ts</a></h3>
+        <p>Generated TypeScript module for downstream consumers.</p>
+      </li>
+      <li>
+        <h3><a href="/src/data/inventory.yml">inventory.yml</a></h3>
+        <p>Canonical source for physical objects and component records.</p>
+      </li>
+      <li>
+        <h3><a href="/src/data/field-logs.yml">field-logs.yml</a></h3>
+        <p>Canonical source for structured field logs.</p>
+      </li>
+      <li>
+        <h3><a href="/src/data/social-posts.yml">social-posts.yml</a></h3>
+        <p>Canonical source for imported social evidence.</p>
+      </li>
+    </ul>
+  </div>
+</section>

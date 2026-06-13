@@ -6,9 +6,9 @@ export default function (eleventyConfig) {
     outputPath: '/feed.xml',
     collection: { name: 'posts', limit: 0 },
     metadata: {
-      title: 'Forgotten Industries',
+      title: 'Recoveries, Restorations, & Le Rèdempteur',
       subtitle:
-        'An archive and evidence-based memoir that explores what happens to the things we leave behind.',
+        'Curated essays, field doctrine, and long-form entries from Forgotten Industries.',
       language: 'en',
       base: 'https://forgotten-industries.net/',
       author: { name: 'Matthew Marx' },
@@ -43,10 +43,9 @@ export default function (eleventyConfig) {
     'src/types.ts': 'src/types.ts',
   })
 
-  // Raw hand-authored archive pages are static documents, not templates.
+  // Raw hand-authored support pages are static documents, not templates.
   // html is excluded from templateFormats, so these are copied verbatim.
   eleventyConfig.addPassthroughCopy({
-    'src/archive.html': 'archive.html',
     'src/field-log-template.html': 'field-log-template.html',
     'src/inventory.html': 'inventory.html',
     'src/social-posts.html': 'social-posts.html',
