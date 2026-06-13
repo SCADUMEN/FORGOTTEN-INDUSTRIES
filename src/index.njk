@@ -26,16 +26,18 @@ canonical: https://forgotten-industries.net/
     <div>
       <ul class="ledger" aria-label="Archive routes">
         {% for item in site.nav %}
-        <li>
-          <a class="ledger-link" href="{{ item.href }}">
-            <span class="ledger-term">
-              <span class="ledger-english">{{ item.english or item.label }}</span>
-              {% if item.french %}
-              <span class="ledger-french"><i>{{ item.french }}</i></span>
-              {% endif %}
+        <li class="ledger-item">
+          <a class="ledger-header-link" href="{{ item.href }}">
+            <span class="ledger-label">{{ item.french or item.label }}</span>
+            {% if item.english %}
+            <span class="ledger-translation-line">
+              <span class="ledger-rail" aria-hidden="true">//</span>
+              <span class="ledger-translation">{{ item.english }}</span>
+              <span class="ledger-rail" aria-hidden="true">//</span>
             </span>
-            <span class="ledger-summary">{{ item.summary }}</span>
+            {% endif %}
           </a>
+          <p class="ledger-summary">{{ item.summary }}</p>
         </li>
         {% endfor %}
       </ul>
@@ -96,14 +98,14 @@ canonical: https://forgotten-industries.net/
           </a>
         </li>
         <li>
-          <a class="panel-link" href="/field-notes/">
-            <span>Field Notes</span>
-            <h3>Imported field signal</h3>
-            <p>Short dispatches from the bench: evidence finds, measurements, restoration notes, and active process archived on-site.</p>
+          <a class="panel-link" href="/en-direct/">
+            <span>En Direct</span>
+            <h3>Live channel split</h3>
+            <p>One route for two short-form streams: Bluesky field notes and authored daily field logs.</p>
           </a>
         </li>
         <li>
-          <a class="panel-link" href="/archive/projects/">
+          <a class="panel-link" href="/projects/">
             <span>Projects</span>
             <h3>Dossiers and continuity</h3>
             <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
@@ -117,14 +119,14 @@ canonical: https://forgotten-industries.net/
 <section class="source-band" aria-labelledby="field-notes-heading">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Field Notes</p>
-      <h2 id="field-notes-heading">A continuity channel for the archive.</h2>
+      <p class="section-label">Field Notes / Field Logs</p>
+      <h2 id="field-notes-heading">Two short-form channels, different sources.</h2>
     </div>
 
     <div class="callout">
-      <h3>Subscribe</h3>
-      <p>Short dispatches from the bench: restoration logs, evidence finds, measurements, recovered posts, and notes that do not need a full dossier yet.</p>
-      <p class="action-row"><a href="/field-notes/">Open Field Notes</a></p>
+      <h3>Signal Split</h3>
+      <p>Field Notes are imported from Bluesky. Field Logs are authored daily notes: shorter writings, process fragments, and bench records that do not need a full essay yet.</p>
+      <p class="action-row"><a href="/field-notes/">Open Field Notes</a> / <a href="/field-logs/">Open Field Logs</a></p>
     </div>
   </div>
 </section>

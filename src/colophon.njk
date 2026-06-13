@@ -1,0 +1,52 @@
+---
+layout: base.njk
+title: Colophon
+description: Forgotten Industries build, source, and archive-generation notes.
+permalink: /colophon/
+eleventyExcludeFromCollections: true
+---
+
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Colophon / provenance</p>
+    <h1>Colophon</h1>
+    <p class="tagline">Build metadata, source routes, and generation notes for Forgotten Industries.</p>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="colophon-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Archive State</p>
+      <h2 id="colophon-heading">The interface is generated. The record remains.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <p class="entry-note">archive state</p>
+        <h3>{{ site.archiveState }}</h3>
+        <p>The public archive state date used by L'INDEX and provenance surfaces.</p>
+      </li>
+      <li>
+        <p class="entry-note">build time</p>
+        <h3><time datetime="{{ site.buildTime }}">{{ site.buildTime }}</time></h3>
+        <p>The Eleventy build timestamp for this generated site surface.</p>
+      </li>
+      <li>
+        <p class="entry-note">source commit</p>
+        <h3><a href="{{ site.githubUrl }}/commit/{{ site.gitHash }}">{{ site.gitHashShort }}</a></h3>
+        <p>The Git commit reported by the build environment.</p>
+      </li>
+      <li>
+        <p class="entry-note">generator</p>
+        <h3>{{ site.generator }}</h3>
+        <p>Canonical YAML is converted into archive JSON, TypeScript exports, and the static search index.</p>
+      </li>
+      <li>
+        <p class="entry-note">machine-readable outputs</p>
+        <h3><a href="/dist/forgotten-industries.json">Archive JSON</a> / <a href="/dist/search-index.json">Search Index</a></h3>
+        <p>Generated outputs for inspection, reuse, and retrieval.</p>
+      </li>
+    </ul>
+  </div>
+</section>
