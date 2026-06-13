@@ -10,3 +10,9 @@ yarn-debug.log*
 yarn-error.log*
 *.swp
 .claude/
+
+# Local raw intake payloads. Promote curated derivatives into src/ or docs/
+# before committing.
+/intake/L-Archive/*
+!/intake/L-Archive/README.md
+/intake/SLUSH/*
