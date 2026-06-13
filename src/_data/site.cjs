@@ -24,7 +24,7 @@ const navRows = [
       english: 'Archive',
       href: '/archive.html',
       summary:
-        'Canonical records, inventory, source documents, and preserved evidence.',
+        'La premiere providence: the master record for inventory, entries, source documents, and preserved evidence.',
     },
   ],
   [
@@ -59,7 +59,7 @@ const navRows = [
       french: 'Le Signal',
       english: 'Signal',
       href: '/posts/index.html',
-      summary: 'Long-form posts, field doctrine, and curated written entries.',
+      summary: 'Curated public writing and the RSS feed.',
     },
     {
       label: 'EN DIRECT',
@@ -117,7 +117,7 @@ module.exports = {
       slug: 'the-archive',
       href: '/archive.html',
       purpose:
-        'The historical record: documentation, provenance, research, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigation.',
+        'La premiere providence: the master record for documentation, provenance, inventory, entries, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigation.',
       tone: 'Precise, reverent, scientific/medical, archival, curious.',
       note: 'The museum wing.',
     },

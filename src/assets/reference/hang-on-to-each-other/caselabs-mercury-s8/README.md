@@ -4,9 +4,10 @@ Part of `Hang On To Each Other`, the Forgotten Industries third-party reference 
 
 ## Files
 
-| Archive filename                                          | Original local filename | SHA-256                                                            | Source status                                                        |
-| --------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif` | `SLUSH/45L6WTm.gif`     | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Confirmed as embedded in the ExtremeRigs CaseLabs Mercury S8 review. |
+| Archive filename                                          | Original local filename                                               | SHA-256                                                            | Source status                                                        |
+| --------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif` | `SLUSH/45L6WTm.gif`                                                   | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Confirmed as embedded in the ExtremeRigs CaseLabs Mercury S8 review. |
+| `CaseLabs_Mercury_S8_Manual_001_ForgottenIndustries.pdf`  | `intake/SLUSH/CaseLabs_Mercury_S8_Manual_001_ForgottenIndustries.pdf` | `07975a2f69d4718bd97dc457193d7d228f18696bdb9bcb4d8a38edab23e6d2a0` | Recovered Forgotten Industries Manual 001 PDF export.                |
 
 ## Source
 
@@ -20,3 +21,6 @@ Part of `Hang On To Each Other`, the Forgotten Industries third-party reference 
 This reference should support assembly reconstruction, panel identification, and missing-instruction recovery for `FI-PROJ-001`.
 
 Do not treat this GIF as Forgotten Industries original photography. It is third-party technical reference evidence.
+
+The editable DOCX source remains in `intake/SLUSH/` as raw local evidence. The
+public reference shelf exposes the PDF export only.

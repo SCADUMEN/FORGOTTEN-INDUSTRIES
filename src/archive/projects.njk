@@ -1,0 +1,41 @@
+---
+layout: base.njk
+title: L'Archive / Projects
+description: Forgotten Industries project dossiers and continuity packets.
+permalink: /archive/projects/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Projects</p>
+    <h1>Projects</h1>
+    <p class="tagline">
+      Dossiers and continuity packets for long-running systems, restorations,
+      object groups, and recovery work.
+    </p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ archive.projects | count }} records</p>
+      <h2>Dossiers keep the archive coherent.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for project in archive.projects %}
+      <li>
+        <p class="entry-note">
+          {{ project.id }} / {{ project.category }} / {{ project.status }}
+        </p>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.summary }}</p>
+        {% if project.working_title %}
+        <p class="entry-note">{{ project.working_title }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

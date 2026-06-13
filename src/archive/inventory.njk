@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: L'Archive / Inventory
+description: Canonical Forgotten Industries object records, components, condition notes, and preservation status.
+permalink: /archive/inventory/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Inventory</p>
+    <h1>Inventory</h1>
+    <p class="tagline">
+      Canonical object records: machines, parts, accessories, condition,
+      disposition, and source photo references.
+    </p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ archive.inventory | count }} records</p>
+      <h2>Physical evidence stays accountable.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for item in archive.inventory %}
+      <li>
+        <p class="entry-note">
+          {{ item.id }} / {{ item.category }} / {{ item.associated_project }}
+        </p>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.condition }}. {{ item.status }}.</p>
+        <p class="entry-note">
+          logged {{ item.date_logged }}{% if item.photos and item.photos.length %}
+          / {{ item.photos.length }} photo{% if item.photos.length != 1 %}s{% endif %}{% endif %}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
