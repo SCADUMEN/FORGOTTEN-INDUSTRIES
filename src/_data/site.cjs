@@ -22,6 +22,7 @@ const navRows = [
       label: "L'ARCHIVE",
       french: "L'Archive",
       english: 'Archive',
+      navStyle: 'split',
       href: '/archive.html',
       summary:
         'La premiere providence: the master record for inventory, entries, source documents, and preserved evidence.',

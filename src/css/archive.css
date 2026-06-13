@@ -13,11 +13,13 @@
   --blueprint: #67e8ff;
   --white: #081327;
   --focus: #fff275;
+  --editorial-font:
+    Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
   --utility-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
   --mono-font: Andale Mono, Monaco, Consolas, 'Liberation Mono', monospace;
   --mono-size: 0.85rem;
-  --headline-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --stencil-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --headline-font: var(--editorial-font);
+  --stencil-font: var(--editorial-font);
 }
 
 /* Expose the archive design tokens to Tailwind so utilities like
@@ -178,6 +180,36 @@ img {
   color: var(--oxide);
 }
 
+.site-nav-split {
+  gap: 0.36rem;
+}
+
+.site-nav-primary {
+  color: var(--ink);
+  font-family: var(--headline-font);
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: none;
+}
+
+.site-nav-separator,
+.site-nav-secondary {
+  color: var(--blueprint);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-nav-split:hover .site-nav-primary,
+.site-nav-split:hover .site-nav-separator,
+.site-nav-split:hover .site-nav-secondary {
+  color: var(--oxide);
+}
+
 .masthead {
   padding: 3rem 0 2rem;
 }
@@ -323,17 +355,33 @@ h3 {
   display: grid;
   gap: 0.85rem;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.ledger div {
+.ledger li {
+  border-bottom: 1px solid var(--line);
+}
+
+.ledger-link {
   display: grid;
   grid-template-columns: 11rem minmax(0, 1fr);
   gap: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  text-decoration: none;
 }
 
-.ledger dt {
+.ledger-link:hover {
+  color: var(--ink);
+}
+
+.ledger-link:hover .ledger-english,
+.ledger-link:hover .ledger-summary {
+  color: var(--oxide);
+}
+
+.ledger-term {
   color: var(--muted);
   font-family: var(--mono-font);
   font-size: var(--mono-size);
@@ -362,8 +410,7 @@ h3 {
   text-transform: none;
 }
 
-.ledger dd {
-  margin: 0;
+.ledger-summary {
   overflow-wrap: anywhere;
 }
 
@@ -467,8 +514,24 @@ h3 {
 
 .lane-list li {
   min-height: 9.5rem;
-  padding: 1rem;
   background: var(--white);
+}
+
+.panel-link {
+  display: block;
+  min-height: inherit;
+  padding: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.panel-link:hover {
+  background: rgba(255, 91, 214, 0.12);
+  color: var(--ink);
+}
+
+.panel-link:hover h3 {
+  color: var(--oxide);
 }
 
 .lane-list span {
