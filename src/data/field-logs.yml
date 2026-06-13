@@ -255,3 +255,59 @@ field_logs:
           validation path: pumps, Aquaero, sensors, QDCs, radiators, pedestal,
           leak testing, thermal testing, and documented stable operation.
     signature: Forgotten Industries // Field Log // 2026.06.06
+
+  - id: FI-LOG-005
+    slug: field-lab-first-light
+    title: Field Log 2026.06.13 — First Light
+    date: '2026-06-13'
+    timestamp: '2026-06-13 01:40 CT'
+    category: Field Lab Journal
+    associated_project: FI-PROJ-002
+    object: statistics workstation
+    system: Field Lab / Windows workstation / SEER*Stat
+    status: first light / research environment online
+    tags:
+      - seer
+      - research
+      - glioblastoma
+      - archive
+      - field-lab
+      - potato
+    sections:
+      - heading: First Light
+        body: >
+          The statistics workstation achieved first light. SEER*Stat launched
+          successfully. No data were analyzed, no figures were generated, and no
+          manuscript was written, but the software opened and a threshold was
+          crossed.
+      - heading: The Field Lab
+        body: >
+          The Windows workstation is beginning to resolve into a research
+          machine: SEER*Stat, data acquisition, statistical analysis, and future
+          figures, tables, and manuscripts. FFXI running quietly in the
+          background makes the beginning fitting rather than contradictory.
+      - heading: The Archive
+        body: >
+          Across the room, the Mac workstation remains the center of Forgotten
+          Industries: writing, documentation, GitHub, manuscripts, restoration
+          planning, and publication. The Archive records. The Field Lab
+          investigates. Together they form a complete system.
+      - heading: Observation
+        body: >
+          From bed, the Archive remains visible: map on the wall, hardware bins
+          beside the desk, CaseLabs components waiting for restoration, and the
+          ring light in standby. Nothing is finished, but everything required
+          for the next phase appears present.
+      - heading: Personnel Status
+        body: >
+          Potato, Lab Partner Emeritus, was observed in dormant low-power mode
+          beneath multiple blankets. Morale stable. Concerns regarding
+          SEER*Stat, glioblastoma survival analysis, or repository management:
+          none observed. Research personnel count: one. Status: tired. Outlook:
+          encouraging.
+      - heading: Closing Note
+        body: >
+          A thing documented is a thing not yet lost. Tonight no discoveries
+          were made, no hypotheses were tested, and no conclusions were reached.
+          The workstation simply came online. Sometimes that is enough.
+    signature: Forgotten Industries // Field Log // 2026.06.13
