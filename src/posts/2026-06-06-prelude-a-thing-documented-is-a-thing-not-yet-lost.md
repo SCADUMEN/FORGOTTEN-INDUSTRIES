@@ -19,14 +19,7 @@ tags:
   - forgotten-industries
 ---
 
-# Prelude: A Thing Documented Is a Thing Not Yet Lost
-
-<<<<<<<< HEAD:src/posts/2026-06-06-perspective-peregrines-and-pang.md
-_Forgotten Industries // Perspective, Peregrines, & “Pang” // Prelude // Entry 000_
-========
 _Forgotten Industries // Signal Check // Prelude // Entry 000_
-
-> > > > > > > > origin/main:src/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.md
 
 _Reader note: death, substance use, recovery, and grief._
 

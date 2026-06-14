@@ -19,8 +19,6 @@ tags:
   - forgotten-industries
 ---
 
-# Perspective, Peregrines, & “Pang”
-
 _Forgotten Industries // First Field Doctrine // Entry 001_
 
 > ∴ Therefore, now look.

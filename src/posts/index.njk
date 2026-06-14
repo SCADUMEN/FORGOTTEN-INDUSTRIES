@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Le Signal
-description: "Curated public writing from Forgotten Industries: essays, field doctrine, and long-form entries suitable for the public feed."
+description: "Authored public signal from Forgotten Industries: recoveries, restorations, Le Rédempteur, doctrine, manifestos, field reports, and long-form entries suitable for the public feed."
 permalink: /posts/index.html
 eleventyExcludeFromCollections: true
 ---
@@ -15,23 +15,85 @@ eleventyExcludeFromCollections: true
 
 <section class="evidence-band">
   <div class="section-inner">
-    <p class="entry-note mb-5">
-      <a href="/feed.xml">Subscribe to the public writing feed</a>. L'Archive
-      remains the complete master record.
-    </p>
-    <ul class="lane-list" aria-label="All posts">
-      {% for post in collections.posts | reverse %}
-      <li>
-        <span>
-          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-          {% if post.data.type %}/ {{ post.data.type }}{% endif %}
-        </span>
-        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        {% if post.data.description %}
-        <p>{{ post.data.description }}</p>
+    <div class="signal-map">
+      <p class="entry-note">
+        <a href="/feed.xml">Subscribe to the public writing feed</a>. L'Archive
+        remains the complete master record.
+      </p>
+
+      <div class="signal-branch-grid" aria-label="Le Signal branches">
+        <a class="signal-branch-card signal-branch-card-active" href="#recoveries-restorations-le-redempteur">
+          <span>Branch 01</span>
+          <h2>Recoveries, Restorations, &amp; Le Rédempteur</h2>
+          <p>The blog and main narrative: machines coming back, recovery-through-rebuild, memory, grief, craft, and evidence.</p>
+        </a>
+        <a class="signal-branch-card" href="#doctrine-manifestos">
+          <span>Branch 02</span>
+          <h2>Doctrine / Systems Manifestos</h2>
+          <p>Principles, methods, operating language, archive theory, and the pieces that define how the work thinks.</p>
+        </a>
+        <a class="signal-branch-card" href="#field-reports">
+          <span>Branch 03</span>
+          <h2>Field Reports</h2>
+          <p>Authored bench records and dated reports. More deliberate than live Bluesky, shorter than a full manuscript.</p>
+        </a>
+      </div>
+
+      <section id="recoveries-restorations-le-redempteur" class="signal-section" aria-labelledby="signal-entries-heading">
+        <p class="section-label">{{ collections.posts | count }} entries</p>
+        <h2 id="signal-entries-heading">Manuscripts and public entries, newest first.</h2>
+        <ol class="signal-entry-list" aria-label="All curated posts">
+          {% for post in collections.posts | reverse %}
+          <li>
+            <header>
+              <span>{% if post.data.entry %}Entry {{ post.data.entry }}{% else %}Entry{% endif %}</span>
+              <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+            </header>
+            <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <p class="entry-note">
+              {% if post.data.type %}{{ post.data.type }}{% else %}Manuscript{% endif %}
+              {% if post.data.category %}/ {{ post.data.category }}{% endif %}
+            </p>
+            {% if post.data.description %}
+            <p>{{ post.data.description }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+
+      <section id="doctrine-manifestos" class="signal-section" aria-labelledby="doctrine-heading">
+        <p class="section-label">Doctrine / manifestos</p>
+        <h2 id="doctrine-heading">The operating language belongs here.</h2>
+        <div class="callout">
+          <h3>Doctrine Lane</h3>
+          <p>Field doctrine, systems manifestos, and archive principles should publish through Le Signal, then remain searchable in L'Archive.</p>
+        </div>
+      </section>
+
+      <section id="field-reports" class="signal-section" aria-labelledby="field-report-heading">
+        <p class="section-label">{{ archive.fieldLogs | count }} reports</p>
+        <h2 id="field-report-heading">Field reports are authored signal, not live feed.</h2>
+        {% if archive.fieldLogs.length %}
+        <ol class="field-note-list">
+          {% for log in archive.fieldLogs | reverse %}
+          <li class="field-note-card">
+            <header>
+              <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
+              <span>{{ log.category }}</span>
+            </header>
+            <h3>{{ log.title }}</h3>
+            <p>{{ log.object }}. {{ log.status }}.</p>
+          </li>
+          {% endfor %}
+        </ol>
+        {% else %}
+        <div class="callout field-note-empty">
+          <h3>No Reports Yet</h3>
+          <p>The lane is active. Add structured field-log records when a report is ready for the authored signal.</p>
+        </div>
         {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
+      </section>
+    </div>
   </div>
 </section>
