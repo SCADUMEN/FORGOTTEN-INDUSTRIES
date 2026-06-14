@@ -1,20 +1,41 @@
 const { execSync } = require('child_process')
 
-const gitHash = (() => {
+function readCommand(command, fallback = 'unknown') {
   try {
-    return execSync('git rev-parse HEAD').toString().trim()
+    return execSync(command).toString().trim()
   } catch {
-    return 'unknown'
+    return fallback
   }
+}
+
+const gitHash = (() => {
+  return readCommand('git rev-parse HEAD')
 })()
 
 const gitHashShort = (() => {
-  try {
-    return execSync('git rev-parse --short HEAD').toString().trim()
-  } catch {
-    return 'unknown'
-  }
+  return readCommand('git rev-parse --short HEAD')
 })()
+
+const sourceFileList = readCommand('git ls-files src', '')
+  .split(/\r?\n/)
+  .filter(Boolean)
+const workingTreeShortstat = readCommand('git diff --shortstat', '')
+const changedFilesMatch = workingTreeShortstat.match(/(\d+) files? changed/)
+const insertionsMatch = workingTreeShortstat.match(/(\d+) insertions?\(\+\)/)
+const deletionsMatch = workingTreeShortstat.match(/(\d+) deletions?\(-\)/)
+
+const sourceStats = {
+  commits: Number(readCommand('git rev-list --count HEAD', '0')) || 0,
+  sourceFiles: sourceFileList.length,
+  changedFiles: changedFilesMatch ? Number(changedFilesMatch[1]) : 0,
+  insertions: insertionsMatch ? Number(insertionsMatch[1]) : 0,
+  deletions: deletionsMatch ? Number(deletionsMatch[1]) : 0,
+  workingTree: workingTreeShortstat.length > 0 ? workingTreeShortstat : 'clean',
+  deltaLabel:
+    workingTreeShortstat.length > 0
+      ? `${insertionsMatch ? insertionsMatch[1] : 0}+ / ${deletionsMatch ? deletionsMatch[1] : 0}-`
+      : 'clean',
+}
 
 const navRows = [
   [
@@ -59,15 +80,15 @@ const navRows = [
       french: 'Le Signal',
       english: 'Signal',
       href: '/posts/index.html',
-      summary: 'Curated public writing and the RSS feed.',
+      summary:
+        'Authored signal: recoveries, restorations, doctrine, manifestos, field reports, and the public feed.',
     },
     {
       label: 'EN DIRECT',
       french: 'En Direct',
       english: 'Live',
       href: '/en-direct/',
-      summary:
-        'The live channel: Bluesky field notes and short daily field logs.',
+      summary: 'The live shortform channel: imported Bluesky field notes.',
     },
     {
       label: 'LE RÉDEMPTEUR',
@@ -86,6 +107,7 @@ module.exports = {
   generator: "L'ARCHIVE Builder",
   gitHash,
   gitHashShort,
+  sourceStats,
   // Cache-busting token for static assets (see base.njk). Changes every commit.
   assetVersion: gitHashShort,
   url: 'https://forgotten-industries.net',
@@ -138,9 +160,9 @@ module.exports = {
       slug: 'field-logs',
       href: '/field-logs/',
       purpose:
-        'Short daily writings from the bench: small observations, process notes, and pieces that are too immediate for a full post.',
+        'Authored field reports from the bench: observations, process notes, and dated records that belong under Le Signal rather than the live channel.',
       tone: 'Brief, dated, grounded, useful.',
-      note: 'The pocket notebook.',
+      note: 'The field report lane.',
     },
     {
       label: 'Projects',
@@ -154,11 +176,11 @@ module.exports = {
     {
       label: 'Research',
       slug: 'manuscripts',
-      href: '/#manuscripts',
+      href: '/posts/',
       purpose:
-        'Longer essays, recovered context, investigations, memoir fragments, and finished written pieces that do not need to pretend they are bench notes.',
+        'Longer essays, recovered context, investigations, memoir fragments, doctrine, systems manifestos, and finished written pieces.',
       tone: 'Literary, personal, exact, alive, evidence-minded.',
-      note: 'The research shelf.',
+      note: 'The authored signal shelf.',
     },
     {
       label: 'Manuals',

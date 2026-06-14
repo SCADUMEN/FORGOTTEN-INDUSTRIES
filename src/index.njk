@@ -20,44 +20,128 @@ canonical: https://forgotten-industries.net/
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Figure 1</p>
-      <h2 id="mirror-heading">Seven routes. One archive map.</h2>
+      <h2 id="mirror-heading">L'Archive branches at Pang.</h2>
     </div>
 
     <div>
-      <ul class="ledger" aria-label="Archive routes">
-        {% for item in site.nav %}
-        <li class="ledger-item">
-          <a class="ledger-header-link" href="{{ item.href }}">
-            <span class="ledger-label">{{ item.french or item.label }}</span>
-            {% if item.english %}
-            <span class="ledger-translation-line">
-              <span class="ledger-rail" aria-hidden="true">//</span>
-              <span class="ledger-translation">{{ item.english }}</span>
-              <span class="ledger-rail" aria-hidden="true">//</span>
-            </span>
-            {% endif %}
-          </a>
-          <p class="ledger-summary">{{ item.summary }}</p>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class="archive-phylogeny" aria-label="Archive phylogenetic site map">
+        <a class="phylo-root" href="/archive.html">
+          <span class="bilingual-heading">
+            <span>L'Archive</span>
+            <strong>// archive //</strong>
+          </span>
+          <em>Master record: evidence, inventory, entries, source documents, and preserved remains.</em>
+        </a>
 
-      <div class="stats" aria-label="Archive counts">
+        <div class="phylo-split" aria-label="Pang bifurcation">
+          <p class="section-label">Pang</p>
+          <h3>The moment an abandoned object becomes evidence again.</h3>
+        </div>
+
+        <div class="phylo-branches">
+          <section class="phylo-branch" aria-labelledby="systems-branch-heading">
+            <p class="section-label">Branch 01</p>
+            <h3 id="systems-branch-heading">Systems / preservation</h3>
+            <ul>
+              <li>
+                <a href="/projects/">
+                  <span class="bilingual-heading">
+                    <span>Les Projets</span>
+                    <strong>// projects //</strong>
+                  </span>
+                  <em>Active dossiers, rebuilds, object records, and continuity packets.</em>
+                </a>
+              </li>
+              <li>
+                <a href="/hang-on-to-each-other/">
+                  <span class="bilingual-heading">
+                    <span>Les Manuels</span>
+                    <strong>// manuals //</strong>
+                  </span>
+                  <em>Recovered instructions, procedures, references, and preservation notes.</em>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES">
+                  <span class="bilingual-heading">
+                    <span>La Source</span>
+                    <strong>// source //</strong>
+                  </span>
+                  <em>Public repository, build system, generated archive data, and code.</em>
+                  <small>{{ site.sourceStats.commits }} commits / {{ site.sourceStats.sourceFiles }} source files / Δ {{ site.sourceStats.deltaLabel }}</small>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="phylo-branch" aria-labelledby="signal-branch-heading">
+            <p class="section-label">Branch 02</p>
+            <h3 id="signal-branch-heading">Signal / recovery</h3>
+            <ul>
+              <li>
+                <a href="/posts/">
+                  <span class="bilingual-heading">
+                    <span>Le Signal</span>
+                    <strong>// signal //</strong>
+                  </span>
+                  <em>Recoveries, restorations, Le Rédempteur, doctrine, manifestos, field reports, and the feed.</em>
+                </a>
+              </li>
+              <li>
+                <a href="/en-direct/">
+                  <span class="bilingual-heading">
+                    <span>En Direct</span>
+                    <strong>// live //</strong>
+                  </span>
+                  <em>The shortform live channel: Bluesky field notes imported at build time.</em>
+                </a>
+              </li>
+              <li>
+                <a href="/about.html">
+                  <span class="bilingual-heading">
+                    <span>Le Rédempteur</span>
+                    <strong>// redeemer //</strong>
+                  </span>
+                  <em>Origin, authorship, and the human identity behind the archive.</em>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div class="stats branch-stats" aria-label="Archive branch counts">
         <a class="stat" href="/archive/projects/">
           <strong>{{ archive.projects | count }}</strong>
-          <span>Projects</span>
+          <span>Projets</span>
         </a>
-        <a class="stat" href="/archive/inventory/">
-          <strong>{{ archive.inventory | count }}</strong>
-          <span>Inventory records</span>
+        <a class="stat" href="/hang-on-to-each-other/">
+          <strong>1</strong>
+          <span>Manuels</span>
         </a>
-        <a class="stat" href="/archive/field-logs/">
+        <a class="stat" href="{{ site.githubUrl }}">
+          <strong>{{ site.sourceStats.sourceFiles }}</strong>
+          <span>Source files</span>
+        </a>
+        <a class="stat" href="{{ site.githubUrl }}/commits/main">
+          <strong>{{ site.sourceStats.commits }}</strong>
+          <span>Git commits</span>
+        </a>
+        <a class="stat" href="/posts/">
+          <strong>{{ collections.posts | count }}</strong>
+          <span>Signal entries</span>
+        </a>
+        <a class="stat" href="/field-logs/">
           <strong>{{ archive.fieldLogs | count }}</strong>
-          <span>Field logs</span>
+          <span>Field reports</span>
+        </a>
+        <a class="stat" href="/field-notes/">
+          <strong>{{ fieldnotes | count }}</strong>
+          <span>Live notes</span>
         </a>
         <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
-          <span>Social evidence</span>
+          <span>Recovered social</span>
         </a>
       </div>
     </div>
@@ -66,30 +150,46 @@ canonical: https://forgotten-industries.net/
 
 <section class="evidence-band" aria-labelledby="featured-lanes-heading">
   <div class="section-inner">
-    <div class="mx-auto w-[min(760px,100%)] py-8">
+    <div class="public-spine">
       <p class="section-label">Public Spine</p>
-      <h2 id="featured-lanes-heading">Entry 000 stays first.</h2>
+      <h2 id="featured-lanes-heading">Latest signals surface first.</h2>
 
-      <p class="stamp-row mt-6" aria-label="Entry status">
-        <span class="stamp">Manuscripts</span>
-        <span class="stamp stamp-muted">Entry 000</span>
-      </p>
+      <div class="spine-grid">
+        <article class="spine-card spine-card-active">
+          <header>
+            <p class="spine-index">Entry 001</p>
+            <p class="stamp-row" aria-label="Entry status">
+              <span class="stamp">Field Doctrine</span>
+              <span class="stamp stamp-muted">Latest</span>
+            </p>
+          </header>
+          <h3><a href="/posts/2026-06-10-perspective-peregrines-and-pang.html">Perspective, Peregrines, &amp; “Pang”</a></h3>
+          <p>Perspective changes everything. The first field doctrine sets the active method: change the view, recover the evidence, name what remains.</p>
+        </article>
 
-      <h3 class="mt-4">
-        <a href="/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html">A Thing Documented Is a Thing Not Yet Lost</a>
-      </h3>
-      <p class="entry-note">Entry 000 / long-form origin manuscript</p>
+        <article class="spine-card">
+          <header>
+            <p class="spine-index">Entry 000</p>
+            <p class="stamp-row" aria-label="Entry status">
+              <span class="stamp">Prelude</span>
+              <span class="stamp stamp-muted">Origin</span>
+            </p>
+          </header>
+          <h3><a href="/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html">A Thing Documented Is a Thing Not Yet Lost</a></h3>
+          <p>The long-form origin manuscript: death, inheritance, watercooling, recovery, and the first proof that the archive was already waiting.</p>
+        </article>
+      </div>
 
-      <h3 class="mt-4">
-        <a href="/posts/2026-06-10-perspective-peregrines-and-pang.html">Perspective, Peregrines, &amp; “Pang”</a>
-      </h3>
-      <p class="entry-note">Entry 001 / first field doctrine</p>
+      <p class="action-row"><a href="/posts/">View all curated posts</a></p>
 
-      <p class="entry-note mt-4">
-        <a href="/posts/index.html">View all curated posts</a>
-      </p>
-
-      <ul class="lane-list mt-8" aria-label="Public lane highlights">
+      <ul class="spine-route-grid" aria-label="Public lane highlights">
+        <li>
+          <a class="panel-link" href="/projects/">
+            <span>Projects</span>
+            <h3>Dossiers and continuity</h3>
+            <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
+          </a>
+        </li>
         <li>
           <a class="panel-link" href="/hang-on-to-each-other/">
             <span>Manuals</span>
@@ -102,13 +202,6 @@ canonical: https://forgotten-industries.net/
             <span>En Direct</span>
             <h3>Live channel split</h3>
             <p>One route for two short-form streams: Bluesky field notes and authored daily field logs.</p>
-          </a>
-        </li>
-        <li>
-          <a class="panel-link" href="/projects/">
-            <span>Projects</span>
-            <h3>Dossiers and continuity</h3>
-            <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
           </a>
         </li>
       </ul>
