@@ -221,3 +221,37 @@ projects:
       - Preserve exact timestamps and source post links
       - Separate direct REDEEMER mentions from build-adjacent support posts
       - Keep component list tied to the recovered May 8, 2016 post
+
+  - id: FI-PROJ-006
+    slug: atlas-operating-layer
+    title: ATLAS
+    working_title: Portable Operating Layer for Forgotten Industries and Codex
+    category: Operating Layer
+    status: active
+    started: '2026'
+    summary: >
+      Reusable operating interface for Forgotten Industries and adjacent
+      projects: core agent instructions, rapport guidance, Matthew-specific
+      collaboration profile, downstream repository templates, and recovery
+      subroutines such as Le Rédempteur.
+    themes:
+      - Codex collaboration
+      - archive-first workflow
+      - technical recovery
+      - project handoff
+      - reusable instructions
+      - Le Rédempteur
+    source_links:
+      - label: Local ATLAS repository
+        type: local
+        role: canonical working source
+        path: ~/Documents/ATLAS
+      - label: Public ATLAS mirror
+        type: git
+        role: public source route
+        url: https://github.com/Forgotten-Industries/ATLAS
+    documentation_style:
+      - Keep source-of-truth instructions in the ATLAS repository
+      - Mirror only public-safe context into Forgotten Industries
+      - Treat subroutines as practical operating modes, not roleplay
+      - Preserve local project authority before reusable guidance

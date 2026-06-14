@@ -31,6 +31,14 @@ export interface LoopConcept {
   preferences: string[]
 }
 
+export interface ProjectSourceLink {
+  label: string
+  type: 'local' | 'git' | 'document' | string
+  role: string
+  path?: string
+  url?: string
+}
+
 export interface ArchiveProject {
   id: string
   slug: string
@@ -44,6 +52,7 @@ export interface ArchiveProject {
   origin?: ProjectOrigin
   themes: string[]
   artifacts?: string[]
+  source_links?: ProjectSourceLink[]
   layout_goals?: string[]
   loop_concept?: LoopConcept
   documentation_style: string[]
