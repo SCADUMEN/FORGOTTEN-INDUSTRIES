@@ -241,48 +241,40 @@ eleventyExcludeFromCollections: true
     </div>
 
     <div>
-      <div class="stats" aria-label="Archive record counts">
-        <a class="stat" href="/archive/inventory/">
-          <strong>{{ archive.inventory | count }}</strong>
-          <span>Inventory</span>
+      <div class="stats branch-stats" aria-label="Archive branch counts">
+        <a class="stat" href="/archive/projects/">
+          <strong>{{ archive.projects | count }}</strong>
+          <span>Projets</span>
+        </a>
+        <a class="stat" href="/hang-on-to-each-other/">
+          <strong>1</strong>
+          <span>Manuels</span>
+        </a>
+        <a class="stat" href="{{ site.githubUrl }}">
+          <strong>{{ site.sourceStats.sourceFiles }}</strong>
+          <span>Source files</span>
+        </a>
+        <a class="stat" href="{{ site.githubUrl }}/commits/main">
+          <strong>{{ site.sourceStats.commits }}</strong>
+          <span>Git commits</span>
         </a>
         <a class="stat" href="/archive/posts/">
           <strong>{{ collections.posts | count }}</strong>
-          <span>Curated posts</span>
+          <span>Signal entries</span>
         </a>
         <a class="stat" href="/archive/field-logs/">
           <strong>{{ archive.fieldLogs | count }}</strong>
-          <span>Field logs</span>
+          <span>Field reports</span>
+        </a>
+        <a class="stat" href="/field-notes/">
+          <strong>{{ fieldnotes | count }}</strong>
+          <span>Live notes</span>
         </a>
         <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
-          <span>Social evidence</span>
+          <span>Recovered social</span>
         </a>
       </div>
-
-      <ul class="lane-list mt-6" aria-label="Primary archive routes">
-        <li>
-          <a class="panel-link" href="/archive/posts/">
-            <span>Public writing</span>
-            <h3>Le Signal</h3>
-            <p>Curated essays, field doctrine, and long-form entries.</p>
-          </a>
-        </li>
-        <li>
-          <a class="panel-link" href="/archive/feed/">
-            <span>Feed</span>
-            <h3>RSS / Atom</h3>
-            <p>The public writing feed. Inventory remains indexed here.</p>
-          </a>
-        </li>
-        <li>
-          <a class="panel-link" href="/archive/data/">
-            <span>Data</span>
-            <h3>Archive JSON</h3>
-            <p>Generated from canonical YAML for inspection and reuse.</p>
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
 </section>
