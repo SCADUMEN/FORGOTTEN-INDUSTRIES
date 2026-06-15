@@ -494,8 +494,8 @@ h3 {
     linear-gradient(135deg, rgba(79, 140, 255, 0.28), rgba(255, 91, 214, 0.1)),
     rgba(8, 19, 39, 0.94);
   box-shadow:
-    -0.42rem 0.42rem 0 rgba(0, 0, 0, 0.5),
-    -0.42rem 0.42rem 0 1px rgba(79, 140, 255, 0.44);
+    0.42rem 0.42rem 0 rgba(0, 0, 0, 0.5),
+    0.42rem 0.42rem 0 1px rgba(79, 140, 255, 0.44);
 }
 
 .phylo-root:hover,
@@ -629,8 +629,8 @@ h3 {
 
 .phylo-branch:last-child .phylo-branch-header {
   box-shadow:
-    -0.42rem 0.42rem 0 rgba(0, 0, 0, 0.5),
-    -0.42rem 0.42rem 0 1px rgba(79, 140, 255, 0.44);
+    0.42rem 0.42rem 0 rgba(0, 0, 0, 0.5),
+    0.42rem 0.42rem 0 1px rgba(79, 140, 255, 0.44);
 }
 
 .phylo-branch-header > .section-label {
@@ -688,8 +688,8 @@ h3 {
 
 .phylo-branch:last-child a {
   box-shadow:
-    -0.34rem 0.34rem 0 rgba(0, 0, 0, 0.42),
-    -0.34rem 0.34rem 0 1px rgba(79, 140, 255, 0.34);
+    0.34rem 0.34rem 0 rgba(0, 0, 0, 0.42),
+    0.34rem 0.34rem 0 1px rgba(79, 140, 255, 0.34);
 }
 
 .phylo-branch .bilingual-heading {
