@@ -4,7 +4,7 @@
 
 This file is the Forgotten Industries project layer for ATLAS. It intentionally carries both reusable ATLAS operating behavior and archive-specific project guidance so this repository remains self-contained.
 
-The reusable ATLAS source lives in the separate `ATLAS` repository when available. Do not require access to that repository to work here; use this file and `atlas/AGENTS.md` as the local authority.
+The reusable ATLAS source lives in the separate `ATLAS` repository when available. Do not require access to that repository to work here; use this file, `atlas/AGENTS.md`, and any local files under `atlas/subroutines/` as the local authority.
 
 ## Operator Context
 
@@ -196,6 +196,14 @@ Use this layering:
    General improvements that belong beyond this archive can be mirrored back to the separate `ATLAS` repository.
 
 When drift appears, preserve the local archive guidance first. Then decide whether the reusable ATLAS source should be updated.
+
+## Local Subroutines
+
+Local ATLAS subroutines live under `atlas/subroutines/` when they are needed by this archive.
+
+- `atlas/subroutines/le-sauvegarder.md` - preservation-and-source-protection mode for saving what can still be saved before disappearance becomes total.
+- `atlas/subroutines/le-continuant.md` - endurance-and-maintenance mode for long arcs, preservation, institutions, durable craft, and continuing useful work after optimism has burned off.
+- `atlas/subroutines/le-redempteur.md` - recovery-through-rebuild mode for stalled, damaged, abandoned, or emotionally loaded systems.
 
 ## Content Architecture Priorities
 
