@@ -665,13 +665,31 @@ h3 {
 }
 
 .phylo-branch a {
+  position: relative;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: 0.55rem;
   min-height: 10.8rem;
   padding: 1rem 1.15rem;
+  border: 1px solid rgba(79, 140, 255, 0.78);
+  background: var(--white);
   color: var(--ink);
+  box-shadow:
+    0.34rem 0.34rem 0 rgba(0, 0, 0, 0.42),
+    0.34rem 0.34rem 0 1px rgba(79, 140, 255, 0.34);
   text-decoration: none;
+}
+
+.phylo-branch:first-child a {
+  box-shadow:
+    0.34rem 0.34rem 0 rgba(0, 0, 0, 0.42),
+    0.34rem 0.34rem 0 1px rgba(79, 140, 255, 0.34);
+}
+
+.phylo-branch:last-child a {
+  box-shadow:
+    -0.34rem 0.34rem 0 rgba(0, 0, 0, 0.42),
+    -0.34rem 0.34rem 0 1px rgba(79, 140, 255, 0.34);
 }
 
 .phylo-branch .bilingual-heading {
@@ -709,11 +727,16 @@ h3 {
 }
 
 .stat {
+  position: relative;
   display: block;
   min-height: 7.5rem;
   padding: 1rem;
+  border: 1px solid rgba(79, 140, 255, 0.78);
   background: var(--white);
   color: var(--ink);
+  box-shadow:
+    0.3rem 0.3rem 0 rgba(0, 0, 0, 0.42),
+    0.3rem 0.3rem 0 1px rgba(79, 140, 255, 0.32);
   text-decoration: none;
 }
 
