@@ -144,7 +144,18 @@ img {
 .site-mark img {
   width: 58px;
   height: 58px;
-  filter: invert(1);
+}
+
+.site-mark span {
+  color: #fff;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.site-mark:hover span,
+.site-mark:focus-visible span {
+  opacity: 1;
 }
 
 .site-nav {
