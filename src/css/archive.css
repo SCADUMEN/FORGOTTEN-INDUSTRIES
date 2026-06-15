@@ -149,13 +149,30 @@ img {
 .site-mark span {
   color: #fff;
   text-transform: uppercase;
-  opacity: 0;
+  position: relative;
   transition: opacity 0.15s ease;
 }
 
-.site-mark:hover span,
-.site-mark:focus-visible span {
+/* No-JS fallback: wordmark hidden, fades in on hover/focus. */
+.site-mark:not(.js-ghost) span {
+  opacity: 0;
+}
+
+.site-mark:not(.js-ghost):hover span,
+.site-mark:not(.js-ghost):focus-visible span {
   opacity: 1;
+}
+
+/* JS-enhanced: keep the wordmark in layout for screen readers but render
+   the visible glyphs as canvas particles. */
+.site-mark.js-ghost span {
+  color: transparent;
+  opacity: 1;
+}
+
+.site-mark-ghost-canvas {
+  position: absolute;
+  pointer-events: none;
 }
 
 .site-nav {
