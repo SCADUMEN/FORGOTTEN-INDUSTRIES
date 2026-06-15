@@ -1,0 +1,15 @@
+series_id	file_span	working_label	confidence	disposition	notes
+LA-S34	IMG_1642-IMG_1643;IMG_1645-IMG_1658	CaseLabs XL-ATX motherboard tray inside rail system, likely STH-10 vertical wall	High	artifact_candidate	Human-corrected from pass 02 sheet 1; IMG_1644 excluded; tray is inside the rail system of what is presumably the old STH-10 vertical wall.
+LA-S34A	IMG_1644	CaseLabs STH-10 Magnum 10-slot rear I/O panel	High	artifact_candidate	Human-corrected from pass 02 sheet 1; not part of the XL-ATX motherboard tray series.
+LA-S35	IMG_1659-IMG_1666	EK-Multioption RES X2 - 250 Advanced, clean isolated run	High	duplicate_or_related	Human-corrected span from pass 02 sheet 2; cylindrical reservoir assembly with black acetal end caps and brass fittings; likely same or matching reservoir as LA-S01 and LA-S27.
+LA-S36	IMG_1700	Workstation context	Low	context	Photo workstation / bench context before the pedestal panel run; not an artifact record.
+LA-S37	IMG_1701-IMG_1709	CaseLabs STH-10 Magnum 10-slot rear I/O backplate	High	artifact_candidate	Human-corrected from pass 02 sheet 2; same identified part family as LA-S34A.
+LA-S38	IMG_1710-IMG_1715	CaseLabs extra-long PSU support bracket	High	artifact_candidate	PSU support bracket for very long power supplies.
+LA-S39	IMG_1716-IMG_1722	CaseLabs pedestal front panel	High	artifact_candidate	Front panel of the pedestal.
+LA-S40	IMG_1723-IMG_1726	CaseLabs pedestal rear panel, PSU cutout back	High	artifact_candidate	First pedestal rear panel; back with power-supply cutout; Matthew has two pedestal backs.
+LA-S41	IMG_1727-IMG_1730	CaseLabs pedestal rear panel, dual 120 cutout back	High	artifact_candidate	Second pedestal rear panel; back with dual 120 mm cutout.
+LA-S41A	IMG_1731	Pedestal front/back pairing context before cleaning	Medium	context	Front and selected back staged together before cleaning; pairing evidence for the set Matthew intends to use.
+LA-S42	IMG_1732-IMG_1739	EK-Multioption RES X2 - 250 Advanced, final isolated run	High	duplicate_or_related	Human-corrected from pass 02 sheet 3; likely same object as LA-S35, LA-S27, and LA-S01 unless human pass confirms multiple matching reservoirs.
+LA-S43	IMG_1616-IMG_1621	OMS-882 voice recorder artifact/provenance set	High	artifact_candidate	Human-corrected from stragglers sheet; all straggler-sheet items except final IMG_1641 frame belong to this artifact set.
+LA-Q12	IMG_1641	Blurry panel/object video	Low	context_video	Use only if the video captures handling details not visible in stills.
+LA-Q14	IMG_1671-IMG_1675	L'Archive / CaseLabs reference screenshots	High	manuals_staging	Kept but not part of artifact intake yet; copied to intake/SLUSH/manuals/.

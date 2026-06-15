@@ -40,3 +40,22 @@ L'Archive dump until object-level mapping separates project-specific evidence.
 
 Next archive pass should assign selected files to inventory records, project
 dossiers, field logs, or curated derivatives after visual identification.
+
+## Addendum: 2026-06-14 Isolated Artifact Photos
+
+Matthew added a later isolated photo run for new artifact entries. Current
+folder state is now larger than the original June 12 intake manifest:
+
+- Current top-level evidence files: 361
+- Current byte size: 1,294,779,280 bytes
+- Current file types: 304 HEIC, 22 JPEG, 13 JPG, 15 PNG, 5 MOV, 1 MP4, 1 MD
+- Current observed modified-time range: 2026-03-31T05:50:18-05:00 through
+  2026-06-14T19:58:49-05:00
+- Addendum metadata CSV:
+  `src/docs/intake/2026-06-14-l-archive-addendum-files.csv`
+- Addendum checksum listing:
+  `src/docs/intake/2026-06-14-l-archive-addendum.sha256`
+- Local triage pass:
+  `intake/L-Archive/triage/larchive-photo-series-pass-02.md`
+- Promoted triage pass:
+  `src/docs/intake/2026-06-14-l-archive-photo-series-pass-02.md`
