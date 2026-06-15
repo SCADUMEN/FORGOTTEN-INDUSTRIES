@@ -21,11 +21,22 @@
 
     const measureCtx = document.createElement('canvas').getContext('2d')
     measureCtx.font = font
-    const upper = text.toUpperCase()
-    const textWidth = Math.ceil(measureCtx.measureText(upper).width)
-    const textHeight = Math.ceil(fontSize * 1.2)
+    const tokens = text
+      .toUpperCase()
+      .split(/\s+/)
+      .filter(Boolean)
+    if (tokens.length === 0) return
 
-    const pad = Math.ceil(fontSize * 2.2)
+    let longest = 0
+    for (const t of tokens) {
+      const tw = measureCtx.measureText(t).width
+      if (tw > longest) longest = tw
+    }
+    const lineHeight = Math.ceil(fontSize * 1.05)
+    const textWidth = Math.ceil(longest)
+    const textHeight = lineHeight * tokens.length
+
+    const pad = Math.ceil(fontSize * 1.8)
     const w = textWidth + pad * 2
     const h = textHeight + pad * 2
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -34,7 +45,7 @@
     canvas.setAttribute('aria-hidden', 'true')
     canvas.className = 'site-mark-ghost-canvas'
     canvas.style.left = `${-pad}px`
-    canvas.style.top = `${(textHeight - h) / 2}px`
+    canvas.style.top = `${-pad}px`
     canvas.style.width = `${w}px`
     canvas.style.height = `${h}px`
     canvas.width = w * dpr
@@ -51,7 +62,9 @@
     sctx.font = font
     sctx.textBaseline = 'middle'
     sctx.fillStyle = '#fff'
-    sctx.fillText(upper, pad, h / 2)
+    tokens.forEach((tok, i) => {
+      sctx.fillText(tok, pad, pad + i * lineHeight + lineHeight / 2)
+    })
     const pixels = sctx.getImageData(0, 0, w, h).data
 
     const step = Math.max(2, Math.floor(fontSize / 7))

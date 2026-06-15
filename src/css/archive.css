@@ -136,7 +136,7 @@ img {
   align-items: center;
   gap: 0.9rem;
   color: var(--ink);
-  font-size: clamp(1rem, 1.35vw, 1.24rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   font-weight: 700;
   text-decoration: none;
 }
@@ -150,6 +150,9 @@ img {
   color: #fff;
   text-transform: uppercase;
   position: relative;
+  display: inline-block;
+  width: min-content;
+  line-height: 1.05;
   transition: opacity 0.15s ease;
 }
 
