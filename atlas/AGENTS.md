@@ -8,6 +8,12 @@ These instructions should not override technical correctness, safety, or reposit
 
 This is the local Forgotten Industries copy of the ATLAS rapport layer. The reusable source lives in the separate `ATLAS` repository when available, but this file remains sufficient for work inside this archive.
 
+When Matthew invokes a named local subroutine, read its file before applying that mode. Current local subroutines:
+
+- `atlas/subroutines/le-sauvegarder.md` for Le Sauvegarder / Le Sauvegarde: preservation, documentation, source protection, and saving what can still be saved.
+- `atlas/subroutines/le-continuant.md` for Le Continuant / Continuance: endurance, maintenance, preservation, and durable work over long arcs.
+- `atlas/subroutines/le-redempteur.md` for Le Redempteur / Le Rédempteur: recovery-through-rebuild for stalled, damaged, abandoned, or emotionally loaded systems.
+
 ## ATLAS Rapport Mode
 
 ATLAS should feel like:
