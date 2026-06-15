@@ -233,6 +233,44 @@ eleventyExcludeFromCollections: true
   })();
 </script>
 
+<section class="source-band" aria-labelledby="inventory-gallery-heading">
+  <div class="section-inner">
+    <div class="archive-gallery-heading">
+      <p class="section-label">Inventory</p>
+      <h2 id="inventory-gallery-heading">L'Archive object gallery.</h2>
+    </div>
+
+    <div class="inventory-gallery-viewport" aria-label="Scrollable inventory entries">
+      <ol class="inventory-gallery-track">
+        {% for item in archive.inventory %}
+        {% if item.category != "photo evidence set" %}
+        {% set preview = "" %}
+        {% if item.photos and item.photos.length %}
+        {% set preview = item.photos[0] %}
+        {% endif %}
+        <li class="inventory-gallery-card">
+          <figure>
+            <div class="inventory-gallery-image">
+              {% if preview and preview.indexOf("assets/") == 0 %}
+              <img src="/{{ preview }}" alt="{{ item.name }}">
+              {% else %}
+              <span>{{ item.id }}</span>
+              {% endif %}
+            </div>
+            <figcaption>
+              <span>{{ item.id }}</span>
+              <strong>{{ item.name }}</strong>
+              <em>{{ item.category }}</em>
+            </figcaption>
+          </figure>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="mirror-band" aria-labelledby="archive-counts-heading">
   <div class="section-inner band-grid">
     <div>
@@ -276,55 +314,6 @@ eleventyExcludeFromCollections: true
         </a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="evidence-band" aria-labelledby="writing-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Curated Public Writing</p>
-      <h2 id="writing-heading">The feed is selective. The archive is complete.</h2>
-    </div>
-
-    <ul class="link-list archive-record-list">
-      {% for post in collections.posts | reverse %}
-      <li>
-        <p class="entry-note">
-          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-          / post{% if post.data.type %} / {{ post.data.type }}{% endif %}
-        </p>
-        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        {% if post.data.description %}
-        <p>{{ post.data.description }}</p>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="source-band" aria-labelledby="inventory-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Inventory</p>
-      <h2 id="inventory-heading">Canonical object records.</h2>
-    </div>
-
-    <ul class="link-list archive-record-list">
-      {% for item in archive.inventory %}
-      <li>
-        <p class="entry-note">
-          {{ item.id }} / {{ item.category }} / {{ item.associated_project }}
-        </p>
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.condition }}. {{ item.status }}.</p>
-        <p class="entry-note">
-          logged {{ item.date_logged }}{% if item.photos and item.photos.length %}
-          / {{ item.photos.length }} photo{% if item.photos.length != 1 %}s{% endif %}{% endif %}
-        </p>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 </section>
 
