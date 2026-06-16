@@ -58,3 +58,8 @@ module.exports = async function () {
     clearTimeout(timeout)
   }
 }
+
+// Exposed for unit tests. Eleventy invokes the default function export above
+// and ignores these extra properties, so attaching them is behavior-neutral.
+module.exports.blueskyPostUrl = blueskyPostUrl
+module.exports.normalizePost = normalizePost

@@ -10,6 +10,9 @@ yarn-debug.log*
 yarn-error.log*
 *.swp
 .claude/
+test-results/
+playwright-report/
+.playwright/
 
 # Local raw intake payloads. Promote curated derivatives into src/ or docs/
 # before committing.
