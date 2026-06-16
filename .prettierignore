@@ -7,3 +7,5 @@ node_modules
 package-lock.json
 src/site-snapshots
 intake
+test-results
+playwright-report
