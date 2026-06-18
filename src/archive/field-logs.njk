@@ -24,11 +24,15 @@ eleventyExcludeFromCollections: true
     </div>
 
     <ul class="link-list archive-record-list">
-      {% for log in archive.fieldLogs | reverse %}
-      <li>
+      {% for log in archive.fieldLogs | fieldLogsNewest %}
+      {% set project = archive.projects | findById(log.associated_project) %}
+      <li id="{{ log.id }}">
         <p class="entry-note">{{ log.id }} / {{ log.date }} / {{ log.category }}</p>
-        <h3>{{ log.title }}</h3>
-        <p>{{ log.object }}. {{ log.status }}.</p>
+        <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
+        <p>{{ log.summary or log.object }}</p>
+        <p class="entry-note">
+          {{ log.object }}{% if log.system %} / {{ log.system }}{% endif %}{% if log.status %} / {{ log.status }}{% endif %}{% if project %} / <a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a>{% endif %}
+        </p>
         {% if log.tags and log.tags.length %}
         <p class="entry-note">{{ log.tags | join(', ') }}</p>
         {% endif %}

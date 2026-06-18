@@ -90,7 +90,10 @@ export interface FieldLog {
   associated_project: string
   object: string
   system: string
+  condition?: string
   status: string
+  summary?: string
+  source_path?: string
   tags: string[]
   sections: FieldLogSection[]
   signature: string

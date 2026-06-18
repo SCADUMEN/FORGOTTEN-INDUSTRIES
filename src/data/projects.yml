@@ -260,3 +260,27 @@ projects:
       - Treat subroutines as practical operating modes, not roleplay
       - Preserve local project authority before reusable guidance
       - Present Les Trois Témoins as archive method, not mascot language
+
+  - id: FI-PROJ-007
+    slug: l-archive
+    title: L'Archive
+    working_title: Forgotten Industries Master Archive
+    category: Archive Infrastructure
+    status: active
+    started: '2026'
+    summary: >
+      The master Forgotten Industries record: canonical YAML, generated archive
+      data, public routes, evidence pages, field reports, source files, and
+      operating context that keep the project inspectable.
+    themes:
+      - source-of-truth architecture
+      - evidence preservation
+      - generated archive data
+      - public site infrastructure
+      - field reports
+      - source records
+    documentation_style:
+      - Preserve canonical records before presentation work
+      - Keep raw evidence pages inspectable
+      - Separate live dispatches from authored field reports
+      - Link generated routes back to source records

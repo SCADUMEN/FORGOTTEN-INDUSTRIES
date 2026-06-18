@@ -1,0 +1,124 @@
+---
+layout: base.njk
+pagination:
+  data: archive.fieldLogs
+  size: 1
+  alias: log
+permalink: /field-logs/{{ log.slug }}/
+eleventyComputed:
+  title: "{{ log.title }}"
+  description: "{{ log.summary or log.title }}"
+  canonical: "{{ site.domainUrl }}/field-logs/{{ log.slug }}/"
+---
+{% set project = archive.projects | findById(log.associated_project) %}
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Field Log / {{ log.id }}</p>
+    <h1>{{ log.title }}</h1>
+    <p class="tagline">{{ log.summary or "Authored field report from the bench." }}</p>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-log-record-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Source record</p>
+      <h2 id="field-log-record-heading">Evidence before interpretation.</h2>
+    </div>
+
+    <dl class="record-meta-grid">
+      <div>
+        <dt>Date</dt>
+        <dd><time datetime="{{ log.date }}">{{ log.timestamp or log.date }}</time></dd>
+      </div>
+      <div>
+        <dt>ID</dt>
+        <dd>{{ log.id }}</dd>
+      </div>
+      <div>
+        <dt>Type</dt>
+        <dd>{{ log.category }}</dd>
+      </div>
+      {% if log.object %}
+      <div>
+        <dt>Object</dt>
+        <dd>{{ log.object }}</dd>
+      </div>
+      {% endif %}
+      {% if log.system %}
+      <div>
+        <dt>System</dt>
+        <dd>{{ log.system }}</dd>
+      </div>
+      {% endif %}
+      {% if log.condition %}
+      <div>
+        <dt>Condition</dt>
+        <dd>{{ log.condition }}</dd>
+      </div>
+      {% endif %}
+      {% if log.status %}
+      <div>
+        <dt>Status</dt>
+        <dd>{{ log.status }}</dd>
+      </div>
+      {% endif %}
+      {% if project %}
+      <div>
+        <dt>Associated project</dt>
+        <dd><a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a> / {{ project.id }}</dd>
+      </div>
+      {% elif log.associated_project %}
+      <div>
+        <dt>Associated project</dt>
+        <dd>{{ log.associated_project }}</dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="field-log-body-heading">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Authored report</p>
+      <h2 id="field-log-body-heading">The durable report belongs here.</h2>
+    </div>
+
+    {% if log.tags and log.tags.length %}
+    <p class="stamp-row" aria-label="Field log tags">
+      {% for tag in log.tags %}
+      <span class="stamp stamp-muted">{{ tag }}</span>
+      {% endfor %}
+    </p>
+    {% endif %}
+
+    <article class="field-log-body">
+      {% for section in log.sections %}
+      <section>
+        <h3>{{ section.heading }}</h3>
+        <p>{{ section.body }}</p>
+      </section>
+      {% endfor %}
+    </article>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="field-log-source-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Record metadata</p>
+      <h2 id="field-log-source-heading">Source record remains inspectable.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>{{ log.signature }}</h3>
+      <p>Canonical source: <a href="/src/data/field-logs.yml">src/data/field-logs.yml</a></p>
+      {% if log.source_path %}
+      <p>Draft/source note: <a href="/{{ log.source_path }}">{{ log.source_path }}</a></p>
+      {% endif %}
+      <p>Route: <code>/field-logs/{{ log.slug }}/</code></p>
+      <p class="action-row"><a href="/field-logs/">Return to Field Logs</a> / <a href="/field-notes/">Open Field Notes</a></p>
+    </div>
+  </div>
+</section>

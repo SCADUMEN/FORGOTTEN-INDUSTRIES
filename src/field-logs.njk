@@ -1,15 +1,15 @@
 ---
 layout: base.njk
 title: Field Logs
-description: "Authored field reports from Forgotten Industries: bench observations, process notes, and small dated records that belong under Le Signal."
+description: "Authored field reports from Forgotten Industries: bench observations, process notes, methods, restoration notes, and dated evidence records."
 permalink: /field-logs/index.html
 eleventyExcludeFromCollections: true
 ---
-
+{% set logs = archive.fieldLogs | fieldLogsNewest %}
 <section class="masthead">
   <div class="section-inner">
     <p class="section-label">Le Signal / field reports</p>
-    <h1>Field Reports</h1>
+    <h1>Field Logs</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
@@ -17,14 +17,73 @@ eleventyExcludeFromCollections: true
 <section class="source-band" aria-labelledby="field-logs-status">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Short Form</p>
-      <h2 id="field-logs-status">A pocket notebook for the archive.</h2>
+      <p class="section-label">{{ archive.fieldLogs | count }} records</p>
+      <h2 id="field-logs-status">Authored field reports from the bench.</h2>
     </div>
 
     <div class="callout">
-      <h3>Report Lane</h3>
-      <p>Field reports are authored notes: shorter than doctrine, more deliberate than the live Bluesky signal, and dated for later recovery.</p>
-      <p class="action-row"><a href="/archive/field-logs/">Open structured archive records</a></p>
+      <h3>Two Channels</h3>
+      <p>The live signal belongs to Field Notes. The durable report belongs here.</p>
+      <p>Small records before they become essays, dossiers, or methods.</p>
+      <p class="action-row"><a href="/field-notes/">Open Field Notes</a> / <a href="/archive/field-logs/">Open archive record view</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="archive-search-band" aria-labelledby="field-log-filter-heading">
+  <div class="section-inner">
+    <div class="archive-search-shell">
+      <div class="archive-search-intro">
+        <p class="section-label">Field Log Index</p>
+        <h2 id="field-log-filter-heading">Newest first. Filter without leaving the page.</h2>
+        <p class="archive-search-meta">
+          Filter by text, tag, type, project, or status. Evidence before interpretation.
+        </p>
+      </div>
+
+      <form id="field-log-filter-form" class="archive-search-form field-log-filter-form" role="search">
+        <label class="sr-only" for="field-log-search">Search field logs</label>
+        <input
+          id="field-log-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search logs, tags, systems, objects, or IDs"
+        >
+        <button type="reset">Clear</button>
+      </form>
+
+      <div class="field-log-filter-row" aria-label="Field log filters">
+        <label>
+          <span>Type</span>
+          <select id="field-log-category">
+            <option value="">All types</option>
+            {% for category in archive.fieldLogs | fieldLogCategories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>
+          <span>Project</span>
+          <select id="field-log-project">
+            <option value="">All projects</option>
+            {% for project in archive.projects %}
+            <option value="{{ project.id }}">{{ project.title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>
+          <span>Status</span>
+          <select id="field-log-status-filter">
+            <option value="">All status</option>
+            {% for log in logs %}
+            <option value="{{ log.status }}">{{ log.status }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+
+      <p id="field-log-filter-status" class="archive-search-status">{{ logs | count }} records / ready</p>
     </div>
   </div>
 </section>
@@ -32,24 +91,58 @@ eleventyExcludeFromCollections: true
 <section class="evidence-band" aria-labelledby="field-logs-list">
   <div class="section-inner">
     <div class="field-notes-heading">
-      <p class="section-label">{{ archive.fieldLogs | count }} records</p>
-      <h2 id="field-logs-list">Small records before they become essays, dossiers, or methods.</h2>
+      <p class="section-label">Newest records</p>
+      <h2 id="field-logs-list">The authored report lane.</h2>
     </div>
 
-    {% if archive.fieldLogs.length %}
-    <ol class="field-note-list">
-      {% for log in archive.fieldLogs | reverse %}
-      <li class="field-note-card">
+    {% if logs.length %}
+    <ol id="field-log-list" class="field-note-list field-log-list">
+      {% for log in logs %}
+      {% set project = archive.projects | findById(log.associated_project) %}
+      <li
+        class="field-note-card field-log-card"
+        data-field-log-card
+        data-category="{{ log.category }}"
+        data-project="{{ log.associated_project }}"
+        data-status="{{ log.status }}"
+        data-tags="{{ log.tags | join(' ') | lower }}"
+      >
         <header>
           <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
-          <span>{{ log.category }}</span>
+          <span>{{ log.id }} / {{ log.category }}</span>
         </header>
-        <h3>{{ log.title }}</h3>
-        <p>{{ log.object }}. {{ log.status }}.</p>
+        <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
+        <p>{{ log.summary or log.object }}</p>
+        <dl class="field-log-card-meta">
+          {% if log.object %}
+          <div>
+            <dt>Object</dt>
+            <dd>{{ log.object }}</dd>
+          </div>
+          {% endif %}
+          {% if log.system %}
+          <div>
+            <dt>System</dt>
+            <dd>{{ log.system }}</dd>
+          </div>
+          {% endif %}
+          {% if log.status %}
+          <div>
+            <dt>Status</dt>
+            <dd>{{ log.status }}</dd>
+          </div>
+          {% endif %}
+          {% if project %}
+          <div>
+            <dt>Project</dt>
+            <dd><a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a></dd>
+          </div>
+          {% endif %}
+        </dl>
         {% if log.tags and log.tags.length %}
         <footer aria-label="Field log tags">
           {% for tag in log.tags %}
-          <span>{{ tag }}</span>
+          <button class="tag-filter" type="button" data-field-log-tag="{{ tag }}">{{ tag }}</button>
           {% endfor %}
         </footer>
         {% endif %}
@@ -64,3 +157,88 @@ eleventyExcludeFromCollections: true
     {% endif %}
   </div>
 </section>
+
+<section class="source-band" aria-labelledby="field-log-groups-heading">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Grouped by type</p>
+      <h2 id="field-log-groups-heading">Sections by category.</h2>
+    </div>
+
+    <div class="field-log-group-grid">
+      {% for category in archive.fieldLogs | fieldLogCategories %}
+      {% set categoryLogs = archive.fieldLogs | byCategory(category) | fieldLogsNewest %}
+      <section class="field-log-group">
+        <p class="section-label">{{ categoryLogs | count }} records</p>
+        <h3>{{ category }}</h3>
+        <ol>
+          {% for log in categoryLogs %}
+          <li>
+            <a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a>
+            <span>{{ log.date }} / {{ log.id }}</span>
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var form = document.getElementById('field-log-filter-form');
+    var search = document.getElementById('field-log-search');
+    var category = document.getElementById('field-log-category');
+    var project = document.getElementById('field-log-project');
+    var status = document.getElementById('field-log-status-filter');
+    var resultStatus = document.getElementById('field-log-filter-status');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('[data-field-log-card]'));
+
+    function normalize(value) {
+      return String(value || '').toLowerCase().trim();
+    }
+
+    function update() {
+      var query = normalize(search.value);
+      var categoryValue = category.value;
+      var projectValue = project.value;
+      var statusValue = status.value;
+      var visible = 0;
+
+      cards.forEach(function(card) {
+        var text = normalize(card.textContent + ' ' + card.dataset.tags);
+        var matches =
+          (!query || text.indexOf(query) !== -1) &&
+          (!categoryValue || card.dataset.category === categoryValue) &&
+          (!projectValue || card.dataset.project === projectValue) &&
+          (!statusValue || card.dataset.status === statusValue);
+
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      resultStatus.textContent = visible + ' record' + (visible === 1 ? '' : 's') + ' visible';
+    }
+
+    form.addEventListener('reset', function() {
+      window.setTimeout(function() {
+        category.value = '';
+        project.value = '';
+        status.value = '';
+        update();
+      }, 0);
+    });
+    search.addEventListener('input', update);
+    category.addEventListener('change', update);
+    project.addEventListener('change', update);
+    status.addEventListener('change', update);
+
+    document.querySelectorAll('[data-field-log-tag]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        search.value = button.dataset.fieldLogTag || '';
+        update();
+      });
+    });
+  })();
+</script>
