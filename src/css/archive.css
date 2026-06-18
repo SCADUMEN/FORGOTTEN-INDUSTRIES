@@ -1392,6 +1392,161 @@ h3 {
   color: var(--steel);
 }
 
+.field-log-list [hidden] {
+  display: none;
+}
+
+.field-log-filter-form {
+  margin-bottom: 0.7rem;
+}
+
+.field-log-filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.field-log-filter-row label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.75rem;
+  background: var(--white);
+}
+
+.field-log-filter-row span {
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.field-log-filter-row select {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.field-log-card-meta,
+.record-meta-grid {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.field-log-card-meta {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 64rem;
+}
+
+.record-meta-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field-log-card-meta div,
+.record-meta-grid div {
+  min-width: 0;
+  padding: 0.72rem;
+  background: var(--paper);
+}
+
+.field-log-card-meta dt,
+.record-meta-grid dt {
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.field-log-card-meta dd,
+.record-meta-grid dd {
+  margin: 0.15rem 0 0;
+}
+
+.tag-filter {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--steel);
+  font: inherit;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.tag-filter:hover,
+.tag-filter:focus-visible {
+  color: var(--oxide);
+  text-decoration: underline;
+}
+
+.field-log-group-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.field-log-group {
+  padding: 1rem;
+  background: var(--white);
+}
+
+.field-log-group h3 {
+  margin-top: 0.1rem;
+}
+
+.field-log-group ol {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.field-log-group li span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.field-log-body {
+  display: grid;
+  gap: 1px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.field-log-body section {
+  padding: 1rem;
+  background: var(--white);
+}
+
+.field-log-body h3 {
+  margin-top: 0;
+}
+
+.field-log-body p {
+  max-width: 68rem;
+  margin-bottom: 0;
+  white-space: pre-wrap;
+}
+
 .field-note-empty {
   margin-bottom: 2rem;
 }
@@ -1684,12 +1839,16 @@ h3 {
 
   .lane-list,
   .branch-stats,
+  .field-log-card-meta,
+  .field-log-filter-row,
+  .field-log-group-grid,
   .mini-progress,
   .phylo-branches,
   .phylo-root,
   .phylo-split,
   .project-card,
   .progression-list,
+  .record-meta-grid,
   .signal-branch-grid,
   .spine-grid,
   .spine-route-grid {
