@@ -1,12 +1,15 @@
 ---
 title: The Site Supervisor
-date: 2026.06.18
+id: FI-LOG-006
+slug: site-supervisor
+date: 2026-06-18
+timestamp: 2026-06-18 16:00 CT
 category: field-log
 object: Potato
 system: Wichita Branch Operations
 condition: Operational
 status: Active
-associated_project: L'Archive
+associated_project: FI-PROJ-007
 signature: "Forgotten Industries // Field Log // 2026.06.18"
 ---
 
@@ -100,8 +103,8 @@ L'Archive // Forgotten Industries
 
 Prepared in accordance with the principles of Contre l'Oubli.
 
-*Observe. Record. Preserve. Transmit.*
+_Observe. Record. Preserve. Transmit._
 
-*A thing documented is a thing not yet lost.*
+_A thing documented is a thing not yet lost._
 
 -- Forgotten Industries // Field Log // 2026.06.18

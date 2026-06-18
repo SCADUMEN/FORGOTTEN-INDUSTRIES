@@ -205,13 +205,13 @@ field_logs.each do |log|
     id: log.fetch("id"),
     type: log["category"] || "field-log",
     title: log.fetch("title"),
-    url: "/field-logs/",
+    url: "/field-logs/#{log.fetch("slug")}/",
     date: log["date"],
     category: log["category"],
     status: log["status"],
     tags: log["tags"],
     project: log["associated_project"],
-    summary: "#{log["object"]}. #{log["status"]}.",
+    summary: log["summary"] || "#{log["object"]}. #{log["status"]}.",
     body: log["sections"] || log,
     source: "src/data/field-logs.yml"
   )

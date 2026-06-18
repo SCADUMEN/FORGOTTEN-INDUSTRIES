@@ -66,6 +66,40 @@ export default function (eleventyConfig) {
     return value.toISOString().split('T')[0].replaceAll('-', '.')
   })
 
+  eleventyConfig.addFilter('fieldLogsNewest', function (logs) {
+    return Array.isArray(logs)
+      ? [...logs].sort((a, b) => {
+          const dateSort = String(b.date || '').localeCompare(
+            String(a.date || '')
+          )
+          if (dateSort !== 0) return dateSort
+          return String(b.id || '').localeCompare(String(a.id || ''))
+        })
+      : []
+  })
+
+  eleventyConfig.addFilter('fieldLogCategories', function (logs) {
+    const categories = new Set()
+    if (Array.isArray(logs)) {
+      logs.forEach((log) => {
+        if (log?.category) categories.add(log.category)
+      })
+    }
+    return [...categories].sort((a, b) => a.localeCompare(b))
+  })
+
+  eleventyConfig.addFilter('byCategory', function (logs, category) {
+    return Array.isArray(logs)
+      ? logs.filter((log) => log?.category === category)
+      : []
+  })
+
+  eleventyConfig.addFilter('findById', function (records, id) {
+    return Array.isArray(records)
+      ? records.find((record) => record?.id === id) || null
+      : null
+  })
+
   return {
     dir: {
       input: 'src',
