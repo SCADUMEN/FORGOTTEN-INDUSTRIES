@@ -9,6 +9,10 @@ field_logs:
     object: CaseLabs Mercury S8 + pedestal
     system: custom watercooling restoration
     status: revived / documentation first
+    summary: >
+      Intake and restoration framing for the CaseLabs Mercury S8 plus pedestal:
+      photograph the object as found, identify parts before cleaning, and treat
+      the machine as the core archive object.
     tags:
       - CaseLabs Archive
       - restoration
@@ -60,6 +64,9 @@ field_logs:
     object: recovered hardware and tools
     system: archive practice
     status: standing method
+    summary: >
+      Standing archive method for recovered objects: photograph before
+      cleaning, preserve uncertainty, and let evidence lead interpretation.
     tags:
       - Garage Archaeology
       - methods
@@ -89,6 +96,10 @@ field_logs:
     object: Perry 1 / PEREGRINE-A01
     system: DJI Mini 4K aircraft / crash recovery and repair diagnostics
     status: grounded / physical inspection before calibration
+    summary: >
+      Crash-recovery intake for PEREGRINE-A01, preserving the incident chain,
+      physical inspection requirements, and repair diagnostics before
+      calibration.
     tags:
       - PEREGRINE
       - drone
@@ -146,6 +157,9 @@ field_logs:
     object: Perry 2 / PEREGRINE-A02
     system: DJI Mini 3 aircraft / loss record and recovery decision
     status: lost / likely roof / recovery deferred for safety
+    summary: >
+      Loss and safety record for PEREGRINE-A02: preserve the likely roof loss
+      without creating a second incident through unsafe recovery.
     tags:
       - PEREGRINE
       - drone
@@ -194,6 +208,10 @@ field_logs:
     object: CaseLabs Mercury S8 + pedestal
     system: custom watercooling restoration / proof-of-concept build
     status: strategic note / inventory before sale decision
+    summary: >
+      Restoration strategy note for the Mercury S8 proof-of-concept build:
+      complete inventory, verify infrastructure, and defer sale decisions until
+      the ship is back in sequence.
     tags:
       - CaseLabs Archive
       - restoration strategy
@@ -266,6 +284,11 @@ field_logs:
     object: statistics workstation
     system: Field Lab / Windows workstation / SEER*Stat
     status: first light / research environment online
+    summary: >
+      First-light record for the Field Lab workstation: SEER*Stat launched, the
+      research environment came online, and the archive/field-lab split became
+      visible.
+    source_path: src/docs/field-logs/2026-06-13-first-light.md
     tags:
       - seer
       - research
@@ -311,3 +334,80 @@ field_logs:
           were made, no hypotheses were tested, and no conclusions were reached.
           The workstation simply came online. Sometimes that is enough.
     signature: Forgotten Industries // Field Log // 2026.06.13
+
+  - id: FI-LOG-006
+    slug: site-supervisor
+    title: The Site Supervisor
+    date: '2026-06-18'
+    timestamp: '2026-06-18 16:00 CT'
+    category: field-log
+    associated_project: FI-PROJ-007
+    object: Potato
+    system: Wichita Branch Operations
+    condition: Operational
+    status: Active
+    summary: >
+      Site-supervisor observation from the Wichita Branch Research Station:
+      Potato maintained passive oversight of active archive, restoration, and
+      artifact-discussion work.
+    source_path: src/docs/field-logs/2026-06-16-site-super.md
+    tags:
+      - Potato
+      - L'Archive
+      - site supervision
+      - field operations
+      - morale
+      - station record
+    sections:
+      - heading: Timestamp
+        body: >
+          2026.06.18 // 16:00 CT.
+      - heading: Subject
+        body: >
+          Potato. Species: Canis lupus familiaris (Shiba Inu). Role: Site
+          Supervisor. Location: Wichita Branch Research Station. Associated
+          Project: L'Archive.
+      - heading: Condition Found
+        body: >
+          Subject observed occupying a supervisory position upon the primary
+          sleeping surface overlooking the active work area. Nearby objects
+          included one plush goose, two treats, assorted computing equipment,
+          and multiple active archival and restoration projects. No signs of
+          distress, agitation, or operational impairment observed.
+      - heading: Observations
+        body: >
+          The Subject maintained visual awareness of both goose and treat
+          resources while demonstrating no urgency to acquire either. Station
+          activity included discussion of Soviet polar watches, PS Vita
+          restoration, CaseLabs recovery operations, and future garage inventory
+          efforts. The Subject remained present throughout the observation
+          period and appeared satisfied with current station status.
+      - heading: Methods
+        body: >
+          Observation only. No intervention performed. No treats dispensed. No
+          positional adjustments requested or required.
+      - heading: Continuity Notes
+        body: >
+          The Subject appears to provide ongoing morale stabilization and
+          passive oversight of station operations. Interpretation of facial
+          expression suggests the following internal assessment: the human has
+          discovered another artifact cache; this will require several hours of
+          inspection; supervision shall proceed from the mattress.
+      - heading: What It Means / Reflection
+        body: >
+          The Site Supervisor continues to demonstrate confidence in both the
+          integrity of the station and the eventual availability of resources.
+          No action was taken because none was necessary. Some systems function
+          best when left undisturbed.
+      - heading: Next Actions
+        body: >
+          Photograph additional supervisory activities. Identify preferred
+          napping locations. Test treat response latency. Clean goose if
+          required. Decide whether additional compensation is warranted.
+      - heading: Colophon
+        body: >
+          Recorded by Matthew Taylor Marx. Generated by ATLAS Generation
+          GPT-5.5. Witnessed by Potato, Site Supervisor. Prepared in accordance
+          with the principles of Contre l'Oubli. Observe. Record. Preserve.
+          Transmit.
+    signature: Forgotten Industries // Field Log // 2026.06.18

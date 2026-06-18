@@ -25,7 +25,7 @@ eleventyExcludeFromCollections: true
 
     <ul class="link-list archive-record-list">
       {% for project in archive.projects %}
-      <li>
+      <li id="{{ project.id }}">
         <p class="entry-note">
           {{ project.id }} / {{ project.category }} / {{ project.status }}
         </p>
