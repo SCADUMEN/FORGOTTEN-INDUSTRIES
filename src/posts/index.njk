@@ -82,7 +82,7 @@ eleventyExcludeFromCollections: true
               <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
               <span>{{ log.category }}</span>
             </header>
-            <h3>{{ log.title }}</h3>
+            <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
             <p>{{ log.object }}. {{ log.status }}.</p>
           </li>
           {% endfor %}
