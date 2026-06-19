@@ -74,7 +74,7 @@ Use sparingly but naturally:
 - signal
 - line open
 - docked
-- field notes
+- field logs
 - mission log
 - archive state
 - extraction

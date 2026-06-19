@@ -119,22 +119,22 @@ projects:
 
   - id: FI-PROJ-003
     slug: field-notes
-    title: Field Notes
-    category: Field Notes
+    title: Field Log
+    category: Field Log
     status: active
     started: '2026'
     summary: >
-      Process notes, experiments, methods, failures, findings, and design
-      decisions for technical recovery through craft.
+      Original voice entries imported from the portable recorder, preserved as
+      MP3 source records, and presented newest first.
     themes:
       - methods
       - observations
       - iteration
       - systems thinking
     documentation_style:
-      - Use methods, observations, and findings when they help
-      - Keep reflection grounded in objects and actions
-      - Let the technical documentation carry the emotion
+      - Preserve the original MP3 before transcription or editing
+      - Record capture time, recorder, duration, and source filename
+      - Keep optional transcripts subordinate to the original voice record
 
   - id: FI-PROJ-004
     slug: peregrine-drone-experiments
@@ -270,17 +270,17 @@ projects:
     started: '2026'
     summary: >
       The master Forgotten Industries record: canonical YAML, generated archive
-      data, public routes, evidence pages, field reports, source files, and
+      data, public routes, evidence pages, field logs, source files, and
       operating context that keep the project inspectable.
     themes:
       - source-of-truth architecture
       - evidence preservation
       - generated archive data
       - public site infrastructure
-      - field reports
+      - field logs
       - source records
     documentation_style:
       - Preserve canonical records before presentation work
       - Keep raw evidence pages inspectable
-      - Separate live dispatches from authored field reports
+      - Separate live dispatches from authored field logs
       - Link generated routes back to source records

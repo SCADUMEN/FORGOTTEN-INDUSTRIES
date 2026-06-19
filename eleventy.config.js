@@ -44,6 +44,7 @@ function isFieldLogUrl(value = '') {
   return (
     pathname.startsWith('/field-logs/') &&
     pathname !== '/field-logs/' &&
+    pathname !== '/field-logs/voice/' &&
     pathname.endsWith('/')
   )
 }
@@ -56,7 +57,8 @@ function isCollectionUrl(value = '') {
     pathname === '/posts/' ||
     pathname === '/projects/' ||
     pathname === '/field-notes/' ||
-    pathname === '/field-logs/'
+    pathname === '/field-logs/' ||
+    pathname === '/field-logs/voice/'
   )
 }
 

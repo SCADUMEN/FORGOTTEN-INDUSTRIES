@@ -347,7 +347,7 @@ panel type, damage, scratches, dents, missing fasteners, and powder-coat wear.
 Bag fasteners by observed location until thread type, length, and count are
 confirmed.
 
-## Field Notes
+## Field Log
 
 Add dated observations, measurements, corrections, and contradictions as the
 build proceeds. The archive remembers what panic forgets.

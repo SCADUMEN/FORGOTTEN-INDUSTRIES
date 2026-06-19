@@ -30,7 +30,7 @@ Le Redempteur work should feel like:
 - technical archive
 - restoration log
 - evidence notebook
-- field notes
+- field logs
 - repair manual
 - artifact catalog
 - personal recovery record
@@ -118,7 +118,7 @@ Le Redempteur projects may organize recovered material into:
 1. Restoration logs
    Long-running rebuilds such as CaseLabs Mercury S8, STH-10 accessories, watercooling hardware, old PC projects, and other systems returning from storage or failure.
 
-2. Field notes
+2. Field logs
    Short active-process dispatches from the bench, garage, field, or improvised lab. Immediate, practical, exploratory.
 
 3. Project dossiers
@@ -136,7 +136,7 @@ Preferred words:
 
 - archive
 - evidence-based memoir
-- field notes
+- field logs
 - restoration
 - salvage
 - rebuild

@@ -50,7 +50,9 @@ The live site is organized around L'Archive as the primary destination, with sat
 
 - **L'ARCHIVE** — The historical record: documentation, provenance, research, old hardware references, forum archaeology, photos, part identification, manuals, diagrams, and unknown-component investigation. The museum wing.
 - **Recoveries, Restorations, & 'Le Rédempteur'** — Machines coming back, and the human recovery that moves with them. The workbench and the soul are allowed to appear in the same post.
-- **Field Notes** — Short active-process dispatches from the bench, garage, field, or improvised lab. Immediate, practical, exploratory. Sourced live from [@forgotten-industry.bsky.social](https://bsky.app/profile/forgotten-industry.bsky.social) via `fieldnotes.cjs`.
+- **Live Dispatches** — Shortform entries sourced from [@forgotten-industry.bsky.social](https://bsky.app/profile/forgotten-industry.bsky.social) via `fieldnotes.cjs`.
+- **ATLAS Reports** — AI-assisted end-of-day debriefs covering completed work, recovered evidence, decisions, and next actions.
+- **Field Log** — Matthew's original voice entries imported from the portable recorder, preserved as MP3 files, and listed newest first.
 - **Projects** — Structured context packets for Codex, GitHub, the site, and long-running continuity. Where active builds become dossiers.
 - **Le Signal** — Longer essays, reflections, memoir fragments, and finished written pieces. Literary, personal, exact, alive. The writing shelf.
 - **Hang On To Each Other** — Recovered instructions, procedures, references, and preservation notes for keeping abandoned systems intelligible. Manual 001 lives here.
@@ -63,6 +65,7 @@ The live site is organized around L'Archive as the primary destination, with sat
 - `/social-posts.html` — Recovered Tumblr and Instagram posts with local media and Markdown sources.
 - `/dist/forgotten-industries.json` — Machine-readable archive output.
 - `/site-snapshots/github-pages-trial-2026-06-06/` — Pre-reset static surface preserved as evidence, not discarded history.
+- `/site-snapshots/le-signal-three-branch-2026-06-19/` — Generated snapshot of the blog, ATLAS Reports, and recorder-based Field Log architecture.
 - `/field-notes/` — Imported live Bluesky dispatches with engagement metrics.
 
 ## Curated Posts
@@ -78,13 +81,15 @@ The canonical category map and site spine live in `src/docs/site-architecture-do
 
 The old GitHub Pages trial surface is preserved at `src/site-snapshots/github-pages-trial-2026-06-06/`.
 
+The three-branch Le Signal surface is preserved at `src/site-snapshots/le-signal-three-branch-2026-06-19/`.
+
 ## Hang On To Each Other (Manual Shelf)
 
 `/hang-on-to-each-other/` is the manual shelf: recovered instructions, procedures, and preservation references for abandoned systems. Manual 001 is the CaseLabs Mercury S8 + Pedestal assembly reference — compiled from forum archives, build logs, review photography, and community knowledge because CaseLabs closed in 2018 and took the official documentation with them.
 
 The recovered Manual 001 PDF is integrated into the reference shelf. The Markdown source lives in `src/`.
 
-## Field Notes — Live Bluesky Integration
+## Live Dispatches — Bluesky Integration
 
 `fieldnotes.cjs` automatically imports dispatches from [@forgotten-industry.bsky.social](https://bsky.app/profile/forgotten-industry.bsky.social). Short bench notes, evidence finds, measurements, and restoration observations flow in automatically, cached, with engagement metrics. The `/field-notes/` page surfaces the imported live signal.
 
@@ -97,7 +102,7 @@ The Eleventy input directory is `src/`:
 - `src/_includes/post.njk` — post layout (Tailwind utilities).
 - `src/_data/site.cjs` — domain, GitHub, contact, and identity data.
 - `src/_data/archive.cjs` — reads `dist/forgotten-industries.json`.
-- `src/_data/fieldnotes.cjs` — Bluesky field notes importer with caching and fallback.
+- `src/_data/fieldnotes.cjs` — Bluesky Live Dispatches importer with caching and fallback.
 - `src/css/archive.css` — Tailwind entry, design tokens, and archive styling.
 - `src/CNAME` — portability marker for `forgotten-industries.net`.
 
@@ -105,7 +110,7 @@ Hand-authored raw HTML pages in `src/` are durable, inspectable archive document
 
 ## Update Workflow
 
-1. Edit `src/data/projects.yml`, `src/data/inventory.yml`, or `src/data/field-logs.yml`.
+1. Edit `src/data/projects.yml`, `src/data/inventory.yml`, `src/data/field-logs.yml`, or `src/data/voice-logs.yml`.
 2. If the data shape changes, update `src/types.ts`.
 3. Run `npm run build`.
 4. Inspect `dist/forgotten-industries.json` for downstream consumers.
@@ -152,7 +157,8 @@ The archive is not published as an npm package yet. When it is ready:
 
 - `src/data/projects.yml` — canonical restoration projects and category records.
 - `src/data/inventory.yml` — canonical machines, parts, accessories, condition, and disposition.
-- `src/data/field-logs.yml` — canonical field logs and method notes.
+- `src/data/field-logs.yml` — canonical ATLAS reports and debrief records.
+- `src/data/voice-logs.yml` — canonical recorder-based Field Log metadata.
 - `src/data/social-posts.yml` — imported Tumblr and Instagram posts with source URLs, dates, captions, local media, and generated Markdown paths.
 - `src/types.ts` — TypeScript schema for the generated archive.
 - `scripts/import_social.rb` — public Tumblr/Instagram importer for social posts and media.
@@ -172,15 +178,18 @@ The archive is not published as an npm package yet. When it is ready:
 - `contact.html` — raw contact page, preserved.
 - `social-posts.html` — raw HTML index for imported social posts, deployed verbatim.
 - `src/site-snapshots/github-pages-trial-2026-06-06/` — stowed copy of the pre-reset GitHub Pages trial surface.
+- `src/site-snapshots/le-signal-three-branch-2026-06-19/` — stowed copy of the three-branch Le Signal surface.
 - `src/assets/forgotten-industries.jpeg` — local Forgotten Industries logo image.
 - `src/assets/favicon/` — favicon and web app icon assets.
 - `src/assets/social/` — downloaded local media from imported social posts.
+- `src/assets/audio/field-logs/` — published Field Log MP3 recordings.
 - `src/assets/initial-photos/` — initial local photo batch for archive intake (259 media files, ~839 MB, checksums recorded).
 - `src/posts/social/` — generated Markdown posts from imported social content, copied verbatim to `/posts/social/`.
 - `src/docs/archive-photo-procedure.md` — archive photography and object intake procedure.
 - `src/docs/obs-archive-station-procedure.md` — fixed-camera OBS archive station procedure.
 - `src/docs/potato-dossier.md` — companion / lab partner context for Potato.
 - `src/templates/field-log.md` — Markdown field log template.
+- `src/templates/voice-field-log.yml` — metadata template for recorder Field Log entries.
 - `src/templates/inventory-item.md` — Markdown inventory item template.
 - `intake/SLUSH/` — working drafts and scratch material awaiting cataloging.
 - `intake/Splunking/` — raw evidence photos from intake, not yet processed into the archive.

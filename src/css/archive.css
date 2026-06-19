@@ -1058,6 +1058,10 @@ h3 {
   text-transform: uppercase;
 }
 
+.signal-branch-card h2 em {
+  font-style: italic;
+}
+
 .signal-branch-card p,
 .signal-entry-list p {
   margin: 0.45rem 0 0;
@@ -1455,6 +1459,26 @@ h3 {
 .field-log-card-meta {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   max-width: 64rem;
+}
+
+.field-log-card audio {
+  width: 100%;
+  margin: 1rem 0;
+  accent-color: var(--oxide);
+}
+
+.field-log-card details {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.8rem;
+}
+
+.field-log-card summary {
+  color: var(--steel);
+  cursor: pointer;
+  font-family: var(--mono-font);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .record-meta-grid {

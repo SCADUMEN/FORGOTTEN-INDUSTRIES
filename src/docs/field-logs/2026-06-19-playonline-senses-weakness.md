@@ -1,19 +1,19 @@
 ---
-title: PlayOnline Senses Weakness
+title: ATLAS Report 2026.06.19 — PlayOnline Senses Weakness
 id: FI-LOG-007
 slug: playonline-senses-weakness
 date: 2026-06-19
 timestamp: 2026-06-19 00:14 CT
-category: field-log
+category: atlas-report
 object: FINAL FANTASY XI Ultimate Collection Seekers Edition
 system: PlayOnline installation / Windows workstation
 condition: Installer dormant
 status: Progression resumed
 associated_project: FI-PROJ-003
-signature: "Forgotten Industries // Field Log // 2026.06.19"
+signature: "Forgotten Industries // ATLAS Report // 2026.06.19"
 ---
 
-# PlayOnline Senses Weakness
+# ATLAS Report 2026.06.19 — PlayOnline Senses Weakness
 
 ## Timestamp
 
@@ -55,4 +55,4 @@ The button appeared.
 
 The installation continued.
 
--- Forgotten Industries // Field Log // 2026.06.19
+-- Forgotten Industries // ATLAS Report // 2026.06.19

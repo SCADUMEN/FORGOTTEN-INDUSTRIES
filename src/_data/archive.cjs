@@ -16,6 +16,7 @@ module.exports = function () {
       projects: [],
       inventory: [],
       fieldLogs: [],
+      voiceLogs: [],
       socialPosts: [],
     }
   }

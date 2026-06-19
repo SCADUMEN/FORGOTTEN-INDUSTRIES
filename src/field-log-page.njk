@@ -13,9 +13,9 @@ eleventyComputed:
 {% set project = archive.projects | findById(log.associated_project) %}
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Field Log / {{ log.id }}</p>
+    <p class="section-label">ATLAS Report / {{ log.id }}</p>
     <h1>{{ log.title }}</h1>
-    <p class="tagline">{{ log.summary or "Authored field report from the bench." }}</p>
+    <p class="tagline">{{ log.summary or "End-of-day ATLAS operational summary." }}</p>
   </div>
 </section>
 
@@ -81,7 +81,7 @@ eleventyComputed:
 <section class="evidence-band" aria-labelledby="field-log-body-heading">
   <div class="section-inner">
     <div class="field-notes-heading">
-      <p class="section-label">Authored report</p>
+      <p class="section-label">ATLAS Report</p>
       <h2 id="field-log-body-heading">The durable report belongs here.</h2>
     </div>
 
@@ -118,7 +118,7 @@ eleventyComputed:
       <p>Draft/source note: <a href="/{{ log.source_path }}">{{ log.source_path }}</a></p>
       {% endif %}
       <p>Route: <code>/field-logs/{{ log.slug }}/</code></p>
-      <p class="action-row"><a href="/field-logs/">Return to Field Logs</a> / <a href="/field-notes/">Open Field Notes</a></p>
+      <p class="action-row"><a href="/field-logs/">Return to ATLAS Reports</a> / <a href="/field-logs/voice/">Open Field Log</a></p>
     </div>
   </div>
 </section>

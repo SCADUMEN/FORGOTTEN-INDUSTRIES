@@ -1,7 +1,7 @@
 ---
-title: "Field Log 2026.06.13 — First Light"
+title: "ATLAS Report 2026.06.13 — First Light"
 date: "2026-06-13"
-category: "Field Lab Journal"
+category: "atlas-report"
 tags:
   - seer
   - research
@@ -11,7 +11,7 @@ tags:
   - potato
 ---
 
-# Field Log 2026.06.13 — First Light
+# ATLAS Report 2026.06.13 — First Light
 
 The statistics workstation achieved first light.
 
@@ -132,6 +132,6 @@ Sometimes that is enough.
 
 ---
 
-_Field Log recorded 2026.06.13, approximately 01:40 CDT._
+_ATLAS Report recorded 2026.06.13, approximately 01:40 CDT._
 
 _Archive operational. Field Lab operational. Lab Partner asleep._
