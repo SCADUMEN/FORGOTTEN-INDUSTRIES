@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: L'Archive / Tags
+description: Crawlable Forgotten Industries tag browse index.
+permalink: /archive/tags/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Tags</p>
+    <h1>Tags</h1>
+    <p class="tagline">Narrower evidence terms from project themes, field logs, social posts, inventory records, and curated writing.</p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ taxonomy.tags | count }} terms</p>
+      <h2>Specific handles for later recovery.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.tags %}
+      <li>
+        <p class="entry-note">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %}</p>
+        <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

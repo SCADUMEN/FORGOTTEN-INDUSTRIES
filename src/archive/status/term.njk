@@ -1,0 +1,38 @@
+---
+layout: base.njk
+pagination:
+  data: taxonomy.status
+  size: 1
+  alias: term
+permalink: "/archive/status/{{ term.slug }}/"
+eleventyComputed:
+  title: "L'Archive / Status / {{ term.label }}"
+  description: "Archive records with status {{ term.label }}."
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Status</p>
+    <h1>{{ term.label }}</h1>
+    <p class="tagline">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %} with this status.</p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Records</p>
+      <h2>Status browse.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for record in term.records %}
+      <li>
+        <p class="entry-note">{{ record.date }} / {{ record.type }} / {{ record.category }}</p>
+        <h3><a href="{{ record.url }}">{{ record.title }}</a></h3>
+        <p>{{ record.summary | truncate(240) }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

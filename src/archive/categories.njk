@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: L'Archive / Categories
+description: Crawlable Forgotten Industries category browse index.
+permalink: /archive/categories/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Categories</p>
+    <h1>Categories</h1>
+    <p class="tagline">Broad archive shelves: project classes, object categories, source types, and record lanes.</p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ taxonomy.categories | count }} terms</p>
+      <h2>Broad shelves first.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.categories %}
+      <li>
+        <p class="entry-note">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %}</p>
+        <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: L'Archive / Systems
+description: Crawlable Forgotten Industries system browse index.
+permalink: /archive/systems/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Systems</p>
+    <h1>Systems</h1>
+    <p class="tagline">Projects, restoration systems, field systems, operating layers, and object group contexts.</p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ taxonomy.systems | count }} terms</p>
+      <h2>Machines belong to systems.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.systems %}
+      <li>
+        <p class="entry-note">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %}</p>
+        <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
