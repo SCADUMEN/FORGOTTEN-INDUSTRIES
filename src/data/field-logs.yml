@@ -411,3 +411,52 @@ field_logs:
           with the principles of Contre l'Oubli. Observe. Record. Preserve.
           Transmit.
     signature: Forgotten Industries // Field Log // 2026.06.18
+
+  - id: FI-LOG-007
+    slug: playonline-senses-weakness
+    title: PlayOnline Senses Weakness
+    date: '2026-06-19'
+    timestamp: '2026-06-19 00:14 CT'
+    category: field-log
+    associated_project: FI-PROJ-003
+    object: FINAL FANTASY XI Ultimate Collection Seekers Edition
+    system: PlayOnline installation / Windows workstation
+    condition: Installer dormant
+    status: Progression resumed
+    summary: >
+      Field report from a stalled FINAL FANTASY XI / PlayOnline installation:
+      the wizard appeared dormant until the operator nearly yielded, then
+      became responsive at the exact moment weakness was named.
+    source_path: src/docs/field-logs/2026-06-19-playonline-senses-weakness.md
+    tags:
+      - FINAL FANTASY XI
+      - PlayOnline
+      - installation
+      - field observation
+      - Windows workstation
+    sections:
+      - heading: Timestamp
+        body: >
+          2026.06.19 // 00:14 CT.
+      - heading: Object / System
+        body: >
+          FINAL FANTASY XI Ultimate Collection Seekers Edition. PlayOnline
+          installation / Windows workstation.
+      - heading: Condition Found
+        body: >
+          Installation wizard appeared dormant. Subject reported fatigue and
+          intent to retire for the evening.
+      - heading: Observations
+        body: >
+          At the precise moment the operator read the phrase "before PlayOnline
+          senses weakness," the installer became responsive and revealed the
+          next stage of progression. No causal mechanism has been identified.
+      - heading: Interpretation
+        body: >
+          The system demonstrates characteristics inconsistent with conventional
+          software behavior. Further study required.
+      - heading: What Remains
+        body: >
+          The archive records that the operator did not yield. The button
+          appeared. The installation continued.
+    signature: Forgotten Industries // Field Log // 2026.06.19
