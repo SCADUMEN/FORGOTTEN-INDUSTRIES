@@ -1,0 +1,53 @@
+---
+layout: base.njk
+title: L'Archive / Taxonomy
+description: Conservative browse taxonomy for Forgotten Industries archive records.
+permalink: /archive/taxonomy/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Taxonomy</p>
+    <h1>Archive Taxonomy</h1>
+    <p class="tagline">
+      A conservative browse layer over existing records: object/component,
+      system/project, status, tag, and category.
+    </p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Browse Routes</p>
+      <h2>Plain HTML paths.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3><a href="/archive/objects/">Object/component</a></h3>
+        <p>{{ archive.inventory | count }} inventory records with generated object pages.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/projects/">System/project</a></h3>
+        <p>{{ archive.projects | count }} project records with generated archive dossier pages.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/status/">Status</a></h3>
+        <p>{{ taxonomy.status | count }} status terms across indexed records.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/tags/">Tag</a></h3>
+        <p>{{ taxonomy.tags | count }} tags from posts, field logs, social evidence, inventory, and project themes.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/categories/">Category</a></h3>
+        <p>{{ taxonomy.categories | count }} categories across the archive.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/systems/">System</a></h3>
+        <p>{{ taxonomy.systems | count }} system terms from project, object, and field-log metadata.</p>
+      </li>
+    </ul>
+  </div>
+</section>

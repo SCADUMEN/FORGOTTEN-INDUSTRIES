@@ -57,13 +57,41 @@ def normalize_terms(value)
   Array(value).compact.map { |term| term.to_s.downcase.strip }.reject(&:empty?)
 end
 
-def search_document(id:, type:, title:, url:, date: nil, category: nil, status: nil, tags: [], project: nil, summary: nil, body: nil, source: nil)
+def slugify(value)
+  value.to_s.downcase.gsub(/[^a-z0-9]+/, "-").gsub(/^-+|-+$/, "")
+end
+
+def search_document(
+  id:,
+  type:,
+  title:,
+  url:,
+  date: nil,
+  category: nil,
+  object: nil,
+  system: nil,
+  condition: nil,
+  status: nil,
+  associated_project: nil,
+  tags: [],
+  project: nil,
+  summary: nil,
+  body: nil,
+  signature: nil,
+  source: nil
+)
   title_text = compact_text(title)
   summary_text = compact_text(summary)
   body_text = compact_text(body)
   tag_terms = normalize_terms(tags)
   category_text = compact_text(category)
   type_text = compact_text(type)
+  object_text = compact_text(object)
+  system_text = compact_text(system)
+  condition_text = compact_text(condition)
+  status_text = compact_text(status)
+  associated_project_text = compact_text(associated_project || project)
+  signature_text = compact_text(signature)
 
   {
     "id" => id.to_s,
@@ -72,22 +100,31 @@ def search_document(id:, type:, title:, url:, date: nil, category: nil, status: 
     "url" => url,
     "date" => date&.to_s,
     "category" => category_text,
-    "status" => compact_text(status),
+    "object" => object_text,
+    "system" => system_text,
+    "condition" => condition_text,
+    "status" => status_text,
+    "associated_project" => associated_project_text,
     "tags" => tag_terms,
     "project" => project&.to_s,
     "summary" => summary_text,
     "body" => body_text,
+    "signature" => signature_text,
     "source" => source,
     "tokens" => [
       id,
       type_text,
       title_text,
       category_text,
+      object_text,
+      system_text,
+      condition_text,
       status,
-      project,
+      associated_project_text,
       tag_terms,
       summary_text,
-      body_text
+      body_text,
+      signature_text
     ].flatten.compact.join(" ").downcase
   }
 end
@@ -109,13 +146,27 @@ def post_documents(posts_dir)
       url: "/posts/#{basename}.html",
       date: data["date"],
       category: data["category"],
+      object: data["object"],
+      system: data["system"],
+      condition: data["condition"],
       status: data["status"],
+      associated_project: data["associated_project"],
       tags: data["tags"],
       summary: data["description"],
       body: body,
+      signature: data["signature"],
       source: "src/posts/#{File.basename(path)}"
     )
   end.compact
+end
+
+def inventory_tags(item)
+  [
+    item["tags"],
+    item["category"],
+    item["manufacturer"],
+    item["model"]
+  ].flatten.compact
 end
 
 projects_path = File.join(ROOT, "src/data/projects.yml")
@@ -142,6 +193,7 @@ assert_unique!(social_posts, "id", "social_posts")
 assert_unique!(social_posts, "slug", "social_posts")
 
 project_ids = projects.map { |project| project.fetch("id") }
+projects_by_id = projects.to_h { |project| [project.fetch("id"), project] }
 (inventory + field_logs).each do |record|
   next if project_ids.include?(record.fetch("associated_project"))
 
@@ -171,10 +223,13 @@ projects.each do |project|
     id: project.fetch("id"),
     type: "project",
     title: project.fetch("title"),
-    url: "/projects/",
+    url: "/archive/projects/#{slugify(project["slug"] || project.fetch("id"))}/",
     date: project["revived"] || project["started"],
     category: project["category"],
+    object: project["title"],
+    system: project["category"],
     status: project["status"],
+    associated_project: project.fetch("id"),
     tags: project["themes"],
     project: project.fetch("id"),
     summary: project["summary"],
@@ -184,15 +239,20 @@ projects.each do |project|
 end
 
 inventory.each do |item|
+  project = projects_by_id[item.fetch("associated_project")]
   search_documents << search_document(
     id: item.fetch("id"),
     type: "inventory",
     title: item["name"] || item.fetch("id"),
-    url: "/archive/inventory/",
-    date: item["date"],
+    url: "/archive/objects/#{slugify(item.fetch("id"))}/",
+    date: item["date"] || item["date_logged"],
     category: item["category"] || item["type"],
+    object: item["name"] || item.fetch("id"),
+    system: project && project["title"],
+    condition: item["condition"],
     status: item["status"],
-    tags: item["tags"],
+    associated_project: item["associated_project"],
+    tags: inventory_tags(item),
     project: item["associated_project"],
     summary: item["summary"] || item["description"],
     body: item,
@@ -208,11 +268,16 @@ field_logs.each do |log|
     url: "/field-logs/#{log.fetch("slug")}/",
     date: log["date"],
     category: log["category"],
+    object: log["object"],
+    system: log["system"],
+    condition: log["condition"],
     status: log["status"],
+    associated_project: log["associated_project"],
     tags: log["tags"],
     project: log["associated_project"],
     summary: log["summary"] || "#{log["object"]}. #{log["status"]}.",
     body: log["sections"] || log,
+    signature: log["signature"],
     source: "src/data/field-logs.yml"
   )
 end

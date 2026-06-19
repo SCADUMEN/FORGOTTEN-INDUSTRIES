@@ -29,13 +29,37 @@ eleventyExcludeFromCollections: true
         <p class="entry-note">
           {{ project.id }} / {{ project.category }} / {{ project.status }}
         </p>
-        <h3>{{ project.title }}</h3>
+        <h3><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></h3>
         <p>{{ project.summary }}</p>
         {% if project.working_title %}
         <p class="entry-note">{{ project.working_title }}</p>
         {% endif %}
       </li>
       {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Browse</p>
+      <h2>Projects by taxonomy.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3><a href="/archive/objects/">Objects and components</a></h3>
+        <p>Inventory records grouped into crawlable object pages.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/systems/">Systems</a></h3>
+        <p>Field systems, restoration systems, and project contexts.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/status/">Status</a></h3>
+        <p>Browse by restoration, custody, test, and evidence state.</p>
+      </li>
     </ul>
   </div>
 </section>

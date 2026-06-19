@@ -1,17 +1,18 @@
 ---
 layout: base.njk
-title: L'Archive / Inventory
-description: Canonical Forgotten Industries object records, components, condition notes, and preservation status.
-permalink: /archive/inventory/
+title: L'Archive / Objects
+description: Crawlable Forgotten Industries object and component index.
+permalink: /archive/objects/
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">L'Archive / Inventory</p>
-    <h1>Inventory</h1>
+    <p class="section-label">L'Archive / Objects</p>
+    <h1>Objects & Components</h1>
     <p class="tagline">
-      Canonical object records: machines, parts, accessories, condition,
-      disposition, and source photo references.
+      Physical archive records grouped as durable object pages: machines,
+      panels, pumps, radiators, controllers, recovered components, and evidence
+      sets.
     </p>
   </div>
 </section>
@@ -20,7 +21,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">{{ archive.inventory | count }} records</p>
-      <h2>Physical evidence stays accountable.</h2>
+      <h2>Each object gets a plain HTML route.</h2>
     </div>
 
     <ul class="link-list archive-record-list">

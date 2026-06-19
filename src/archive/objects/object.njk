@@ -1,0 +1,116 @@
+---
+layout: base.njk
+pagination:
+  data: archive.inventory
+  size: 1
+  alias: object
+permalink: "/archive/objects/{{ object.id | archiveSlug }}/"
+eleventyComputed:
+  title: "L'Archive / Object / {{ object.name }}"
+  description: "{{ object.condition }}. {{ object.status }}."
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Object Record / {{ object.id }}</p>
+    <h1>{{ object.name }}</h1>
+    <p class="tagline">{{ object.condition }}. {{ object.status }}.</p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ object.category }}</p>
+      <h2>Catalog state.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3>Identity</h3>
+        <p>{{ object.manufacturer or "Unknown manufacturer" }}{% if object.model %} / {{ object.model }}{% endif %}</p>
+      </li>
+      <li>
+        <h3>Project</h3>
+        <p><a href="{{ object.associated_project | archiveProjectIdUrl(archive.projects) }}">{{ object.associated_project }}</a></p>
+      </li>
+      <li>
+        <h3>Condition</h3>
+        <p>{{ object.condition }}</p>
+      </li>
+      <li>
+        <h3>Status</h3>
+        <p>{{ object.status }}</p>
+      </li>
+      <li>
+        <h3>Disposition</h3>
+        <p>{{ object.keep_sell_archive or "unassigned" }}</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Record Notes</p>
+      <h2>Do not flatten uncertainty.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>{{ object.id }}</h3>
+      <p>{{ object.notes or "No notes recorded yet." }}</p>
+      <p class="entry-note">
+        logged {{ object.date_logged }}{% if object.quantity %} / quantity: {{ object.quantity }}{% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% if object.photos and object.photos.length %}
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ object.photos.length }} photo{% if object.photos.length != 1 %}s{% endif %}</p>
+      <h2>Source references.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for photo in object.photos %}
+      <li>
+        <p class="entry-note">{{ photo }}</p>
+        {% if photo.indexOf("assets/") == 0 %}
+        <h3><a href="/{{ photo }}">Open local asset</a></h3>
+        {% else %}
+        <h3>{{ photo }}</h3>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Routes</p>
+      <h2>Keep the object connected.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3><a href="/archive/objects/">Object index</a></h3>
+        <p>All generated object and component pages.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/inventory/">Inventory shelf</a></h3>
+        <p>The canonical inventory list backed by <code>src/data/inventory.yml</code>.</p>
+      </li>
+      <li>
+        <h3><a href="/archive/categories/{{ object.category | archiveSlug }}/">{{ object.category }}</a></h3>
+        <p>Browse records in the same category.</p>
+      </li>
+    </ul>
+  </div>
+</section>

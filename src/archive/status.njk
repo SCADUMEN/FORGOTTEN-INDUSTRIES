@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: L'Archive / Status
+description: Crawlable Forgotten Industries status browse index.
+permalink: /archive/status/
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Archive / Status</p>
+    <h1>Status</h1>
+    <p class="tagline">Record state, object condition state, restoration state, and evidence custody state.</p>
+  </div>
+</section>
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ taxonomy.status | count }} terms</p>
+      <h2>Status is evidence, not decoration.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.status %}
+      <li>
+        <p class="entry-note">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %}</p>
+        <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
