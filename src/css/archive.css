@@ -1830,7 +1830,6 @@ h3 {
   }
 
   .lane-list,
-  .branch-stats,
   .field-log-card-meta,
   .field-log-filter-row,
   .field-log-group-grid,
@@ -1945,6 +1944,10 @@ h3 {
 
   .stats {
     grid-template-columns: 1fr;
+  }
+
+  .stats.branch-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-mark span {
