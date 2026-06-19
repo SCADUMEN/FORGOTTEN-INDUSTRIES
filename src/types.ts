@@ -99,6 +99,19 @@ export interface FieldLog {
   signature: string
 }
 
+export interface VoiceFieldLog {
+  id: string
+  title: string
+  date: ArchiveDate
+  recorded_at: string
+  recorder: string
+  audio: string
+  duration?: string
+  summary: string
+  transcript?: string
+  tags: string[]
+}
+
 export interface SocialMediaAsset {
   type: 'image' | 'video'
   path?: string
@@ -134,5 +147,6 @@ export interface ForgottenIndustriesArchive {
   projects: ArchiveProject[]
   inventory: InventoryItem[]
   fieldLogs: FieldLog[]
+  voiceLogs: VoiceFieldLog[]
   socialPosts: SocialPost[]
 }

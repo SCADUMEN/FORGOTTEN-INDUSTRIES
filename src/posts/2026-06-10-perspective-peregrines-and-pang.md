@@ -1,7 +1,7 @@
 ---
 title: "Perspective, Peregrines, & “Pang”"
 slug: "perspective-peregrines-and-pang"
-category: "Field Lab Journal"
+category: "ATLAS Report"
 type: "Field Doctrine"
 entry: "001"
 date: "2026-06-10"

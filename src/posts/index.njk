@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Le Signal
-description: "Authored public signal from Forgotten Industries: recoveries, restorations, Le Rédempteur, doctrine, manifestos, field reports, and long-form entries suitable for the public feed."
+description: "Authored public signal from Forgotten Industries: recoveries, restorations, Le Rédempteur, doctrine, manifestos, field logs, and long-form entries suitable for the public feed."
 permalink: /posts/index.html
 eleventyExcludeFromCollections: true
 ---
@@ -24,18 +24,18 @@ eleventyExcludeFromCollections: true
       <div class="signal-branch-grid" aria-label="Le Signal branches">
         <a class="signal-branch-card signal-branch-card-active" href="#recoveries-restorations-le-redempteur">
           <span>Branch 01</span>
-          <h2>Recoveries, Restorations, &amp; Le Rédempteur</h2>
-          <p>The blog and main narrative: machines coming back, recovery-through-rebuild, memory, grief, craft, and evidence.</p>
+          <h2><em>“Recoveries, Restorations, &amp; Le Rédempteur”</em></h2>
+          <p>The blog: machines coming back, recovery-through-rebuild, memory, grief, craft, and evidence.</p>
         </a>
-        <a class="signal-branch-card" href="#doctrine-manifestos">
+        <a class="signal-branch-card" href="#atlas-reports">
           <span>Branch 02</span>
-          <h2>Doctrine / Systems Manifestos</h2>
-          <p>Principles, methods, operating language, archive theory, and the pieces that define how the work thinks.</p>
+          <h2>ATLAS Reports</h2>
+          <p>AI-assisted end-of-day debriefs: work completed, evidence recovered, decisions made, and the next operational foothold.</p>
         </a>
-        <a class="signal-branch-card" href="#field-reports">
+        <a class="signal-branch-card" href="/field-logs/voice/">
           <span>Branch 03</span>
-          <h2>Field Reports</h2>
-          <p>Authored bench records and dated reports. More deliberate than live Bluesky, shorter than a full manuscript.</p>
+          <h2>Field Log</h2>
+          <p>Recorded voice entries imported from the portable recorder, preserved as MP3s, newest first.</p>
         </a>
       </div>
 
@@ -71,9 +71,9 @@ eleventyExcludeFromCollections: true
         </div>
       </section>
 
-      <section id="field-reports" class="signal-section" aria-labelledby="field-report-heading">
-        <p class="section-label">{{ archive.fieldLogs | count }} reports</p>
-        <h2 id="field-report-heading">Field reports are authored signal, not live feed.</h2>
+      <section id="atlas-reports" class="signal-section" aria-labelledby="atlas-report-heading">
+        <p class="section-label">{{ archive.fieldLogs | count }} ATLAS reports</p>
+        <h2 id="atlas-report-heading">End-of-day debriefs and operational summaries.</h2>
         {% if archive.fieldLogs.length %}
         <ol class="field-note-list">
           {% for log in archive.fieldLogs | reverse %}
@@ -89,10 +89,20 @@ eleventyExcludeFromCollections: true
         </ol>
         {% else %}
         <div class="callout field-note-empty">
-          <h3>No Reports Yet</h3>
-          <p>The lane is active. Add structured field-log records when a report is ready for the authored signal.</p>
+          <h3>No ATLAS Reports Yet</h3>
+          <p>The lane is active. Add a structured ATLAS Report when the day's debrief is ready.</p>
         </div>
         {% endif %}
+      </section>
+
+      <section id="field-logs" class="signal-section" aria-labelledby="voice-field-log-heading">
+        <p class="section-label">{{ archive.voiceLogs | count }} recordings</p>
+        <h2 id="voice-field-log-heading">Field Log comes directly from the recorder.</h2>
+        <div class="callout">
+          <h3>Voice Archive</h3>
+          <p>Original MP3 entries, newest first, with source metadata and optional transcripts.</p>
+          <p class="action-row"><a href="/field-logs/voice/">Open Field Log</a></p>
+        </div>
       </section>
     </div>
   </div>

@@ -96,7 +96,7 @@ Build from:
 - artifact records
 - source links
 - shelf indexes
-- field notes
+- field logs
 - inventory rows
 - restoration status blocks
 - object photos with captions
@@ -108,7 +108,7 @@ Avoid turning everything into floating cards. Use full-width bands, crisp dividi
 Use words like:
 
 - archive
-- field notes
+- field logs
 - restoration
 - evidence
 - artifact

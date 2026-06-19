@@ -81,14 +81,14 @@ const navRows = [
       english: 'Signal',
       href: '/posts/',
       summary:
-        'Authored signal: recoveries, restorations, doctrine, manifestos, field reports, and the public feed.',
+        'Authored signal: the blog, ATLAS reports, recorder field logs, doctrine, manifestos, and the public feed.',
     },
     {
       label: 'EN DIRECT',
       french: 'En Direct',
       english: 'Live',
       href: '/en-direct/',
-      summary: 'The live shortform channel: imported Bluesky field notes.',
+      summary: 'The live shortform channel: imported Bluesky dispatches.',
     },
     {
       label: 'LE RÉDEMPTEUR',
@@ -124,7 +124,7 @@ module.exports = {
   tagline:
     'An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.',
   defaultDescription:
-    'An archive of restoration, memory, machines, field notes, and the work of refusing disappearance.',
+    'An archive of restoration, memory, machines, recorded field logs, and the work of refusing disappearance.',
   defaultImage: '/assets/forgotten-industries.jpeg',
   defaultImageAlt: 'Forgotten Industries logo, EST MMXIV',
 
@@ -151,22 +151,21 @@ module.exports = {
       note: 'The museum wing.',
     },
     {
-      label: 'Field Notes',
+      label: 'Live Dispatches',
       slug: 'field-notes',
       href: '/field-notes/',
-      purpose:
-        'Archived Bluesky dispatches imported from the live field signal.',
+      purpose: 'Shortform dispatches imported from the live Bluesky signal.',
       tone: 'Immediate, practical, exploratory.',
       note: 'The radio channel.',
     },
     {
-      label: 'Field Logs',
+      label: 'ATLAS Reports',
       slug: 'field-logs',
       href: '/field-logs/',
       purpose:
-        'Authored field reports from the bench: observations, process notes, and dated records that belong under Le Signal rather than the live channel.',
+        'AI-assisted end-of-day summaries: observations, decisions, recovered evidence, and next actions.',
       tone: 'Brief, dated, grounded, useful.',
-      note: 'The field report lane.',
+      note: 'The operational summary lane.',
     },
     {
       label: 'Projects',

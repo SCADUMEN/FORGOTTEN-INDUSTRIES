@@ -1,19 +1,19 @@
 ---
-title: The Site Supervisor
+title: ATLAS Report 2026.06.18 — The Site Supervisor
 id: FI-LOG-006
 slug: site-supervisor
 date: 2026-06-18
 timestamp: 2026-06-18 16:00 CT
-category: field-log
+category: atlas-report
 object: Potato
 system: Wichita Branch Operations
 condition: Operational
 status: Active
 associated_project: FI-PROJ-007
-signature: "Forgotten Industries // Field Log // 2026.06.18"
+signature: "Forgotten Industries // ATLAS Report // 2026.06.18"
 ---
 
-# The Site Supervisor
+# ATLAS Report 2026.06.18 — The Site Supervisor
 
 ## Timestamp
 
@@ -107,4 +107,4 @@ _Observe. Record. Preserve. Transmit._
 
 _A thing documented is a thing not yet lost._
 
--- Forgotten Industries // Field Log // 2026.06.18
+-- Forgotten Industries // ATLAS Report // 2026.06.18

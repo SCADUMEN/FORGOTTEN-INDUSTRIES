@@ -100,7 +100,7 @@ It should feel like:
 - technical archive
 - restoration log
 - evidence notebook
-- field notes
+- field logs
 - repair manual
 - artifact catalog
 - personal recovery record
@@ -121,7 +121,7 @@ Preferred words:
 
 - archive
 - evidence-based memoir
-- field notes
+- field logs
 - restoration
 - salvage
 - rebuild
@@ -212,16 +212,19 @@ The site should eventually support:
 1. Restoration logs
    Long-running rebuilds such as CaseLabs Mercury S8, STH-10 accessories, watercooling hardware, old PC projects.
 
-2. Field notes
-   Short observations, garage archaeology, process updates, measurements, discoveries, failures, and small wins.
+2. ATLAS reports
+   AI-assisted end-of-day debriefs covering completed work, recovered evidence, decisions, unresolved questions, and next actions.
 
-3. Project dossiers
+3. Field Log
+   Original voice entries imported from Matthew's portable recorder and preserved as MP3 source records.
+
+4. Project dossiers
    Structured pages collecting parts, photos, history, compatibility notes, diagrams, and status.
 
-4. Essays
+5. Essays
    Reflective but grounded writing about memory, machines, recovery, technical identity, and rebuilding.
 
-5. Technical references
+6. Technical references
    Inventories, part lists, dimensions, compatibility tables, restoration methods, and diagrams.
 
 ## Design Direction

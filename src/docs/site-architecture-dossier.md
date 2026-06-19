@@ -12,7 +12,7 @@ The organizing principle is:
 
 1. THE ARCHIVE
 2. Recoveries, Restorations, & Redemptions
-3. Field Notes
+3. Field Log
 4. Projects
 5. Manuscripts
 6. Technical References
@@ -70,34 +70,26 @@ Key idea:
 
 > The restoration is not separate from the recovery. The machine coming back is part of the human coming back.
 
-## 3. Field Notes
+## 3. Field Log
 
-Formerly Lab Notes.
-
-This category is the Matthew Marx live feed: shorter active-process notes from the bench, garage, field, desk, or improvised lab environment.
+This category is Matthew's original voice record: entries spoken into the portable recorder, preserved as MP3 files, and presented newest first.
 
 Use for:
 
-- Measurements
-- Fitment checks
-- Cleaning tests
-- Tubing experiments
-- Photo workflow notes
-- OBS/webcam setup notes
+- Bench observations
 - Garage discoveries
 - Temporary hypotheses
-- "This might be the midplate" posts
-- Mistakes and lessons
-- Process documentation
-- In-progress notes that may later become archive entries or restoration posts
+- Immediate reactions
+- Process narration
+- In-progress thoughts that may later become ATLAS reports, archive entries, or restoration posts
 
 Tone: immediate, practical, exploratory.
 
-This is the notebook on the bench.
+This is the recorder on the bench.
 
 Key idea:
 
-> Not every post needs to be polished. Some posts are field notes.
+> The Field Log preserves the voice before revision.
 
 ## 4. Projects
 
@@ -214,5 +206,5 @@ Key idea:
 ## Canonical Top Navigation
 
 ```text
-THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Notes | Projects | Manuscripts | Technical References | What ABOUT Art?
+THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Log | Projects | Manuscripts | Technical References | What ABOUT Art?
 ```

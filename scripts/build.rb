@@ -14,6 +14,7 @@ SOURCE_FILES = [
   { "label" => "projects", "path" => "src/data/projects.yml" },
   { "label" => "inventory", "path" => "src/data/inventory.yml" },
   { "label" => "fieldLogs", "path" => "src/data/field-logs.yml" },
+  { "label" => "voiceLogs", "path" => "src/data/voice-logs.yml" },
   { "label" => "socialPosts", "path" => "src/data/social-posts.yml" }
 ].freeze
 
@@ -172,11 +173,13 @@ end
 projects_path = File.join(ROOT, "src/data/projects.yml")
 inventory_path = File.join(ROOT, "src/data/inventory.yml")
 field_logs_path = File.join(ROOT, "src/data/field-logs.yml")
+voice_logs_path = File.join(ROOT, "src/data/voice-logs.yml")
 social_posts_path = File.join(ROOT, "src/data/social-posts.yml")
 
 projects = assert_array!(load_yaml(projects_path), "projects", projects_path)
 inventory = assert_array!(load_yaml(inventory_path), "items", inventory_path)
 field_logs = assert_array!(load_yaml(field_logs_path), "field_logs", field_logs_path)
+voice_logs = assert_array!(load_yaml(voice_logs_path), "voice_logs", voice_logs_path)
 social_posts =
   if File.exist?(social_posts_path)
     assert_array!(load_yaml(social_posts_path), "social_posts", social_posts_path)
@@ -189,6 +192,7 @@ assert_unique!(projects, "slug", "projects")
 assert_unique!(inventory, "id", "inventory")
 assert_unique!(field_logs, "id", "field_logs")
 assert_unique!(field_logs, "slug", "field_logs")
+assert_unique!(voice_logs, "id", "voice_logs")
 assert_unique!(social_posts, "id", "social_posts")
 assert_unique!(social_posts, "slug", "social_posts")
 
@@ -213,6 +217,7 @@ archive = {
   "projects" => projects,
   "inventory" => inventory,
   "fieldLogs" => field_logs,
+  "voiceLogs" => voice_logs,
   "socialPosts" => social_posts
 }
 
@@ -282,6 +287,23 @@ field_logs.each do |log|
   )
 end
 
+voice_logs.each do |log|
+  search_documents << search_document(
+    id: log.fetch("id"),
+    type: "voice-field-log",
+    title: log.fetch("title"),
+    url: "/field-logs/voice/##{log.fetch("id")}",
+    date: log["date"],
+    category: "field-log",
+    object: log["recorder"],
+    system: "voice recorder",
+    tags: log["tags"],
+    summary: log["summary"],
+    body: log["transcript"],
+    source: "src/data/voice-logs.yml"
+  )
+end
+
 social_posts.each do |post|
   search_documents << search_document(
     id: post.fetch("id"),
@@ -337,6 +359,7 @@ typescript = <<~TS
   export const projects = archive.projects;
   export const inventory = archive.inventory;
   export const fieldLogs = archive.fieldLogs;
+  export const voiceLogs = archive.voiceLogs;
   export const socialPosts = archive.socialPosts;
 
   export default archive;

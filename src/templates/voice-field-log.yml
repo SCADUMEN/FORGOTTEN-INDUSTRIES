@@ -1,0 +1,11 @@
+- id: FI-VOICE-001
+  title: Field Log 2026.06.19 — Entry Title
+  date: '2026-06-19'
+  recorded_at: '2026-06-19 21:30 CT'
+  recorder: OM SYSTEM WS-822
+  audio: /assets/audio/field-logs/2026-06-19-entry-title.mp3
+  duration: '00:00'
+  summary: A short description of the recording.
+  transcript: Optional transcript or edited excerpt.
+  tags:
+    - voice-note

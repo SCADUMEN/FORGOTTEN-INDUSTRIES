@@ -41,7 +41,7 @@ module.exports = async function () {
 
     if (!response.ok) {
       console.warn(
-        `Field Notes fetch failed: ${response.status} ${response.statusText}`
+        `Live Dispatches fetch failed: ${response.status} ${response.statusText}`
       )
       return []
     }
@@ -52,7 +52,7 @@ module.exports = async function () {
       .filter(Boolean)
       .sort((a, b) => b.createdAt - a.createdAt)
   } catch (error) {
-    console.warn(`Field Notes fetch failed: ${error.message}`)
+    console.warn(`Live Dispatches fetch failed: ${error.message}`)
     return []
   } finally {
     clearTimeout(timeout)

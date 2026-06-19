@@ -161,7 +161,7 @@ src/
 ## PEREGRINE Drone Experiments
 
 PEREGRINE records drone flight experiments, crash recovery, maintenance,
-repair diagnostics, and small-aircraft field notes.
+repair diagnostics, and small-aircraft field logs.
 
 Preserve evidence before interpretation:
 

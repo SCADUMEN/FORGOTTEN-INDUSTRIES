@@ -95,11 +95,11 @@ The public archive has one canonical spine:
 - Domain: `https://forgotten-industries.net`
 - Contact: `contact@forgotten-industries.net`
 - Archive mail: `archive@forgotten-industries.net`
-- Field Notes mail: `fieldnotes@forgotten-industries.net`
+- Field Log mail: `fieldnotes@forgotten-industries.net`
 - GitHub source: `https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES`
 - Eleventy static site generator: `https://www.11ty.dev/`
 
-The live site renders GitHub, Eleventy, contact, and Field Notes links from `src/_data/site.cjs`.
+The live site renders GitHub, Eleventy, contact, and Field Log links from `src/_data/site.cjs`.
 
 ### Email
 
@@ -121,16 +121,16 @@ analytics: {
 }
 ```
 
-Tracked link hooks already exist through `data-track` attributes for GitHub, Eleventy, contact, and Field Notes subscription clicks.
+Tracked link hooks already exist through `data-track` attributes for GitHub, Eleventy, contact, and Live Dispatches subscription clicks.
 
 ### Subscription List
 
-Phase 1 uses a domain email link for Field Notes. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `src/_data/site.cjs` with the provider-hosted subscription URL.
+Phase 1 uses a domain email link for Live Dispatches. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `src/_data/site.cjs` with the provider-hosted subscription URL.
 
 Recommended public framing:
 
 ```text
-Field notes from the Forgotten Industries archive.
+Live dispatches from the Forgotten Industries archive.
 ```
 
 ### Monetization

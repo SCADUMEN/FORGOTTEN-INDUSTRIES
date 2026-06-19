@@ -43,6 +43,7 @@ describe('archive crawlability output', () => {
       )
     ).toBe(true)
     expect(existsSite('archive/objects/fi-case-001/index.html')).toBe(true)
+    expect(existsSite('field-logs/voice/index.html')).toBe(true)
   })
 
   it('exposes archive browse routes as plain HTML links', () => {
@@ -83,7 +84,7 @@ describe('archive crawlability output', () => {
       system: 'custom watercooling restoration',
       associated_project: 'FI-PROJ-001',
     })
-    expect(fieldLog.signature).toContain('Forgotten Industries // Field Log')
+    expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
   })
 
   it('does not emit duplicate canonical URLs for built HTML pages', () => {

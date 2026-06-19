@@ -1,7 +1,7 @@
 # PEREGRINE Instructions
 
 PEREGRINE records drone flight experiments, crash recovery, maintenance, repair
-diagnostics, and small-aircraft field notes.
+diagnostics, and small-aircraft field logs.
 
 Preserve evidence before interpretation:
 

@@ -1,0 +1,88 @@
+---
+layout: base.njk
+title: Field Log
+description: Recorded Field Log entries from the Forgotten Industries portable recorder, newest first.
+permalink: /field-logs/voice/index.html
+eleventyExcludeFromCollections: true
+---
+{% set logs = archive.voiceLogs | fieldLogsNewest %}
+
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Le Signal / recorded dispatches</p>
+    <h1>Field Log</h1>
+    <p class="tagline">{{ description }}</p>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="voice-field-log-status">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ logs | count }} recordings</p>
+      <h2 id="voice-field-log-status">The recorder is the source.</h2>
+    </div>
+    <div class="callout">
+      <h3>Newest First</h3>
+      <p>Voice entries are preserved as MP3 files, documented in canonical archive data, and presented without replacing the original recording.</p>
+      <p class="action-row"><a href="/src/data/voice-logs.yml">Inspect source data</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="voice-field-log-list">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Field Log index</p>
+      <h2 id="voice-field-log-list">Recorded entries, newest first.</h2>
+    </div>
+
+    {% if logs.length %}
+    <ol class="field-note-list field-log-list">
+      {% for log in logs %}
+      <li id="{{ log.id }}" class="field-note-card field-log-card">
+        <header>
+          <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
+          <span>Field Log / {{ log.id }}</span>
+        </header>
+        <h3>{{ log.title }}</h3>
+        <p>{{ log.summary }}</p>
+        <audio controls preload="metadata" src="{{ log.audio }}">
+          <a href="{{ log.audio }}">Open the MP3 recording</a>
+        </audio>
+        <dl class="field-log-card-meta">
+          <div>
+            <dt>Recorded</dt>
+            <dd>{{ log.recorded_at or log.date }}</dd>
+          </div>
+          <div>
+            <dt>Recorder</dt>
+            <dd>{{ log.recorder }}</dd>
+          </div>
+          {% if log.duration %}
+          <div>
+            <dt>Duration</dt>
+            <dd>{{ log.duration }}</dd>
+          </div>
+          {% endif %}
+          <div>
+            <dt>Source</dt>
+            <dd><a href="{{ log.audio }}">MP3</a></dd>
+          </div>
+        </dl>
+        {% if log.transcript %}
+        <details>
+          <summary>Transcript</summary>
+          <p>{{ log.transcript }}</p>
+        </details>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <div class="callout field-note-empty">
+      <h3>Recorder Channel Ready</h3>
+      <p>No voice entries have been published yet. Add an MP3 under <code>src/assets/audio/field-logs/</code>, then add its record to <code>src/data/voice-logs.yml</code>.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

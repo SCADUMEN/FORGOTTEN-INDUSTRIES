@@ -17,7 +17,7 @@ The homepage then needed a stronger public spine. The important design decision 
 
 - Entry 000 stays first as a Manuscripts/origin entry.
 - Technical manuals sit in Technical References, not above the Prelude.
-- Field Notes becomes the Matthew Marx live feed.
+- Field Log becomes the Matthew Marx live feed and durable bench record.
 - Projects carries dossiers and continuity records.
 - `What ABOUT Art?` replaces a separate About lane and becomes the about-me/art-life surface.
 - `Hang On To Each Other` becomes the credit-and-wisdom layer: third-party references are credited visibly, then translated into useful restoration knowledge.

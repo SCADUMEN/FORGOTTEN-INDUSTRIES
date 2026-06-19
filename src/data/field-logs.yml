@@ -1,10 +1,10 @@
 field_logs:
   - id: FI-LOG-001
     slug: rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule
-    title: Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule
+    title: ATLAS Report 2026.06.05 — Rebuilding and Archiving a CaseLabs Mercury S8 + Pedestal 2014 Time Capsule
     date: '2026-06-05'
     timestamp: '2026-06-05 HH:MM CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-001
     object: CaseLabs Mercury S8 + pedestal
     system: custom watercooling restoration
@@ -14,6 +14,7 @@ field_logs:
       photograph the object as found, identify parts before cleaning, and treat
       the machine as the core archive object.
     tags:
+      - atlas-report
       - CaseLabs Archive
       - restoration
       - watercooling
@@ -52,14 +53,14 @@ field_logs:
           Complete photo pass. Confirm exact panel configuration. Leak-test
           radiators. Test fans and pumps. Build the inventory record before
           deciding what stays, what sells, and what remains archive only.
-    signature: Forgotten Industries // Field Log // 2026.06.05
+    signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-METHOD-001
     slug: photograph-before-cleaning
-    title: Photograph Before Cleaning
+    title: ATLAS Report 2026.06.05 — Photograph Before Cleaning
     date: '2026-06-05'
     timestamp: '2026-06-05 HH:MM CT'
-    category: method
+    category: atlas-report
     associated_project: FI-PROJ-002
     object: recovered hardware and tools
     system: archive practice
@@ -68,6 +69,7 @@ field_logs:
       Standing archive method for recovered objects: photograph before
       cleaning, preserve uncertainty, and let evidence lead interpretation.
     tags:
+      - atlas-report
       - Garage Archaeology
       - methods
       - documentation
@@ -84,14 +86,14 @@ field_logs:
         body: >
           The technical record protects the emotional truth from performance.
           Evidence first. Interpretation later.
-    signature: Forgotten Industries // Method Note // 2026.06.05
+    signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-002
     slug: peregrine-a01-crash-recovery-intake
-    title: PEREGRINE-A01 Crash Recovery Intake
+    title: ATLAS Report 2026.06.05 — PEREGRINE-A01 Crash Recovery Intake
     date: '2026-06-05'
     timestamp: '2026-06-05 04:39 CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-004
     object: Perry 1 / PEREGRINE-A01
     system: DJI Mini 4K aircraft / crash recovery and repair diagnostics
@@ -101,6 +103,7 @@ field_logs:
       physical inspection requirements, and repair diagnostics before
       calibration.
     tags:
+      - atlas-report
       - PEREGRINE
       - drone
       - crash recovery
@@ -145,14 +148,14 @@ field_logs:
           wiring damage, shell deformation, and ESC/power symptoms. Create the
           A02 loss record separately. Track Perry 3 / PEREGRINE-A03 as a
           planned Mini 3 replacement before acquisition.
-    signature: Forgotten Industries // Field Log // 2026.06.05
+    signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-003
     slug: peregrine-a02-loss-no-roof-recovery
-    title: PEREGRINE-A02 Loss / No Roof Recovery Rule
+    title: ATLAS Report 2026.06.05 — PEREGRINE-A02 Loss / No Roof Recovery Rule
     date: '2026-06-05'
     timestamp: '2026-06-05 03:00 CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-004
     object: Perry 2 / PEREGRINE-A02
     system: DJI Mini 3 aircraft / loss record and recovery decision
@@ -161,6 +164,7 @@ field_logs:
       Loss and safety record for PEREGRINE-A02: preserve the likely roof loss
       without creating a second incident through unsafe recovery.
     tags:
+      - atlas-report
       - PEREGRINE
       - drone
       - loss record
@@ -196,14 +200,14 @@ field_logs:
           A02 visual mark and loss record. Track Perry 3 / PEREGRINE-A03 as the
           planned Mini 3 replacement, with acquisition, baseline inspection, and
           first flight logged separately.
-    signature: Forgotten Industries // Field Log // 2026.06.05
+    signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-004
     slug: mercury-s8-proof-of-concept-build-strategy
-    title: Mercury S8 Restoration Proof-of-Concept Build Strategy
+    title: ATLAS Report 2026.06.06 — Mercury S8 Restoration Proof-of-Concept Build Strategy
     date: '2026-06-06'
     timestamp: '2026-06-06 HH:MM CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-001
     object: CaseLabs Mercury S8 + pedestal
     system: custom watercooling restoration / proof-of-concept build
@@ -213,6 +217,7 @@ field_logs:
       complete inventory, verify infrastructure, and defer sale decisions until
       the ship is back in sequence.
     tags:
+      - atlas-report
       - CaseLabs Archive
       - restoration strategy
       - proof of concept
@@ -272,14 +277,14 @@ field_logs:
           watercooling support parts. Treat the proof-of-concept build as a
           validation path: pumps, Aquaero, sensors, QDCs, radiators, pedestal,
           leak testing, thermal testing, and documented stable operation.
-    signature: Forgotten Industries // Field Log // 2026.06.06
+    signature: Forgotten Industries // ATLAS Report // 2026.06.06
 
   - id: FI-LOG-005
     slug: field-lab-first-light
-    title: Field Log 2026.06.13 — First Light
+    title: ATLAS Report 2026.06.13 — First Light
     date: '2026-06-13'
     timestamp: '2026-06-13 01:40 CT'
-    category: Field Lab Journal
+    category: atlas-report
     associated_project: FI-PROJ-002
     object: statistics workstation
     system: Field Lab / Windows workstation / SEER*Stat
@@ -290,6 +295,7 @@ field_logs:
       visible.
     source_path: src/docs/field-logs/2026-06-13-first-light.md
     tags:
+      - atlas-report
       - seer
       - research
       - glioblastoma
@@ -333,14 +339,14 @@ field_logs:
           A thing documented is a thing not yet lost. Tonight no discoveries
           were made, no hypotheses were tested, and no conclusions were reached.
           The workstation simply came online. Sometimes that is enough.
-    signature: Forgotten Industries // Field Log // 2026.06.13
+    signature: Forgotten Industries // ATLAS Report // 2026.06.13
 
   - id: FI-LOG-006
     slug: site-supervisor
-    title: The Site Supervisor
+    title: ATLAS Report 2026.06.18 — The Site Supervisor
     date: '2026-06-18'
     timestamp: '2026-06-18 16:00 CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-007
     object: Potato
     system: Wichita Branch Operations
@@ -352,6 +358,7 @@ field_logs:
       artifact-discussion work.
     source_path: src/docs/field-logs/2026-06-16-site-super.md
     tags:
+      - atlas-report
       - Potato
       - L'Archive
       - site supervision
@@ -410,25 +417,26 @@ field_logs:
           GPT-5.5. Witnessed by Potato, Site Supervisor. Prepared in accordance
           with the principles of Contre l'Oubli. Observe. Record. Preserve.
           Transmit.
-    signature: Forgotten Industries // Field Log // 2026.06.18
+    signature: Forgotten Industries // ATLAS Report // 2026.06.18
 
   - id: FI-LOG-007
     slug: playonline-senses-weakness
-    title: PlayOnline Senses Weakness
+    title: ATLAS Report 2026.06.19 — PlayOnline Senses Weakness
     date: '2026-06-19'
     timestamp: '2026-06-19 00:14 CT'
-    category: field-log
+    category: atlas-report
     associated_project: FI-PROJ-003
     object: FINAL FANTASY XI Ultimate Collection Seekers Edition
     system: PlayOnline installation / Windows workstation
     condition: Installer dormant
     status: Progression resumed
     summary: >
-      Field report from a stalled FINAL FANTASY XI / PlayOnline installation:
+      ATLAS report from a stalled FINAL FANTASY XI / PlayOnline installation:
       the wizard appeared dormant until the operator nearly yielded, then
       became responsive at the exact moment weakness was named.
     source_path: src/docs/field-logs/2026-06-19-playonline-senses-weakness.md
     tags:
+      - atlas-report
       - FINAL FANTASY XI
       - PlayOnline
       - installation
@@ -459,4 +467,4 @@ field_logs:
         body: >
           The archive records that the operator did not yield. The button
           appeared. The installation continued.
-    signature: Forgotten Industries // Field Log // 2026.06.19
+    signature: Forgotten Industries // ATLAS Report // 2026.06.19
