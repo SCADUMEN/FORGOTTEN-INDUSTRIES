@@ -1,11 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
+  {% set metaTitle = title or site.name %}
+  {% set metaDescription = description or site.defaultDescription or site.tagline %}
+  {% set metaCanonical = (canonical or page.url) | canonicalUrl(site.domainUrl) %}
+  {% set metaImage = (image or site.defaultImage) | absoluteUrl(site.domainUrl) %}
+  {% set metaOgType = page.url | ogTypeForUrl(ogType) %}
+  {% set metaSchemaType = page.url | schemaTypeForUrl(schemaType, title, site.name) %}
   <meta charset="utf-8">
-  <title>{{ title }}{% if title != site.name %} - {{ site.name }}{% endif %}</title>
+  <title>{{ metaTitle }}{% if metaTitle != site.name %} &mdash; {{ site.name }}{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ description or site.tagline }}">
-  <link rel="canonical" href="{{ canonical or site.domainUrl + page.url }}">
+  <meta name="description" content="{{ metaDescription }}">
+  <meta name="author" content="{{ author or site.author }}">
+  <meta name="generator" content="{{ site.generator }}">
+  <link rel="canonical" href="{{ metaCanonical }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ ogTitle or metaTitle }}">
+  <meta property="og:description" content="{{ ogDescription or metaDescription }}">
+  <meta property="og:type" content="{{ metaOgType }}">
+  <meta property="og:url" content="{{ metaCanonical }}">
+  <meta property="og:image" content="{{ metaImage }}">
+  <meta property="og:image:alt" content="{{ imageAlt or site.defaultImageAlt }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ogTitle or metaTitle }}">
+  <meta name="twitter:description" content="{{ ogDescription or metaDescription }}">
+  <meta name="twitter:image" content="{{ metaImage }}">
+  {% if metaOgType == "article" and page.date %}
+  <meta property="article:published_time" content="{{ page.date | isoDate }}">
+  <meta property="article:author" content="{{ author or site.author }}">
+  {% endif %}
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -14,6 +37,32 @@
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} public writing feed" href="/feed.xml">
   <link rel="stylesheet" href="/css/archive.css?v={{ site.assetVersion }}">
   <script defer src="/assets/js/site-mark-ghost.js?v={{ site.assetVersion }}"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {{ metaSchemaType | json | safe }},
+      "name": {{ metaTitle | json | safe }},
+      "description": {{ metaDescription | json | safe }},
+      "url": {{ metaCanonical | json | safe }},
+      "image": {{ metaImage | json | safe }},
+      "author": {
+        "@type": "Person",
+        "name": {{ (author or site.author) | json | safe }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.name | json | safe }},
+        "url": {{ site.domainUrl | json | safe }},
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ site.defaultImage | absoluteUrl(site.domainUrl) | json | safe }}
+        }
+      }
+      {% if metaOgType == "article" and page.date %},
+      "datePublished": {{ page.date | isoDate | json | safe }}
+      {% endif %}
+    }
+  </script>
   {% if site.analytics.googleMeasurementId %}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.googleMeasurementId }}"></script>
   <script>

@@ -4,16 +4,10 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for entry in collections.all %}
-{%- if entry.url and (entry.url.endsWith('/') or entry.url.endsWith('.html')) %}
+{%- set extraUrls = ['/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/colophon/', '/archive.html', '/archive/inventory/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/inventory.html', '/social-posts.html'] %}
+{%- for url in collections.all | publicSitemapUrls(extraUrls, site.domainUrl, archive) %}
   <url>
-    <loc>{{ site.domainUrl }}{{ entry.url }}</loc>
-  </url>
-{%- endif %}
-{%- endfor %}
-{%- for url in ['/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/colophon/', '/archive.html', '/archive/inventory/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/inventory.html', '/social-posts.html'] %}
-  <url>
-    <loc>{{ site.domainUrl }}{{ url }}</loc>
+    <loc>{{ url }}</loc>
   </url>
 {%- endfor %}
 </urlset>

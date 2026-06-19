@@ -1,5 +1,56 @@
 import { feedPlugin } from '@11ty/eleventy-plugin-rss'
 
+function canonicalPath(value = '/') {
+  const raw = String(value || '/').trim()
+  const url =
+    raw.startsWith('http://') || raw.startsWith('https://')
+      ? new URL(raw)
+      : new URL(raw, 'https://forgotten-industries.net')
+
+  let pathname = url.pathname || '/'
+  if (pathname.endsWith('/index.html')) {
+    pathname = pathname.slice(0, -'index.html'.length)
+  }
+  if (!pathname.startsWith('/')) pathname = `/${pathname}`
+
+  return `${pathname}${url.search || ''}`
+}
+
+function canonicalUrl(value = '/', base = 'https://forgotten-industries.net') {
+  const origin = new URL(base).origin
+  return `${origin}${canonicalPath(value)}`
+}
+
+function isArticleUrl(value = '') {
+  const pathname = canonicalPath(value)
+  return (
+    pathname.startsWith('/posts/') &&
+    pathname.endsWith('.html') &&
+    pathname !== '/posts/index.html'
+  )
+}
+
+function isFieldLogUrl(value = '') {
+  const pathname = canonicalPath(value)
+  return (
+    pathname.startsWith('/field-logs/') &&
+    pathname !== '/field-logs/' &&
+    pathname.endsWith('/')
+  )
+}
+
+function isCollectionUrl(value = '') {
+  const pathname = canonicalPath(value)
+  return (
+    pathname === '/archive.html' ||
+    pathname.startsWith('/archive/') ||
+    pathname === '/posts/' ||
+    pathname === '/projects/' ||
+    pathname === '/field-notes/' ||
+    pathname === '/field-logs/'
+  )
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
@@ -99,6 +150,64 @@ export default function (eleventyConfig) {
       ? records.find((record) => record?.id === id) || null
       : null
   })
+
+  eleventyConfig.addFilter('canonicalUrl', canonicalUrl)
+
+  eleventyConfig.addFilter('absoluteUrl', function (value, base) {
+    if (!value) return ''
+    return value.startsWith('http://') || value.startsWith('https://')
+      ? value
+      : canonicalUrl(value, base)
+  })
+
+  eleventyConfig.addFilter('json', function (value) {
+    return JSON.stringify(value)
+  })
+
+  eleventyConfig.addFilter('ogTypeForUrl', function (url, explicit) {
+    if (explicit) return explicit
+    return isArticleUrl(url) || isFieldLogUrl(url) ? 'article' : 'website'
+  })
+
+  eleventyConfig.addFilter(
+    'schemaTypeForUrl',
+    function (url, explicit, title, siteName) {
+      if (explicit) return explicit
+      if (title === siteName || canonicalPath(url) === '/') return 'WebSite'
+      if (isArticleUrl(url)) return 'Article'
+      if (isFieldLogUrl(url)) return 'CreativeWork'
+      if (isCollectionUrl(url)) return 'CollectionPage'
+      return 'WebPage'
+    }
+  )
+
+  eleventyConfig.addFilter(
+    'publicSitemapUrls',
+    function (collection, extras, base, archive) {
+      const urls = new Set()
+
+      function add(value) {
+        if (!value) return
+        const pathname = canonicalPath(value)
+        if (pathname === '/sitemap.xml' || pathname === '/robots.txt') return
+        if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) return
+        if (!(pathname.endsWith('/') || pathname.endsWith('.html'))) return
+        urls.add(canonicalUrl(pathname, base))
+      }
+
+      if (Array.isArray(collection)) {
+        collection.forEach((entry) => add(entry.url))
+      }
+      if (Array.isArray(extras)) {
+        extras.forEach(add)
+      }
+      if (Array.isArray(archive?.fieldLogs)) {
+        archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+      }
+
+      return [...urls].sort((a, b) => a.localeCompare(b))
+    }
+  )
 
   return {
     dir: {
