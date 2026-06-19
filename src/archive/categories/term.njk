@@ -1,0 +1,38 @@
+---
+layout: base.njk
+pagination:
+  data: taxonomy.categories
+  size: 1
+  alias: term
+permalink: "/archive/categories/{{ term.slug }}/"
+eleventyComputed:
+  title: "L'Archive / Category / {{ term.label }}"
+  description: "Archive records categorized as {{ term.label }}."
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Category</p>
+    <h1>{{ term.label }}</h1>
+    <p class="tagline">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %} in this archive category.</p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Records</p>
+      <h2>Category browse.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for record in term.records %}
+      <li>
+        <p class="entry-note">{{ record.date }} / {{ record.type }} / {{ record.status }}</p>
+        <h3><a href="{{ record.url }}">{{ record.title }}</a></h3>
+        <p>{{ record.summary | truncate(240) }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

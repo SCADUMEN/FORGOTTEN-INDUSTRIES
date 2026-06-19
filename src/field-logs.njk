@@ -135,7 +135,7 @@ eleventyExcludeFromCollections: true
           {% if project %}
           <div>
             <dt>Project</dt>
-            <dd><a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a></dd>
+            <dd><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></dd>
           </div>
           {% endif %}
         </dl>

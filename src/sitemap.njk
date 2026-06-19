@@ -4,10 +4,30 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- set extraUrls = ['/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/colophon/', '/archive.html', '/archive/inventory/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/inventory.html', '/social-posts.html'] %}
+{%- set extraUrls = ['/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/colophon/', '/archive.html', '/archive/inventory/', '/archive/objects/', '/archive/taxonomy/', '/archive/categories/', '/archive/tags/', '/archive/status/', '/archive/systems/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/inventory.html', '/social-posts.html'] %}
 {%- for url in collections.all | publicSitemapUrls(extraUrls, site.domainUrl, archive) %}
   <url>
     <loc>{{ url }}</loc>
+  </url>
+{%- endfor %}
+{%- for term in taxonomy.categories %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ term.url }}</loc>
+  </url>
+{%- endfor %}
+{%- for term in taxonomy.tags %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ term.url }}</loc>
+  </url>
+{%- endfor %}
+{%- for term in taxonomy.status %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ term.url }}</loc>
+  </url>
+{%- endfor %}
+{%- for term in taxonomy.systems %}
+  <url>
+    <loc>{{ site.domainUrl }}{{ term.url }}</loc>
   </url>
 {%- endfor %}
 </urlset>

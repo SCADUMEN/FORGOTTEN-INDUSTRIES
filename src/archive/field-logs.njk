@@ -31,7 +31,7 @@ eleventyExcludeFromCollections: true
         <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
         <p>{{ log.summary or log.object }}</p>
         <p class="entry-note">
-          {{ log.object }}{% if log.system %} / {{ log.system }}{% endif %}{% if log.status %} / {{ log.status }}{% endif %}{% if project %} / <a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a>{% endif %}
+          {{ log.object }}{% if log.system %} / {{ log.system }}{% endif %}{% if log.status %} / {{ log.status }}{% endif %}{% if project %} / <a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a>{% endif %}
         </p>
         {% if log.tags and log.tags.length %}
         <p class="entry-note">{{ log.tags | join(', ') }}</p>
