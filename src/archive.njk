@@ -284,6 +284,14 @@ eleventyExcludeFromCollections: true
           <strong>{{ archive.projects | count }}</strong>
           <span>Projets</span>
         </a>
+        <a class="stat" href="/archive/objects/">
+          <strong>{{ archive.inventory | count }}</strong>
+          <span>Objects</span>
+        </a>
+        <a class="stat" href="/archive/taxonomy/">
+          <strong>{{ taxonomy.allTerms | count }}</strong>
+          <span>Taxonomy terms</span>
+        </a>
         <a class="stat" href="/hang-on-to-each-other/">
           <strong>1</strong>
           <span>Manuels</span>
@@ -330,7 +338,7 @@ eleventyExcludeFromCollections: true
         <p class="entry-note">
           {{ project.id }} / {{ project.category }} / {{ project.status }}
         </p>
-        <h3>{{ project.title }}</h3>
+        <h3><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></h3>
         <p>{{ project.summary }}</p>
         {% if project.working_title %}
         <p class="entry-note">{{ project.working_title }}</p>

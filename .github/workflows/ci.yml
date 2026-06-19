@@ -19,6 +19,13 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      # Unit tests include generated archive crawlability checks, and
+      # build:site runs scripts/build.rb, which needs Ruby.
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
       - name: Install dependencies
         run: npm install
 

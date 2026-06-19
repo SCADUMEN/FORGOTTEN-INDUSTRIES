@@ -1,0 +1,115 @@
+---
+layout: base.njk
+pagination:
+  data: archive.projects
+  size: 1
+  alias: project
+permalink: "/archive/projects/{{ project.slug | archiveSlug }}/"
+eleventyComputed:
+  title: "L'Archive / Project / {{ project.title }}"
+  description: "{{ project.summary }}"
+eleventyExcludeFromCollections: true
+---
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">Project Dossier / {{ project.id }}</p>
+    <h1>{{ project.title }}</h1>
+    <p class="tagline">{{ project.summary }}</p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ project.category }}</p>
+      <h2>Status and continuity.</h2>
+    </div>
+
+    <ul class="link-list">
+      <li>
+        <h3>Status</h3>
+        <p>{{ project.status }}</p>
+      </li>
+      {% if project.started %}
+      <li>
+        <h3>Started</h3>
+        <p>{{ project.started }}</p>
+      </li>
+      {% endif %}
+      {% if project.revived %}
+      <li>
+        <h3>Revived</h3>
+        <p>{{ project.revived }}</p>
+      </li>
+      {% endif %}
+      {% if project.working_title %}
+      <li>
+        <h3>Working Title</h3>
+        <p>{{ project.working_title }}</p>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</section>
+
+{% set projectObjects = archive.inventory | whereAssociatedProject(project.id) %}
+{% set projectLogs = archive.fieldLogs | whereAssociatedProject(project.id) %}
+
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ projectObjects.length }} object{% if projectObjects.length != 1 %}s{% endif %}</p>
+      <h2>Object/component records.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for item in projectObjects %}
+      <li>
+        <p class="entry-note">{{ item.id }} / {{ item.category }} / {{ item.status }}</p>
+        <h3><a href="{{ item | archiveObjectUrl }}">{{ item.name }}</a></h3>
+        <p>{{ item.condition }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% if projectLogs.length %}
+<section class="evidence-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">{{ projectLogs.length }} log{% if projectLogs.length != 1 %}s{% endif %}</p>
+      <h2>Field evidence.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for log in projectLogs | fieldLogsNewest %}
+      <li>
+        <p class="entry-note">{{ log.id }} / {{ log.date }} / {{ log.category }}</p>
+        <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
+        <p>{{ log.object }}. {{ log.status }}.</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if project.themes and project.themes.length %}
+<section class="source-band">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Tags</p>
+      <h2>Project taxonomy.</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for theme in project.themes %}
+      <li>
+        <h3><a href="/archive/tags/{{ theme | archiveSlug }}/">{{ theme }}</a></h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

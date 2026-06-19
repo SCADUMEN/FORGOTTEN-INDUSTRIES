@@ -21,6 +21,15 @@ function canonicalUrl(value = '/', base = 'https://forgotten-industries.net') {
   return `${origin}${canonicalPath(value)}`
 }
 
+function archiveSlug(value) {
+  return String(value || '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
 function isArticleUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
@@ -117,6 +126,37 @@ export default function (eleventyConfig) {
     return value.toISOString().split('T')[0].replaceAll('-', '.')
   })
 
+  eleventyConfig.addFilter('archiveSlug', archiveSlug)
+
+  eleventyConfig.addFilter('archiveObjectUrl', function (item) {
+    return `/archive/objects/${archiveSlug(item?.id || item?.name)}/`
+  })
+
+  eleventyConfig.addFilter('archiveProjectUrl', function (project) {
+    return `/archive/projects/${archiveSlug(project?.slug || project?.id || project?.title)}/`
+  })
+
+  eleventyConfig.addFilter(
+    'archiveProjectIdUrl',
+    function (projectId, projects) {
+      const project = Array.isArray(projects)
+        ? projects.find((entry) => entry?.id === projectId)
+        : null
+      return project
+        ? `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
+        : '/archive/projects/'
+    }
+  )
+
+  eleventyConfig.addFilter(
+    'whereAssociatedProject',
+    function (records, projectId) {
+      return Array.isArray(records)
+        ? records.filter((record) => record?.associated_project === projectId)
+        : []
+    }
+  )
+
   eleventyConfig.addFilter('fieldLogsNewest', function (logs) {
     return Array.isArray(logs)
       ? [...logs].sort((a, b) => {
@@ -203,6 +243,18 @@ export default function (eleventyConfig) {
       }
       if (Array.isArray(archive?.fieldLogs)) {
         archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+      }
+      if (Array.isArray(archive?.inventory)) {
+        archive.inventory.forEach((item) =>
+          add(`/archive/objects/${archiveSlug(item.id || item.name)}/`)
+        )
+      }
+      if (Array.isArray(archive?.projects)) {
+        archive.projects.forEach((project) =>
+          add(
+            `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
+          )
+        )
       }
 
       return [...urls].sort((a, b) => a.localeCompare(b))
