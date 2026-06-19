@@ -1,7 +1,7 @@
-(function () {
+;(function () {
   if (typeof window === 'undefined') return
   const reducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)',
+    '(prefers-reduced-motion: reduce)'
   ).matches
   if (reducedMotion) return
 
@@ -21,10 +21,7 @@
 
     const measureCtx = document.createElement('canvas').getContext('2d')
     measureCtx.font = font
-    const tokens = text
-      .toUpperCase()
-      .split(/\s+/)
-      .filter(Boolean)
+    const tokens = text.toUpperCase().split(/\s+/).filter(Boolean)
     if (tokens.length === 0) return
 
     let longest = 0

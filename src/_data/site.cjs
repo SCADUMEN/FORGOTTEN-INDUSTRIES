@@ -79,7 +79,7 @@ const navRows = [
       label: 'LE SIGNAL',
       french: 'Le Signal',
       english: 'Signal',
-      href: '/posts/index.html',
+      href: '/posts/',
       summary:
         'Authored signal: recoveries, restorations, doctrine, manifestos, field reports, and the public feed.',
     },
@@ -123,6 +123,10 @@ module.exports = {
 
   tagline:
     'An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.',
+  defaultDescription:
+    'An archive of restoration, memory, machines, field notes, and the work of refusing disappearance.',
+  defaultImage: '/assets/forgotten-industries.jpeg',
+  defaultImageAlt: 'Forgotten Industries logo, EST MMXIV',
 
   navRows,
   nav: navRows.flat(),
