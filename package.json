@@ -22,7 +22,9 @@
     "build:site": "ruby scripts/build.rb && eleventy && sh scripts/build_css.sh --minify",
     "serve:site": "ruby scripts/build.rb && eleventy && sh scripts/build_css.sh && eleventy --serve",
     "pretty": "prettier --write .",
+    "pretest": "npm run build:site",
     "test": "vitest run",
+    "pretest:unit": "npm run build:site",
     "test:unit": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test"
