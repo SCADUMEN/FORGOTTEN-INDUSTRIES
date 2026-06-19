@@ -14,6 +14,64 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
+<section class="source-band" aria-labelledby="release-summary-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Release Summary</p>
+      <h2 id="release-summary-heading">FI-v2.25 made the archive easier to find.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>FI-v2.25 / SEO indexing pass</h3>
+      <p>
+        FI-v2.25 preserved FI-v2.24 as a recoverable branch, then added the
+        first conservative discoverability layer: canonical URL normalization,
+        Open Graph metadata, Twitter card metadata, author and generator tags,
+        and minimal JSON-LD for the homepage, collection pages, articles, and
+        field-log records.
+      </p>
+      <p>
+        The release also added <code>robots.txt</code>, rebuilt
+        <code>sitemap.xml</code> around normalized public URLs, included every
+        generated field-log page in the sitemap, and made field reports linked
+        from Le Signal so crawlers and readers can follow the route without
+        JavaScript.
+      </p>
+      <p class="entry-note">
+        Branch: <code>FI-v2.25</code> / commit:
+        <a href="{{ site.githubUrl }}/commit/65b8f10">65b8f10</a> / verified
+        with <code>npm run pretty</code>, <code>npm run build:site</code>, and
+        <code>npm test</code>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="ai-generation-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">AI generation note</p>
+      <h2 id="ai-generation-heading">Assistance is recorded as provenance.</h2>
+    </div>
+
+    <div class="callout">
+      <h3>Codex-assisted build work</h3>
+      <p>
+        FI-v2.25 was implemented with Matthew Marx directing OpenAI Codex inside
+        the Forgotten Industries repository. Codex assisted with the audit,
+        source edits, generated-output inspection, verification commands, and
+        release report.
+      </p>
+      <p>
+        Matthew remains the author, maintainer, and final editorial authority.
+        AI assistance is recorded as process provenance, not as independent
+        source evidence. The archive remains governed by the tracked files,
+        commit history, preserved branches, and inspectable generated outputs.
+      </p>
+    </div>
+  </div>
+</section>
+
 <section class="evidence-band" aria-labelledby="colophon-heading">
   <div class="section-inner band-grid">
     <div>
