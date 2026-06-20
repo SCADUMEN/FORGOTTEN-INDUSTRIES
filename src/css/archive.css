@@ -780,6 +780,20 @@ h3 {
   color: var(--ink);
 }
 
+.stat-wide {
+  grid-column: span 2;
+}
+
+.stat .stat-adjustment {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.85rem;
+  margin: 0;
+  color: var(--steel);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
 .stat strong {
   display: block;
   font-size: 3.2rem;
@@ -1904,6 +1918,10 @@ h3 {
 
   .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .branch-stats .stat-wide {
+    grid-column: span 1;
   }
 
   .lane-list,

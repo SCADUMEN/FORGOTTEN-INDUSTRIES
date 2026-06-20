@@ -21,6 +21,10 @@ test('archive page renders', async ({ page }) => {
   await expect(socialLedger).toBeVisible()
   await expect(socialLedger).toHaveCSS('overflow-y', 'auto')
   await expect(socialLedger).toHaveAttribute('tabindex', '0')
+
+  const wideCounters = page.locator('.branch-stats .stat-wide')
+  await expect(wideCounters).toHaveCount(2)
+  await expect(wideCounters).toHaveText([/Source files/, /Git commits/])
 })
 
 test('posts index lists the curated posts', async ({ page }) => {
