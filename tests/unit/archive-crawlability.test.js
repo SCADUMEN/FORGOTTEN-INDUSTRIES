@@ -44,6 +44,9 @@ describe('archive crawlability output', () => {
     ).toBe(true)
     expect(existsSite('archive/objects/fi-case-001/index.html')).toBe(true)
     expect(existsSite('field-logs/voice/index.html')).toBe(true)
+    expect(
+      existsSite('field-logs/accumulation-across-active-fronts/index.html')
+    ).toBe(true)
   })
 
   it('exposes archive browse routes as plain HTML links', () => {
@@ -72,6 +75,9 @@ describe('archive crawlability output', () => {
     const fieldLog = index.documents.find(
       (record) => record.id === 'FI-LOG-001'
     )
+    const dailySummary = index.documents.find(
+      (record) => record.id === 'FI-LOG-008'
+    )
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
@@ -85,6 +91,12 @@ describe('archive crawlability output', () => {
       associated_project: 'FI-PROJ-001',
     })
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
+    expect(dailySummary).toMatchObject({
+      title: 'ATLAS Report 2026.06.20 — Accumulation Across Active Fronts',
+      url: '/field-logs/accumulation-across-active-fronts/',
+      category: 'atlas-report',
+      associated_project: 'FI-PROJ-006',
+    })
   })
 
   it('renders system and content-level AI provenance citations', () => {
