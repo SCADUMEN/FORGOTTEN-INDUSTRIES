@@ -8,6 +8,75 @@ function readCommand(command, fallback = 'unknown') {
   }
 }
 
+const SITE_TIME_ZONE = 'America/Chicago'
+
+function dateInTimeZone(date, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .formatToParts(date)
+    .reduce((values, part) => {
+      values[part.type] = part.value
+      return values
+    }, {})
+
+  return `${parts.year}-${parts.month}-${parts.day}`
+}
+
+function addDays(dateString, amount) {
+  const date = new Date(`${dateString}T00:00:00.000Z`)
+  date.setUTCDate(date.getUTCDate() + amount)
+  return date.toISOString().slice(0, 10)
+}
+
+function timeZoneOffsetMilliseconds(date, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23',
+  })
+    .formatToParts(date)
+    .reduce((values, part) => {
+      values[part.type] = part.value
+      return values
+    }, {})
+
+  const representedAsUtc = Date.UTC(
+    Number(parts.year),
+    Number(parts.month) - 1,
+    Number(parts.day),
+    Number(parts.hour),
+    Number(parts.minute),
+    Number(parts.second)
+  )
+
+  return representedAsUtc - date.getTime()
+}
+
+function startOfDayInTimeZone(dateString, timeZone) {
+  const utcGuess = new Date(`${dateString}T00:00:00.000Z`)
+  const offset = timeZoneOffsetMilliseconds(utcGuess, timeZone)
+  return new Date(utcGuess.getTime() - offset)
+}
+
+function countLines(value) {
+  return value.split(/\r?\n/).filter(Boolean).length
+}
+
+function signedDelta(value) {
+  if (value > 0) return `+${value}`
+  if (value < 0) return `−${Math.abs(value)}`
+  return '0'
+}
+
 const gitHash = (() => {
   return readCommand('git rev-parse HEAD')
 })()
@@ -19,14 +88,44 @@ const gitHashShort = (() => {
 const sourceFileList = readCommand('git ls-files src', '')
   .split(/\r?\n/)
   .filter(Boolean)
+const currentSiteDate = dateInTimeZone(new Date(), SITE_TIME_ZONE)
+const deltaSince = addDays(currentSiteDate, -1)
+const currentDayStart = startOfDayInTimeZone(
+  currentSiteDate,
+  SITE_TIME_ZONE
+).toISOString()
+const previousDayHead = readCommand(
+  `git rev-list -1 --before="${currentDayStart}" HEAD`,
+  ''
+)
+const previousCommitCount = previousDayHead
+  ? Number(readCommand(`git rev-list --count ${previousDayHead}`, '0')) || 0
+  : 0
+const previousSourceFileCount = previousDayHead
+  ? countLines(
+      readCommand(`git ls-tree -r --name-only ${previousDayHead} -- src`, '')
+    )
+  : 0
 const workingTreeShortstat = readCommand('git diff --shortstat', '')
 const changedFilesMatch = workingTreeShortstat.match(/(\d+) files? changed/)
 const insertionsMatch = workingTreeShortstat.match(/(\d+) insertions?\(\+\)/)
 const deletionsMatch = workingTreeShortstat.match(/(\d+) deletions?\(-\)/)
 
+const commitCount = Number(readCommand('git rev-list --count HEAD', '0')) || 0
+const sourceFileCount = sourceFileList.length
+const commitDelta = previousDayHead ? commitCount - previousCommitCount : 0
+const sourceFileDelta = previousDayHead
+  ? sourceFileCount - previousSourceFileCount
+  : 0
+
 const sourceStats = {
-  commits: Number(readCommand('git rev-list --count HEAD', '0')) || 0,
+  commits: commitCount,
   sourceFiles: sourceFileList.length,
+  commitDelta,
+  commitDeltaLabel: signedDelta(commitDelta),
+  sourceFileDelta,
+  sourceFileDeltaLabel: signedDelta(sourceFileDelta),
+  deltaSince,
   changedFiles: changedFilesMatch ? Number(changedFilesMatch[1]) : 0,
   insertions: insertionsMatch ? Number(insertionsMatch[1]) : 0,
   deletions: deletionsMatch ? Number(deletionsMatch[1]) : 0,
