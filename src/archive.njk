@@ -407,9 +407,16 @@ eleventyExcludeFromCollections: true
     <div>
       <p class="section-label">Recovered Social Evidence</p>
       <h2 id="social-heading">Imported posts remain visible as source records.</h2>
+      <p class="entry-note archive-scroll-note">
+        {{ archive.socialPosts | count }} records / scroll within ledger
+      </p>
     </div>
 
-    <ul class="link-list archive-record-list">
+    <ul
+      class="link-list archive-record-list archive-record-viewport"
+      aria-label="Scrollable recovered social evidence ledger"
+      tabindex="0"
+    >
       {% for post in archive.socialPosts | reverse %}
       <li>
         <p class="entry-note">{{ post.date }} / {{ post.source }} / {{ post.source_id }}</p>

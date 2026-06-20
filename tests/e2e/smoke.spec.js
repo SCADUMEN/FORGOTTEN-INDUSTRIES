@@ -14,6 +14,13 @@ test('archive page renders', async ({ page }) => {
   const response = await page.goto('/archive.html')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/L'Archive/)
+
+  const socialLedger = page.getByRole('list', {
+    name: 'Scrollable recovered social evidence ledger',
+  })
+  await expect(socialLedger).toBeVisible()
+  await expect(socialLedger).toHaveCSS('overflow-y', 'auto')
+  await expect(socialLedger).toHaveAttribute('tabindex', '0')
 })
 
 test('posts index lists the curated posts', async ({ page }) => {
