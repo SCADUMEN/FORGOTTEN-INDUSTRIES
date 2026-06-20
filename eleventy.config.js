@@ -63,6 +63,10 @@ function isCollectionUrl(value = '') {
 }
 
 export default function (eleventyConfig) {
+  eleventyConfig.addCollection('archiveObjects', (collectionApi) =>
+    collectionApi.getFilteredByGlob('src/archive-objects/*.md')
+  )
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
     outputPath: '/feed.xml',
@@ -94,6 +98,9 @@ export default function (eleventyConfig) {
   // markdown stays published alongside at the same /posts/*.md URLs.
   // Imported social records are static evidence, copied verbatim.
   eleventyConfig.addPassthroughCopy('src/posts/*.md')
+  eleventyConfig.addPassthroughCopy({
+    'src/archive-objects/*.md': 'archive/objects/source',
+  })
   eleventyConfig.addPassthroughCopy({ 'src/posts/social': 'posts/social' })
   eleventyConfig.ignores.add('src/posts/social/**')
   eleventyConfig.ignores.add('src/posts/README.md')
@@ -121,11 +128,13 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('isoDate', function (value) {
-    return value.toISOString().split('T')[0]
+    const date = value instanceof Date ? value : new Date(value)
+    return date.toISOString().split('T')[0]
   })
 
   eleventyConfig.addFilter('readableDate', function (value) {
-    return value.toISOString().split('T')[0].replaceAll('-', '.')
+    const date = value instanceof Date ? value : new Date(value)
+    return date.toISOString().split('T')[0].replaceAll('-', '.')
   })
 
   eleventyConfig.addFilter('archiveSlug', archiveSlug)

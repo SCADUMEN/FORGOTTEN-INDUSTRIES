@@ -83,6 +83,18 @@ The old GitHub Pages trial surface is preserved at `src/site-snapshots/github-pa
 
 The three-branch Le Signal surface is preserved at `src/site-snapshots/le-signal-three-branch-2026-06-19/`.
 
+## FI-v2.27 Photo Archive Prototype
+
+Photo-led archive object entries live in `src/archive-objects/` as Markdown with
+validated frontmatter. Each entry records object identity, system context,
+status, location, project association, tags, and one or more structured photo
+records. The object index at `/archive/objects/` presents these prototypes
+alongside the existing canonical inventory without replacing legacy routes.
+
+Start from `src/templates/archive-object.md`. Every photo requires `src`, `alt`,
+`caption`, `taken_at`, and `object_detail`. The archive build fails when required
+entry or photo fields are absent.
+
 ## Hang On To Each Other (Manual Shelf)
 
 `/hang-on-to-each-other/` is the manual shelf: recovered instructions, procedures, and preservation references for abandoned systems. Manual 001 is the CaseLabs Mercury S8 + Pedestal assembly reference — compiled from forum archives, build logs, review photography, and community knowledge because CaseLabs closed in 2018 and took the official documentation with them.
@@ -160,6 +172,7 @@ The archive is not published as an npm package yet. When it is ready:
 - `src/data/field-logs.yml` — canonical ATLAS reports and debrief records.
 - `src/data/voice-logs.yml` — canonical recorder-based Field Log metadata.
 - `src/data/social-posts.yml` — imported Tumblr and Instagram posts with source URLs, dates, captions, local media, and generated Markdown paths.
+- `src/archive-objects/` — FI-v2.27 Markdown photo/archive object prototypes.
 - `src/types.ts` — TypeScript schema for the generated archive.
 - `scripts/import_social.rb` — public Tumblr/Instagram importer for social posts and media.
 - `scripts/build.rb` — YAML-to-JSON and YAML-to-TypeScript build script.
@@ -192,6 +205,7 @@ The archive is not published as an npm package yet. When it is ready:
 - `src/templates/field-log.md` — Markdown field log template.
 - `src/templates/voice-field-log.yml` — metadata template for recorder Field Log entries.
 - `src/templates/inventory-item.md` — Markdown inventory item template.
+- `src/templates/archive-object.md` — validated frontmatter template for photo-led archive entries.
 - `intake/SLUSH/` — working drafts and scratch material awaiting cataloging.
 - `intake/Splunking/` — raw evidence photos from intake, not yet processed into the archive.
 

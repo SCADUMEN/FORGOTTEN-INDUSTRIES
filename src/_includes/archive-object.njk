@@ -1,0 +1,93 @@
+---
+layout: base.njk
+---
+<article class="archive-object-entry">
+  <header class="masthead">
+    <div class="section-inner">
+      <p class="section-label">L'Archive / Object Entry / Prototype</p>
+      <h1>{{ title }}</h1>
+      <p class="tagline">{{ object }} / {{ system }} / {{ status }}</p>
+    </div>
+  </header>
+
+  <section class="source-band" aria-labelledby="archive-object-metadata-heading">
+    <div class="section-inner band-grid">
+      <div>
+        <p class="section-label">Structured Record</p>
+        <h2 id="archive-object-metadata-heading">Object metadata.</h2>
+      </div>
+      <dl class="record-meta-grid">
+        <div>
+          <dt>Date</dt>
+          <dd><time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time></dd>
+        </div>
+        <div>
+          <dt>Category</dt>
+          <dd>{{ category }}</dd>
+        </div>
+        <div>
+          <dt>Object</dt>
+          <dd>{{ object }}</dd>
+        </div>
+        <div>
+          <dt>System</dt>
+          <dd>{{ system }}</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>{{ status }}</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>{{ location }}</dd>
+        </div>
+        <div>
+          <dt>Associated project</dt>
+          <dd><a href="{{ associated_project | archiveProjectIdUrl(archive.projects) }}">{{ associated_project }}</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  {% if photos and photos.length %}
+  <section class="evidence-band" aria-labelledby="archive-object-photos-heading">
+    <div class="section-inner">
+      <div class="archive-gallery-heading">
+        <p class="section-label">{{ photos | count }} photo{% if photos.length != 1 %}s{% endif %}</p>
+        <h2 id="archive-object-photos-heading">Object evidence.</h2>
+      </div>
+      <ol class="archive-photo-entry-grid">
+        {% for photo in photos %}
+        <li>
+          <figure>
+            <a href="{{ photo.src }}"><img src="{{ photo.src }}" alt="{{ photo.alt }}" loading="lazy"></a>
+            <figcaption>
+              <strong>{{ photo.caption }}</strong>
+              <span>{{ photo.taken_at }} / {{ photo.object_detail }}</span>
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="source-band" aria-labelledby="archive-object-notes-heading">
+    <div class="section-inner band-grid">
+      <div>
+        <p class="section-label">Prototype Notes</p>
+        <h2 id="archive-object-notes-heading">Schema before final content.</h2>
+      </div>
+      <div>
+        <div class="post-body">{{ content | safe }}</div>
+        {% if tags and tags.length %}
+        <p class="stamp-row" aria-label="Archive object tags">
+          {% for tag in tags %}<span class="stamp stamp-muted">{{ tag }}</span>{% endfor %}
+        </p>
+        {% endif %}
+        <p class="action-row"><a href="/archive/objects/">Return to object index</a></p>
+      </div>
+    </div>
+  </section>
+</article>

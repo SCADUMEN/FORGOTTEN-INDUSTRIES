@@ -44,6 +44,39 @@ describe('archive crawlability output', () => {
     ).toBe(true)
     expect(existsSite('archive/objects/fi-case-001/index.html')).toBe(true)
     expect(existsSite('field-logs/voice/index.html')).toBe(true)
+    expect(
+      existsSite('archive/objects/caselabs-mercury-s8-chassis/index.html')
+    ).toBe(true)
+    expect(
+      existsSite('archive/objects/aquaero-6-xt-controller/index.html')
+    ).toBe(true)
+    expect(
+      existsSite('archive/objects/ek-radiators-loop-inventory/index.html')
+    ).toBe(true)
+    expect(
+      existsSite('archive/objects/peregrine-drone-damage-log/index.html')
+    ).toBe(true)
+    expect(
+      existsSite('archive/objects/olympus-recorder-field-audio-kit/index.html')
+    ).toBe(true)
+  })
+
+  it('renders the photo archive prototype schema and listing', () => {
+    const listing = readSite('archive/objects/index.html')
+    const chassis = readSite(
+      'archive/objects/caselabs-mercury-s8-chassis/index.html'
+    )
+
+    expect(listing).toContain('5 prototype records')
+    expect(listing).toContain('/archive/objects/aquaero-6-xt-controller/')
+    expect(listing).toContain('/archive/objects/peregrine-drone-damage-log/')
+    expect(chassis).toContain('CaseLabs Mercury S8 chassis')
+    expect(chassis).toContain('Wichita Branch / garage archive')
+    expect(chassis).toContain('FI-PROJ-001')
+    expect(chassis).toContain('Mercury S8 chassis intake reference.')
+    expect(chassis).toContain(
+      'Chassis exterior and panel configuration before cleaning.'
+    )
   })
 
   it('exposes archive browse routes as plain HTML links', () => {
@@ -85,6 +118,19 @@ describe('archive crawlability output', () => {
       associated_project: 'FI-PROJ-001',
     })
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
+    expect(
+      index.documents.filter((record) => record.type === 'archive-object')
+    ).toHaveLength(5)
+    expect(
+      index.documents.find(
+        (record) => record.id === 'archive-object:aquaero-6-xt-controller'
+      )
+    ).toMatchObject({
+      category: 'controller',
+      object: 'Aqua Computer Aquaero 6 XT',
+      associated_project: 'FI-PROJ-001',
+      url: '/archive/objects/aquaero-6-xt-controller/',
+    })
   })
 
   it('renders system and content-level AI provenance citations', () => {

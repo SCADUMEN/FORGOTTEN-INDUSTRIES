@@ -17,11 +17,37 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
+<section class="evidence-band" aria-labelledby="photo-object-prototype-heading">
+  <div class="section-inner">
+    <div class="archive-gallery-heading">
+      <p class="section-label">FI-v2.27 / {{ collections.archiveObjects | count }} prototype records</p>
+      <h2 id="photo-object-prototype-heading">Photo archive ingestion prototype.</h2>
+      <p>Markdown object entries with structured photo evidence. Sample content only; inventory records below remain canonical.</p>
+    </div>
+
+    <ol class="archive-object-prototype-grid">
+      {% for entry in collections.archiveObjects | reverse %}
+      <li>
+        <a href="{{ entry.url }}">
+          {% if entry.data.photos and entry.data.photos.length %}
+          <img src="{{ entry.data.photos[0].src }}" alt="{{ entry.data.photos[0].alt }}" loading="lazy">
+          {% endif %}
+          <span class="entry-note">{{ entry.data.category }} / {{ entry.data.status }}</span>
+          <h3>{{ entry.data.title }}</h3>
+          <p>{{ entry.data.object }} / {{ entry.data.location }}</p>
+          <span class="entry-note">{{ entry.date | readableDate }} / {{ entry.data.photos | count }} photo{% if entry.data.photos.length != 1 %}s{% endif %}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
 <section class="source-band">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">{{ archive.inventory | count }} records</p>
-      <h2>Each object gets a plain HTML route.</h2>
+      <h2>Canonical inventory objects.</h2>
     </div>
 
     <ul class="link-list archive-record-list">

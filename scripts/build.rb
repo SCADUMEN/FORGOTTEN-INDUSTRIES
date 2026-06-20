@@ -161,6 +161,58 @@ def post_documents(posts_dir)
   end.compact
 end
 
+def archive_object_documents(objects_dir)
+  required_fields = %w[
+    title date category object system status location associated_project tags photos
+  ].freeze
+  required_photo_fields = %w[src alt caption taken_at object_detail].freeze
+
+  Dir.glob(File.join(objects_dir, "*.md")).sort.map do |path|
+    raw = File.read(path)
+    abort("#{path}: expected YAML frontmatter") unless raw.start_with?("---\n")
+
+    _opening, front_matter, body = raw.split(/^---\s*$/, 3)
+    abort("#{path}: incomplete YAML frontmatter") unless front_matter && body
+
+    data = YAML.safe_load(front_matter, permitted_classes: [Date, Time], aliases: false) || {}
+    missing_fields = required_fields.reject { |field| data.key?(field) }
+    unless missing_fields.empty?
+      abort("#{path}: missing archive object fields: #{missing_fields.join(", ")}")
+    end
+
+    photos = data.fetch("photos")
+    abort("#{path}: photos must be a non-empty array") unless photos.is_a?(Array) && !photos.empty?
+
+    photos.each_with_index do |photo, index|
+      abort("#{path}: photo #{index + 1} must be an object") unless photo.is_a?(Hash)
+
+      missing_photo_fields = required_photo_fields.reject { |field| photo.key?(field) }
+      next if missing_photo_fields.empty?
+
+      abort("#{path}: photo #{index + 1} missing fields: #{missing_photo_fields.join(", ")}")
+    end
+
+    slug = File.basename(path, ".md")
+    search_document(
+      id: "archive-object:#{slug}",
+      type: "archive-object",
+      title: data.fetch("title"),
+      url: "/archive/objects/#{slug}/",
+      date: data.fetch("date"),
+      category: data.fetch("category"),
+      object: data.fetch("object"),
+      system: data.fetch("system"),
+      status: data.fetch("status"),
+      associated_project: data.fetch("associated_project"),
+      tags: data.fetch("tags"),
+      project: data.fetch("associated_project"),
+      summary: body,
+      body: [body, photos],
+      source: "src/archive-objects/#{File.basename(path)}"
+    )
+  end
+end
+
 def inventory_tags(item)
   [
     item["tags"],
@@ -324,6 +376,7 @@ social_posts.each do |post|
 end
 
 search_documents.concat(post_documents(File.join(SRC, "posts")))
+search_documents.concat(archive_object_documents(File.join(SRC, "archive-objects")))
 
 search_index = {
   "schemaVersion" => "0.1.0",

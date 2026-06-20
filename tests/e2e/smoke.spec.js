@@ -16,6 +16,21 @@ test('archive page renders', async ({ page }) => {
   await expect(page).toHaveTitle(/L'Archive/)
 })
 
+test('photo archive prototype lists and renders object entries', async ({
+  page,
+}) => {
+  const listingResponse = await page.goto('/archive/objects/')
+  expect(listingResponse?.status()).toBe(200)
+  await expect(page.getByText('FI-v2.27 / 5 prototype records')).toBeVisible()
+
+  const entryResponse = await page.goto(
+    '/archive/objects/caselabs-mercury-s8-chassis/'
+  )
+  expect(entryResponse?.status()).toBe(200)
+  await expect(page.locator('h1')).toHaveText('CaseLabs Mercury S8 Chassis')
+  await expect(page.locator('.archive-photo-entry-grid img')).toHaveCount(1)
+})
+
 test('posts index lists the curated posts', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)

@@ -841,6 +841,74 @@ h3 {
   margin: 0;
 }
 
+.archive-object-prototype-grid,
+.archive-photo-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1px;
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+  list-style: none;
+}
+
+.archive-object-prototype-grid li,
+.archive-photo-entry-grid li {
+  min-width: 0;
+  background: var(--white);
+}
+
+.archive-object-prototype-grid a {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  height: 100%;
+  padding: 0.8rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.archive-object-prototype-grid a:hover,
+.archive-object-prototype-grid a:focus-visible {
+  background: rgba(255, 91, 214, 0.1);
+}
+
+.archive-object-prototype-grid img,
+.archive-photo-entry-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(79, 140, 255, 0.78);
+  object-fit: cover;
+}
+
+.archive-object-prototype-grid h3,
+.archive-object-prototype-grid p {
+  margin: 0;
+}
+
+.archive-photo-entry-grid figure {
+  margin: 0;
+  padding: 0.8rem;
+}
+
+.archive-photo-entry-grid figcaption {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 0.65rem;
+}
+
+.archive-photo-entry-grid figcaption strong {
+  color: var(--steel);
+}
+
+.archive-photo-entry-grid figcaption span {
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  line-height: 1.45;
+}
+
 .inventory-gallery-viewport {
   margin-inline: -0.42rem;
   padding: 0.42rem 0.42rem 0.8rem;
