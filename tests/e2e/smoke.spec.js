@@ -35,6 +35,20 @@ test('posts index lists the curated posts', async ({ page }) => {
   await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
 })
 
+test('En Direct lands on the imported signal', async ({ page }) => {
+  const response = await page.goto('/en-direct/')
+  expect(response?.status()).toBe(200)
+  await expect(
+    page.getByRole('heading', {
+      name: 'Latest dispatches from the live channel.',
+      level: 2,
+    })
+  ).toBeVisible()
+  await expect(page.locator('a[href="/field-notes/"]')).toContainText(
+    'Open all imported dispatches'
+  )
+})
+
 test('Atom feed is served as XML with entries', async ({ request }) => {
   const response = await request.get('/feed.xml')
   expect(response.status()).toBe(200)

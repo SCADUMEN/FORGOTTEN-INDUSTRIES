@@ -1429,6 +1429,10 @@ h3 {
   list-style: none;
 }
 
+.en-direct-signal-list {
+  margin-bottom: 1rem;
+}
+
 .field-note-card {
   display: grid;
   gap: 1rem;
