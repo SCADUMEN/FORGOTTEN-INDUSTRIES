@@ -831,6 +831,25 @@ h3 {
   padding: 0.9rem 0;
 }
 
+.archive-scroll-note {
+  margin-top: 0.8rem;
+}
+
+.archive-record-viewport {
+  max-height: min(68vh, 42rem);
+  padding: 0 1rem 0 0.15rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-block: 1px solid var(--line);
+  scrollbar-color: var(--line) transparent;
+  scrollbar-width: thin;
+}
+
+.archive-record-viewport:focus-visible {
+  outline: 2px solid var(--oxide);
+  outline-offset: 0.35rem;
+}
+
 .archive-gallery-heading {
   display: grid;
   gap: 0.35rem;
