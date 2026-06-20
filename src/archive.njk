@@ -296,13 +296,13 @@ eleventyExcludeFromCollections: true
           <strong>1</strong>
           <span>Manuels</span>
         </a>
-        <a class="stat" href="{{ site.githubUrl }}">
-          <strong>{{ site.sourceStats.sourceFiles }}</strong>
-          <span>Source files</span>
+        <a class="stat" href="/field-notes/">
+          <strong>{{ fieldnotes | count }}</strong>
+          <span>Live dispatches</span>
         </a>
-        <a class="stat" href="{{ site.githubUrl }}/commits/main">
-          <strong>{{ site.sourceStats.commits }}</strong>
-          <span>Git commits</span>
+        <a class="stat" href="/archive/social-evidence/">
+          <strong>{{ archive.socialPosts | count }}</strong>
+          <span>Recovered social</span>
         </a>
         <a class="stat" href="/archive/posts/">
           <strong>{{ collections.posts | count }}</strong>
@@ -312,13 +312,15 @@ eleventyExcludeFromCollections: true
           <strong>{{ archive.fieldLogs | count }}</strong>
           <span>ATLAS reports</span>
         </a>
-        <a class="stat" href="/field-notes/">
-          <strong>{{ fieldnotes | count }}</strong>
-          <span>Live dispatches</span>
+        <a class="stat stat-wide" href="{{ site.githubUrl }}">
+          <strong>{{ site.sourceStats.sourceFiles }}</strong>
+          <span>Source files</span>
+          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
         </a>
-        <a class="stat" href="/archive/social-evidence/">
-          <strong>{{ archive.socialPosts | count }}</strong>
-          <span>Recovered social</span>
+        <a class="stat stat-wide" href="{{ site.githubUrl }}/commits/main">
+          <strong>{{ site.sourceStats.commits }}</strong>
+          <span>Git commits</span>
+          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
         </a>
       </div>
     </div>
