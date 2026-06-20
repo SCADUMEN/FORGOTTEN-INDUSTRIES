@@ -17,9 +17,9 @@ test('home page renders', async ({ page }) => {
     /Source files/,
     /Git commits/,
   ])
-  await expect(
-    page.locator('.homepage-branch-stats .stat-adjustment')
-  ).toHaveCount(2)
+  const adjustments = page.locator('.homepage-branch-stats .stat-adjustment')
+  await expect(adjustments).toHaveCount(2)
+  await expect(adjustments).toHaveText([/[+−]?\d+/, /[+−]?\d+/])
 })
 
 test('archive page renders', async ({ page }) => {
@@ -37,6 +37,10 @@ test('archive page renders', async ({ page }) => {
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)
   await expect(wideCounters).toHaveText([/Source files/, /Git commits/])
+  await expect(page.locator('.branch-stats .stat-adjustment')).toHaveText([
+    /[+−]?\d+/,
+    /[+−]?\d+/,
+  ])
 })
 
 test('posts index lists the curated posts', async ({ page }) => {

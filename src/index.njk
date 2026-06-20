@@ -142,12 +142,16 @@ canonical: https://forgotten-industries.net/
         <a class="stat stat-wide" href="{{ site.githubUrl }}">
           <strong>{{ site.sourceStats.sourceFiles }}</strong>
           <span>Source files</span>
-          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
+          <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
+            {{ site.sourceStats.sourceFileDeltaLabel }}
+          </span>
         </a>
         <a class="stat stat-wide" href="{{ site.githubUrl }}/commits/main">
           <strong>{{ site.sourceStats.commits }}</strong>
           <span>Git commits</span>
-          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
+          <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
+            {{ site.sourceStats.commitDeltaLabel }}
+          </span>
         </a>
       </div>
     </div>
