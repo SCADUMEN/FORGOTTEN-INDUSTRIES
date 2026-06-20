@@ -13,4 +13,10 @@ layout: base.njk
     </p>
   </header>
   <div class="post-body">{{ content | safe }}</div>
+  {% if ai_assistance %}
+    {% set aiCitationLabel = ai_assistance.classification %}
+    {% set aiCitationDisclosure = ai_assistance.disclosure %}
+    {% set aiCitationReference = ai_assistance.citation %}
+    {% include "ai-citation.njk" %}
+  {% endif %}
 </article>

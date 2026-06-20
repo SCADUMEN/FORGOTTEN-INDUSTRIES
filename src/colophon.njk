@@ -33,7 +33,7 @@ eleventyExcludeFromCollections: true
       <p>
         The release also added <code>robots.txt</code>, rebuilt
         <code>sitemap.xml</code> around normalized public URLs, included every
-        generated Field Log page in the sitemap, and made Field Log records linked
+        generated ATLAS Report page in the sitemap, and made ATLAS Reports linked
         from Le Signal so crawlers and readers can follow the route without
         JavaScript.
       </p>
@@ -55,19 +55,17 @@ eleventyExcludeFromCollections: true
     </div>
 
     <div class="callout">
-      <h3>Codex-assisted build work</h3>
+      <h3>System-level disclosure</h3>
       <p>
-        FI-v2.25 was implemented with Matthew Marx directing OpenAI Codex inside
-        the Forgotten Industries repository. Codex assisted with the audit,
-        source edits, generated-output inspection, verification commands, and
-        release report.
+        {{ site.aiProvenance.shortDisclosure }}
       </p>
       <p>
-        Matthew remains the author, maintainer, and final editorial authority.
-        AI assistance is recorded as process provenance, not as independent
-        source evidence. The archive remains governed by the tracked files,
-        commit history, preserved branches, and inspectable generated outputs.
+        AI assistance is process provenance, not independent source evidence.
+        The archive remains governed by canonical records, source files, tracked
+        commits, preserved snapshots, and Matthew's final review.
       </p>
+      <p class="ai-citation-reference"><strong>Site citation:</strong> {{ site.aiProvenance.siteCitation }}</p>
+      <p class="action-row"><a href="{{ site.aiProvenance.standardUrl }}">Read the AI generation citation standard</a></p>
     </div>
   </div>
 </section>

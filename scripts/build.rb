@@ -178,7 +178,9 @@ social_posts_path = File.join(ROOT, "src/data/social-posts.yml")
 
 projects = assert_array!(load_yaml(projects_path), "projects", projects_path)
 inventory = assert_array!(load_yaml(inventory_path), "items", inventory_path)
-field_logs = assert_array!(load_yaml(field_logs_path), "field_logs", field_logs_path)
+field_logs_data = load_yaml(field_logs_path)
+atlas_report_provenance = field_logs_data.fetch("ai_generation")
+field_logs = assert_array!(field_logs_data, "field_logs", field_logs_path)
 voice_logs = assert_array!(load_yaml(voice_logs_path), "voice_logs", voice_logs_path)
 social_posts =
   if File.exist?(social_posts_path)
@@ -216,6 +218,7 @@ archive = {
   },
   "projects" => projects,
   "inventory" => inventory,
+  "atlasReportProvenance" => atlas_report_provenance,
   "fieldLogs" => field_logs,
   "voiceLogs" => voice_logs,
   "socialPosts" => social_posts

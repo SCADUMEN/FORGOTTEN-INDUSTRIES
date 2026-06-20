@@ -87,6 +87,28 @@ describe('archive crawlability output', () => {
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
   })
 
+  it('renders system and content-level AI provenance citations', () => {
+    const archive = JSON.parse(
+      fs.readFileSync(path.join(DIST, 'forgotten-industries.json'), 'utf8')
+    )
+    const home = readSite('index.html')
+    const report = readSite('field-logs/playonline-senses-weakness/index.html')
+    const entry = readSite(
+      'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html'
+    )
+
+    expect(archive.atlasReportProvenance).toMatchObject({
+      human_authority: 'Matthew Taylor Marx',
+      operating_layer: 'ATLAS',
+      editorial_system: 'OpenAI ChatGPT',
+      implementation_system: 'OpenAI Codex',
+    })
+    expect(home).toContain('Site AI provenance footnote')
+    expect(report).toContain('AI-generated synthesis with human direction')
+    expect(report).toContain('generated with ATLAS through OpenAI ChatGPT')
+    expect(entry).toContain('AI-assisted editorial collaboration')
+  })
+
   it('does not emit duplicate canonical URLs for built HTML pages', () => {
     const htmlFiles = []
 
@@ -94,6 +116,7 @@ describe('archive crawlability output', () => {
       for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
         const fullPath = path.join(directory, entry.name)
         if (entry.isDirectory()) {
+          if (fullPath.startsWith(path.join(SITE, 'site-snapshots'))) continue
           walk(fullPath)
         } else if (entry.name.endsWith('.html')) {
           htmlFiles.push(fullPath)

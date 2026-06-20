@@ -101,6 +101,11 @@ eleventyComputed:
       </section>
       {% endfor %}
     </article>
+
+    {% set aiCitationLabel = archive.atlasReportProvenance.classification %}
+    {% set aiCitationDisclosure = archive.atlasReportProvenance.disclosure %}
+    {% set aiCitationReference %}Matthew Taylor Marx, director and editor. “{{ log.title }}.” ATLAS Report, generated with ATLAS through OpenAI ChatGPT; repository publication assisted by OpenAI Codex. Forgotten Industries, {{ log.date }}.{% endset %}
+    {% include "ai-citation.njk" %}
   </div>
 </section>
 

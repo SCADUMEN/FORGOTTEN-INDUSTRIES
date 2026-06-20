@@ -7,6 +7,17 @@ entry: "000"
 date: "2026-06-06"
 status: "draft"
 description: "The Forgotten Industries prelude: death, inheritance, recovery, watercooling, evidence, and the strange mercy of finding what survived."
+ai_assistance:
+  classification: AI-assisted editorial collaboration
+  disclosure: >
+    Written, directed, reviewed, and authorized by Matthew Taylor Marx.
+    ATLAS and OpenAI ChatGPT assisted editorial development, organization, and
+    revision. OpenAI Codex assisted repository publication and verification.
+  citation: >
+    Marx, Matthew Taylor, author and editor. “A Thing Documented Is a Thing Not
+    Yet Lost.” AI-assisted editorial collaboration with ATLAS and OpenAI
+    ChatGPT; repository publication assisted by OpenAI Codex. Forgotten
+    Industries, 2026-06-06.
 tags:
   - prelude
   - signal-check

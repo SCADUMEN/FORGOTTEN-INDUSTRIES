@@ -15,6 +15,7 @@ module.exports = function () {
       meta: {},
       projects: [],
       inventory: [],
+      atlasReportProvenance: {},
       fieldLogs: [],
       voiceLogs: [],
       socialPosts: [],

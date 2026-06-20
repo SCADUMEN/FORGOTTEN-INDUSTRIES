@@ -1,3 +1,16 @@
+ai_generation:
+  classification: AI-generated synthesis with human direction and review
+  human_authority: Matthew Taylor Marx
+  operating_layer: ATLAS
+  editorial_system: OpenAI ChatGPT
+  implementation_system: OpenAI Codex
+  disclosure: >
+    ATLAS Reports are AI-generated end-of-day syntheses prepared from
+    operator-provided context and canonical archive records. Matthew Taylor
+    Marx directs, reviews, corrects, and authorizes publication. ATLAS provides
+    the project operating layer, ChatGPT assists generation and editorial
+    synthesis, and Codex assists repository implementation and verification.
+
 field_logs:
   - id: FI-LOG-001
     slug: rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule

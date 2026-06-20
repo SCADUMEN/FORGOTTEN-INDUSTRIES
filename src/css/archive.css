@@ -1358,6 +1358,29 @@ h3 {
   color: var(--muted);
 }
 
+.ai-citation {
+  margin-top: 2.5rem;
+  border: 1px solid var(--line);
+  border-left: 0.35rem solid var(--oxide);
+  padding: 1rem;
+  background: rgba(255, 91, 214, 0.07);
+}
+
+.ai-citation p {
+  margin: 0.5rem 0 0;
+}
+
+.ai-citation .section-label {
+  margin-top: 0;
+}
+
+.ai-citation-reference {
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  line-height: 1.55;
+}
+
 .field-notes-heading {
   max-width: 48rem;
   padding: 2rem 0 1.2rem;
@@ -1751,6 +1774,17 @@ h3 {
   padding: 1.5rem 0 2rem;
   color: var(--muted);
   font-size: var(--mono-size);
+}
+
+.site-ai-footnote {
+  max-width: 68rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.8rem;
+}
+
+.site-ai-footnote p {
+  margin: 0.35rem 0 0;
 }
 
 .footer-grid {

@@ -80,6 +80,15 @@ export interface FieldLogSection {
   body: string
 }
 
+export interface AtlasReportProvenance {
+  classification: string
+  human_authority: string
+  operating_layer: string
+  editorial_system: string
+  implementation_system: string
+  disclosure: string
+}
+
 export interface FieldLog {
   id: string
   slug: string
@@ -146,6 +155,7 @@ export interface ForgottenIndustriesArchive {
   meta: ArchiveMeta
   projects: ArchiveProject[]
   inventory: InventoryItem[]
+  atlasReportProvenance: AtlasReportProvenance
   fieldLogs: FieldLog[]
   voiceLogs: VoiceFieldLog[]
   socialPosts: SocialPost[]
