@@ -14,6 +14,44 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
+<section class="source-band" aria-labelledby="imported-signal-heading">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label">Imported Signal</p>
+      <h2 id="imported-signal-heading">Latest dispatches from the live channel.</h2>
+      <p class="entry-note">Newest first / imported from Bluesky at build time</p>
+    </div>
+
+    {% if fieldnotes.length %}
+    <ol class="field-note-list en-direct-signal-list">
+      {% for note in fieldnotes %}
+      {% if loop.index <= 3 %}
+      <li class="field-note-card">
+        <header>
+          <time datetime="{{ note.createdAt | isoDate }}">{{ note.createdAt | readableDate }}</time>
+          <a href="{{ note.url }}" data-track="outbound-field-note">Source</a>
+        </header>
+        <p>{{ note.text | escape | nl2br | safe }}</p>
+        <footer aria-label="Bluesky engagement">
+          <span>{{ note.replyCount }} replies</span>
+          <span>{{ note.repostCount }} reposts</span>
+          <span>{{ note.likeCount }} likes</span>
+        </footer>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+    {% else %}
+    <div class="callout field-note-empty">
+      <h3>Import Pending</h3>
+      <p>No dispatches were available during this build. The live feed remains available on Bluesky.</p>
+      <p class="action-row"><a href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">Open live Bluesky feed</a></p>
+    </div>
+    {% endif %}
+    <p class="action-row"><a href="/field-notes/">Open all imported dispatches</a></p>
+  </div>
+</section>
+
 <section class="evidence-band" aria-labelledby="en-direct-lanes">
   <div class="section-inner">
     <div class="field-notes-heading">
@@ -23,10 +61,10 @@ eleventyExcludeFromCollections: true
 
     <ul class="lane-list" aria-label="En Direct channels">
       <li>
-        <a class="panel-link" href="/field-notes/">
+        <a class="panel-link" href="#imported-signal-heading">
           <span>Live Dispatches</span>
           <h3>Imported Signal</h3>
-          <p>Imported dispatches from the live Bluesky feed, archived on-site as the public signal copy.</p>
+          <p>The newest imported dispatches now land here. The complete archive remains available on-site.</p>
         </a>
       </li>
       <li>
