@@ -8,6 +8,18 @@ test('home page renders', async ({ page }) => {
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle('Forgotten Industries')
   await expect(page.locator('h1')).toContainText('Forgotten Industries')
+
+  const wideCounters = page.locator('.homepage-branch-stats .stat-wide')
+  await expect(wideCounters).toHaveCount(4)
+  await expect(wideCounters).toHaveText([
+    /Projets/,
+    /Manuels/,
+    /Source files/,
+    /Git commits/,
+  ])
+  await expect(
+    page.locator('.homepage-branch-stats .stat-adjustment')
+  ).toHaveCount(2)
 })
 
 test('archive page renders', async ({ page }) => {
