@@ -105,6 +105,14 @@ module.exports = {
   buildTime: new Date().toISOString(),
   archiveState: new Date().toISOString().slice(0, 10),
   generator: "L'ARCHIVE Builder",
+  aiProvenance: {
+    standardUrl: '/docs/ai-generation-citation-standard.md',
+    colophonUrl: '/colophon/#ai-generation-heading',
+    shortDisclosure:
+      'Matthew Taylor Marx directs, reviews, and authorizes publication. ATLAS is the project operating layer; OpenAI ChatGPT assists editorial synthesis; OpenAI Codex assists repository implementation and verification.',
+    siteCitation:
+      'Marx, Matthew Taylor, director and editor. Forgotten Industries. Developed with the ATLAS operating layer; editorial assistance from OpenAI ChatGPT; repository implementation assistance from OpenAI Codex.',
+  },
   gitHash,
   gitHashShort,
   sourceStats,

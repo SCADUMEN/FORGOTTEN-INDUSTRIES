@@ -116,6 +116,10 @@
       / Build Time:
       <time datetime="{{ site.buildTime }}">{{ site.buildTime }}</time>
     </p>
+    <aside class="site-ai-footnote" role="note" aria-label="Site AI provenance footnote">
+      <p><strong>AI provenance:</strong> {{ site.aiProvenance.shortDisclosure }}</p>
+      <p class="entry-note"><a href="{{ site.aiProvenance.colophonUrl }}">Colophon</a> / <a href="{{ site.aiProvenance.standardUrl }}">citation standard</a></p>
+    </aside>
   </footer>
   {% if site.analytics.googleMeasurementId %}
   <script>

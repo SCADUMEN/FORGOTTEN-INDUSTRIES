@@ -187,6 +187,7 @@ The archive is not published as an npm package yet. When it is ready:
 - `src/posts/social/` — generated Markdown posts from imported social content, copied verbatim to `/posts/social/`.
 - `src/docs/archive-photo-procedure.md` — archive photography and object intake procedure.
 - `src/docs/obs-archive-station-procedure.md` — fixed-camera OBS archive station procedure.
+- `src/docs/ai-generation-citation-standard.md` — required provenance format for ATLAS, ChatGPT, and Codex assistance.
 - `src/docs/potato-dossier.md` — companion / lab partner context for Potato.
 - `src/templates/field-log.md` — Markdown field log template.
 - `src/templates/voice-field-log.yml` — metadata template for recorder Field Log entries.

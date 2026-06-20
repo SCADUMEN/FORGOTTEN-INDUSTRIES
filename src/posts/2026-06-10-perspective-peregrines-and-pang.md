@@ -7,6 +7,17 @@ entry: "001"
 date: "2026-06-10"
 status: "draft"
 description: "The first Forgotten Industries field doctrine: perspective as changed view, Peregrine as pocket elevation, and pang as the moment an abandoned object becomes evidence again."
+ai_assistance:
+  classification: AI-assisted editorial collaboration
+  disclosure: >
+    Written, directed, reviewed, and authorized by Matthew Taylor Marx.
+    ATLAS and OpenAI ChatGPT assisted editorial development, organization, and
+    revision. OpenAI Codex assisted repository publication and verification.
+  citation: >
+    Marx, Matthew Taylor, author and editor. “Perspective, Peregrines, & Pang.”
+    AI-assisted editorial collaboration with ATLAS and OpenAI ChatGPT;
+    repository publication assisted by OpenAI Codex. Forgotten Industries,
+    2026-06-10.
 tags:
   - entry-001
   - field-doctrine
