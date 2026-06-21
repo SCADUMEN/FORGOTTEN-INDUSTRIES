@@ -89,7 +89,10 @@ test('archive page renders', async ({ page }) => {
     /[+−]?\d+/,
   ])
   await expect(page.locator('.archive-curator-note')).toContainText(
-    'Uncertainty is preserved rather than removed.'
+    "L'Archive preserves uncertainty rather than removes it."
+  )
+  await expect(page.locator('.archive-curator-note')).toContainText(
+    'A thing not documented is a thing already lost.'
   )
   await expect(page.locator('.archive-search-band')).toContainText(
     'Archives are searched.'
@@ -104,9 +107,53 @@ test('archive page renders', async ({ page }) => {
   await expect(page.locator('.archive-finding-aid')).toContainText(
     'Recovered Social Records'
   )
+  await expect(page.locator('.archive-finding-aid')).toContainText(
+    'Archive Shelves'
+  )
+  await expect(page.locator('.archive-finding-aid')).not.toContainText(
+    'The Preserved Record'
+  )
+
+  const gallery = page.locator('.inventory-gallery-viewport')
+  await expect(gallery).toBeVisible()
+  await expect(gallery).toHaveAttribute('tabindex', '0')
+  await expect(page.locator('.inventory-gallery-track')).toHaveCSS(
+    'grid-template-columns',
+    /.+/
+  )
+
+  await page.getByRole('searchbox', { name: "Search L'Archive" }).fill('Pang')
+  await expect(page.locator('#archive-search-results')).toContainText('Pang')
+
   await expect(
     page.locator('a[href="/forgotten-industries/l-archive/caselabs-s8/"]')
   ).toContainText('CaseLabs Mercury S8')
+})
+
+test('archive page remains contained and uses an intentional object shelf on mobile', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 393, height: 852 })
+  const response = await page.goto('/archive/')
+  expect(response?.status()).toBe(200)
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+    galleryScrollWidth: document.querySelector('.inventory-gallery-viewport')
+      ?.scrollWidth,
+    galleryClientWidth: document.querySelector('.inventory-gallery-viewport')
+      ?.clientWidth,
+  }))
+
+  expect(dimensions.scrollWidth).toBe(dimensions.viewport)
+  expect(dimensions.galleryScrollWidth).toBeGreaterThan(
+    dimensions.galleryClientWidth
+  )
+  await expect(page.locator('.inventory-gallery-viewport')).toHaveCSS(
+    'overflow-x',
+    'auto'
+  )
 })
 
 test('object records render image-first museum entries and social images', async ({

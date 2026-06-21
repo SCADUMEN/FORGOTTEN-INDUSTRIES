@@ -875,20 +875,31 @@ h3 {
   margin: 0;
 }
 
+.archive-gallery-note {
+  margin: 0;
+  color: var(--muted);
+}
+
 .inventory-gallery-viewport {
   margin-inline: -0.42rem;
-  padding: 0.42rem 0.42rem 0.8rem;
-  overflow-x: auto;
+  max-height: min(72vh, 50rem);
+  padding: 0.42rem 0.7rem 0.8rem 0.42rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   scrollbar-color: var(--line) transparent;
   scrollbar-width: thin;
 }
 
+.inventory-gallery-viewport:focus-visible {
+  outline: 2px solid var(--oxide);
+  outline-offset: 0.2rem;
+}
+
 .inventory-gallery-track {
   display: grid;
-  grid-auto-columns: minmax(12rem, 15.5rem);
-  grid-auto-flow: column;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  width: max-content;
+  width: 100%;
   margin: 0;
   padding: 0.42rem;
   list-style: none;
@@ -901,7 +912,8 @@ h3 {
 .inventory-gallery-card figure {
   display: grid;
   grid-template-rows: auto 1fr;
-  min-height: 18rem;
+  height: 100%;
+  min-height: 19rem;
   margin: 0;
   border: 1px solid rgba(79, 140, 255, 0.78);
   background:
@@ -968,6 +980,60 @@ h3 {
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.05;
   text-transform: uppercase;
+}
+
+.archive-page-section .band-grid > :first-child {
+  grid-row: 1;
+  padding-top: 0;
+  padding-bottom: 1rem;
+  border-top: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-page-section .band-grid > :last-child {
+  grid-row: 2;
+}
+
+.archive-instrumentation .band-grid {
+  gap: 0.75rem;
+}
+
+.archive-instrumentation .stats {
+  margin-top: 0;
+  background: rgba(79, 140, 255, 0.46);
+}
+
+.archive-instrumentation .stat {
+  min-height: 5.6rem;
+  padding: 0.75rem 0.85rem;
+  background: rgba(8, 19, 39, 0.82);
+  box-shadow: none;
+}
+
+.archive-instrumentation .stat:hover {
+  background: rgba(79, 140, 255, 0.14);
+}
+
+.archive-instrumentation .stat strong {
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.archive-instrumentation .stat span {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.archive-instrumentation .stat .stat-adjustment {
+  right: 0.75rem;
+  bottom: 0.65rem;
+  max-width: 55%;
+  margin: 0;
+  color: var(--steel);
+  font-size: 0.68rem;
+  text-align: right;
 }
 
 .public-spine {
@@ -2167,23 +2233,34 @@ h3 {
 
 .archive-curator-note {
   display: grid;
-  grid-template-columns: minmax(8rem, 0.2fr) minmax(0, 1fr);
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 1.25rem;
   padding: 1.1rem 1.25rem;
-  border: 1px solid rgba(79, 140, 255, 0.72);
+  border: 1px solid rgba(255, 91, 214, 0.76);
   background:
-    linear-gradient(135deg, rgba(79, 140, 255, 0.13), rgba(255, 91, 214, 0.05)),
+    linear-gradient(135deg, rgba(255, 91, 214, 0.15), rgba(79, 140, 255, 0.07)),
     var(--white);
-  box-shadow: -0.3rem -0.3rem 0 rgba(79, 140, 255, 0.2);
+  box-shadow:
+    -0.3rem -0.3rem 0 rgba(255, 91, 214, 0.22),
+    0.3rem 0.3rem 0 rgba(79, 140, 255, 0.14);
 }
 
-.archive-curator-note p {
+.archive-curator-note .section-label {
   margin: 0;
+  align-self: start;
+  white-space: nowrap;
 }
 
-.archive-curator-note > p:last-child {
+.archive-curator-statement {
   max-width: 64rem;
-  color: var(--muted);
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--oxide);
+  color: var(--ink);
+  font-family: var(--editorial-font);
+  font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.55;
 }
 
 .archive-aerial-plate {
@@ -2576,6 +2653,10 @@ h3 {
 }
 
 @media (max-width: 900px) {
+  .inventory-gallery-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .homepage-instrument-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2622,6 +2703,25 @@ h3 {
 
   .object-primary-figure > a {
     min-height: 18rem;
+  }
+
+  .inventory-gallery-viewport {
+    max-height: none;
+    padding-right: 0.42rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+  }
+
+  .inventory-gallery-track {
+    grid-auto-columns: minmax(14rem, 78vw);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    width: max-content;
+  }
+
+  .inventory-gallery-card {
+    scroll-snap-align: start;
   }
 }
 
