@@ -83,14 +83,101 @@ test('archive page renders', async ({ page }) => {
 
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)
-  await expect(wideCounters).toHaveText([/Source files/, /Git commits/])
+  await expect(wideCounters).toHaveText([/Objects catalogued/, /Git commits/])
   await expect(page.locator('.branch-stats .stat-adjustment')).toHaveText([
-    /[+−]?\d+/,
+    /Live canonical inventory/,
     /[+−]?\d+/,
   ])
+  await expect(page.locator('.archive-curator-note')).toContainText(
+    'Uncertainty is preserved rather than removed.'
+  )
+  await expect(page.locator('.archive-search-band')).toContainText(
+    'Archives are searched.'
+  )
+  await expect(page.locator('.archive-aerial-plate')).toContainText(
+    'Context recovered from altitude.'
+  )
+  await expect(page.locator('.archive-aerial-plate')).toHaveAttribute(
+    'href',
+    '/archive/aerial-documentation/'
+  )
+  await expect(page.locator('.archive-finding-aid')).toContainText(
+    'Recovered Social Records'
+  )
   await expect(
     page.locator('a[href="/forgotten-industries/l-archive/caselabs-s8/"]')
   ).toContainText('CaseLabs Mercury S8')
+})
+
+test('object records render image-first museum entries and social images', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive/objects/fi-case-001/')
+  expect(response?.status()).toBe(200)
+
+  const primaryImage = page.locator('.object-primary-figure img')
+  await expect(primaryImage).toBeVisible()
+  await expect(primaryImage).toHaveAttribute(
+    'src',
+    '/assets/initial-photos/matthewmarx-046.jpeg'
+  )
+  await expect(primaryImage).toHaveAttribute(
+    'alt',
+    'FI-CASE-001 — CaseLabs Mercury S8'
+  )
+  await expect(page.locator('.object-thumbnail-strip a')).toHaveCount(16)
+  await expect(page.locator('.object-metadata-grid dt')).toHaveText([
+    'Identity',
+    'Project',
+    'Condition',
+    'Status',
+    'Disposition',
+    'Build relevance',
+  ])
+
+  const layout = await page.evaluate(() => ({
+    imageBottom: document
+      .querySelector('.object-visual-band')
+      ?.getBoundingClientRect().bottom,
+    metadataTop: document
+      .querySelector('.object-metadata-band')
+      ?.getBoundingClientRect().top,
+  }))
+  expect(layout.metadataTop).toBeGreaterThanOrEqual(layout.imageBottom)
+
+  await expect(
+    page.locator('.object-source-assets details')
+  ).not.toHaveAttribute('open', '')
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    'content',
+    'https://forgotten-industries.net/assets/initial-photos/matthewmarx-046.jpeg'
+  )
+})
+
+test('object records without photographs show a restrained placeholder', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive/objects/fi-ped-001/')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('.object-image-placeholder')).toContainText(
+    'No image available'
+  )
+  await expect(page.locator('.object-primary-figure')).toHaveCount(0)
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    'content',
+    'https://forgotten-industries.net/assets/forgotten-industries.jpeg'
+  )
+})
+
+test('archive compatibility route contains a real archive link', async ({
+  request,
+}) => {
+  const response = await request.get('/archive.html', { maxRedirects: 0 })
+  expect(response.status()).toBe(200)
+  const body = await response.text()
+  expect(body).toContain('<a href="/archive/">/archive/</a>')
+  expect(body).not.toContain('&lt;/archive/&gt;')
+  expect(body).not.toContain('</archive/>')
 })
 
 test('posts index lists the curated posts', async ({ page }) => {

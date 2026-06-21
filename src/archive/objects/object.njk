@@ -8,115 +8,210 @@ permalink: "/archive/objects/{{ object.id | archiveSlug }}/"
 eleventyComputed:
   title: "L'Archive / Object / {{ object.name }}"
   description: "{{ object.condition }}. {{ object.status }}."
+  image: "{{ object | objectPrimaryImage }}"
+  imageAlt: "{{ object.id }} — {{ object.name }}"
 eleventyExcludeFromCollections: true
 ---
-<section class="masthead">
-  <div class="section-inner">
-    <p class="section-label">Object Record / {{ object.id }}</p>
-    <h1>{{ object.name }}</h1>
-    <p class="tagline">{{ object.condition }}. {{ object.status }}.</p>
-  </div>
-</section>
+{% set publicPhotos = object | publicObjectPhotos %}
+{% set project = archive.projects | findById(object.associated_project) %}
+{% set relatedObjects = archive.inventory | relatedObjects(object) %}
+{% set projectLogs = archive.fieldLogs | fieldLogsForProject(object.associated_project) %}
 
-<section class="source-band">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">{{ object.category }}</p>
-      <h2>Catalog state.</h2>
+<article class="object-record">
+  <header class="section-landing-hero object-record-hero">
+    <div class="section-inner">
+      <p class="section-label">Object Record / {{ object.id }}</p>
+      <h1>{{ object.name }}</h1>
+      <p class="tagline">{{ object.condition }} / {{ object.status }}</p>
     </div>
+  </header>
 
-    <ul class="link-list">
-      <li>
-        <h3>Identity</h3>
-        <p>{{ object.manufacturer or "Unknown manufacturer" }}{% if object.model %} / {{ object.model }}{% endif %}</p>
-      </li>
-      <li>
-        <h3>Project</h3>
-        <p><a href="{{ object.associated_project | archiveProjectIdUrl(archive.projects) }}">{{ object.associated_project }}</a></p>
-      </li>
-      <li>
-        <h3>Condition</h3>
-        <p>{{ object.condition }}</p>
-      </li>
-      <li>
-        <h3>Status</h3>
-        <p>{{ object.status }}</p>
-      </li>
-      <li>
-        <h3>Disposition</h3>
-        <p>{{ object.keep_sell_archive or "unassigned" }}</p>
-      </li>
-    </ul>
-  </div>
-</section>
+  <section class="object-visual-band" aria-labelledby="object-visual-heading">
+    <div class="section-inner">
+      <div class="object-section-heading">
+        <p class="section-label">Primary evidence</p>
+        <h2 id="object-visual-heading">The object before the record.</h2>
+      </div>
 
-<section class="evidence-band">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Record Notes</p>
-      <h2>Do not flatten uncertainty.</h2>
-    </div>
+      {% if publicPhotos.length %}
+      <figure class="object-primary-figure">
+        <a href="/{{ publicPhotos[0] }}">
+          <img
+            src="/{{ publicPhotos[0] }}"
+            alt="{{ object.id }} — {{ object.name }}"
+          >
+        </a>
+        <figcaption>{{ object.id }} / {{ object.name }} / source photograph 01</figcaption>
+      </figure>
 
-    <div class="callout">
-      <h3>{{ object.id }}</h3>
-      <p>{{ object.notes or "No notes recorded yet." }}</p>
-      <p class="entry-note">
-        logged {{ object.date_logged }}{% if object.quantity %} / quantity: {{ object.quantity }}{% endif %}
-      </p>
-    </div>
-  </div>
-</section>
-
-{% if object.photos and object.photos.length %}
-<section class="source-band">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">{{ object.photos.length }} photo{% if object.photos.length != 1 %}s{% endif %}</p>
-      <h2>Source references.</h2>
-    </div>
-
-    <ul class="link-list archive-record-list">
-      {% for photo in object.photos %}
-      <li>
-        <p class="entry-note">{{ photo }}</p>
-        {% if photo.indexOf("assets/") == 0 or photo.indexOf("forgotten-industries/") == 0 %}
-        <h3><a href="/{{ photo }}">Open local asset</a></h3>
-        {% else %}
-        <h3>{{ photo }}</h3>
+      {% if publicPhotos.length > 1 %}
+      <div class="object-thumbnail-strip" aria-label="Additional source photographs">
+        {% for photo in publicPhotos %}
+        {% if not loop.first %}
+        <a href="/{{ photo }}">
+          <img
+            src="/{{ photo }}"
+            alt="{{ object.id }} — {{ object.name }} / source photograph {{ loop.index }}"
+            loading="lazy"
+          >
+          <span>Photo {{ loop.index }}</span>
+        </a>
         {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-{% endif %}
-
-<section class="evidence-band">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Routes</p>
-      <h2>Keep the object connected.</h2>
-    </div>
-
-    <ul class="link-list">
-      {% if object.archive_entry %}
-      <li>
-        <h3><a href="{{ object.archive_entry }}">Detailed L’Archive entry</a></h3>
-        <p>Photographic record, provisional identification, build relevance, and reconciliation notes.</p>
-      </li>
+        {% endfor %}
+      </div>
       {% endif %}
-      <li>
-        <h3><a href="/archive/objects/">Object index</a></h3>
-        <p>All generated object and component pages.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/inventory/">Inventory shelf</a></h3>
-        <p>The canonical inventory list backed by <code>src/data/inventory.yml</code>.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/categories/{{ object.category | archiveSlug }}/">{{ object.category }}</a></h3>
-        <p>Browse records in the same category.</p>
-      </li>
-    </ul>
-  </div>
-</section>
+      {% else %}
+      <div class="object-image-placeholder" role="img" aria-label="No image available for {{ object.id }} — {{ object.name }}">
+        <span>{{ object.id }}</span>
+        <strong>No image available</strong>
+        <p>Source photography has not yet been registered for this object.</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="source-band object-metadata-band" aria-labelledby="object-metadata-heading">
+    <div class="section-inner">
+      <div class="object-section-heading">
+        <p class="section-label">Catalog state / {{ object.category }}</p>
+        <h2 id="object-metadata-heading">Metadata supports the object.</h2>
+      </div>
+
+      <dl class="object-metadata-grid">
+        <div>
+          <dt>Identity</dt>
+          <dd>{{ object.id }} / {{ object.manufacturer or "Unknown manufacturer" }}{% if object.model %} / {{ object.model }}{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Project</dt>
+          <dd>{% if project %}<a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a>{% else %}{{ object.associated_project or "Unassigned" }}{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Condition</dt>
+          <dd>{{ object.condition }}</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>{{ object.status }}</dd>
+        </div>
+        <div>
+          <dt>Disposition</dt>
+          <dd>{{ object.keep_sell_archive or "Unassigned" }}</dd>
+        </div>
+        <div>
+          <dt>Build relevance</dt>
+          <dd>{% if project %}{{ project.status }} / {{ project.category }}{% else %}No project relationship recorded.{% endif %}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="evidence-band object-narrative-band" aria-labelledby="object-narrative-heading">
+    <div class="section-inner">
+      <div class="object-section-heading">
+        <p class="section-label">Narrative record</p>
+        <h2 id="object-narrative-heading">Evidence, relevance, and unresolved state.</h2>
+      </div>
+
+      <div class="object-narrative-grid">
+        <section>
+          <p class="section-label">Provenance</p>
+          <h3>Custody record</h3>
+          <p>Logged {{ object.date_logged }}{% if object.quantity %} / quantity {{ object.quantity }}{% endif %}. {{ object.photos | count }} source asset reference{% if object.photos.length != 1 %}s{% endif %} registered.</p>
+        </section>
+        <section>
+          <p class="section-label">Identification notes</p>
+          <h3>What is known</h3>
+          <p>{{ object.notes or "No identification notes recorded yet." }}</p>
+        </section>
+        <section>
+          <p class="section-label">Restoration relevance</p>
+          <h3>Why it remains connected</h3>
+          <p>{{ object.status }}. Disposition: {{ object.keep_sell_archive or "unassigned" }}.{% if project %} The object remains associated with <a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a>.{% endif %}</p>
+        </section>
+        <section>
+          <p class="section-label">Uncertainty notes</p>
+          <h3>What remains unresolved</h3>
+          <p>{{ object.condition }}. {{ object.status }}. Terms marked unknown, provisional, pending, or unverified remain part of the record until evidence resolves them.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="source-band object-relationships-band" aria-labelledby="object-relationships-heading">
+    <div class="section-inner band-grid">
+      <div>
+        <p class="section-label">Relationships</p>
+        <h2 id="object-relationships-heading">Keep the object connected.</h2>
+      </div>
+
+      <div class="object-relationship-groups">
+        {% if relatedObjects.length %}
+        <section>
+          <p class="section-label">Related objects</p>
+          <ul>
+            {% for related in relatedObjects %}
+            <li><a href="{{ related | archiveObjectUrl }}">{{ related.id }} / {{ related.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if project %}
+        <section>
+          <p class="section-label">Parent system</p>
+          <h3><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></h3>
+          <p>{{ project.summary }}</p>
+          <p class="entry-note">Associated project / {{ project.id }} / {{ project.status }}</p>
+        </section>
+        {% endif %}
+
+        {% if projectLogs.length %}
+        <section>
+          <p class="section-label">Field logs / dossiers</p>
+          <ul>
+            {% for log in projectLogs %}
+            <li><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        <section>
+          <p class="section-label">Archive routes</p>
+          <ul>
+            {% if object.archive_entry %}
+            <li><a href="{{ object.archive_entry }}">Detailed L'Archive entry</a></li>
+            {% endif %}
+            <li><a href="/archive/objects/">Object index</a></li>
+            <li><a href="/archive/inventory/">Inventory shelf</a></li>
+            <li><a href="/archive/categories/{{ object.category | archiveSlug }}/">{{ object.category }} records</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  {% if object.photos and object.photos.length %}
+  <section class="evidence-band object-source-assets" aria-labelledby="object-source-assets-heading">
+    <div class="section-inner">
+      <details>
+        <summary id="object-source-assets-heading">Source Assets / {{ object.photos.length }} reference{% if object.photos.length != 1 %}s{% endif %}</summary>
+        <p>Raw archive paths are retained for provenance and maintenance. They are not the primary object presentation.</p>
+        <ol>
+          {% for photo in object.photos %}
+          <li>
+            <code>{{ photo }}</code>
+            {% if photo.indexOf("assets/") == 0 or photo.indexOf("forgotten-industries/") == 0 %}
+            <a href="/{{ photo }}">Open local asset</a>
+            {% else %}
+            <span>Source path not published</span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </details>
+    </div>
+  </section>
+  {% endif %}
+</article>

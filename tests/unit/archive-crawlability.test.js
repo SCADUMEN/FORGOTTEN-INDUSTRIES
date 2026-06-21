@@ -120,10 +120,45 @@ describe('archive crawlability output', () => {
     expect(home).toContain('Build Checks')
     expect(home).toContain('Git Commits')
     expect(home).not.toContain('Source Files')
-    expect(home).not.toContain('Social Records')
+    expect(home).not.toContain('>Social Evidence<')
     expect(report).toContain('AI-generated synthesis with human direction')
     expect(report).toContain('generated with ATLAS through OpenAI ChatGPT')
     expect(entry).toContain('AI-assisted editorial collaboration')
+  })
+
+  it('renders object records as image-first entries with object social images', () => {
+    const photographed = readSite('archive/objects/fi-case-001/index.html')
+    const unphotographed = readSite('archive/objects/fi-ped-001/index.html')
+
+    expect(photographed).toContain('class="object-primary-figure"')
+    expect(photographed).toContain('class="object-thumbnail-strip"')
+    expect(photographed).toContain('class="object-metadata-grid"')
+    expect(photographed).toContain(
+      '<summary id="object-source-assets-heading">'
+    )
+    expect(photographed).toContain(
+      '<meta property="og:image" content="https://forgotten-industries.net/assets/initial-photos/matthewmarx-046.jpeg">'
+    )
+    expect(unphotographed).toContain('No image available')
+    expect(unphotographed).toContain(
+      '<meta property="og:image" content="https://forgotten-industries.net/assets/forgotten-industries.jpeg">'
+    )
+  })
+
+  it('keeps the maker plate on generated record page types', () => {
+    const generatedPages = [
+      'archive/objects/fi-case-001/index.html',
+      'archive/projects/caselabs-mercury-s8-pedestal-restoration/index.html',
+      'field-logs/rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule/index.html',
+      'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html',
+    ]
+
+    for (const pagePath of generatedPages) {
+      const html = readSite(pagePath)
+      expect(html).toContain('class="site-footer"')
+      expect(html).toContain('href="/provenance/"')
+      expect(html).toContain('Last Revised:')
+    }
   })
 
   it('does not emit duplicate canonical URLs for built HTML pages', () => {
