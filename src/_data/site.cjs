@@ -174,6 +174,7 @@ module.exports = {
   gitHash,
   gitHashShort,
   sourceStats,
+  buildChecks: ['Format', 'Archive build', 'Unit tests', 'Browser smoke tests'],
   // Cache-busting token for static assets (see base.njk). Changes every commit.
   assetVersion: gitHashShort,
   url: 'https://forgotten-industries.net',

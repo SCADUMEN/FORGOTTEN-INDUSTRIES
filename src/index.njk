@@ -11,40 +11,47 @@ canonical: https://forgotten-industries.net/
 {% set latestObject = archive.inventory | latestRecord %}
 {% set latestRestoration = archive.projects | latestRestoration %}
 
-<section class="institution-hero" aria-labelledby="home-title">
-  <div class="section-inner">
-    <p class="section-label">Archive &amp; evidence-based memoir / established MMXIV</p>
-    <h1 id="home-title">Forgotten Industries</h1>
-    <p class="institution-subtitle">An archive and evidence-based memoir.</p>
-    <p class="institution-doctrine">A thing documented is a thing not yet lost.</p>
+<section class="masthead homepage-masthead" aria-labelledby="home-title">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">Archive &amp; evidence-based memoir / established MMXIV</p>
+      <h1 id="home-title" class="sr-only">{{ site.name }}</h1>
+      <p class="tagline">{{ site.tagline }}</p>
+      <p class="homepage-doctrine">A thing documented is a thing not yet lost.</p>
+    </div>
+    <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
   </div>
 </section>
 
 <section class="primary-finding-aid" aria-label="Primary archive sections">
   <div class="section-inner primary-card-grid">
     <a class="primary-section-card" href="/archive/">
-      <span>01 / Preserved</span>
-      <h2>L'Archive</h2>
-      <p>The Preserved Record</p>
-      <em>Everything catalogued, sourced, and kept.</em>
+      <div class="primary-card-plate">
+        <h2>L'Archive</h2>
+        <strong class="primary-card-mark">// Archive //</strong>
+      </div>
+      <p class="primary-card-description">Everything catalogued, sourced, and kept.</p>
     </a>
     <a class="primary-section-card" href="/oeuvre/">
-      <span>02 / Active</span>
-      <h2>L'Œuvre</h2>
-      <p>The Active Record</p>
-      <em>Projects, restorations, dossiers, and work underway.</em>
+      <div class="primary-card-plate">
+        <h2>L'Œuvre</h2>
+        <strong class="primary-card-mark">// Work //</strong>
+      </div>
+      <p class="primary-card-description">Projects, restorations, dossiers, and work underway.</p>
     </a>
     <a class="primary-section-card" href="/signal/">
-      <span>03 / Authored</span>
-      <h2>Le Signal</h2>
-      <p>The Authored Record</p>
-      <em>Reports, field logs, live dispatches, and essays.</em>
+      <div class="primary-card-plate">
+        <h2>Le Signal</h2>
+        <strong class="primary-card-mark">// Signal //</strong>
+      </div>
+      <p class="primary-card-description">Reports, field logs, live dispatches, and essays.</p>
     </a>
     <a class="primary-section-card" href="/apropos/">
-      <span>04 / Maker Plate</span>
-      <h2>À Propos</h2>
-      <p>The Maker Plate</p>
-      <em>Authorship, methods, provenance, source, and contact.</em>
+      <div class="primary-card-plate">
+        <h2>À Propos</h2>
+        <strong class="primary-card-mark">// About //</strong>
+      </div>
+      <p class="primary-card-description">Authorship, methods, provenance, source, and contact.</p>
     </a>
   </div>
 </section>
@@ -55,7 +62,7 @@ canonical: https://forgotten-industries.net/
     <div class="stats homepage-instrument-stats">
       <a class="stat" href="/projects/">
         <strong>{{ archive.projects | count }}</strong>
-        <span>Projets</span>
+        <span>Projects</span>
       </a>
       <a class="stat" href="/hang-on-to-each-other/">
         <strong>1</strong>
@@ -65,13 +72,13 @@ canonical: https://forgotten-industries.net/
         <strong>{{ archive.fieldLogs | count }}</strong>
         <span>ATLAS Reports</span>
       </a>
-      <a class="stat" href="/social-posts.html">
-        <strong>{{ archive.socialPosts | count }}</strong>
-        <span>Social Records</span>
+      <a class="stat" href="{{ site.githubUrl }}/actions">
+        <strong>{{ site.buildChecks | count }}</strong>
+        <span>Build Checks</span>
       </a>
-      <a class="stat" href="{{ site.githubUrl }}">
-        <strong>{{ site.sourceStats.sourceFiles }}</strong>
-        <span>Source Files</span>
+      <a class="stat" href="{{ site.githubUrl }}/commits/main">
+        <strong>{{ site.sourceStats.commits }}</strong>
+        <span>Git Commits</span>
       </a>
     </div>
   </div>
@@ -112,10 +119,10 @@ canonical: https://forgotten-industries.net/
     <nav class="open-stacks-list" aria-label="Direct archive access">
       <a href="/inventory.html">Inventory</a>
       <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/social-posts.html">Social Evidence</a>
       <a href="/dist/archive.json">Archive JSON</a>
       <a href="/docs/process/">Process Records</a>
       <a href="{{ site.githubUrl }}">La Source</a>
     </nav>
+    <p class="open-stacks-secondary">Evidence shelf: <a href="/social-posts.html">Social Evidence</a></p>
   </div>
 </section>
