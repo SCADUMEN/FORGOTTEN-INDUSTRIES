@@ -6,13 +6,13 @@ pagination:
   alias: project
 permalink: "/archive/projects/{{ project.slug | archiveSlug }}/"
 eleventyComputed:
-  title: "L'Archive / Project / {{ project.title }}"
+  title: "L'Archive / Dossier / {{ project.title }}"
   description: "{{ project.summary }}"
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Project Dossier / {{ project.id }}</p>
+    <p class="section-label">Dossier Record / {{ project.id }}</p>
     <h1>{{ project.title }}</h1>
     <p class="tagline">{{ project.summary }}</p>
   </div>
@@ -58,7 +58,7 @@ eleventyExcludeFromCollections: true
 <section class="source-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ projectObjects.length }} object{% if projectObjects.length != 1 %}s{% endif %}</p>
+      <p class="section-label">{{ projectObjects.length | countLabel("object", "objects") }}</p>
       <h2>Object/component records.</h2>
     </div>
 
@@ -78,7 +78,7 @@ eleventyExcludeFromCollections: true
 <section class="evidence-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ projectLogs.length }} log{% if projectLogs.length != 1 %}s{% endif %}</p>
+      <p class="section-label">{{ projectLogs.length | countLabel("log", "logs") }}</p>
       <h2>Field evidence.</h2>
     </div>
 
@@ -100,7 +100,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Tags</p>
-      <h2>Project taxonomy.</h2>
+      <h2>Dossier taxonomy.</h2>
     </div>
 
     <ul class="link-list archive-record-list">

@@ -18,7 +18,7 @@ eleventyExcludeFromCollections: true
 <section class="source-band" aria-labelledby="voice-field-log-status">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ logs | count }} recordings</p>
+      <p class="section-label">{{ logs | countLabel("recording", "recordings") }}</p>
       <h2 id="voice-field-log-status">The recorder is the source.</h2>
     </div>
     <div class="callout">

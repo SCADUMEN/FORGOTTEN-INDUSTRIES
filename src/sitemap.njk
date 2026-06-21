@@ -4,7 +4,7 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- set extraUrls = ['/archive/', '/archive.html', '/oeuvre/', '/signal/', '/apropos/', '/provenance/', '/atlas/', '/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/field-logs/voice/', '/colophon/', '/archive/aerial-documentation/', '/archive/inventory/', '/archive/objects/', '/archive/taxonomy/', '/archive/categories/', '/archive/tags/', '/archive/status/', '/archive/systems/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/docs/process/', '/docs/intake/', '/site-snapshots/', '/inventory.html', '/social-posts.html'] %}
+{%- set extraUrls = ['/l-archive/', '/oeuvre/', '/signal/', '/apropos/', '/provenance/', '/atlas/', '/posts/', '/projects/', '/projects/atlas/', '/projects/caselabs-mercury-s8/', '/en-direct/', '/field-notes/', '/field-logs/', '/field-logs/voice/', '/colophon/', '/archive/aerial-documentation/', '/archive/inventory/', '/archive/objects/', '/archive/taxonomy/', '/archive/categories/', '/archive/tags/', '/archive/status/', '/archive/systems/', '/archive/posts/', '/archive/field-logs/', '/archive/projects/', '/archive/source-sets/', '/archive/social-evidence/', '/archive/feed/', '/archive/data/', '/docs/process/', '/docs/intake/', '/site-snapshots/', '/inventory.html', '/social-posts.html'] %}
 {%- for url in collections.all | publicSitemapUrls(extraUrls, site.domainUrl, archive) %}
   <url>
     <loc>{{ url }}</loc>

@@ -89,7 +89,7 @@ eleventyExcludeFromCollections: true
           <dd>{{ object.id }} / {{ object.manufacturer or "Unknown manufacturer" }}{% if object.model %} / {{ object.model }}{% endif %}</dd>
         </div>
         <div>
-          <dt>Project</dt>
+          <dt>Dossier</dt>
           <dd>{% if project %}<a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a>{% else %}{{ object.associated_project or "Unassigned" }}{% endif %}</dd>
         </div>
         <div>
@@ -106,7 +106,7 @@ eleventyExcludeFromCollections: true
         </div>
         <div>
           <dt>Build relevance</dt>
-          <dd>{% if project %}{{ project.status }} / {{ project.category }}{% else %}No project relationship recorded.{% endif %}</dd>
+          <dd>{% if project %}{{ project.status }} / {{ project.category }}{% else %}No dossier relationship recorded.{% endif %}</dd>
         </div>
       </dl>
     </div>
@@ -123,7 +123,7 @@ eleventyExcludeFromCollections: true
         <section>
           <p class="section-label">Provenance</p>
           <h3>Custody record</h3>
-          <p>Logged {{ object.date_logged }}{% if object.quantity %} / quantity {{ object.quantity }}{% endif %}. {{ sourcePhotos | count }} source asset reference{% if sourcePhotos.length != 1 %}s{% endif %} registered.</p>
+          <p>Logged {{ object.date_logged }}{% if object.quantity %} / quantity {{ object.quantity }}{% endif %}. {{ sourcePhotos | countLabel("source asset reference", "source asset references") }} registered.</p>
         </section>
         <section>
           <p class="section-label">Identification notes</p>
@@ -168,7 +168,7 @@ eleventyExcludeFromCollections: true
           <p class="section-label">Parent system</p>
           <h3><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></h3>
           <p>{{ project.summary }}</p>
-          <p class="entry-note">Associated project / {{ project.id }} / {{ project.status }}</p>
+          <p class="entry-note">Associated dossier / {{ project.id }} / {{ project.status }}</p>
         </section>
         {% endif %}
 
@@ -201,7 +201,7 @@ eleventyExcludeFromCollections: true
   <section class="evidence-band object-source-assets" aria-labelledby="object-source-assets-heading">
     <div class="section-inner">
       <details>
-        <summary id="object-source-assets-heading">Source Assets / {{ sourcePhotos.length }} reference{% if sourcePhotos.length != 1 %}s{% endif %}</summary>
+        <summary id="object-source-assets-heading">Source Assets / {{ sourcePhotos.length | countLabel("reference", "references") }}</summary>
         <p>Raw archive paths are retained for provenance and maintenance. They are not the primary object presentation.</p>
         {% if sourcePhotos.length %}
         <ol>

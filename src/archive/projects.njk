@@ -19,7 +19,7 @@ eleventyExcludeFromCollections: true
 <section class="evidence-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ archive.projects | count }} records</p>
+      <p class="section-label">{{ archive.projects | countLabel("record", "records") }}</p>
       <h2>Dossiers keep the archive coherent.</h2>
     </div>
 
@@ -54,7 +54,7 @@ eleventyExcludeFromCollections: true
       </li>
       <li>
         <h3><a href="/archive/systems/">Systems</a></h3>
-        <p>Field systems, restoration systems, and project contexts.</p>
+        <p>Field systems, restoration systems, and dossier contexts.</p>
       </li>
       <li>
         <h3><a href="/archive/status/">Status</a></h3>

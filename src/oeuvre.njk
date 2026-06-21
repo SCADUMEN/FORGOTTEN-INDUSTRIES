@@ -23,8 +23,8 @@ eleventyExcludeFromCollections: true
       Assembled work, with its evidence attached.
     </h2>
     <div class="directory-grid">
-      <a href="/projects/">
-        <span>{{ archive.projects | count }} records</span>
+      <a id="dossiers" href="/projects/">
+        <span>{{ archive.projects | countLabel("record", "records") }}</span>
         <h3>Les Dossiers</h3>
         <p>
           Living case files assembled from archive records, field logs,
@@ -32,7 +32,7 @@ eleventyExcludeFromCollections: true
         </p>
       </a>
       <a href="/posts/">
-        <span>{{ collections.posts | count }} entries</span>
+        <span>{{ collections.posts | countLabel("entry", "entries") }}</span>
         <h3>Les Manuscrits</h3>
         <p>
           Authored works, research papers, doctrines, essays, and complete texts

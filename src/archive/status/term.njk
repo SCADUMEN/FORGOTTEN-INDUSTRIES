@@ -14,7 +14,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">Status</p>
     <h1>{{ term.label }}</h1>
-    <p class="tagline">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %} with this status.</p>
+    <p class="tagline">{{ term.records.length | countLabel("record", "records") }} with this status.</p>
   </div>
 </section>
 

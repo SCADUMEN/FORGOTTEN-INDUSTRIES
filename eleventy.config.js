@@ -52,6 +52,8 @@ function isFieldLogUrl(value = '') {
 function isCollectionUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
+    pathname === '/l-archive/' ||
+    pathname === '/archive/' ||
     pathname === '/archive.html' ||
     pathname.startsWith('/archive/') ||
     pathname === '/oeuvre/' ||
@@ -64,6 +66,27 @@ function isCollectionUrl(value = '') {
     pathname === '/field-notes/' ||
     pathname === '/field-logs/' ||
     pathname === '/field-logs/voice/'
+  )
+}
+
+function countValue(value) {
+  if (Array.isArray(value)) return value.length
+
+  const number = Number(value)
+  return Number.isFinite(number) ? number : 0
+}
+
+function pluralLabelForCount(count, singular, plural) {
+  return count === 1 ? singular : plural || `${singular}s`
+}
+
+function recordDateValue(record) {
+  return String(
+    record?.date ||
+      record?.date_logged ||
+      record?.revived ||
+      record?.started ||
+      ''
   )
 }
 
@@ -126,7 +149,30 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add('src/templates/**')
 
   eleventyConfig.addFilter('count', function (value) {
-    return Array.isArray(value) ? value.length : 0
+    return countValue(value)
+  })
+
+  eleventyConfig.addFilter('pluralLabel', function (value, singular, plural) {
+    return pluralLabelForCount(countValue(value), singular, plural)
+  })
+
+  eleventyConfig.addFilter('countLabel', function (value, singular, plural) {
+    const count = countValue(value)
+    return `${count} ${pluralLabelForCount(count, singular, plural)}`
+  })
+
+  eleventyConfig.addFilter('latestRecords', function (records, limit = 3) {
+    return Array.isArray(records)
+      ? [...records]
+          .sort((a, b) => {
+            const dateSort = recordDateValue(b).localeCompare(
+              recordDateValue(a)
+            )
+            if (dateSort !== 0) return dateSort
+            return String(b?.id || '').localeCompare(String(a?.id || ''))
+          })
+          .slice(0, Number(limit) || 3)
+      : []
   })
 
   eleventyConfig.addFilter('isoDate', function (value) {
@@ -166,6 +212,28 @@ export default function (eleventyConfig) {
       ? items.filter((item) => publicObjectPhotos(item).length > 0).length
       : 0
   })
+
+  eleventyConfig.addFilter(
+    'objectGalleryPreview',
+    function (items, limit = 12) {
+      return Array.isArray(items)
+        ? items
+            .filter((item) => item?.category !== 'photo evidence set')
+            .sort((a, b) => {
+              const aHasPhotos = publicObjectPhotos(a).length > 0 ? 1 : 0
+              const bHasPhotos = publicObjectPhotos(b).length > 0 ? 1 : 0
+              const photoSort = bHasPhotos - aHasPhotos
+              if (photoSort !== 0) return photoSort
+              const dateSort = recordDateValue(b).localeCompare(
+                recordDateValue(a)
+              )
+              if (dateSort !== 0) return dateSort
+              return String(a?.id || '').localeCompare(String(b?.id || ''))
+            })
+            .slice(0, Number(limit) || 12)
+        : []
+    }
+  )
 
   eleventyConfig.addFilter('relatedObjects', function (items, item) {
     if (!Array.isArray(items) || !item) return []
