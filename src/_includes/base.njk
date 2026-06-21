@@ -95,11 +95,7 @@
     {{ content | safe }}
   </main>
 
-  <footer class="site-footer">
-    <p>// Human Judgment // Machine Collaboration //</p>
-    <p>// FORGOTTEN INDUSTRIES // CONTRE L'OUBLI //</p>
-    <p>// <a href="/provenance/">Provenance</a> // <span class="footer-timestamp">Last Revised: <time datetime="{{ site.buildTime }}">{{ site.buildDisplay }}</time></span> //</p>
-  </footer>
+  {% include "makers-plate.njk" %}
   {% if site.analytics.googleMeasurementId %}
   <script>
     document.querySelectorAll("[data-track]").forEach(function(link) {

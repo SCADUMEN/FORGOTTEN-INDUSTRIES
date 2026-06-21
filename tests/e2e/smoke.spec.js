@@ -89,16 +89,16 @@ test('archive page renders', async ({ page }) => {
     /[+−]?\d+/,
   ])
   await expect(page.locator('.archive-curator-note')).toContainText(
-    "L'Archive preserves uncertainty rather than removes it."
-  )
-  await expect(page.locator('.archive-curator-note')).toContainText(
-    'A thing not documented is a thing already lost.'
+    'Records may be incomplete, uncertain, or awaiting verification. Uncertainty is preserved rather than removed.'
   )
   await expect(page.locator('.archive-search-band')).toContainText(
     'Archives are searched.'
   )
   await expect(page.locator('.archive-aerial-plate')).toContainText(
     'Context recovered from altitude.'
+  )
+  await expect(page.locator('.archive-aerial-plate')).toContainText(
+    'Project Number: None'
   )
   await expect(page.locator('.archive-aerial-plate')).toHaveAttribute(
     'href',
@@ -172,7 +172,10 @@ test('object records render image-first museum entries and social images', async
     'alt',
     'FI-CASE-001 — CaseLabs Mercury S8'
   )
-  await expect(page.locator('.object-thumbnail-strip a')).toHaveCount(16)
+  await expect(page.locator('.object-thumbnail-strip a')).toHaveCount(17)
+  await expect(
+    page.locator('.object-thumbnail-strip a[aria-current="true"]')
+  ).toHaveCount(1)
   await expect(page.locator('.object-metadata-grid dt')).toHaveText([
     'Identity',
     'Project',

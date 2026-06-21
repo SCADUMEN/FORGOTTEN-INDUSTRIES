@@ -13,6 +13,8 @@ eleventyComputed:
 eleventyExcludeFromCollections: true
 ---
 {% set publicPhotos = object | publicObjectPhotos %}
+{% set sourcePhotos = object.photos or [] %}
+{% set captionPrefix = object.id + " / " + object.name + " / source photograph " %}
 {% set project = archive.projects | findById(object.associated_project) %}
 {% set relatedObjects = archive.inventory | relatedObjects(object) %}
 {% set projectLogs = archive.fieldLogs | fieldLogsForProject(object.associated_project) %}
@@ -35,20 +37,25 @@ eleventyExcludeFromCollections: true
 
       {% if publicPhotos.length %}
       <figure class="object-primary-figure">
-        <a href="/{{ publicPhotos[0] }}">
+        <a href="/{{ publicPhotos[0] }}" data-object-primary-link>
           <img
             src="/{{ publicPhotos[0] }}"
             alt="{{ object.id }} — {{ object.name }}"
+            data-object-primary-image
           >
         </a>
-        <figcaption>{{ object.id }} / {{ object.name }} / source photograph 01</figcaption>
+        <figcaption data-object-primary-caption>{{ object.id }} / {{ object.name }} / source photograph 01</figcaption>
       </figure>
 
       {% if publicPhotos.length > 1 %}
       <div class="object-thumbnail-strip" aria-label="Additional source photographs">
         {% for photo in publicPhotos %}
-        {% if not loop.first %}
-        <a href="/{{ photo }}">
+        <a
+          href="/{{ photo }}"
+          data-object-thumbnail
+          data-photo-index="{{ loop.index }}"
+          {% if loop.first %}aria-current="true"{% endif %}
+        >
           <img
             src="/{{ photo }}"
             alt="{{ object.id }} — {{ object.name }} / source photograph {{ loop.index }}"
@@ -56,7 +63,6 @@ eleventyExcludeFromCollections: true
           >
           <span>Photo {{ loop.index }}</span>
         </a>
-        {% endif %}
         {% endfor %}
       </div>
       {% endif %}
@@ -117,7 +123,7 @@ eleventyExcludeFromCollections: true
         <section>
           <p class="section-label">Provenance</p>
           <h3>Custody record</h3>
-          <p>Logged {{ object.date_logged }}{% if object.quantity %} / quantity {{ object.quantity }}{% endif %}. {{ object.photos | count }} source asset reference{% if object.photos.length != 1 %}s{% endif %} registered.</p>
+          <p>Logged {{ object.date_logged }}{% if object.quantity %} / quantity {{ object.quantity }}{% endif %}. {{ sourcePhotos | count }} source asset reference{% if sourcePhotos.length != 1 %}s{% endif %} registered.</p>
         </section>
         <section>
           <p class="section-label">Identification notes</p>
@@ -192,14 +198,14 @@ eleventyExcludeFromCollections: true
     </div>
   </section>
 
-  {% if object.photos and object.photos.length %}
   <section class="evidence-band object-source-assets" aria-labelledby="object-source-assets-heading">
     <div class="section-inner">
       <details>
-        <summary id="object-source-assets-heading">Source Assets / {{ object.photos.length }} reference{% if object.photos.length != 1 %}s{% endif %}</summary>
+        <summary id="object-source-assets-heading">Source Assets / {{ sourcePhotos.length }} reference{% if sourcePhotos.length != 1 %}s{% endif %}</summary>
         <p>Raw archive paths are retained for provenance and maintenance. They are not the primary object presentation.</p>
+        {% if sourcePhotos.length %}
         <ol>
-          {% for photo in object.photos %}
+          {% for photo in sourcePhotos %}
           <li>
             <code>{{ photo }}</code>
             {% if photo.indexOf("assets/") == 0 or photo.indexOf("forgotten-industries/") == 0 %}
@@ -210,8 +216,42 @@ eleventyExcludeFromCollections: true
           </li>
           {% endfor %}
         </ol>
+        {% else %}
+        <p class="object-source-empty">No raw source asset path is registered for this object yet.</p>
+        {% endif %}
       </details>
     </div>
   </section>
-  {% endif %}
 </article>
+
+<script>
+  (function() {
+    var captionPrefix = {{ captionPrefix | json | safe }};
+    var gallery = document.querySelector('.object-record');
+    if (!gallery) return;
+
+    var primaryLink = gallery.querySelector('[data-object-primary-link]');
+    var primaryImage = gallery.querySelector('[data-object-primary-image]');
+    var primaryCaption = gallery.querySelector('[data-object-primary-caption]');
+    var thumbnails = gallery.querySelectorAll('[data-object-thumbnail]');
+    if (!primaryLink || !primaryImage || !thumbnails.length) return;
+
+    thumbnails.forEach(function(thumbnail) {
+      thumbnail.addEventListener('click', function(event) {
+        event.preventDefault();
+        var image = thumbnail.querySelector('img');
+        var index = thumbnail.getAttribute('data-photo-index');
+        primaryLink.href = thumbnail.href;
+        primaryImage.src = thumbnail.href;
+        primaryImage.alt = image ? image.alt : primaryImage.alt;
+        if (primaryCaption) {
+          primaryCaption.textContent = captionPrefix + String(index).padStart(2, '0');
+        }
+        thumbnails.forEach(function(item) {
+          item.removeAttribute('aria-current');
+        });
+        thumbnail.setAttribute('aria-current', 'true');
+      });
+    });
+  })();
+</script>
