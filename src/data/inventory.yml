@@ -52,6 +52,264 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-06-05'
 
+  - id: FI-CL-PART-001
+    name: 8× Vibration-Isolated 3.5-inch HDD Pedestal Mount
+    category: case accessory
+    manufacturer: CaseLabs
+    quantity: 1 assembly
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / official name needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-001.jpg
+    notes: >
+      Provisional pedestal storage plate with two four-drive sections for eight
+      vibration-isolated 3.5-inch mechanical hard drives. Planned for the
+      pedestal storage assembly. Official CaseLabs name and orientation remain
+      unverified.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-001-8x-hdd-pedestal-mount/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - S8 pedestal
+      - storage
+      - HDD mount
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-002
+    name: 120 mm Flex-Bay 4× HDD Cage with Fan
+    category: case accessory
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: two stripped/threaded screws require documentation before service
+    status: intake / service required
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-002.jpg
+    notes: >
+      120 mm flex-bay unit with a four-drive cage and Corsair static pressure
+      fan. Candidate for the front-right pedestal storage position. Do not
+      attempt removal of the two stripped/threaded screws before close-up
+      documentation.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-002-120-flex-bay-4x-hdd-cage/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - S8 pedestal
+      - flex-bay
+      - HDD cage
+      - Corsair fan
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-003
+    name: Ventilated Main Chassis Top Panel
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / chassis terminology needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-003.jpg
+    notes: >
+      Provisional main-chassis top panel with ventilation on both sides,
+      consistent with placement above drop-in radiator mounts. Verify whether
+      this is the standard ventilated top or a radiator-top outer cover and
+      whether S8 or SMA terminology applies.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-003-ventilated-top-panel/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - SMA
+      - top panel
+      - radiator ventilation
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-004
+    name: Dual-120 Front Plate
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / chassis terminology needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-004.jpg
+    notes: >
+      Main-chassis front plate with two 120 mm fan openings, a flex-bay opening,
+      and a power-switch cutout. Identified provisionally as a Mercury SA front
+      plate; exact CaseLabs chassis-family terminology remains unverified.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-004-dual-120-front-plate/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - Mercury SA
+      - front plate
+      - 120 mm fan
+      - flex-bay
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-005
+    name: Window Front Plate
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / window insert and terminology need verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-005.jpg
+    notes: >
+      Alternate main-chassis front plate with an apparent window opening,
+      flex-bay opening, and power-switch cutout. Window insert is not confirmed
+      in the photo sequence. Official part name remains unverified.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-005-window-front-plate/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - SMA
+      - front plate
+      - window opening
+      - flex-bay
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-006
+    name: Rear I/O and PSU Plate
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / chassis compatibility needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-006.jpg
+    notes: >
+      Rear plate with motherboard I/O and expansion-slot openings, PSU cutout,
+      lower 120 mm fan position, and upper 140 mm fan position. Verify the
+      compatible chassis revision before installation.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-006-rear-io-psu-plate/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - rear plate
+      - motherboard I/O
+      - PSU cutout
+      - fan mount
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-007
+    name: Full-Window Side Frame
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / window insert not confirmed
+    status: intake / insert and orientation need verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-007.jpg
+    notes: >
+      Main-chassis side plate or frame configured for a full window panel. The
+      acrylic or other window insert may be stored separately or absent. Verify
+      compatible side, orientation, and retention hardware.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-007-full-window-side-frame/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - side panel
+      - window frame
+      - full window
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-008
+    name: Dual-360 Drop-In Radiator Top Mount
+    category: case accessory
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / official name needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-008.jpg
+    notes: >
+      Top mounting plate configured for two 360 mm drop-in radiator positions.
+      Likely part of the CaseLabs top radiator system. Verify whether CaseLabs
+      classified it as a mount, plate, tray, or another component.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-008-dual-360-radiator-top-mount/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - radiator mount
+      - 360 mm radiator
+      - top plate
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-009
+    name: Bottom Center Filler Plate
+    category: case panel
+    manufacturer: CaseLabs
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / exact position and official name need verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-009.jpg
+    notes: >
+      Primarily solid bottom-center filler plate intended to install within a
+      surrounding lower frame. Exact position, orientation, and official
+      CaseLabs name remain unverified.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-009-bottom-center-filler-plate/
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - bottom plate
+      - filler plate
+      - floor insert
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
+  - id: FI-CL-PART-010
+    name: STH10 EATX Motherboard Tray
+    category: motherboard tray
+    manufacturer: CaseLabs
+    model: STH10 EATX tray
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: unknown / intake inspection pending
+    status: intake / S8 rail compatibility needs verification
+    photos:
+      - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-010.jpg
+    notes: >
+      EATX motherboard tray identified as originating from an STH10. Relevant
+      to the S8 rail-and-tray salvage plan. Verify tray revision, chassis width,
+      rear I/O relationship, and mounting-rail alignment before use.
+    archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-010-sth10-eatx-motherboard-tray/
+    tags:
+      - CaseLabs
+      - STH10
+      - EATX
+      - motherboard tray
+      - rail system
+    estimated_value:
+    keep_sell_archive: undecided
+    date_logged: '2026-06-20'
+
   - id: FI-RAD-001
     name: EK XTX 360 radiator
     category: radiator
