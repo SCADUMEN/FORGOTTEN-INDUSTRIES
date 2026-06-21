@@ -5,11 +5,55 @@ description: "The Forgotten Industries signal record: field notes, updates, obse
 permalink: /signal/index.html
 eleventyExcludeFromCollections: true
 ---
+{% set reports = archive.fieldLogs | fieldLogsNewest %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <p class="section-label">LE SIGNAL / THE AUTHORED RECORD</p>
     <h1>Le Signal</h1>
     <p class="tagline">Everything transmitted. Everything observed.</p>
+    <nav class="hero-door-row" aria-label="Le Signal primary doors">
+      <a class="hero-shadow-button" href="/atlas/">
+        <span>Reports</span>
+        <strong>ATLAS</strong>
+      </a>
+      <a class="hero-shadow-button" href="/en-direct/">
+        <span>Live</span>
+        <strong>En Direct</strong>
+      </a>
+      <a class="hero-shadow-button" href="/field-logs/">
+        <span>Recorder</span>
+        <strong>Field Logs</strong>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section class="signal-ticker-band" aria-labelledby="signal-ticker-heading">
+  <div class="section-inner">
+    <div class="signal-ticker-header">
+      <p class="section-label">Current transmissions</p>
+      <h2 id="signal-ticker-heading" class="sr-only">Recent signal activity</h2>
+    </div>
+    <div class="signal-ticker" role="list" aria-label="Recent signal activity">
+      {% if fieldnotes.length %}
+      {% for note in fieldnotes %}
+      {% if loop.index <= 4 %}
+      <a class="signal-ticker-item" role="listitem" href="{{ note.url }}" data-track="outbound-field-note">
+        <span>En Direct / {{ note.createdAt | readableDate }}</span>
+        <strong>{{ note.text | escape }}</strong>
+      </a>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% for report in reports %}
+      {% if loop.index <= 4 %}
+      <a class="signal-ticker-item" role="listitem" href="/field-logs/{{ report.slug }}/">
+        <span>ATLAS / {{ report.date | replace('-', '.') | replace('-', '.') }}</span>
+        <strong>{{ report.title }}</strong>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 
