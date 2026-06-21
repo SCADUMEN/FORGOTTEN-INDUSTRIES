@@ -8,10 +8,69 @@ test('home page renders', async ({ page }) => {
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle('Forgotten Industries')
   await expect(page.locator('h1')).toContainText('Forgotten Industries')
+  await expect(page.locator('.site-nav a')).toHaveText([
+    "L'ARCHIVE",
+    "L'ŒUVRE",
+    'LE SIGNAL',
+    'À PROPOS',
+  ])
+  await expect(page.locator('.primary-section-card')).toHaveCount(4)
+  await expect(page.locator('.primary-card-mark')).toHaveText([
+    '// Archive //',
+    '// Work //',
+    '// Signal //',
+    '// About //',
+  ])
+  const homepageStats = page.locator('.homepage-instrument-stats .stat')
+  await expect(homepageStats).toHaveCount(5)
+  await expect(homepageStats).toHaveText([
+    /Projects/,
+    /Manuels/,
+    /ATLAS Reports/,
+    /Build Checks/,
+    /Git Commits/,
+  ])
+  await expect(page.locator('.homepage-masthead .hero-image')).toHaveAttribute(
+    'src',
+    '/assets/forgotten-industries.jpeg'
+  )
+  await expect(page.locator('.site-footer a')).toHaveCount(1)
+  await expect(
+    page.getByRole('link', { name: 'Provenance', exact: true })
+  ).toHaveAttribute('href', '/provenance/')
+})
+
+test('home page remains contained on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 })
+  const response = await page.goto('/')
+  expect(response?.status()).toBe(200)
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+
+  expect(dimensions.scrollWidth).toBe(dimensions.viewport)
+  await expect(page.locator('.homepage-masthead .hero-image')).toBeVisible()
+  await expect(page.locator('.primary-section-card')).toHaveCount(4)
+  await expect(page.locator('.homepage-instrument-stats .stat')).toHaveCount(5)
+  await expect(page.locator('.site-footer a')).toHaveCount(1)
+})
+
+test('primary section pages share the global maker plate', async ({ page }) => {
+  for (const route of ['/archive/', '/oeuvre/', '/signal/', '/apropos/']) {
+    const response = await page.goto(route)
+    expect(response?.status()).toBe(200)
+    await expect(page.locator('.site-footer')).toBeVisible()
+    await expect(page.locator('.site-footer a')).toHaveCount(1)
+    await expect(
+      page.getByRole('link', { name: 'Provenance', exact: true })
+    ).toHaveAttribute('href', '/provenance/')
+  }
 })
 
 test('archive page renders', async ({ page }) => {
-  const response = await page.goto('/archive.html')
+  const response = await page.goto('/archive/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/L'Archive/)
 
@@ -25,12 +84,19 @@ test('archive page renders', async ({ page }) => {
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)
   await expect(wideCounters).toHaveText([/Source files/, /Git commits/])
+  await expect(page.locator('.branch-stats .stat-adjustment')).toHaveText([
+    /[+−]?\d+/,
+    /[+−]?\d+/,
+  ])
+  await expect(
+    page.locator('a[href="/forgotten-industries/l-archive/caselabs-s8/"]')
+  ).toContainText('CaseLabs Mercury S8')
 })
 
 test('posts index lists the curated posts', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
-  await expect(page).toHaveTitle(/Le Signal/)
+  await expect(page).toHaveTitle(/Essays \/ Posts/)
   // Both dated curated posts should be linked from the index.
   await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
 })
@@ -47,6 +113,41 @@ test('En Direct lands on the imported signal', async ({ page }) => {
   await expect(page.locator('a[href="/field-notes/"]')).toContainText(
     'Open all imported dispatches'
   )
+})
+
+test('CaseLabs object archive renders with records and photographs', async ({
+  page,
+  request,
+}) => {
+  const response = await page.goto(
+    '/forgotten-industries/l-archive/caselabs-s8/'
+  )
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/CaseLabs Mercury S8/)
+  await expect(page.locator('.archive-gallery img')).toHaveCount(10)
+
+  const objectResponse = await request.get(
+    '/forgotten-industries/l-archive/caselabs-s8/fi-cl-part-001-8x-hdd-pedestal-mount/'
+  )
+  expect(objectResponse.status()).toBe(200)
+
+  const imageResponse = await request.get(
+    '/forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-001.jpg'
+  )
+  expect(imageResponse.status()).toBe(200)
+  expect(imageResponse.headers()['content-type']).toContain('image/jpeg')
+})
+
+test('CaseLabs intake objects are searchable canonical inventory', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive/?q=FI-CL')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('#archive-search-status')).toHaveText('10 results')
+  await expect(page.locator('#archive-search-results > li')).toHaveCount(10)
+  await expect(
+    page.locator('.inventory-gallery-card').filter({ hasText: 'FI-CL-PART-' })
+  ).toHaveCount(10)
 })
 
 test('Atom feed is served as XML with entries', async ({ request }) => {

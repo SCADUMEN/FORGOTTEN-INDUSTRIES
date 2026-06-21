@@ -2,18 +2,35 @@
 layout: base.njk
 title: L'Archive
 description: "La premiere providence: the master record for Forgotten Industries inventory, entries, projects, field logs, and recovered evidence."
-permalink: /archive.html
+permalink: /archive/index.html
 eleventyExcludeFromCollections: true
 ---
-<section class="masthead">
+<section class="section-landing-hero">
   <div class="section-inner">
-    <p class="section-label">La premiere providence</p>
+    <p class="section-label">L'ARCHIVE / THE PRESERVED RECORD</p>
     <h1>L'Archive</h1>
     <p class="tagline">
       The master record: inventory items, project dossiers, field logs, curated
       writing, recovered social evidence, source sets, and machine-readable
       archive outputs.
     </p>
+  </div>
+</section>
+
+<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">The Preserved Record</p>
+    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
+    <nav class="open-stacks-list" aria-label="L'Archive finding aid">
+      <a href="/inventory.html">Inventory</a>
+      <a href="/archive/objects/">Object Records</a>
+      <a href="/hang-on-to-each-other/">Les Manuels</a>
+      <a href="/social-posts.html">Social Evidence</a>
+      <a href="/docs/process/">Process Records</a>
+      <a href="/site-snapshots/">Stowed Snapshots</a>
+      <a href="/dist/archive.json">Archive JSON</a>
+      <a href="/archive/aerial-documentation/">Provenance From On High</a>
+    </nav>
   </div>
 </section>
 
@@ -250,16 +267,16 @@ eleventyExcludeFromCollections: true
         {% endif %}
         <li class="inventory-gallery-card">
           <figure>
-            <div class="inventory-gallery-image">
-              {% if preview and preview.indexOf("assets/") == 0 %}
+            <a class="inventory-gallery-image" href="{{ item | archiveObjectUrl }}">
+              {% if preview and (preview.indexOf("assets/") == 0 or preview.indexOf("forgotten-industries/") == 0) %}
               <img src="/{{ preview }}" alt="{{ item.name }}">
               {% else %}
               <span>{{ item.id }}</span>
               {% endif %}
-            </div>
+            </a>
             <figcaption>
               <span>{{ item.id }}</span>
-              <strong>{{ item.name }}</strong>
+              <strong><a href="{{ item | archiveObjectUrl }}">{{ item.name }}</a></strong>
               <em>{{ item.category }}</em>
             </figcaption>
           </figure>
@@ -296,9 +313,9 @@ eleventyExcludeFromCollections: true
           <strong>1</strong>
           <span>Manuels</span>
         </a>
-        <a class="stat" href="/field-notes/">
+        <a class="stat" href="/en-direct/">
           <strong>{{ fieldnotes | count }}</strong>
-          <span>Live dispatches</span>
+          <span>En Direct records</span>
         </a>
         <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
@@ -315,12 +332,16 @@ eleventyExcludeFromCollections: true
         <a class="stat stat-wide" href="{{ site.githubUrl }}">
           <strong>{{ site.sourceStats.sourceFiles }}</strong>
           <span>Source files</span>
-          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
+          <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
+            {{ site.sourceStats.sourceFileDeltaLabel }}
+          </span>
         </a>
         <a class="stat stat-wide" href="{{ site.githubUrl }}/commits/main">
           <strong>{{ site.sourceStats.commits }}</strong>
           <span>Git commits</span>
-          <span class="stat-adjustment" aria-hidden="true">+ / −</span>
+          <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
+            {{ site.sourceStats.commitDeltaLabel }}
+          </span>
         </a>
       </div>
     </div>
@@ -385,6 +406,17 @@ eleventyExcludeFromCollections: true
     </div>
 
     <ul class="link-list archive-record-list">
+      <li>
+        <p class="entry-note">FI-CL-PART-001–010 / object-level CaseLabs intake</p>
+        <h3>
+          <a href="/forgotten-industries/l-archive/caselabs-s8/">
+            CaseLabs Mercury S8 / pedestal chassis parts
+          </a>
+        </h3>
+        <p>
+          Ten photographed storage, chassis, radiator, and motherboard-tray records with representative evidence images.
+        </p>
+      </li>
       <li>
         <p class="entry-note">FI-2026-06-12-L-ARCHIVE / local photo intake</p>
         <h3><a href="/docs/intake/2026-06-12-l-archive.md">L'Archive local photo dump</a></h3>
