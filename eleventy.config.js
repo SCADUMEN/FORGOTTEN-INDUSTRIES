@@ -54,6 +54,11 @@ function isCollectionUrl(value = '') {
   return (
     pathname === '/archive.html' ||
     pathname.startsWith('/archive/') ||
+    pathname === '/oeuvre/' ||
+    pathname === '/signal/' ||
+    pathname === '/apropos/' ||
+    pathname === '/provenance/' ||
+    pathname === '/atlas/' ||
     pathname === '/posts/' ||
     pathname === '/projects/' ||
     pathname === '/field-notes/' ||
@@ -68,7 +73,7 @@ export default function (eleventyConfig) {
     outputPath: '/feed.xml',
     collection: { name: 'posts', limit: 0 },
     metadata: {
-      title: 'Recoveries, Restorations, & Le Rèdempteur',
+      title: 'Forgotten Industries / Essays & Posts',
       subtitle:
         'Curated essays, field doctrine, and long-form entries from Forgotten Industries.',
       language: 'en',
@@ -80,9 +85,13 @@ export default function (eleventyConfig) {
   // Published verbatim at their root URLs (Eleventy strips the input dir).
   // The markdown and yaml inside are documents, not templates — ignored.
   eleventyConfig.addPassthroughCopy('src/assets')
+  eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
   eleventyConfig.addPassthroughCopy('src/projects')
   eleventyConfig.addPassthroughCopy('src/site-snapshots')
+  eleventyConfig.addPassthroughCopy(
+    'src/forgotten-industries/l-archive/caselabs-s8/assets'
+  )
   eleventyConfig.ignores.add('src/assets/**')
   eleventyConfig.ignores.add('src/docs/**')
   eleventyConfig.ignores.add('src/projects/**')
@@ -191,6 +200,46 @@ export default function (eleventyConfig) {
     return Array.isArray(records)
       ? records.find((record) => record?.id === id) || null
       : null
+  })
+
+  eleventyConfig.addFilter('latestCollectionItem', function (records) {
+    return Array.isArray(records) && records.length
+      ? [...records].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+      : null
+  })
+
+  eleventyConfig.addFilter('latestRecord', function (records) {
+    return Array.isArray(records) && records.length
+      ? [...records].sort((a, b) => {
+          const aDate = String(
+            a.date || a.date_logged || a.revived || a.started || ''
+          )
+          const bDate = String(
+            b.date || b.date_logged || b.revived || b.started || ''
+          )
+          return (
+            bDate.localeCompare(aDate) ||
+            String(b.id).localeCompare(String(a.id))
+          )
+        })[0]
+      : null
+  })
+
+  eleventyConfig.addFilter('latestRestoration', function (records) {
+    const restorations = Array.isArray(records)
+      ? records.filter((record) =>
+          `${record.title || ''} ${record.category || ''}`
+            .toLowerCase()
+            .includes('restor')
+        )
+      : []
+    return restorations.length
+      ? restorations.sort((a, b) =>
+          String(b.revived || b.started || '').localeCompare(
+            String(a.revived || a.started || '')
+          )
+        )[0]
+      : records?.[0] || null
   })
 
   eleventyConfig.addFilter('canonicalUrl', canonicalUrl)

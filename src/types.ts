@@ -69,6 +69,8 @@ export interface InventoryItem {
   condition: string
   status: string
   photos: string[]
+  archive_entry?: string
+  tags?: string[]
   notes?: string
   estimated_value?: string | number | null
   keep_sell_archive?: ArchiveDisposition | string

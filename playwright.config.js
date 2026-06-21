@@ -12,7 +12,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: `http://localhost:${PORT}`,
+    baseURL: `http://127.0.0.1:${PORT}`,
     trace: 'on-first-retry',
   },
   projects: [
@@ -23,7 +23,7 @@ export default defineConfig({
   ],
   webServer: {
     command: `npx http-server _site -p ${PORT} --silent`,
-    url: `http://localhost:${PORT}`,
+    url: `http://127.0.0.1:${PORT}`,
     timeout: 60_000,
     reuseExistingServer: !process.env.CI,
   },

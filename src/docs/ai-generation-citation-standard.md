@@ -1,5 +1,9 @@
 # AI Generation Citation Standard
 
+> This standard has been consolidated into the public
+> [Provenance record](/provenance/#citation-standards). This source document is
+> preserved for durable reference and route compatibility.
+
 Status: active
 
 Authority: Matthew Taylor Marx / Forgotten Industries

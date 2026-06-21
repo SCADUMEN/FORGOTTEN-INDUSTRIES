@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: Le Signal
+description: "The authored Forgotten Industries record: ATLAS Reports, Field Logs, En Direct, and essays."
+permalink: /signal/index.html
+eleventyExcludeFromCollections: true
+---
+<section class="section-landing-hero">
+  <div class="section-inner">
+    <p class="section-label">LE SIGNAL / THE AUTHORED RECORD</p>
+    <h1>Le Signal</h1>
+    <p class="tagline">Everything written. Everything transmitted. Everything observed.</p>
+  </div>
+</section>
+
+<section class="section-directory" aria-labelledby="signal-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">Four active channels</p>
+    <h2 id="signal-directory-heading">Authored records, separated by source.</h2>
+    <div class="directory-grid signal-directory-grid">
+      <a href="/atlas/">
+        <span>01 / {{ archive.fieldLogs | count }} reports</span>
+        <h3>ATLAS Reports</h3>
+        <p>AI-assisted end-of-day debriefs: evidence, decisions, unresolved questions, and next actions.</p>
+      </a>
+      <a href="/field-logs/">
+        <span>02 / {{ archive.voiceLogs | count }} recordings</span>
+        <h3>Field Logs</h3>
+        <p>Original voice records from the portable recorder. The empty intake template is live and ready.</p>
+      </a>
+      <a href="/en-direct/">
+        <span>03 / {{ fieldnotes | count }} dispatches</span>
+        <h3>En Direct</h3>
+        <p>The continuous shortform signal imported from Bluesky at build time.</p>
+      </a>
+      <a href="/posts/">
+        <span>04 / {{ collections.posts | count }} entries</span>
+        <h3>Essays / Posts</h3>
+        <p>Long-form public writing, field doctrine, memoir, and finished authored pieces.</p>
+      </a>
+    </div>
+  </div>
+</section>

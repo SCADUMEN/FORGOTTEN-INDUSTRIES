@@ -1,284 +1,128 @@
 ---
 layout: base.njk
 title: Forgotten Industries
-description: An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.
+description: An archive and evidence-based memoir.
 canonical: https://forgotten-industries.net/
 ---
+{% set reports = archive.fieldLogs | fieldLogsNewest %}
+{% set latestReport = reports[0] %}
+{% set latestPost = collections.posts | latestCollectionItem %}
+{% set latestProject = archive.projects | latestRecord %}
+{% set latestObject = archive.inventory | latestRecord %}
+{% set latestRestoration = archive.projects | latestRestoration %}
 
-<section class="masthead">
+<section class="masthead homepage-masthead" aria-labelledby="home-title">
   <div class="section-inner masthead-grid">
     <div>
-      <p class="section-label">Archive & evidence-based memoir / established MMXIV</p>
-      <h1 class="sr-only">{{ site.name }}</h1>
+      <p class="section-label">Archive &amp; evidence-based memoir / established MMXIV</p>
+      <h1 id="home-title" class="sr-only">{{ site.name }}</h1>
       <p class="tagline">{{ site.tagline }}</p>
+      <p class="homepage-doctrine">A thing documented is a thing not yet lost.</p>
     </div>
     <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
   </div>
 </section>
 
-<section class="mirror-band" aria-labelledby="mirror-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Figure 1</p>
-      <h2 id="mirror-heading">L'Archive branches at Pang.</h2>
-    </div>
-
-    <div>
-      <div class="archive-phylogeny" aria-label="Archive phylogenetic site map">
-        <a class="phylo-root" href="/archive.html">
-          <span class="bilingual-heading">
-            <span>L'Archive</span>
-            <strong>// archive //</strong>
-          </span>
-          <em>Master record: evidence, inventory, entries, source documents, and preserved remains.</em>
-        </a>
-
-        <div class="phylo-split" aria-label="Pang bifurcation">
-          <p class="section-label">Pang</p>
-          <span class="phylo-therefore" aria-hidden="true">∴</span>
-          <h3>The moment an abandoned object becomes evidence again.</h3>
-        </div>
-
-        <div class="phylo-branches">
-          <section class="phylo-branch" aria-labelledby="systems-branch-heading">
-            <header class="phylo-branch-header">
-              <p class="section-label">Branch 01</p>
-              <h3 id="systems-branch-heading">Systems / preservation</h3>
-            </header>
-            <ul>
-              <li>
-                <a href="/projects/">
-                  <span class="bilingual-heading">
-                    <span>Les Projets</span>
-                    <strong>// projects //</strong>
-                  </span>
-                  <em>Active dossiers, rebuilds, object records, and continuity packets.</em>
-                </a>
-              </li>
-              <li>
-                <a href="/hang-on-to-each-other/">
-                  <span class="bilingual-heading">
-                    <span>Les Manuels</span>
-                    <strong>// manuals //</strong>
-                  </span>
-                  <em>Recovered instructions, procedures, references, and preservation notes.</em>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES">
-                  <span class="bilingual-heading">
-                    <span>La Source</span>
-                    <strong>// source //</strong>
-                  </span>
-                  <em>Public repository, build system, and generated archive data.</em>
-                </a>
-              </li>
-            </ul>
-          </section>
-
-          <section class="phylo-branch" aria-labelledby="signal-branch-heading">
-            <header class="phylo-branch-header">
-              <p class="section-label">Branch 02</p>
-              <h3 id="signal-branch-heading">Signal / recovery</h3>
-            </header>
-            <ul>
-              <li>
-                <a href="/posts/">
-                  <span class="bilingual-heading">
-                    <span>Le Signal</span>
-                    <strong>// signal //</strong>
-                  </span>
-                  <em>The blog, ATLAS reports, recorded field logs, doctrines, manifestos, and long-form essays.</em>
-                </a>
-              </li>
-              <li>
-                <a href="/en-direct/">
-                  <span class="bilingual-heading">
-                    <span>En Direct</span>
-                    <strong>// live //</strong>
-                  </span>
-                  <em>The shortform live channel: Bluesky dispatches imported at build time.</em>
-                </a>
-              </li>
-              <li>
-                <a href="/about.html">
-                  <span class="bilingual-heading">
-                    <span>Le Rédempteur</span>
-                    <strong>// redeemer //</strong>
-                  </span>
-                  <em>Origin, authorship, and the human identity behind the archive.</em>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+<section class="primary-finding-aid" aria-label="Primary archive sections">
+  <div class="section-inner primary-card-grid">
+    <a class="primary-section-card" href="/archive/">
+      <div class="primary-card-plate">
+        <h2>L'Archive</h2>
+        <strong class="primary-card-mark">// Archive //</strong>
       </div>
-
-      <div class="stats branch-stats" aria-label="Archive branch counts">
-        <a class="stat" href="/archive/projects/">
-          <strong>{{ archive.projects | count }}</strong>
-          <span>Projets</span>
-        </a>
-        <a class="stat" href="/hang-on-to-each-other/">
-          <strong>1</strong>
-          <span>Manuels</span>
-        </a>
-        <a class="stat" href="{{ site.githubUrl }}">
-          <strong>{{ site.sourceStats.sourceFiles }}</strong>
-          <span>Source files</span>
-        </a>
-        <a class="stat" href="{{ site.githubUrl }}/commits/main">
-          <strong>{{ site.sourceStats.commits }}</strong>
-          <span>Git commits</span>
-        </a>
-        <a class="stat" href="/posts/">
-          <strong>{{ collections.posts | count }}</strong>
-          <span>Signal entries</span>
-        </a>
-        <a class="stat" href="/field-logs/">
-          <strong>{{ archive.fieldLogs | count }}</strong>
-          <span>ATLAS reports</span>
-        </a>
-        <a class="stat" href="/field-notes/">
-          <strong>{{ fieldnotes | count }}</strong>
-          <span>Live dispatches</span>
-        </a>
-        <a class="stat" href="/archive/social-evidence/">
-          <strong>{{ archive.socialPosts | count }}</strong>
-          <span>Recovered social</span>
-        </a>
+      <p class="primary-card-description">Everything catalogued, sourced, and kept.</p>
+    </a>
+    <a class="primary-section-card" href="/oeuvre/">
+      <div class="primary-card-plate">
+        <h2>L'Œuvre</h2>
+        <strong class="primary-card-mark">// Work //</strong>
       </div>
-    </div>
+      <p class="primary-card-description">Projects, restorations, dossiers, and work underway.</p>
+    </a>
+    <a class="primary-section-card" href="/signal/">
+      <div class="primary-card-plate">
+        <h2>Le Signal</h2>
+        <strong class="primary-card-mark">// Signal //</strong>
+      </div>
+      <p class="primary-card-description">Reports, field logs, live dispatches, and essays.</p>
+    </a>
+    <a class="primary-section-card" href="/apropos/">
+      <div class="primary-card-plate">
+        <h2>À Propos</h2>
+        <strong class="primary-card-mark">// About //</strong>
+      </div>
+      <p class="primary-card-description">Authorship, methods, provenance, source, and contact.</p>
+    </a>
   </div>
 </section>
 
-<section class="evidence-band" aria-labelledby="featured-lanes-heading">
+<section class="instrument-strip" aria-labelledby="archive-state-heading">
   <div class="section-inner">
-    <div class="public-spine">
-      <p class="section-label">Public Spine</p>
-      <h2 id="featured-lanes-heading">Latest signals surface first.</h2>
-
-      <div class="spine-grid">
-        <article class="spine-card spine-card-active">
-          <header>
-            <p class="spine-index">Entry 001</p>
-            <p class="stamp-row" aria-label="Entry status">
-              <span class="stamp">Field Doctrine</span>
-              <span class="stamp stamp-muted">Latest</span>
-            </p>
-          </header>
-          <h3><a href="/posts/2026-06-10-perspective-peregrines-and-pang.html">Perspective, Peregrines, &amp; “Pang”</a></h3>
-          <p>Perspective changes everything. The first field doctrine sets the active method: change the view, recover the evidence, name what remains.</p>
-        </article>
-
-        <article class="spine-card">
-          <header>
-            <p class="spine-index">Entry 000</p>
-            <p class="stamp-row" aria-label="Entry status">
-              <span class="stamp">Prelude</span>
-              <span class="stamp stamp-muted">Origin</span>
-            </p>
-          </header>
-          <h3><a href="/posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html">A Thing Documented Is a Thing Not Yet Lost</a></h3>
-          <p>The long-form origin manuscript: death, inheritance, watercooling, recovery, and the first proof that the archive was already waiting.</p>
-        </article>
-      </div>
-
-      <p class="action-row"><a href="/posts/">View all curated posts</a></p>
-
-      <ul class="spine-route-grid" aria-label="Public lane highlights">
-        <li>
-          <a class="panel-link" href="/projects/">
-            <span>Projects</span>
-            <h3>Dossiers and continuity</h3>
-            <p>Long-running systems, object records, and project context packets that keep the archive coherent.</p>
-          </a>
-        </li>
-        <li>
-          <a class="panel-link" href="/hang-on-to-each-other/">
-            <span>Manuals</span>
-            <h3>Hang On To Each Other</h3>
-            <p>Manual 001: recovered CaseLabs Mercury S8 assembly reference and living instruction shelf.</p>
-          </a>
-        </li>
-        <li>
-          <a class="panel-link" href="/en-direct/">
-            <span>En Direct</span>
-            <h3>Live channel split</h3>
-            <p>Imported Bluesky dispatches remain separate from ATLAS reports and recorded Field Log entries.</p>
-          </a>
-        </li>
-      </ul>
+    <h2 id="archive-state-heading" class="sr-only">Archive state</h2>
+    <div class="stats homepage-instrument-stats">
+      <a class="stat" href="/projects/">
+        <strong>{{ archive.projects | count }}</strong>
+        <span>Projects</span>
+      </a>
+      <a class="stat" href="/hang-on-to-each-other/">
+        <strong>1</strong>
+        <span>Manuels</span>
+      </a>
+      <a class="stat" href="/atlas/">
+        <strong>{{ archive.fieldLogs | count }}</strong>
+        <span>ATLAS Reports</span>
+      </a>
+      <a class="stat" href="{{ site.githubUrl }}/actions">
+        <strong>{{ site.buildChecks | count }}</strong>
+        <span>Build Checks</span>
+      </a>
+      <a class="stat" href="{{ site.githubUrl }}/commits/main">
+        <strong>{{ site.sourceStats.commits }}</strong>
+        <span>Git Commits</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-notes-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Short-form signal</p>
-      <h2 id="field-notes-heading">Three channels. Three distinct sources.</h2>
+<section class="latest-activity" aria-labelledby="latest-activity-heading">
+  <div class="section-inner">
+    <p class="section-label">Latest Activity</p>
+    <h2 id="latest-activity-heading" class="sr-only">Latest activity across the archive</h2>
+    <div class="activity-strip">
+      <a href="{{ latestPost.url }}">
+        <span>Latest Signal</span>
+        <strong>{{ latestPost.data.title }}</strong>
+      </a>
+      <a href="{{ latestProject | archiveProjectUrl }}">
+        <span>Latest Project</span>
+        <strong>{{ latestProject.title }}</strong>
+      </a>
+      <a href="{{ latestObject | archiveObjectUrl }}">
+        <span>Latest Archive Entry</span>
+        <strong>{{ latestObject.name }}</strong>
+      </a>
+      <a href="{{ latestRestoration | archiveProjectUrl }}">
+        <span>Latest Restoration</span>
+        <strong>{{ latestRestoration.title }}</strong>
+      </a>
     </div>
-
-    <div class="callout">
-      <h3>Signal Split</h3>
-      <p>Live Dispatches come from Bluesky. ATLAS Reports provide the end-of-day debrief. Field Log preserves Matthew's original recorder audio.</p>
-      <p class="action-row"><a href="/field-notes/">Open Live Dispatches</a> / <a href="/field-logs/">Open ATLAS Reports</a> / <a href="/field-logs/voice/">Open Field Log</a></p>
-    </div>
+    {% if latestReport %}
+    <p class="latest-report-line"><span>Latest ATLAS Report</span> <a href="/field-logs/{{ latestReport.slug }}/">{{ latestReport.title }}</a></p>
+    {% endif %}
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="shelves-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Shelves</p>
-      <h2 id="shelves-heading">The site spine is an archive map.</h2>
-    </div>
-
-    <ul class="shelf-list">
-      {% for shelf in site.shelves %}
-      <li>
-        <h3 id="{{ shelf.slug }}">{% if shelf.href %}<a href="{{ shelf.href }}">{{ shelf.label }}</a>{% else %}{{ shelf.label }}{% endif %}</h3>
-        <p>{{ shelf.purpose }}</p>
-        <p class="shelf-note">{{ shelf.tone }} {{ shelf.note }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="evidence-band" aria-labelledby="evidence-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Evidence</p>
-      <h2 id="evidence-heading">Raw shelves remain visible.</h2>
-    </div>
-
-    <ul class="link-list">
-      <li>
-        <h3><a href="/archive.html">L'Archive</a></h3>
-        <p>The generated master record for posts, inventory, dossiers, field logs, source sets, and preserved evidence.</p>
-      </li>
-      <li>
-        <h3><a href="/inventory.html">Inventory</a></h3>
-        <p>Canonical machine, part, accessory, condition, and disposition records.</p>
-      </li>
-      <li>
-        <h3><a href="/social-posts.html">Imported social evidence</a></h3>
-        <p>Recovered Tumblr and Instagram posts with local media and Markdown sources.</p>
-      </li>
-      <li>
-        <h3><a href="/dist/forgotten-industries.json">Generated archive JSON</a></h3>
-        <p>Machine-readable output generated from the source YAML.</p>
-      </li>
-      <li>
-        <h3><a href="/site-snapshots/github-pages-trial-2026-06-06/index.html">Stowed GitHub Pages trial snapshot</a></h3>
-        <p>The pre-reset static surface preserved as evidence, not discarded history.</p>
-      </li>
-      <li>
-        <h3><a href="/docs/process/2026-06-07-public-spine-and-manual-shelf.md">Process record</a></h3>
-        <p>The public spine, manual shelf, and design-language decisions documented as part of the archive itself.</p>
-      </li>
-    </ul>
+<section class="open-stacks" aria-labelledby="open-stacks-heading">
+  <div class="section-inner">
+    <p class="section-label">Open Stacks</p>
+    <h2 id="open-stacks-heading">Direct access. No intermediary.</h2>
+    <nav class="open-stacks-list" aria-label="Direct archive access">
+      <a href="/inventory.html">Inventory</a>
+      <a href="/hang-on-to-each-other/">Les Manuels</a>
+      <a href="/dist/archive.json">Archive JSON</a>
+      <a href="/docs/process/">Process Records</a>
+      <a href="{{ site.githubUrl }}">La Source</a>
+    </nav>
+    <p class="open-stacks-secondary">Evidence shelf: <a href="/social-posts.html">Social Evidence</a></p>
   </div>
 </section>

@@ -44,10 +44,13 @@ describe('archive crawlability output', () => {
     ).toBe(true)
     expect(existsSite('archive/objects/fi-case-001/index.html')).toBe(true)
     expect(existsSite('field-logs/voice/index.html')).toBe(true)
+    expect(
+      existsSite('field-logs/accumulation-across-active-fronts/index.html')
+    ).toBe(true)
   })
 
   it('exposes archive browse routes as plain HTML links', () => {
-    const archiveLinks = hrefs(readSite('archive.html'))
+    const archiveLinks = hrefs(readSite('archive/index.html'))
     const inventoryLinks = hrefs(readSite('archive/inventory/index.html'))
     const projectLinks = hrefs(readSite('archive/projects/index.html'))
 
@@ -72,6 +75,9 @@ describe('archive crawlability output', () => {
     const fieldLog = index.documents.find(
       (record) => record.id === 'FI-LOG-001'
     )
+    const dailySummary = index.documents.find(
+      (record) => record.id === 'FI-LOG-008'
+    )
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
@@ -85,6 +91,12 @@ describe('archive crawlability output', () => {
       associated_project: 'FI-PROJ-001',
     })
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
+    expect(dailySummary).toMatchObject({
+      title: 'ATLAS Report 2026.06.20 — Accumulation Across Active Fronts',
+      url: '/field-logs/accumulation-across-active-fronts/',
+      category: 'atlas-report',
+      associated_project: 'FI-PROJ-006',
+    })
   })
 
   it('renders system and content-level AI provenance citations', () => {
@@ -103,7 +115,12 @@ describe('archive crawlability output', () => {
       editorial_system: 'OpenAI ChatGPT',
       implementation_system: 'OpenAI Codex',
     })
-    expect(home).toContain('Site AI provenance footnote')
+    expect(home).toContain('Human Judgment')
+    expect(home).toContain('href="/provenance/"')
+    expect(home).toContain('Build Checks')
+    expect(home).toContain('Git Commits')
+    expect(home).not.toContain('Source Files')
+    expect(home).not.toContain('Social Records')
     expect(report).toContain('AI-generated synthesis with human direction')
     expect(report).toContain('generated with ATLAS through OpenAI ChatGPT')
     expect(entry).toContain('AI-assisted editorial collaboration')
@@ -126,7 +143,12 @@ describe('archive crawlability output', () => {
 
     walk(SITE)
 
+    const compatibilityRoutes = new Set([
+      path.join(SITE, 'archive.html'),
+      path.join(SITE, 'field-logs/voice/index.html'),
+    ])
     const canonicals = htmlFiles
+      .filter((filePath) => !compatibilityRoutes.has(filePath))
       .map((filePath) => canonical(fs.readFileSync(filePath, 'utf8')))
       .filter(Boolean)
     const duplicates = canonicals.filter(
