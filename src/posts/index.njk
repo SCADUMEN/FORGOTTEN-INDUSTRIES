@@ -24,7 +24,7 @@ eleventyExcludeFromCollections: true
       <section class="signal-section" aria-labelledby="signal-entries-heading">
         <p class="section-label">{{ collections.posts | countLabel("entry", "entries") }}</p>
         <h2 id="signal-entries-heading">Manuscripts, newest first.</h2>
-        <ol class="signal-entry-list" aria-label="All curated posts">
+        <ol class="signal-entry-list" aria-label="All manuscripts">
           {% for post in collections.posts | reverse %}
           <li>
             <header>

@@ -2,209 +2,142 @@
 
 ## Purpose
 
-This dossier defines the current top-level category structure for the Forgotten Industries site. The site should feel like an archive, lab journal, restoration record, personal mythology, and technical reference library, not a generic tech blog.
+This dossier records the current public architecture for Forgotten Industries.
+It is a classification map for the public institution and the source tree that
+supports it.
 
-The organizing principle is:
+Forgotten Industries should read as a preserved institution: evidence first,
+interpretation after, with art emerging through naming, sequence, authored
+records, and restraint.
 
-> Forgotten Industries is an archive and lab journal exploring what happens to the things we leave behind: old machines, abandoned projects, and the parts of ourselves we once thought lost.
-
-## Current Top-Level Site Spine
-
-1. THE ARCHIVE
-2. Recoveries, Restorations, & Redemptions
-3. Field Log
-4. Projects
-5. Manuscripts
-6. Technical References
-7. What ABOUT Art?
-
-These are the canonical current categories unless Matthew explicitly changes them.
-
-## 1. THE ARCHIVE
-
-The historical record.
-
-Use this category for documentation, provenance, research, old hardware references, forum archaeology, CaseLabs history, photos, part identification, manuals, diagrams, and "what the hell is this piece?" investigations.
-
-Use for:
-
-- CaseLabs documentation
-- Old hardware references
-- Manuals
-- Panel and bracket identification
-- Part numbers
-- Community references
-- Forum screenshots
-- Photos of unknown components
-- Historical timelines
-- Provenance notes
-- Archive-grade records
-
-Tone: precise, reverent, archival, curious.
-
-This is the museum wing.
-
-## 2. Recoveries, Restorations, & Redemptions
-
-This merges the original build logs concept with the deeper personal restoration and redemption layer.
-
-Use this category for machines coming back, but also Matthew coming back with them.
-
-Use for:
-
-- CaseLabs Mercury S8 restoration
-- Pedestal rebuilds
-- Watercooling resurrection
-- Physical repair work
-- Long build logs
-- Restoration arcs
-- Recovery essays tied directly to a project
-- Grief, rebuilding, and redemption writing when attached to restoration work
-- "The thing was abandoned, and now it lives again" posts
-
-Tone: grounded, emotional, technical, redemptive.
-
-The workbench and the soul are allowed to appear in the same post.
-
-Key idea:
-
-> The restoration is not separate from the recovery. The machine coming back is part of the human coming back.
-
-## 3. Field Log
-
-This category is Matthew's original voice record: entries spoken into the portable recorder, preserved as MP3 files, and presented newest first.
-
-Use for:
-
-- Bench observations
-- Garage discoveries
-- Temporary hypotheses
-- Immediate reactions
-- Process narration
-- In-progress thoughts that may later become ATLAS reports, archive entries, or restoration posts
-
-Tone: immediate, practical, exploratory.
-
-This is the recorder on the bench.
-
-Key idea:
-
-> The Field Log preserves the voice before revision.
-
-## 4. Projects
-
-Structured context packets for Codex, GitHub, the site, and long-running continuity.
-
-This is the context vault.
-
-Use for:
-
-- Canonical project summaries
-- Character/context dossiers
-- Naming systems
-- Timeline summaries
-- Technical project packets
-- Codex import material
-- GitHub repo context
-- "What this project is and how to talk about it" documents
-
-Known dossiers:
-
-- Potato Dossier
-- Perry / Peregrine Drone Dossier
-- CaseLabs Mercury S8 Dossier
-- Forgotten Industries Brand Dossier
-- Loop Architecture Dossier
-- Parts Inventory Dossier
-
-Tone: structured, durable, clear, importable.
-
-Codex should treat this category as canonical project memory.
-
-## 5. Manuscripts
-
-Long-form literary and nontechnical essays.
-
-This replaces the generic Essays label with something more archival, intentional, and sacred.
-
-Use for:
-
-- Long-form reflections
-- Origin stories
-- Grief writing
-- Recovery writing
-- Redemption philosophy
-- Med school fallout
-- Identity rebuilding
-- Dad
-- Potato, when framed emotionally or literarily
-- "What happens to the things we leave behind"
-- Personal mythos of Forgotten Industries
-- Nontechnical narrative essays
-
-Tone: literary, reflective, sacred-but-not-corny, honest.
-
-This is where the site can become a book.
-
-## 6. Technical References
-
-Evergreen practical docs and technical guides.
-
-This replaces the simpler Guides category.
-
-Use for:
-
-- How to identify CaseLabs panels
-- How to photograph hardware
-- How to catalog parts
-- Watercooling planning references
-- Tubing/fitting standards
-- Radiator/fan notes
-- Restoration methods
-- Measurement standards
-- OBS/webcam/photo station setup
-- Tooling notes
-- Third-party source credit and reconstruction notes
-- Repeatable workflows
-- Practical documentation other people could use
-
-Tone: clear, practical, precise, reusable.
-
-This is the manual shelf. `Hang On To Each Other` is the credit-and-wisdom layer inside it: give credit, preserve source trails, and turn fragile references into useful instructions.
-
-## 7. What ABOUT Art?
-
-The final category and about-page surface for everything non-science, nontechnical, personal, and creatively alive.
-
-This category gives Forgotten Industries permission to breathe outside engineering, restoration, medicine, or documentation. It also cleanly carries Matthew's about-me context without reducing the project to biography.
-
-Use for:
-
-- Music
-- Design
-- Photography
-- Visual experiments
-- Fiction fragments
-- Aesthetic notes
-- Humor
-- Taste
-- Weird screenshots
-- Symbolic object writing
-- Creative fragments
-- Non-science posts
-- Nontechnical art/life observations
-- "Salmon bag" energy
-- Matthew Marx / about-me context
-- Anything that belongs to the artistic side of Forgotten Industries
-
-Tone: free, weird, alive, playful, serious when needed.
-
-Key idea:
-
-> Not everything has to justify itself as science, engineering, recovery, or documentation. Some of it can just be art because Matthew said so.
-
-## Canonical Top Navigation
+## Canonical Public Spine
 
 ```text
-THE ARCHIVE | Recoveries, Restorations, & Redemptions | Field Log | Projects | Manuscripts | Technical References | What ABOUT Art?
+L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS
 ```
+
+| Route         | Public name | Role                                                                        |
+| ------------- | ----------- | --------------------------------------------------------------------------- |
+| `/l-archive/` | L'ARCHIVE   | Master record, inventory, object records, source evidence, process records. |
+| `/oeuvre/`    | L'ŒUVRE     | Assembled work layer.                                                       |
+| `/signal/`    | LE SIGNAL   | Authored dispatches, field logs, essays, reports, and live updates.         |
+| `/apropos/`   | À PROPOS    | Origin, maker plate, institutional context, provenance, and contact.        |
+
+Do not move Dossiers, Manuscripts, manuals, posts, projects, or field logs into
+the top navigation. They remain shelves inside the four public doors.
+
+## Public Taxonomy
+
+### L'Archive
+
+L'Archive is the master record. It contains the evidence and the systems that
+make evidence reachable.
+
+Use this layer for:
+
+- inventory records
+- object and component records
+- source sets
+- recovered social evidence
+- taxonomy and status shelves
+- process records
+- ATLAS report archive views
+- technical references and recovered manuals
+- provenance, uncertainty, custody, and verification state
+
+The canonical public landing route is `/l-archive/`.
+
+Implementation note: `src/archive.njk` intentionally remains the Eleventy source
+file for `/l-archive/`. The filename is legacy implementation language, not a
+public canonical route.
+
+### L'Œuvre
+
+L'Œuvre is the assembled work layer. It gathers finished or actively assembled
+works without making the site feel like a portfolio.
+
+It has two public shelves:
+
+- **Les Dossiers**: living case files assembled from archive records, field logs,
+  photographs, inventories, and observations.
+- **Les Manuscrits**: authored works, research papers, doctrines, essays, and
+  complete texts emerging from the archive.
+
+Implementation notes:
+
+- `src/data/projects.yml`, `archive.projects`, `/projects/`, and
+  `/archive/projects/` remain for schema and URL compatibility. Public labels
+  should say Dossier or Dossiers unless the text is explicitly describing a
+  legacy data field or ID.
+- `src/posts/`, `collections.posts`, and `/posts/` remain for Eleventy
+  collection, feed, and URL compatibility. Public labels should say Manuscript,
+  Manuscripts, or Les Manuscrits.
+
+### Le Signal
+
+Le Signal is the transmission layer. It carries time-based authored records and
+operational dispatches.
+
+Use this layer for:
+
+- ATLAS reports
+- recorder-based Field Logs
+- imported Bluesky dispatches
+- short updates
+- essays and authored transmissions when they are presented as signal rather
+  than assembled works
+
+### À Propos
+
+À Propos is the institutional context layer.
+
+Use this layer for:
+
+- origin and authorship
+- contact
+- maker plate and provenance language
+- citation standards
+- project method and institutional context
+
+## Legacy Route Policy
+
+Compatibility wins over purity.
+
+| Route or name             | Current handling                                                                                 |
+| ------------------------- | ------------------------------------------------------------------------------------------------ |
+| `/archive/`               | Compatibility route to `/l-archive/`. Do not use as canonical in new public links.               |
+| `/archive.html`           | Compatibility route to `/l-archive/`. Kept for old links and preserved references.               |
+| `/archive/*`              | Kept for generated archive shelves, object records, taxonomy, source sets, and evidence ledgers. |
+| `/projects/`              | Kept as the public Les Dossiers shelf. It is not a top-nav item.                                 |
+| `/posts/`                 | Kept as the public Les Manuscrits shelf and feed source. It is not a top-nav item.               |
+| `/hang-on-to-each-other/` | Kept as a named technical-reference/manual shelf inside the archive.                             |
+
+Do not create duplicate competing archive pages. If an older route exists for
+compatibility, point it to the canonical door or document why it remains an
+archive shelf.
+
+## Naming Rules
+
+- Use **L'Archive** for the master record and public archive door.
+- Use **Dossier/Dossiers** for institution-facing assembled case files.
+- Use **Project/project** only for source fields, legacy IDs, code paths, or
+  historical records that genuinely use that term.
+- Use **Manuscript/Manuscripts** for public authored works.
+- Use **post/posts** only for Eleventy implementation, file paths, preserved raw
+  source, or historical social records.
+- Use **Manual 001** and **manual** when referring to the actual recovered
+  technical reference artifact.
+- Use **source** when referring to provenance, source files, source sets,
+  source-code repositories, or raw evidence.
+
+## Tone
+
+The desired register remains:
+
+```text
+70% archive / 30% art
+```
+
+The site should feel institutional, evidentiary, and restrained. Avoid pitch
+copy, portfolio framing, manifesto expansion, and decorative art language unless
+the page is explicitly an authored manuscript.

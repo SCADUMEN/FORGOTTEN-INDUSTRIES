@@ -3,7 +3,7 @@
 ## Summary
 
 - Process ID: `FI-PROCESS-2026-06-07-PUBLIC-SPINE`
-- Status: active public-site design record
+- Status: historical public-site design record; superseded for current navigation by `src/docs/site-architecture-dossier.md` and `src/docs/classification-system.md`
 - Related public route: `/hang-on-to-each-other/`
 - Related source shelf: `assets/reference/hang-on-to-each-other/`
 
@@ -12,6 +12,8 @@
 The `Hang On To Each Other` reference shelf began as a local SLUSH find: a CaseLabs Mercury S8 assembly timelapse recovered from the ExtremeRigs review context. It became the first public technical manual because the original assembly instructions are not present in the local archive.
 
 The homepage then needed a stronger public spine. The important design decision was that the Prelude, `Perspective, Peregrine, and Pang`, should not be buried by newer technical finds. It belongs to Manuscripts as Entry 000. `Hang On To Each Other` belongs to Technical References as Manual 001.
+
+Current classification note: the public top navigation has since consolidated into `L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS`. The decisions below remain part of the process trail, but they are not the current canonical navigation model.
 
 ## Design Decisions
 
