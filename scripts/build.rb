@@ -349,6 +349,7 @@ FileUtils.mkdir_p(DIST)
 
 json = JSON.pretty_generate(archive)
 File.write(File.join(DIST, "forgotten-industries.json"), "#{json}\n")
+File.write(File.join(DIST, "archive.json"), "#{json}\n")
 File.write(File.join(DIST, "search-index.json"), "#{JSON.pretty_generate(search_index)}\n")
 
 types = File.read(File.join(SRC, "types.ts")).strip
