@@ -19,17 +19,17 @@ eleventyExcludeFromCollections: true
     <h2 id="signal-directory-heading">Signals, separated by source.</h2>
     <div class="directory-grid signal-directory-grid">
       <a href="/atlas/">
-        <span>01 / {{ archive.fieldLogs | count }} reports</span>
+        <span>01 / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
         <h3>ATLAS Reports</h3>
         <p>AI-assisted end-of-day debriefs: evidence, decisions, unresolved questions, and next actions.</p>
       </a>
       <a href="/field-logs/">
-        <span>02 / {{ archive.voiceLogs | count }} recordings</span>
+        <span>02 / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
         <h3>Field Logs</h3>
         <p>Original voice records from the portable recorder. The empty intake template is live and ready.</p>
       </a>
       <a href="/en-direct/">
-        <span>03 / {{ fieldnotes | count }} dispatches</span>
+        <span>03 / {{ fieldnotes | countLabel("dispatch", "dispatches") }}</span>
         <h3>En Direct</h3>
         <p>The continuous shortform signal imported from Bluesky at build time.</p>
       </a>

@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">L'Archive / Categories</p>
     <h1>Categories</h1>
-    <p class="tagline">Broad archive shelves: project classes, object categories, source types, and record lanes.</p>
+    <p class="tagline">Broad archive shelves: dossier classes, object categories, source types, and record lanes.</p>
   </div>
 </section>
 
@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
     <ul class="link-list archive-record-list">
       {% for term in taxonomy.categories %}
       <li>
-        <p class="entry-note">{{ term.records.length }} record{% if term.records.length != 1 %}s{% endif %}</p>
+        <p class="entry-note">{{ term.records.length | countLabel("record", "records") }}</p>
         <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
       </li>
       {% endfor %}

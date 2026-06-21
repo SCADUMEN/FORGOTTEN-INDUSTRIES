@@ -25,33 +25,33 @@ canonical: https://forgotten-industries.net/
 
 <section class="primary-finding-aid" aria-label="Primary archive sections">
   <div class="section-inner primary-card-grid">
-    <a class="primary-section-card" href="/archive/">
+    <a class="primary-section-card" href="/l-archive/">
       <div class="primary-card-plate">
         <h2>L'Archive</h2>
         <strong class="primary-card-mark">// Archive //</strong>
       </div>
-      <p class="primary-card-description">Everything catalogued, sourced, and kept.</p>
+      <p class="primary-card-description">Master record.</p>
     </a>
     <a class="primary-section-card" href="/oeuvre/">
       <div class="primary-card-plate">
         <h2>L'Œuvre</h2>
         <strong class="primary-card-mark">// Work //</strong>
       </div>
-      <p class="primary-card-description">Dossiers, manuscripts, and assembled work.</p>
+      <p class="primary-card-description">Assembled works.</p>
     </a>
     <a class="primary-section-card" href="/signal/">
       <div class="primary-card-plate">
         <h2>Le Signal</h2>
         <strong class="primary-card-mark">// Signal //</strong>
       </div>
-      <p class="primary-card-description">Reports, field logs, live dispatches, and essays.</p>
+      <p class="primary-card-description">Reports and dispatches.</p>
     </a>
     <a class="primary-section-card" href="/apropos/">
       <div class="primary-card-plate">
         <h2>À Propos</h2>
         <strong class="primary-card-mark">// About //</strong>
       </div>
-      <p class="primary-card-description">Authorship, methods, provenance, source, and contact.</p>
+      <p class="primary-card-description">Maker plate.</p>
     </a>
   </div>
 </section>
@@ -62,23 +62,23 @@ canonical: https://forgotten-industries.net/
     <div class="stats homepage-instrument-stats">
       <a class="stat" href="/projects/">
         <strong>{{ archive.projects | count }}</strong>
-        <span>Dossiers</span>
+        <span>{{ archive.projects | pluralLabel("Dossier", "Dossiers") }}</span>
       </a>
       <a class="stat" href="/hang-on-to-each-other/">
         <strong>1</strong>
-        <span>Manuels</span>
+        <span>{{ 1 | pluralLabel("Manuel", "Manuels") }}</span>
       </a>
       <a class="stat" href="/atlas/">
         <strong>{{ archive.fieldLogs | count }}</strong>
-        <span>ATLAS Reports</span>
+        <span>{{ archive.fieldLogs | pluralLabel("ATLAS Report", "ATLAS Reports") }}</span>
       </a>
       <a class="stat" href="{{ site.githubUrl }}/actions">
         <strong>{{ site.buildChecks | count }}</strong>
-        <span>Build Checks</span>
+        <span>{{ site.buildChecks | pluralLabel("Build Check", "Build Checks") }}</span>
       </a>
       <a class="stat" href="{{ site.githubUrl }}/commits/main">
         <strong>{{ site.sourceStats.commits }}</strong>
-        <span>Git Commits</span>
+        <span>{{ site.sourceStats.commits | pluralLabel("Git Commit", "Git Commits") }}</span>
       </a>
     </div>
   </div>
@@ -115,11 +115,11 @@ canonical: https://forgotten-industries.net/
 <section class="open-stacks" aria-labelledby="open-stacks-heading">
   <div class="section-inner">
     <p class="section-label">Open Stacks</p>
-    <h2 id="open-stacks-heading">Direct access. No intermediary.</h2>
+    <h2 id="open-stacks-heading">Direct shelf access.</h2>
     <nav class="open-stacks-list" aria-label="Direct archive access">
       <a href="/inventory.html">Inventory</a>
       <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/dist/archive.json">Archive JSON</a>
+      <a href="/dist/forgotten-industries.json">Archive JSON</a>
       <a href="/docs/process/">Process Records</a>
       <a href="{{ site.githubUrl }}">La Source</a>
     </nav>

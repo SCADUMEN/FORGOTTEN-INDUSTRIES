@@ -31,6 +31,9 @@ function canonical(html) {
 
 describe('archive crawlability output', () => {
   it('generates object, project, and taxonomy index pages', () => {
+    expect(existsSite('l-archive/index.html')).toBe(true)
+    expect(existsSite('archive/index.html')).toBe(true)
+    expect(existsSite('archive.html')).toBe(true)
     expect(existsSite('archive/objects/index.html')).toBe(true)
     expect(existsSite('archive/taxonomy/index.html')).toBe(true)
     expect(existsSite('archive/categories/index.html')).toBe(true)
@@ -50,16 +53,19 @@ describe('archive crawlability output', () => {
   })
 
   it('exposes archive browse routes as plain HTML links', () => {
-    const archiveLinks = hrefs(readSite('archive/index.html'))
+    const archiveLinks = hrefs(readSite('l-archive/index.html'))
+    const legacyArchiveLinks = hrefs(readSite('archive/index.html'))
     const inventoryLinks = hrefs(readSite('archive/inventory/index.html'))
     const projectLinks = hrefs(readSite('archive/projects/index.html'))
 
+    expect(legacyArchiveLinks).toContain('/l-archive/')
     expect(archiveLinks).toContain('/archive/objects/')
     expect(archiveLinks).toContain('/archive/taxonomy/')
-    expect(archiveLinks).toContain(
+    expect(archiveLinks).toContain('/oeuvre/#dossiers')
+    expect(inventoryLinks).toContain('/archive/objects/fi-case-001/')
+    expect(projectLinks).toContain(
       '/archive/projects/caselabs-mercury-s8-pedestal-restoration/'
     )
-    expect(inventoryLinks).toContain('/archive/objects/fi-case-001/')
     expect(projectLinks).toContain('/archive/objects/')
     expect(projectLinks).toContain('/archive/systems/')
     expect(projectLinks).toContain('/archive/status/')
@@ -157,8 +163,11 @@ describe('archive crawlability output', () => {
       const html = readSite(pagePath)
       expect(html).toContain('class="site-footer"')
       expect(html).toContain('href="/provenance/"')
-      expect(html).toContain('footer-provenance-line')
-      expect(html).toMatch(/\d{4}\.\d{2}\.\d{2} \/\/ \d{2}:\d{2}/)
+      expect(html).toContain('class="footer-plate"')
+      expect(html).toContain('class="plate-row plate-row-provenance"')
+      expect(html).toMatch(/\/\/[\s\S]*Provenance[\s\S]*\/\/\/\//)
+      expect(html).toMatch(/\d{4}\.\d{2}\.\d{2}/)
+      expect(html).toMatch(/\d{2}:\d{2}/)
     }
   })
 
@@ -180,6 +189,7 @@ describe('archive crawlability output', () => {
     walk(SITE)
 
     const compatibilityRoutes = new Set([
+      path.join(SITE, 'archive/index.html'),
       path.join(SITE, 'archive.html'),
       path.join(SITE, 'field-logs/voice/index.html'),
     ])

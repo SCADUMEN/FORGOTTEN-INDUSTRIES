@@ -65,12 +65,12 @@ eleventyComputed:
       {% endif %}
       {% if project %}
       <div>
-        <dt>Associated project</dt>
-        <dd><a href="/archive/projects/#{{ project.id }}">{{ project.title }}</a> / {{ project.id }}</dd>
+        <dt>Associated dossier</dt>
+        <dd><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a> / {{ project.id }}</dd>
       </div>
       {% elif log.associated_project %}
       <div>
-        <dt>Associated project</dt>
+        <dt>Associated dossier</dt>
         <dd>{{ log.associated_project }}</dd>
       </div>
       {% endif %}

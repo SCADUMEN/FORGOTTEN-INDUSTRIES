@@ -1,17 +1,31 @@
 <footer class="site-footer" aria-label="Maker's plate">
-  <p>
-    <span>// Human Judgment</span>
-    <span>// Machine Collaboration //</span>
-  </p>
-  <p>
-    <span>// FORGOTTEN INDUSTRIES</span>
-    <span>// CONTRE L'OUBLI //</span>
-  </p>
-  <p class="footer-provenance-line">
-    <span>// <a href="/provenance/">Provenance</a> //</span>
-    <span class="footer-timestamp">
-      <time datetime="{{ site.buildTime }}">{{ site.buildDisplay }}</time>
-    </span>
-    <span>//</span>
-  </p>
+  <div class="footer-plate">
+    <p class="plate-row">
+      <span class="plate-edge" aria-hidden="true">//</span>
+      <span class="plate-field plate-field-left">Human Judgment</span>
+      <span class="plate-sep" aria-hidden="true">////</span>
+      <span class="plate-field plate-field-right">Machine Collaboration</span>
+      <span class="plate-edge" aria-hidden="true">//</span>
+    </p>
+    <p class="plate-row">
+      <span class="plate-edge" aria-hidden="true">//</span>
+      <span class="plate-field plate-field-left">FORGOTTEN INDUSTRIES</span>
+      <span class="plate-sep" aria-hidden="true">////</span>
+      <span class="plate-field plate-field-right">CONTRE L'OUBLI</span>
+      <span class="plate-edge" aria-hidden="true">//</span>
+    </p>
+    <p class="plate-row plate-row-provenance">
+      <span class="plate-edge" aria-hidden="true">//</span>
+      <span class="plate-field plate-field-left"><a href="/provenance/">Provenance</a></span>
+      <span class="plate-sep" aria-hidden="true">////</span>
+      <span class="plate-field plate-field-center">
+        <time datetime="{{ site.buildTime }}">{{ site.buildDateDisplay }}</time>
+      </span>
+      <span class="plate-sep" aria-hidden="true">////</span>
+      <span class="plate-field plate-field-right">
+        <time datetime="{{ site.buildTime }}">{{ site.buildTimeDisplay }}</time>
+      </span>
+      <span class="plate-edge" aria-hidden="true">//</span>
+    </p>
+  </div>
 </footer>

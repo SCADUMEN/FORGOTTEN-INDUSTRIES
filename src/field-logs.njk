@@ -17,7 +17,7 @@ eleventyExcludeFromCollections: true
 <section class="source-band" aria-labelledby="field-logs-status">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ archive.fieldLogs | count }} records</p>
+      <p class="section-label">{{ archive.fieldLogs | countLabel("record", "records") }}</p>
       <h2 id="field-logs-status">End-of-day reports from ATLAS.</h2>
     </div>
 
@@ -37,7 +37,7 @@ eleventyExcludeFromCollections: true
         <p class="section-label">ATLAS Reports Index</p>
         <h2 id="field-log-filter-heading">Newest first. Filter without leaving the page.</h2>
         <p class="archive-search-meta">
-          Filter by text, tag, type, project, or status. Evidence before interpretation.
+          Filter by text, tag, type, dossier, or status. Evidence before interpretation.
         </p>
       </div>
 
@@ -64,9 +64,9 @@ eleventyExcludeFromCollections: true
           </select>
         </label>
         <label>
-          <span>Project</span>
+          <span>Dossier</span>
           <select id="field-log-project">
-            <option value="">All projects</option>
+            <option value="">All dossiers</option>
             {% for project in archive.projects %}
             <option value="{{ project.id }}">{{ project.title }}</option>
             {% endfor %}
@@ -83,7 +83,7 @@ eleventyExcludeFromCollections: true
         </label>
       </div>
 
-      <p id="field-log-filter-status" class="archive-search-status">{{ logs | count }} records / ready</p>
+      <p id="field-log-filter-status" class="archive-search-status">{{ logs | countLabel("record", "records") }} / ready</p>
     </div>
   </div>
 </section>
@@ -134,7 +134,7 @@ eleventyExcludeFromCollections: true
           {% endif %}
           {% if project %}
           <div>
-            <dt>Project</dt>
+            <dt>Dossier</dt>
             <dd><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></dd>
           </div>
           {% endif %}
@@ -169,7 +169,7 @@ eleventyExcludeFromCollections: true
       {% for category in archive.fieldLogs | fieldLogCategories %}
       {% set categoryLogs = archive.fieldLogs | byCategory(category) | fieldLogsNewest %}
       <section class="field-log-group">
-        <p class="section-label">{{ categoryLogs | count }} records</p>
+        <p class="section-label">{{ categoryLogs | countLabel("record", "records") }}</p>
         <h3>{{ category }}</h3>
         <ol>
           {% for log in categoryLogs %}

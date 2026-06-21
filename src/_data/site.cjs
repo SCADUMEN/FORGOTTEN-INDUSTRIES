@@ -88,7 +88,8 @@ const gitHashShort = (() => {
 const sourceFileList = readCommand('git ls-files src', '')
   .split(/\r?\n/)
   .filter(Boolean)
-const currentSiteDate = dateInTimeZone(new Date(), SITE_TIME_ZONE)
+const buildDate = new Date()
+const currentSiteDate = dateInTimeZone(buildDate, SITE_TIME_ZONE)
 const deltaSince = addDays(currentSiteDate, -1)
 const currentDayStart = startOfDayInTimeZone(
   currentSiteDate,
@@ -138,7 +139,7 @@ const sourceStats = {
 
 const navRows = [
   [
-    { label: "L'ARCHIVE", href: '/archive/' },
+    { label: "L'ARCHIVE", href: '/l-archive/' },
     { label: "L'ŒUVRE", href: '/oeuvre/' },
     { label: 'LE SIGNAL', href: '/signal/' },
     { label: 'À PROPOS', href: '/apropos/' },
@@ -147,7 +148,21 @@ const navRows = [
 
 module.exports = {
   name: 'Forgotten Industries',
-  buildTime: new Date().toISOString(),
+  buildTime: buildDate.toISOString(),
+  buildDateDisplay: new Intl.DateTimeFormat('en-CA', {
+    timeZone: SITE_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .format(buildDate)
+    .replaceAll('-', '.'),
+  buildTimeDisplay: new Intl.DateTimeFormat('en-CA', {
+    timeZone: SITE_TIME_ZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).format(buildDate),
   buildDisplay: new Intl.DateTimeFormat('en-CA', {
     timeZone: SITE_TIME_ZONE,
     year: 'numeric',
@@ -157,7 +172,7 @@ module.exports = {
     minute: '2-digit',
     hourCycle: 'h23',
   })
-    .format(new Date())
+    .format(buildDate)
     .replace(',', '')
     .replaceAll('-', '.')
     .replace(' ', ' // '),
@@ -199,7 +214,7 @@ module.exports = {
   nav: navRows.flat(),
 
   shelves: [
-    { label: "L'Archive", slug: 'archive', href: '/archive/' },
+    { label: "L'Archive", slug: 'archive', href: '/l-archive/' },
     { label: "L'Œuvre", slug: 'oeuvre', href: '/oeuvre/' },
     { label: 'Le Signal', slug: 'signal', href: '/signal/' },
     { label: 'À Propos', slug: 'apropos', href: '/apropos/' },

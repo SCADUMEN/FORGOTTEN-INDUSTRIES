@@ -19,7 +19,7 @@ eleventyExcludeFromCollections: true
 <section class="source-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ archive.socialPosts | count }} records</p>
+      <p class="section-label">{{ archive.socialPosts | countLabel("record", "records") }}</p>
       <h2>Imported posts remain visible as source records.</h2>
     </div>
 
