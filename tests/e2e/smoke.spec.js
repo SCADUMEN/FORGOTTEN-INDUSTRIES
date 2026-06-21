@@ -226,6 +226,27 @@ test('archive compatibility route contains a real archive link', async ({
   expect(body).not.toContain('The preserved record now lives at /archive/')
 })
 
+test('inventory compatibility routes resolve to generated inventory', async ({
+  page,
+  request,
+}) => {
+  const legacyResponse = await request.get('/inventory.html', {
+    maxRedirects: 0,
+  })
+  expect(legacyResponse.status()).toBe(200)
+  const legacyBody = await legacyResponse.text()
+  expect(legacyBody).toContain('href="/archive/inventory/"')
+  expect(legacyBody).not.toContain('<h2>Core Items</h2>')
+
+  const response = await page.goto('/inventory/')
+  expect(response?.status()).toBe(200)
+  await page.waitForURL('**/archive/inventory/')
+  await expect(page).toHaveTitle(/Inventory/)
+  await expect(
+    page.locator('a[href="/archive/objects/fi-cl-part-010/"]')
+  ).toHaveCount(1)
+})
+
 test('posts index lists Les Manuscrits', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)

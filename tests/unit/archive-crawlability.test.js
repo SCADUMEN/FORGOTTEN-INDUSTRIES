@@ -26,7 +26,7 @@ function hrefs(html) {
 }
 
 function canonical(html) {
-  return html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/)?.[1]
+  return html.match(/<link\s+[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]
 }
 
 describe('archive crawlability output', () => {
@@ -34,6 +34,9 @@ describe('archive crawlability output', () => {
     expect(existsSite('l-archive/index.html')).toBe(true)
     expect(existsSite('archive/index.html')).toBe(true)
     expect(existsSite('archive.html')).toBe(true)
+    expect(existsSite('inventory/index.html')).toBe(true)
+    expect(existsSite('inventory.html')).toBe(true)
+    expect(existsSite('archive/inventory/index.html')).toBe(true)
     expect(existsSite('archive/objects/index.html')).toBe(true)
     expect(existsSite('archive/taxonomy/index.html')).toBe(true)
     expect(existsSite('archive/categories/index.html')).toBe(true)
@@ -59,6 +62,7 @@ describe('archive crawlability output', () => {
     const dossierLinks = hrefs(readSite('archive/projects/index.html'))
 
     expect(legacyArchiveLinks).toContain('/l-archive/')
+    expect(archiveLinks).toContain('/archive/inventory/')
     expect(archiveLinks).toContain('/archive/objects/')
     expect(archiveLinks).toContain('/archive/taxonomy/')
     expect(archiveLinks).toContain('/oeuvre/#dossiers')
@@ -69,6 +73,29 @@ describe('archive crawlability output', () => {
     expect(dossierLinks).toContain('/archive/objects/')
     expect(dossierLinks).toContain('/archive/systems/')
     expect(dossierLinks).toContain('/archive/status/')
+  })
+
+  it('routes legacy inventory doors to the generated inventory shelf', () => {
+    const redirects = fs.readFileSync(path.join(SITE, '_redirects'), 'utf8')
+    expect(redirects).toContain('/inventory /archive/inventory/ 301')
+    expect(redirects).toContain('/inventory/ /archive/inventory/ 301')
+    expect(redirects).toContain('/inventory.html /archive/inventory/ 301')
+
+    const inventoryRoute = readSite('inventory/index.html')
+    const inventoryHtml = readSite('inventory.html')
+    const generatedInventory = readSite('archive/inventory/index.html')
+
+    expect(canonical(inventoryRoute)).toBe(
+      'https://forgotten-industries.net/archive/inventory/'
+    )
+    expect(canonical(inventoryHtml)).toBe(
+      'https://forgotten-industries.net/archive/inventory/'
+    )
+    expect(inventoryRoute).toContain('href="/archive/inventory/"')
+    expect(inventoryHtml).toContain('href="/archive/inventory/"')
+    expect(inventoryHtml).not.toContain('<h2>Core Items</h2>')
+    expect(generatedInventory).toContain('FI-CL-PART-010')
+    expect(generatedInventory).toContain('/archive/objects/fi-cl-part-010/')
   })
 
   it('documents archive compatibility routes without redirect loops', () => {
@@ -213,6 +240,8 @@ describe('archive crawlability output', () => {
     const compatibilityRoutes = new Set([
       path.join(SITE, 'archive/index.html'),
       path.join(SITE, 'archive.html'),
+      path.join(SITE, 'inventory/index.html'),
+      path.join(SITE, 'inventory.html'),
       path.join(SITE, 'field-logs/voice/index.html'),
     ])
     const canonicals = htmlFiles

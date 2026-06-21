@@ -2656,9 +2656,10 @@ h3 {
 .footer-plate {
   display: grid;
   gap: 0.18rem;
-  width: min(100%, 52rem);
+  width: fit-content;
+  max-width: 100%;
   margin-inline: auto;
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.2rem;
   border: 1px solid rgba(79, 140, 255, 0.78);
   background:
     linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(255, 91, 214, 0.06)),
@@ -2670,16 +2671,17 @@ h3 {
 
 .plate-row {
   display: grid;
-  grid-template-columns: 2.2rem minmax(0, 1fr) max-content minmax(0, 1fr) 2.2rem;
+  position: relative;
+  grid-template-columns: max-content max-content max-content;
   align-items: baseline;
-  gap: 0.6rem;
+  justify-content: center;
+  gap: 0.56rem;
   margin: 0;
+  padding-inline: 2.2rem;
 }
 
 .plate-row-provenance {
-  grid-template-columns:
-    2.2rem minmax(0, 1fr) max-content max-content max-content minmax(0, 1fr)
-    2.2rem;
+  grid-template-columns: max-content max-content max-content max-content max-content;
 }
 
 .plate-field,
@@ -2714,7 +2716,20 @@ h3 {
 }
 
 .plate-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: baseline;
   text-align: center;
+}
+
+.plate-edge:first-child {
+  left: 0;
+}
+
+.plate-edge:last-child {
+  right: 0;
 }
 
 .plate-sep {
@@ -3015,6 +3030,29 @@ h3 {
   }
 }
 
+@media (max-width: 720px) {
+  .plate-row,
+  .plate-row-provenance {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.46rem;
+    padding-inline: 0;
+    text-align: center;
+  }
+
+  .plate-field-left,
+  .plate-field-center,
+  .plate-field-right {
+    text-align: center;
+  }
+
+  .plate-edge {
+    position: static;
+    flex: 0 0 auto;
+  }
+}
+
 @media (max-width: 560px) {
   .site-nav {
     font-size: clamp(0.72rem, 3vw, 0.82rem);
@@ -3033,25 +3071,6 @@ h3 {
     box-shadow:
       -0.18rem -0.18rem 0 rgba(0, 0, 0, 0.5),
       -0.18rem -0.18rem 0 1px rgba(79, 140, 255, 0.34);
-  }
-
-  .plate-row,
-  .plate-row-provenance {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0 0.46rem;
-    text-align: center;
-  }
-
-  .plate-field-left,
-  .plate-field-center,
-  .plate-field-right {
-    text-align: center;
-  }
-
-  .plate-edge {
-    flex: 0 0 auto;
   }
 
   .archive-aerial-tier .archive-aerial-plate {

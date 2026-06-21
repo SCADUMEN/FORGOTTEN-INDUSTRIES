@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: Inventory Has Moved
+description: Compatibility route for the Forgotten Industries inventory shelf.
+permalink: /inventory/index.html
+canonical: https://forgotten-industries.net/archive/inventory/
+eleventyExcludeFromCollections: true
+---
+<section class="section-landing-hero route-redirect">
+  <div class="section-inner">
+    <p class="section-label">Route preserved</p>
+    <h1>Inventory</h1>
+    <p class="tagline">The inventory shelf now lives at <a href="/archive/inventory/">/archive/inventory/</a>.</p>
+  </div>
+</section>
+<script>window.location.replace('/archive/inventory/' + window.location.search + window.location.hash);</script>
