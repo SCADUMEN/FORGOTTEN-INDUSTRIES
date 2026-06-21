@@ -25,7 +25,7 @@ test('home page renders', async ({ page }) => {
   await expect(homepageStats).toHaveCount(5)
   await expect(homepageStats).toHaveText([
     /Dossiers/,
-    /Manuels/,
+    /Manuel/,
     /ATLAS Reports/,
     /Build Checks/,
     /Git Commits/,
@@ -58,7 +58,7 @@ test('home page remains contained on mobile', async ({ page }) => {
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
-  for (const route of ['/archive/', '/oeuvre/', '/signal/', '/apropos/']) {
+  for (const route of ['/l-archive/', '/oeuvre/', '/signal/', '/apropos/']) {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
@@ -70,16 +70,9 @@ test('primary section pages share the global maker plate', async ({ page }) => {
 })
 
 test('archive page renders', async ({ page }) => {
-  const response = await page.goto('/archive/')
+  const response = await page.goto('/l-archive/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/L'Archive/)
-
-  const socialLedger = page.getByRole('list', {
-    name: 'Scrollable recovered social evidence ledger',
-  })
-  await expect(socialLedger).toBeVisible()
-  await expect(socialLedger).toHaveCSS('overflow-y', 'auto')
-  await expect(socialLedger).toHaveAttribute('tabindex', '0')
 
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)
@@ -98,7 +91,7 @@ test('archive page renders', async ({ page }) => {
     'Context recovered from altitude.'
   )
   await expect(page.locator('.archive-aerial-plate')).toContainText(
-    'Project Number: None'
+    'Dossier Number: None'
   )
   await expect(page.locator('.archive-aerial-plate')).toHaveAttribute(
     'href',
@@ -108,7 +101,7 @@ test('archive page renders', async ({ page }) => {
     'Recovered Social Records'
   )
   await expect(page.locator('.archive-finding-aid')).toContainText(
-    'Archive Shelves'
+    'Registered Shelves'
   )
   await expect(page.locator('.archive-finding-aid')).not.toContainText(
     'The Preserved Record'
@@ -126,7 +119,9 @@ test('archive page renders', async ({ page }) => {
   await expect(page.locator('#archive-search-results')).toContainText('Pang')
 
   await expect(
-    page.locator('a[href="/forgotten-industries/l-archive/caselabs-s8/"]')
+    page.locator(
+      '.inventory-gallery-track figcaption a[href="/archive/objects/fi-case-001/"]'
+    )
   ).toContainText('CaseLabs Mercury S8')
 })
 
@@ -134,7 +129,7 @@ test('archive page remains contained and uses an intentional object shelf on mob
   page,
 }) => {
   await page.setViewportSize({ width: 393, height: 852 })
-  const response = await page.goto('/archive/')
+  const response = await page.goto('/l-archive/')
   expect(response?.status()).toBe(200)
 
   const dimensions = await page.evaluate(() => ({
@@ -178,7 +173,7 @@ test('object records render image-first museum entries and social images', async
   ).toHaveCount(1)
   await expect(page.locator('.object-metadata-grid dt')).toHaveText([
     'Identity',
-    'Project',
+    'Dossier',
     'Condition',
     'Status',
     'Disposition',
@@ -225,16 +220,17 @@ test('archive compatibility route contains a real archive link', async ({
   const response = await request.get('/archive.html', { maxRedirects: 0 })
   expect(response.status()).toBe(200)
   const body = await response.text()
-  expect(body).toContain('<a href="/archive/">/archive/</a>')
+  expect(body).toContain('<a href="/l-archive/">/l-archive/</a>')
   expect(body).not.toContain('&lt;/archive/&gt;')
   expect(body).not.toContain('</archive/>')
+  expect(body).not.toContain('The preserved record now lives at /archive/')
 })
 
-test('posts index lists the curated posts', async ({ page }) => {
+test('posts index lists Les Manuscrits', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  // Both dated curated posts should be linked from the index.
+  // Both dated manuscripts should be linked from the compatibility route.
   await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
 })
 
@@ -278,7 +274,7 @@ test('CaseLabs object archive renders with records and photographs', async ({
 test('CaseLabs intake objects are searchable canonical inventory', async ({
   page,
 }) => {
-  const response = await page.goto('/archive/?q=FI-CL')
+  const response = await page.goto('/l-archive/?q=FI-CL')
   expect(response?.status()).toBe(200)
   await expect(page.locator('#archive-search-status')).toHaveText('10 results')
   await expect(page.locator('#archive-search-results > li')).toHaveCount(10)

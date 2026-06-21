@@ -30,7 +30,7 @@ function canonical(html) {
 }
 
 describe('archive crawlability output', () => {
-  it('generates object, project, and taxonomy index pages', () => {
+  it('generates object, dossier, and taxonomy index pages', () => {
     expect(existsSite('l-archive/index.html')).toBe(true)
     expect(existsSite('archive/index.html')).toBe(true)
     expect(existsSite('archive.html')).toBe(true)
@@ -56,19 +56,41 @@ describe('archive crawlability output', () => {
     const archiveLinks = hrefs(readSite('l-archive/index.html'))
     const legacyArchiveLinks = hrefs(readSite('archive/index.html'))
     const inventoryLinks = hrefs(readSite('archive/inventory/index.html'))
-    const projectLinks = hrefs(readSite('archive/projects/index.html'))
+    const dossierLinks = hrefs(readSite('archive/projects/index.html'))
 
     expect(legacyArchiveLinks).toContain('/l-archive/')
     expect(archiveLinks).toContain('/archive/objects/')
     expect(archiveLinks).toContain('/archive/taxonomy/')
     expect(archiveLinks).toContain('/oeuvre/#dossiers')
     expect(inventoryLinks).toContain('/archive/objects/fi-case-001/')
-    expect(projectLinks).toContain(
+    expect(dossierLinks).toContain(
       '/archive/projects/caselabs-mercury-s8-pedestal-restoration/'
     )
-    expect(projectLinks).toContain('/archive/objects/')
-    expect(projectLinks).toContain('/archive/systems/')
-    expect(projectLinks).toContain('/archive/status/')
+    expect(dossierLinks).toContain('/archive/objects/')
+    expect(dossierLinks).toContain('/archive/systems/')
+    expect(dossierLinks).toContain('/archive/status/')
+  })
+
+  it('documents archive compatibility routes without redirect loops', () => {
+    const redirects = fs.readFileSync(path.join(SITE, '_redirects'), 'utf8')
+    expect(redirects).toContain('/archive /l-archive/ 301')
+    expect(redirects).toContain('/archive/ /l-archive/ 301')
+    expect(redirects).toContain('/archive.html /l-archive/ 301')
+    expect(redirects).not.toMatch(/\/l-archive\/\s+\/archive\/?\s+301/)
+
+    const archiveHtml = readSite('archive.html')
+    const archiveIndex = readSite('archive/index.html')
+    expect(canonical(archiveHtml)).toBe(
+      'https://forgotten-industries.net/l-archive/'
+    )
+    expect(canonical(archiveIndex)).toBe(
+      'https://forgotten-industries.net/l-archive/'
+    )
+    expect(archiveHtml).toContain('href="/l-archive/"')
+    expect(archiveIndex).toContain('href="/l-archive/"')
+    expect(archiveHtml).not.toContain(
+      'The preserved record now lives at /archive/'
+    )
   })
 
   it('adds taxonomy fields to the generated search index', () => {

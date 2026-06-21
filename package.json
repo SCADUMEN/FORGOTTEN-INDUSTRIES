@@ -1,7 +1,7 @@
 {
   "name": "@forgotten-industries/archive",
   "version": "0.1.0",
-  "description": "Canonical archive data for Forgotten Industries machines, parts, field logs, and restoration projects.",
+  "description": "Canonical archive data for Forgotten Industries machines, parts, field logs, and restoration dossiers.",
   "type": "module",
   "sideEffects": false,
   "files": [

@@ -32,6 +32,8 @@ function archiveSlug(value) {
 
 function isArticleUrl(value = '') {
   const pathname = canonicalPath(value)
+  // "posts" is retained as the Eleventy collection and URL implementation for
+  // Les Manuscrits so existing manuscript links and feed behavior stay stable.
   return (
     pathname.startsWith('/posts/') &&
     pathname.endsWith('.html') &&
@@ -53,6 +55,8 @@ function isCollectionUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
     pathname === '/l-archive/' ||
+    // Legacy archive doors remain collection pages for compatibility metadata;
+    // canonical URLs and new public links should prefer /l-archive/.
     pathname === '/archive/' ||
     pathname === '/archive.html' ||
     pathname.startsWith('/archive/') ||
@@ -94,6 +98,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
     outputPath: '/feed.xml',
+    // The internal collection remains "posts"; the public shelf is
+    // L'Œuvre / Les Manuscrits.
     collection: { name: 'posts', limit: 0 },
     metadata: {
       title: 'Forgotten Industries / Les Manuscrits',
@@ -110,6 +116,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets')
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
+  // src/projects is a legacy source-dossier directory. Keep it published for
+  // source inspection while public labels say Les Dossiers.
   eleventyConfig.addPassthroughCopy('src/projects')
   eleventyConfig.addPassthroughCopy('src/site-snapshots')
   eleventyConfig.addPassthroughCopy(
@@ -122,8 +130,8 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('dist')
 
-  // Curated markdown posts render through the post layout; their raw
-  // markdown stays published alongside at the same /posts/*.md URLs.
+  // Les Manuscrits render through the post layout; their raw markdown stays
+  // published alongside at the same /posts/*.md URLs for compatibility.
   // Imported social records are static evidence, copied verbatim.
   eleventyConfig.addPassthroughCopy('src/posts/*.md')
   eleventyConfig.addPassthroughCopy({ 'src/posts/social': 'posts/social' })
@@ -262,6 +270,8 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('archiveProjectUrl', function (project) {
+    // The URL remains /archive/projects/* for backwards compatibility. Public
+    // page labels call these records Dossiers.
     return `/archive/projects/${archiveSlug(project?.slug || project?.id || project?.title)}/`
   })
 
@@ -272,7 +282,8 @@ export default function (eleventyConfig) {
         ? projects.find((entry) => entry?.id === projectId)
         : null
       return project
-        ? `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
+        ? // The route remains /archive/projects/*; visible labels say Dossier.
+          `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
         : '/archive/projects/'
     }
   )
