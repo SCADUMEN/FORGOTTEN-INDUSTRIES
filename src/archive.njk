@@ -9,28 +9,16 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">L'ARCHIVE / THE PRESERVED RECORD</p>
     <h1>L'Archive</h1>
-    <p class="tagline">
-      The master record: inventory items, project dossiers, field logs, curated
-      writing, recovered social evidence, source sets, and machine-readable
-      archive outputs.
-    </p>
+    <p class="tagline">Machines, documents, projects, photographs, and evidence retained against loss.</p>
   </div>
 </section>
 
-<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
+<section class="archive-curator-band" aria-labelledby="archive-curator-heading">
   <div class="section-inner">
-    <p class="section-label">The Preserved Record</p>
-    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
-    <nav class="open-stacks-list" aria-label="L'Archive finding aid">
-      <a href="/inventory.html">Inventory</a>
-      <a href="/archive/objects/">Object Records</a>
-      <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/social-posts.html">Social Evidence</a>
-      <a href="/docs/process/">Process Records</a>
-      <a href="/site-snapshots/">Stowed Snapshots</a>
-      <a href="/dist/archive.json">Archive JSON</a>
-      <a href="/archive/aerial-documentation/">Provenance From On High</a>
-    </nav>
+    <aside class="archive-curator-note">
+      <p class="section-label">Curator note</p>
+      <p id="archive-curator-heading">Records may be incomplete, uncertain, or awaiting verification. Uncertainty is preserved rather than removed.</p>
+    </aside>
   </div>
 </section>
 
@@ -38,7 +26,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="archive-search-shell">
       <div class="archive-search-intro">
-        <p class="section-label">L'Index</p>
+        <p class="section-label">Archives are searched.</p>
         <h2 id="archive-search-heading">Search L'Archive</h2>
         <p class="entry-note">
           Last indexed:
@@ -250,6 +238,35 @@ eleventyExcludeFromCollections: true
   })();
 </script>
 
+<section class="archive-aerial-tier" aria-labelledby="archive-aerial-heading">
+  <div class="section-inner">
+    <a class="archive-aerial-plate" href="/archive/aerial-documentation/">
+      <span class="archive-aerial-mark">// Archival Methodology //</span>
+      <div>
+        <p class="section-label">First-class instrument record</p>
+        <h2 id="archive-aerial-heading">Provenance From On High</h2>
+        <p>Aerial observation as archival methodology. Context recovered from altitude.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">The Preserved Record</p>
+    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
+    <nav class="open-stacks-list" aria-label="L'Archive finding aid">
+      <a href="/inventory.html">Inventory</a>
+      <a href="/archive/objects/">Object Records</a>
+      <a href="/hang-on-to-each-other/">Les Manuels</a>
+      <a href="/social-posts.html">Recovered Social Records</a>
+      <a href="/docs/process/">Process Records</a>
+      <a href="/site-snapshots/">Stowed Snapshots</a>
+      <a href="/dist/forgotten-industries.json">Archive JSON</a>
+    </nav>
+  </div>
+</section>
+
 <section class="source-band" aria-labelledby="inventory-gallery-heading">
   <div class="section-inner">
     <div class="archive-gallery-heading">
@@ -302,8 +319,8 @@ eleventyExcludeFromCollections: true
           <span>Projets</span>
         </a>
         <a class="stat" href="/archive/objects/">
-          <strong>{{ archive.inventory | count }}</strong>
-          <span>Objects</span>
+          <strong>{{ archive.inventory | countObjectsWithPhotos }}</strong>
+          <span>Objects photographed</span>
         </a>
         <a class="stat" href="/archive/taxonomy/">
           <strong>{{ taxonomy.allTerms | count }}</strong>
@@ -319,7 +336,7 @@ eleventyExcludeFromCollections: true
         </a>
         <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
-          <span>Recovered social</span>
+          <span>Recovered social records</span>
         </a>
         <a class="stat" href="/archive/posts/">
           <strong>{{ collections.posts | count }}</strong>
@@ -329,12 +346,10 @@ eleventyExcludeFromCollections: true
           <strong>{{ archive.fieldLogs | count }}</strong>
           <span>ATLAS reports</span>
         </a>
-        <a class="stat stat-wide" href="{{ site.githubUrl }}">
-          <strong>{{ site.sourceStats.sourceFiles }}</strong>
-          <span>Source files</span>
-          <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
-            {{ site.sourceStats.sourceFileDeltaLabel }}
-          </span>
+        <a class="stat stat-wide" href="/archive/objects/">
+          <strong>{{ archive.inventory | count }}</strong>
+          <span>Objects catalogued</span>
+          <span class="stat-adjustment">Live canonical inventory</span>
         </a>
         <a class="stat stat-wide" href="{{ site.githubUrl }}/commits/main">
           <strong>{{ site.sourceStats.commits }}</strong>
@@ -439,7 +454,7 @@ eleventyExcludeFromCollections: true
 <section class="source-band" aria-labelledby="social-heading">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Recovered Social Evidence</p>
+      <p class="section-label">Recovered Social Records</p>
       <h2 id="social-heading">Imported posts remain visible as source records.</h2>
       <p class="entry-note archive-scroll-note">
         {{ archive.socialPosts | count }} records / scroll within ledger

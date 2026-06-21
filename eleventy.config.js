@@ -143,6 +143,56 @@ export default function (eleventyConfig) {
     return `/archive/objects/${archiveSlug(item?.id || item?.name)}/`
   })
 
+  function publicObjectPhotos(item) {
+    return Array.isArray(item?.photos)
+      ? item.photos.filter(
+          (photo) =>
+            typeof photo === 'string' &&
+            (photo.startsWith('assets/') ||
+              photo.startsWith('forgotten-industries/'))
+        )
+      : []
+  }
+
+  eleventyConfig.addFilter('publicObjectPhotos', publicObjectPhotos)
+
+  eleventyConfig.addFilter('objectPrimaryImage', function (item) {
+    const photo = publicObjectPhotos(item)[0]
+    return photo ? `/${photo}` : ''
+  })
+
+  eleventyConfig.addFilter('countObjectsWithPhotos', function (items) {
+    return Array.isArray(items)
+      ? items.filter((item) => publicObjectPhotos(item).length > 0).length
+      : 0
+  })
+
+  eleventyConfig.addFilter('relatedObjects', function (items, item) {
+    if (!Array.isArray(items) || !item) return []
+
+    return items
+      .filter(
+        (candidate) =>
+          candidate?.id !== item.id &&
+          candidate?.associated_project === item.associated_project
+      )
+      .sort((a, b) => {
+        const aCategoryMatch = a?.category === item.category ? 1 : 0
+        const bCategoryMatch = b?.category === item.category ? 1 : 0
+        return (
+          bCategoryMatch - aCategoryMatch ||
+          String(a?.id || '').localeCompare(String(b?.id || ''))
+        )
+      })
+      .slice(0, 6)
+  })
+
+  eleventyConfig.addFilter('fieldLogsForProject', function (logs, projectId) {
+    return Array.isArray(logs)
+      ? logs.filter((log) => log?.associated_project === projectId)
+      : []
+  })
+
   eleventyConfig.addFilter('archiveProjectUrl', function (project) {
     return `/archive/projects/${archiveSlug(project?.slug || project?.id || project?.title)}/`
   })
