@@ -2,7 +2,7 @@
 layout: base.njk
 title: L'Archive
 description: "La premiere providence: the master record for Forgotten Industries inventory, entries, projects, field logs, and recovered evidence."
-permalink: /archive.html
+permalink: /archive/index.html
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
@@ -14,6 +14,23 @@ eleventyExcludeFromCollections: true
       writing, recovered social evidence, source sets, and machine-readable
       archive outputs.
     </p>
+  </div>
+</section>
+
+<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">The Preserved Record</p>
+    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
+    <nav class="open-stacks-list" aria-label="L'Archive finding aid">
+      <a href="/inventory.html">Inventory</a>
+      <a href="/archive/objects/">Object Records</a>
+      <a href="/hang-on-to-each-other/">Les Manuels</a>
+      <a href="/social-posts.html">Social Evidence</a>
+      <a href="/docs/process/">Process Records</a>
+      <a href="/site-snapshots/">Stowed Snapshots</a>
+      <a href="/dist/archive.json">Archive JSON</a>
+      <a href="/archive/aerial-documentation/">Provenance From On High</a>
+    </nav>
   </div>
 </section>
 
@@ -296,9 +313,9 @@ eleventyExcludeFromCollections: true
           <strong>1</strong>
           <span>Manuels</span>
         </a>
-        <a class="stat" href="/field-notes/">
+        <a class="stat" href="/en-direct/">
           <strong>{{ fieldnotes | count }}</strong>
-          <span>Live dispatches</span>
+          <span>En Direct records</span>
         </a>
         <a class="stat" href="/archive/social-evidence/">
           <strong>{{ archive.socialPosts | count }}</strong>
