@@ -79,7 +79,7 @@ eleventyExcludeFromCollections: true
       {% for photo in object.photos %}
       <li>
         <p class="entry-note">{{ photo }}</p>
-        {% if photo.indexOf("assets/") == 0 %}
+        {% if photo.indexOf("assets/") == 0 or photo.indexOf("forgotten-industries/") == 0 %}
         <h3><a href="/{{ photo }}">Open local asset</a></h3>
         {% else %}
         <h3>{{ photo }}</h3>
@@ -99,6 +99,12 @@ eleventyExcludeFromCollections: true
     </div>
 
     <ul class="link-list">
+      {% if object.archive_entry %}
+      <li>
+        <h3><a href="{{ object.archive_entry }}">Detailed L’Archive entry</a></h3>
+        <p>Photographic record, provisional identification, build relevance, and reconciliation notes.</p>
+      </li>
+      {% endif %}
       <li>
         <h3><a href="/archive/objects/">Object index</a></h3>
         <p>All generated object and component pages.</p>

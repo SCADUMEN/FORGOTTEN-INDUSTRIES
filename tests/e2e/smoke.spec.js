@@ -95,6 +95,18 @@ test('CaseLabs object archive renders with records and photographs', async ({
   expect(imageResponse.headers()['content-type']).toContain('image/jpeg')
 })
 
+test('CaseLabs intake objects are searchable canonical inventory', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive.html?q=FI-CL')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('#archive-search-status')).toHaveText('10 results')
+  await expect(page.locator('#archive-search-results > li')).toHaveCount(10)
+  await expect(
+    page.locator('.inventory-gallery-card').filter({ hasText: 'FI-CL-PART-' })
+  ).toHaveCount(10)
+})
+
 test('Atom feed is served as XML with entries', async ({ request }) => {
   const response = await request.get('/feed.xml')
   expect(response.status()).toBe(200)

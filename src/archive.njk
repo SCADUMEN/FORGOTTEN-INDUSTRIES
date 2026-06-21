@@ -250,16 +250,16 @@ eleventyExcludeFromCollections: true
         {% endif %}
         <li class="inventory-gallery-card">
           <figure>
-            <div class="inventory-gallery-image">
-              {% if preview and preview.indexOf("assets/") == 0 %}
+            <a class="inventory-gallery-image" href="{{ item | archiveObjectUrl }}">
+              {% if preview and (preview.indexOf("assets/") == 0 or preview.indexOf("forgotten-industries/") == 0) %}
               <img src="/{{ preview }}" alt="{{ item.name }}">
               {% else %}
               <span>{{ item.id }}</span>
               {% endif %}
-            </div>
+            </a>
             <figcaption>
               <span>{{ item.id }}</span>
-              <strong>{{ item.name }}</strong>
+              <strong><a href="{{ item | archiveObjectUrl }}">{{ item.name }}</a></strong>
               <em>{{ item.category }}</em>
             </figcaption>
           </figure>
