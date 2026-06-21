@@ -93,13 +93,13 @@ The site is organized around **L'Archive** as the primary destination, with sate
 
 ### Development Stack
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Node.js** | 24.13.0 | Pinned via `.nvmrc` and `.node-version`; CI reads same |
-| **Eleventy** | Latest | Static site generator (CJS config: `eleventy.config.cjs`) |
-| **Tailwind CSS** | 4 | Styles the site; design tokens via `@theme inline` in `src/css/archive.css` |
-| **Prettier** | Latest | Code formatting with Tailwind class-sorting plugin |
-| **Ruby** | System | YAML parsing and build automation |
+| Tool             | Version | Purpose                                                                     |
+| ---------------- | ------- | --------------------------------------------------------------------------- |
+| **Node.js**      | 24.13.0 | Pinned via `.nvmrc` and `.node-version`; CI reads same                      |
+| **Eleventy**     | Latest  | Static site generator (CJS config: `eleventy.config.cjs`)                   |
+| **Tailwind CSS** | 4       | Styles the site; design tokens via `@theme inline` in `src/css/archive.css` |
+| **Prettier**     | Latest  | Code formatting with Tailwind class-sorting plugin                          |
+| **Ruby**         | System  | YAML parsing and build automation                                           |
 
 ### Build & Deployment
 
@@ -222,6 +222,7 @@ All reference docs live in `src/docs/`:
 ## 📂 Complete File Reference
 
 ### Data & Configuration
+
 - `src/data/*.yml` — All canonical archive data (YAML)
 - `src/types.ts` — TypeScript schema for generated archive
 - `src/_data/site.cjs` — Domain, GitHub, contact, identity
@@ -229,12 +230,14 @@ All reference docs live in `src/docs/`:
 - `src/_data/fieldnotes.cjs` — Bluesky importer with caching
 
 ### Build & Scripts
+
 - `scripts/build.rb` — YAML → JSON + TypeScript converter
 - `scripts/import_social.rb` — Tumblr/Instagram importer
 - `prettier.config.js` — Prettier with Tailwind class-sorting
 - `eleventy.config.cjs` — Eleventy configuration
 
 ### Site Files
+
 - `src/index.njk` — Generated home page
 - `src/_includes/base.njk` — Shared HTML shell
 - `src/_includes/post.njk` — Post layout
@@ -242,10 +245,12 @@ All reference docs live in `src/docs/`:
 - `src/CNAME` — DNS pointer for `forgotten-industries.net`
 
 ### Content & Posts
+
 - `src/posts/` — Curated Markdown posts with front matter
 - `src/posts/social/` — Generated Markdown from imported social content
 
 ### Raw HTML Pages (Deployed Verbatim)
+
 - `archive.html` — Archive index and routing
 - `inventory.html` — Inventory page
 - `field-log-template.html` — Field log template
@@ -254,6 +259,7 @@ All reference docs live in `src/docs/`:
 - `contact.html` — Contact page
 
 ### Evidence & Snapshots
+
 - `src/site-snapshots/github-pages-trial-2026-06-06/` — Pre-reset trial surface
 - `src/site-snapshots/le-signal-three-branch-2026-06-19/` — Three-branch Le Signal surface
 - `src/assets/initial-photos/` — Initial intake batch (259 files, ~839 MB, checksums recorded)
@@ -261,11 +267,13 @@ All reference docs live in `src/docs/`:
 - `src/assets/audio/field-logs/` — Published Field Log MP3 recordings
 
 ### Intake & Working Space
+
 - `intake/L-Archive/` — Local photo intake from `~/Pictures/FORGOTTEN-INDUSTRIES`
 - `intake/Splunking/` — Raw evidence photos awaiting processing
 - `intake/SLUSH/` — Working drafts and scratch material
 
 ### Templates & Guides
+
 - `src/templates/field-log.md` — Markdown field log template
 - `src/templates/voice-field-log.yml` — Metadata template for recorder entries
 - `src/templates/inventory-item.md` — Markdown inventory item template
@@ -274,6 +282,7 @@ All reference docs live in `src/docs/`:
 - `ATLAS.md` — Project operating identity, voice, archive priorities, decision rules
 
 ### Generated Outputs (Not Tracked)
+
 - `dist/forgotten-industries.json` — Complete archive data
 - `dist/index.ts` — TypeScript module exporting archive
 - `_site/` — Built Eleventy output
