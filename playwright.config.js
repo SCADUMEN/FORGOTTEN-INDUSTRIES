@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test'
 // Smoke tests run against the already-built static site in _site/. Run
 // `npm run build:site` first (CI does this before test:e2e). The webServer
 // serves _site over http-server so no application server is needed.
-const PORT = 4321
+const PORT = Number(process.env.PORT || 4321)
 
 export default defineConfig({
   testDir: 'tests/e2e',

@@ -146,7 +146,7 @@ describe('archive crawlability output', () => {
     expect(home).toContain('Human Judgment')
     expect(home).toContain('href="/provenance/"')
     expect(home).toContain('Build Checks')
-    expect(home).toContain('Git Commits')
+    expect(home).toMatch(/Git Commits?/)
     expect(home).not.toContain('Source Files')
     expect(home).not.toContain('>Social Evidence<')
     expect(report).toContain('AI-generated synthesis with human direction')

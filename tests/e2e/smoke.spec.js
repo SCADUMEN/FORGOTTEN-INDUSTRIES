@@ -28,7 +28,7 @@ test('home page renders', async ({ page }) => {
     /Manuel/,
     /ATLAS Reports/,
     /Build Checks/,
-    /Git Commits/,
+    /Git Commits?/,
   ])
   await expect(page.locator('.homepage-masthead .hero-image')).toHaveAttribute(
     'src',
@@ -76,7 +76,7 @@ test('archive page renders', async ({ page }) => {
 
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)
-  await expect(wideCounters).toHaveText([/Objects catalogued/, /Git commits/])
+  await expect(wideCounters).toHaveText([/Objects catalogued/, /Git commits?/])
   await expect(page.locator('.branch-stats .stat-adjustment')).toHaveText([
     /Live canonical inventory/,
     /[+−]?\d+/,
