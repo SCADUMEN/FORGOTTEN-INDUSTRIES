@@ -1,14 +1,14 @@
 ---
 layout: base.njk
-title: Le Signal
-description: "Authored public signal from Forgotten Industries: recoveries, restorations, Le Rédempteur, doctrine, manifestos, field logs, and long-form entries suitable for the public feed."
+title: Essays / Posts
+description: "Long-form public writing from Forgotten Industries: essays, field doctrine, memoir, restoration records, and finished authored pieces."
 permalink: /posts/index.html
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Public writing / RSS</p>
-    <h1>Le Signal</h1>
+    <p class="section-label">Le Signal / essays and posts</p>
+    <h1>Essays / Posts</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
@@ -21,25 +21,7 @@ eleventyExcludeFromCollections: true
         remains the complete master record.
       </p>
 
-      <div class="signal-branch-grid" aria-label="Le Signal branches">
-        <a class="signal-branch-card signal-branch-card-active" href="#recoveries-restorations-le-redempteur">
-          <span>Branch 01</span>
-          <h2><em>“Recoveries, Restorations, &amp; Le Rédempteur”</em></h2>
-          <p>The blog: machines coming back, recovery-through-rebuild, memory, grief, craft, and evidence.</p>
-        </a>
-        <a class="signal-branch-card" href="#atlas-reports">
-          <span>Branch 02</span>
-          <h2>ATLAS Reports</h2>
-          <p>AI-assisted end-of-day debriefs: work completed, evidence recovered, decisions made, and the next operational foothold.</p>
-        </a>
-        <a class="signal-branch-card" href="/field-logs/voice/">
-          <span>Branch 03</span>
-          <h2>Field Log</h2>
-          <p>Recorded voice entries imported from the portable recorder, preserved as MP3s, newest first.</p>
-        </a>
-      </div>
-
-      <section id="recoveries-restorations-le-redempteur" class="signal-section" aria-labelledby="signal-entries-heading">
+      <section class="signal-section" aria-labelledby="signal-entries-heading">
         <p class="section-label">{{ collections.posts | count }} entries</p>
         <h2 id="signal-entries-heading">Manuscripts and public entries, newest first.</h2>
         <ol class="signal-entry-list" aria-label="All curated posts">
@@ -62,48 +44,6 @@ eleventyExcludeFromCollections: true
         </ol>
       </section>
 
-      <section id="doctrine-manifestos" class="signal-section" aria-labelledby="doctrine-heading">
-        <p class="section-label">Doctrine / manifestos</p>
-        <h2 id="doctrine-heading">The operating language belongs here.</h2>
-        <div class="callout">
-          <h3>Doctrine Lane</h3>
-          <p>Field doctrine, systems manifestos, and archive principles should publish through Le Signal, then remain searchable in L'Archive.</p>
-        </div>
-      </section>
-
-      <section id="atlas-reports" class="signal-section" aria-labelledby="atlas-report-heading">
-        <p class="section-label">{{ archive.fieldLogs | count }} ATLAS reports</p>
-        <h2 id="atlas-report-heading">End-of-day debriefs and operational summaries.</h2>
-        {% if archive.fieldLogs.length %}
-        <ol class="field-note-list">
-          {% for log in archive.fieldLogs | reverse %}
-          <li class="field-note-card">
-            <header>
-              <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
-              <span>{{ log.category }}</span>
-            </header>
-            <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
-            <p>{{ log.object }}. {{ log.status }}.</p>
-          </li>
-          {% endfor %}
-        </ol>
-        {% else %}
-        <div class="callout field-note-empty">
-          <h3>No ATLAS Reports Yet</h3>
-          <p>The lane is active. Add a structured ATLAS Report when the day's debrief is ready.</p>
-        </div>
-        {% endif %}
-      </section>
-
-      <section id="field-logs" class="signal-section" aria-labelledby="voice-field-log-heading">
-        <p class="section-label">{{ archive.voiceLogs | count }} recordings</p>
-        <h2 id="voice-field-log-heading">Field Log comes directly from the recorder.</h2>
-        <div class="callout">
-          <h3>Voice Archive</h3>
-          <p>Original MP3 entries, newest first, with source metadata and optional transcripts.</p>
-          <p class="action-row"><a href="/field-logs/voice/">Open Field Log</a></p>
-        </div>
-      </section>
     </div>
   </div>
 </section>

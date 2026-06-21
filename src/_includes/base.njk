@@ -96,30 +96,14 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-grid">
-      <p>{{ site.name }} keeps the archive at <a href="{{ site.domainUrl }}">{{ site.domainHost }}</a>.</p>
-      <nav class="footer-nav" aria-label="Routes">
-        <a href="{{ site.githubUrl }}" data-track="outbound-github">GitHub</a>
-        <a href="{{ site.eleventyUrl }}" data-track="outbound-eleventy">Eleventy</a>
-        <a href="{{ site.fieldNotesSubscribeUrl }}" data-track="subscribe-field-notes">Live Dispatches</a>
-        <a href="mailto:{{ site.contact }}" data-track="contact-email">Contact</a>
-        <a href="/archive/feed/" data-track="feed">RSS</a>
-        <a href="/sitemap.xml" data-track="sitemap">Sitemap</a>
-        {% if site.supportUrl %}
-        <a href="{{ site.supportUrl }}" data-track="support">Support</a>
-        {% endif %}
-      </nav>
-    </div>
-    <p class="mt-3 font-mono text-[0.78rem] text-muted">
-      Source Code:
-      <a href="{{ site.githubUrl }}/commit/{{ site.gitHash }}" data-track="outbound-commit">{{ site.gitHashShort }}</a>
-      / Build Time:
-      <time datetime="{{ site.buildTime }}">{{ site.buildTime }}</time>
+    <p class="footer-name">{{ site.name }}</p>
+    <p>Human Judgment <span aria-hidden="true">//</span> Machine Collaboration</p>
+    <p class="footer-doctrine">CONTRE L'OUBLI</p>
+    <p class="footer-revision">
+      <a href="/provenance/">Provenance</a>
+      <span aria-hidden="true">//</span>
+      Last Revised: <time datetime="{{ site.buildTime }}">{{ site.buildDisplay }}</time>
     </p>
-    <aside class="site-ai-footnote" role="note" aria-label="Site AI provenance footnote">
-      <p><strong>AI provenance:</strong> {{ site.aiProvenance.shortDisclosure }}</p>
-      <p class="entry-note"><a href="{{ site.aiProvenance.colophonUrl }}">Colophon</a> / <a href="{{ site.aiProvenance.standardUrl }}">citation standard</a></p>
-    </aside>
   </footer>
   {% if site.analytics.googleMeasurementId %}
   <script>

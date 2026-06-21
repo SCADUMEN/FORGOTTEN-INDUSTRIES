@@ -120,10 +120,10 @@ eleventyComputed:
       <h3>{{ log.signature }}</h3>
       <p>Canonical source: <a href="/src/data/field-logs.yml">src/data/field-logs.yml</a></p>
       {% if log.source_path %}
-      <p>Draft/source note: <a href="/{{ log.source_path }}">{{ log.source_path }}</a></p>
+      <p>Draft/source note: <a href="/{{ log.source_path | replace('src/', '') }}">{{ log.source_path }}</a></p>
       {% endif %}
       <p>Route: <code>/field-logs/{{ log.slug }}/</code></p>
-      <p class="action-row"><a href="/field-logs/">Return to ATLAS Reports</a> / <a href="/field-logs/voice/">Open Field Log</a></p>
+      <p class="action-row"><a href="/atlas/">Return to ATLAS Reports</a> / <a href="/field-logs/">Open Field Logs</a></p>
     </div>
   </div>
 </section>
