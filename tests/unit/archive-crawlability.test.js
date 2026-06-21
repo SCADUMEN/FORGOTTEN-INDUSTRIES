@@ -157,7 +157,8 @@ describe('archive crawlability output', () => {
       const html = readSite(pagePath)
       expect(html).toContain('class="site-footer"')
       expect(html).toContain('href="/provenance/"')
-      expect(html).toContain('Last Revised:')
+      expect(html).toContain('footer-provenance-line')
+      expect(html).toMatch(/\d{4}\.\d{2}\.\d{2} \/\/ \d{2}:\d{2}/)
     }
   })
 

@@ -2672,6 +2672,12 @@ h3 {
   max-width: 100%;
 }
 
+.footer-provenance-line {
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
 .site-footer a {
   color: var(--blueprint);
 }
@@ -2985,6 +2991,10 @@ h3 {
 
   .site-footer p {
     gap: 0 0.46rem;
+  }
+
+  .site-footer .footer-provenance-line {
+    gap: 0 0.35rem;
   }
 }
 
