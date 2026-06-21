@@ -73,9 +73,9 @@ export default function (eleventyConfig) {
     outputPath: '/feed.xml',
     collection: { name: 'posts', limit: 0 },
     metadata: {
-      title: 'Forgotten Industries / Essays & Posts',
+      title: 'Forgotten Industries / Les Manuscrits',
       subtitle:
-        'Curated essays, field doctrine, and long-form entries from Forgotten Industries.',
+        'Authored works, doctrines, essays, and complete texts from Forgotten Industries.',
       language: 'en',
       base: 'https://forgotten-industries.net/',
       author: { name: 'Matthew Marx' },
