@@ -1,1 +1,13 @@
-voice_logs: []
+voice_logs:
+  - id: FI-VOICE-001
+    title: Field Log 001
+    date: '2026-06-21'
+    recorded_at: '2026-06-21 07:58 CT'
+    recorder: Portable recorder
+    audio: /assets/audio/field-logs/testfieldlog.MP3
+    duration: '00:19'
+    summary: First published recorder-based Field Log audio record.
+    tags:
+      - field-log
+      - voice-note
+      - audio
