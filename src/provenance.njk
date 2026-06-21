@@ -1,0 +1,106 @@
+---
+layout: base.njk
+title: Provenance
+description: The instruments, methods, and conditions of the Forgotten Industries archive's production.
+permalink: /provenance/index.html
+eleventyExcludeFromCollections: true
+---
+<section class="section-landing-hero">
+  <div class="section-inner">
+    <p class="section-label">Chain of production</p>
+    <h1>Provenance</h1>
+    <p class="tagline">The instruments, methods, and conditions of this archive's production.</p>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="about-record-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">01</p>
+      <h2 id="about-record-heading">About This Record</h2>
+    </header>
+    <div>
+      <p>Forgotten Industries documents not only artifacts, observations, and conclusions, but also the instruments involved in their creation. These instruments may include cameras, audio recorders, computers, software systems, archival sources, and artificial intelligence systems. Human judgment remains the final editorial authority. Machine collaboration is documented as part of the chain of provenance.</p>
+      <p>Evidence remains anchored to canonical data, source documents, photographs, recordings, external source links, tracked commits, and Matthew's review.</p>
+    </div>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="instrument-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">02</p>
+      <h2 id="instrument-heading">Instrument Provenance</h2>
+    </header>
+    <ul>
+      <li><strong>Cameras &amp; audio recorders.</strong> Photographs preserve object condition; original MP3 files remain the authority for recorded Field Logs.</li>
+      <li><strong>Computers &amp; software.</strong> The archive is maintained as portable source files and generated with Ruby, Eleventy, and Tailwind CSS.</li>
+      <li><strong>Aerial observation instruments.</strong> Drone/UAV records are treated as documentary instruments and field-method evidence. <a href="/archive/aerial-documentation/">Open Provenance From On High</a>.</li>
+      <li><strong>Archival sources.</strong> Canonical YAML, recovered social records, manuals, forum archaeology, photographs, checksums, and preserved snapshots remain inspectable.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="ai-provenance-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">03</p>
+      <h2 id="ai-provenance-heading">AI Provenance</h2>
+    </header>
+    <div>
+      <p>{{ site.aiProvenance.shortDisclosure }}</p>
+      <p>AI assistance is process provenance, not independent source evidence. It does not replace authorship, source citation, factual verification, or the canonical archive record. Matthew directs, reviews, corrects, and authorizes publication.</p>
+      <dl class="provenance-definitions">
+        <div><dt>AI-generated synthesis</dt><dd>Substantial wording or structure generated from operator-provided context or canonical records. All ATLAS Reports use this classification.</dd></div>
+        <div><dt>AI-assisted editorial collaboration</dt><dd>Matthew remains the primary writer while systems assist development, organization, revision, or editing.</dd></div>
+        <div><dt>AI-assisted technical implementation</dt><dd>Site architecture, code, data transformation, testing, and publication work performed through Codex under Matthew's direction.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="build-provenance-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">04</p>
+      <h2 id="build-provenance-heading">Build Provenance</h2>
+    </header>
+    <dl class="provenance-definitions">
+      <div><dt>Repository</dt><dd><a href="{{ site.githubUrl }}">{{ site.repository }}</a></dd></div>
+      <div><dt>Source commit</dt><dd><a href="{{ site.githubUrl }}/commit/{{ site.gitHash }}">{{ site.gitHashShort }}</a></dd></div>
+      <div><dt>Generator</dt><dd>{{ site.generator }} / Eleventy / Ruby / Tailwind CSS</dd></div>
+      <div><dt>Build time</dt><dd><time datetime="{{ site.buildTime }}">{{ site.buildDisplay }}</time></dd></div>
+      <div><dt>Outputs</dt><dd><a href="/dist/archive.json">Archive JSON</a> / <a href="/dist/search-index.json">Search index</a></dd></div>
+      <div><dt>Revision history</dt><dd><a href="{{ site.githubUrl }}/commits/main">Tracked commits</a> / <a href="/site-snapshots/">stowed snapshots</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="citation-standards" class="provenance-record" aria-labelledby="citation-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">05</p>
+      <h2 id="citation-heading">Citation Standards</h2>
+    </header>
+    <div>
+      <p>Each AI-generated or AI-assisted work identifies its classification, Matthew's final editorial authority, the role of ATLAS, the role of ChatGPT or Codex when applicable, the work's title and date, and the source material from which it was prepared.</p>
+      <p><strong>ATLAS Report form:</strong> Matthew Taylor Marx, director and editor. “Title.” ATLAS Report, generated with ATLAS through OpenAI ChatGPT; repository publication assisted by OpenAI Codex. Forgotten Industries, YYYY-MM-DD.</p>
+      <p><strong>Curated entry form:</strong> Matthew Taylor Marx, author and editor. “Title.” AI-assisted editorial collaboration with ATLAS and OpenAI ChatGPT; repository publication assisted by OpenAI Codex. Forgotten Industries, YYYY-MM-DD.</p>
+      <p>When system or model details are unknown, only the verified product or operating-layer name is cited. Model versions are never inferred.</p>
+      <p class="entry-note">The former source route remains available at <a href="/docs/ai-generation-citation-standard.md">/docs/ai-generation-citation-standard.md</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="provenance-colophon-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">06</p>
+      <h2 id="provenance-colophon-heading">Colophon</h2>
+    </header>
+    <div>
+      <p>The interface is generated; the record remains portable. Canonical YAML is converted into archive JSON, TypeScript exports, a static retrieval index, and an Eleventy site.</p>
+      <p><a href="/colophon/">Open the release and build colophon</a>.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: L'Œuvre
+description: "The active Forgotten Industries record: projects, restorations, dossiers, research, and experimental work."
+permalink: /oeuvre/index.html
+eleventyExcludeFromCollections: true
+---
+<section class="section-landing-hero">
+  <div class="section-inner">
+    <p class="section-label">L'ŒUVRE / THE ACTIVE RECORD</p>
+    <h1>L'Œuvre</h1>
+    <p class="tagline">Everything in production. Everything underway.</p>
+  </div>
+</section>
+
+<section class="section-directory" aria-labelledby="oeuvre-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">Published records only</p>
+    <h2 id="oeuvre-directory-heading">Active work, with its context attached.</h2>
+    <div class="directory-grid">
+      <a href="/projects/">
+        <span>{{ archive.projects | count }} records</span>
+        <h3>Projects</h3>
+        <p>Structured context packets for active systems and long-running work.</p>
+      </a>
+      <a href="/projects/caselabs-mercury-s8/">
+        <span>Restoration dossier</span>
+        <h3>Restorations</h3>
+        <p>Bench recovery, verification, rebuild strategy, and material history.</p>
+      </a>
+      <a href="/archive/projects/">
+        <span>Generated records</span>
+        <h3>Dossiers</h3>
+        <p>Canonical project records connected to objects, systems, and status.</p>
+      </a>
+      <a href="/projects/atlas/">
+        <span>Continuity system</span>
+        <h3>Research &amp; Continuity</h3>
+        <p>Operating context, research initiatives, and durable handoff packets.</p>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: L'Archive Has Moved
+description: Compatibility route for the Forgotten Industries archive.
+permalink: /archive.html
+canonical: https://forgotten-industries.net/archive/
+eleventyExcludeFromCollections: true
+---
+<section class="section-landing-hero route-redirect">
+  <div class="section-inner">
+    <p class="section-label">Route preserved</p>
+    <h1>L'Archive</h1>
+    <p class="tagline">The preserved record now lives at <a href="/archive/">/archive/</a>.</p>
+  </div>
+</section>
+<script>window.location.replace('/archive/' + window.location.search + window.location.hash);</script>
