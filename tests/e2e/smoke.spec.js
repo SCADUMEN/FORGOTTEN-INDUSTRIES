@@ -8,6 +8,10 @@ test('home page renders', async ({ page }) => {
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle('Forgotten Industries')
   await expect(page.locator('h1')).toContainText('Forgotten Industries')
+  await expect(page.getByRole('link', { name: 'RSS' })).toHaveAttribute(
+    'href',
+    '/archive/feed/'
+  )
 
   const wideCounters = page.locator('.homepage-branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(4)
