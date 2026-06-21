@@ -16,8 +16,11 @@ eleventyExcludeFromCollections: true
 <section class="archive-curator-band" aria-labelledby="archive-curator-heading">
   <div class="section-inner">
     <aside class="archive-curator-note">
-      <p class="section-label">Curator note</p>
-      <p id="archive-curator-heading">Records may be incomplete, uncertain, or awaiting verification. Uncertainty is preserved rather than removed.</p>
+      <p id="archive-curator-heading" class="section-label">// Curator's note //</p>
+      <blockquote class="archive-curator-statement">
+        Records may be incomplete, uncertain, or awaiting verification.<br />
+        L'Archive preserves uncertainty rather than removes it. A thing not documented is a thing already lost.
+      </blockquote>
     </aside>
   </div>
 </section>
@@ -253,9 +256,9 @@ eleventyExcludeFromCollections: true
 
 <section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
   <div class="section-inner">
-    <p class="section-label">The Preserved Record</p>
-    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
-    <nav class="open-stacks-list" aria-label="L'Archive finding aid">
+    <p class="section-label">Archive Shelves</p>
+    <h2 id="archive-directory-heading">Routes into the catalogued record.</h2>
+    <nav class="open-stacks-list" aria-label="L'Archive shelves">
       <a href="/inventory.html">Inventory</a>
       <a href="/archive/objects/">Object Records</a>
       <a href="/hang-on-to-each-other/">Les Manuels</a>
@@ -271,10 +274,13 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="archive-gallery-heading">
       <p class="section-label">Inventory</p>
-      <h2 id="inventory-gallery-heading">L'Archive object gallery.</h2>
+      <h2 id="inventory-gallery-heading">Object Gallery</h2>
+      <p class="entry-note archive-gallery-note">
+        Catalogued objects / responsive grid / horizontal shelf on small screens
+      </p>
     </div>
 
-    <div class="inventory-gallery-viewport" aria-label="Scrollable inventory entries">
+    <div class="inventory-gallery-viewport" aria-label="Inventory object gallery" tabindex="0">
       <ol class="inventory-gallery-track">
         {% for item in archive.inventory %}
         {% if item.category != "photo evidence set" %}
@@ -305,11 +311,14 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="mirror-band" aria-labelledby="archive-counts-heading">
+<section
+  class="mirror-band archive-page-section archive-instrumentation"
+  aria-labelledby="archive-counts-heading"
+>
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Record State</p>
-      <h2 id="archive-counts-heading">Every public route returns here.</h2>
+      <p class="section-label">Archive Instrumentation</p>
+      <h2 id="archive-counts-heading">Current record state.</h2>
     </div>
 
     <div>
@@ -363,7 +372,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="evidence-band" aria-labelledby="projects-heading">
+<section class="evidence-band archive-page-section" aria-labelledby="projects-heading">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Projects</p>
@@ -387,7 +396,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-log-heading">
+<section class="source-band archive-page-section" aria-labelledby="field-log-heading">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">ATLAS Reports</p>
@@ -413,7 +422,35 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="evidence-band" aria-labelledby="source-sets-heading">
+<section class="source-band archive-page-section" aria-labelledby="social-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Recovered Social Records</p>
+      <h2 id="social-heading">Imported posts remain visible as source records.</h2>
+      <p class="entry-note archive-scroll-note">
+        {{ archive.socialPosts | count }} records / scroll within ledger
+      </p>
+    </div>
+
+    <ul
+      class="link-list archive-record-list archive-record-viewport"
+      aria-label="Scrollable recovered social evidence ledger"
+      tabindex="0"
+    >
+      {% for post in archive.socialPosts | reverse %}
+      <li>
+        <p class="entry-note">{{ post.date }} / {{ post.source }} / {{ post.source_id }}</p>
+        <h3>
+          <a href="/{{ post.post_path }}">{{ post.title }}</a>
+        </h3>
+        <p>{{ post.body | truncate(220) }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band archive-page-section" aria-labelledby="source-sets-heading">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Source Sets</p>
@@ -451,35 +488,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="social-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Recovered Social Records</p>
-      <h2 id="social-heading">Imported posts remain visible as source records.</h2>
-      <p class="entry-note archive-scroll-note">
-        {{ archive.socialPosts | count }} records / scroll within ledger
-      </p>
-    </div>
-
-    <ul
-      class="link-list archive-record-list archive-record-viewport"
-      aria-label="Scrollable recovered social evidence ledger"
-      tabindex="0"
-    >
-      {% for post in archive.socialPosts | reverse %}
-      <li>
-        <p class="entry-note">{{ post.date }} / {{ post.source }} / {{ post.source_id }}</p>
-        <h3>
-          <a href="/{{ post.post_path }}">{{ post.title }}</a>
-        </h3>
-        <p>{{ post.body | truncate(220) }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="evidence-band" aria-labelledby="machine-heading">
+<section class="evidence-band archive-page-section" aria-labelledby="machine-heading">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label">Machine-Readable Archive</p>
