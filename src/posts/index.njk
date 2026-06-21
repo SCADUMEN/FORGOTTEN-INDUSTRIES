@@ -1,14 +1,14 @@
 ---
 layout: base.njk
-title: Essays / Posts
-description: "Long-form public writing from Forgotten Industries: essays, field doctrine, memoir, restoration records, and finished authored pieces."
+title: Les Manuscrits
+description: "Authored works, research papers, doctrines, essays, and complete texts emerging from the archive."
 permalink: /posts/index.html
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Le Signal / essays and posts</p>
-    <h1>Essays / Posts</h1>
+    <p class="section-label">L'Œuvre / Les Manuscrits</p>
+    <h1>Les Manuscrits</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
@@ -17,13 +17,13 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="signal-map">
       <p class="entry-note">
-        <a href="/feed.xml">Subscribe to the public writing feed</a>. L'Archive
-        remains the complete master record.
+        <a href="/feed.xml">Subscribe to the manuscript feed</a>. L'Archive
+        remains the complete evidence record.
       </p>
 
       <section class="signal-section" aria-labelledby="signal-entries-heading">
         <p class="section-label">{{ collections.posts | count }} entries</p>
-        <h2 id="signal-entries-heading">Manuscripts and public entries, newest first.</h2>
+        <h2 id="signal-entries-heading">Manuscripts, newest first.</h2>
         <ol class="signal-entry-list" aria-label="All curated posts">
           {% for post in collections.posts | reverse %}
           <li>

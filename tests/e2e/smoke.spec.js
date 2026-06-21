@@ -24,7 +24,7 @@ test('home page renders', async ({ page }) => {
   const homepageStats = page.locator('.homepage-instrument-stats .stat')
   await expect(homepageStats).toHaveCount(5)
   await expect(homepageStats).toHaveText([
-    /Projects/,
+    /Dossiers/,
     /Manuels/,
     /ATLAS Reports/,
     /Build Checks/,
@@ -233,7 +233,7 @@ test('archive compatibility route contains a real archive link', async ({
 test('posts index lists the curated posts', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
-  await expect(page).toHaveTitle(/Essays \/ Posts/)
+  await expect(page).toHaveTitle(/Les Manuscrits/)
   // Both dated curated posts should be linked from the index.
   await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
 })
