@@ -93,7 +93,8 @@ L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS
 
 - `/archive.html` — Legacy compatibility route. Canonical archive traffic should prefer `/l-archive/`.
 - `/archive/` — Legacy compatibility route to `/l-archive/`; generated archive shelves still live below `/archive/*`.
-- `/inventory.html` — Canonical machine, part, accessory, condition, and disposition records.
+- `/archive/inventory/` — Canonical machine, part, accessory, condition, and disposition records.
+- `/inventory/` and `/inventory.html` — Compatibility routes to the generated inventory shelf.
 - `/social-posts.html` — Recovered Tumblr and Instagram records with local media and Markdown sources.
 - `/dist/forgotten-industries.json` — Machine-readable archive output.
 - `/site-snapshots/` — Generated snapshots of previous site architectures preserved as evidence.
@@ -283,7 +284,7 @@ All reference docs live in `src/docs/`:
 ### Raw HTML Pages (Deployed Verbatim)
 
 - `archive.html` — Legacy archive compatibility route to `/l-archive/`
-- `inventory.html` — Inventory page
+- `inventory.html` — Legacy inventory compatibility route to `/archive/inventory/`
 - `field-log-template.html` — Field log template
 - `social-posts.html` — Recovered social records index
 - `about.html` — Preserved raw project-origin note

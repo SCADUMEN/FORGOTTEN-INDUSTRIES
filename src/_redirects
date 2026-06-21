@@ -1,5 +1,8 @@
 /archive /l-archive/ 301
 /archive/ /l-archive/ 301
 /archive.html /l-archive/ 301
+/inventory /archive/inventory/ 301
+/inventory/ /archive/inventory/ 301
+/inventory.html /archive/inventory/ 301
 /field-logs/voice/ /field-logs/ 301
 /docs/ai-generation-citation-standard.md /provenance/#citation-standards 301

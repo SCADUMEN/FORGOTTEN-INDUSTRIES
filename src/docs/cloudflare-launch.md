@@ -83,7 +83,7 @@ Check these paths after DNS and HTTPS finish provisioning:
 - `https://forgotten-industries.net/`
 - `https://forgotten-industries.net/about.html`
 - `https://forgotten-industries.net/archive.html`
-- `https://forgotten-industries.net/inventory.html`
+- `https://forgotten-industries.net/archive/inventory/`
 - `https://forgotten-industries.net/social-posts.html`
 - `https://forgotten-industries.net/assets/favicon/favicon-32x32.png`
 - `https://forgotten-industries.net/dist/forgotten-industries.json`
