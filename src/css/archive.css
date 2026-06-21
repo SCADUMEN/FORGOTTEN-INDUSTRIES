@@ -2139,3 +2139,70 @@ h3 {
 .post-body li {
   margin-bottom: 0.35rem;
 }
+
+.archive-document-body {
+  min-width: 0;
+}
+
+.archive-document-body > h1:first-child {
+  display: none;
+}
+
+.archive-document-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--mono-font);
+  font-size: 0.82rem;
+  scrollbar-color: var(--line) transparent;
+  scrollbar-width: thin;
+}
+
+.archive-document-body th,
+.archive-document-body td {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.archive-document-body th {
+  background: color-mix(in srgb, var(--oxide) 12%, var(--paper));
+  color: var(--ink);
+}
+
+.archive-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.archive-gallery figure {
+  margin: 0;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--steel) 7%, var(--paper));
+}
+
+.archive-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 24 / 19;
+  object-fit: cover;
+}
+
+.archive-gallery figcaption {
+  padding: 0.65rem 0.25rem 0.15rem;
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 700px) {
+  .archive-gallery {
+    grid-template-columns: 1fr;
+  }
+}

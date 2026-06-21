@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+<article class="archive-document mx-auto w-[min(1180px,calc(100%-32px))] py-12">
+  <header class="mb-10 border-b border-line pb-6">
+    <p class="mb-2 font-mono text-[0.74rem] font-bold text-oxide uppercase">
+      {{ category or "L’Archive" }}{% if status %} / {{ status }}{% endif %}
+    </p>
+    <h1 class="font-stencil text-3xl font-black text-ink uppercase">{{ title }}</h1>
+    <p class="mt-3 font-mono text-[0.9rem] text-muted">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      {% if collection %} / {{ collection }}{% endif %}
+    </p>
+  </header>
+  <div class="post-body archive-document-body">{{ content | safe }}</div>
+</article>

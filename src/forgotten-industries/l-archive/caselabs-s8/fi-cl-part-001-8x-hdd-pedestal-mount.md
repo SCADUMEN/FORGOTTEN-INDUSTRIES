@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-001"
 object_type: "HDD tray / drive mount assembly"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs: ["PHOTO-001", "PHOTO-002", "PHOTO-003", "PHOTO-004", "PHOTO-005"]
 representative_photo: "assets/representative-photos/fi-cl-part-001.jpg"
 confidence: "medium"

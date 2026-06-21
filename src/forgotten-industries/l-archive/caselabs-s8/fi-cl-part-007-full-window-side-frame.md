@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-007"
 object_type: "side panel / window frame"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs: ["PHOTO-031", "PHOTO-032", "PHOTO-033", "PHOTO-034"]
 representative_photo: "assets/representative-photos/fi-cl-part-007.jpg"
 confidence: "medium"

@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-003"
 object_type: "top panel"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs:
   ["PHOTO-012", "PHOTO-013", "PHOTO-014", "PHOTO-015", "PHOTO-016", "PHOTO-017"]
 representative_photo: "assets/representative-photos/fi-cl-part-003.jpg"
