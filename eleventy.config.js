@@ -83,6 +83,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/docs')
   eleventyConfig.addPassthroughCopy('src/projects')
   eleventyConfig.addPassthroughCopy('src/site-snapshots')
+  eleventyConfig.addPassthroughCopy(
+    'src/forgotten-industries/l-archive/caselabs-s8/assets'
+  )
   eleventyConfig.ignores.add('src/assets/**')
   eleventyConfig.ignores.add('src/docs/**')
   eleventyConfig.ignores.add('src/projects/**')

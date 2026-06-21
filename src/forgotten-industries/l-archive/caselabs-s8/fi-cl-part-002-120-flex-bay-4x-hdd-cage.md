@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-002"
 object_type: "drive cage / flex-bay accessory"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs:
   ["PHOTO-006", "PHOTO-007", "PHOTO-008", "PHOTO-009", "PHOTO-010", "PHOTO-011"]
 representative_photo: "assets/representative-photos/fi-cl-part-002.jpg"

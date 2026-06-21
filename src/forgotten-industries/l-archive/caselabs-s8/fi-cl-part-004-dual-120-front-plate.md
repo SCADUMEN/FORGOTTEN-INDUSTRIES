@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-004"
 object_type: "front plate"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs: ["PHOTO-018", "PHOTO-019", "PHOTO-020", "PHOTO-021", "PHOTO-022"]
 representative_photo: "assets/representative-photos/fi-cl-part-004.jpg"
 confidence: "medium"

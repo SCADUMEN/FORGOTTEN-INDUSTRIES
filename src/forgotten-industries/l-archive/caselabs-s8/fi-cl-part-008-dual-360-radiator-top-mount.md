@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-008"
 object_type: "radiator top plate / mounting plate"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs: ["PHOTO-035", "PHOTO-036", "PHOTO-037", "PHOTO-038", "PHOTO-039"]
 representative_photo: "assets/representative-photos/fi-cl-part-008.jpg"
 confidence: "medium"

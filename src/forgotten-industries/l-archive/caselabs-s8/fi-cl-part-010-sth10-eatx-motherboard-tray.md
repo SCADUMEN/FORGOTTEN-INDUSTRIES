@@ -7,7 +7,7 @@ collection: "CaseLabs Mercury S8 / pedestal"
 object_id: "FI-CL-PART-010"
 object_type: "motherboard tray"
 status: "intake"
-source_intake: "FI/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
+source_intake: "src/forgotten-industries/intake/l-archive/2026-06-20-caselabs-chassis-parts.md"
 photo_refs: ["PHOTO-044", "PHOTO-045", "PHOTO-046", "PHOTO-047"]
 representative_photo: "assets/representative-photos/fi-cl-part-010.jpg"
 confidence: "high"
