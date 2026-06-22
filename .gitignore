@@ -19,3 +19,5 @@ playwright-report/
 /intake/L-Archive/*
 !/intake/L-Archive/README.md
 /intake/SLUSH/*
+/intake/fi-voice-split.html _ Claude.html
+/intake/fi-voice-split.html _ Claude_files/

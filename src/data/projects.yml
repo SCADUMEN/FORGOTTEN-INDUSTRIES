@@ -284,3 +284,43 @@ projects:
       - Keep raw evidence pages inspectable
       - Separate live dispatches from authored field logs
       - Link generated routes back to source records
+
+  - id: FI-PROJ-008
+    slug: typeface-system
+    title: Forgotten Industries Typeface System
+    working_title: Voice Split Typeface Dossier
+    category: Design Dossier
+    status: active / specimen extracted from intake
+    started: '2026'
+    revived: '2026'
+    summary: >
+      Design-evolution dossier for the Forgotten Industries type system: Old
+      Standard TT for formal archive headings, Space Mono for system records,
+      IBM Plex Sans for interface labels and descriptors, and Courier Prime for
+      human testimony, field logs, and recovered voice.
+    themes:
+      - typography
+      - voice split
+      - design system
+      - dossier interface
+      - archive evidence
+      - ATLAS records
+      - human testimony
+    source_links:
+      - label: Raw Claude artifact wrapper
+        type: local
+        role: intake source
+        path: intake/fi-voice-split.html _ Claude.html
+      - label: Extracted rendered artifact
+        type: local
+        role: specimen source
+        path: intake/fi-voice-split.html _ Claude_files/saved_resource.html
+      - label: Clean source dossier
+        type: local
+        role: public working dossier
+        path: src/projects/typeface-system/README.md
+    documentation_style:
+      - Treat type choices as evidence of voice hierarchy, not decoration
+      - Keep system-generated metadata visually separate from human testimony
+      - Preserve the raw intake before simplifying it into site-native records
+      - Build the dossier first; promote to a manual only when rules become procedural

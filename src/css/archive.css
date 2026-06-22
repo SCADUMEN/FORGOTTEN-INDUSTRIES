@@ -324,6 +324,18 @@ img {
   line-height: 1.45;
 }
 
+.type-specimen-figure {
+  background: #0a0a0a;
+}
+
+.type-specimen-frame {
+  display: block;
+  width: 100%;
+  min-height: 620px;
+  border: 0;
+  background: #0a0a0a;
+}
+
 .mirror-band,
 .evidence-band,
 .source-band {
