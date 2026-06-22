@@ -1,43 +1,30 @@
 ---
 layout: base.njk
 title: L'Œuvre
-description: "The assembled Forgotten Industries body of work: dossiers, manuscripts, and long-form records produced from the archive."
+description: "L'Œuvre: dossiers and manuscripts from Forgotten Industries."
 permalink: /oeuvre/index.html
 eleventyExcludeFromCollections: true
 ---
 <section class="section-landing-hero">
   <div class="section-inner">
-    <p class="section-label">L'ŒUVRE / THE ACTIVE RECORD</p>
-    <h1>L'Œuvre</h1>
-    <p class="tagline">
-      The assembled body of work: dossiers, manuscripts, and long-form records
-      produced from the archive.
-    </p>
+    <div class="oeuvre-title-block">
+      <h1>L'ŒUVRE</h1>
+      <p>// THE LIVING BODY OF WORK.</p>
+    </div>
   </div>
 </section>
 
 <section class="section-directory" aria-labelledby="oeuvre-directory-heading">
   <div class="section-inner">
-    <p class="section-label">Published assemblies only</p>
-    <h2 id="oeuvre-directory-heading">
-      Assembled work, with its evidence attached.
-    </h2>
-    <div class="directory-grid plate-card-grid">
+    <h2 id="oeuvre-directory-heading" class="sr-only">L'Œuvre index</h2>
+    <div class="directory-grid plate-card-grid oeuvre-directory-grid">
       <a id="dossiers" href="/projects/">
         <span>{{ archive.projects | countLabel("record", "records") }}</span>
-        <h3>Les Dossiers</h3>
-        <p>
-          Living case files assembled from archive records, field logs,
-          photographs, inventories, and observations.
-        </p>
+        <h3>LES DOSSIERS</h3>
       </a>
       <a href="/posts/">
         <span>{{ collections.posts | countLabel("entry", "entries") }}</span>
-        <h3>Les Manuscrits</h3>
-        <p>
-          Authored works, research papers, doctrines, essays, and complete texts
-          emerging from the archive.
-        </p>
+        <h3>LES MANUSCRITS</h3>
       </a>
     </div>
   </div>
