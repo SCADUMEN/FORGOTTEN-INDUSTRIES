@@ -9,13 +9,17 @@
       content="The first Forgotten Industries field doctrine: perspective as changed view, Peregrine as pocket elevation, and pang as the moment an abandoned object becomes evidence again."
     />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap");
       :root {
         color-scheme: light dark;
+        --font-display: "Old Standard TT", Georgia, serif;
+        --font-ui: "IBM Plex Sans", system-ui, sans-serif;
+        --font-human: "Courier Prime", "Courier New", Courier, monospace;
+        --font-system: "Space Mono", Consolas, monospace;
       }
       body {
         margin: 0;
-        font-family:
-          ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        font-family: var(--font-human);
         line-height: 1.65;
         background: #f7f3ea;
         color: #201d19;
@@ -27,6 +31,7 @@
       }
       h1,
       h2 {
+        font-family: var(--font-display);
         line-height: 1.15;
       }
       h1 {
@@ -58,7 +63,7 @@
         opacity: 0.88;
       }
       code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-family: var(--font-system);
       }
       hr {
         border: 0;

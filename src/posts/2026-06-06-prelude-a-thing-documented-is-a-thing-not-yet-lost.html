@@ -15,6 +15,7 @@
       href="https://forgotten-industries.net/posts/a-thing-documented-is-a-thing-not-yet-lost/"
     />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap");
       :root {
         --bg: #f4efe6;
         --paper: #fffaf1;
@@ -22,12 +23,16 @@
         --muted: #6e6258;
         --line: #cdbfae;
         --accent: #5a3422;
+        --font-display: "Old Standard TT", Georgia, serif;
+        --font-ui: "IBM Plex Sans", system-ui, sans-serif;
+        --font-human: "Courier Prime", "Courier New", Courier, monospace;
+        --font-system: "Space Mono", Consolas, monospace;
       }
       * {
         box-sizing: border-box;
       }
       html {
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: var(--font-human);
         color: var(--ink);
         background: var(--bg);
       }
@@ -49,6 +54,7 @@
         margin-bottom: 32px;
       }
       .brand {
+        font-family: var(--font-system);
         font-size: 0.82rem;
         letter-spacing: 0.16em;
         text-transform: uppercase;
@@ -56,6 +62,7 @@
         margin: 0 0 8px;
       }
       .breadcrumbs {
+        font-family: var(--font-system);
         font-size: 0.9rem;
         color: var(--muted);
         margin: 0;
@@ -69,6 +76,7 @@
       h1,
       h2,
       h3 {
+        font-family: var(--font-display);
         line-height: 1.15;
       }
       h1 {
@@ -120,7 +128,7 @@
       }
       .post-meta {
         color: var(--muted);
-        font-style: italic;
+        font-family: var(--font-system);
         margin-bottom: 1.5rem;
       }
       .reader-note {
@@ -129,12 +137,13 @@
       .site-footer {
         margin-top: 32px;
         color: var(--muted);
+        font-family: var(--font-ui);
         font-size: 0.9rem;
         border-top: 1px solid var(--line);
         padding-top: 16px;
       }
       code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-family: var(--font-system);
         font-size: 0.92em;
       }
     </style>
