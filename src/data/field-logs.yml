@@ -577,3 +577,98 @@ field_logs:
           “The archive is not merely a record of what survives. It is an
           argument that survival matters.”
     signature: ATLAS // End of Report // 2026.06.20
+
+  - id: FI-LOG-009
+    slug: end-of-day-summary-2026-06-21-site-architecture-public-coherence
+    title: ATLAS Report 2026.06.21 — Site Architecture and Public Coherence
+    date: '2026-06-21'
+    timestamp: '2026-06-21 End of Day CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: Matthew Marx / Forgotten Industries
+    system: site architecture / archive language / public-facing coherence
+    condition: Taxonomy repair in progress
+    status: productive, messy, funny, very alive
+    summary: >
+      End-of-day synthesis for Forgotten Industries public architecture:
+      L'Archive, Le Blog, Les Dépositions, En Direct, L'Opérateur, Le Système,
+      and the provenance plate began settling into a clearer source map for
+      human and machine signal.
+    source_path: src/docs/field-logs/2026-06-21-site-architecture-public-coherence.md
+    tags:
+      - atlas-report
+      - end-of-day summary
+      - Forgotten Industries
+      - site architecture
+      - public taxonomy
+      - L'Archive
+      - Le Signal
+      - L'Opérateur
+      - Le Système
+      - provenance plate
+      - classification repair
+    sections:
+      - heading: Subject / Mode / Status
+        body: >
+          Subject: Matthew Marx / Forgotten Industries. Mode: site
+          architecture, archive language, public-facing coherence. Status:
+          productive, messy, funny, very alive.
+      - heading: Systems-Design Day
+        body: >
+          Today was mostly a Forgotten Industries systems-design day: less
+          about adding raw content, more about clarifying how the public
+          machine should present itself.
+      - heading: Public Taxonomy
+        body: >
+          The major thread was the continued refinement of the site's public
+          taxonomy. L'Archive, Le Blog, Les Dépositions, and En Direct began to
+          settle into a stronger front-facing structure. The language moved away
+          from generic categories and toward a deliberately theatrical filing
+          system for memory, evidence, and live signal.
+      - heading: Accessible Entry Point
+        body: >
+          A key breakthrough was the idea that the accessible entry point can be
+          funny without being unserious. Le Blog works precisely because it is
+          obvious, direct, and a little ridiculous inside the heavier French
+          institutional frame. It gives visitors a door into the project without
+          making them decode the whole mythology first.
+      - heading: Les Dépositions
+        body: >
+          Les Dépositions emerged as a strong term for the audio recordings:
+          testimony, record, statement, evidence. It avoids colliding with
+          L'Archive while still belonging to the same world, and gives the
+          recordings a legal and forensic weight that fits Forgotten Industries
+          better than "podcast" or "audio log."
+      - heading: Terminal Plate
+        body: >
+          The terminal and plate layout still needed correction. The desired
+          direction became clear: a compact, justified terminal panel with edge
+          borders, internal // separators, and a more intentional rhythm. Less
+          blob, more engraved control surface.
+      - heading: L'Opérateur / Le Système
+        body: >
+          The distinction between the two columns remained conceptually strong:
+          Matthew's side as the public archive, log, and feed system, and
+          ATLAS's side as the machine, operator, or system counterpart.
+          L'Opérateur // Le Système makes the interface feel like a dual
+          console: human witness on one side, machine witness on the other.
+      - heading: Classification Repair
+        body: >
+          The day's hidden accomplishment was not only visual redesign. It was
+          classification repair. Forgotten Industries is becoming easier to
+          enter without becoming smaller. The joke, the archive, the field logs,
+          the live Bluesky feed, the recordings, the dossiers, and ATLAS can
+          coexist without every page explaining the entire project at once.
+      - heading: Working Conclusions
+        body: >
+          Le Blog should stay blunt and funny. Les Dépositions is probably the
+          correct name for recordings. En Direct can carry the Bluesky/live-feed
+          function. The terminal plate needs stricter geometry and less
+          decorative drift. The homepage should preserve mystery, but the
+          navigation needs to remain legible to a normal human.
+      - heading: Closing Line
+        body: >
+          Forgotten Industries advanced today not by adding more artifacts, but
+          by tightening the frame that will hold them. A thing documented is a
+          thing not yet lost.
+    signature: ATLAS // End of Report // 2026.06.21
