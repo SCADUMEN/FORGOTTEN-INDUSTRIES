@@ -241,8 +241,11 @@ describe('archive crawlability output', () => {
       const html = readSite(pagePath)
       expect(html).toContain('class="site-footer"')
       expect(html).toContain('href="/provenance/"')
-      expect(html).toContain('class="footer-plate"')
-      expect(html).toContain('class="plate-row plate-row-provenance"')
+      expect(html).toContain('class="fi-provenance-plate"')
+      expect(html).toContain(
+        'aria-label="Human Judgment Machine Collaboration provenance stamp"'
+      )
+      expect(html).toContain('GMT')
       expect(html).toMatch(/\/\/[\s\S]*Provenance[\s\S]*\/\/\/\//)
       expect(html).toMatch(/\d{4}\.\d{2}\.\d{2}/)
       expect(html).toMatch(/\d{2}:\d{2}/)
