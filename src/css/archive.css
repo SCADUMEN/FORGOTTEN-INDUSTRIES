@@ -2615,29 +2615,23 @@ h3 {
 
 .signal-source-column {
   display: grid;
-  gap: 1rem;
+  align-content: start;
+  gap: 0.75rem;
+  min-width: 0;
 }
 
 .signal-source-column > header {
-  min-height: 9rem;
-  align-content: end;
-  padding: 1rem;
-  border: 1px solid rgba(79, 140, 255, 0.78);
-  background:
-    linear-gradient(135deg, rgba(79, 140, 255, 0.18), rgba(255, 91, 214, 0.07)),
-    rgba(8, 19, 39, 0.96);
+  padding: 0 0 0.25rem;
 }
 
-.signal-branch-head,
-.signal-branch-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1.5rem;
+.signal-label-stack {
+  display: inline-grid;
+  gap: 0.28rem;
+  max-width: 100%;
 }
 
 .signal-branch-head {
-  flex-wrap: wrap;
+  display: block;
 }
 
 .signal-branch-head h2,
@@ -2653,20 +2647,23 @@ h3 {
 }
 
 .signal-branch-head h2 {
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
 }
 
 .signal-row-title {
-  font-size: clamp(1.18rem, 2.4vw, 1.75rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.05;
 }
 
 .signal-branch-meta,
 .signal-row-meta {
+  justify-self: end;
+  max-width: 100%;
   color: var(--oxide);
   font-family: var(--mono-font);
-  font-size: 0.85rem;
+  font-size: var(--mono-size);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   line-height: 1.35;
   text-align: right;
   text-transform: none;
@@ -2686,23 +2683,21 @@ h3 {
 
 .signal-source-list {
   display: grid;
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
+  gap: 1rem;
+  background: transparent;
 }
 
 .signal-source-list a {
-  min-height: 5.5rem;
-  padding: 0.95rem 1rem;
+  display: block;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(79, 140, 255, 0.78);
   background: var(--white);
   color: var(--ink);
   text-decoration: none;
 }
 
 .signal-source-list a:hover,
-.signal-source-list a:focus-visible,
-.signal-source-column > header a:hover,
-.signal-source-column > header a:focus-visible {
+.signal-source-list a:focus-visible {
   background: rgba(255, 91, 214, 0.12);
   color: var(--ink);
 }
@@ -3149,23 +3144,28 @@ h3 {
 
 .site-footer {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .fi-provenance-wrap {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 1.5rem auto 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 2rem auto 0;
   padding-inline: 1rem;
+  overflow: visible;
   isolation: isolate;
 }
 
 .fi-provenance-plate {
   position: relative;
-  display: block;
-  width: fit-content;
-  min-width: min(760px, calc(100vw - 3rem));
-  max-width: min(920px, calc(100vw - 3rem));
+  display: inline-block;
+  width: max-content;
+  min-width: 0;
+  max-width: calc(100vw - 3rem);
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0.95rem 1.65rem;
@@ -3226,13 +3226,13 @@ h3 {
 
 @media (max-width: 720px) {
   .fi-provenance-wrap {
-    justify-content: flex-start;
-    padding-inline: 0.75rem;
+    justify-content: center;
+    padding-inline: 1rem;
   }
 
   .fi-provenance-plate {
     min-width: 0;
-    max-width: calc(100vw - 1.5rem);
+    max-width: calc(100vw - 2rem);
     padding: 0.85rem 1rem;
     font-size: 0.72rem;
     letter-spacing: 0.045em;
@@ -3276,16 +3276,9 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .signal-branch-head,
-  .signal-branch-row {
-    display: block;
-  }
-
   .signal-branch-meta,
   .signal-row-meta {
-    display: inline-block;
-    margin-top: 0.35rem;
-    text-align: left;
+    text-align: right;
     white-space: normal;
   }
 
