@@ -10,14 +10,14 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">LE SIGNAL / THE AUTHORED RECORD</p>
     <h1>Le Signal</h1>
-    <p class="tagline">Everything transmitted. Everything observed.</p>
+    <p class="tagline">The authored record in motion.</p>
   </div>
 </section>
 
 <section class="signal-ticker-band" aria-labelledby="signal-ticker-heading">
   <div class="section-inner">
     <div class="signal-ticker-header">
-      <p class="section-label">Current transmissions</p>
+      <p class="section-label">EN DIRECT</p>
       <h2 id="signal-ticker-heading" class="sr-only">Recent signal activity</h2>
     </div>
     <div class="signal-ticker" role="list" aria-label="Recent signal activity">
@@ -43,26 +43,51 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="section-directory" aria-labelledby="signal-directory-heading">
+<section class="signal-source-band" aria-labelledby="signal-directory-heading">
   <div class="section-inner">
-    <p class="section-label">Three active channels</p>
-    <h2 id="signal-directory-heading">Signals, separated by source.</h2>
-    <div class="directory-grid plate-card-grid signal-directory-grid">
-      <a href="/atlas/">
-        <span>01 / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
-        <h3>ATLAS Reports</h3>
-        <p>AI-assisted end-of-day debriefs: evidence, decisions, unresolved questions, and next actions.</p>
-      </a>
-      <a href="/field-logs/">
-        <span>02 / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
-        <h3>Field Logs</h3>
-        <p>Original voice records from the portable recorder. The empty intake template is live and ready.</p>
-      </a>
-      <a href="/en-direct/">
-        <span>03 / {{ fieldnotes | countLabel("dispatch", "dispatches") }}</span>
-        <h3>En Direct</h3>
-        <p>The continuous shortform signal imported from Bluesky at build time.</p>
-      </a>
+    <h2 id="signal-directory-heading" class="sr-only">Signal sources</h2>
+    <div class="signal-source-grid">
+      <section class="signal-source-column" aria-labelledby="operator-signal-heading">
+        <header class="signal-branch-head">
+          <h2 id="operator-signal-heading">L'OPÉRATEUR</h2>
+          <span class="signal-branch-meta">// MTM / <a href="/about.html">À PROPOS</a></span>
+        </header>
+        <div class="signal-source-list">
+          <a class="signal-branch-row" href="/posts/">
+            <span class="signal-row-title">LE BLOG</span>
+            <span class="signal-row-meta">// Blog / {{ collections.posts | countLabel("entry", "entries") }}</span>
+          </a>
+          <a class="signal-branch-row" href="/field-logs/">
+            <span class="signal-row-title">LES DÉPOSITIONS</span>
+            <span class="signal-row-meta">// Field Logs / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
+          </a>
+          <a class="signal-branch-row" href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">
+            <span class="signal-row-title">EN DIRECT</span>
+            <span class="signal-row-meta">// Live Feed / Bluesky</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="signal-source-column" aria-labelledby="atlas-signal-heading">
+        <header class="signal-branch-head">
+          <h2 id="atlas-signal-heading">LE SYSTÈME</h2>
+          <span class="signal-branch-meta">// ATLAS / GPT-5.5</span>
+        </header>
+        <div class="signal-source-list">
+          <a class="signal-branch-row" href="/atlas/">
+            <span class="signal-row-title">LES RAPPORTS</span>
+            <span class="signal-row-meta">// Field Reports / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
+          </a>
+          <a class="signal-branch-row" href="/archive/posts/">
+            <span class="signal-row-title">LES DOCTRINES</span>
+            <span class="signal-row-meta">// Systems Doctrine / {{ collections.posts | countLabel("record", "records") }}</span>
+          </a>
+          <a class="signal-branch-row" href="/provenance/">
+            <span class="signal-row-title">LA PROVENANCE</span>
+            <span class="signal-row-meta">// Source Chain / Archive view</span>
+          </a>
+        </div>
+      </section>
     </div>
   </div>
 </section>
