@@ -2105,6 +2105,25 @@ h3 {
   text-transform: uppercase;
 }
 
+.signal-hero-title-block {
+  display: grid;
+  gap: 1.15rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.signal-hero-meta {
+  justify-self: end;
+  margin: 0;
+  color: var(--oxide);
+  font-family: var(--font-system);
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: right;
+}
+
 .institution-subtitle,
 .institution-doctrine {
   margin: 1.35rem 0 0;
@@ -2358,12 +2377,65 @@ h3 {
 }
 
 .signal-ticker-band .section-inner {
-  padding-top: 1rem;
+  padding-top: 1.35rem;
   padding-bottom: 1rem;
 }
 
-.signal-ticker-header .section-label {
-  margin-bottom: 0.65rem;
+.signal-ticker-header {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 0.95rem;
+}
+
+.signal-ticker-plate {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.22rem;
+  width: min(100%, 34rem);
+  padding: 0.66rem 1.35rem 0.7rem;
+  border: 1px solid rgba(79, 140, 255, 0.78);
+  background:
+    linear-gradient(135deg, rgba(79, 140, 255, 0.14), rgba(255, 91, 214, 0.06)),
+    rgba(8, 19, 39, 0.96);
+  box-shadow:
+    -0.24rem -0.24rem 0 rgba(0, 0, 0, 0.58),
+    -0.24rem -0.24rem 0 1px rgba(79, 140, 255, 0.36);
+  text-align: center;
+}
+
+.signal-ticker-plate::after {
+  position: absolute;
+  inset: 0.32rem;
+  border: 1px solid rgba(79, 140, 255, 0.22);
+  content: '';
+  pointer-events: none;
+}
+
+.signal-ticker-plate p,
+.signal-ticker-plate span {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-system);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.signal-ticker-plate p {
+  color: var(--steel);
+  font-size: clamp(1rem, 1.42vw, 1.18rem);
+  line-height: 1.05;
+}
+
+.signal-ticker-plate p span {
+  color: var(--oxide);
+}
+
+.signal-ticker-plate span {
+  color: var(--oxide);
+  font-size: clamp(0.82rem, 1.08vw, 0.95rem);
+  line-height: 1.25;
 }
 
 .signal-ticker {
@@ -2378,6 +2450,7 @@ h3 {
 }
 
 .signal-ticker-item {
+  position: relative;
   display: grid;
   flex: 0 0 min(22rem, 82vw);
   gap: 0.5rem;
@@ -2387,12 +2460,27 @@ h3 {
   color: var(--ink);
   text-decoration: none;
   scroll-snap-align: start;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
 }
 
 .signal-ticker-item:hover,
 .signal-ticker-item:focus-visible {
-  background: rgba(255, 91, 214, 0.12);
+  background:
+    linear-gradient(180deg, rgba(8, 19, 39, 0.98), rgba(3, 9, 20, 0.98)),
+    var(--white);
+  box-shadow:
+    inset 0 -3px 0 rgba(132, 234, 255, 0.58),
+    inset 0 0 0 1px rgba(132, 234, 255, 0.22),
+    0 0 18px rgba(79, 140, 255, 0.16);
   color: var(--ink);
+}
+
+.signal-ticker-item:hover span,
+.signal-ticker-item:focus-visible span {
+  color: var(--steel);
 }
 
 .signal-ticker-item span {
@@ -2655,7 +2743,7 @@ h3 {
 }
 
 .signal-source-band {
-  padding: 2rem 0;
+  padding: 2.25rem 0 2rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -2668,12 +2756,12 @@ h3 {
 .signal-source-column {
   display: grid;
   align-content: start;
-  gap: 0.75rem;
+  gap: 1.05rem;
   min-width: 0;
 }
 
 .signal-source-column > header {
-  padding: 0 0 0.25rem;
+  padding: 0 0 0.15rem;
 }
 
 .signal-label-stack {
@@ -2683,7 +2771,16 @@ h3 {
 }
 
 .signal-branch-head {
-  display: block;
+  display: grid;
+  justify-items: center;
+}
+
+.signal-branch-head .signal-label-stack {
+  display: grid;
+  justify-items: center;
+  gap: 0.34rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .signal-branch-head h2,
@@ -2699,7 +2796,7 @@ h3 {
 }
 
 .signal-branch-head h2 {
-  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
 }
 
 .signal-row-title {
@@ -2722,6 +2819,13 @@ h3 {
   white-space: nowrap;
 }
 
+.signal-branch-meta {
+  justify-self: center;
+  color: var(--oxide);
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  text-align: center;
+}
+
 .signal-branch-meta a {
   color: inherit;
   text-decoration: none;
@@ -2735,22 +2839,32 @@ h3 {
 
 .signal-source-list {
   display: grid;
-  gap: 1rem;
+  gap: 0.82rem;
   background: transparent;
 }
 
 .signal-source-list a {
   display: block;
-  padding: 1.1rem 1.25rem;
+  padding: 0.95rem 1.1rem;
   border: 1px solid rgba(79, 140, 255, 0.78);
-  background: var(--white);
+  background:
+    linear-gradient(180deg, rgba(8, 19, 39, 0.98), rgba(5, 13, 28, 0.98)),
+    var(--white);
   color: var(--ink);
   text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .signal-source-list a:hover,
 .signal-source-list a:focus-visible {
-  background: rgba(255, 91, 214, 0.12);
+  border-color: rgba(132, 234, 255, 0.82);
+  background:
+    linear-gradient(180deg, rgba(9, 24, 50, 0.98), rgba(5, 13, 28, 0.98)),
+    var(--white);
+  box-shadow: inset 0 -2px 0 rgba(132, 234, 255, 0.42);
   color: var(--ink);
 }
 
@@ -3338,6 +3452,10 @@ h3 {
   .signal-row-meta {
     text-align: right;
     white-space: normal;
+  }
+
+  .signal-branch-meta {
+    text-align: center;
   }
 
   .primary-section-card {
