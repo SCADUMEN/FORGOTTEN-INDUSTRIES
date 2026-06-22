@@ -12,20 +12,6 @@ eleventyExcludeFromCollections: true
     <p class="section-label">L'ARCHIVE / THE PRESERVED RECORD</p>
     <h1>L'Archive</h1>
     <p class="tagline">Machines, documents, dossiers, photographs, and evidence retained against loss.</p>
-    <nav class="hero-door-row" aria-label="L'Archive primary doors">
-      <a class="hero-shadow-button" href="#archive-search-heading">
-        <span>L'Index</span>
-        <strong>Search</strong>
-      </a>
-      <a class="hero-shadow-button" href="/archive/inventory/">
-        <span>Objects</span>
-        <strong>Inventory</strong>
-      </a>
-      <a class="hero-shadow-button" href="/archive/source-sets/">
-        <span>Evidence</span>
-        <strong>Source Sets</strong>
-      </a>
-    </nav>
   </div>
 </section>
 
@@ -274,7 +260,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">Registered Shelves</p>
     <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
-    <nav class="open-stacks-list" aria-label="L'Archive shelves">
+    <nav class="open-stacks-list open-stacks-plate-list" aria-label="L'Archive shelves">
       <a href="/archive/inventory/">Inventory</a>
       <a href="/archive/objects/">Object Records</a>
       <a href="/oeuvre/#dossiers">Dossiers</a>
@@ -351,8 +337,8 @@ eleventyExcludeFromCollections: true
           <span>{{ taxonomy.allTerms | pluralLabel("Taxonomy term", "Taxonomy terms") }}</span>
         </a>
         <a class="stat" href="/hang-on-to-each-other/">
-          <strong>1</strong>
-          <span>{{ 1 | pluralLabel("Manuel", "Manuels") }}</span>
+          <strong>2</strong>
+          <span>{{ 2 | pluralLabel("Manuel", "Manuels") }}</span>
         </a>
         <a class="stat" href="/en-direct/">
           <strong>{{ fieldnotes | count }}</strong>

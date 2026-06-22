@@ -51,6 +51,9 @@ describe('archive crawlability output', () => {
     expect(existsSite('archive/objects/fi-case-001/index.html')).toBe(true)
     expect(existsSite('field-logs/voice/index.html')).toBe(true)
     expect(
+      existsSite('hang-on-to-each-other/wrist-field-instruments/index.html')
+    ).toBe(true)
+    expect(
       existsSite('field-logs/accumulation-across-active-fronts/index.html')
     ).toBe(true)
   })
@@ -73,6 +76,32 @@ describe('archive crawlability output', () => {
     expect(dossierLinks).toContain('/archive/objects/')
     expect(dossierLinks).toContain('/archive/systems/')
     expect(dossierLinks).toContain('/archive/status/')
+  })
+
+  it('publishes Manual 002 and its preserved source asset', () => {
+    const manualShelf = readSite('hang-on-to-each-other/index.html')
+    const manual = readSite(
+      'hang-on-to-each-other/wrist-field-instruments/index.html'
+    )
+
+    expect(manualShelf).toContain(
+      '/hang-on-to-each-other/wrist-field-instruments/'
+    )
+    expect(canonical(manual)).toBe(
+      'https://forgotten-industries.net/hang-on-to-each-other/wrist-field-instruments/'
+    )
+    expect(manual).toContain('LE MANUEL 002')
+    expect(manual).toContain('Wrist &amp; Field Instruments')
+    expect(manual).toContain('01 / Case Architecture')
+    expect(manual).toContain('FI-WATCH-001')
+    expect(manual).toContain(
+      "D'en haut, les choses se souviennent les unes des autres."
+    )
+    expect(
+      existsSite(
+        'assets/reference/hang-on-to-each-other/wrist-field-instruments/Wrist_Field_Instruments_Manual_002_ForgottenIndustries.pdf'
+      )
+    ).toBe(true)
   })
 
   it('routes legacy inventory doors to the generated inventory shelf', () => {

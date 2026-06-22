@@ -25,18 +25,18 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
 
 ## Migration Map
 
-| Older name              | Decision                           | Notes                                                                                              |
-| ----------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `archive`               | Keep internally.                   | `src/archive.njk` renders canonical `/l-archive/`; `/archive/*` remains for archive shelves.       |
-| `/archive/`             | Redirect/compatibility route.      | Prefer `/l-archive/` in canonical URLs and new public links.                                       |
-| `/archive.html`         | Redirect/compatibility route.      | Kept for old public links and preserved references.                                                |
-| `projects`, `project`   | Keep internally; relabel publicly. | Data keys, routes, and IDs remain stable. Public language is Dossier/Dossiers.                     |
-| `/projects/`            | Keep public route.                 | It is the Les Dossiers shelf under L'Œuvre, not a top-nav item.                                    |
-| `posts`                 | Keep internally; relabel publicly. | Eleventy collection and feed behavior depend on it. Public language is Manuscripts/Les Manuscrits. |
-| `/posts/`               | Keep public route.                 | It is the Les Manuscrits shelf under L'Œuvre, not a top-nav item.                                  |
-| `manuals`, `Manual 001` | Keep where literal.                | Manual language is correct for recovered technical-reference artifacts.                            |
-| `hang-on-to-each-other` | Keep.                              | Named technical-reference shelf; do not promote to top nav.                                        |
-| `source`                | Keep where evidentiary.            | Source sets, source assets, source code, and provenance use this term intentionally.               |
+| Older name                            | Decision                           | Notes                                                                                              |
+| ------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `archive`                             | Keep internally.                   | `src/archive.njk` renders canonical `/l-archive/`; `/archive/*` remains for archive shelves.       |
+| `/archive/`                           | Redirect/compatibility route.      | Prefer `/l-archive/` in canonical URLs and new public links.                                       |
+| `/archive.html`                       | Redirect/compatibility route.      | Kept for old public links and preserved references.                                                |
+| `projects`, `project`                 | Keep internally; relabel publicly. | Data keys, routes, and IDs remain stable. Public language is Dossier/Dossiers.                     |
+| `/projects/`                          | Keep public route.                 | It is the Les Dossiers shelf under L'Œuvre, not a top-nav item.                                    |
+| `posts`                               | Keep internally; relabel publicly. | Eleventy collection and feed behavior depend on it. Public language is Manuscripts/Les Manuscrits. |
+| `/posts/`                             | Keep public route.                 | It is the Les Manuscrits shelf under L'Œuvre, not a top-nav item.                                  |
+| `manuals`, `Manual 001`, `Manual 002` | Keep where literal.                | Manual language is correct for recovered technical-reference artifacts.                            |
+| `hang-on-to-each-other`               | Keep.                              | Named technical-reference shelf; do not promote to top nav.                                        |
+| `source`                              | Keep where evidentiary.            | Source sets, source assets, source code, and provenance use this term intentionally.               |
 
 ## Implementation Notes
 
@@ -55,5 +55,5 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
 - Keep **Project** when the text is about a source key such as
   `associated_project`, a legacy ID such as `FI-PROJ-001`, or a historical
   record that used the word.
-- Keep **Manual** when referring to Manual 001 or actual recovered technical
+- Keep **Manual** when referring to Manual 001, Manual 002, or actual recovered technical
   manuals.

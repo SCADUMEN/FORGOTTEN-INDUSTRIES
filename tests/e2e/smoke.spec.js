@@ -69,6 +69,26 @@ test('primary section pages share the global maker plate', async ({ page }) => {
   }
 })
 
+test('manual shelf publishes Manual 002', async ({ page }) => {
+  let response = await page.goto('/hang-on-to-each-other/')
+  expect(response?.status()).toBe(200)
+  await expect(
+    page.getByRole('link', { name: 'Open Manual 002', exact: true })
+  ).toHaveAttribute('href', '/hang-on-to-each-other/wrist-field-instruments/')
+
+  response = await page.goto('/hang-on-to-each-other/wrist-field-instruments/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/LE MANUEL 002/)
+  await expect(page.locator('h1')).toContainText('Wrist & Field Instruments')
+  await expect(page.locator('.manual-table')).toContainText('710 · Ministry')
+  await expect(page.locator('.manual-roster-grid')).toContainText(
+    'FI-WATCH-001'
+  )
+  await expect(page.locator('.manual-doctrine')).toContainText(
+    "D'en haut, les choses se souviennent les unes des autres."
+  )
+})
+
 test('archive page renders', async ({ page }) => {
   const response = await page.goto('/l-archive/')
   expect(response?.status()).toBe(200)

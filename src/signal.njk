@@ -11,20 +11,6 @@ eleventyExcludeFromCollections: true
     <p class="section-label">LE SIGNAL / THE AUTHORED RECORD</p>
     <h1>Le Signal</h1>
     <p class="tagline">Everything transmitted. Everything observed.</p>
-    <nav class="hero-door-row" aria-label="Le Signal primary doors">
-      <a class="hero-shadow-button" href="/atlas/">
-        <span>Reports</span>
-        <strong>ATLAS</strong>
-      </a>
-      <a class="hero-shadow-button" href="/en-direct/">
-        <span>Live</span>
-        <strong>En Direct</strong>
-      </a>
-      <a class="hero-shadow-button" href="/field-logs/">
-        <span>Recorder</span>
-        <strong>Field Logs</strong>
-      </a>
-    </nav>
   </div>
 </section>
 
@@ -61,7 +47,7 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <p class="section-label">Three active channels</p>
     <h2 id="signal-directory-heading">Signals, separated by source.</h2>
-    <div class="directory-grid signal-directory-grid">
+    <div class="directory-grid plate-card-grid signal-directory-grid">
       <a href="/atlas/">
         <span>01 / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
         <h3>ATLAS Reports</h3>
