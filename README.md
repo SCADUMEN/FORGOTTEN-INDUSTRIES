@@ -106,17 +106,17 @@ L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS
 
 The repository still contains older implementation names because they protect URLs, data compatibility, and preserved evidence. Prefer compatibility over purity.
 
-| Legacy/internal name                             | Current public concept                     | Treatment                                                                                                                                              |
-| ------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `src/archive.njk`                                | L'Archive landing                          | Kept. It renders canonical `/l-archive/`; filename is an implementation detail.                                                                        |
-| `/archive/`                                      | L'Archive compatibility route              | Kept as redirect/compatibility page to `/l-archive/`. Do not treat as canonical.                                                                       |
-| `/archive.html`                                  | L'Archive compatibility route              | Kept as redirect/compatibility page to `/l-archive/`. Do not treat as canonical.                                                                       |
-| `src/archive/*`                                  | Generated archive shelves                  | Kept. Object records, source sets, taxonomy, social evidence, and process records remain under `/archive/*`.                                           |
-| `projects`, `project`, `src/data/projects.yml`   | Les Dossiers                               | Kept internally for schema stability. Public labels should say Dossier/Dossiers unless referring to legacy IDs or source fields.                       |
-| `/projects/`                                     | Les Dossiers                               | Kept as the public Dossiers shelf for compatibility. Do not add it to the top nav.                                                                     |
-| `posts`, `src/posts/`, `/posts/`                 | Les Manuscrits                             | Kept for Eleventy collection/feed compatibility. Public labels should say Manuscripts/Les Manuscrits.                                                  |
-| `manuals`, `Manual 001`, `Hang On To Each Other` | Technical reference shelf within L'Archive | Kept where it refers to actual recovered manuals or the named reference shelf. It is not a top-level nav item.                                         |
-| `source`                                         | Evidence/provenance/source sets            | Kept when referring to source files, source sets, provenance, or code. Avoid using it as a public section label unless source evidence is the subject. |
+| Legacy/internal name                                           | Current public concept                     | Treatment                                                                                                                                              |
+| -------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/archive.njk`                                              | L'Archive landing                          | Kept. It renders canonical `/l-archive/`; filename is an implementation detail.                                                                        |
+| `/archive/`                                                    | L'Archive compatibility route              | Kept as redirect/compatibility page to `/l-archive/`. Do not treat as canonical.                                                                       |
+| `/archive.html`                                                | L'Archive compatibility route              | Kept as redirect/compatibility page to `/l-archive/`. Do not treat as canonical.                                                                       |
+| `src/archive/*`                                                | Generated archive shelves                  | Kept. Object records, source sets, taxonomy, social evidence, and process records remain under `/archive/*`.                                           |
+| `projects`, `project`, `src/data/projects.yml`                 | Les Dossiers                               | Kept internally for schema stability. Public labels should say Dossier/Dossiers unless referring to legacy IDs or source fields.                       |
+| `/projects/`                                                   | Les Dossiers                               | Kept as the public Dossiers shelf for compatibility. Do not add it to the top nav.                                                                     |
+| `posts`, `src/posts/`, `/posts/`                               | Les Manuscrits                             | Kept for Eleventy collection/feed compatibility. Public labels should say Manuscripts/Les Manuscrits.                                                  |
+| `manuals`, `Manual 001`, `Manual 002`, `Hang On To Each Other` | Technical reference shelf within L'Archive | Kept where it refers to actual recovered manuals or the named reference shelf. It is not a top-level nav item.                                         |
+| `source`                                                       | Evidence/provenance/source sets            | Kept when referring to source files, source sets, provenance, or code. Avoid using it as a public section label unless source evidence is the subject. |
 
 ---
 
@@ -248,6 +248,8 @@ All reference docs live in `src/docs/`:
 `/hang-on-to-each-other/` is a named technical-reference shelf inside the archive: recovered instructions, procedures, and preservation references for abandoned systems.
 
 **Manual 001**: CaseLabs Mercury S8 + Pedestal assembly reference (includes recovered PDF integrated into the reference shelf; Markdown source in `src/`).
+
+**Manual 002**: Wrist & Field Instruments, a working taxonomy for watches, portable measurement tools, and adjacent field instruments (public page under `/hang-on-to-each-other/wrist-field-instruments/`; preserved PDF source in `src/assets/reference/`).
 
 ---
 

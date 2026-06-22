@@ -17,3 +17,4 @@ The purpose is two-way: credit the people and sources that kept the knowledge al
 ## Current Reference Sets
 
 - `caselabs-mercury-s8/` - CaseLabs Mercury S8 assembly and construction references.
+- `wrist-field-instruments/` - Wrist watches and portable field-instrument reference for LE MANUEL 002.

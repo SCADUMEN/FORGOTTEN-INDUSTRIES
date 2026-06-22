@@ -125,8 +125,8 @@ archive shelf.
 - Use **Manuscript/Manuscripts** for public authored works.
 - Use **post/posts** only for Eleventy implementation, file paths, preserved raw
   source, or historical social records.
-- Use **Manual 001** and **manual** when referring to the actual recovered
-  technical reference artifact.
+- Use **Manual 001**, **Manual 002**, and **manual** when referring to actual
+  technical reference artifacts.
 - Use **source** when referring to provenance, source files, source sets,
   source-code repositories, or raw evidence.
 

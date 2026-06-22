@@ -9,6 +9,7 @@ function readCommand(command, fallback = 'unknown') {
 }
 
 const SITE_TIME_ZONE = 'America/Chicago'
+const BUILD_STAMP_TIME_ZONE = 'UTC'
 
 function dateInTimeZone(date, timeZone) {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -163,6 +164,21 @@ module.exports = {
     minute: '2-digit',
     hourCycle: 'h23',
   }).format(buildDate),
+  buildStampDateDisplay: new Intl.DateTimeFormat('en-CA', {
+    timeZone: BUILD_STAMP_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .format(buildDate)
+    .replaceAll('-', '.'),
+  buildStampTimeDisplay: new Intl.DateTimeFormat('en-CA', {
+    timeZone: BUILD_STAMP_TIME_ZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).format(buildDate),
+  buildStampTimeZoneDisplay: 'GMT',
   buildDisplay: new Intl.DateTimeFormat('en-CA', {
     timeZone: SITE_TIME_ZONE,
     year: 'numeric',

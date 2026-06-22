@@ -9,3 +9,4 @@ It is also a credit shelf. If a diagram, review, photo, forum post, or fragment 
 ## Current Manuals
 
 - `caselabs-mercury-s8-assembly-restoration.md` - Manual 001: integrated CaseLabs Mercury S8 + pedestal assembly reference and recovery manual.
+- `wrist-field-instruments.md` - Manual 002: wrist and portable field-instrument taxonomy, acquisition reference, and object-reference plate.
