@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FI Voice Split Typeface Specimen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a0a0a;
+        --panel: #0d0d0d;
+        --ink: #e9e6dd;
+        --ink-dim: #9c988c;
+        --hairline: #2a2a26;
+        --verified: #b8a888;
+        --system-tag: #7d8a99;
+        --human-tag: #a8896a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 24px 80px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+      }
+
+      .wrap {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .eyebrow,
+      .crumb,
+      .voice-tag,
+      .data-row,
+      .files-label,
+      .file-row,
+      .source-note {
+        font-family: "Space Mono", monospace;
+      }
+
+      .eyebrow {
+        margin-bottom: 28px;
+        color: var(--ink-dim);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .panel {
+        padding: 36px;
+        border: 1px solid var(--hairline);
+        background: var(--panel);
+      }
+
+      .crumb {
+        margin-bottom: 20px;
+        color: var(--ink-dim);
+        font-size: 11px;
+        letter-spacing: 0.05em;
+      }
+
+      .sep {
+        margin: 0 6px;
+        opacity: 0.5;
+      }
+
+      .title {
+        margin: 0 0 4px;
+        font-family: "Old Standard TT", Georgia, serif;
+        font-size: 38px;
+        font-weight: 700;
+      }
+
+      .descriptor {
+        max-width: 34ch;
+        margin: 0 0 18px;
+        color: #c9c5b8;
+        font-size: 15px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      .subtitle {
+        margin-bottom: 22px;
+        color: var(--ink-dim);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      hr {
+        margin: 20px 0;
+        border: 0;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .voice-tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 2px 7px;
+        border: 1px solid currentcolor;
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .voice-tag.system {
+        color: var(--system-tag);
+      }
+
+      .voice-tag.human {
+        color: var(--human-tag);
+      }
+
+      .voice-tag.neutral {
+        border-color: var(--hairline);
+        color: var(--ink-dim);
+      }
+
+      .data-row {
+        display: flex;
+        gap: 14px;
+        color: var(--ink-dim);
+        font-size: 13px;
+        line-height: 2;
+      }
+
+      .data-row .k {
+        width: 130px;
+        flex-shrink: 0;
+      }
+
+      .data-row .v {
+        color: var(--ink);
+      }
+
+      .v.status {
+        color: var(--verified);
+      }
+
+      .resume {
+        color: #d8d4c8;
+        font-family: "Courier Prime", "Courier New", monospace;
+        font-size: 14.5px;
+        line-height: 1.85;
+      }
+
+      .files-label {
+        margin: 10px 0;
+        color: var(--ink-dim);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .file-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 7px 0;
+        border-bottom: 1px solid var(--hairline);
+        color: var(--ink-dim);
+        font-size: 12.5px;
+      }
+
+      .file-row .fname {
+        color: var(--ink);
+      }
+
+      .legend {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        max-width: 640px;
+        margin: 32px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid var(--hairline);
+        color: var(--ink-dim);
+        font-size: 12.5px;
+        line-height: 1.8;
+      }
+
+      .legend strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .legend .system {
+        color: var(--system-tag);
+      }
+
+      .legend .human {
+        color: var(--human-tag);
+      }
+
+      .source-note {
+        margin-top: 28px;
+        color: var(--ink-dim);
+        font-size: 10.5px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 680px) {
+        body {
+          padding: 32px 16px 56px;
+        }
+
+        .panel {
+          padding: 26px 20px;
+        }
+
+        .title {
+          font-size: 32px;
+        }
+
+        .data-row,
+        .file-row,
+        .legend {
+          font-size: 12px;
+        }
+
+        .legend {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="eyebrow">
+        FORGOTTEN INDUSTRIES - VOICE SPLIT / DOSSIER FI-DS-001
+      </div>
+
+      <section class="panel" aria-labelledby="specimen-title">
+        <div class="voice-tag neutral">Space Mono</div>
+        <div class="crumb">
+          L'ARCHIVE <span class="sep">&gt;</span> LES DOSSIERS
+          <span class="sep">&gt;</span> FI-DS-001
+        </div>
+
+        <div class="voice-tag neutral">Old Standard TT</div>
+        <h1 id="specimen-title" class="title">DOSSIER FI-DS-001</h1>
+
+        <div class="voice-tag neutral">IBM Plex Sans - descriptor</div>
+        <p class="descriptor">
+          Les dossiers constituent la memoire de l'enquete.
+        </p>
+
+        <div class="voice-tag neutral">IBM Plex Sans - label</div>
+        <div class="subtitle">Incident CH-19</div>
+        <hr />
+
+        <div class="voice-tag system">System - Space Mono</div>
+        <div class="data-row">
+          <div class="k">ID</div>
+          <div class="v">FI-DS-001</div>
+        </div>
+        <div class="data-row">
+          <div class="k">DATE</div>
+          <div class="v">2026.06.21</div>
+        </div>
+        <div class="data-row">
+          <div class="k">STATUS</div>
+          <div class="v status">VERIFIED</div>
+        </div>
+        <div class="data-row">
+          <div class="k">CLASS</div>
+          <div class="v">LEVEL 2</div>
+        </div>
+        <div class="data-row">
+          <div class="k">OPERATOR</div>
+          <div class="v">SYSTEM-7</div>
+        </div>
+        <div class="data-row">
+          <div class="k">LOCATION</div>
+          <div class="v">SECTOR CH/19</div>
+        </div>
+
+        <hr />
+
+        <div class="voice-tag human">Testimony - Courier Prime</div>
+        <p class="resume">
+          Event recorded on 21 June 2026. Disturbance detected in sector CH/19.
+          Multiple witnesses. Objects recovered.
+        </p>
+
+        <div class="voice-tag system" style="margin-top: 22px">
+          System - Space Mono
+        </div>
+        <div class="files-label">Attached files (2)</div>
+        <div class="file-row">
+          <span class="fname">01&nbsp;&nbsp;FI-DS-001-AUDIO.LOG</span
+          ><span>18.7 MB</span>
+        </div>
+        <div class="file-row">
+          <span class="fname">02&nbsp;&nbsp;FI-DS-001-SCAN.PDF</span
+          ><span>4.2 MB</span>
+        </div>
+      </section>
+
+      <section class="legend" aria-label="Typeface role legend">
+        <div>
+          <strong class="system">SYSTEM / Space Mono</strong><br />
+          IDs, timestamps, status, classification, ATLAS output, file indexes,
+          and generated records.
+        </div>
+        <div>
+          <strong class="human">TESTIMONY / Courier Prime</strong><br />
+          Field notes, witness accounts, recorder transcripts, summaries, and
+          human-written evidence.
+        </div>
+      </section>
+
+      <p class="source-note">
+        Cleaned from the saved intake artifact at intake/fi-voice-split.html _
+        Claude_files/saved_resource.html. Raw intake remains preserved
+        separately.
+      </p>
+    </main>
+  </body>
+</html>
