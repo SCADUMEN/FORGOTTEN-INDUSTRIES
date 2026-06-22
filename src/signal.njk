@@ -49,42 +49,58 @@ eleventyExcludeFromCollections: true
     <div class="signal-source-grid">
       <section class="signal-source-column" aria-labelledby="operator-signal-heading">
         <header class="signal-branch-head">
-          <h2 id="operator-signal-heading">L'OPÉRATEUR</h2>
-          <span class="signal-branch-meta">// MTM / <a href="/about.html">À PROPOS</a></span>
+          <span class="signal-label-stack">
+            <h2 id="operator-signal-heading">L'OPÉRATEUR</h2>
+            <span class="signal-branch-meta">// MTM (<a href="/about.html">À PROPOS</a>)</span>
+          </span>
         </header>
         <div class="signal-source-list">
           <a class="signal-branch-row" href="/posts/">
-            <span class="signal-row-title">LE BLOG</span>
-            <span class="signal-row-meta">// Blog / {{ collections.posts | countLabel("entry", "entries") }}</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LE BLOG</span>
+              <span class="signal-row-meta">// Blog / {{ collections.posts | countLabel("entry", "entries") }}</span>
+            </span>
           </a>
           <a class="signal-branch-row" href="/field-logs/">
-            <span class="signal-row-title">LES DÉPOSITIONS</span>
-            <span class="signal-row-meta">// Field Logs / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LES DÉPOSITIONS</span>
+              <span class="signal-row-meta">// Field Logs / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
+            </span>
           </a>
           <a class="signal-branch-row" href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">
-            <span class="signal-row-title">EN DIRECT</span>
-            <span class="signal-row-meta">// Live Feed / Bluesky</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">EN DIRECT</span>
+              <span class="signal-row-meta">// Live Feed / Bluesky</span>
+            </span>
           </a>
         </div>
       </section>
 
       <section class="signal-source-column" aria-labelledby="atlas-signal-heading">
         <header class="signal-branch-head">
-          <h2 id="atlas-signal-heading">LE SYSTÈME</h2>
-          <span class="signal-branch-meta">// ATLAS / GPT-5.5</span>
+          <span class="signal-label-stack">
+            <h2 id="atlas-signal-heading">LE SYSTÈME</h2>
+            <span class="signal-branch-meta">// ATLAS / GPT-5.5</span>
+          </span>
         </header>
         <div class="signal-source-list">
           <a class="signal-branch-row" href="/atlas/">
-            <span class="signal-row-title">LES RAPPORTS</span>
-            <span class="signal-row-meta">// Field Reports / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LES RAPPORTS</span>
+              <span class="signal-row-meta">// Field Reports / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
+            </span>
           </a>
           <a class="signal-branch-row" href="/archive/posts/">
-            <span class="signal-row-title">LES DOCTRINES</span>
-            <span class="signal-row-meta">// Systems Doctrine / {{ collections.posts | countLabel("record", "records") }}</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LES DOCTRINES</span>
+              <span class="signal-row-meta">// Systems Doctrine / {{ collections.posts | countLabel("record", "records") }}</span>
+            </span>
           </a>
           <a class="signal-branch-row" href="/provenance/">
-            <span class="signal-row-title">LA PROVENANCE</span>
-            <span class="signal-row-meta">// Source Chain / Archive view</span>
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LA PROVENANCE</span>
+              <span class="signal-row-meta">// Source Chain / Archive view</span>
+            </span>
           </a>
         </div>
       </section>
