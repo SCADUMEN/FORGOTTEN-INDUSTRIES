@@ -1,4 +1,16 @@
 voice_logs:
+  - id: FI-VOICE-002
+    title: Field Log 002
+    date: '2026-06-22'
+    recorded_at: '2026-06-22 13:28 CT'
+    recorder: Portable recorder
+    audio: /assets/audio/field-logs/260622_0030.MP3
+    duration: '01:40'
+    summary: Second published portable-recorder Field Log audio record, preserved from the June 22 intake recording.
+    tags:
+      - field-log
+      - voice-note
+      - audio
   - id: FI-VOICE-001
     title: Field Log 001
     date: '2026-06-21'
