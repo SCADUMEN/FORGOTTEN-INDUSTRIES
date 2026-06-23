@@ -9,9 +9,10 @@ eleventyExcludeFromCollections: true
 {% set objectPreview = archive.inventory | objectGalleryPreview(12) %}
 <section class="section-landing-hero">
   <div class="section-inner">
-    <p class="section-label">L'ARCHIVE / THE PRESERVED RECORD</p>
-    <h1>L'Archive</h1>
-    <p class="tagline">Machines, documents, dossiers, photographs, and evidence retained against loss.</p>
+    <div class="spine-hero-title-block">
+      <h1>L'Archive</h1>
+      <p class="spine-hero-meta">// The preserved record.</p>
+    </div>
   </div>
 </section>
 
@@ -30,8 +31,25 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="archive-search-shell">
       <div class="archive-search-intro">
-        <p class="section-label">Archives are searched.</p>
-        <h2 id="archive-search-heading">Search L'Archive</h2>
+        <h2 id="archive-search-heading" class="archive-search-heading">
+          <span>Rechercher L'Archive</span>
+          <span>// Search the Archive</span>
+        </h2>
+      </div>
+
+      <form id="archive-search-form" class="archive-search-form" role="search">
+        <label class="sr-only" for="archive-search-input">Search L'Archive</label>
+        <input
+          id="archive-search-input"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder='Search the retrieval layer, or try tag:watercooling type:doctrine'
+        >
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="archive-search-context">
         <p class="entry-note">
           Last indexed:
           <span id="archive-search-indexed">{{ site.archiveState }}</span>
@@ -49,18 +67,6 @@ eleventyExcludeFromCollections: true
           / Colophon: <a href="/colophon/">/colophon/</a>
         </p>
       </div>
-
-      <form id="archive-search-form" class="archive-search-form" role="search">
-        <label class="sr-only" for="archive-search-input">Search L'Archive</label>
-        <input
-          id="archive-search-input"
-          name="q"
-          type="search"
-          autocomplete="off"
-          placeholder='Search the retrieval layer, or try tag:watercooling type:doctrine'
-        >
-        <button type="submit">Search</button>
-      </form>
 
       <noscript>
         <p class="archive-search-status">JavaScript is required for search.</p>
