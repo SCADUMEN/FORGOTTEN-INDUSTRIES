@@ -2768,7 +2768,40 @@ h3 {
 }
 
 .oeuvre-directory-grid > a {
+  align-content: center;
   min-height: 12rem;
+}
+
+.oeuvre-directory-grid .oeuvre-card-title {
+  display: grid;
+  gap: 0.7rem;
+  justify-self: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--headline-font);
+  font-size: clamp(2.15rem, 4vw, 3rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.oeuvre-directory-grid .oeuvre-card-title span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.oeuvre-directory-grid .oeuvre-card-title span:last-child {
+  justify-self: end;
+  color: var(--oxide);
+  font-family: var(--font-system);
+  font-size: clamp(0.86rem, 1.35vw, 1.05rem);
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: right;
 }
 
 .signal-source-band {
@@ -2829,8 +2862,8 @@ h3 {
 }
 
 .signal-row-title {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.05;
+  font-size: clamp(2.15rem, 4vw, 3rem);
+  line-height: 0.9;
 }
 
 .signal-branch-meta,
@@ -2873,8 +2906,10 @@ h3 {
 }
 
 .signal-source-list a {
-  display: block;
-  padding: 0.95rem 1.1rem;
+  display: grid;
+  align-content: center;
+  min-height: 12rem;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
   border: 1px solid rgba(79, 140, 255, 0.78);
   background:
     linear-gradient(180deg, rgba(8, 19, 39, 0.98), rgba(5, 13, 28, 0.98)),
@@ -2885,6 +2920,23 @@ h3 {
     border-color 160ms ease,
     background-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.signal-source-list .signal-label-stack {
+  justify-self: center;
+  gap: 0.7rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.signal-source-list .signal-row-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.signal-source-list .signal-row-meta {
+  font-size: clamp(0.86rem, 1.35vw, 1.05rem);
+  font-weight: 800;
 }
 
 .signal-source-list a:hover,

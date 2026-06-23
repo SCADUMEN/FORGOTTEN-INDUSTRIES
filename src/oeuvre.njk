@@ -19,12 +19,16 @@ eleventyExcludeFromCollections: true
     <h2 id="oeuvre-directory-heading" class="sr-only">L'Œuvre index</h2>
     <div class="directory-grid plate-card-grid oeuvre-directory-grid">
       <a id="dossiers" href="/projects/">
-        <span>{{ archive.projects | countLabel("record", "records") }}</span>
-        <h3>LES DOSSIERS</h3>
+        <h3 class="oeuvre-card-title">
+          <span>LES DOSSIERS</span>
+          <span>// RECORDS ({{ archive.projects | count }})</span>
+        </h3>
       </a>
       <a href="/posts/">
-        <span>{{ collections.posts | countLabel("entry", "entries") }}</span>
-        <h3>LES MANUSCRITS</h3>
+        <h3 class="oeuvre-card-title">
+          <span>LES MANUSCRITS</span>
+          <span>// MANUSCRIPTS ({{ collections.posts | count }})</span>
+        </h3>
       </a>
     </div>
   </div>
