@@ -62,19 +62,19 @@ eleventyExcludeFromCollections: true
           <a class="signal-branch-row" href="/posts/">
             <span class="signal-label-stack">
               <span class="signal-row-title">LE BLOG</span>
-              <span class="signal-row-meta">// Blog / {{ collections.posts | countLabel("entry", "entries") }}</span>
-            </span>
-          </a>
-          <a class="signal-branch-row" href="/field-logs/">
-            <span class="signal-label-stack">
-              <span class="signal-row-title">LES DÉPOSITIONS</span>
-              <span class="signal-row-meta">// Field Logs / {{ archive.voiceLogs | countLabel("recording", "recordings") }}</span>
+              <span class="signal-row-meta">// Blog ({{ collections.posts | count }})</span>
             </span>
           </a>
           <a class="signal-branch-row" href="{{ site.fieldNotesSubscribeUrl }}" data-track="outbound-bluesky">
             <span class="signal-label-stack">
               <span class="signal-row-title">EN DIRECT</span>
-              <span class="signal-row-meta">// Live Feed / 10 posts</span>
+              <span class="signal-row-meta">// Live Feed (10)</span>
+            </span>
+          </a>
+          <a class="signal-branch-row" href="/field-logs/">
+            <span class="signal-label-stack">
+              <span class="signal-row-title">LES DÉPOSITIONS</span>
+              <span class="signal-row-meta">// OM-882 Audio Field Journal</span>
             </span>
           </a>
         </div>
@@ -91,13 +91,13 @@ eleventyExcludeFromCollections: true
           <a class="signal-branch-row" href="/atlas/">
             <span class="signal-label-stack">
               <span class="signal-row-title">LES RAPPORTS</span>
-              <span class="signal-row-meta">// Field Reports / {{ archive.fieldLogs | countLabel("report", "reports") }}</span>
+              <span class="signal-row-meta">// Field Reports ({{ archive.fieldLogs | count }})</span>
             </span>
           </a>
           <a class="signal-branch-row" href="/archive/posts/">
             <span class="signal-label-stack">
               <span class="signal-row-title">LES DOCTRINES</span>
-              <span class="signal-row-meta">// Systems Doctrine / {{ collections.posts | countLabel("record", "records") }}</span>
+              <span class="signal-row-meta">// Systems Doctrine ({{ collections.posts | count }})</span>
             </span>
           </a>
           <a class="signal-branch-row" href="/provenance/">

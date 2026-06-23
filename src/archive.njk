@@ -248,36 +248,24 @@ eleventyExcludeFromCollections: true
   })();
 </script>
 
-<section class="archive-aerial-tier" aria-labelledby="archive-aerial-heading">
-  <div class="section-inner">
-    <a class="archive-aerial-plate" href="/archive/aerial-documentation/">
-      <span class="archive-aerial-mark">// Status: Archival Capability // Classification: L'ARCHIVE Shelf // Dossier Number: None //</span>
-      <div>
-        <p class="section-label">First-class instrument record</p>
-        <h2 id="archive-aerial-heading">Provenance From On High</h2>
-        <p>Aerial observation as archival methodology. Context recovered from altitude.</p>
-        <p class="archive-aerial-note">D'en haut, les choses se souviennent les unes des autres.</p>
-      </div>
-    </a>
-  </div>
-</section>
+{#
+  Parked for later placement. This module is intentionally not rendered on
+  L'Archive yet.
 
-<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
-  <div class="section-inner">
-    <p class="section-label">Registered Shelves</p>
-    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
-    <nav class="open-stacks-list open-stacks-plate-list" aria-label="L'Archive shelves">
-      <a href="/archive/inventory/">Inventory</a>
-      <a href="/archive/objects/">Object Records</a>
-      <a href="/oeuvre/#dossiers">Dossiers</a>
-      <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/archive/field-logs/">Process Records</a>
-      <a href="/social-posts.html">Recovered Social Records</a>
-      <a href="/site-snapshots/">Stowed Snapshots</a>
-      <a href="/dist/forgotten-industries.json">Archive JSON</a>
-    </nav>
-  </div>
-</section>
+  <section class="archive-aerial-tier" aria-labelledby="archive-aerial-heading">
+    <div class="section-inner">
+      <a class="archive-aerial-plate" href="/archive/aerial-documentation/">
+        <span class="archive-aerial-mark">// Status: Archival Capability // Classification: L'ARCHIVE Shelf // Dossier Number: None //</span>
+        <div>
+          <p class="section-label">First-class instrument record</p>
+          <h2 id="archive-aerial-heading">Provenance From On High</h2>
+          <p>Aerial observation as archival methodology. Context recovered from altitude.</p>
+          <p class="archive-aerial-note">D'en haut, les choses se souviennent les unes des autres.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+#}
 
 <section class="source-band" aria-labelledby="inventory-gallery-heading">
   <div class="section-inner">
@@ -315,6 +303,23 @@ eleventyExcludeFromCollections: true
         {% endfor %}
       </ol>
     </div>
+  </div>
+</section>
+
+<section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
+  <div class="section-inner">
+    <p class="section-label">Registered Shelves</p>
+    <h2 id="archive-directory-heading">Everything catalogued remains reachable.</h2>
+    <nav class="open-stacks-list open-stacks-plate-list" aria-label="L'Archive shelves">
+      <a href="/archive/inventory/">Inventory</a>
+      <a href="/archive/objects/">Object Records</a>
+      <a href="/oeuvre/#dossiers">Dossiers</a>
+      <a href="/hang-on-to-each-other/">Les Manuels</a>
+      <a href="/archive/field-logs/">Process Records</a>
+      <a href="/social-posts.html">Recovered Social Records</a>
+      <a href="/site-snapshots/">Stowed Snapshots</a>
+      <a href="/dist/forgotten-industries.json">Archive JSON</a>
+    </nav>
   </div>
 </section>
 
@@ -376,37 +381,5 @@ eleventyExcludeFromCollections: true
         </a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="evidence-band archive-page-section" aria-labelledby="archive-access-heading">
-  <div class="section-inner band-grid">
-    <div>
-      <p class="section-label">Final access</p>
-      <h2 id="archive-access-heading">Source remains inspectable.</h2>
-    </div>
-
-    <ul class="link-list">
-      <li>
-        <h3><a href="/oeuvre/#dossiers">Dossiers</a></h3>
-        <p>{{ archive.projects | countLabel("record", "records") }} / assembled work layer.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/source-sets/">Source Sets</a></h3>
-        <p>Raw evidence shelves and intake records.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/field-logs/">Process Records</a></h3>
-        <p>{{ archive.fieldLogs | countLabel("ATLAS report", "ATLAS reports") }} / structured bench and recovery records.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/social-evidence/">Recovered Social Records</a></h3>
-        <p>{{ archive.socialPosts | countLabel("record", "records") }} / imported public evidence.</p>
-      </li>
-      <li>
-        <h3><a href="/dist/forgotten-industries.json">Archive JSON</a></h3>
-        <p>Generated machine-readable record.</p>
-      </li>
-    </ul>
   </div>
 </section>
