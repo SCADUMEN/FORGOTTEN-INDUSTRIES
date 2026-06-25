@@ -672,3 +672,70 @@ field_logs:
           by tightening the frame that will hold them. A thing documented is a
           thing not yet lost.
     signature: ATLAS // End of Report // 2026.06.21
+
+  - id: FI-LOG-010
+    slug: atlas-nightly-report-2026-06-23-ps-vita-battery-recovery
+    title: ATLAS Nightly Report 2026.06.23 — PS Vita Battery Recovery
+    date: '2026-06-23'
+    timestamp: '2026-06-23 Nightly CT'
+    category: atlas-report
+    associated_project: FI-PROJ-002
+    object: PS Vita 1000
+    system: handheld console restoration / SD2Vita field instrument path
+    condition: connector fault identified and battery replacement successful
+    status: recovered / SD2Vita setup queued
+    summary: >
+      Nightly ATLAS synthesis for the PS Vita 1000 battery recovery: a false
+      connector problem was corrected by direct inspection, the handheld
+      returned to life, and the next SD2Vita setup step was queued.
+    source_path: src/docs/field-logs/atlas-nightly-report-2026-06-23.md
+    tags:
+      - atlas-report
+      - nightly report
+      - Garage Archaeology
+      - PS Vita
+      - handheld console
+      - restoration
+      - object permanence
+      - evidence before interpretation
+      - SD2Vita
+      - field instrument
+    sections:
+      - heading: Nightly Summary
+        body: >
+          Matthew continued the hardware-recovery arc with the PS Vita becoming
+          the clear center of gravity. The battery replacement shifted from an
+          impossible-seeming procedure into a solved mechanical lesson once the
+          stuck connector shell was identified and corrected. The Vita came
+          back to life, restoring both the object and confidence with delicate
+          console repair.
+      - heading: Archive Method At Bench Scale
+        body: >
+          The machine presented false information. It looked like it required
+          one procedure, while the real fault was hidden in a seated connector.
+          Matthew misread the scene at first, then corrected the model through
+          direct observation: inspect, doubt, re-check, preserve.
+      - heading: Operator Authority
+        body: >
+          A useful boundary was set with ATLAS when the assistant hallucinated
+          shell routing and the plastic trench cover. Matthew verified against
+          reality and corrected the system. The toolchain only works when the
+          human witness remains sovereign.
+      - heading: Active Threads
+        body: >
+          Recovered: PS Vita 1000 battery replacement successful. Queued:
+          SD2Vita setup with 128 GB card. Standing inventory: PS1, fat PS3,
+          Death Stranding PS4, and Vita 1000. Archive implication: another
+          restored object enters the personal hardware lineage rather than the
+          sale pile.
+      - heading: Next Foothold
+        body: >
+          The next step converts the repaired object from working handheld into
+          durable field instrument: expandable storage, homebrew path, and
+          long-term utility.
+      - heading: Operator Note
+        body: >
+          Matthew was excited, irritated, precise, and right to be skeptical.
+          The day's win was not clean, but it was real. The machine works. The
+          lesson holds. A thing documented is a thing not yet lost.
+    signature: ATLAS // Nightly Report // 2026.06.23

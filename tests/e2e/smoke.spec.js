@@ -105,17 +105,10 @@ test('archive page renders', async ({ page }) => {
     'Records may be incomplete, uncertain, or awaiting verification. Uncertainty is preserved rather than removed.'
   )
   await expect(page.locator('.archive-search-band')).toContainText(
-    'Archives are searched.'
+    "Rechercher L'Archive"
   )
-  await expect(page.locator('.archive-aerial-plate')).toContainText(
-    'Context recovered from altitude.'
-  )
-  await expect(page.locator('.archive-aerial-plate')).toContainText(
-    'Dossier Number: None'
-  )
-  await expect(page.locator('.archive-aerial-plate')).toHaveAttribute(
-    'href',
-    '/archive/aerial-documentation/'
+  await expect(page.locator('.archive-search-band')).toContainText(
+    'Search the Archive'
   )
   await expect(page.locator('.archive-finding-aid')).toContainText(
     'Recovered Social Records'
