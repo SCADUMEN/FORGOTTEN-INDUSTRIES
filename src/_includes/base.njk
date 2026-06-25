@@ -35,6 +35,12 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} public writing feed" href="/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {# Preload the two most prominent above-the-fold latin faces: Old Standard TT 700 (visible section headlines; italic is synthesized from this normal face) and IBM Plex Sans 400 (wordmark + body). These pin gstatic version dirs + hashed filenames; if Google bumps a font version the browser warns "preloaded but not used" and re-fetches. Re-derive against the exact stylesheet below: load it in a browser and read the latin @font-face src for each face. #}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/oldstandardtt/v22/MwQrbh3o1vLImiwAVvYawgcf2eVWEX-tS1ZfTc4PlA.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/ibmplexsans/v23/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="/css/archive.css?v={{ site.assetVersion }}">
   <script defer src="/assets/js/site-mark-ghost.js?v={{ site.assetVersion }}"></script>
   <script type="application/ld+json">
