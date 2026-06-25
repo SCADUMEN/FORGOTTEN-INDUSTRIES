@@ -336,45 +336,35 @@ eleventyExcludeFromCollections: true
     <div>
       <div class="stats branch-stats" aria-label="Archive branch counts">
         <a class="stat" href="/archive/projects/">
-          <strong>{{ archive.projects | count }}</strong>
-          <span>{{ archive.projects | pluralLabel("Dossier", "Dossiers") }}</span>
+          <span class="stat-label">{{ archive.projects | pluralLabel("Dossier", "Dossiers") }} <span class="stat-count">({{ archive.projects | count }})</span></span>
         </a>
         <a class="stat" href="/archive/objects/">
-          <strong>{{ archive.inventory | countObjectsWithPhotos }}</strong>
-          <span>{{ archive.inventory | countObjectsWithPhotos | pluralLabel("Object photographed", "Objects photographed") }}</span>
+          <span class="stat-label">{{ archive.inventory | countObjectsWithPhotos | pluralLabel("Object photographed", "Objects photographed") }} <span class="stat-count">({{ archive.inventory | countObjectsWithPhotos }})</span></span>
         </a>
         <a class="stat" href="/archive/taxonomy/">
-          <strong>{{ taxonomy.allTerms | count }}</strong>
-          <span>{{ taxonomy.allTerms | pluralLabel("Taxonomy term", "Taxonomy terms") }}</span>
+          <span class="stat-label">{{ taxonomy.allTerms | pluralLabel("Taxonomy term", "Taxonomy terms") }} <span class="stat-count">({{ taxonomy.allTerms | count }})</span></span>
         </a>
         <a class="stat" href="/hang-on-to-each-other/">
-          <strong>2</strong>
-          <span>{{ 2 | pluralLabel("Manuel", "Manuels") }}</span>
+          <span class="stat-label">{{ 2 | pluralLabel("Manuel", "Manuels") }} <span class="stat-count">(2)</span></span>
         </a>
         <a class="stat" href="/en-direct/">
-          <strong>{{ fieldnotes | count }}</strong>
-          <span>{{ fieldnotes | pluralLabel("En Direct record", "En Direct records") }}</span>
+          <span class="stat-label">{{ fieldnotes | pluralLabel("En Direct record", "En Direct records") }} <span class="stat-count">({{ fieldnotes | count }})</span></span>
         </a>
         <a class="stat" href="/archive/social-evidence/">
-          <strong>{{ archive.socialPosts | count }}</strong>
-          <span>{{ archive.socialPosts | pluralLabel("Recovered social record", "Recovered social records") }}</span>
+          <span class="stat-label">{{ archive.socialPosts | pluralLabel("Recovered social record", "Recovered social records") }} <span class="stat-count">({{ archive.socialPosts | count }})</span></span>
         </a>
         <a class="stat" href="/archive/posts/">
-          <strong>{{ collections.posts | count }}</strong>
-          <span>{{ collections.posts | pluralLabel("Signal entry", "Signal entries") }}</span>
+          <span class="stat-label">{{ collections.posts | pluralLabel("Signal entry", "Signal entries") }} <span class="stat-count">({{ collections.posts | count }})</span></span>
         </a>
         <a class="stat" href="/archive/field-logs/">
-          <strong>{{ archive.fieldLogs | count }}</strong>
-          <span>{{ archive.fieldLogs | pluralLabel("ATLAS report", "ATLAS reports") }}</span>
+          <span class="stat-label">{{ archive.fieldLogs | pluralLabel("ATLAS report", "ATLAS reports") }} <span class="stat-count">({{ archive.fieldLogs | count }})</span></span>
         </a>
         <a class="stat stat-wide" href="/archive/objects/">
-          <strong>{{ archive.inventory | count }}</strong>
-          <span>{{ archive.inventory | pluralLabel("Object catalogued", "Objects catalogued") }}</span>
+          <span class="stat-label">{{ archive.inventory | pluralLabel("Object catalogued", "Objects catalogued") }} <span class="stat-count">({{ archive.inventory | count }})</span></span>
           <span class="stat-adjustment">Live canonical inventory</span>
         </a>
         <a class="stat stat-wide" href="{{ site.githubUrl }}/commits/main">
-          <strong>{{ site.sourceStats.commits }}</strong>
-          <span>{{ site.sourceStats.commits | pluralLabel("Git commit", "Git commits") }}</span>
+          <span class="stat-label">{{ site.sourceStats.commits | pluralLabel("Git commit", "Git commits") }} <span class="stat-count">({{ site.sourceStats.commits }})</span></span>
           <span class="stat-adjustment" title="Change since {{ site.sourceStats.deltaSince }}">
             {{ site.sourceStats.commitDeltaLabel }}
           </span>

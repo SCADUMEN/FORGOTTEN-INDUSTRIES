@@ -431,11 +431,12 @@ img {
 
 .section-label {
   margin: 0 0 0.4rem;
-  color: var(--fi-amber);
-  font-family: var(--mono-font);
-  font-size: var(--mono-size);
-  font-weight: 700;
-  letter-spacing: 0;
+  color: #fbbf24;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  opacity: 0.8;
   text-transform: uppercase;
 }
 
@@ -446,6 +447,16 @@ h2 {
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0;
+}
+
+.source-band h2,
+.section-directory h2,
+.archive-instrumentation h2 {
+  color: #22d3ee;
+  font-family: 'Old Standard TT', serif;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  font-style: italic;
+  font-weight: 700;
 }
 
 .band-grid > :first-child h2,
@@ -886,9 +897,11 @@ h3 {
   right: 1rem;
   bottom: 0.85rem;
   margin: 0;
-  color: var(--steel);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .stat strong {
@@ -908,6 +921,23 @@ h3 {
   font-size: var(--mono-size);
   font-weight: 700;
   letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.stat .stat-count {
+  display: inline;
+  margin-top: 0;
+  color: #e879f9;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+.stat .stat-label {
+  color: #fbbf24;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
   text-transform: uppercase;
 }
 
@@ -1077,12 +1107,38 @@ h3 {
   text-transform: uppercase;
 }
 
+.inventory-gallery-card figcaption span {
+  color: var(--fi-magenta);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
 .inventory-gallery-card figcaption strong {
   color: var(--steel);
   font-family: var(--headline-font);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.05;
   text-transform: uppercase;
+}
+
+.inventory-gallery-card figcaption strong a {
+  color: var(--steel);
+  font-family: var(--headline-font);
+  font-style: italic;
+  text-decoration: none;
+}
+
+.inventory-gallery-card figcaption strong a:hover,
+.inventory-gallery-card figcaption strong a:focus-visible {
+  text-decoration: underline;
+}
+
+.inventory-gallery-card figcaption em {
+  color: var(--fi-amber);
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
 }
 
 .archive-page-section .band-grid > :first-child {
@@ -1107,10 +1163,17 @@ h3 {
 }
 
 .archive-instrumentation .stat {
+  display: flex;
+  align-items: flex-start;
   min-height: 5.6rem;
   padding: 0.75rem 0.85rem;
   background: rgba(2, 6, 23, 0.82);
   box-shadow: none;
+}
+
+.archive-instrumentation .stat-wide {
+  min-height: 5.6rem;
+  padding-bottom: 1.85rem;
 }
 
 .archive-instrumentation .stat:hover {
@@ -1123,10 +1186,29 @@ h3 {
 }
 
 .archive-instrumentation .stat span {
-  margin-top: 0.35rem;
-  color: rgba(251, 191, 36, 0.55);
-  font-size: 0.82rem;
+  margin-top: 0;
+  color: rgba(251, 191, 36, 0.75);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   line-height: 1.25;
+}
+
+.archive-instrumentation .stat .stat-label {
+  max-width: 100%;
+  color: rgba(251, 191, 36, 0.75);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.archive-instrumentation .stat .stat-count {
+  display: inline;
+  color: #e879f9 !important;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .archive-instrumentation .stat .stat-adjustment {
@@ -1134,8 +1216,10 @@ h3 {
   bottom: 0.65rem;
   max-width: 55%;
   margin: 0;
-  color: var(--steel);
-  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--font-system);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
   text-align: right;
 }
 
@@ -1385,8 +1469,12 @@ h3 {
 }
 
 .project-card .entry-note {
-  max-width: 72rem;
-  font-size: 0.98rem;
+  margin: 0;
+  color: rgba(74, 222, 128, 0.6);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
 }
 
 .project-card .action-row {
@@ -2008,35 +2096,41 @@ h3 {
 
 .archive-search-heading {
   display: grid;
-  gap: 0.8rem;
   width: fit-content;
   max-width: 100%;
   margin: 0 auto 1rem;
-  padding: 0.78rem 1.05rem 0.9rem;
-  border: 1px solid var(--line);
-  color: var(--ink);
-  font-family: var(--headline-font);
-  font-size: 3rem;
-  font-style: italic;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 0.9;
-  text-transform: uppercase;
 }
 
 .archive-search-heading span:first-child {
   display: block;
+  color: #22d3ee;
+  font-family: 'Old Standard TT', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
 .archive-search-heading span:last-child {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
   justify-self: end;
-  color: var(--oxide);
-  font-family: var(--font-system);
-  font-size: 1.05rem;
+  width: fit-content;
+  margin-top: 0.35rem;
+  padding: 0.18rem 0.45rem 0.16rem 0.35rem;
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  background: #000;
+  box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.75);
+  color: #4ade80;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-align: right;
+  text-transform: uppercase;
 }
 
 .archive-search-context {
@@ -2044,19 +2138,14 @@ h3 {
 }
 
 @media (max-width: 820px) {
-  .archive-search-heading {
-    font-size: 2.4rem;
+  .archive-search-heading span:first-child {
+    font-size: clamp(1.55rem, 6vw, 2.2rem);
   }
 }
 
 @media (max-width: 460px) {
-  .archive-search-heading {
-    gap: 0.65rem;
-    font-size: 1.85rem;
-  }
-
   .archive-search-heading span:last-child {
-    font-size: 0.95rem;
+    justify-self: start;
   }
 }
 
@@ -2069,12 +2158,26 @@ h3 {
 .archive-search-meta {
   max-width: 72rem;
   margin: 0.55rem 0 0;
-  color: var(--muted);
-  font-family: var(--mono-font);
-  font-size: var(--mono-size);
+  color: rgba(74, 222, 128, 0.5);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
   font-weight: 700;
-  line-height: 1.5;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
   text-transform: uppercase;
+}
+
+.archive-search-meta a,
+.entry-note a {
+  color: var(--steel);
+  text-decoration: none;
+}
+
+.archive-search-meta a:hover,
+.archive-search-meta a:focus-visible,
+.entry-note a:hover,
+.entry-note a:focus-visible {
+  text-decoration: underline;
 }
 
 .archive-search-form {
@@ -2243,6 +2346,14 @@ h3 {
   margin-inline: auto;
 }
 
+.spine-hero-title-block h1 {
+  color: #22d3ee;
+  font-family: 'Old Standard TT', serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .spine-hero-meta,
 .signal-hero-meta {
   justify-self: end;
@@ -2253,6 +2364,13 @@ h3 {
   font-weight: 700;
   line-height: 1.35;
   text-align: right;
+}
+
+.spine-hero-meta {
+  color: rgba(255, 255, 255, 0.18);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
 }
 
 .institution-subtitle,
@@ -2673,6 +2791,8 @@ h3 {
 }
 
 .open-stacks-plate-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   border-top: 0;
 }
@@ -2680,54 +2800,55 @@ h3 {
 .open-stacks-plate-list a {
   position: relative;
   display: grid;
-  min-height: 8.5rem;
-  align-content: space-between;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(34, 211, 238, 0.78);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(34, 211, 238, 0.18),
-      rgba(232, 121, 249, 0.07)
-    ),
-    rgba(2, 6, 23, 0.96);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: end;
+  align-items: baseline;
+  column-gap: 0.3em;
+  min-height: 5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.07),
+    rgba(2, 6, 23, 0.98)
+  );
   box-shadow:
-    -0.34rem -0.34rem 0 rgba(0, 0, 0, 0.58),
-    -0.34rem -0.34rem 0 1px rgba(34, 211, 238, 0.44);
-  color: var(--steel);
+    -4px -4px 0 rgba(0, 0, 0, 0.8),
+    -4px -4px 0 1px rgba(34, 211, 238, 0.3);
+  color: #fbbf24;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
   transition:
-    background 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
+    border-color 0.15s,
+    background 0.15s;
 }
 
 .open-stacks-plate-list a::before {
-  content: '//';
+  content: '> ';
   margin-right: 0;
+  color: #e879f9;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  line-height: 1;
 }
 
 .open-stacks-plate-list a::after {
-  position: absolute;
-  inset: 0.45rem;
-  border: 1px solid rgba(34, 211, 238, 0.28);
-  content: '';
-  pointer-events: none;
+  display: none;
 }
 
 .open-stacks-plate-list a:hover,
 .open-stacks-plate-list a:focus-visible {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(34, 211, 238, 0.22),
-      rgba(232, 121, 249, 0.13)
-    ),
-    rgba(2, 6, 23, 0.96);
-  box-shadow:
-    -0.42rem -0.42rem 0 rgba(0, 0, 0, 0.62),
-    -0.42rem -0.42rem 0 1px rgba(232, 121, 249, 0.46);
-  color: var(--ink);
-  transform: translate(0.08rem, 0.08rem);
+  border-color: rgba(34, 211, 238, 0.75);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.12),
+    rgba(2, 6, 23, 0.98)
+  );
+  color: #22d3ee;
 }
 
 .open-stacks-secondary {
@@ -3085,36 +3206,36 @@ h3 {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: 1.25rem;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid rgba(232, 121, 249, 0.76);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(232, 121, 249, 0.15),
-      rgba(34, 211, 238, 0.07)
-    ),
-    var(--white);
-  box-shadow:
-    -0.3rem -0.3rem 0 rgba(232, 121, 249, 0.22),
-    0.3rem 0.3rem 0 rgba(34, 211, 238, 0.14);
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(34, 211, 238, 0.15);
+  border-right: 1px solid rgba(34, 211, 238, 0.15);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+  border-left: 2px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.03);
+  box-shadow: none;
 }
 
 .archive-curator-note .section-label {
-  margin: 0;
   align-self: start;
+  margin: 0 0 0.5rem;
+  color: rgba(255, 255, 255, 0.18);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .archive-curator-statement {
   max-width: 64rem;
   margin: 0;
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--oxide);
-  color: var(--ink);
-  font-family: var(--font-human);
-  font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+  padding: 0;
+  border: none;
+  color: #f59e0b;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.75;
 }
 
 .archive-aerial-plate {
