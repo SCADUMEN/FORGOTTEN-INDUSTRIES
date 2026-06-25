@@ -2289,10 +2289,10 @@ h3 {
 .primary-section-card {
   position: relative;
   display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 2rem;
-  min-height: 20rem;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  grid-template-rows: 1fr;
+  gap: 0;
+  min-height: 0;
+  padding: clamp(1.4375rem, 3.45vw, 2.3rem) clamp(1.25rem, 3vw, 2rem);
   border: 1px solid rgba(79, 140, 255, 0.78);
   background:
     linear-gradient(135deg, rgba(79, 140, 255, 0.18), rgba(255, 91, 214, 0.07)),
@@ -2350,7 +2350,15 @@ h3 {
   z-index: 1;
   display: grid;
   align-content: center;
+  justify-items: center;
   min-width: 0;
+}
+
+.primary-card-title-unit {
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  transform: translateY(0.4rem);
 }
 
 .primary-section-card h2 {
@@ -2365,21 +2373,13 @@ h3 {
 
 .primary-card-mark {
   justify-self: end;
-  margin-top: 0.6rem;
+  margin-top: 0.2rem;
   color: var(--oxide);
   font-family: var(--font-system);
   font-weight: 700;
   line-height: 1.2;
+  text-align: right;
   text-transform: uppercase;
-}
-
-.primary-card-description {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  color: var(--muted);
-  font-family: var(--font-ui);
-  line-height: 1.5;
 }
 
 .instrument-strip .section-inner,
@@ -2649,7 +2649,6 @@ h3 {
 .homepage-masthead .tagline,
 .homepage-doctrine,
 .primary-card-mark,
-.primary-card-description,
 .homepage-instrument-stats .stat span,
 .latest-activity .section-label,
 .activity-strip span,
@@ -3537,10 +3536,6 @@ h3 {
 
   .signal-branch-meta {
     text-align: center;
-  }
-
-  .primary-section-card {
-    min-height: 17rem;
   }
 
   .open-stacks-list {
