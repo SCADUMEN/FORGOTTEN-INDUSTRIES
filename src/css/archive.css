@@ -271,16 +271,16 @@ img {
 
 .site-nav-row::before,
 .site-nav-row::after {
-  color: var(--fi-separator);
+  color: var(--fi-magenta);
 }
 
 .site-nav-row::before {
-  content: '//';
+  content: '>';
   margin-right: 0.55rem;
 }
 
 .site-nav-row::after {
-  content: '//';
+  content: '>';
   margin-left: 0.55rem;
 }
 
@@ -293,8 +293,8 @@ img {
 }
 
 .site-nav-row a + a::before {
-  content: '//';
-  color: var(--fi-separator);
+  content: '>';
+  color: var(--fi-magenta);
   margin: 0 0.55rem;
 }
 
@@ -445,6 +445,40 @@ img {
   letter-spacing: 0.18em;
   opacity: 0.8;
   text-transform: uppercase;
+}
+
+.fi-prompt-marker {
+  display: inline-block;
+  margin-right: 0.34em;
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.fi-caption-box {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.18rem 0.45rem 0.16rem 0.35rem;
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  background: #000;
+  box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.75);
+  color: #4ade80;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.fi-caption-box .fi-prompt-marker {
+  flex: 0 0 auto;
+  margin-right: 0;
 }
 
 h2 {
@@ -2108,7 +2142,7 @@ h3 {
   margin: 0 auto 1rem;
 }
 
-.archive-search-heading span:first-child {
+.archive-search-heading > span:first-child {
   display: block;
   color: #22d3ee;
   font-family: 'Old Standard TT', serif;
@@ -2119,25 +2153,10 @@ h3 {
   text-transform: uppercase;
 }
 
-.archive-search-heading span:last-child {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.3em;
-  justify-self: end;
-  width: fit-content;
+.archive-search-heading > span:last-child {
+  justify-self: start;
   margin-top: 0.35rem;
-  padding: 0.18rem 0.45rem 0.16rem 0.35rem;
-  border: 1px solid rgba(74, 222, 128, 0.28);
-  background: #000;
-  box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.75);
-  color: #4ade80;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-align: right;
-  text-transform: uppercase;
+  text-align: left;
 }
 
 .archive-search-context {
@@ -2145,13 +2164,13 @@ h3 {
 }
 
 @media (max-width: 820px) {
-  .archive-search-heading span:first-child {
+  .archive-search-heading > span:first-child {
     font-size: clamp(1.55rem, 6vw, 2.2rem);
   }
 }
 
 @media (max-width: 460px) {
-  .archive-search-heading span:last-child {
+  .archive-search-heading > span:last-child {
     justify-self: start;
   }
 }
@@ -2363,21 +2382,24 @@ h3 {
 
 .spine-hero-meta,
 .signal-hero-meta {
-  justify-self: end;
+  justify-self: start;
   margin: 0;
   color: var(--oxide);
   font-family: var(--font-system);
   font-size: clamp(0.95rem, 1.25vw, 1.05rem);
   font-weight: 700;
   line-height: 1.35;
-  text-align: right;
+  text-align: left;
 }
 
-.spine-hero-meta {
-  color: rgba(255, 255, 255, 0.18);
+.spine-hero-meta.fi-caption-box,
+.signal-hero-meta.fi-caption-box {
+  color: #4ade80;
   font-family: 'Space Mono', monospace;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .institution-subtitle,
@@ -2905,6 +2927,14 @@ h3 {
   line-height: 1.25;
 }
 
+.signal-ticker-plate > .fi-caption-box {
+  justify-self: start;
+  color: #4ade80;
+  font-family: 'Space Mono', monospace;
+  line-height: 1.3;
+  text-align: left;
+}
+
 .signal-ticker {
   display: flex;
   gap: 1px;
@@ -3223,20 +3253,14 @@ h3 {
   text-transform: uppercase;
 }
 
-.oeuvre-directory-grid .oeuvre-card-title span:first-child {
+.oeuvre-directory-grid .oeuvre-card-title > span:first-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
-.oeuvre-directory-grid .oeuvre-card-title span:last-child {
-  justify-self: end;
-  color: var(--oxide);
-  font-family: var(--font-system);
-  font-size: clamp(0.86rem, 1.35vw, 1.05rem);
-  font-style: normal;
-  font-weight: 800;
-  line-height: 1.3;
-  text-align: right;
+.oeuvre-directory-grid .oeuvre-card-title > span:last-child {
+  justify-self: start;
+  text-align: left;
 }
 
 .signal-source-band {
@@ -3274,7 +3298,7 @@ h3 {
 
 .signal-branch-head .signal-label-stack {
   display: grid;
-  justify-items: center;
+  justify-items: start;
   gap: 0.34rem;
   width: fit-content;
   max-width: 100%;
@@ -3303,24 +3327,15 @@ h3 {
 
 .signal-branch-meta,
 .signal-row-meta {
-  justify-self: end;
+  justify-self: start;
   max-width: 100%;
-  color: var(--oxide);
-  font-family: var(--font-system);
-  font-size: var(--mono-size);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.35;
-  text-align: right;
-  text-transform: none;
+  text-align: left;
   white-space: nowrap;
 }
 
 .signal-branch-meta {
-  justify-self: center;
-  color: var(--oxide);
-  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
-  text-align: center;
+  justify-self: start;
+  text-align: left;
 }
 
 .signal-branch-meta a {
@@ -3359,6 +3374,7 @@ h3 {
 
 .signal-source-list .signal-label-stack {
   justify-self: center;
+  justify-items: start;
   gap: 0.7rem;
   width: fit-content;
   max-width: 100%;
@@ -3367,11 +3383,6 @@ h3 {
 .signal-source-list .signal-row-title {
   min-width: 0;
   overflow-wrap: anywhere;
-}
-
-.signal-source-list .signal-row-meta {
-  font-size: clamp(0.86rem, 1.35vw, 1.05rem);
-  font-weight: 800;
 }
 
 .signal-source-list a:hover,
@@ -3428,11 +3439,7 @@ h3 {
 .archive-curator-note .section-label {
   align-self: start;
   margin: 0 0 0.5rem;
-  color: rgba(255, 255, 255, 0.18);
-  font-family: 'Space Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -3982,12 +3989,12 @@ h3 {
 
   .signal-branch-meta,
   .signal-row-meta {
-    text-align: right;
+    text-align: left;
     white-space: normal;
   }
 
   .signal-branch-meta {
-    text-align: center;
+    text-align: left;
   }
 
   .open-stacks-list {
@@ -4466,4 +4473,17 @@ h3 {
   .archive-gallery {
     grid-template-columns: 1fr;
   }
+}
+
+.fi-caption-box,
+.spine-hero-meta.fi-caption-box,
+.signal-hero-meta.fi-caption-box,
+.archive-curator-note .section-label.fi-caption-box,
+.archive-search-heading > .fi-caption-box,
+.signal-ticker-plate > .fi-caption-box,
+.oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
+.signal-branch-meta.fi-caption-box,
+.signal-row-meta.fi-caption-box {
+  font-size: 0.78rem;
+  line-height: 1.3;
 }
