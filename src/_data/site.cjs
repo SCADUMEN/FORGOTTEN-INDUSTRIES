@@ -211,8 +211,8 @@ module.exports = {
   url: 'https://forgotten-industries.net',
   domainUrl: 'https://forgotten-industries.net',
   domainHost: 'forgotten-industries.net',
-  githubUrl: 'https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES',
-  repository: 'Forgotten-Industries/FORGOTTEN-INDUSTRIES',
+  githubUrl: 'https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES',
+  repository: 'SCADUMEN/FORGOTTEN-INDUSTRIES',
   eleventyUrl: 'https://www.11ty.dev/',
   contact: 'ATLAS@forgotten-industries.net',
   fieldNotesSubscribeUrl:
