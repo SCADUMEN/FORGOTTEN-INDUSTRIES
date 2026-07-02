@@ -16,10 +16,10 @@ test('home page renders', async ({ page }) => {
   ])
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.primary-card-mark')).toHaveText([
-    '// Archive //',
-    '// Work //',
-    '// Signal //',
-    '// About //',
+    '> Archive',
+    '> Work',
+    '> Signal',
+    '> About',
   ])
   const homepageStats = page.locator('.homepage-instrument-stats .stat')
   await expect(homepageStats).toHaveCount(5)
