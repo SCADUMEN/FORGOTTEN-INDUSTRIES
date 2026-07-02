@@ -17,7 +17,10 @@ canonical: https://forgotten-industries.net/
       <p class="section-label">Archive &amp; evidence-based memoir / established MMXIV</p>
       <h1 id="home-title" class="sr-only">{{ site.name }}</h1>
       <p class="tagline">{{ site.tagline }}</p>
-      <p class="homepage-doctrine">A thing documented is a thing not yet lost.</p>
+      <p class="homepage-doctrine">
+        <span class="homepage-doctrine-prompt" aria-hidden="true">&gt;</span>
+        <span>A THING DOCUMENTED IS A THING NOT YET LOST.</span>
+      </p>
     </div>
     <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
   </div>
@@ -94,12 +97,24 @@ canonical: https://forgotten-industries.net/
           <span class="homepage-stat-label">{{ archive.projects | pluralLabel("Dossier", "Dossiers") }}</span>
           <span class="homepage-stat-count">({{ archive.projects | count }})</span>
         </span>
+        <span class="homepage-stat-scan" aria-hidden="true">
+          <span class="homepage-stat-scan-track">
+            <span class="homepage-stat-scan-segment">Dossiers // Evidence sets // Case files</span>
+            <span class="homepage-stat-scan-segment">Dossiers // Evidence sets // Case files</span>
+          </span>
+        </span>
       </a>
       <a class="stat" href="/hang-on-to-each-other/">
         <span class="homepage-stat-line">
           <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
           <span class="homepage-stat-label">{{ 2 | pluralLabel("Manuel", "Manuels") }}</span>
           <span class="homepage-stat-count">(2)</span>
+        </span>
+        <span class="homepage-stat-scan" aria-hidden="true">
+          <span class="homepage-stat-scan-track">
+            <span class="homepage-stat-scan-segment">Manuels // Field reference // Technical notes</span>
+            <span class="homepage-stat-scan-segment">Manuels // Field reference // Technical notes</span>
+          </span>
         </span>
       </a>
       <a class="stat" href="/atlas/">
@@ -108,6 +123,12 @@ canonical: https://forgotten-industries.net/
           <span class="homepage-stat-label">{{ archive.fieldLogs | pluralLabel("ATLAS Report", "ATLAS Reports") }}</span>
           <span class="homepage-stat-count">({{ archive.fieldLogs | count }})</span>
         </span>
+        <span class="homepage-stat-scan" aria-hidden="true">
+          <span class="homepage-stat-scan-track">
+            <span class="homepage-stat-scan-segment">ATLAS reports // Field logs // Operational record</span>
+            <span class="homepage-stat-scan-segment">ATLAS reports // Field logs // Operational record</span>
+          </span>
+        </span>
       </a>
       <a class="stat" href="{{ site.githubUrl }}/actions">
         <span class="homepage-stat-line">
@@ -115,12 +136,24 @@ canonical: https://forgotten-industries.net/
           <span class="homepage-stat-label">{{ site.buildChecks | pluralLabel("Build Check", "Build Checks") }}</span>
           <span class="homepage-stat-count">({{ site.buildChecks | count }})</span>
         </span>
+        <span class="homepage-stat-scan" aria-hidden="true">
+          <span class="homepage-stat-scan-track">
+            <span class="homepage-stat-scan-segment">Build checks // CI state // Pages pipeline</span>
+            <span class="homepage-stat-scan-segment">Build checks // CI state // Pages pipeline</span>
+          </span>
+        </span>
       </a>
       <a class="stat" href="{{ site.githubUrl }}/commits/main">
         <span class="homepage-stat-line">
           <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
           <span class="homepage-stat-label">{{ site.sourceStats.commits | pluralLabel("Git Commit", "Git Commits") }}</span>
           <span class="homepage-stat-count">({{ site.sourceStats.commits }})</span>
+        </span>
+        <span class="homepage-stat-scan" aria-hidden="true">
+          <span class="homepage-stat-scan-track">
+            <span class="homepage-stat-scan-segment">Git commits // Source ledger // Main branch</span>
+            <span class="homepage-stat-scan-segment">Git commits // Source ledger // Main branch</span>
+          </span>
         </span>
       </a>
     </div>
