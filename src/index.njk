@@ -4,22 +4,16 @@ title: Forgotten Industries
 description: An archive and evidence-based memoir.
 canonical: https://forgotten-industries.net/
 ---
-{% set reports = archive.fieldLogs | fieldLogsNewest %}
-{% set latestReport = reports[0] %}
-{% set latestPost = collections.posts | latestCollectionItem %}
-{% set latestProject = archive.projects | latestRecord %}
-{% set latestObject = archive.inventory | latestRecord %}
-{% set latestRestoration = archive.projects | latestRestoration %}
-
 <section class="masthead homepage-masthead" aria-labelledby="home-title">
   <div class="section-inner masthead-grid">
     <div>
-      <p class="section-label">Archive &amp; evidence-based memoir / established MMXIV</p>
       <h1 id="home-title" class="sr-only">{{ site.name }}</h1>
       <p class="tagline">{{ site.tagline }}</p>
       <p class="homepage-doctrine">
-        <span class="homepage-doctrine-prompt" aria-hidden="true">&gt;</span>
-        <span>A THING DOCUMENTED IS A THING NOT YET LOST.</span>
+        <span class="homepage-doctrine-line">
+          <span class="homepage-doctrine-prompt" aria-hidden="true">&gt;</span>
+          <span class="homepage-doctrine-text">A THING DOCUMENTED IS A THING NOT YET LOST.</span>
+        </span>
       </p>
     </div>
     <img class="hero-image" src="/assets/forgotten-industries.jpeg" alt="Forgotten Industries logo, EST MMXIV">
@@ -32,13 +26,13 @@ canonical: https://forgotten-industries.net/
       <div class="primary-card-plate">
         <div class="primary-card-title-unit">
           <h2>L'Archive</h2>
-          <strong class="primary-card-mark">&gt; Archive</strong>
+          <strong class="primary-card-mark">&gt; The Archive</strong>
         </div>
       </div>
       <span class="primary-card-scan" aria-hidden="true">
         <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Object records // Inventory // Provenance // Evidence</span>
-          <span class="primary-card-scan-segment">Object records // Inventory // Provenance // Evidence</span>
+          <span class="primary-card-scan-segment">Object records <span>//</span> Inventory <span>//</span> Provenance <span>//</span> Evidence</span>
+          <span class="primary-card-scan-segment">Object records <span>//</span> Inventory <span>//</span> Provenance <span>//</span> Evidence</span>
         </span>
       </span>
     </a>
@@ -46,13 +40,13 @@ canonical: https://forgotten-industries.net/
       <div class="primary-card-plate">
         <div class="primary-card-title-unit">
           <h2>L'Œuvre</h2>
-          <strong class="primary-card-mark">&gt; Work</strong>
+          <strong class="primary-card-mark">&gt; The Work</strong>
         </div>
       </div>
       <span class="primary-card-scan" aria-hidden="true">
         <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Dossiers // Manuscripts // Assembled work</span>
-          <span class="primary-card-scan-segment">Dossiers // Manuscripts // Assembled work</span>
+          <span class="primary-card-scan-segment">Dossiers <span>//</span> Manuscripts <span>//</span> Assembled work</span>
+          <span class="primary-card-scan-segment">Dossiers <span>//</span> Manuscripts <span>//</span> Assembled work</span>
         </span>
       </span>
     </a>
@@ -60,13 +54,13 @@ canonical: https://forgotten-industries.net/
       <div class="primary-card-plate">
         <div class="primary-card-title-unit">
           <h2>Le Signal</h2>
-          <strong class="primary-card-mark">&gt; Signal</strong>
+          <strong class="primary-card-mark">&gt; The Signal</strong>
         </div>
       </div>
       <span class="primary-card-scan" aria-hidden="true">
         <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Field logs // ATLAS reports // En direct // Operator notes</span>
-          <span class="primary-card-scan-segment">Field logs // ATLAS reports // En direct // Operator notes</span>
+          <span class="primary-card-scan-segment">Field logs <span>//</span> ATLAS reports <span>//</span> En direct <span>//</span> Operator notes</span>
+          <span class="primary-card-scan-segment">Field logs <span>//</span> ATLAS reports <span>//</span> En direct <span>//</span> Operator notes</span>
         </span>
       </span>
     </a>
@@ -79,126 +73,10 @@ canonical: https://forgotten-industries.net/
       </div>
       <span class="primary-card-scan" aria-hidden="true">
         <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Maker plate // Method // Provenance // Contact</span>
-          <span class="primary-card-scan-segment">Maker plate // Method // Provenance // Contact</span>
+          <span class="primary-card-scan-segment">Maker plate <span>//</span> Method <span>//</span> Provenance <span>//</span> Contact</span>
+          <span class="primary-card-scan-segment">Maker plate <span>//</span> Method <span>//</span> Provenance <span>//</span> Contact</span>
         </span>
       </span>
     </a>
-  </div>
-</section>
-
-<section class="instrument-strip" aria-labelledby="archive-state-heading">
-  <div class="section-inner">
-    <h2 id="archive-state-heading" class="sr-only">Archive state</h2>
-    <div class="stats homepage-instrument-stats">
-      <a class="stat" href="/projects/">
-        <span class="homepage-stat-line">
-          <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
-          <span class="homepage-stat-label">{{ archive.projects | pluralLabel("Dossier", "Dossiers") }}</span>
-          <span class="homepage-stat-count">({{ archive.projects | count }})</span>
-        </span>
-        <span class="homepage-stat-scan" aria-hidden="true">
-          <span class="homepage-stat-scan-track">
-            <span class="homepage-stat-scan-segment">Dossiers // Evidence sets // Case files</span>
-            <span class="homepage-stat-scan-segment">Dossiers // Evidence sets // Case files</span>
-          </span>
-        </span>
-      </a>
-      <a class="stat" href="/hang-on-to-each-other/">
-        <span class="homepage-stat-line">
-          <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
-          <span class="homepage-stat-label">{{ 2 | pluralLabel("Manuel", "Manuels") }}</span>
-          <span class="homepage-stat-count">(2)</span>
-        </span>
-        <span class="homepage-stat-scan" aria-hidden="true">
-          <span class="homepage-stat-scan-track">
-            <span class="homepage-stat-scan-segment">Manuels // Field reference // Technical notes</span>
-            <span class="homepage-stat-scan-segment">Manuels // Field reference // Technical notes</span>
-          </span>
-        </span>
-      </a>
-      <a class="stat" href="/atlas/">
-        <span class="homepage-stat-line">
-          <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
-          <span class="homepage-stat-label">{{ archive.fieldLogs | pluralLabel("ATLAS Report", "ATLAS Reports") }}</span>
-          <span class="homepage-stat-count">({{ archive.fieldLogs | count }})</span>
-        </span>
-        <span class="homepage-stat-scan" aria-hidden="true">
-          <span class="homepage-stat-scan-track">
-            <span class="homepage-stat-scan-segment">ATLAS reports // Field logs // Operational record</span>
-            <span class="homepage-stat-scan-segment">ATLAS reports // Field logs // Operational record</span>
-          </span>
-        </span>
-      </a>
-      <a class="stat" href="{{ site.githubUrl }}/actions">
-        <span class="homepage-stat-line">
-          <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
-          <span class="homepage-stat-label">{{ site.buildChecks | pluralLabel("Build Check", "Build Checks") }}</span>
-          <span class="homepage-stat-count">({{ site.buildChecks | count }})</span>
-        </span>
-        <span class="homepage-stat-scan" aria-hidden="true">
-          <span class="homepage-stat-scan-track">
-            <span class="homepage-stat-scan-segment">Build checks // CI state // Pages pipeline</span>
-            <span class="homepage-stat-scan-segment">Build checks // CI state // Pages pipeline</span>
-          </span>
-        </span>
-      </a>
-      <a class="stat" href="{{ site.githubUrl }}/commits/main">
-        <span class="homepage-stat-line">
-          <span class="homepage-stat-prompt" aria-hidden="true">&gt;</span>
-          <span class="homepage-stat-label">{{ site.sourceStats.commits | pluralLabel("Git Commit", "Git Commits") }}</span>
-          <span class="homepage-stat-count">({{ site.sourceStats.commits }})</span>
-        </span>
-        <span class="homepage-stat-scan" aria-hidden="true">
-          <span class="homepage-stat-scan-track">
-            <span class="homepage-stat-scan-segment">Git commits // Source ledger // Main branch</span>
-            <span class="homepage-stat-scan-segment">Git commits // Source ledger // Main branch</span>
-          </span>
-        </span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="latest-activity" aria-labelledby="latest-activity-heading">
-  <div class="section-inner">
-    <p class="section-label">Latest Activity</p>
-    <h2 id="latest-activity-heading" class="sr-only">Latest activity across the archive</h2>
-    <div class="activity-strip">
-      <a href="{{ latestPost.url }}">
-        <span>Latest Signal</span>
-        <strong>{{ latestPost.data.title }}</strong>
-      </a>
-      <a href="{{ latestProject | archiveProjectUrl }}">
-        <span>Latest Dossier</span>
-        <strong>{{ latestProject.title }}</strong>
-      </a>
-      <a href="{{ latestObject | archiveObjectUrl }}">
-        <span>Latest Archive Entry</span>
-        <strong>{{ latestObject.name }}</strong>
-      </a>
-      <a href="{{ latestRestoration | archiveProjectUrl }}">
-        <span>Latest Restoration</span>
-        <strong>{{ latestRestoration.title }}</strong>
-      </a>
-    </div>
-    {% if latestReport %}
-    <p class="latest-report-line"><span>Latest ATLAS Report</span> <a href="/field-logs/{{ latestReport.slug }}/">{{ latestReport.title }}</a></p>
-    {% endif %}
-  </div>
-</section>
-
-<section class="open-stacks" aria-labelledby="open-stacks-heading">
-  <div class="section-inner">
-    <p class="section-label">Open Stacks</p>
-    <h2 id="open-stacks-heading">Direct shelf access.</h2>
-    <nav class="open-stacks-list" aria-label="Direct archive access">
-      <a href="/archive/inventory/">Inventory</a>
-      <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/dist/forgotten-industries.json">Archive JSON</a>
-      <a href="/docs/process/">Process Records</a>
-      <a href="{{ site.githubUrl }}">La Source</a>
-    </nav>
-    <p class="open-stacks-secondary">Evidence shelf: <a href="/social-posts.html">Recovered Social Records</a></p>
   </div>
 </section>
