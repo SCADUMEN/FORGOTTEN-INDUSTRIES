@@ -414,8 +414,6 @@ img {
   color: var(--fi-cyan);
 }
 
-.site-nav-row a:hover::before,
-.site-nav-row a:focus-visible::before,
 .site-nav-row a:hover + a::before,
 .site-nav-row a:focus-visible + a::before,
 .site-nav-row:has(a:last-child:hover)::after,
