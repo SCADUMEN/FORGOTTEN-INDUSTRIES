@@ -481,18 +481,14 @@ img {
   font-family: var(--font-human);
 }
 
+/* The hero SVG has transparent background and black marks. --white resolves
+   to a dark surface tone here, so pin a true-white plate for invert(1) to
+   turn black, and restore the margins the raster logo carried in its own
+   pixels (matches the 16:9 composition of the original JPEG). */
 .hero-image {
-  background: var(--white);
+  background: #fff;
   filter: invert(1) contrast(1.08);
   width: 100%;
-}
-
-/* The homepage hero SVG has transparent background and black marks. --white
-   resolves to a dark surface tone here, so pin a true-white plate for
-   invert(1) to turn black, and restore the margins the raster logo carried
-   in its own pixels (matches the 16:9 composition of the original JPEG). */
-.homepage-masthead .hero-image {
-  background: #fff;
   padding: 10% 12.5%;
 }
 
