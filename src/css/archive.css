@@ -328,6 +328,9 @@ img {
 .site-mark img {
   width: 58px;
   height: 58px;
+  /* The shield SVG draws black marks on transparency; invert to white for the
+     dark header. */
+  filter: invert(1);
 }
 
 .site-mark span {
@@ -482,6 +485,15 @@ img {
   background: var(--white);
   filter: invert(1) contrast(1.08);
   width: 100%;
+}
+
+/* The homepage hero SVG has transparent background and black marks. --white
+   resolves to a dark surface tone here, so pin a true-white plate for
+   invert(1) to turn black, and restore the margins the raster logo carried
+   in its own pixels (matches the 16:9 composition of the original JPEG). */
+.homepage-masthead .hero-image {
+  background: #fff;
+  padding: 10% 12.5%;
 }
 
 .reference-masthead .masthead-grid {

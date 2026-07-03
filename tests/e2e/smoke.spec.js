@@ -26,7 +26,7 @@ test('home page renders', async ({ page }) => {
   await expect(page.locator('.open-stacks')).toHaveCount(0)
   await expect(page.locator('.homepage-masthead .hero-image')).toHaveAttribute(
     'src',
-    '/assets/forgotten-industries.jpeg'
+    '/assets/forgotten-industries.svg'
   )
   await expect(page.locator('.site-footer a')).toHaveCount(1)
   await expect(
@@ -219,7 +219,7 @@ test('object records without photographs show a restrained placeholder', async (
   await expect(page.locator('.object-primary-figure')).toHaveCount(0)
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     'content',
-    'https://forgotten-industries.net/assets/forgotten-industries.jpeg'
+    'https://forgotten-industries.net/assets/forgotten-industries-noise.png'
   )
 })
 
