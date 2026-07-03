@@ -328,9 +328,6 @@ img {
 .site-mark img {
   width: 58px;
   height: 58px;
-  /* The shield SVG draws black marks on transparency; invert to white for the
-     dark header. */
-  filter: invert(1);
 }
 
 .site-mark span {
@@ -440,7 +437,8 @@ img {
   grid-row: 1;
 }
 
-.masthead-grid > .hero-image {
+.masthead-grid > .hero-image,
+.masthead-grid > .hero-mark {
   grid-column: 1;
   grid-row: 1;
 }
@@ -481,15 +479,92 @@ img {
   font-family: var(--font-human);
 }
 
-/* The hero SVG has transparent background and black marks. --white resolves
-   to a dark surface tone here, so pin a true-white plate for invert(1) to
-   turn black, and restore the margins the raster logo carried in its own
-   pixels (matches the 16:9 composition of the original JPEG). */
+/* Match the lettermark column to the primary-card grid below it (two
+   1fr columns with a 1.5rem gap) so the masthead and cards share a spine. */
+.homepage-masthead .masthead-grid {
+  grid-template-columns: calc(50% - 0.75rem) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+/* Raster hero used by preserved pages and site snapshots. */
 .hero-image {
-  background: #fff;
+  background: var(--white);
   filter: invert(1) contrast(1.08);
   width: 100%;
-  padding: 10% 12.5%;
+}
+
+/* Vector masthead mark: the logo SVG is a mask so the glyphs can carry the
+   animated tint. The inset reproduces the 16:9 composition of the retired
+   raster logo (logo bounds were 75% x 63.8% of the plate). */
+.hero-mark {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.hero-mark::after {
+  content: '';
+  position: absolute;
+  inset: 18.1% 12.5%;
+  -webkit-mask: url('/assets/forgotten-industries.svg') center / contain
+    no-repeat;
+  mask: url('/assets/forgotten-industries.svg') center / contain no-repeat;
+  transition: opacity 0.3s ease;
+}
+
+/* Hovering the header shield redacts the lettermark and turns the shield
+   gold. The shield and hero live in separate landmarks, hence body:has(). */
+.site-mark:hover .site-mark-shield,
+.site-mark:focus-visible .site-mark-shield {
+  background: var(--fi-gold);
+  animation: none;
+}
+
+body:has(.site-mark:hover) .hero-mark::after,
+body:has(.site-mark:focus-visible) .hero-mark::after {
+  opacity: 0;
+}
+
+.site-mark-shield {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  -webkit-mask: url('/assets/shield.svg') center / contain no-repeat;
+  mask: url('/assets/shield.svg') center / contain no-repeat;
+}
+
+/* Shared sheen: mostly white with a slow cyan/magenta drift across the
+   masked glyphs. */
+.hero-mark::after,
+.site-mark-shield {
+  background-image: linear-gradient(
+    115deg,
+    #fff,
+    color-mix(in srgb, var(--fi-cyan) 45%, #fff) 30%,
+    #fff 55%,
+    color-mix(in srgb, var(--fi-magenta) 40%, #fff) 80%,
+    #fff
+  );
+  background-size: 300% 100%;
+  animation: mark-sheen 18s ease-in-out infinite alternate;
+}
+
+@keyframes mark-sheen {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark::after,
+  .site-mark-shield {
+    animation: none;
+  }
 }
 
 .reference-masthead .masthead-grid {
@@ -4144,10 +4219,16 @@ h3 {
   }
 
   .site-nav-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.28rem;
     text-align: right;
+  }
+
+  .site-nav-row::before,
+  .site-nav-row::after,
+  .site-nav-row a + a::before {
+    content: none;
   }
 
   .homepage-instrument-stats,
@@ -4182,6 +4263,7 @@ h3 {
   }
 
   .masthead-grid > .hero-image,
+  .masthead-grid > .hero-mark,
   .masthead-grid > .reference-figure {
     order: -1;
   }
@@ -4218,7 +4300,8 @@ h3 {
     margin-top: 0.8rem;
   }
 
-  .hero-image {
+  .hero-image,
+  .hero-mark {
     margin: 0 0 1.5rem;
   }
 
@@ -4451,6 +4534,13 @@ h3 {
   .hero-image,
   .site-mark img {
     filter: none;
+  }
+
+  .hero-mark::after,
+  .site-mark-shield {
+    forced-color-adjust: none;
+    background: CanvasText;
+    animation: none;
   }
 
   .stamp {

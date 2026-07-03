@@ -42,7 +42,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/ibmplexsans/v23/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="/css/archive.css?v={{ site.assetVersion }}">
-  <script defer src="/assets/js/site-mark-ghost.js?v={{ site.assetVersion }}"></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,8 +82,7 @@
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <a class="site-mark" href="/" aria-label="{{ site.name }} home">
-      <img src="/assets/shield.svg" alt="">
-      <span>{{ site.name }}</span>
+      <i class="site-mark-shield" aria-hidden="true"></i>
     </a>
     <nav class="site-nav" aria-label="Primary">
       {% for row in site.navRows %}
