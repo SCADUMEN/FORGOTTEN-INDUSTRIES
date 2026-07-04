@@ -607,6 +607,80 @@ body:has(.site-mark:focus-visible) .hero-mark::after {
   background: var(--fi-surface);
 }
 
+.signal-chain-dossier {
+  font-family: var(--font-system);
+}
+
+.signal-chain-dossier .section-label.fi-caption-box {
+  margin-bottom: 0.9rem;
+}
+
+.signal-chain-dossier h1,
+.signal-chain-dossier h2,
+.signal-chain-dossier h3,
+.signal-chain-dossier .tagline,
+.signal-chain-dossier .entry-note,
+.signal-chain-dossier .link-list p,
+.signal-chain-dossier .progression-list p,
+.signal-chain-dossier .institution-doctrine {
+  font-family: var(--font-system);
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.signal-chain-dossier h1 {
+  color: var(--fi-cyan);
+  font-size: clamp(2.3rem, 5.3vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.06;
+  text-transform: uppercase;
+}
+
+.signal-chain-dossier .tagline,
+.signal-chain-dossier .entry-note,
+.signal-chain-dossier .link-list p,
+.signal-chain-dossier .progression-list p {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.signal-chain-dossier h2 {
+  color: var(--fi-cyan);
+  font-size: clamp(1.45rem, 2.7vw, 2.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.signal-chain-dossier h3 {
+  color: var(--fi-green-bright);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.signal-chain-dossier .institution-doctrine {
+  color: var(--fi-cyan);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.signal-chain-mark-figure {
+  display: grid;
+  background: var(--fi-bg);
+}
+
+.signal-chain-mark-figure .hero-mark {
+  align-self: center;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
+
+.signal-chain-status {
+  border-top: 1px solid var(--line-strong);
+}
+
 .mirror-band,
 .evidence-band,
 .source-band {
@@ -709,6 +783,19 @@ h2 {
   font-size: clamp(1.45rem, 2.6vw, 2.15rem);
   font-weight: 700;
   line-height: 1.05;
+}
+
+.signal-chain-dossier.band-grid h2,
+.signal-chain-dossier .band-grid > :first-child h2,
+.signal-chain-dossier.source-band h2,
+.signal-chain-dossier.evidence-band h2 {
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: clamp(1.45rem, 2.7vw, 2.25rem);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -1865,6 +1952,25 @@ h3 {
 .progression-list .active span,
 .progression-list .active h3 {
   color: var(--oxide);
+}
+
+.signal-chain-dossier .progression-list span,
+.signal-chain-dossier .progression-list h3,
+.signal-chain-dossier .progression-list p {
+  font-family: var(--font-system);
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.signal-chain-dossier .progression-list span,
+.signal-chain-dossier .progression-list .active span {
+  color: var(--fi-magenta);
+}
+
+.signal-chain-dossier .progression-list h3,
+.signal-chain-dossier .progression-list .complete h3,
+.signal-chain-dossier .progression-list .active h3 {
+  color: var(--fi-green-bright);
 }
 
 .callout {
