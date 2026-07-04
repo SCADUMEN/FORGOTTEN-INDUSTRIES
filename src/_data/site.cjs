@@ -211,8 +211,8 @@ module.exports = {
   url: 'https://forgotten-industries.net',
   domainUrl: 'https://forgotten-industries.net',
   domainHost: 'forgotten-industries.net',
-  githubUrl: 'https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES',
-  repository: 'Forgotten-Industries/FORGOTTEN-INDUSTRIES',
+  githubUrl: 'https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES',
+  repository: 'SCADUMEN/FORGOTTEN-INDUSTRIES',
   eleventyUrl: 'https://www.11ty.dev/',
   contact: 'ATLAS@forgotten-industries.net',
   fieldNotesSubscribeUrl:
@@ -223,7 +223,7 @@ module.exports = {
     'An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.',
   defaultDescription:
     'An archive of restoration, memory, machines, recorded field logs, and the work of refusing disappearance.',
-  defaultImage: '/assets/forgotten-industries.jpeg',
+  defaultImage: '/assets/forgotten-industries-noise.png',
   defaultImageAlt: 'Forgotten Industries logo, EST MMXIV',
 
   navRows,
