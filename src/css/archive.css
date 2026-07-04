@@ -2830,9 +2830,25 @@ h3 {
 }
 
 .site-footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
   padding: 1.5rem 0 2rem;
+  /* The footer is full-width (see the later .site-footer override), so the
+     fi mark is inset by the shared container margin to sit at the same x
+     position as the header shield. */
+  padding-left: max(16px, calc((100% - 1120px) / 2));
   color: var(--muted);
   font-size: var(--mono-size);
+}
+
+@media (max-width: 700px) {
+  .site-footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding-left: 0;
+  }
 }
 
 .site-ai-footnote {
@@ -4455,6 +4471,48 @@ h3 {
 .fi-provenance-plate a.cu:hover,
 .fi-provenance-plate a.cu:focus-visible {
   color: var(--fi-cyan);
+}
+
+/* The ZOOT door: an Old Standard TT italic fi ligature standing in the
+   footer where the shield stands in the header. letter-spacing must stay
+   normal — tracking suppresses the OpenType liga substitution that forms
+   the single glyph. The slick canvas is injected by zoot-mark-slick.js on
+   capable instruments and blooms on hover. */
+a.fi-zoot-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  color: var(--fi-magenta);
+  font-family: 'Old Standard TT', serif;
+  font-size: 4.8rem;
+  font-style: italic;
+  font-variant-ligatures: common-ligatures;
+  letter-spacing: normal;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+a.fi-zoot-mark:hover,
+a.fi-zoot-mark:focus-visible {
+  color: var(--fi-paper-light);
+}
+
+.fi-zoot-slick-canvas {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.45s ease;
+}
+
+a.fi-zoot-mark:hover .fi-zoot-slick-canvas,
+a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
+  opacity: 1;
 }
 
 @media (max-width: 720px) {
