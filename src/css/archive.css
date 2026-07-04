@@ -2412,6 +2412,203 @@ h3 {
   color: var(--fi-green-bright);
 }
 
+.atlas-sysout-index .tagline {
+  text-transform: uppercase;
+}
+
+.atlas-sysout-panel .band-grid {
+  align-items: stretch;
+}
+
+.atlas-sysout-search,
+.atlas-sysout-list,
+.atlas-sysout-groups {
+  border-top-color: var(--sysout-panel-border);
+  background: var(--fi-bg);
+}
+
+.atlas-sysout-search .archive-search-shell {
+  margin: 1.4rem 0;
+  border: 1px solid var(--sysout-panel-border);
+  padding: 1rem;
+  background:
+    linear-gradient(var(--fi-screen-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fi-screen-grid-line) 1px, transparent 1px),
+    var(--fi-bg);
+  background-size: 18px 18px;
+  box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
+}
+
+.atlas-sysout-search .archive-search-meta,
+.atlas-sysout-search .archive-search-status {
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  letter-spacing: 0.08em;
+}
+
+.atlas-sysout-search .archive-search-form,
+.atlas-sysout-search .field-log-filter-row {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+}
+
+.atlas-sysout-search .archive-search-form input,
+.atlas-sysout-search .archive-search-form button,
+.atlas-sysout-search .field-log-filter-row label,
+.atlas-sysout-search .field-log-filter-row select {
+  background: var(--fi-bg);
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.atlas-sysout-search .archive-search-form input,
+.atlas-sysout-search .field-log-filter-row select {
+  border-color: var(--fi-green-border);
+}
+
+.atlas-sysout-search .archive-search-form input::placeholder {
+  color: var(--fi-green-muted);
+}
+
+.atlas-sysout-search .archive-search-form button {
+  border-left: 1px solid var(--sysout-panel-border);
+  color: var(--fi-magenta);
+}
+
+.atlas-sysout-search .archive-search-form button:hover,
+.atlas-sysout-search .archive-search-form button:focus-visible {
+  background: var(--fi-magenta-wash-faint);
+  color: var(--fi-green-bright);
+}
+
+.atlas-sysout-search .field-log-filter-row span {
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  letter-spacing: 0.12em;
+}
+
+.atlas-sysout-list .field-note-list {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+  box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
+}
+
+.atlas-sysout-list .field-note-card {
+  border-left: 2px solid transparent;
+  background: var(--fi-bg);
+}
+
+.atlas-sysout-list .field-note-card:nth-child(odd) {
+  border-left-color: var(--fi-magenta);
+}
+
+.atlas-sysout-list .field-note-card:nth-child(even) {
+  border-left-color: var(--fi-green-border);
+}
+
+.atlas-sysout-list .field-note-card header,
+.atlas-sysout-list .field-note-card footer {
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  letter-spacing: 0.08em;
+}
+
+.atlas-sysout-list .field-note-card header span {
+  color: var(--fi-magenta);
+}
+
+.atlas-sysout-list .field-note-card h3 {
+  margin: 0;
+  font-family: var(--font-system);
+  font-size: clamp(1rem, 1.8vw, 1.34rem);
+  letter-spacing: 0.08em;
+  line-height: 1.28;
+  text-transform: uppercase;
+}
+
+.atlas-sysout-list .field-note-card h3 a {
+  color: var(--fi-green-bright);
+}
+
+.atlas-sysout-list .field-note-card p {
+  color: var(--fi-green-soft);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.atlas-sysout-list .field-log-card-meta {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+}
+
+.atlas-sysout-list .field-log-card-meta div {
+  background: rgb(var(--fi-green-rgb) / 0.035);
+}
+
+.atlas-sysout-list .field-log-card-meta dt {
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  letter-spacing: 0.1em;
+}
+
+.atlas-sysout-list .field-log-card-meta dd {
+  color: var(--fi-green-bright);
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.atlas-sysout-list .tag-filter {
+  border-bottom: 1px solid transparent;
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  letter-spacing: 0.06em;
+}
+
+.atlas-sysout-list .tag-filter:hover,
+.atlas-sysout-list .tag-filter:focus-visible {
+  border-bottom-color: var(--fi-magenta);
+  color: var(--fi-magenta);
+  text-decoration: none;
+}
+
+.atlas-sysout-groups .field-log-group-grid {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+  box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
+}
+
+.atlas-sysout-groups .field-log-group {
+  border-left: 2px solid var(--fi-magenta);
+  background: var(--fi-bg);
+}
+
+.atlas-sysout-groups .field-log-group h3 {
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlas-sysout-groups .field-log-group ol {
+  color: var(--fi-green);
+  font-family: var(--font-system);
+}
+
+.atlas-sysout-groups .field-log-group a {
+  color: var(--fi-green-bright);
+}
+
+.atlas-sysout-groups .field-log-group li span {
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  letter-spacing: 0.08em;
+}
+
 .field-note-empty {
   margin-bottom: 2rem;
 }
