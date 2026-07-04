@@ -172,7 +172,7 @@ void main() {
   vec2 v = uv - 0.5;
   col *= 1.0 - 0.55 * dot(v, v);
   col *= 1.0 - 0.035 * sin(gl_FragCoord.y * 3.14159);
-  col += (hash(gl_FragCoord.xy + uGrainSeed) - 0.5) * 0.02;
+  col += (hash(gl_FragCoord.xy + uGrainSeed + fract(uTime) * 61.7) - 0.5) * 0.05;
 
   outColor = vec4(col, 1.0);
 }
