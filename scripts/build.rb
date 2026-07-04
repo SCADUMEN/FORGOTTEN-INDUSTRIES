@@ -200,10 +200,14 @@ assert_unique!(social_posts, "slug", "social_posts")
 
 project_ids = projects.map { |project| project.fetch("id") }
 projects_by_id = projects.to_h { |project| [project.fetch("id"), project] }
-(inventory + field_logs).each do |record|
-  next if project_ids.include?(record.fetch("associated_project"))
-
-  abort("#{record.fetch("id")}: unknown associated_project #{record.fetch("associated_project")}")
+dangling_refs = (inventory + field_logs).reject do |record|
+  project_ids.include?(record.fetch("associated_project"))
+end
+unless dangling_refs.empty?
+  details = dangling_refs
+    .map { |record| "  #{record.fetch("id")} -> #{record.fetch("associated_project")}" }
+    .join("\n")
+  abort("unknown associated_project references:\n#{details}")
 end
 
 archive = {
