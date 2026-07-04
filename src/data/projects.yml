@@ -1,4 +1,36 @@
 projects:
+  - id: FI-DSR-001
+    slug: petite-chaine-du-signal
+    title: La Petite Chaîne du Signal
+    working_title: Du Post à la Doctrine
+    category: Writing Protocol
+    status: active
+    started: '2026'
+    summary: >
+      Dossier and writing protocol for converting small artifacts, images,
+      jokes, field observations, and cursed object moments into preserved
+      Forgotten Industries material without waiting for the essay.
+    origin:
+      context: ATLAS + MTM interaction
+    themes:
+      - signal conversion
+      - writing protocol
+      - Bluesky dispatches
+      - archive entries
+      - dossier method
+      - doctrine extraction
+      - documentation before scale
+    source_links:
+      - label: Source dossier
+        type: local
+        role: public working dossier
+        path: src/projects/petite-chaine-du-signal/README.md
+    documentation_style:
+      - Begin with the spark before the essay exists
+      - Preserve the short post as an ignition event, not lesser writing
+      - Stabilize the observed artifact before interpreting it
+      - Let dossiers examine evidence before doctrine abstracts meaning
+
   - id: FI-PROJ-001
     slug: caselabs-mercury-s8-pedestal-restoration
     title: CaseLabs Mercury S8 + Pedestal Restoration
