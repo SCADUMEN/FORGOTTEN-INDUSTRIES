@@ -260,8 +260,8 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  // Both dated manuscripts should be linked from the compatibility route.
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
+  // All dated manuscripts should be linked from the compatibility route.
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(3)
 })
 
 test('En Direct lands on the imported signal', async ({ page }) => {
