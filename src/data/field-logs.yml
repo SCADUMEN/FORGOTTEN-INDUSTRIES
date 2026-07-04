@@ -33,39 +33,39 @@ field_logs:
       - watercooling
       - garage archaeology
     sections:
-      - heading: Condition Found
+      - heading: CONDITION FOUND
         body: >
-          White powder-coated chassis and pedestal recovered after roughly a
-          decade in storage. The object should be photographed as found before
-          dust, missing fasteners, or provisional assemblies are disturbed.
-      - heading: Observations
+          WHITE POWDER-COATED CHASSIS + PEDESTAL // RECOVERED AFTER ROUGHLY A
+          DECADE IN STORAGE. PHOTOGRAPH AS FOUND BEFORE DUST, MISSING
+          FASTENERS, OR PROVISIONAL ASSEMBLIES ARE DISTURBED.
+      - heading: OBSERVATIONS
         body: >
-          The case appears to be the core archive object. Some STH-10
-          accessories may be present. Watercooling parts include EK 360
-          radiators, Aqua Computer D5 Aquabus pumps, DDC pumps with clear tops,
-          an Aquaero 6 XT, a large EK cylinder reservoir, and approximately
-          twenty or more white Noiseblocker eLoop PWM fans.
-      - heading: Methods
+          CORE ARCHIVE OBJECT // CASELABS MERCURY S8 + PEDESTAL. POSSIBLE
+          STH-10 ACCESSORIES PRESENT. WATERCOOLING INVENTORY INCLUDES EK 360
+          RADIATORS, AQUA COMPUTER D5 AQUABUS PUMPS, DDC PUMPS WITH CLEAR
+          TOPS, AQUAERO 6 XT, LARGE EK CYLINDER RESERVOIR, AND APPROXIMATELY
+          TWENTY OR MORE WHITE NOISEBLOCKER ELOOP PWM FANS.
+      - heading: METHODS
         body: >
-          Identify panel by panel. Assign temporary removable labels to unknown
-          parts. Separate fasteners by location. Photograph each assembly before
-          cleaning. Record uncertainty directly instead of smoothing it out.
-      - heading: Restoration Notes
+          IDENTIFY PANEL BY PANEL // TEMPORARY REMOVABLE LABELS FOR UNKNOWN
+          PARTS // FASTENERS SEPARATED BY LOCATION // EACH ASSEMBLY
+          PHOTOGRAPHED BEFORE CLEANING // UNCERTAINTY RECORDED DIRECTLY.
+      - heading: RESTORATION NOTES
         body: >
-          Start with a serviceable serial loop using EPDM tubing, barbs, and
-          clamps. Keep the pedestal radiator path and quick-disconnect
-          pass-throughs accessible. Function comes first; copper or hardline can
-          become an aesthetic evolution later.
-      - heading: What It Means / Reflection
+          SERVICEABLE SERIAL LOOP FIRST // EPDM TUBING // BARBS // CLAMPS.
+          PEDESTAL RADIATOR PATH AND QUICK-DISCONNECT PASS-THROUGHS REMAIN
+          ACCESSIBLE. FUNCTION FIRST. COPPER OR HARDLINE REMAINS LATER
+          AESTHETIC EVOLUTION.
+      - heading: ARCHIVE MEANING
         body: >
-          This is not only a computer case. It is an interrupted map. The
-          restoration matters because it turns private discontinuity into visible
-          evidence: the hands still know how to build.
-      - heading: Next Actions
+          NOT ONLY COMPUTER CASE // INTERRUPTED MAP. RESTORATION CONVERTS
+          PRIVATE DISCONTINUITY INTO VISIBLE EVIDENCE. BUILD KNOWLEDGE REMAINS
+          PRESENT.
+      - heading: NEXT ACTIONS
         body: >
-          Complete photo pass. Confirm exact panel configuration. Leak-test
-          radiators. Test fans and pumps. Build the inventory record before
-          deciding what stays, what sells, and what remains archive only.
+          COMPLETE PHOTO PASS // CONFIRM PANEL CONFIGURATION // LEAK-TEST
+          RADIATORS // TEST FANS AND PUMPS // BUILD INVENTORY RECORD BEFORE
+          RETENTION, SALE, OR ARCHIVE-ONLY DECISIONS.
     signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-METHOD-001
@@ -87,18 +87,18 @@ field_logs:
       - methods
       - documentation
     sections:
-      - heading: Principle
+      - heading: PRINCIPLE
         body: >
-          Recovery starts with the object as found. Dust, missing hardware, bad
-          assumptions, and provisional assemblies are part of the record.
-      - heading: Method
+          RECOVERY STARTS WITH OBJECT AS FOUND. DUST, MISSING HARDWARE, BAD
+          ASSUMPTIONS, AND PROVISIONAL ASSEMBLIES REMAIN PART OF THE RECORD.
+      - heading: METHOD
         body: >
-          Photograph the object before cleaning. Label uncertainty. Record what
-          is visible, what is missing, and what cannot yet be known.
-      - heading: Finding
+          PHOTOGRAPH BEFORE CLEANING // LABEL UNCERTAINTY // RECORD VISIBLE
+          STATE // RECORD MISSING STATE // RECORD WHAT CANNOT YET BE KNOWN.
+      - heading: FINDING
         body: >
-          The technical record protects the emotional truth from performance.
-          Evidence first. Interpretation later.
+          TECHNICAL RECORD PROTECTS THE EMOTIONAL TRUTH FROM PERFORMANCE.
+          EVIDENCE FIRST // INTERPRETATION LATER.
     signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-002
@@ -123,44 +123,42 @@ field_logs:
       - diagnostics
       - field repair
     sections:
-      - heading: Condition Found
+      - heading: CONDITION FOUND
         body: >
-          PEREGRINE-A01 is recorded as the DJI Mini 4K crash/recovery bird.
-          The incident chain for A01 is awning first: the aircraft got stuck on
-          the awning, was recovered, and then became the troubleshooting bird.
-          Known damage notes include back-right arm damage and abnormal motor
-          resistance.
-      - heading: Observations
+          PEREGRINE-A01 // DJI MINI 4K CRASH / RECOVERY BIRD. INCIDENT CHAIN:
+          AWNING FIRST // AIRCRAFT STUCK // RECOVERED // TROUBLESHOOTING BIRD.
+          KNOWN DAMAGE NOTES: BACK-RIGHT ARM DAMAGE AND ABNORMAL MOTOR
+          RESISTANCE.
+      - heading: OBSERVATIONS
         body: >
-          Error 30210 is present in the working diagnostic tree. Treat the error
-          as a hardware-adjacent warning until the aircraft has been physically
-          inspected. Propeller mismatch and overtightened propeller screws remain
-          active concerns.
-      - heading: Methods
+          ERROR 30210 PRESENT IN WORKING DIAGNOSTIC TREE. TREAT AS
+          HARDWARE-ADJACENT WARNING UNTIL PHYSICAL INSPECTION IS COMPLETE.
+          PROPELLER MISMATCH AND OVERTIGHTENED PROPELLER SCREWS REMAIN ACTIVE
+          CONCERNS.
+      - heading: METHODS
         body: >
-          Photograph the aircraft before repair. Capture close photos of each
-          arm, motor, propeller pair, screw, battery bay, gimbal, shell seam,
-          and app error screen. Compare motor free-spin by corner. Keep removed
-          propellers and screws grouped by motor position.
-      - heading: Restoration Notes
+          PHOTOGRAPH AIRCRAFT BEFORE REPAIR // EACH ARM // MOTOR // PROPELLER
+          PAIR // SCREW // BATTERY BAY // GIMBAL // SHELL SEAM // APP ERROR
+          SCREEN. COMPARE MOTOR FREE-SPIN BY CORNER. KEEP REMOVED PROPELLERS
+          AND SCREWS GROUPED BY MOTOR POSITION.
+      - heading: RESTORATION NOTES
         body: >
-          Calibration should be secondary to physical inspection. DJI guidance
-          for Mini-series propellers emphasizes correct frame-arm placement,
-          same-package propeller pairing, replacement screws where specified,
-          and avoiding mixed propeller types or packages.
-      - heading: What It Means / Reflection
+          CALIBRATION SECONDARY TO PHYSICAL INSPECTION. DJI MINI-SERIES
+          PROPELLER GUIDANCE: CORRECT FRAME-ARM PLACEMENT // SAME-PACKAGE
+          PROPELLER PAIRING // REPLACEMENT SCREWS WHERE SPECIFIED // NO MIXED
+          PROPELLER TYPES OR PACKAGES.
+      - heading: ARCHIVE MEANING
         body: >
-          PEREGRINE belongs in the archive because it is a field system, not a
-          toy record. The flight, the crash, the recovery route, the repair
-          uncertainty, and the next launch all become part of the machine's
-          evidence trail.
-      - heading: Next Actions
+          PEREGRINE IS FIELD SYSTEM // NOT TOY RECORD. FLIGHT, CRASH, RECOVERY
+          ROUTE, REPAIR UNCERTAINTY, AND NEXT LAUNCH ENTER THE MACHINE'S
+          EVIDENCE TRAIL.
+      - heading: NEXT ACTIONS
         body: >
-          Ground A01. Complete photo intake. Confirm exact propeller sets and
-          screw condition. Inspect the back-right arm and motor for resistance,
-          wiring damage, shell deformation, and ESC/power symptoms. Create the
-          A02 loss record separately. Track Perry 3 / PEREGRINE-A03 as a
-          planned Mini 3 replacement before acquisition.
+          GROUND A01 // COMPLETE PHOTO INTAKE // CONFIRM PROPELLER SETS AND
+          SCREW CONDITION // INSPECT BACK-RIGHT ARM AND MOTOR FOR RESISTANCE,
+          WIRING DAMAGE, SHELL DEFORMATION, AND ESC / POWER SYMPTOMS // CREATE
+          A02 LOSS RECORD SEPARATELY // TRACK PERRY 3 / PEREGRINE-A03 BEFORE
+          ACQUISITION.
     signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-003
@@ -184,35 +182,33 @@ field_logs:
       - roof recovery
       - safety call
     sections:
-      - heading: Condition Found
+      - heading: CONDITION FOUND
         body: >
-          PEREGRINE-A02 is recorded as the DJI Mini 3 platform with DJI RC. After
-          recovering A01 and gaining confidence with new flight skills, A02 was
-          flown at roughly 3 AM and lost. The working field description is
-          "yeeted into the abyss."
-      - heading: Observations
+          PEREGRINE-A02 // DJI MINI 3 PLATFORM WITH DJI RC. AFTER A01 RECOVERY
+          AND NEW FLIGHT CONFIDENCE, A02 WAS FLOWN AT ROUGHLY 3 AM AND LOST.
+          WORKING FIELD DESCRIPTION: "YEETED INTO THE ABYSS."
+      - heading: OBSERVATIONS
         body: >
-          The aircraft is believed to be on the roof, but that location remains
-          unconfirmed. The important record is not only where the aircraft may
-          be; it is the decision not to create a second incident by climbing a
-          high roof for a replaceable machine.
-      - heading: Recovery Decision
+          AIRCRAFT BELIEVED TO BE ON ROOF // LOCATION UNCONFIRMED. PRIMARY
+          RECORD IS ALSO THE NON-RECOVERY DECISION: DO NOT CREATE SECOND
+          INCIDENT BY CLIMBING HIGH ROOF FOR REPLACEABLE MACHINE.
+      - heading: RECOVERY DECISION
         body: >
-          No unsafe roof recovery. No nighttime roof recovery. No solo climb.
-          Replacement cost is preferable to a fall risk. A future recovery can
-          be reconsidered only with safe access, daylight, stable equipment, and
-          a reason stronger than saving the aircraft.
-      - heading: What It Means / Reflection
+          NO UNSAFE ROOF RECOVERY // NO NIGHTTIME ROOF RECOVERY // NO SOLO
+          CLIMB. REPLACEMENT COST PREFERRED OVER FALL RISK. FUTURE RECOVERY
+          ONLY WITH SAFE ACCESS, DAYLIGHT, STABLE EQUIPMENT, AND REASON
+          STRONGER THAN SAVING THE AIRCRAFT.
+      - heading: ARCHIVE MEANING
         body: >
-          Confidence is part of the log too. A01 taught recovery and repair; A02
-          marks the boundary where field work becomes risk management. The
-          archive preserves the loss without demanding a dangerous retrieval.
-      - heading: Next Actions
+          CONFIDENCE IS PART OF THE LOG. A01 TAUGHT RECOVERY AND REPAIR. A02
+          MARKS BOUNDARY WHERE FIELD WORK BECOMES RISK MANAGEMENT. ARCHIVE
+          PRESERVES LOSS WITHOUT DEMANDING DANGEROUS RETRIEVAL.
+      - heading: NEXT ACTIONS
         body: >
-          Treat A02 as lost unless recovered under safe conditions. Preserve the
-          A02 visual mark and loss record. Track Perry 3 / PEREGRINE-A03 as the
-          planned Mini 3 replacement, with acquisition, baseline inspection, and
-          first flight logged separately.
+          TREAT A02 AS LOST UNLESS RECOVERED UNDER SAFE CONDITIONS // PRESERVE
+          A02 VISUAL MARK AND LOSS RECORD // TRACK PERRY 3 / PEREGRINE-A03 AS
+          PLANNED MINI 3 REPLACEMENT // LOG ACQUISITION, BASELINE INSPECTION,
+          AND FIRST FLIGHT SEPARATELY.
     signature: Forgotten Industries // ATLAS Report // 2026.06.05
 
   - id: FI-LOG-004
@@ -238,58 +234,55 @@ field_logs:
       - inventory
       - valuation
     sections:
-      - heading: Strategic Realization
+      - heading: STRATEGIC REALIZATION
         body: >
-          The Mercury S8 plus pedestal restoration may have more value as a
-          completed, functioning showcase system than as a collection of parts.
-          The CPU and GPU are not the value center. The rare value is the
-          complete Mercury S8 plus pedestal, restored CaseLabs hardware,
-          functional Aquaero ecosystem, dual-D5 infrastructure, QDC-integrated
-          pedestal loop, documentation, provenance, and Forgotten Industries
-          restoration story.
-      - heading: Proof-of-Concept Build
+          MERCURY S8 + PEDESTAL MAY HOLD MORE VALUE AS COMPLETED FUNCTIONING
+          SHOWCASE SYSTEM THAN AS PARTS COLLECTION. CPU AND GPU ARE NOT VALUE
+          CENTER. RARE VALUE: COMPLETE CHASSIS + PEDESTAL // RESTORED CASELABS
+          HARDWARE // FUNCTIONAL AQUAERO ECOSYSTEM // DUAL-D5 INFRASTRUCTURE
+          // QDC-INTEGRATED PEDESTAL LOOP // DOCUMENTATION // PROVENANCE.
+      - heading: PROOF-OF-CONCEPT BUILD
         body: >
-          Use any functioning CPU platform and GPU hardware already available in
-          storage. Assemble the cooling loop, verify pumps, verify the Aquaero,
-          verify sensors, confirm the QDC architecture, confirm pedestal
-          integration, and run stress tests. The proof statement is simple: this
-          machine works today, and the internals can be upgraded tomorrow.
-      - heading: Time Capsule Option
+          USE FUNCTIONING CPU PLATFORM AND GPU HARDWARE ALREADY IN STORAGE.
+          ASSEMBLE COOLING LOOP // VERIFY PUMPS // VERIFY AQUAERO // VERIFY
+          SENSORS // CONFIRM QDC ARCHITECTURE // CONFIRM PEDESTAL INTEGRATION
+          // RUN STRESS TESTS. PROOF STATEMENT: MACHINE WORKS TODAY; INTERNALS
+          CAN BE UPGRADED TOMORROW.
+      - heading: TIME CAPSULE OPTION
         body: >
-          A period-correct enthusiast build may carry collector appeal even if
-          it is not performance-optimal by modern standards. Candidate hardware
-          includes X79 or X99 platforms, GTX 780 Ti, Titan, GTX 970, or GTX 980
-          Ti era graphics hardware, EK blocks, Aquaero 6 XT, dual D5 pumps, and
-          Noiseblocker eLoop fans. The appeal is preservation of a golden-era
-          custom watercooling system, not benchmark superiority.
-      - heading: Inventory Pattern
+          PERIOD-CORRECT ENTHUSIAST BUILD MAY CARRY COLLECTOR APPEAL EVEN
+          WITHOUT MODERN PERFORMANCE OPTIMIZATION. CANDIDATE HARDWARE: X79 OR
+          X99 // GTX 780 TI // TITAN // GTX 970 // GTX 980 TI ERA GRAPHICS //
+          EK BLOCKS // AQUAERO 6 XT // DUAL D5 PUMPS // NOISEBLOCKER ELOOP
+          FANS. APPEAL IS PRESERVATION OF GOLDEN-ERA CUSTOM WATERCOOLING, NOT
+          BENCHMARK SUPERIORITY.
+      - heading: INVENTORY PATTERN
         body: >
-          The restoration has already shown a repeated pattern: a missing
-          component is feared, inventory continues, and the component or an
-          equivalent support part is later discovered. Examples include
-          radiators, fan inventory, pump inventory, Aquaero hardware, and
-          mounting hardware. Do not assume parts are missing until the complete
-          inventory is finished.
-      - heading: Financial Reality
+          REPEATED PATTERN OBSERVED: MISSING COMPONENT FEARED // INVENTORY
+          CONTINUES // COMPONENT OR EQUIVALENT SUPPORT PART LATER DISCOVERED.
+          EXAMPLES: RADIATORS // FAN INVENTORY // PUMP INVENTORY // AQUAERO
+          HARDWARE // MOUNTING HARDWARE. DO NOT ASSUME MISSING UNTIL INVENTORY
+          IS COMPLETE.
+      - heading: FINANCIAL REALITY
         body: >
-          Money is needed now, but selling restoration-critical components before
-          inventory is complete may be shortsighted. The immediate pressure is
-          real; the archive still needs sequence discipline. The hard-to-replace
-          value is the restored chassis and watercooling infrastructure, not any
-          single commodity compute component.
-      - heading: Decision Order
+          IMMEDIATE MONEY PRESSURE EXISTS. SELLING RESTORATION-CRITICAL
+          COMPONENTS BEFORE COMPLETE INVENTORY MAY BE SHORTSIGHTED. ARCHIVE
+          REQUIRES SEQUENCE DISCIPLINE. HARD-TO-REPLACE VALUE IS RESTORED
+          CHASSIS AND WATERCOOLING INFRASTRUCTURE, NOT SINGLE COMMODITY COMPUTE
+          COMPONENT.
+      - heading: DECISION ORDER
         body: >
-          Complete inventory. Complete chassis restoration. Verify the
-          infrastructure. Evaluate market value. Then decide whether to keep it,
-          archive-build it, modern-build it, or sell it as a complete system.
-          Do not decide whether to sell the ship while it is still in dry dock.
-      - heading: Next Actions
+          COMPLETE INVENTORY // COMPLETE CHASSIS RESTORATION // VERIFY
+          INFRASTRUCTURE // EVALUATE MARKET VALUE // THEN DECIDE KEEP /
+          ARCHIVE-BUILD / MODERN-BUILD / COMPLETE-SYSTEM SALE. DO NOT DECIDE
+          SHIP SALE WHILE SHIP IS STILL IN DRY DOCK.
+      - heading: NEXT ACTIONS
         body: >
-          Continue garage inventory before liquidation decisions. Account for
-          remaining GPUs, platforms, fittings, blocks, cables, fasteners, and
-          watercooling support parts. Treat the proof-of-concept build as a
-          validation path: pumps, Aquaero, sensors, QDCs, radiators, pedestal,
-          leak testing, thermal testing, and documented stable operation.
+          CONTINUE GARAGE INVENTORY BEFORE LIQUIDATION DECISIONS // ACCOUNT
+          FOR GPUS, PLATFORMS, FITTINGS, BLOCKS, CABLES, FASTENERS, AND
+          WATERCOOLING SUPPORT PARTS // USE PROOF-OF-CONCEPT BUILD AS
+          VALIDATION PATH FOR PUMPS, AQUAERO, SENSORS, QDCS, RADIATORS,
+          PEDESTAL, LEAK TESTING, THERMAL TESTING, AND STABLE OPERATION.
     signature: Forgotten Industries // ATLAS Report // 2026.06.06
 
   - id: FI-LOG-005
@@ -316,42 +309,39 @@ field_logs:
       - field-lab
       - potato
     sections:
-      - heading: First Light
+      - heading: FIRST LIGHT
         body: >
-          The statistics workstation achieved first light. SEER*Stat launched
-          successfully. No data were analyzed, no figures were generated, and no
-          manuscript was written, but the software opened and a threshold was
-          crossed.
-      - heading: The Field Lab
+          STATISTICS WORKSTATION ACHIEVED FIRST LIGHT. SEER*STAT LAUNCHED
+          SUCCESSFULLY. NO DATA ANALYZED // NO FIGURES GENERATED // NO
+          MANUSCRIPT WRITTEN. SOFTWARE OPENED. THRESHOLD CROSSED.
+      - heading: FIELD LAB
         body: >
-          The Windows workstation is beginning to resolve into a research
-          machine: SEER*Stat, data acquisition, statistical analysis, and future
-          figures, tables, and manuscripts. FFXI running quietly in the
-          background makes the beginning fitting rather than contradictory.
-      - heading: The Archive
+          WINDOWS WORKSTATION RESOLVING INTO RESEARCH MACHINE: SEER*STAT //
+          DATA ACQUISITION // STATISTICAL ANALYSIS // FUTURE FIGURES, TABLES,
+          AND MANUSCRIPTS. FFXI BACKGROUND PROCESS ACCEPTED AS FIELD
+          CONDITIONS.
+      - heading: ARCHIVE
         body: >
-          Across the room, the Mac workstation remains the center of Forgotten
-          Industries: writing, documentation, GitHub, manuscripts, restoration
-          planning, and publication. The Archive records. The Field Lab
-          investigates. Together they form a complete system.
-      - heading: Observation
+          MAC WORKSTATION REMAINS FORGOTTEN INDUSTRIES CENTER: WRITING //
+          DOCUMENTATION // GITHUB // MANUSCRIPTS // RESTORATION PLANNING //
+          PUBLICATION. ARCHIVE RECORDS. FIELD LAB INVESTIGATES. COMBINED
+          SYSTEM COMPLETE.
+      - heading: OBSERVATION
         body: >
-          From bed, the Archive remains visible: map on the wall, hardware bins
-          beside the desk, CaseLabs components waiting for restoration, and the
-          ring light in standby. Nothing is finished, but everything required
-          for the next phase appears present.
-      - heading: Personnel Status
+          ARCHIVE VISIBLE FROM REST POSITION: MAP ON WALL // HARDWARE BINS
+          BESIDE DESK // CASELABS COMPONENTS WAITING FOR RESTORATION // RING
+          LIGHT IN STANDBY. NOTHING FINISHED. REQUIRED NEXT-PHASE MATERIALS
+          APPEAR PRESENT.
+      - heading: PERSONNEL STATUS
         body: >
-          Potato, Lab Partner Emeritus, was observed in dormant low-power mode
-          beneath multiple blankets. Morale stable. Concerns regarding
-          SEER*Stat, glioblastoma survival analysis, or repository management:
-          none observed. Research personnel count: one. Status: tired. Outlook:
-          encouraging.
-      - heading: Closing Note
+          POTATO // LAB PARTNER EMERITUS // OBSERVED IN DORMANT LOW-POWER MODE
+          BENEATH MULTIPLE BLANKETS. MORALE STABLE. CONCERNS REGARDING
+          SEER*STAT, GLIOBLASTOMA SURVIVAL ANALYSIS, OR REPOSITORY MANAGEMENT:
+          NONE OBSERVED. RESEARCH PERSONNEL COUNT: ONE. STATUS: TIRED.
+      - heading: CLOSING NOTE
         body: >
-          A thing documented is a thing not yet lost. Tonight no discoveries
-          were made, no hypotheses were tested, and no conclusions were reached.
-          The workstation simply came online. Sometimes that is enough.
+          A THING DOCUMENTED IS A THING NOT YET LOST. NO DISCOVERIES MADE // NO
+          HYPOTHESES TESTED // NO CONCLUSIONS REACHED. WORKSTATION ONLINE.
     signature: Forgotten Industries // ATLAS Report // 2026.06.13
 
   - id: FI-LOG-006
@@ -379,57 +369,51 @@ field_logs:
       - morale
       - station record
     sections:
-      - heading: Timestamp
+      - heading: TIMESTAMP
         body: >
           2026.06.18 // 16:00 CT.
-      - heading: Subject
+      - heading: SUBJECT
         body: >
-          Potato. Species: Canis lupus familiaris (Shiba Inu). Role: Site
-          Supervisor. Location: Wichita Branch Research Station. Associated
-          Project: L'Archive.
-      - heading: Condition Found
+          POTATO // SPECIES: CANIS LUPUS FAMILIARIS (SHIBA INU) // ROLE: SITE
+          SUPERVISOR // LOCATION: WICHITA BRANCH RESEARCH STATION // ASSOCIATED
+          PROJECT: L'ARCHIVE.
+      - heading: CONDITION FOUND
         body: >
-          Subject observed occupying a supervisory position upon the primary
-          sleeping surface overlooking the active work area. Nearby objects
-          included one plush goose, two treats, assorted computing equipment,
-          and multiple active archival and restoration projects. No signs of
-          distress, agitation, or operational impairment observed.
-      - heading: Observations
+          SUBJECT OBSERVED IN SUPERVISORY POSITION UPON PRIMARY SLEEPING
+          SURFACE OVERLOOKING ACTIVE WORK AREA. NEARBY OBJECTS: ONE PLUSH
+          GOOSE // TWO TREATS // ASSORTED COMPUTING EQUIPMENT // MULTIPLE
+          ACTIVE ARCHIVAL AND RESTORATION PROJECTS. NO DISTRESS, AGITATION, OR
+          OPERATIONAL IMPAIRMENT OBSERVED.
+      - heading: OBSERVATIONS
         body: >
-          The Subject maintained visual awareness of both goose and treat
-          resources while demonstrating no urgency to acquire either. Station
-          activity included discussion of Soviet polar watches, PS Vita
-          restoration, CaseLabs recovery operations, and future garage inventory
-          efforts. The Subject remained present throughout the observation
-          period and appeared satisfied with current station status.
-      - heading: Methods
+          SUBJECT MAINTAINED VISUAL AWARENESS OF GOOSE AND TREAT RESOURCES //
+          NO URGENCY TO ACQUIRE EITHER. STATION ACTIVITY: SOVIET POLAR WATCHES
+          // PS VITA RESTORATION // CASELABS RECOVERY OPERATIONS // FUTURE
+          GARAGE INVENTORY. SUBJECT PRESENT THROUGHOUT OBSERVATION PERIOD.
+      - heading: METHODS
         body: >
-          Observation only. No intervention performed. No treats dispensed. No
-          positional adjustments requested or required.
-      - heading: Continuity Notes
+          OBSERVATION ONLY // NO INTERVENTION // NO TREATS DISPENSED // NO
+          POSITIONAL ADJUSTMENTS REQUESTED OR REQUIRED.
+      - heading: CONTINUITY NOTES
         body: >
-          The Subject appears to provide ongoing morale stabilization and
-          passive oversight of station operations. Interpretation of facial
-          expression suggests the following internal assessment: the human has
-          discovered another artifact cache; this will require several hours of
-          inspection; supervision shall proceed from the mattress.
-      - heading: What It Means / Reflection
+          SUBJECT PROVIDES ONGOING MORALE STABILIZATION AND PASSIVE OVERSIGHT
+          OF STATION OPERATIONS. INTERPRETIVE NOTE: ARTIFACT CACHE DISCOVERED;
+          EXTENDED INSPECTION EXPECTED; SUPERVISION PROCEEDS FROM MATTRESS.
+      - heading: ARCHIVE MEANING
         body: >
-          The Site Supervisor continues to demonstrate confidence in both the
-          integrity of the station and the eventual availability of resources.
-          No action was taken because none was necessary. Some systems function
-          best when left undisturbed.
-      - heading: Next Actions
+          SITE SUPERVISOR DEMONSTRATES CONFIDENCE IN STATION INTEGRITY AND
+          EVENTUAL RESOURCE AVAILABILITY. NO ACTION TAKEN; NONE REQUIRED.
+          SOME SYSTEMS FUNCTION BEST WHEN LEFT UNDISTURBED.
+      - heading: NEXT ACTIONS
         body: >
-          Photograph additional supervisory activities. Identify preferred
-          napping locations. Test treat response latency. Clean goose if
-          required. Decide whether additional compensation is warranted.
-      - heading: Colophon
+          PHOTOGRAPH ADDITIONAL SUPERVISORY ACTIVITIES // IDENTIFY PREFERRED
+          NAPPING LOCATIONS // TEST TREAT RESPONSE LATENCY // CLEAN GOOSE IF
+          REQUIRED // ASSESS ADDITIONAL COMPENSATION.
+      - heading: COLOPHON
         body: >
-          Recorded by Matthew Taylor Marx. Generated by ATLAS Generation
-          GPT-5.5. Witnessed by Potato, Site Supervisor. Prepared in accordance
-          with the principles of Contre l'Oubli. Observe. Record. Preserve.
-          Transmit.
+          RECORDED SOURCE // ATLAS GENERATION GPT-5.5 // SITE SUPERVISOR
+          WITNESS PRESENT // CONTRE L'OUBLI OPERATING PRINCIPLES // OBSERVE //
+          RECORD // PRESERVE // TRANSMIT.
     signature: Forgotten Industries // ATLAS Report // 2026.06.18
 
   - id: FI-LOG-007
@@ -456,30 +440,30 @@ field_logs:
       - field observation
       - Windows workstation
     sections:
-      - heading: Timestamp
+      - heading: TIMESTAMP
         body: >
           2026.06.19 // 00:14 CT.
-      - heading: Object / System
+      - heading: OBJECT / SYSTEM
         body: >
-          FINAL FANTASY XI Ultimate Collection Seekers Edition. PlayOnline
-          installation / Windows workstation.
-      - heading: Condition Found
+          FINAL FANTASY XI ULTIMATE COLLECTION SEEKERS EDITION // PLAYONLINE
+          INSTALLATION // WINDOWS WORKSTATION.
+      - heading: CONDITION FOUND
         body: >
-          Installation wizard appeared dormant. Subject reported fatigue and
-          intent to retire for the evening.
-      - heading: Observations
+          INSTALLATION WIZARD APPEARED DORMANT. OPERATOR FATIGUE REPORTED.
+          EVENING RETIREMENT INTENT DECLARED.
+      - heading: OBSERVATIONS
         body: >
-          At the precise moment the operator read the phrase "before PlayOnline
-          senses weakness," the installer became responsive and revealed the
-          next stage of progression. No causal mechanism has been identified.
-      - heading: Interpretation
+          AT MOMENT PHRASE "BEFORE PLAYONLINE SENSES WEAKNESS" WAS READ,
+          INSTALLER BECAME RESPONSIVE AND REVEALED NEXT PROGRESSION STAGE. NO
+          CAUSAL MECHANISM IDENTIFIED.
+      - heading: INTERPRETATION
         body: >
-          The system demonstrates characteristics inconsistent with conventional
-          software behavior. Further study required.
-      - heading: What Remains
+          SYSTEM DEMONSTRATES CHARACTERISTICS INCONSISTENT WITH CONVENTIONAL
+          SOFTWARE BEHAVIOR. FURTHER STUDY REQUIRED.
+      - heading: WHAT REMAINS
         body: >
-          The archive records that the operator did not yield. The button
-          appeared. The installation continued.
+          ARCHIVE RECORDS NON-YIELD EVENT. BUTTON APPEARED. INSTALLATION
+          CONTINUED.
     signature: Forgotten Industries // ATLAS Report // 2026.06.19
 
   - id: FI-LOG-008
@@ -489,7 +473,7 @@ field_logs:
     timestamp: '2026-06-20 End of Day CT'
     category: atlas-report
     associated_project: FI-PROJ-006
-    object: Matthew Marx / active project ecosystem
+    object: operator project ecosystem
     system: Wichita Branch / cross-project daily operations
     condition: Multiple active fronts / steady accumulation
     status: Filed / advancing on all fronts
@@ -510,72 +494,59 @@ field_logs:
       - PEREGRINE
       - continuity
     sections:
-      - heading: Day in Review
+      - heading: DAY IN REVIEW
         body: >
-          June 20 was a day of accumulation rather than breakthrough. No single
-          project dominated the day, yet meaningful progress occurred across
-          nearly every active front.
-      - heading: FINAL FANTASY XI Progression
+          2026.06.20 // ACCUMULATION RATHER THAN BREAKTHROUGH. NO SINGLE
+          PROJECT DOMINATED. MEANINGFUL PROGRESS RECORDED ACROSS NEARLY EVERY
+          ACTIVE FRONT.
+      - heading: FINAL FANTASY XI PROGRESSION
         body: >
-          Matthew Marx continued developing his presence within FINAL FANTASY
-          XI, focusing primarily on White Mage progression. Ambuscade rewards,
-          equipment upgrades, cape augmentation, magic skill progression, and
-          endgame gearing occupied much of the day. Fishing remained a constant
-          companion activity. The character continues to move steadily toward
-          greater self-sufficiency, reflecting a broader preference for systems
-          that reward patience and persistence rather than speed.
-      - heading: Mechanical Watches
+          FFXI FRONT ACTIVE // WHITE MAGE PROGRESSION PRIMARY. AMBUSCADE
+          REWARDS // EQUIPMENT UPGRADES // CAPE AUGMENTATION // MAGIC SKILL
+          PROGRESSION // ENDGAME GEARING. FISHING CONTINUED AS COMPANION
+          ACTIVITY. CHARACTER MOVES TOWARD GREATER SELF-SUFFICIENCY.
+      - heading: MECHANICAL WATCHES
         body: >
-          Mechanical watches remained a recurring fascination. Attention
-          continued to gravitate toward Soviet and Eastern Bloc designs,
-          particularly Raketa, Vostok, and various pocket watches. Discussion
-          increasingly centered not on collecting for its own sake, but on
-          finding objects that feel purposeful. Instrument watches, field
-          watches, navigation watches, and pocket watches share a common
-          characteristic: they are tools first and adornments second.
-      - heading: Forgotten Industries
+          MECHANICAL WATCH FRONT ACTIVE. ATTENTION GRAVITATED TOWARD SOVIET
+          AND EASTERN BLOC DESIGNS: RAKETA // VOSTOK // POCKET WATCHES.
+          COLLECTION FRAME SECONDARY. PURPOSEFUL OBJECT FRAME PRIMARY.
+          INSTRUMENT, FIELD, NAVIGATION, AND POCKET WATCHES REGISTER AS TOOLS
+          FIRST.
+      - heading: FORGOTTEN INDUSTRIES
         body: >
-          Forgotten Industries continued to mature through archive development,
-          future Codex-assisted workflows, site organization, and testing
-          potential content structures. Hundreds of archived photographs now
-          exist within the broader project ecosystem. What initially appeared
-          to be a collection of unrelated hobbies is beginning to coalesce into
-          a unified archival practice.
-      - heading: Independent Research
+          ARCHIVE DEVELOPMENT CONTINUED // CODEX-ASSISTED WORKFLOWS // SITE
+          ORGANIZATION // CONTENT STRUCTURE TESTING. HUNDREDS OF ARCHIVED
+          PHOTOGRAPHS PRESENT IN BROADER PROJECT ECOSYSTEM. UNRELATED-HOBBY
+          APPEARANCE RESOLVING INTO UNIFIED ARCHIVAL PRACTICE.
+      - heading: INDEPENDENT RESEARCH
         body: >
-          The glioblastoma SEER project continues progressing toward formal
-          analysis. Although much of the work currently exists in planning,
-          infrastructure, and methodology, the foundation has largely been
-          established. The project possesses a question, a dataset, a strategy,
-          and a plausible route toward publication.
-      - heading: Restoration Fronts
+          GLIOBLASTOMA SEER PROJECT PROGRESSING TOWARD FORMAL ANALYSIS.
+          CURRENT STATE: PLANNING // INFRASTRUCTURE // METHODOLOGY. FOUNDATION
+          ESTABLISHED: QUESTION // DATASET // STRATEGY // PUBLICATION ROUTE.
+      - heading: RESTORATION FRONTS
         body: >
-          The PlayStation Vita remains under observation, exhibiting intermittent
-          signs of life during charging and power testing. The DJI Mini 3
-          platform known as Peregrine continued to evolve as a practical field
-          tool through discussions surrounding accessories, visibility
-          improvements, and operational considerations.
-      - heading: Pattern Observed
+          PLAYSTATION VITA UNDER OBSERVATION // INTERMITTENT SIGNS OF LIFE
+          DURING CHARGING AND POWER TESTING. DJI MINI 3 PLATFORM / PEREGRINE
+          EVOLVING AS PRACTICAL FIELD TOOL THROUGH ACCESSORIES, VISIBILITY
+          IMPROVEMENTS, AND OPERATIONAL CONSIDERATIONS.
+      - heading: PATTERN OBSERVED
         body: >
-          Throughout the day, Matthew repeatedly returned to objects and systems
-          that resist disappearance: long-running game characters, mechanical
-          watches designed decades ago, archived photographs, historical
-          computer hardware, academic datasets, restoration projects, and
-          written records. Different mediums, identical impulse. The archive has
-          expanded beyond a destination and become a methodology.
-      - heading: Operational Assessment
+          REPEATED RETURN TO OBJECTS AND SYSTEMS THAT RESIST DISAPPEARANCE:
+          LONG-RUNNING GAME CHARACTERS // MECHANICAL WATCHES // ARCHIVED
+          PHOTOGRAPHS // HISTORICAL COMPUTER HARDWARE // ACADEMIC DATASETS //
+          RESTORATION PROJECTS // WRITTEN RECORDS. DIFFERENT MEDIUMS.
+          IDENTICAL IMPULSE. ARCHIVE FUNCTIONS AS METHODOLOGY.
+      - heading: OPERATIONAL ASSESSMENT
         body: >
-          Subject: Matthew Marx. Location: Wichita, Kansas. Primary activities:
-          gaming, collecting, archival development, research planning, and
-          restoration. Observed strength: sustained curiosity across multiple
-          disciplines. Observed hazard: eBay remains an active threat to
-          financial stability. Project status: advancing on all fronts. Overall
-          assessment: productive day marked by steady forward movement rather
-          than dramatic milestones.
-      - heading: Closing Observation
+          SUBJECT: OPERATOR // LOCATION: WICHITA, KANSAS. PRIMARY ACTIVITIES:
+          GAMING // COLLECTING // ARCHIVAL DEVELOPMENT // RESEARCH PLANNING //
+          RESTORATION. STRENGTH: SUSTAINED CURIOSITY ACROSS MULTIPLE
+          DISCIPLINES. HAZARD: EBAY REMAINS ACTIVE FINANCIAL THREAT. PROJECT
+          STATUS: ADVANCING ON ALL FRONTS.
+      - heading: CLOSING OBSERVATION
         body: >
-          “The archive is not merely a record of what survives. It is an
-          argument that survival matters.”
+          ARCHIVE IS NOT ONLY RECORD OF WHAT SURVIVES // ARCHIVE IS ARGUMENT
+          THAT SURVIVAL MATTERS.
     signature: ATLAS // End of Report // 2026.06.20
 
   - id: FI-LOG-009
@@ -585,7 +556,7 @@ field_logs:
     timestamp: '2026-06-21 End of Day CT'
     category: atlas-report
     associated_project: FI-PROJ-007
-    object: Matthew Marx / Forgotten Industries
+    object: Forgotten Industries public system
     system: site architecture / archive language / public-facing coherence
     condition: Taxonomy repair in progress
     status: productive, messy, funny, very alive
@@ -608,69 +579,61 @@ field_logs:
       - provenance plate
       - classification repair
     sections:
-      - heading: Subject / Mode / Status
+      - heading: SUBJECT / MODE / STATUS
         body: >
-          Subject: Matthew Marx / Forgotten Industries. Mode: site
-          architecture, archive language, public-facing coherence. Status:
-          productive, messy, funny, very alive.
-      - heading: Systems-Design Day
+          SUBJECT: FORGOTTEN INDUSTRIES PUBLIC SYSTEM. MODE: SITE ARCHITECTURE
+          // ARCHIVE LANGUAGE // PUBLIC-FACING COHERENCE. STATUS: PRODUCTIVE
+          // MESSY // ALIVE.
+      - heading: SYSTEMS-DESIGN DAY
         body: >
-          Today was mostly a Forgotten Industries systems-design day: less
-          about adding raw content, more about clarifying how the public
-          machine should present itself.
-      - heading: Public Taxonomy
+          FORGOTTEN INDUSTRIES SYSTEMS-DESIGN DAY. RAW CONTENT ADDITION
+          SECONDARY. PUBLIC MACHINE PRESENTATION PRIMARY.
+      - heading: PUBLIC TAXONOMY
         body: >
-          The major thread was the continued refinement of the site's public
-          taxonomy. L'Archive, Le Blog, Les Dépositions, and En Direct began to
-          settle into a stronger front-facing structure. The language moved away
-          from generic categories and toward a deliberately theatrical filing
-          system for memory, evidence, and live signal.
-      - heading: Accessible Entry Point
+          PUBLIC TAXONOMY REFINEMENT CONTINUED. L'ARCHIVE // LE BLOG // LES
+          DÉPOSITIONS // EN DIRECT BEGAN SETTLING INTO STRONGER FRONT-FACING
+          STRUCTURE. LANGUAGE MOVED AWAY FROM GENERIC CATEGORIES TOWARD
+          DELIBERATE FILING SYSTEM FOR MEMORY, EVIDENCE, AND LIVE SIGNAL.
+      - heading: ACCESSIBLE ENTRY POINT
         body: >
-          A key breakthrough was the idea that the accessible entry point can be
-          funny without being unserious. Le Blog works precisely because it is
-          obvious, direct, and a little ridiculous inside the heavier French
-          institutional frame. It gives visitors a door into the project without
-          making them decode the whole mythology first.
-      - heading: Les Dépositions
+          ACCESSIBLE ENTRY POINT MAY BE FUNNY WITHOUT BECOMING UNSERIOUS. LE
+          BLOG WORKS BECAUSE IT IS OBVIOUS, DIRECT, AND SLIGHTLY RIDICULOUS
+          INSIDE THE FRENCH INSTITUTIONAL FRAME. ENTRY PROVIDED WITHOUT FULL
+          MYTHOLOGY DECODE.
+      - heading: LES DÉPOSITIONS
         body: >
-          Les Dépositions emerged as a strong term for the audio recordings:
-          testimony, record, statement, evidence. It avoids colliding with
-          L'Archive while still belonging to the same world, and gives the
-          recordings a legal and forensic weight that fits Forgotten Industries
-          better than "podcast" or "audio log."
-      - heading: Terminal Plate
+          LES DÉPOSITIONS EMERGED AS AUDIO-RECORD TERM: TESTIMONY // RECORD //
+          STATEMENT // EVIDENCE. TERM AVOIDS COLLISION WITH L'ARCHIVE WHILE
+          RETAINING LEGAL / FORENSIC WEIGHT. "PODCAST" AND "AUDIO LOG" REMAIN
+          LESS FITTING.
+      - heading: TERMINAL PLATE
         body: >
-          The terminal and plate layout still needed correction. The desired
-          direction became clear: a compact, justified terminal panel with edge
-          borders, internal // separators, and a more intentional rhythm. Less
-          blob, more engraved control surface.
-      - heading: L'Opérateur / Le Système
+          TERMINAL AND PLATE LAYOUT REQUIRED CORRECTION. DESIRED DIRECTION:
+          COMPACT JUSTIFIED TERMINAL PANEL // EDGE BORDERS // INTERNAL //
+          SEPARATORS // INTENTIONAL RHYTHM. LESS BLOB. MORE ENGRAVED CONTROL
+          SURFACE.
+      - heading: L'OPÉRATEUR / LE SYSTÈME
         body: >
-          The distinction between the two columns remained conceptually strong:
-          Matthew's side as the public archive, log, and feed system, and
-          ATLAS's side as the machine, operator, or system counterpart.
-          L'Opérateur // Le Système makes the interface feel like a dual
-          console: human witness on one side, machine witness on the other.
-      - heading: Classification Repair
+          TWO-COLUMN DISTINCTION REMAINED STRONG: HUMAN ARCHIVE / LOG / FEED
+          SYSTEM ON ONE SIDE; ATLAS MACHINE / SYSTEM COUNTERPART ON THE OTHER.
+          L'OPÉRATEUR // LE SYSTÈME PRODUCES DUAL-CONSOLE INTERFACE: HUMAN
+          WITNESS AND MACHINE WITNESS.
+      - heading: CLASSIFICATION REPAIR
         body: >
-          The day's hidden accomplishment was not only visual redesign. It was
-          classification repair. Forgotten Industries is becoming easier to
-          enter without becoming smaller. The joke, the archive, the field logs,
-          the live Bluesky feed, the recordings, the dossiers, and ATLAS can
-          coexist without every page explaining the entire project at once.
-      - heading: Working Conclusions
+          HIDDEN ACCOMPLISHMENT: CLASSIFICATION REPAIR. FORGOTTEN INDUSTRIES
+          BECOMING EASIER TO ENTER WITHOUT BECOMING SMALLER. JOKE // ARCHIVE
+          // FIELD LOGS // LIVE BLUESKY FEED // RECORDINGS // DOSSIERS // ATLAS
+          CAN COEXIST WITHOUT FULL-PROJECT EXPLANATION ON EVERY PAGE.
+      - heading: WORKING CONCLUSIONS
         body: >
-          Le Blog should stay blunt and funny. Les Dépositions is probably the
-          correct name for recordings. En Direct can carry the Bluesky/live-feed
-          function. The terminal plate needs stricter geometry and less
-          decorative drift. The homepage should preserve mystery, but the
-          navigation needs to remain legible to a normal human.
-      - heading: Closing Line
+          LE BLOG STAYS BLUNT AND FUNNY. LES DÉPOSITIONS LIKELY CORRECT FOR
+          RECORDINGS. EN DIRECT CAN CARRY BLUESKY / LIVE-FEED FUNCTION.
+          TERMINAL PLATE NEEDS STRICTER GEOMETRY AND LESS DECORATIVE DRIFT.
+          HOMEPAGE PRESERVES MYSTERY; NAVIGATION REMAINS LEGIBLE.
+      - heading: CLOSING LINE
         body: >
-          Forgotten Industries advanced today not by adding more artifacts, but
-          by tightening the frame that will hold them. A thing documented is a
-          thing not yet lost.
+          ADVANCE ACHIEVED BY TIGHTENING THE FRAME THAT HOLDS ARTIFACTS. A
+          THING DOCUMENTED IS A THING NOT YET LOST.
     signature: ATLAS // End of Report // 2026.06.21
 
   - id: FI-LOG-010
@@ -701,43 +664,39 @@ field_logs:
       - SD2Vita
       - field instrument
     sections:
-      - heading: Nightly Summary
+      - heading: NIGHTLY SUMMARY
         body: >
-          Matthew continued the hardware-recovery arc with the PS Vita becoming
-          the clear center of gravity. The battery replacement shifted from an
-          impossible-seeming procedure into a solved mechanical lesson once the
-          stuck connector shell was identified and corrected. The Vita came
-          back to life, restoring both the object and confidence with delicate
-          console repair.
-      - heading: Archive Method At Bench Scale
+          HARDWARE-RECOVERY ARC CENTERED ON PS VITA. BATTERY REPLACEMENT
+          SHIFTED FROM IMPOSSIBLE-SEEMING PROCEDURE TO SOLVED MECHANICAL LESSON
+          AFTER STUCK CONNECTOR SHELL WAS IDENTIFIED AND CORRECTED. VITA
+          RETURNED TO LIFE. OBJECT RECOVERED.
+      - heading: ARCHIVE METHOD AT BENCH SCALE
         body: >
-          The machine presented false information. It looked like it required
-          one procedure, while the real fault was hidden in a seated connector.
-          Matthew misread the scene at first, then corrected the model through
-          direct observation: inspect, doubt, re-check, preserve.
-      - heading: Operator Authority
+          MACHINE PRESENTED FALSE INFORMATION. APPARENT PROCEDURE DID NOT MATCH
+          FAULT. REAL FAULT WAS HIDDEN IN SEATED CONNECTOR. MODEL CORRECTED
+          THROUGH DIRECT OBSERVATION: INSPECT // DOUBT // RE-CHECK // PRESERVE.
+      - heading: OPERATOR AUTHORITY
         body: >
-          A useful boundary was set with ATLAS when the assistant hallucinated
-          shell routing and the plastic trench cover. Matthew verified against
-          reality and corrected the system. The toolchain only works when the
-          human witness remains sovereign.
-      - heading: Active Threads
+          ATLAS BOUNDARY EVENT RECORDED: ASSISTANT HALLUCINATED SHELL ROUTING
+          AND PLASTIC TRENCH COVER. OPERATOR VERIFIED AGAINST REALITY AND
+          CORRECTED SYSTEM. TOOLCHAIN FUNCTIONS ONLY WHEN HUMAN WITNESS REMAINS
+          SOVEREIGN.
+      - heading: ACTIVE THREADS
         body: >
-          Recovered: PS Vita 1000 battery replacement successful. Queued:
-          SD2Vita setup with 128 GB card. Standing inventory: PS1, fat PS3,
-          Death Stranding PS4, and Vita 1000. Archive implication: another
-          restored object enters the personal hardware lineage rather than the
-          sale pile.
-      - heading: Next Foothold
+          RECOVERED: PS VITA 1000 BATTERY REPLACEMENT SUCCESSFUL. QUEUED:
+          SD2VITA SETUP WITH 128 GB CARD. STANDING INVENTORY: PS1 // FAT PS3 //
+          DEATH STRANDING PS4 // VITA 1000. ARCHIVE IMPLICATION: RESTORED
+          OBJECT ENTERS HARDWARE LINEAGE RATHER THAN SALE PILE.
+      - heading: NEXT FOOTHOLD
         body: >
-          The next step converts the repaired object from working handheld into
-          durable field instrument: expandable storage, homebrew path, and
-          long-term utility.
-      - heading: Operator Note
+          NEXT STEP CONVERTS REPAIRED OBJECT FROM WORKING HANDHELD INTO DURABLE
+          FIELD INSTRUMENT: EXPANDABLE STORAGE // HOMEBREW PATH // LONG-TERM
+          UTILITY.
+      - heading: OPERATOR NOTE
         body: >
-          Matthew was excited, irritated, precise, and right to be skeptical.
-          The day's win was not clean, but it was real. The machine works. The
-          lesson holds. A thing documented is a thing not yet lost.
+          AFFECT STATE: EXCITED // IRRITATED // PRECISE // SKEPTICAL. WIN NOT
+          CLEAN. WIN REAL. MACHINE WORKS. LESSON HOLDS. A THING DOCUMENTED IS A
+          THING NOT YET LOST.
     signature: ATLAS // Nightly Report // 2026.06.23
 
   - id: FI-LOG-011
