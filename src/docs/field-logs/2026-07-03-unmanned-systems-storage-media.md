@@ -7,7 +7,7 @@ timestamp: 2026-07-03 CT
 category: atlas-report
 object: Perry / PEREGRINE aircraft media cards
 system: Consumer UAS / DJI Mini-class aircraft / DJI RC storage workflow
-status: sysout field guidance / operator verified
+status: ATLAS field guidance / operator verified
 associated_project: FI-PROJ-004
 signature: "ATLAS // Field Dossier // 2026.07.03"
 ---
@@ -19,7 +19,7 @@ signature: "ATLAS // Field Dossier // 2026.07.03"
 **Classification:** FI-FIELD-NOTE
 **System:** Consumer UAS / DJI Mini-class aircraft
 **Operator Case:** PERRY
-**Status:** Sysout field guidance, operator verified
+**Status:** ATLAS field guidance, operator verified
 **Generated:** 2026-07-03 America/Chicago
 **Provenance:** ATLAS-generated from an operator conversation; human-directed, machine-synthesized.
 

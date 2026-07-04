@@ -1,27 +1,27 @@
 ---
 layout: base.njk
 title: ATLAS Reports
-description: "SYSOUT index for ATLAS reports: completed work, recovered evidence, decisions, unresolved questions, and next actions."
+description: "ATLAS index for completed work, recovered evidence, decisions, unresolved questions, and next actions."
 permalink: /atlas/index.html
 eleventyExcludeFromCollections: true
 ---
 {% set logs = archive.fieldLogs | fieldLogsNewest %}
-<section class="masthead field-log-sysout-shell field-log-sysout-masthead atlas-sysout-index">
+<section class="masthead field-log-atlas-shell field-log-atlas-masthead atlas-voice-index">
   <div class="section-inner">
-    <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>SYSOUT / ATLAS INDEX</p>
+    <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>ATLAS / REPORT INDEX</p>
     <h1>ATLAS REPORTS</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
 
-<section class="source-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-panel" aria-labelledby="field-logs-status">
+<section class="source-band field-log-atlas-shell field-log-atlas-panel atlas-voice-panel" aria-labelledby="field-logs-status">
   <div class="section-inner band-grid">
     <div>
       <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>{{ archive.fieldLogs | countLabel("record", "records") }}</p>
       <h2 id="field-logs-status">REPORT CHANNEL // OPERATOR VERIFIED</h2>
     </div>
 
-    <div class="callout field-log-sysout-callout">
+    <div class="callout field-log-atlas-callout">
       <h3>ATLAS // REPORT QUEUE</h3>
       <p>SYSTEM OUTPUT // EVIDENCE // DECISIONS // UNRESOLVED QUESTIONS // NEXT ACTIONS</p>
       <p>HUMAN JUDGMENT PRIMARY // MACHINE COLLABORATION VISIBLE // RECORDS INSPECTABLE</p>
@@ -30,7 +30,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="archive-search-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-search" aria-labelledby="field-log-filter-heading">
+<section class="archive-search-band field-log-atlas-shell field-log-atlas-panel atlas-voice-search" aria-labelledby="field-log-filter-heading">
   <div class="section-inner">
     <div class="archive-search-shell">
       <div class="archive-search-intro">
@@ -88,7 +88,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="evidence-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-list" aria-labelledby="field-logs-list">
+<section class="evidence-band field-log-atlas-shell field-log-atlas-panel atlas-voice-list" aria-labelledby="field-logs-list">
   <div class="section-inner">
     <div class="field-notes-heading">
       <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>NEWEST RECORDS</p>
@@ -150,7 +150,7 @@ eleventyExcludeFromCollections: true
       {% endfor %}
     </ol>
     {% else %}
-    <div class="callout field-note-empty field-log-sysout-callout">
+    <div class="callout field-note-empty field-log-atlas-callout">
       <h3>NO ATLAS REPORTS YET</h3>
       <p>ROUTE ACTIVE // WAITING FOR DATED REPORT SOURCE.</p>
     </div>
@@ -158,7 +158,7 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="source-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-groups" aria-labelledby="field-log-groups-heading">
+<section class="source-band field-log-atlas-shell field-log-atlas-panel atlas-voice-groups" aria-labelledby="field-log-groups-heading">
   <div class="section-inner">
     <div class="field-notes-heading">
       <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>GROUPED BY TYPE</p>
