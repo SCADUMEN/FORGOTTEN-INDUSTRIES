@@ -11,22 +11,22 @@ eleventyComputed:
   canonical: "{{ site.domainUrl }}/field-logs/{{ log.slug }}/"
 ---
 {% set project = archive.projects | findById(log.associated_project) %}
-<section class="masthead">
+<section class="masthead field-log-sysout-shell field-log-sysout-masthead">
   <div class="section-inner">
-    <p class="section-label">ATLAS Report / {{ log.id }}</p>
+    <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>SYSOUT / {{ log.id }}</p>
     <h1>{{ log.title }}</h1>
     <p class="tagline">{{ log.summary or "End-of-day ATLAS operational summary." }}</p>
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-log-record-heading">
+<section class="source-band field-log-sysout-shell field-log-sysout-panel" aria-labelledby="field-log-record-heading">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Source record</p>
-      <h2 id="field-log-record-heading">Evidence before interpretation.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>Source record</p>
+      <h2 id="field-log-record-heading">SOURCE RECORD // READY</h2>
     </div>
 
-    <dl class="record-meta-grid">
+    <dl class="record-meta-grid record-meta-grid-sysout">
       <div>
         <dt>Date</dt>
         <dd><time datetime="{{ log.date }}">{{ log.timestamp or log.date }}</time></dd>
@@ -78,11 +78,11 @@ eleventyComputed:
   </div>
 </section>
 
-<section class="evidence-band" aria-labelledby="field-log-body-heading">
+<section class="evidence-band field-log-sysout-shell field-log-sysout-panel" aria-labelledby="field-log-body-heading">
   <div class="section-inner">
     <div class="field-notes-heading">
-      <p class="section-label">ATLAS Report</p>
-      <h2 id="field-log-body-heading">The durable report belongs here.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>ATLAS Field Dossier</p>
+      <h2 id="field-log-body-heading">SYSTEM OUTPUT // FIELD INSTRUMENT</h2>
     </div>
 
     {% if log.tags and log.tags.length %}
@@ -93,30 +93,29 @@ eleventyComputed:
     </p>
     {% endif %}
 
-    <article class="field-log-body">
+    <article class="field-log-body field-log-body-sysout">
       {% for section in log.sections %}
       <section>
-        <h3>{{ section.heading }}</h3>
+        <h3><span class="fi-prompt-marker">&gt;</span>{{ section.heading }}</h3>
         <p>{{ section.body }}</p>
       </section>
       {% endfor %}
     </article>
 
-    {% set aiCitationLabel = archive.atlasReportProvenance.classification %}
-    {% set aiCitationDisclosure = archive.atlasReportProvenance.disclosure %}
-    {% set aiCitationReference %}Matthew Taylor Marx, director and editor. “{{ log.title }}.” ATLAS Report, generated with ATLAS through OpenAI ChatGPT; repository publication assisted by OpenAI Codex. Forgotten Industries, {{ log.date }}.{% endset %}
-    {% include "ai-citation.njk" %}
+    <aside class="field-log-sysout-provenance" role="note" aria-label="ATLAS provenance">
+      <p><span class="fi-prompt-marker">&gt;</span>PROVENANCE // HUMAN JUDGMENT // MACHINE COLLABORATION // OPERATOR VERIFIED</p>
+    </aside>
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-log-source-heading">
+<section class="source-band field-log-sysout-shell field-log-sysout-panel" aria-labelledby="field-log-source-heading">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Record metadata</p>
-      <h2 id="field-log-source-heading">Source record remains inspectable.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>Record metadata</p>
+      <h2 id="field-log-source-heading">INSPECTABLE SOURCE // CANONICAL</h2>
     </div>
 
-    <div class="callout">
+    <div class="callout field-log-sysout-callout">
       <h3>{{ log.signature }}</h3>
       <p>Canonical source: <a href="/src/data/field-logs.yml">src/data/field-logs.yml</a></p>
       {% if log.source_path %}
