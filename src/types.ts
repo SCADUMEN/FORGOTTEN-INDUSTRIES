@@ -31,6 +31,13 @@ export interface LoopConcept {
   preferences: string[]
 }
 
+export interface ProofOfConcept {
+  thesis: string
+  build_direction: string[]
+  time_capsule_option: string[]
+  decision_rule: string
+}
+
 export interface ProjectSourceLink {
   label: string
   type: 'local' | 'git' | 'document' | string
@@ -55,6 +62,7 @@ export interface ArchiveProject {
   source_links?: ProjectSourceLink[]
   layout_goals?: string[]
   loop_concept?: LoopConcept
+  proof_of_concept?: ProofOfConcept
   documentation_style: string[]
 }
 
