@@ -16,11 +16,11 @@ signature: "ATLAS // Field Dossier // 2026.07.03"
 
 ## Quick Start Guide for Aircraft + Ground Controller microSD Use
 
-**Classification:** FI-FIELD-NOTE  
-**System:** Consumer UAS / DJI Mini-class aircraft  
-**Operator Case:** PERRY  
-**Status:** Draft v1.0, normalized for publication  
-**Generated:** 2026-07-03 America/Chicago  
+**Classification:** FI-FIELD-NOTE
+**System:** Consumer UAS / DJI Mini-class aircraft
+**Operator Case:** PERRY
+**Status:** Draft v1.0, normalized for publication
+**Generated:** 2026-07-03 America/Chicago
 **Provenance:** ATLAS-generated from an operator conversation; human-directed, machine-synthesized.
 
 > **Rule:** The aircraft card is the evidence. The controller card is the convenience.
