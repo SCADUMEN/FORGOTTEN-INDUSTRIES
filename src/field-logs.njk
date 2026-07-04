@@ -1,43 +1,43 @@
 ---
 layout: base.njk
 title: ATLAS Reports
-description: "AI-assisted end-of-day summaries from Forgotten Industries: completed work, recovered evidence, decisions, and next actions."
+description: "SYSOUT index for ATLAS reports: completed work, recovered evidence, decisions, unresolved questions, and next actions."
 permalink: /atlas/index.html
 eleventyExcludeFromCollections: true
 ---
 {% set logs = archive.fieldLogs | fieldLogsNewest %}
-<section class="masthead">
+<section class="masthead field-log-sysout-shell field-log-sysout-masthead atlas-sysout-index">
   <div class="section-inner">
-    <p class="section-label">Le Signal / operational summary</p>
-    <h1>ATLAS Reports</h1>
+    <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>SYSOUT / ATLAS INDEX</p>
+    <h1>ATLAS REPORTS</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-logs-status">
+<section class="source-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-panel" aria-labelledby="field-logs-status">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">{{ archive.fieldLogs | countLabel("record", "records") }}</p>
-      <h2 id="field-logs-status">End-of-day reports from ATLAS.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>{{ archive.fieldLogs | countLabel("record", "records") }}</p>
+      <h2 id="field-logs-status">REPORT CHANNEL // OPERATOR VERIFIED</h2>
     </div>
 
-    <div class="callout">
-      <h3>Daily Debrief</h3>
-      <p>ATLAS condenses the day's work into a durable operational summary.</p>
-      <p>Evidence, decisions, unresolved questions, and the next foothold.</p>
-      <p class="action-row"><a href="/field-logs/">Open Field Logs</a> / <a href="/archive/field-logs/">Open ATLAS Reports archive view</a></p>
+    <div class="callout field-log-sysout-callout">
+      <h3>ATLAS // REPORT QUEUE</h3>
+      <p>SYSTEM OUTPUT // EVIDENCE // DECISIONS // UNRESOLVED QUESTIONS // NEXT ACTIONS</p>
+      <p>HUMAN JUDGMENT PRIMARY // MACHINE COLLABORATION VISIBLE // RECORDS INSPECTABLE</p>
+      <p class="action-row"><a href="/field-logs/">OPEN FIELD LOGS</a> / <a href="/archive/field-logs/">OPEN ARCHIVE VIEW</a></p>
     </div>
   </div>
 </section>
 
-<section class="archive-search-band" aria-labelledby="field-log-filter-heading">
+<section class="archive-search-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-search" aria-labelledby="field-log-filter-heading">
   <div class="section-inner">
     <div class="archive-search-shell">
       <div class="archive-search-intro">
-        <p class="section-label">ATLAS Reports Index</p>
-        <h2 id="field-log-filter-heading">Newest first. Filter without leaving the page.</h2>
+        <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>ATLAS REPORTS INDEX</p>
+        <h2 id="field-log-filter-heading">FILTER MATRIX // NEWEST FIRST</h2>
         <p class="archive-search-meta">
-          Filter by text, tag, type, dossier, or status. Evidence before interpretation.
+          TEXT // TAG // TYPE // DOSSIER // STATUS. EVIDENCE BEFORE INTERPRETATION.
         </p>
       </div>
 
@@ -48,34 +48,34 @@ eleventyExcludeFromCollections: true
           name="q"
           type="search"
           autocomplete="off"
-          placeholder="Search logs, tags, systems, objects, or IDs"
+          placeholder="SEARCH REPORTS // TAGS // SYSTEMS // OBJECTS // IDS"
         >
-        <button type="reset">Clear</button>
+        <button type="reset">RESET</button>
       </form>
 
       <div class="field-log-filter-row" aria-label="Field log filters">
         <label>
-          <span>Type</span>
+          <span>TYPE</span>
           <select id="field-log-category">
-            <option value="">All types</option>
+            <option value="">ALL TYPES</option>
             {% for category in archive.fieldLogs | fieldLogCategories %}
             <option value="{{ category }}">{{ category }}</option>
             {% endfor %}
           </select>
         </label>
         <label>
-          <span>Dossier</span>
+          <span>DOSSIER</span>
           <select id="field-log-project">
-            <option value="">All dossiers</option>
+            <option value="">ALL DOSSIERS</option>
             {% for project in archive.projects %}
             <option value="{{ project.id }}">{{ project.title }}</option>
             {% endfor %}
           </select>
         </label>
         <label>
-          <span>Status</span>
+          <span>STATUS</span>
           <select id="field-log-status-filter">
-            <option value="">All status</option>
+            <option value="">ALL STATUS</option>
             {% for log in logs %}
             <option value="{{ log.status }}">{{ log.status }}</option>
             {% endfor %}
@@ -88,11 +88,11 @@ eleventyExcludeFromCollections: true
   </div>
 </section>
 
-<section class="evidence-band" aria-labelledby="field-logs-list">
+<section class="evidence-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-list" aria-labelledby="field-logs-list">
   <div class="section-inner">
     <div class="field-notes-heading">
-      <p class="section-label">Newest records</p>
-      <h2 id="field-logs-list">The operational summary lane.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>NEWEST RECORDS</p>
+      <h2 id="field-logs-list">SYSTEM OUTPUT // REPORT LANE</h2>
     </div>
 
     {% if logs.length %}
@@ -150,26 +150,26 @@ eleventyExcludeFromCollections: true
       {% endfor %}
     </ol>
     {% else %}
-    <div class="callout field-note-empty">
-      <h3>No ATLAS Reports Yet</h3>
-      <p>The route is active. Add a dated debrief when the daily summary is ready.</p>
+    <div class="callout field-note-empty field-log-sysout-callout">
+      <h3>NO ATLAS REPORTS YET</h3>
+      <p>ROUTE ACTIVE // WAITING FOR DATED REPORT SOURCE.</p>
     </div>
     {% endif %}
   </div>
 </section>
 
-<section class="source-band" aria-labelledby="field-log-groups-heading">
+<section class="source-band field-log-sysout-shell field-log-sysout-panel atlas-sysout-groups" aria-labelledby="field-log-groups-heading">
   <div class="section-inner">
     <div class="field-notes-heading">
-      <p class="section-label">Grouped by type</p>
-      <h2 id="field-log-groups-heading">Sections by category.</h2>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>GROUPED BY TYPE</p>
+      <h2 id="field-log-groups-heading">CATEGORY CHANNELS // INDEXED</h2>
     </div>
 
     <div class="field-log-group-grid">
       {% for category in archive.fieldLogs | fieldLogCategories %}
       {% set categoryLogs = archive.fieldLogs | byCategory(category) | fieldLogsNewest %}
       <section class="field-log-group">
-        <p class="section-label">{{ categoryLogs | countLabel("record", "records") }}</p>
+        <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>{{ categoryLogs | countLabel("record", "records") }}</p>
         <h3>{{ category }}</h3>
         <ol>
           {% for log in categoryLogs %}
