@@ -4457,6 +4457,25 @@ h3 {
   color: var(--fi-cyan);
 }
 
+/* The ZOOT door: an Old Standard TT italic fi ligature set into the mono
+   plate. letter-spacing must stay normal — tracking suppresses the OpenType
+   liga substitution that forms the single glyph. */
+.fi-provenance-plate a.fi-zoot-mark {
+  color: var(--fi-magenta);
+  font-family: 'Old Standard TT', serif;
+  font-size: 1.2em;
+  font-style: italic;
+  font-variant-ligatures: common-ligatures;
+  letter-spacing: normal;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.fi-provenance-plate a.fi-zoot-mark:hover,
+.fi-provenance-plate a.fi-zoot-mark:focus-visible {
+  color: var(--fi-cyan);
+}
+
 @media (max-width: 720px) {
   .fi-provenance-wrap {
     justify-content: center;
