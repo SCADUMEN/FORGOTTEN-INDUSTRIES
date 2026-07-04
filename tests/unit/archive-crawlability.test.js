@@ -183,7 +183,7 @@ describe('archive crawlability output', () => {
     })
   })
 
-  it('renders system provenance and sysout ATLAS report provenance', () => {
+  it('renders system provenance and ATLAS report provenance', () => {
     const archive = JSON.parse(
       fs.readFileSync(path.join(DIST, 'forgotten-industries.json'), 'utf8')
     )
@@ -205,7 +205,7 @@ describe('archive crawlability output', () => {
     expect(home).not.toContain('Git Commit')
     expect(home).not.toContain('Source Files')
     expect(home).not.toContain('>Social Evidence<')
-    expect(report).toContain('SYSOUT / FI-LOG-007')
+    expect(report).toContain('ATLAS / FI-LOG-007')
     expect(report).toContain('PROVENANCE // HUMAN JUDGMENT')
     expect(report).not.toContain('AI-generated synthesis with human direction')
     expect(entry).toContain('AI-assisted editorial collaboration')

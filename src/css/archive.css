@@ -2270,14 +2270,14 @@ h3 {
   white-space: pre-wrap;
 }
 
-.field-log-sysout-shell {
-  --sysout-panel-bg: rgb(var(--fi-scan-green-rgb) / 0.035);
-  --sysout-panel-border: rgb(var(--fi-green-rgb) / 0.2);
-  --sysout-panel-grid: rgb(var(--fi-green-rgb) / 0.09);
+.field-log-atlas-shell {
+  --atlas-panel-bg: rgb(var(--fi-scan-green-rgb) / 0.035);
+  --atlas-panel-border: rgb(var(--fi-green-rgb) / 0.2);
+  --atlas-panel-grid: rgb(var(--fi-green-rgb) / 0.09);
 }
 
-.field-log-sysout-masthead {
-  border-bottom: 1px solid var(--sysout-panel-border);
+.field-log-atlas-masthead {
+  border-bottom: 1px solid var(--atlas-panel-border);
   background:
     linear-gradient(var(--fi-screen-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--fi-screen-grid-line) 1px, transparent 1px),
@@ -2285,7 +2285,7 @@ h3 {
   background-size: 18px 18px;
 }
 
-.field-log-sysout-masthead h1 {
+.field-log-atlas-masthead h1 {
   max-width: 58rem;
   color: var(--fi-green-bright);
   font-family: var(--font-system);
@@ -2295,7 +2295,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.field-log-sysout-masthead .tagline {
+.field-log-atlas-masthead .tagline {
   max-width: 62rem;
   border-left: 2px solid var(--fi-magenta);
   padding-left: 1rem;
@@ -2305,8 +2305,8 @@ h3 {
   letter-spacing: 0.02em;
 }
 
-.field-log-sysout-panel .band-grid > :first-child h2,
-.field-log-sysout-panel .field-notes-heading h2 {
+.field-log-atlas-panel .band-grid > :first-child h2,
+.field-log-atlas-panel .field-notes-heading h2 {
   color: var(--fi-green-bright);
   font-family: var(--font-system);
   font-size: clamp(0.95rem, 1.8vw, 1.28rem);
@@ -2315,54 +2315,54 @@ h3 {
   text-transform: uppercase;
 }
 
-.field-log-sysout-panel .stamp {
+.field-log-atlas-panel .stamp {
   border-color: var(--fi-magenta-border-soft);
   background: var(--fi-magenta-wash-faint);
   color: var(--fi-green);
   font-family: var(--font-system);
 }
 
-.record-meta-grid-sysout {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.record-meta-grid-atlas {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
 }
 
-.record-meta-grid-sysout div {
+.record-meta-grid-atlas div {
   background: var(--fi-bg);
 }
 
-.record-meta-grid-sysout dt {
+.record-meta-grid-atlas dt {
   color: var(--fi-magenta);
   font-family: var(--font-system);
   letter-spacing: 0.12em;
 }
 
-.record-meta-grid-sysout dd {
+.record-meta-grid-atlas dd {
   color: var(--fi-green);
   font-family: var(--font-ui);
   font-weight: 500;
 }
 
-.field-log-body-sysout {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.field-log-body-atlas {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
   box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
 }
 
-.field-log-body-sysout section {
+.field-log-body-atlas section {
   border-left: 2px solid transparent;
   background: var(--fi-bg);
 }
 
-.field-log-body-sysout section:nth-child(odd) {
+.field-log-body-atlas section:nth-child(odd) {
   border-left-color: var(--fi-magenta);
 }
 
-.field-log-body-sysout section:nth-child(even) {
+.field-log-body-atlas section:nth-child(even) {
   border-left-color: var(--fi-green-border);
 }
 
-.field-log-body-sysout h3 {
+.field-log-body-atlas h3 {
   display: flex;
   align-items: baseline;
   gap: 0.35em;
@@ -2373,7 +2373,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.field-log-body-sysout p {
+.field-log-body-atlas p {
   color: var(--fi-green-bright);
   font-family: var(--font-system);
   font-size: 0.9rem;
@@ -2382,54 +2382,54 @@ h3 {
   text-transform: uppercase;
 }
 
-.field-log-sysout-provenance,
-.field-log-sysout-callout {
-  border: 1px solid var(--sysout-panel-border);
-  background: var(--sysout-panel-bg);
+.field-log-atlas-provenance,
+.field-log-atlas-callout {
+  border: 1px solid var(--atlas-panel-border);
+  background: var(--atlas-panel-bg);
   color: var(--fi-green);
   font-family: var(--font-system);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.field-log-sysout-provenance {
+.field-log-atlas-provenance {
   padding: 0.85rem 1rem;
 }
 
-.field-log-sysout-provenance p,
-.field-log-sysout-callout p {
+.field-log-atlas-provenance p,
+.field-log-atlas-callout p {
   margin: 0;
 }
 
-.field-log-sysout-callout h3 {
+.field-log-atlas-callout h3 {
   color: var(--fi-magenta);
   font-family: var(--font-system);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.field-log-sysout-callout a {
+.field-log-atlas-callout a {
   color: var(--fi-green-bright);
 }
 
-.atlas-sysout-index .tagline {
+.atlas-voice-index .tagline {
   text-transform: uppercase;
 }
 
-.atlas-sysout-panel .band-grid {
+.atlas-voice-panel .band-grid {
   align-items: stretch;
 }
 
-.atlas-sysout-search,
-.atlas-sysout-list,
-.atlas-sysout-groups {
-  border-top-color: var(--sysout-panel-border);
+.atlas-voice-search,
+.atlas-voice-list,
+.atlas-voice-groups {
+  border-top-color: var(--atlas-panel-border);
   background: var(--fi-bg);
 }
 
-.atlas-sysout-search .archive-search-shell {
+.atlas-voice-search .archive-search-shell {
   margin: 1.4rem 0;
-  border: 1px solid var(--sysout-panel-border);
+  border: 1px solid var(--atlas-panel-border);
   padding: 1rem;
   background:
     linear-gradient(var(--fi-screen-grid-line) 1px, transparent 1px),
@@ -2439,23 +2439,23 @@ h3 {
   box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
 }
 
-.atlas-sysout-search .archive-search-meta,
-.atlas-sysout-search .archive-search-status {
+.atlas-voice-search .archive-search-meta,
+.atlas-voice-search .archive-search-status {
   color: var(--fi-green);
   font-family: var(--font-system);
   letter-spacing: 0.08em;
 }
 
-.atlas-sysout-search .archive-search-form,
-.atlas-sysout-search .field-log-filter-row {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.atlas-voice-search .archive-search-form,
+.atlas-voice-search .field-log-filter-row {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
 }
 
-.atlas-sysout-search .archive-search-form input,
-.atlas-sysout-search .archive-search-form button,
-.atlas-sysout-search .field-log-filter-row label,
-.atlas-sysout-search .field-log-filter-row select {
+.atlas-voice-search .archive-search-form input,
+.atlas-voice-search .archive-search-form button,
+.atlas-voice-search .field-log-filter-row label,
+.atlas-voice-search .field-log-filter-row select {
   background: var(--fi-bg);
   color: var(--fi-green-bright);
   font-family: var(--font-system);
@@ -2463,63 +2463,63 @@ h3 {
   text-transform: uppercase;
 }
 
-.atlas-sysout-search .archive-search-form input,
-.atlas-sysout-search .field-log-filter-row select {
+.atlas-voice-search .archive-search-form input,
+.atlas-voice-search .field-log-filter-row select {
   border-color: var(--fi-green-border);
 }
 
-.atlas-sysout-search .archive-search-form input::placeholder {
+.atlas-voice-search .archive-search-form input::placeholder {
   color: var(--fi-green-muted);
 }
 
-.atlas-sysout-search .archive-search-form button {
-  border-left: 1px solid var(--sysout-panel-border);
+.atlas-voice-search .archive-search-form button {
+  border-left: 1px solid var(--atlas-panel-border);
   color: var(--fi-magenta);
 }
 
-.atlas-sysout-search .archive-search-form button:hover,
-.atlas-sysout-search .archive-search-form button:focus-visible {
+.atlas-voice-search .archive-search-form button:hover,
+.atlas-voice-search .archive-search-form button:focus-visible {
   background: var(--fi-magenta-wash-faint);
   color: var(--fi-green-bright);
 }
 
-.atlas-sysout-search .field-log-filter-row span {
+.atlas-voice-search .field-log-filter-row span {
   color: var(--fi-magenta);
   font-family: var(--font-system);
   letter-spacing: 0.12em;
 }
 
-.atlas-sysout-list .field-note-list {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.atlas-voice-list .field-note-list {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
   box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
 }
 
-.atlas-sysout-list .field-note-card {
+.atlas-voice-list .field-note-card {
   border-left: 2px solid transparent;
   background: var(--fi-bg);
 }
 
-.atlas-sysout-list .field-note-card:nth-child(odd) {
+.atlas-voice-list .field-note-card:nth-child(odd) {
   border-left-color: var(--fi-magenta);
 }
 
-.atlas-sysout-list .field-note-card:nth-child(even) {
+.atlas-voice-list .field-note-card:nth-child(even) {
   border-left-color: var(--fi-green-border);
 }
 
-.atlas-sysout-list .field-note-card header,
-.atlas-sysout-list .field-note-card footer {
+.atlas-voice-list .field-note-card header,
+.atlas-voice-list .field-note-card footer {
   color: var(--fi-green);
   font-family: var(--font-system);
   letter-spacing: 0.08em;
 }
 
-.atlas-sysout-list .field-note-card header span {
+.atlas-voice-list .field-note-card header span {
   color: var(--fi-magenta);
 }
 
-.atlas-sysout-list .field-note-card h3 {
+.atlas-voice-list .field-note-card h3 {
   margin: 0;
   font-family: var(--font-system);
   font-size: clamp(1rem, 1.8vw, 1.34rem);
@@ -2528,11 +2528,11 @@ h3 {
   text-transform: uppercase;
 }
 
-.atlas-sysout-list .field-note-card h3 a {
+.atlas-voice-list .field-note-card h3 a {
   color: var(--fi-green-bright);
 }
 
-.atlas-sysout-list .field-note-card p {
+.atlas-voice-list .field-note-card p {
   color: var(--fi-green-soft);
   font-family: var(--font-system);
   font-size: 0.82rem;
@@ -2541,69 +2541,69 @@ h3 {
   text-transform: uppercase;
 }
 
-.atlas-sysout-list .field-log-card-meta {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.atlas-voice-list .field-log-card-meta {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
 }
 
-.atlas-sysout-list .field-log-card-meta div {
+.atlas-voice-list .field-log-card-meta div {
   background: rgb(var(--fi-green-rgb) / 0.035);
 }
 
-.atlas-sysout-list .field-log-card-meta dt {
+.atlas-voice-list .field-log-card-meta dt {
   color: var(--fi-magenta);
   font-family: var(--font-system);
   letter-spacing: 0.1em;
 }
 
-.atlas-sysout-list .field-log-card-meta dd {
+.atlas-voice-list .field-log-card-meta dd {
   color: var(--fi-green-bright);
   font-family: var(--font-ui);
   font-weight: 500;
 }
 
-.atlas-sysout-list .tag-filter {
+.atlas-voice-list .tag-filter {
   border-bottom: 1px solid transparent;
   color: var(--fi-green);
   font-family: var(--font-system);
   letter-spacing: 0.06em;
 }
 
-.atlas-sysout-list .tag-filter:hover,
-.atlas-sysout-list .tag-filter:focus-visible {
+.atlas-voice-list .tag-filter:hover,
+.atlas-voice-list .tag-filter:focus-visible {
   border-bottom-color: var(--fi-magenta);
   color: var(--fi-magenta);
   text-decoration: none;
 }
 
-.atlas-sysout-groups .field-log-group-grid {
-  border-color: var(--sysout-panel-border);
-  background: var(--sysout-panel-grid);
+.atlas-voice-groups .field-log-group-grid {
+  border-color: var(--atlas-panel-border);
+  background: var(--atlas-panel-grid);
   box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
 }
 
-.atlas-sysout-groups .field-log-group {
+.atlas-voice-groups .field-log-group {
   border-left: 2px solid var(--fi-magenta);
   background: var(--fi-bg);
 }
 
-.atlas-sysout-groups .field-log-group h3 {
+.atlas-voice-groups .field-log-group h3 {
   color: var(--fi-green-bright);
   font-family: var(--font-system);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.atlas-sysout-groups .field-log-group ol {
+.atlas-voice-groups .field-log-group ol {
   color: var(--fi-green);
   font-family: var(--font-system);
 }
 
-.atlas-sysout-groups .field-log-group a {
+.atlas-voice-groups .field-log-group a {
   color: var(--fi-green-bright);
 }
 
-.atlas-sysout-groups .field-log-group li span {
+.atlas-voice-groups .field-log-group li span {
   color: var(--fi-magenta);
   font-family: var(--font-system);
   letter-spacing: 0.08em;

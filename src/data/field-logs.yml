@@ -708,9 +708,9 @@ field_logs:
     associated_project: FI-PROJ-004
     object: Perry / PEREGRINE aircraft media cards
     system: Consumer UAS / DJI Mini-class aircraft / DJI RC storage workflow
-    status: sysout field guidance / operator verified
+    status: ATLAS field guidance / operator verified
     summary: >
-      SYSOUT guidance for Perry-class drone storage: aircraft card as primary
+      ATLAS guidance for Perry-class drone storage: aircraft card as primary
       evidence record, controller card as secondary convenience storage, U3/V30
       microSDXC as field minimum.
     source_path: src/docs/field-logs/2026-07-03-unmanned-systems-storage-media.md
