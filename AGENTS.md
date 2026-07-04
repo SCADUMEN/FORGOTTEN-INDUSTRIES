@@ -16,7 +16,7 @@ Use repository instructions first, then local project guidance, then ATLAS voice
 ## Working notes
 
 - All source lives in `src/`: canonical YAML in `src/data/`, the Eleventy site, curated Markdown posts in `src/posts/`, and preserved raw HTML pages. `dist/` and `_site/` are generated — never edit them by hand.
-- Node is pinned by `.nvmrc` (24.13.0). Build the site with `npm run build:site`; serve locally with `npm run serve:site`.
+- Node is pinned by `.nvmrc` and `.node-version` (22); `package.json` engines allow `>=22`. Build the site with `npm run build:site`; serve locally with `npm run serve:site`.
 - Run `npm run pretty` before committing. Prettier must pass repo-wide.
 - To publish a post, add a dated Markdown file with front matter (`title`, `date`, `description`, `tags`) to `src/posts/` and rebuild. The post index, Atom feed (`/feed.xml`), and sitemap are generated from the collection.
 - Style new components with Tailwind utilities backed by the `@theme inline` tokens in `src/css/archive.css` (`text-oxide`, `font-headline`, ...). Legacy classes remain for existing pages.

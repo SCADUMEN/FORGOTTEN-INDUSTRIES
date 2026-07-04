@@ -3336,6 +3336,17 @@ h3 {
   animation-play-state: running;
 }
 
+/* Freeze the scrolling tickers under reduced-motion, even on hover/focus.
+   Declared after the base rules so equal-specificity selectors win the
+   cascade; `animation: none` removes the animation-name, so the hover
+   `animation-play-state: running` above has nothing left to run. */
+@media (prefers-reduced-motion: reduce) {
+  .primary-card-scan-track,
+  .homepage-instrument-stats .stat .homepage-stat-scan-track {
+    animation: none;
+  }
+}
+
 .homepage-instrument-stats .stat .homepage-stat-scan-segment {
   display: flex;
   align-items: center;
