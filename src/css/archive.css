@@ -2270,6 +2270,148 @@ h3 {
   white-space: pre-wrap;
 }
 
+.field-log-sysout-shell {
+  --sysout-panel-bg: rgb(var(--fi-scan-green-rgb) / 0.035);
+  --sysout-panel-border: rgb(var(--fi-green-rgb) / 0.2);
+  --sysout-panel-grid: rgb(var(--fi-green-rgb) / 0.09);
+}
+
+.field-log-sysout-masthead {
+  border-bottom: 1px solid var(--sysout-panel-border);
+  background:
+    linear-gradient(var(--fi-screen-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fi-screen-grid-line) 1px, transparent 1px),
+    var(--fi-bg);
+  background-size: 18px 18px;
+}
+
+.field-log-sysout-masthead h1 {
+  max-width: 58rem;
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
+  font-size: clamp(1.7rem, 4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.field-log-sysout-masthead .tagline {
+  max-width: 62rem;
+  border-left: 2px solid var(--fi-magenta);
+  padding-left: 1rem;
+  color: var(--fi-green-soft);
+  font-family: var(--font-ui);
+  font-size: clamp(0.92rem, 1.3vw, 1.06rem);
+  letter-spacing: 0.02em;
+}
+
+.field-log-sysout-panel .band-grid > :first-child h2,
+.field-log-sysout-panel .field-notes-heading h2 {
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
+  font-size: clamp(0.95rem, 1.8vw, 1.28rem);
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.field-log-sysout-panel .stamp {
+  border-color: var(--fi-magenta-border-soft);
+  background: var(--fi-magenta-wash-faint);
+  color: var(--fi-green);
+  font-family: var(--font-system);
+}
+
+.record-meta-grid-sysout {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+}
+
+.record-meta-grid-sysout div {
+  background: var(--fi-bg);
+}
+
+.record-meta-grid-sysout dt {
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  letter-spacing: 0.12em;
+}
+
+.record-meta-grid-sysout dd {
+  color: var(--fi-green);
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.field-log-body-sysout {
+  border-color: var(--sysout-panel-border);
+  background: var(--sysout-panel-grid);
+  box-shadow: -2px -2px 0 var(--fi-black-shadow-caption);
+}
+
+.field-log-body-sysout section {
+  border-left: 2px solid transparent;
+  background: var(--fi-bg);
+}
+
+.field-log-body-sysout section:nth-child(odd) {
+  border-left-color: var(--fi-magenta);
+}
+
+.field-log-body-sysout section:nth-child(even) {
+  border-left-color: var(--fi-green-border);
+}
+
+.field-log-body-sysout h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field-log-body-sysout p {
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
+  font-size: 0.9rem;
+  letter-spacing: 0.035em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.field-log-sysout-provenance,
+.field-log-sysout-callout {
+  border: 1px solid var(--sysout-panel-border);
+  background: var(--sysout-panel-bg);
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field-log-sysout-provenance {
+  padding: 0.85rem 1rem;
+}
+
+.field-log-sysout-provenance p,
+.field-log-sysout-callout p {
+  margin: 0;
+}
+
+.field-log-sysout-callout h3 {
+  color: var(--fi-magenta);
+  font-family: var(--font-system);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.field-log-sysout-callout a {
+  color: var(--fi-green-bright);
+}
+
 .field-note-empty {
   margin-bottom: 2rem;
 }
