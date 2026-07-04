@@ -49,6 +49,9 @@ export interface ProjectSourceLink {
 export interface ArchiveProject {
   id: string
   slug: string
+  // title is the short canonical name used in nav, cards, and headings.
+  // working_title is the optional longer, narrative descriptor (e.g. the
+  // original dossier headline) shown where fuller context is wanted.
   title: string
   working_title?: string
   category: string
