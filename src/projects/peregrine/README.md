@@ -16,6 +16,10 @@ The project-local files here hold richer source notes, aircraft registry data,
 templates, and repair context that should not be flattened into the main YAML
 until it has been confirmed.
 
+Published source notes:
+
+- `src/docs/field-logs/2026-07-03-unmanned-systems-storage-media.md` - FI-LOG-011, field guidance for aircraft and controller microSD use.
+
 ## Current Aircraft
 
 - Perry 1 / PEREGRINE-A01: DJI Mini 4K awning recovery and troubleshooting bird.
