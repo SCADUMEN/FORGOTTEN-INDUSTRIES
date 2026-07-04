@@ -16,23 +16,17 @@ test('home page renders', async ({ page }) => {
   ])
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.primary-card-mark')).toHaveText([
-    '// Archive //',
-    '// Work //',
-    '// Signal //',
-    '// About //',
+    '> The Archive',
+    '> The Work',
+    '> The Signal',
+    '> About',
   ])
-  const homepageStats = page.locator('.homepage-instrument-stats .stat')
-  await expect(homepageStats).toHaveCount(5)
-  await expect(homepageStats).toHaveText([
-    /Dossiers/,
-    /Manuel/,
-    /ATLAS Reports/,
-    /Build Checks/,
-    /Git Commits?/,
-  ])
-  await expect(page.locator('.homepage-masthead .hero-image')).toHaveAttribute(
-    'src',
-    '/assets/forgotten-industries.jpeg'
+  await expect(page.locator('.instrument-strip')).toHaveCount(0)
+  await expect(page.locator('.latest-activity')).toHaveCount(0)
+  await expect(page.locator('.open-stacks')).toHaveCount(0)
+  await expect(page.locator('.homepage-masthead .hero-mark')).toHaveAttribute(
+    'aria-label',
+    'Forgotten Industries logo, EST MMXIV'
   )
   await expect(page.locator('.site-footer a')).toHaveCount(1)
   await expect(
@@ -51,9 +45,11 @@ test('home page remains contained on mobile', async ({ page }) => {
   }))
 
   expect(dimensions.scrollWidth).toBe(dimensions.viewport)
-  await expect(page.locator('.homepage-masthead .hero-image')).toBeVisible()
+  await expect(page.locator('.homepage-masthead .hero-mark')).toBeVisible()
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
-  await expect(page.locator('.homepage-instrument-stats .stat')).toHaveCount(5)
+  await expect(page.locator('.instrument-strip')).toHaveCount(0)
+  await expect(page.locator('.latest-activity')).toHaveCount(0)
+  await expect(page.locator('.open-stacks')).toHaveCount(0)
   await expect(page.locator('.site-footer a')).toHaveCount(1)
 })
 
@@ -223,7 +219,7 @@ test('object records without photographs show a restrained placeholder', async (
   await expect(page.locator('.object-primary-figure')).toHaveCount(0)
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     'content',
-    'https://forgotten-industries.net/assets/forgotten-industries.jpeg'
+    'https://forgotten-industries.net/assets/forgotten-industries-noise.png'
   )
 })
 

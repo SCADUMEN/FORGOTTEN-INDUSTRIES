@@ -402,7 +402,7 @@ def write_social_index(records)
       <meta name="description" content="Imported Forgotten Industries Tumblr and Instagram posts.">
     </head>
     <body>
-      <img src="assets/forgotten-industries.jpeg" title="Forgotten Industries logo" alt="Forgotten Industries logo, EST MMXIV" style="width: 100%; height: auto; max-width: 1072px;">
+      <img src="assets/forgotten-industries.svg" title="Forgotten Industries logo" alt="Forgotten Industries logo, EST MMXIV" style="width: 100%; height: auto; max-width: 1072px;">
       <h1>Social Posts</h1>
       <p><a href="index.html">Home</a></p>
       <p>Imported from forgottenindustries.tumblr.com and instagram.com/forgottenindustries.</p>

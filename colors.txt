@@ -1,0 +1,15 @@
+Maroon		800000
+CornflowerBlue	6495ED
+RoyalBlue		4169E1
+Cyan			00FFFF
+Goldenrod		DAA520
+Ivory			FFFFF0
+AntiqueWhite	FAEBD7
+Silver		C0C0C0
+SlateGray		708090
+DarkGoldenrod	B8860B
+LimeGreen		32CD32
+Magenta		FF00FF
+Gold			FFD700
+DarkRed		8B0000
+FireBrick		B22222

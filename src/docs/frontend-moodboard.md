@@ -63,19 +63,19 @@ Design translation:
 
 ## Palette
 
-- Paper: `#02040a`
-- Ink: `#fff9e8`
-- Muted: `#d7d1ff`
-- Line: `#4f8cff`
-- Steel: `#84eaff`
-- Oxide: `#ff5bd6`
-- Brass: `#fff275`
-- Blueprint: `#67e8ff`
-- White / surface: `#081327`
+- Paper: `#000000`
+- Surface: `#020617`
+- Cyan: `#22d3ee`
+- Green: `#4ade80`
+- Amber: `#fbbf24`
+- Gold: `#f59e0b`
+- Magenta: `#e879f9`
+- Copper: `#c47a3a`
+- Slate: `#94a3b8`
 
-Use a dark archive surface by default, with warm ink, cyan-blue links, magenta evidence labels, and yellow focus states. The reference point is old operating-system high contrast: blue, pink, yellow, and black, but calmer and more readable.
+Use a black archive field by default, with blue-slate instrument surfaces, cyan records, green system output, amber interface states, gold testimony, magenta syntax, copper provenance, and slate secondary text. The reference point is old operating-system high contrast: terminal output, field-instrument phosphor, and archival labels, but calmer and more readable.
 
-The background may carry a faint scan/grid texture, but `prefers-contrast: more` should strip the texture back to a plain black surface and strengthen contrast.
+The background may carry a faint scan/grid texture, but `prefers-contrast: more` should strip the texture back to a plain V5 surface and strengthen contrast.
 
 ## Typography
 
