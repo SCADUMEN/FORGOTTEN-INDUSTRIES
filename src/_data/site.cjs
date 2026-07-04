@@ -8,8 +8,8 @@ function readCommand(command, fallback = 'unknown') {
   }
 }
 
-const SITE_TIME_ZONE = 'America/Chicago'
-const BUILD_STAMP_TIME_ZONE = 'UTC'
+// All build/provenance time is reported in UTC (labelled GMT) site-wide.
+const SITE_TIME_ZONE = 'UTC'
 
 function dateInTimeZone(date, timeZone) {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -165,7 +165,7 @@ module.exports = {
     hourCycle: 'h23',
   }).format(buildDate),
   buildStampDateDisplay: new Intl.DateTimeFormat('en-CA', {
-    timeZone: BUILD_STAMP_TIME_ZONE,
+    timeZone: SITE_TIME_ZONE,
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -173,7 +173,7 @@ module.exports = {
     .format(buildDate)
     .replaceAll('-', '.'),
   buildStampTimeDisplay: new Intl.DateTimeFormat('en-CA', {
-    timeZone: BUILD_STAMP_TIME_ZONE,
+    timeZone: SITE_TIME_ZONE,
     hour: '2-digit',
     minute: '2-digit',
     hourCycle: 'h23',

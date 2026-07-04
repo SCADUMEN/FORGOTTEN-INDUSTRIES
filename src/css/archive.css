@@ -2839,6 +2839,9 @@ h3 {
      fi mark is inset by the shared container margin to sit at the same x
      position as the header shield. */
   padding-left: max(16px, calc((100% - 1120px) / 2));
+  /* Mirror the left inset so the plate can right-align to the same content
+     container edge the fi mark aligns to on the left. */
+  padding-right: max(16px, calc((100% - 1120px) / 2));
   color: var(--muted);
   font-size: var(--mono-size);
 }
@@ -2848,6 +2851,7 @@ h3 {
     grid-template-columns: 1fr;
     justify-items: center;
     padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -4404,24 +4408,24 @@ h3 {
 
 .fi-provenance-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 2rem auto 0;
-  padding-inline: 1rem;
+  padding-inline: 0;
   overflow: visible;
   isolation: isolate;
 }
 
 .fi-provenance-plate {
   position: relative;
-  display: inline-block;
-  width: max-content;
+  display: block;
+  width: fit-content;
   min-width: 0;
-  max-width: calc(100vw - 3rem);
+  max-width: 100%;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0;
   padding: 0.95rem 1.65rem;
   overflow: visible;
   border: 1px solid var(--fi-green-border-faint);
@@ -4430,10 +4434,9 @@ h3 {
   color: var(--fi-green);
   font-family: var(--font-system);
   font-size: var(--homepage-mono-size);
-  line-height: 1.55;
+  line-height: 1.6;
   letter-spacing: 0.075em;
-  text-align: left;
-  white-space: pre;
+  text-align: center;
 }
 
 .fi-provenance-plate::before {
@@ -4446,13 +4449,22 @@ h3 {
   transform: translate(-10px, -8px);
 }
 
-.fi-provenance-plate code {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-  color: inherit;
-  font: inherit;
-  white-space: inherit;
+.fi-plate-row {
+  margin: 0;
+}
+
+.fi-plate-row + .fi-plate-row {
+  margin-top: 0.35rem;
+}
+
+.fi-plate-row + .fi-plate-meta {
+  margin-top: 0.7rem;
+}
+
+/* Keep "Hash 1db7632" and "Built … GMT" from breaking mid-unit; the row
+   itself wraps between units so the plate never forces horizontal scroll. */
+.fi-provenance-plate .fi-nowrap {
+  white-space: nowrap;
 }
 
 .fi-provenance-plate .sep {
