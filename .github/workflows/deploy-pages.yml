@@ -31,6 +31,13 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      # build:site runs scripts/build.rb, which needs Ruby. Pin the same
+      # version as CI instead of relying on the runner's default Ruby.
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
       - name: Install dependencies
         run: npm install
 

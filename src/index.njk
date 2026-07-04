@@ -20,63 +20,29 @@ canonical: https://forgotten-industries.net/
   </div>
 </section>
 
+{% set primaryCards = [
+  { href: "/l-archive/", title: "L'Archive", mark: "The Archive", terms: ["Object records", "Inventory", "Provenance", "Evidence"] },
+  { href: "/oeuvre/", title: "L'Œuvre", mark: "The Work", terms: ["Dossiers", "Manuscripts", "Assembled work"] },
+  { href: "/signal/", title: "Le Signal", mark: "The Signal", terms: ["Field logs", "ATLAS reports", "En direct", "Operator notes"] },
+  { href: "/apropos/", title: "À Propos", mark: "About", terms: ["Maker plate", "Method", "Provenance", "Contact"] }
+] %}
 <section class="primary-finding-aid" aria-label="Primary archive sections">
   <div class="section-inner primary-card-grid">
-    <a class="primary-section-card" href="/l-archive/">
+    {%- for card in primaryCards %}
+    <a class="primary-section-card" href="{{ card.href }}">
       <div class="primary-card-plate">
         <div class="primary-card-title-unit">
-          <h2>L'Archive</h2>
-          <strong class="primary-card-mark">&gt; The Archive</strong>
+          <h2>{{ card.title | safe }}</h2>
+          <strong class="primary-card-mark">&gt; {{ card.mark }}</strong>
         </div>
       </div>
       <span class="primary-card-scan" aria-hidden="true">
         <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Object records <span>//</span> Inventory <span>//</span> Provenance <span>//</span> Evidence</span>
-          <span class="primary-card-scan-segment">Object records <span>//</span> Inventory <span>//</span> Provenance <span>//</span> Evidence</span>
+          <span class="primary-card-scan-segment">{{ card.terms | join(" <span>//</span> ") | safe }}</span>
+          <span class="primary-card-scan-segment">{{ card.terms | join(" <span>//</span> ") | safe }}</span>
         </span>
       </span>
     </a>
-    <a class="primary-section-card" href="/oeuvre/">
-      <div class="primary-card-plate">
-        <div class="primary-card-title-unit">
-          <h2>L'Œuvre</h2>
-          <strong class="primary-card-mark">&gt; The Work</strong>
-        </div>
-      </div>
-      <span class="primary-card-scan" aria-hidden="true">
-        <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Dossiers <span>//</span> Manuscripts <span>//</span> Assembled work</span>
-          <span class="primary-card-scan-segment">Dossiers <span>//</span> Manuscripts <span>//</span> Assembled work</span>
-        </span>
-      </span>
-    </a>
-    <a class="primary-section-card" href="/signal/">
-      <div class="primary-card-plate">
-        <div class="primary-card-title-unit">
-          <h2>Le Signal</h2>
-          <strong class="primary-card-mark">&gt; The Signal</strong>
-        </div>
-      </div>
-      <span class="primary-card-scan" aria-hidden="true">
-        <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Field logs <span>//</span> ATLAS reports <span>//</span> En direct <span>//</span> Operator notes</span>
-          <span class="primary-card-scan-segment">Field logs <span>//</span> ATLAS reports <span>//</span> En direct <span>//</span> Operator notes</span>
-        </span>
-      </span>
-    </a>
-    <a class="primary-section-card" href="/apropos/">
-      <div class="primary-card-plate">
-        <div class="primary-card-title-unit">
-          <h2>À Propos</h2>
-          <strong class="primary-card-mark">&gt; About</strong>
-        </div>
-      </div>
-      <span class="primary-card-scan" aria-hidden="true">
-        <span class="primary-card-scan-track">
-          <span class="primary-card-scan-segment">Maker plate <span>//</span> Method <span>//</span> Provenance <span>//</span> Contact</span>
-          <span class="primary-card-scan-segment">Maker plate <span>//</span> Method <span>//</span> Provenance <span>//</span> Contact</span>
-        </span>
-      </span>
-    </a>
+    {%- endfor %}
   </div>
 </section>

@@ -8,6 +8,9 @@
   {% set metaOgType = page.url | ogTypeForUrl(ogType) %}
   {% set metaSchemaType = page.url | schemaTypeForUrl(schemaType, title, site.name) %}
   <meta charset="utf-8">
+  {# Compatibility routes redirect via JS (preserving query/hash). This is the
+     no-JS fallback: it auto-redirects without racing the body script. #}
+  {% if redirectTo %}<noscript><meta http-equiv="refresh" content="0; url={{ redirectTo }}"></noscript>{% endif %}
   <title>{{ metaTitle }}{% if metaTitle != site.name %} &mdash; {{ site.name }}{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ metaDescription }}">

@@ -31,7 +31,7 @@ This follows the same architectural pattern as Tyler Etters' discography repo: e
 
 ### Prerequisites
 
-- **Node.js** 24.13.0 (pinned via `.nvmrc` and `.node-version`)
+- **Node.js** 22 (pinned via `.nvmrc` and `.node-version`; `package.json` engines allow `>=22`)
 - **Ruby** (for YAML parsing; available on macOS by default)
 
 ### Build the Archive Data
@@ -124,13 +124,13 @@ The repository still contains older implementation names because they protect UR
 
 ### Development Stack
 
-| Tool             | Version | Purpose                                                                     |
-| ---------------- | ------- | --------------------------------------------------------------------------- |
-| **Node.js**      | 24.13.0 | Pinned via `.nvmrc` and `.node-version`; CI reads same                      |
-| **Eleventy**     | Latest  | Static site generator (CJS config: `eleventy.config.cjs`)                   |
-| **Tailwind CSS** | 4       | Styles the site; design tokens via `@theme inline` in `src/css/archive.css` |
-| **Prettier**     | Latest  | Code formatting with Tailwind class-sorting plugin                          |
-| **Ruby**         | System  | YAML parsing and build automation                                           |
+| Tool             | Version | Purpose                                                                      |
+| ---------------- | ------- | ---------------------------------------------------------------------------- |
+| **Node.js**      | 22      | Pinned via `.nvmrc` and `.node-version`; CI reads same; engines allow `>=22` |
+| **Eleventy**     | Latest  | Static site generator (CJS config: `eleventy.config.cjs`)                    |
+| **Tailwind CSS** | 4       | Styles the site; design tokens via `@theme inline` in `src/css/archive.css`  |
+| **Prettier**     | Latest  | Code formatting with Tailwind class-sorting plugin                           |
+| **Ruby**         | System  | YAML parsing and build automation                                            |
 
 ### Build & Deployment
 
