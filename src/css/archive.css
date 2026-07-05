@@ -3966,6 +3966,10 @@ h3 {
   margin-top: 1.8rem;
 }
 
+.oeuvre-directory-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .oeuvre-directory-grid > a {
   align-content: center;
   min-height: 12rem;
