@@ -4590,24 +4590,24 @@ h3 {
 
 .fi-provenance-wrap {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 2rem auto 0;
-  padding-inline: 0;
+  padding-inline: 1rem;
   overflow: visible;
   isolation: isolate;
 }
 
 .fi-provenance-plate {
   position: relative;
-  display: block;
-  width: fit-content;
+  display: inline-block;
+  width: max-content;
   min-width: 0;
-  max-width: 100%;
+  max-width: calc(100vw - 3rem);
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 auto;
   padding: 0.95rem 1.65rem;
   overflow: visible;
   border: 1px solid var(--fi-green-border-faint);
@@ -4616,9 +4616,10 @@ h3 {
   color: var(--fi-green);
   font-family: var(--font-system);
   font-size: var(--homepage-mono-size);
-  line-height: 1.6;
+  line-height: 1.55;
   letter-spacing: 0.075em;
-  text-align: center;
+  text-align: left;
+  white-space: pre;
 }
 
 .fi-provenance-plate::before {
@@ -4631,22 +4632,13 @@ h3 {
   transform: translate(-10px, -8px);
 }
 
-.fi-plate-row {
-  margin: 0;
-}
-
-.fi-plate-row + .fi-plate-row {
-  margin-top: 0.35rem;
-}
-
-.fi-plate-row + .fi-plate-meta {
-  margin-top: 0.7rem;
-}
-
-/* Keep "Hash 1db7632" and "Built … GMT" from breaking mid-unit; the row
-   itself wraps between units so the plate never forces horizontal scroll. */
-.fi-provenance-plate .fi-nowrap {
-  white-space: nowrap;
+.fi-provenance-plate code {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  color: inherit;
+  font: inherit;
+  white-space: inherit;
 }
 
 .fi-provenance-plate .sep {
