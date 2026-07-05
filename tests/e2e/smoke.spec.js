@@ -28,10 +28,16 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(1)
+  await expect(page.locator('.site-footer a')).toHaveCount(3)
   await expect(
     page.getByRole('link', { name: 'Provenance', exact: true })
   ).toHaveAttribute('href', '/provenance/')
+  await expect(
+    page.locator('.site-footer a[data-track="outbound-commit"]')
+  ).toHaveAttribute('href', /\/commit\/[0-9a-f]{7,}/)
+  await expect(
+    page.getByRole('link', { name: 'ZOOT', exact: true })
+  ).toHaveAttribute('href', '/zoot/')
 })
 
 test('home page remains contained on mobile', async ({ page }) => {
@@ -50,7 +56,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(1)
+  await expect(page.locator('.site-footer a')).toHaveCount(3)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -58,7 +64,7 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(1)
+    await expect(page.locator('.site-footer a')).toHaveCount(3)
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
     ).toHaveAttribute('href', '/provenance/')
@@ -260,8 +266,8 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   const response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  // Both dated manuscripts should be linked from the compatibility route.
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
+  // All dated manuscripts should be linked from the compatibility route.
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(3)
 })
 
 test('En Direct lands on the imported signal', async ({ page }) => {

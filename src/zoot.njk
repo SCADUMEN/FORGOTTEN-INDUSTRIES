@@ -1,0 +1,173 @@
+---
+permalink: /zoot/
+eleventyExcludeFromCollections: true
+title: ZOOT
+description: A non-linear instrument for reading the Forgotten Industries archive.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ZOOT &mdash; {{ site.name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ site.domainUrl }}/zoot/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+  <style>
+    /* Tokens sourced from src/css/archive.css:4-25 — that file is the source of
+       truth; this page deliberately does not load the shared stylesheet. */
+    :root {
+      color-scheme: dark;
+      --fi-bg: #000000;
+      --fi-surface: #020617;
+      --fi-cyan: #22d3ee;
+      --fi-green: #4ade80;
+      --fi-amber: #fbbf24;
+      --fi-gold: #f59e0b;
+      --fi-magenta: #e879f9;
+      --fi-paper-light: #f7f4ef;
+      --fi-white-rgb: 255 255 255;
+      --zoot-mono: 'Space Mono', ui-monospace, monospace;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--fi-bg);
+      color: var(--fi-paper-light);
+      font-family: var(--zoot-mono);
+      overflow: hidden;
+    }
+    #zoot-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      display: block;
+      touch-action: none;
+      cursor: crosshair;
+    }
+    #zoot-exit {
+      position: fixed;
+      left: max(1.25rem, env(safe-area-inset-left));
+      bottom: max(1.25rem, env(safe-area-inset-bottom));
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      color: var(--fi-paper-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      opacity: 0.3;
+      transition: opacity 160ms ease;
+      z-index: 3;
+    }
+    #zoot-exit:hover,
+    #zoot-exit:focus-visible {
+      opacity: 0.85;
+      outline: none;
+    }
+    #zoot-focus {
+      position: fixed;
+      max-width: min(26rem, calc(100vw - 2rem));
+      padding: 0.9rem 1rem;
+      background: rgb(2 6 23 / 0.92);
+      border: 1px solid rgb(var(--fi-white-rgb) / 0.18);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      z-index: 2;
+    }
+    #zoot-focus .zoot-focus-kind {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      opacity: 0.6;
+      margin-bottom: 0.35rem;
+    }
+    #zoot-focus .zoot-focus-title {
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    #zoot-focus a {
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
+      padding: 0 0.25rem;
+      color: var(--fi-cyan);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+    #zoot-focus a:hover,
+    #zoot-focus a:focus-visible {
+      text-decoration: underline;
+    }
+    #zoot-fallback {
+      position: fixed;
+      inset: 0;
+      overflow-y: auto;
+      padding: clamp(1.5rem, 6vw, 4rem);
+      z-index: 1;
+    }
+    .zoot-panel-heading {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+      margin: 0 0 1.5rem;
+      max-width: 34rem;
+      line-height: 1.7;
+    }
+    .zoot-panel-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 34rem;
+    }
+    .zoot-panel-list li {
+      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+    .zoot-panel-list a {
+      color: var(--fi-cyan);
+      text-decoration: none;
+    }
+    .zoot-panel-list a:hover,
+    .zoot-panel-list a:focus-visible {
+      text-decoration: underline;
+    }
+    .zoot-panel-list .zoot-kind {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      opacity: 0.5;
+    }
+    noscript .zoot-panel-heading {
+      position: fixed;
+      top: clamp(1.5rem, 6vw, 4rem);
+      left: clamp(1.5rem, 6vw, 4rem);
+    }
+    noscript a {
+      color: var(--fi-cyan);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="zoot-canvas" aria-hidden="true"></canvas>
+  <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+  <div id="zoot-focus" hidden></div>
+  <section id="zoot-fallback" hidden aria-label="Archive records"></section>
+  <noscript>
+    <p class="zoot-panel-heading">
+      ATLAS REPORT &mdash; this instrument requires script execution. The slick
+      will not resolve. The records remain:
+      <a href="/l-archive/">L'ARCHIVE</a>
+    </p>
+  </noscript>
+  <script type="module" src="/assets/js/zoot/main.js?v={{ site.assetVersion }}"></script>
+</body>
+</html>

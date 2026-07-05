@@ -1,3 +1,6 @@
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import fetchFieldNotes, {
   blueskyPostUrl,
@@ -5,6 +8,7 @@ import fetchFieldNotes, {
 } from '../../src/_data/fieldnotes.cjs'
 
 const ACTOR = 'forgotten-industry.bsky.social'
+const CACHE_FILE = path.join(os.tmpdir(), 'fi-fieldnotes-test-cache.json')
 
 // Build a minimal feed item shaped like the Bluesky getAuthorFeed response.
 function feedItem(overrides = {}) {
@@ -90,11 +94,16 @@ describe('normalizePost', () => {
 describe('fetchFieldNotes (default export)', () => {
   beforeEach(() => {
     vi.spyOn(console, 'warn').mockImplementation(() => {})
+    // Isolate the cache to a temp file and start each test with none.
+    process.env.FIELDNOTES_CACHE_FILE = CACHE_FILE
+    fs.rmSync(CACHE_FILE, { force: true })
   })
 
   afterEach(() => {
     vi.restoreAllMocks()
     delete global.fetch
+    delete process.env.FIELDNOTES_CACHE_FILE
+    fs.rmSync(CACHE_FILE, { force: true })
   })
 
   it('returns normalized posts sorted newest-first and drops invalid entries', async () => {
@@ -121,7 +130,7 @@ describe('fetchFieldNotes (default export)', () => {
     expect(result.map((p) => p.text)).toEqual(['newer', 'older'])
   })
 
-  it('returns [] and warns on a non-ok response', async () => {
+  it('returns [] and warns on a non-ok response with no cache', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: false,
       status: 500,
@@ -132,7 +141,7 @@ describe('fetchFieldNotes (default export)', () => {
     expect(console.warn).toHaveBeenCalled()
   })
 
-  it('returns [] and warns when fetch rejects (timeout/abort)', async () => {
+  it('returns [] and warns when fetch rejects with no cache', async () => {
     global.fetch = vi.fn().mockRejectedValue(new Error('aborted'))
 
     expect(await fetchFieldNotes()).toEqual([])
@@ -146,5 +155,33 @@ describe('fetchFieldNotes (default export)', () => {
     })
 
     expect(await fetchFieldNotes()).toEqual([])
+  })
+
+  it('writes a cache on success and serves it (with Date createdAt) on later failure', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        feed: [
+          feedItem({
+            post: {
+              uri: 'at://did:plc:abc/app.bsky.feed.post/cached',
+              record: {
+                text: 'cached note',
+                createdAt: '2026-06-03T00:00:00.000Z',
+              },
+            },
+          }),
+        ],
+      }),
+    })
+    const fresh = await fetchFieldNotes()
+    expect(fresh.map((p) => p.text)).toEqual(['cached note'])
+    expect(fs.existsSync(CACHE_FILE)).toBe(true)
+
+    // A subsequent failure should serve the cached post, rehydrated to a Date.
+    global.fetch = vi.fn().mockRejectedValue(new Error('offline'))
+    const fallback = await fetchFieldNotes()
+    expect(fallback.map((p) => p.text)).toEqual(['cached note'])
+    expect(fallback[0].createdAt).toBeInstanceOf(Date)
   })
 })
