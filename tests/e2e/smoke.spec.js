@@ -28,7 +28,7 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(2)
+  await expect(page.locator('.site-footer a')).toHaveCount(1)
   await expect(page.locator('.fi-provenance-plate')).toContainText(
     "// FORGOTTEN INDUSTRIES ///// CONTRE L'OUBLI //"
   )
@@ -59,7 +59,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(2)
+  await expect(page.locator('.site-footer a')).toHaveCount(1)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -67,7 +67,7 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(2)
+    await expect(page.locator('.site-footer a')).toHaveCount(1)
     await expect(page.locator('.fi-provenance-plate')).toContainText('////')
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
@@ -83,28 +83,26 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   await expect(page.locator('.signal-directory-grid > a')).toHaveCount(3)
   await expect(page.locator('.signal-directory-grid > a')).toHaveText([
     /LE BLOG[\s\S]*BLOG/,
+    /LES DÉPOSITIONS[\s\S]*OM-882 AUDIO/,
     /EN DIRECT[\s\S]*LIVE FEED/,
-    /LES DÉPOSITIONS[\s\S]*OM-882 AUDIO FIELD JOURNAL/,
   ])
   const signalCards = page.locator('.signal-directory-grid > a')
   await expect(signalCards.nth(0)).toHaveAttribute('href', '/blog/')
-  await expect(signalCards.nth(1)).toHaveAttribute('href', '/en-direct/')
-  await expect(signalCards.nth(2)).toHaveAttribute('href', '/field-logs/')
+  await expect(signalCards.nth(1)).toHaveAttribute('href', '/field-logs/')
+  await expect(signalCards.nth(2)).toHaveAttribute('href', '/en-direct/')
   await expect(page.locator('main')).not.toContainText('LES RAPPORTS')
   await expect(page.locator('main')).not.toContainText('LA PROVENANCE')
 
   response = await page.goto('/oeuvre/')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(5)
+  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(3)
   await expect(page.locator('.oeuvre-directory-grid > a')).toHaveText([
     /LES DOSSIERS/,
-    /LES MANUSCRITS/,
     /LES RAPPORTS[\s\S]*ATLAS REPORTS/,
     /LA DOCTRINE[\s\S]*SYSTEMS DOCTRINE/,
-    /LA PROVENANCE[\s\S]*SOURCE CHAIN/,
   ])
   await expect(
-    page.locator('.oeuvre-directory-grid > a').nth(3)
+    page.locator('.oeuvre-directory-grid > a').nth(2)
   ).toHaveAttribute('href', '/doctrine/')
 
   response = await page.goto('/blog/')
