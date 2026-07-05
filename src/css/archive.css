@@ -5006,24 +5006,24 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
 
 .fi-provenance-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 2rem auto 0;
-  padding-inline: 1rem;
+  padding-inline: 0;
   overflow: visible;
   isolation: isolate;
 }
 
 .fi-provenance-plate {
   position: relative;
-  display: inline-block;
-  width: max-content;
+  display: block;
+  width: fit-content;
   min-width: 0;
-  max-width: calc(100vw - 3rem);
+  max-width: 100%;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0;
   padding: 0.95rem 1.65rem;
   overflow: visible;
   border: 1px solid var(--fi-green-border-faint);
@@ -5032,10 +5032,9 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
   color: var(--fi-green);
   font-family: var(--font-system);
   font-size: var(--homepage-mono-size);
-  line-height: 1.55;
+  line-height: 1.6;
   letter-spacing: 0.075em;
-  text-align: left;
-  white-space: pre;
+  text-align: center;
 }
 
 .fi-provenance-plate::before {
@@ -5048,13 +5047,20 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
   transform: translate(-10px, -8px);
 }
 
-.fi-provenance-plate code {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-  color: inherit;
-  font: inherit;
-  white-space: inherit;
+.fi-plate-row {
+  margin: 0;
+}
+
+.fi-plate-row + .fi-plate-row {
+  margin-top: 0.35rem;
+}
+
+.fi-plate-row + .fi-plate-meta {
+  margin-top: 0.7rem;
+}
+
+.fi-provenance-plate .fi-nowrap {
+  white-space: nowrap;
 }
 
 .fi-provenance-plate .sep {
@@ -5148,6 +5154,7 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   .fi-provenance-plate {
     min-width: 0;
     max-width: calc(100vw - 2rem);
+    margin: 0 auto;
     padding: 0.85rem 1rem;
     letter-spacing: 0.045em;
   }
