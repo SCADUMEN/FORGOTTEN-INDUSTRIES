@@ -8,6 +8,9 @@
   {% set metaOgType = page.url | ogTypeForUrl(ogType) %}
   {% set metaSchemaType = page.url | schemaTypeForUrl(schemaType, title, site.name) %}
   <meta charset="utf-8">
+  {# Compatibility routes redirect via JS (preserving query/hash). This is the
+     no-JS fallback: it auto-redirects without racing the body script. #}
+  {% if redirectTo %}<noscript><meta http-equiv="refresh" content="0; url={{ redirectTo }}"></noscript>{% endif %}
   <title>{{ metaTitle }}{% if metaTitle != site.name %} &mdash; {{ site.name }}{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ metaDescription }}">
@@ -32,6 +35,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} public writing feed" href="/feed.xml">
@@ -100,6 +104,7 @@
   </main>
 
   {% include "makers-plate.njk" %}
+  <script src="/assets/js/zoot-mark-slick.js?v={{ site.assetVersion }}" defer></script>
   {% if site.analytics.googleMeasurementId %}
   <script>
     document.querySelectorAll("[data-track]").forEach(function(link) {

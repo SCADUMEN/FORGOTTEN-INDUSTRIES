@@ -1,7 +1,19 @@
+const fs = require('fs')
+const path = require('path')
+
 const ACTOR = 'forgotten-industry.bsky.social'
 const API_URL = new URL(
   'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed'
 )
+
+// Resolved per call so tests can redirect the cache to a temp file via
+// FIELDNOTES_CACHE_FILE instead of clobbering the real .cache entry.
+function cacheFile() {
+  return (
+    process.env.FIELDNOTES_CACHE_FILE ||
+    path.join(__dirname, '..', '..', '.cache', 'fieldnotes.json')
+  )
+}
 API_URL.searchParams.set('actor', ACTOR)
 API_URL.searchParams.set('filter', 'posts_no_replies')
 API_URL.searchParams.set('limit', '50')
@@ -32,6 +44,32 @@ function normalizePost(item) {
   }
 }
 
+function writeCache(posts) {
+  const file = cacheFile()
+  try {
+    fs.mkdirSync(path.dirname(file), { recursive: true })
+    fs.writeFileSync(file, `${JSON.stringify(posts, null, 2)}\n`)
+  } catch (error) {
+    console.warn(`Live Dispatches cache write failed: ${error.message}`)
+  }
+}
+
+// Fall back to the last successful fetch so a transient network failure does
+// not silently blank the Live Dispatches shelf. createdAt is a Date on the
+// live path but serializes to a string in JSON, so rehydrate it to match.
+function readCacheOrEmpty() {
+  try {
+    const posts = JSON.parse(fs.readFileSync(cacheFile(), 'utf8'))
+    console.warn(`Live Dispatches: serving ${posts.length} cached post(s).`)
+    return posts.map((post) => ({
+      ...post,
+      createdAt: new Date(post.createdAt),
+    }))
+  } catch {
+    return []
+  }
+}
+
 module.exports = async function () {
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), 8000)
@@ -43,17 +81,19 @@ module.exports = async function () {
       console.warn(
         `Live Dispatches fetch failed: ${response.status} ${response.statusText}`
       )
-      return []
+      return readCacheOrEmpty()
     }
 
     const data = await response.json()
-    return (data.feed || [])
+    const posts = (data.feed || [])
       .map(normalizePost)
       .filter(Boolean)
       .sort((a, b) => b.createdAt - a.createdAt)
+    writeCache(posts)
+    return posts
   } catch (error) {
     console.warn(`Live Dispatches fetch failed: ${error.message}`)
-    return []
+    return readCacheOrEmpty()
   } finally {
     clearTimeout(timeout)
   }
