@@ -3,6 +3,8 @@ layout: base.njk
 ---
 {% set postShelfLabel = shelf_label or "Les Manuscrits" %}
 {% set postShelfHref = shelf_href or "/posts/" %}
+{% set postVoice = ((type or "") ~ " " ~ (category or "") ~ " " ~ (shelf_label or "")) | lower %}
+{% set isSystemOutputPost = ("atlas" in postVoice) or ("system" in postVoice) or ("sysout" in postVoice) %}
 <article class="mx-auto w-[min(760px,calc(100%-32px))] py-12">
   <header class="mb-10">
     <p class="mb-2 font-mono text-[0.74rem] font-bold text-oxide">
@@ -16,7 +18,7 @@ layout: base.njk
       / <a href="{{ postShelfHref }}">{{ postShelfLabel }}</a>
     </p>
   </header>
-  <div class="post-body">{{ content | safe }}</div>
+  <div class="post-body{% if isSystemOutputPost %} post-body-system-output{% endif %}">{{ content | safe }}</div>
   {% if ai_assistance %}
     {% set aiCitationLabel = ai_assistance.classification %}
     {% set aiCitationDisclosure = ai_assistance.disclosure %}
