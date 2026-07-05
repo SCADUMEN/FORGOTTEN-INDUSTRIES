@@ -13,12 +13,15 @@
   --fi-copper: #c47a3a;
   --fi-maroon: #7f1d1d;
   --fi-slate: #94a3b8;
+  --fi-silver: #c0c0c0;
   --fi-cyan-rgb: 34 211 238;
   --fi-green-rgb: 74 222 128;
   --fi-amber-rgb: 251 191 36;
   --fi-gold-rgb: 245 158 11;
   --fi-magenta-rgb: 232 121 249;
   --fi-copper-rgb: 196 122 58;
+  --fi-maroon-rgb: 127 29 29;
+  --fi-silver-rgb: 192 192 192;
   --fi-surface-rgb: 2 6 23;
   --fi-scan-green-rgb: 0 255 65;
   --fi-black-rgb: 0 0 0;
@@ -188,6 +191,7 @@
   --color-fi-gold: var(--fi-gold);
   --color-fi-magenta: var(--fi-magenta);
   --color-fi-copper: var(--fi-copper);
+  --color-fi-silver: var(--fi-silver);
   --color-fi-maroon: var(--fi-maroon);
   --color-fi-slate: var(--fi-slate);
   --font-sans: var(--font-system);
@@ -3602,24 +3606,28 @@ h3 {
 }
 
 .signal-ticker-band,
-.oeuvre-ticker-band {
+.oeuvre-ticker-band,
+.apropos-ticker-band {
   border-bottom: 1px solid var(--line);
 }
 
 .signal-ticker-band .section-inner,
-.oeuvre-ticker-band .section-inner {
+.oeuvre-ticker-band .section-inner,
+.apropos-ticker-band .section-inner {
   padding-top: 1.35rem;
   padding-bottom: 1rem;
 }
 
 .signal-ticker-header,
-.oeuvre-ticker-header {
+.oeuvre-ticker-header,
+.apropos-ticker-header {
   display: grid;
   justify-items: center;
 }
 
 .signal-ticker-plate,
-.oeuvre-ticker-plate {
+.oeuvre-ticker-plate,
+.apropos-ticker-plate {
   position: relative;
   display: grid;
   justify-items: center;
@@ -3639,7 +3647,8 @@ h3 {
 }
 
 .signal-ticker-plate::after,
-.oeuvre-ticker-plate::after {
+.oeuvre-ticker-plate::after,
+.apropos-ticker-plate::after {
   position: absolute;
   inset: 0.32rem;
   border: 1px solid var(--fi-cyan-border-inner);
@@ -3648,7 +3657,8 @@ h3 {
 }
 
 .signal-ticker-label,
-.oeuvre-ticker-label {
+.oeuvre-ticker-label,
+.apropos-ticker-label {
   position: relative;
   z-index: 1;
   display: grid;
@@ -3659,7 +3669,8 @@ h3 {
 }
 
 .signal-ticker-label span,
-.oeuvre-ticker-label span {
+.oeuvre-ticker-label span,
+.apropos-ticker-label span {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -3669,14 +3680,16 @@ h3 {
 }
 
 .signal-ticker-plate span,
-.oeuvre-ticker-plate span {
+.oeuvre-ticker-plate span,
+.apropos-ticker-plate span {
   color: var(--oxide);
   font-size: clamp(0.82rem, 1.08vw, 0.95rem);
   line-height: 1.25;
 }
 
 .signal-ticker-label > .fi-caption-box,
-.oeuvre-ticker-label > .fi-caption-box {
+.oeuvre-ticker-label > .fi-caption-box,
+.apropos-ticker-label > .fi-caption-box {
   justify-self: end;
   color: var(--fi-green);
   font-family: 'Space Mono', monospace;
@@ -3685,7 +3698,8 @@ h3 {
 }
 
 .signal-ticker,
-.oeuvre-ticker {
+.oeuvre-ticker,
+.apropos-ticker {
   contain: paint;
   position: relative;
   z-index: 1;
@@ -3701,7 +3715,8 @@ h3 {
 }
 
 .signal-ticker-item,
-.oeuvre-ticker-item {
+.oeuvre-ticker-item,
+.apropos-ticker-item {
   position: relative;
   display: grid;
   flex: 0 0 min(22rem, 82vw);
@@ -3721,7 +3736,9 @@ h3 {
 .signal-ticker-item:hover,
 .signal-ticker-item:focus-visible,
 .oeuvre-ticker-item:hover,
-.oeuvre-ticker-item:focus-visible {
+.oeuvre-ticker-item:focus-visible,
+.apropos-ticker-item:hover,
+.apropos-ticker-item:focus-visible {
   background:
     linear-gradient(180deg, var(--fi-surface-98), var(--fi-surface-98)),
     var(--white);
@@ -3735,12 +3752,15 @@ h3 {
 .signal-ticker-item:hover span,
 .signal-ticker-item:focus-visible span,
 .oeuvre-ticker-item:hover span,
-.oeuvre-ticker-item:focus-visible span {
+.oeuvre-ticker-item:focus-visible span,
+.apropos-ticker-item:hover span,
+.apropos-ticker-item:focus-visible span {
   color: var(--steel);
 }
 
 .signal-ticker-item span,
-.oeuvre-ticker-item span {
+.oeuvre-ticker-item span,
+.apropos-ticker-item span {
   color: var(--oxide);
   font-family: var(--mono-font);
   font-size: var(--mono-size);
@@ -3749,7 +3769,8 @@ h3 {
 }
 
 .signal-ticker-item strong,
-.oeuvre-ticker-item strong {
+.oeuvre-ticker-item strong,
+.apropos-ticker-item strong {
   display: -webkit-box;
   overflow: hidden;
   color: var(--steel);
@@ -4023,7 +4044,8 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.signal-directory-grid {
+.signal-directory-grid,
+.apropos-directory-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -4032,7 +4054,8 @@ h3 {
   min-height: 12rem;
 }
 
-.signal-directory-grid > a {
+.signal-directory-grid > a,
+.apropos-directory-grid > a {
   align-content: center;
   min-height: 12rem;
 }
@@ -4054,7 +4077,8 @@ h3 {
   text-transform: uppercase;
 }
 
-.signal-directory-grid .signal-card-title {
+.signal-directory-grid .signal-card-title,
+.apropos-directory-grid .apropos-card-title {
   display: grid;
   gap: 0.7rem;
   justify-self: center;
@@ -4072,7 +4096,8 @@ h3 {
 }
 
 .oeuvre-directory-grid .oeuvre-card-title > span:first-child,
-.signal-directory-grid .signal-card-title > span:first-child {
+.signal-directory-grid .signal-card-title > span:first-child,
+.apropos-directory-grid .apropos-card-title > span:first-child {
   hyphens: none;
   justify-self: center;
   min-width: 0;
@@ -4082,7 +4107,8 @@ h3 {
 }
 
 .oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
-.signal-directory-grid .signal-card-title > .fi-caption-box {
+.signal-directory-grid .signal-card-title > .fi-caption-box,
+.apropos-directory-grid .apropos-card-title > .fi-caption-box {
   justify-self: end;
   text-align: right;
 }
@@ -4207,6 +4233,186 @@ body.signal-sauvegarder .signal-directory-grid > a:focus-visible {
   box-shadow:
     -0.5rem -0.5rem 0 var(--fi-black-shadow-lifted),
     -0.5rem -0.5rem 0 1px rgb(var(--fi-magenta-rgb) / 0.42);
+}
+
+body.apropos-provenance .spine-hero-title-block h1 {
+  color: var(--fi-silver);
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0;
+  text-shadow:
+    -0.08em -0.08em 0 var(--fi-black-shadow-strong),
+    -0.08em -0.08em 0 rgb(var(--fi-maroon-rgb) / 0.42),
+    0 0 1.15rem rgb(var(--fi-silver-rgb) / 0.16);
+}
+
+body.apropos-provenance .spine-hero-meta.fi-caption-box,
+body.apropos-provenance .apropos-ticker-label > .fi-caption-box,
+body.apropos-provenance .apropos-card-title > .fi-caption-box,
+body.apropos-provenance .apropos-context-plate > .fi-caption-box {
+  color: var(--fi-green);
+  border-color: rgb(var(--fi-silver-rgb) / 0.42);
+  box-shadow:
+    -0.2rem -0.2rem 0 var(--fi-black-shadow-caption),
+    -0.2rem -0.2rem 0 1px rgb(var(--fi-maroon-rgb) / 0.5);
+}
+
+body.apropos-provenance .apropos-ticker-plate,
+body.apropos-provenance .apropos-directory-grid > a,
+body.apropos-provenance .apropos-context-plate {
+  border-color: rgb(var(--fi-maroon-rgb) / 0.76);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--fi-maroon-rgb) / 0.2),
+      rgb(var(--fi-silver-rgb) / 0.055)
+    ),
+    var(--fi-surface-96);
+  box-shadow:
+    -0.42rem -0.42rem 0 var(--fi-black-shadow-strong),
+    -0.42rem -0.42rem 0 1px rgb(var(--fi-silver-rgb) / 0.28);
+}
+
+body.apropos-provenance .apropos-ticker-plate::after,
+body.apropos-provenance .apropos-directory-grid > a::before,
+body.apropos-provenance .apropos-context-plate::before {
+  border-color: rgb(var(--fi-silver-rgb) / 0.24);
+}
+
+body.apropos-provenance .apropos-card-title {
+  color: var(--fi-silver);
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 3vw, 2.65rem);
+  font-style: italic;
+  grid-template-rows: minmax(5.1rem, auto) auto;
+  justify-self: stretch;
+  letter-spacing: 0;
+  line-height: 1;
+  width: 100%;
+}
+
+body.apropos-provenance .apropos-card-title > span:first-child {
+  align-self: end;
+  line-height: 1.08;
+}
+
+body.apropos-provenance .apropos-ticker {
+  border-color: rgb(var(--fi-maroon-rgb) / 0.58);
+  background: rgb(var(--fi-maroon-rgb) / 0.24);
+  scrollbar-color: var(--fi-silver) transparent;
+}
+
+body.apropos-provenance .apropos-ticker-item {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--fi-silver-rgb) / 0.065),
+      rgb(var(--fi-maroon-rgb) / 0.12)
+    ),
+    var(--fi-surface-98);
+}
+
+body.apropos-provenance .apropos-ticker-item span {
+  color: rgb(190 75 102);
+}
+
+body.apropos-provenance .apropos-ticker-item strong {
+  color: var(--fi-silver);
+}
+
+body.apropos-provenance .apropos-ticker-item:hover,
+body.apropos-provenance .apropos-ticker-item:focus-visible {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--fi-silver-rgb) / 0.1),
+      rgb(var(--fi-maroon-rgb) / 0.16)
+    ),
+    var(--fi-surface-98);
+  box-shadow:
+    inset 0 -3px 0 rgb(var(--fi-maroon-rgb) / 0.62),
+    inset 0 0 0 1px rgb(var(--fi-silver-rgb) / 0.22),
+    0 0 18px rgb(var(--fi-silver-rgb) / 0.08);
+}
+
+body.apropos-provenance .apropos-ticker-item:hover span,
+body.apropos-provenance .apropos-ticker-item:focus-visible span {
+  color: var(--fi-amber);
+}
+
+body.apropos-provenance .apropos-ticker-item:hover strong,
+body.apropos-provenance .apropos-ticker-item:focus-visible strong {
+  color: var(--fi-paper-light);
+}
+
+body.apropos-provenance .apropos-directory-grid > a:hover,
+body.apropos-provenance .apropos-directory-grid > a:focus-visible {
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--fi-maroon-rgb) / 0.26),
+      rgb(var(--fi-silver-rgb) / 0.08)
+    ),
+    var(--fi-surface-96);
+  box-shadow:
+    -0.5rem -0.5rem 0 var(--fi-black-shadow-lifted),
+    -0.5rem -0.5rem 0 1px rgb(var(--fi-maroon-rgb) / 0.62);
+}
+
+.apropos-context-band {
+  border-bottom: 1px solid var(--line);
+}
+
+.apropos-context-band .section-inner {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.apropos-context-plate {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.15rem, 2.5vw, 1.65rem);
+  border: 1px solid var(--fi-cyan-border-strong);
+}
+
+.apropos-context-plate::before {
+  position: absolute;
+  inset: 0.55rem;
+  border: 1px solid var(--fi-cyan-border-muted);
+  content: '';
+  pointer-events: none;
+}
+
+.apropos-context-plate > * {
+  position: relative;
+  z-index: 1;
+}
+
+.apropos-context-plate > .fi-caption-box {
+  justify-self: start;
+  margin: 0;
+}
+
+.apropos-context-plate h2 {
+  max-width: 24ch;
+  margin: 0;
+  color: var(--fi-silver);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.25rem);
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.apropos-context-plate p:not(.fi-caption-box) {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--fi-slate);
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.55;
 }
 
 .signal-source-band {
@@ -5481,8 +5687,10 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 .archive-search-heading > .fi-caption-box,
 .signal-ticker-label > .fi-caption-box,
 .oeuvre-ticker-label > .fi-caption-box,
+.apropos-ticker-label > .fi-caption-box,
 .oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
 .signal-directory-grid .signal-card-title > .fi-caption-box,
+.apropos-directory-grid .apropos-card-title > .fi-caption-box,
 .signal-branch-meta.fi-caption-box,
 .signal-row-meta.fi-caption-box {
   font-size: 0.78rem;

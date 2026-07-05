@@ -24,17 +24,18 @@ own color temperature as long as the roles remain stable.
 
 ## Color Roles
 
-| Token            | Hex       | Role                                                                 |
-| ---------------- | --------- | -------------------------------------------------------------------- |
-| `--fi-surface`   | `#020617` | Black-blue archive field, panels, ticker beds, and shadow interiors. |
-| `--fi-cyan`      | `#22d3ee` | System structure: borders, rails, records, metadata, active lines.   |
-| `--fi-green`     | `#4ade80` | SYSOUT: machine output, caption plates, counts, confirmed values.    |
-| `--fi-magenta`   | `#e879f9` | Prompt syntax and rare operator marks. Use sparingly.                |
-| `--fi-amber`     | `#fbbf24` | Warning, authored emphasis, and warm institutional accent.           |
-| `--fi-gold`      | `#f59e0b` | LE SAUVEGARDER / MTM title energy and human-authored warmth.         |
-| `--fi-copper`    | `#c47a3a` | Provenance, source chain, maker plate, archival custody.             |
-| `--fi-paper`     | `#f7f4ef` | Readable human text when green/cyan would over-systematize copy.     |
-| `--fi-paper-dim` | `#d7d0c4` | Secondary human/institutional text.                                  |
+| Token            | Hex       | Role                                                                  |
+| ---------------- | --------- | --------------------------------------------------------------------- |
+| `--fi-surface`   | `#020617` | Black-blue archive field, panels, ticker beds, and shadow interiors.  |
+| `--fi-cyan`      | `#22d3ee` | System structure: borders, rails, records, metadata, active lines.    |
+| `--fi-green`     | `#4ade80` | SYSOUT: machine output, caption plates, counts, confirmed values.     |
+| `--fi-magenta`   | `#e879f9` | Prompt syntax and rare operator marks. Use sparingly.                 |
+| `--fi-amber`     | `#fbbf24` | Warning, authored emphasis, and warm institutional accent.            |
+| `--fi-gold`      | `#f59e0b` | LE SAUVEGARDER / MTM title energy and human-authored warmth.          |
+| `--fi-copper`    | `#c47a3a` | Provenance, source chain, maker plate, archival custody.              |
+| `--fi-silver`    | `#c0c0c0` | Steel/silver institutional register, durable plates, quiet authority. |
+| `--fi-paper`     | `#f7f4ef` | Readable human text when green/cyan would over-systematize copy.      |
+| `--fi-paper-dim` | `#d7d0c4` | Secondary human/institutional text.                                   |
 
 ## Route Families
 
@@ -83,7 +84,9 @@ second Signal page.
 
 Recommended direction:
 
-- copper as the route's primary accent
+- maroon/burgundy as the route's primary accent
+- silver/steel for the route title, institutional plates, and durable
+  authority
 - amber as the secondary institutional warmth
 - green for source/SYSOUT caption boxes, maker-plate values, and confirmed
   provenance facts
