@@ -34,6 +34,12 @@ _Forgotten Industries // ATLAS Report // Systems // ZOOT_
 
 Signal is clean. New instrument on the line.
 
+## 00. Provenance / Gift
+
+ZOOT enters service as a coding gift from Tyler Etters / Northern Information: [github.com/northern-information](https://github.com/northern-information).
+
+The archive records the instrument, but the originating hand is explicit. This system arrived through Tyler's craft and remains marked as such.
+
 ## 01. What Was Built
 
 The archive has a new door. It is not listed with the other four, and it does not behave like a page. It lives at [/zoot](/zoot/).
