@@ -249,27 +249,49 @@ export default function (eleventyConfig) {
       : 0
   })
 
+  function objectGalleryCandidates(items) {
+    return Array.isArray(items)
+      ? items.filter(
+          (item) =>
+            item?.category !== 'photo evidence set' &&
+            publicObjectPhotos(item).length > 0
+        )
+      : []
+  }
+
+  function gallerySortKey(item) {
+    const input = String(item?.id || item?.name || '')
+    let hash = 0
+    for (let index = 0; index < input.length; index += 1) {
+      hash = (hash << 5) - hash + input.charCodeAt(index)
+      hash |= 0
+    }
+    return Math.abs(hash)
+  }
+
+  eleventyConfig.addFilter('objectGalleryCandidates', objectGalleryCandidates)
+
   eleventyConfig.addFilter(
     'objectGalleryPreview',
     function (items, limit = 12) {
-      return Array.isArray(items)
-        ? items
-            .filter((item) => item?.category !== 'photo evidence set')
-            .sort((a, b) => {
-              const aHasPhotos = publicObjectPhotos(a).length > 0 ? 1 : 0
-              const bHasPhotos = publicObjectPhotos(b).length > 0 ? 1 : 0
-              const photoSort = bHasPhotos - aHasPhotos
-              if (photoSort !== 0) return photoSort
-              const dateSort = recordDateValue(b).localeCompare(
-                recordDateValue(a)
-              )
-              if (dateSort !== 0) return dateSort
-              return String(a?.id || '').localeCompare(String(b?.id || ''))
-            })
-            .slice(0, Number(limit) || 12)
-        : []
+      return objectGalleryCandidates(items)
+        .sort((a, b) => gallerySortKey(a) - gallerySortKey(b))
+        .slice(0, Number(limit) || 12)
     }
   )
+
+  eleventyConfig.addFilter('objectGalleryPayload', function (items, limit = 0) {
+    const records = objectGalleryCandidates(items)
+    const selected = Number(limit) ? records.slice(0, Number(limit)) : records
+
+    return selected.map((item) => ({
+      id: item?.id || '',
+      name: item?.name || item?.id || 'Unlabeled object',
+      category: item?.category || 'object record',
+      url: `/archive/objects/${archiveSlug(item?.id || item?.name)}/`,
+      image: `/${publicObjectPhotos(item)[0]}`,
+    }))
+  })
 
   eleventyConfig.addFilter('relatedObjects', function (items, item) {
     if (!Array.isArray(items) || !item) return []
