@@ -1459,6 +1459,47 @@ items:
     keep_sell_archive: keep pending test
     date_logged: '2026-06-05'
 
+  - id: FI-TOOL-RUL-001
+    name: Le Témoin de Mesure
+    category: field instrument
+    manufacturer: Johnson
+    model: U.S.A. stainless steel rule
+    quantity: 1
+    associated_project: FI-PROJ-007
+    condition: usable / surface wear present / graduations legible
+    status: measuring witness / listing apparatus / archive scale reference
+    photos:
+      - assets/field-instruments/fi-tool-rul-001/fi-tool-rul-001-01.jpg
+      - assets/field-instruments/fi-tool-rul-001/fi-tool-rul-001-02.jpg
+      - assets/field-instruments/fi-tool-rul-001/fi-tool-rul-001-03.jpg
+      - assets/field-instruments/fi-tool-rul-001/fi-tool-rul-001-04.jpg
+    notes: >
+      Compact stainless steel measuring rule bearing JOHNSON and U.S.A.
+      markings with dual imperial/metric graduations, approximately 6 in /
+      150 mm. Documented during a high-throughput listing session involving
+      eBay shipments, PC/DVD game inventory, and Facebook Marketplace drone
+      liquidation. The ruler appears alongside a Games for Windows Skyrim PC
+      DVD case, establishing its role as a scale witness for resale,
+      cataloguing, and artifact condition photography. Usable condition:
+      surface scuffing, softened reflectivity, and shop patina are present, but
+      no obvious bending, breakage, or unreadable measurement zones are visible
+      in current photographs. Handling note: do not drag the metal rule across
+      glossy plastic, sealed game cases, acrylic panels, watch crystals,
+      controller screens, drone bodies, or polished CaseLabs surfaces. Place it
+      gently or suspend it slightly above the object when photographing.
+    tags:
+      - Forgotten Industries
+      - L'Archive
+      - field instrument
+      - measuring witness
+      - artifact documentation
+      - reseller tools
+      - evidence locker
+      - l-operateur
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-05'
+
   - id: FI-PHOTO-001
     name: Initial local archive photo batch
     category: photo evidence set
