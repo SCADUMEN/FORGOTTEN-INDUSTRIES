@@ -1,4 +1,39 @@
 projects:
+  - id: FI-DSR-002
+    slug: marketplace-shithawk-doctrine
+    title: Marketplace Shithawk Doctrine
+    working_title: Local Acquisition Hazard Protocol
+    category: Acquisition Doctrine
+    status: active / pending inspection
+    started: '2026'
+    summary: >
+      Internal dossier and field doctrine for evaluating Facebook Marketplace
+      acquisition hazards: distinguish useful containment infrastructure from
+      side-quest objects that multiply space, time, repair work, and garage
+      entropy.
+    origin:
+      context: MTM + ATLAS interaction
+    themes:
+      - acquisition doctrine
+      - marketplace hazards
+      - containment infrastructure
+      - garage archaeology
+      - field instrument
+      - inventory discipline
+      - small parts storage
+      - documentation before accumulation
+    source_links:
+      - label: Source dossier
+        type: local
+        role: public working dossier
+        path: src/projects/marketplace-shithawk-doctrine/README.md
+    documentation_style:
+      - Treat good storage as containment infrastructure, not random surplus
+      - Evaluate every acquisition by hidden costs: space, time, gas, repair work, and project branching
+      - Consult the Shithawk Barometer before converting a listing into an archive event
+      - Preserve humor as field language while keeping the decision protocol inspectable
+      - Label containers before they become new piles
+
   - id: FI-DSR-001
     slug: petite-chaine-du-signal
     title: La Petite Chaîne du Signal
