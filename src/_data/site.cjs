@@ -90,6 +90,7 @@ const sourceFileList = readCommand('git ls-files src', '')
   .split(/\r?\n/)
   .filter(Boolean)
 const buildDate = new Date()
+const buildStamp = buildDate.getTime().toString(36)
 const currentSiteDate = dateInTimeZone(buildDate, SITE_TIME_ZONE)
 const deltaSince = addDays(currentSiteDate, -1)
 const currentDayStart = startOfDayInTimeZone(
@@ -137,6 +138,10 @@ const sourceStats = {
       ? `${insertionsMatch ? insertionsMatch[1] : 0}+ / ${deletionsMatch ? deletionsMatch[1] : 0}-`
       : 'clean',
 }
+const assetVersion =
+  workingTreeShortstat.length > 0
+    ? `${gitHashShort}-${buildStamp}`
+    : gitHashShort
 
 const navRows = [
   [
@@ -206,8 +211,9 @@ module.exports = {
   gitHashShort,
   sourceStats,
   buildChecks: ['Format', 'Archive build', 'Unit tests', 'Browser smoke tests'],
-  // Cache-busting token for static assets (see base.njk). Changes every commit.
-  assetVersion: gitHashShort,
+  // Cache-busting token for static assets (see base.njk).
+  // Clean builds track the commit; dirty local builds also track the build.
+  assetVersion,
   url: 'https://forgotten-industries.net',
   domainUrl: 'https://forgotten-industries.net',
   domainHost: 'forgotten-industries.net',

@@ -4,6 +4,7 @@ title: Le Signal
 description: "The Forgotten Industries transmission layer: blog dispatches, live feed records, and voice field journals."
 permalink: /signal/index.html
 eleventyExcludeFromCollections: true
+page_class: signal-sauvegarder
 ---
 {% set signalPosts = collections.posts | signalPosts %}
 <section class="section-landing-hero">
@@ -19,22 +20,23 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="signal-ticker-header">
       <h2 id="signal-ticker-heading" class="sr-only">Recent signal activity</h2>
-      <div class="signal-ticker-plate" aria-hidden="true">
-        <p><span>/ / / / /</span> EN DIRECT <span>/ / / / /</span></p>
-        <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> Live Feed / {{ fieldnotes | count }} posts</span>
+      <div class="signal-ticker-plate">
+        <div class="signal-ticker-label" aria-hidden="true">
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> LIVE FEED / {{ fieldnotes | count }} posts</span>
+        </div>
+        <div class="signal-ticker" role="list" aria-label="Recent signal activity">
+          {% if fieldnotes.length %}
+          {% for note in fieldnotes %}
+          {% if loop.index <= 4 %}
+          <a class="signal-ticker-item" role="listitem" href="{{ note.url }}" data-track="outbound-field-note">
+            <span>En Direct / {{ note.createdAt | readableDate }}</span>
+            <strong>{{ note.text | escape }}</strong>
+          </a>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </div>
       </div>
-    </div>
-    <div class="signal-ticker" role="list" aria-label="Recent signal activity">
-      {% if fieldnotes.length %}
-      {% for note in fieldnotes %}
-      {% if loop.index <= 4 %}
-      <a class="signal-ticker-item" role="listitem" href="{{ note.url }}" data-track="outbound-field-note">
-        <span>En Direct / {{ note.createdAt | readableDate }}</span>
-        <strong>{{ note.text | escape }}</strong>
-      </a>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
     </div>
   </div>
 </section>
@@ -49,16 +51,16 @@ eleventyExcludeFromCollections: true
           <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> BLOG ({{ signalPosts | count }})</span>
         </h3>
       </a>
+      <a href="/field-logs/">
+        <h3 class="signal-card-title">
+          <span>LES DÉPOSITIONS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> OM-882 AUDIO ({{ archive.voiceLogs | count }})</span>
+        </h3>
+      </a>
       <a href="/en-direct/">
         <h3 class="signal-card-title">
           <span>EN DIRECT</span>
           <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> LIVE FEED ({{ fieldnotes | count }})</span>
-        </h3>
-      </a>
-      <a href="/field-logs/">
-        <h3 class="signal-card-title">
-          <span>LES DÉPOSITIONS</span>
-          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> OM-882 AUDIO FIELD JOURNAL ({{ archive.voiceLogs | count }})</span>
         </h3>
       </a>
     </div>

@@ -18,6 +18,7 @@
   --fi-amber-rgb: 251 191 36;
   --fi-gold-rgb: 245 158 11;
   --fi-magenta-rgb: 232 121 249;
+  --fi-copper-rgb: 196 122 58;
   --fi-surface-rgb: 2 6 23;
   --fi-scan-green-rgb: 0 255 65;
   --fi-black-rgb: 0 0 0;
@@ -3600,28 +3601,31 @@ h3 {
   line-height: 1.35;
 }
 
-.signal-ticker-band {
+.signal-ticker-band,
+.oeuvre-ticker-band {
   border-bottom: 1px solid var(--line);
 }
 
-.signal-ticker-band .section-inner {
+.signal-ticker-band .section-inner,
+.oeuvre-ticker-band .section-inner {
   padding-top: 1.35rem;
   padding-bottom: 1rem;
 }
 
-.signal-ticker-header {
+.signal-ticker-header,
+.oeuvre-ticker-header {
   display: grid;
   justify-items: center;
-  margin-bottom: 0.95rem;
 }
 
-.signal-ticker-plate {
+.signal-ticker-plate,
+.oeuvre-ticker-plate {
   position: relative;
   display: grid;
   justify-items: center;
-  gap: 0.22rem;
-  width: min(100%, 34rem);
-  padding: 0.66rem 1.35rem 0.7rem;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.72rem 0.72rem 0.62rem;
   border: 1px solid var(--fi-cyan-border-strong);
   background:
     linear-gradient(
@@ -3634,7 +3638,8 @@ h3 {
   text-align: center;
 }
 
-.signal-ticker-plate::after {
+.signal-ticker-plate::after,
+.oeuvre-ticker-plate::after {
   position: absolute;
   inset: 0.32rem;
   border: 1px solid var(--fi-cyan-border-inner);
@@ -3642,8 +3647,19 @@ h3 {
   pointer-events: none;
 }
 
-.signal-ticker-plate p,
-.signal-ticker-plate span {
+.signal-ticker-label,
+.oeuvre-ticker-label {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-self: center;
+  gap: 0.28rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.signal-ticker-label span,
+.oeuvre-ticker-label span {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -3652,33 +3668,30 @@ h3 {
   letter-spacing: 0;
 }
 
-.signal-ticker-plate p {
-  color: var(--steel);
-  font-size: clamp(1rem, 1.42vw, 1.18rem);
-  line-height: 1.05;
-}
-
-.signal-ticker-plate p span {
-  color: var(--oxide);
-}
-
-.signal-ticker-plate span {
+.signal-ticker-plate span,
+.oeuvre-ticker-plate span {
   color: var(--oxide);
   font-size: clamp(0.82rem, 1.08vw, 0.95rem);
   line-height: 1.25;
 }
 
-.signal-ticker-plate > .fi-caption-box {
-  justify-self: start;
+.signal-ticker-label > .fi-caption-box,
+.oeuvre-ticker-label > .fi-caption-box {
+  justify-self: end;
   color: var(--fi-green);
   font-family: 'Space Mono', monospace;
   line-height: 1.3;
-  text-align: left;
+  text-align: right;
 }
 
-.signal-ticker {
+.signal-ticker,
+.oeuvre-ticker {
+  contain: paint;
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 1px;
+  width: 100%;
   overflow-x: auto;
   border: 1px solid var(--line);
   background: var(--line);
@@ -3687,7 +3700,8 @@ h3 {
   scroll-snap-type: x proximity;
 }
 
-.signal-ticker-item {
+.signal-ticker-item,
+.oeuvre-ticker-item {
   position: relative;
   display: grid;
   flex: 0 0 min(22rem, 82vw);
@@ -3705,7 +3719,9 @@ h3 {
 }
 
 .signal-ticker-item:hover,
-.signal-ticker-item:focus-visible {
+.signal-ticker-item:focus-visible,
+.oeuvre-ticker-item:hover,
+.oeuvre-ticker-item:focus-visible {
   background:
     linear-gradient(180deg, var(--fi-surface-98), var(--fi-surface-98)),
     var(--white);
@@ -3717,11 +3733,14 @@ h3 {
 }
 
 .signal-ticker-item:hover span,
-.signal-ticker-item:focus-visible span {
+.signal-ticker-item:focus-visible span,
+.oeuvre-ticker-item:hover span,
+.oeuvre-ticker-item:focus-visible span {
   color: var(--steel);
 }
 
-.signal-ticker-item span {
+.signal-ticker-item span,
+.oeuvre-ticker-item span {
   color: var(--oxide);
   font-family: var(--mono-font);
   font-size: var(--mono-size);
@@ -3729,7 +3748,8 @@ h3 {
   text-transform: uppercase;
 }
 
-.signal-ticker-item strong {
+.signal-ticker-item strong,
+.oeuvre-ticker-item strong {
   display: -webkit-box;
   overflow: hidden;
   color: var(--steel);
@@ -3739,6 +3759,39 @@ h3 {
   line-height: 1.4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.oeuvre-ticker {
+  border-color: var(--fi-cyan-border-strong);
+  background: var(--fi-cyan-border);
+  scrollbar-color: var(--fi-green) transparent;
+}
+
+.oeuvre-ticker-item {
+  background:
+    linear-gradient(180deg, var(--fi-cyan-wash-soft), var(--fi-surface-98)),
+    var(--fi-surface-98);
+}
+
+.oeuvre-ticker-item span {
+  color: var(--fi-cyan);
+}
+
+.oeuvre-ticker-item strong {
+  color: var(--fi-green);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.oeuvre-ticker-item:hover span,
+.oeuvre-ticker-item:focus-visible span {
+  color: var(--fi-green);
+}
+
+.oeuvre-ticker-item:hover strong,
+.oeuvre-ticker-item:focus-visible strong {
+  color: var(--fi-cyan);
 }
 
 .latest-report-line {
@@ -3987,8 +4040,8 @@ h3 {
 .oeuvre-directory-grid .oeuvre-card-title {
   display: grid;
   gap: 0.7rem;
-  justify-self: center;
-  width: fit-content;
+  justify-self: stretch;
+  width: 100%;
   max-width: 100%;
   margin: 0;
   color: var(--ink);
@@ -3997,6 +4050,7 @@ h3 {
   font-style: italic;
   font-weight: 700;
   line-height: 0.9;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -4013,27 +4067,146 @@ h3 {
   font-style: italic;
   font-weight: 700;
   line-height: 0.9;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.oeuvre-directory-grid .oeuvre-card-title > span:first-child {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
+.oeuvre-directory-grid .oeuvre-card-title > span:first-child,
 .signal-directory-grid .signal-card-title > span:first-child {
+  hyphens: none;
+  justify-self: center;
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  text-align: center;
+  word-break: normal;
 }
 
-.oeuvre-directory-grid .oeuvre-card-title > span:last-child {
-  justify-self: start;
-  text-align: left;
+.oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
+.signal-directory-grid .signal-card-title > .fi-caption-box {
+  justify-self: end;
+  text-align: right;
 }
 
-.signal-directory-grid .signal-card-title > span:last-child {
-  justify-self: start;
-  text-align: left;
+body.signal-sauvegarder .spine-hero-title-block h1 {
+  color: var(--fi-gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0;
+  text-shadow:
+    -0.08em -0.08em 0 var(--fi-black-shadow-strong),
+    -0.08em -0.08em 0 var(--fi-magenta-shadow-soft),
+    0 0 1.2rem rgb(var(--fi-gold-rgb) / 0.22);
+}
+
+body.signal-sauvegarder .spine-hero-meta.fi-caption-box,
+body.signal-sauvegarder .signal-ticker-label > .fi-caption-box,
+body.signal-sauvegarder .signal-card-title > .fi-caption-box {
+  color: var(--fi-green);
+  border-color: rgb(var(--fi-amber-rgb) / 0.48);
+  box-shadow:
+    -0.2rem -0.2rem 0 var(--fi-black-shadow-caption),
+    -0.2rem -0.2rem 0 1px rgb(var(--fi-gold-rgb) / 0.32);
+}
+
+body.signal-sauvegarder .signal-ticker-plate,
+body.signal-sauvegarder .signal-directory-grid > a {
+  border-color: rgb(var(--fi-gold-rgb) / 0.62);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--fi-gold-rgb) / 0.16),
+      rgb(var(--fi-magenta-rgb) / 0.07)
+    ),
+    var(--fi-surface-96);
+  box-shadow:
+    -0.42rem -0.42rem 0 var(--fi-black-shadow-strong),
+    -0.42rem -0.42rem 0 1px rgb(var(--fi-copper-rgb) / 0.58);
+}
+
+body.signal-sauvegarder .signal-ticker-plate::after,
+body.signal-sauvegarder .signal-directory-grid > a::before {
+  border-color: rgb(var(--fi-amber-rgb) / 0.36);
+}
+
+body.signal-sauvegarder .signal-card-title {
+  color: var(--fi-gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+body.signal-sauvegarder .signal-ticker {
+  border-color: rgb(var(--fi-gold-rgb) / 0.34);
+  background: rgb(var(--fi-gold-rgb) / 0.26);
+  scrollbar-color: var(--fi-gold) transparent;
+}
+
+body.signal-sauvegarder .signal-ticker-item {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--fi-gold-rgb) / 0.08),
+      rgb(var(--fi-copper-rgb) / 0.05)
+    ),
+    var(--fi-surface-98);
+}
+
+body.signal-sauvegarder .signal-ticker-item span {
+  color: var(--fi-gold);
+}
+
+body.signal-sauvegarder .signal-ticker-item strong {
+  color: var(--fi-paper-light);
+}
+
+body.signal-sauvegarder .signal-ticker-item:hover,
+body.signal-sauvegarder .signal-ticker-item:focus-visible {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--fi-gold-rgb) / 0.12),
+      rgb(var(--fi-copper-rgb) / 0.07)
+    ),
+    var(--fi-surface-98);
+  box-shadow:
+    inset 0 -3px 0 rgb(var(--fi-gold-rgb) / 0.48),
+    inset 0 0 0 1px rgb(var(--fi-amber-rgb) / 0.22),
+    0 0 18px rgb(var(--fi-gold-rgb) / 0.1);
+}
+
+body.signal-sauvegarder .signal-ticker-item:hover span,
+body.signal-sauvegarder .signal-ticker-item:focus-visible span {
+  color: var(--fi-amber);
+}
+
+body.signal-sauvegarder .signal-card-title {
+  font-size: clamp(1.95rem, 3vw, 2.65rem);
+  grid-template-rows: minmax(5.1rem, auto) auto;
+  line-height: 1;
+}
+
+body.signal-sauvegarder .signal-card-title > span:first-child {
+  align-self: end;
+  line-height: 1.08;
+}
+
+body.signal-sauvegarder .signal-ticker-label > .fi-caption-box {
+  justify-self: end;
+  text-align: right;
+}
+
+body.signal-sauvegarder .signal-directory-grid > a:hover,
+body.signal-sauvegarder .signal-directory-grid > a:focus-visible {
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--fi-gold-rgb) / 0.21),
+      rgb(var(--fi-magenta-rgb) / 0.1)
+    ),
+    var(--fi-surface-96);
+  box-shadow:
+    -0.5rem -0.5rem 0 var(--fi-black-shadow-lifted),
+    -0.5rem -0.5rem 0 1px rgb(var(--fi-magenta-rgb) / 0.42);
 }
 
 .signal-source-band {
@@ -5306,7 +5479,8 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 .fi-caption-box,
 .archive-curator-note .section-label.fi-caption-box,
 .archive-search-heading > .fi-caption-box,
-.signal-ticker-plate > .fi-caption-box,
+.signal-ticker-label > .fi-caption-box,
+.oeuvre-ticker-label > .fi-caption-box,
 .oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
 .signal-directory-grid .signal-card-title > .fi-caption-box,
 .signal-branch-meta.fi-caption-box,

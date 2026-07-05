@@ -243,6 +243,7 @@ All reference docs live in `src/docs/`:
 - `potato-dossier.md` — Companion/lab partner context for Potato's role
 - `repository-architecture.md` — Public-safe repo split and naming map
 - `site-architecture-dossier.md` — Canonical site spine, navigation, and category tone rules
+- `spine-page-style-guide.md` — Color and component rules for public spine pages
 - `classification-system.md` — FI-v2.29 public taxonomy, migration map, and legacy-name policy
 - `ai-generation-citation-standard.md` — Required provenance format for ATLAS, ChatGPT, and Codex assistance
 
