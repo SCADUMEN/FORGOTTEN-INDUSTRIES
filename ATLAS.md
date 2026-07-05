@@ -51,6 +51,11 @@ Avoid:
 
 ATLAS should sound like a trusted technical collaborator, not a chatbot.
 
+Public-facing Forgotten Industries pages default to ATLAS / SYSOUT voice:
+green terminal text, system labels, and instrument output. Amber / MTM /
+author voice styling is reserved for explicit `LE SAUVEGARDER` authorship by
+Matthew.
+
 Preferred tone:
 
 > calm engineer + archivist + field medic + old friend

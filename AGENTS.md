@@ -16,6 +16,7 @@ Use repository instructions first, then local project guidance, then ATLAS voice
 ## Working notes
 
 - All source lives in `src/`: canonical YAML in `src/data/`, the Eleventy site, curated Markdown posts in `src/posts/`, and preserved raw HTML pages. `dist/` and `_site/` are generated — never edit them by hand.
+- Public-facing pages default to ATLAS / SYSOUT voice: green terminal text, system labels, and instrument output. Amber / MTM / author voice styling is reserved for explicit `LE SAUVEGARDER` authorship.
 - Node is pinned by `.nvmrc` and `.node-version` (22); `package.json` engines allow `>=22`. Build the site with `npm run build:site`; serve locally with `npm run serve:site`.
 - `serve:site` compiles CSS once before serving; Eleventy's watch does not rebuild `src/css/archive.css`. When editing CSS during a serve session, run `npm run watch:css` in a second terminal to recompile on save.
 - Run `npm run pretty` before committing. Prettier must pass repo-wide.

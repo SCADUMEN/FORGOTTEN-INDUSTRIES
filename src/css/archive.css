@@ -139,15 +139,15 @@
     -0.52rem -0.52rem 0 1px var(--fi-magenta-shadow);
   --fi-separator: var(--fi-white-line);
   --paper: var(--fi-bg);
-  --ink: var(--fi-gold);
+  --ink: var(--fi-green-bright);
   --muted: var(--fi-slate);
   --line: var(--fi-cyan-line);
   --steel: var(--fi-cyan);
   --oxide: var(--fi-magenta);
-  --brass: var(--fi-gold);
+  --brass: var(--fi-green);
   --blueprint: var(--fi-cyan);
   --white: var(--fi-surface-98);
-  --focus: var(--fi-amber);
+  --focus: var(--fi-cyan);
   --font-display: 'Old Standard TT', Georgia, 'Iowan Old Style', serif;
   --font-ui:
     'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -155,12 +155,12 @@
   --font-human: 'Courier Prime', 'Courier New', Courier, monospace;
   --font-system:
     'Space Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-  --editorial-font: var(--font-human);
-  --utility-font: var(--font-ui);
+  --editorial-font: var(--font-system);
+  --utility-font: var(--font-system);
   --mono-font: var(--font-system);
   --mono-size: 1rem;
   --homepage-mono-size: 1rem;
-  --headline-font: var(--font-display);
+  --headline-font: var(--font-system);
   --stencil-font: var(--font-system);
 }
 
@@ -188,16 +188,44 @@
   --color-fi-copper: var(--fi-copper);
   --color-fi-maroon: var(--fi-maroon);
   --color-fi-slate: var(--fi-slate);
-  --font-sans: var(--font-ui);
-  --font-serif: var(--font-display);
-  --font-title: var(--font-display);
-  --font-interface: var(--font-ui);
-  --font-testimony: var(--font-human);
+  --font-sans: var(--font-system);
+  --font-serif: var(--font-system);
+  --font-title: var(--font-system);
+  --font-interface: var(--utility-font);
+  --font-testimony: var(--editorial-font);
   --font-fi-system: var(--font-system);
   --font-utility: var(--utility-font);
   --font-mono: var(--mono-font);
   --font-headline: var(--headline-font);
   --font-stencil: var(--stencil-font);
+}
+
+.le-sauvegarder-author,
+[data-authorship='le-sauvegarder'],
+body.le-sauvegarder-author {
+  --ink: var(--fi-gold);
+  --brass: var(--fi-gold);
+  --focus: var(--fi-amber);
+  --editorial-font: var(--font-human);
+  --utility-font: var(--font-ui);
+  --headline-font: var(--font-display);
+  color: var(--ink);
+  font-family: var(--editorial-font);
+}
+
+.le-sauvegarder-author h1,
+.le-sauvegarder-author h2,
+.le-sauvegarder-author h3,
+[data-authorship='le-sauvegarder'] h1,
+[data-authorship='le-sauvegarder'] h2,
+[data-authorship='le-sauvegarder'] h3,
+body.le-sauvegarder-author h1,
+body.le-sauvegarder-author h2,
+body.le-sauvegarder-author h3 {
+  color: var(--fi-gold);
+  font-family: var(--headline-font);
+  font-style: italic;
+  text-transform: none;
 }
 
 * {
@@ -216,7 +244,7 @@ body {
   );
   background-attachment: fixed;
   color: var(--ink);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: 16px;
   line-height: 1.6;
 }
@@ -262,13 +290,13 @@ a {
 }
 
 a:hover {
-  color: var(--fi-amber);
+  color: var(--fi-green);
 }
 
 a:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 0.18rem;
-  color: var(--fi-amber);
+  color: var(--fi-green);
   background: var(--fi-cyan-wash-strong);
 }
 
@@ -319,7 +347,7 @@ img {
   align-items: center;
   gap: 0.9rem;
   color: var(--ink);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   font-weight: 500;
   text-decoration: none;
@@ -445,21 +473,23 @@ img {
 
 .masthead h1 {
   margin: 0;
-  font-family: var(--font-display);
+  color: var(--fi-green);
+  font-family: var(--font-system);
   font-size: clamp(3.25rem, 6.4vw, 5rem);
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
   line-height: 0.98;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .tagline {
   max-width: 760px;
   margin: 1.2rem 0 0;
-  color: var(--fi-gold);
-  font-family: var(--font-ui);
+  color: var(--fi-green-bright);
+  font-family: var(--font-system);
   font-size: 1rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   line-height: 1.62;
 }
@@ -476,7 +506,7 @@ img {
 }
 
 .homepage-masthead .tagline {
-  font-family: var(--font-human);
+  font-family: var(--font-system);
 }
 
 /* Match the lettermark column to the primary-card grid below it (two
@@ -519,7 +549,7 @@ img {
    landmarks, hence body:has(). */
 .site-mark:hover .site-mark-shield,
 .site-mark:focus-visible .site-mark-shield {
-  background: var(--fi-gold);
+  background: var(--fi-green);
   animation: none;
 }
 
@@ -714,11 +744,11 @@ body:has(.site-mark:focus-visible) .hero-mark::after {
 
 .section-label {
   margin: 0 0 0.4rem;
-  color: var(--fi-amber);
-  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--fi-green);
+  font-family: var(--font-system);
   font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   opacity: 0.8;
   text-transform: uppercase;
 }
@@ -770,19 +800,21 @@ h2 {
 .section-directory h2,
 .archive-instrumentation h2 {
   color: var(--fi-cyan);
-  font-family: 'Old Standard TT', serif;
+  font-family: var(--font-system);
   font-size: clamp(1.7rem, 3vw, 2.45rem);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .band-grid > :first-child h2,
 .field-heading {
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--font-system);
   font-size: clamp(1.45rem, 2.6vw, 2.15rem);
   font-weight: 700;
   line-height: 1.05;
+  text-transform: uppercase;
 }
 
 .signal-chain-dossier.band-grid h2,
@@ -801,7 +833,7 @@ h2 {
 h3 {
   margin: 0 0 0.35rem;
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: 1.15rem;
   font-weight: 500;
   letter-spacing: 0;
@@ -872,7 +904,7 @@ h3 {
 
 .ledger-translation {
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1.02rem, 1.45vw, 1.24rem);
   font-style: normal;
   font-weight: 500;
@@ -883,7 +915,7 @@ h3 {
 .ledger-summary {
   margin: 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1.08rem, 1.55vw, 1.34rem);
   line-height: 1.45;
   overflow-wrap: anywhere;
@@ -972,7 +1004,7 @@ h3 {
 .phylo-root .bilingual-heading strong,
 .phylo-branch .bilingual-heading strong {
   color: var(--oxide);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(0.92rem, 1.45vw, 1.16rem);
   font-weight: 500;
   letter-spacing: 0;
@@ -983,7 +1015,7 @@ h3 {
 .phylo-root em,
 .phylo-branch em {
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1rem, 1.45vw, 1.24rem);
   font-style: italic;
   line-height: 1.45;
@@ -1238,7 +1270,7 @@ h3 {
 .stat span {
   display: block;
   margin-top: 0.55rem;
-  color: var(--fi-amber-soft);
+  color: var(--fi-green-soft);
   font-family: var(--mono-font);
   font-size: var(--mono-size);
   font-weight: 700;
@@ -1255,7 +1287,7 @@ h3 {
 }
 
 .stat .stat-label {
-  color: var(--fi-amber);
+  color: var(--fi-green);
   font-family: 'Space Mono', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -1440,7 +1472,7 @@ h3 {
 .inventory-gallery-card figcaption strong a {
   color: var(--steel);
   font-family: var(--headline-font);
-  font-style: italic;
+  font-style: normal;
   text-decoration: none;
 }
 
@@ -1450,8 +1482,8 @@ h3 {
 }
 
 .inventory-gallery-card figcaption em {
-  color: var(--fi-amber);
-  font-family: var(--font-ui);
+  color: var(--fi-green);
+  font-family: var(--font-system);
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   opacity: 0.6;
@@ -1503,7 +1535,7 @@ h3 {
 
 .archive-instrumentation .stat span {
   margin-top: 0;
-  color: var(--fi-amber-muted);
+  color: var(--fi-green-soft);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   line-height: 1.25;
@@ -1511,7 +1543,7 @@ h3 {
 
 .archive-instrumentation .stat .stat-label {
   max-width: 100%;
-  color: var(--fi-amber-muted);
+  color: var(--fi-green-soft);
   font-family: 'Space Mono', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -1585,7 +1617,7 @@ h3 {
 .spine-card p {
   margin: 0.45rem 0 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1rem, 1.45vw, 1.18rem);
   line-height: 1.48;
 }
@@ -1669,7 +1701,7 @@ h3 {
 .signal-entry-list p {
   margin: 0.45rem 0 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1rem, 1.35vw, 1.16rem);
   line-height: 1.48;
 }
@@ -1762,11 +1794,12 @@ h3 {
 
 .project-card h2 {
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--headline-font);
   font-size: clamp(1.45rem, 3vw, 2.4rem);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   line-height: 1.08;
+  text-transform: uppercase;
 }
 
 .project-card h3 {
@@ -1808,7 +1841,7 @@ h3 {
   padding-top: 0.7rem;
   border-top: 1px solid var(--line);
   color: var(--brass);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-style: italic;
   font-weight: 400;
@@ -1982,7 +2015,7 @@ h3 {
   max-width: 42rem;
   margin: 0.4rem 0 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
 }
 
 .ai-citation {
@@ -2050,7 +2083,7 @@ h3 {
 .field-note-card p {
   max-width: 58rem;
   margin: 0;
-  font-family: var(--font-human);
+  font-family: var(--editorial-font);
   white-space: normal;
 }
 
@@ -2089,7 +2122,7 @@ h3 {
 
 .field-log-filter-row span {
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: var(--mono-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -2103,7 +2136,7 @@ h3 {
   border-radius: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 400;
 }
 
@@ -2174,7 +2207,7 @@ h3 {
 .manual-question,
 .manual-doctrine {
   color: var(--brass);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-style: italic;
   font-weight: 500;
 }
@@ -2298,7 +2331,7 @@ h3 {
 
 .manual-instrument-grid > article p {
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
 }
 
 .tag-filter {
@@ -2306,7 +2339,7 @@ h3 {
   border: 0;
   background: transparent;
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
   cursor: pointer;
   text-transform: uppercase;
@@ -2406,7 +2439,7 @@ h3 {
   border-left: 2px solid var(--fi-magenta);
   padding-left: 1rem;
   color: var(--fi-green-soft);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(0.92rem, 1.3vw, 1.06rem);
   letter-spacing: 0.02em;
 }
@@ -2445,7 +2478,7 @@ h3 {
 
 .record-meta-grid-atlas dd {
   color: var(--fi-green);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
 }
 
@@ -2664,7 +2697,7 @@ h3 {
 
 .atlas-voice-list .field-log-card-meta dd {
   color: var(--fi-green-bright);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
 }
 
@@ -2778,9 +2811,9 @@ h3 {
 .archive-search-heading > span:first-child {
   display: block;
   color: var(--fi-cyan);
-  font-family: 'Old Standard TT', serif;
+  font-family: var(--font-system);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   line-height: 0.95;
   text-transform: uppercase;
@@ -2860,7 +2893,7 @@ h3 {
   padding: 0.72rem 0.85rem;
   background: var(--white);
   color: var(--ink);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 400;
 }
 
@@ -2874,7 +2907,7 @@ h3 {
   background: var(--white);
   color: var(--steel);
   cursor: pointer;
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -2989,7 +3022,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.35rem 0.85rem;
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: var(--mono-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -3027,8 +3060,8 @@ h3 {
 
 .spine-hero-title-block h1 {
   color: var(--fi-cyan);
-  font-family: 'Old Standard TT', serif;
-  font-style: italic;
+  font-family: var(--font-system);
+  font-style: normal;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -3059,7 +3092,7 @@ h3 {
 .institution-doctrine {
   margin: 1.35rem 0 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1rem, 1.8vw, 1.35rem);
   font-style: italic;
   font-weight: 400;
@@ -3107,13 +3140,13 @@ h3 {
 .hero-shadow-button strong {
   position: relative;
   z-index: 1;
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   line-height: 1.25;
   text-transform: uppercase;
 }
 
 .hero-shadow-button span {
-  color: var(--fi-amber);
+  color: var(--fi-green);
   font-size: var(--mono-size);
   font-weight: 500;
 }
@@ -3518,7 +3551,7 @@ h3 {
 
 .activity-strip strong {
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
   line-height: 1.35;
 }
@@ -3656,7 +3689,7 @@ h3 {
   display: -webkit-box;
   overflow: hidden;
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
   font-size: var(--homepage-mono-size);
   line-height: 1.4;
@@ -3683,7 +3716,7 @@ h3 {
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--line);
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -3718,8 +3751,8 @@ h3 {
     var(--fi-surface-98)
   );
   box-shadow: var(--fi-plate-shadow-rest);
-  color: var(--fi-amber);
-  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--fi-green);
+  font-family: var(--font-system);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -3817,7 +3850,7 @@ h3 {
 .directory-grid h3 {
   margin-top: 2rem;
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-style: normal;
   font-weight: 500;
@@ -4105,10 +4138,10 @@ h3 {
   margin: 0;
   padding: 0;
   border: none;
-  color: var(--fi-gold);
-  font-family: 'Courier Prime', monospace;
+  color: var(--fi-green-bright);
+  font-family: var(--editorial-font);
   font-size: 0.9rem;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.75;
 }
 
@@ -4164,7 +4197,7 @@ h3 {
 .archive-aerial-plate .archive-aerial-note {
   margin-top: 0.8rem;
   color: var(--steel);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
   font-style: italic;
 }
 
@@ -4309,7 +4342,7 @@ h3 {
   max-width: 36rem;
   margin: 0.7rem 0 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
 }
 
 .object-metadata-grid {
@@ -4366,7 +4399,7 @@ h3 {
   max-width: 60rem;
   margin-bottom: 0;
   color: var(--muted);
-  font-family: var(--font-human);
+  font-family: var(--editorial-font);
   text-align: left;
 }
 
@@ -4396,7 +4429,7 @@ h3 {
 
 .object-relationship-groups p:not(.section-label) {
   color: var(--muted);
-  font-family: var(--font-human);
+  font-family: var(--editorial-font);
   text-align: left;
 }
 
@@ -4420,7 +4453,7 @@ h3 {
   margin: 0;
   padding: 0 1rem 1rem;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
 }
 
 .object-source-assets .object-source-empty {
@@ -4499,7 +4532,7 @@ h3 {
 .provenance-definitions dd {
   margin: 0;
   color: var(--muted);
-  font-family: var(--font-ui);
+  font-family: var(--font-system);
 }
 
 .provenance-capability-plate {
@@ -4590,7 +4623,7 @@ h3 {
 }
 
 .fi-provenance-plate .am {
-  color: var(--fi-amber-muted);
+  color: var(--fi-green-soft);
 }
 
 .fi-provenance-plate a.cu {
@@ -4602,20 +4635,18 @@ h3 {
   color: var(--fi-cyan);
 }
 
-/* The ZOOT door: an Old Standard TT italic fi ligature standing in the
-   footer where the shield stands in the header. letter-spacing must stay
-   normal — tracking suppresses the OpenType liga substitution that forms
-   the single glyph. The slick canvas is injected by zoot-mark-slick.js on
-   capable instruments and blooms on hover. */
+/* The ZOOT door: a compact system mark in the footer where the shield stands
+   in the header. The slick canvas is injected by zoot-mark-slick.js on capable
+   instruments and blooms on hover. */
 a.fi-zoot-mark {
   position: relative;
   display: inline-flex;
   align-items: center;
   align-self: center;
-  color: var(--fi-magenta);
-  font-family: 'Old Standard TT', serif;
-  font-size: 4.8rem;
-  font-style: italic;
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  font-size: 3.2rem;
+  font-style: normal;
   font-variant-ligatures: common-ligatures;
   letter-spacing: normal;
   line-height: 1;
@@ -5017,12 +5048,12 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 @media (prefers-contrast: more) {
   :root {
     --paper: var(--fi-bg);
-    --ink: var(--fi-gold);
+    --ink: var(--fi-green);
     --muted: var(--fi-slate);
     --line: var(--fi-cyan);
     --steel: var(--fi-cyan);
     --oxide: var(--fi-magenta);
-    --brass: var(--fi-gold);
+    --brass: var(--fi-green);
     --blueprint: var(--fi-cyan);
     --white: var(--fi-surface);
   }
@@ -5078,14 +5109,16 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 }
 
 .post-body {
-  font-family: var(--font-human);
+  font-family: var(--editorial-font);
 }
 
 .post-body h2,
 .post-body h3 {
-  font-family: var(--font-display);
+  color: var(--fi-cyan);
+  font-family: var(--headline-font);
   font-weight: 700;
   margin-top: 2rem;
+  text-transform: uppercase;
 }
 
 .post-body img,
@@ -5100,8 +5133,8 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   border-left: 3px solid var(--oxide);
   padding-left: 1rem;
   color: var(--muted);
-  font-family: var(--font-human);
-  font-style: italic;
+  font-family: var(--editorial-font);
+  font-style: normal;
 }
 
 .post-body code,
@@ -5115,7 +5148,7 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 
 .archive-document-body {
   min-width: 0;
-  font-family: var(--font-human);
+  font-family: var(--editorial-font);
 }
 
 .archive-document-body > h1:first-child {
