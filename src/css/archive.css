@@ -249,6 +249,17 @@ body {
   line-height: 1.6;
 }
 
+body.homepage-landing {
+  --ink: var(--fi-gold);
+  --brass: var(--fi-gold);
+  --focus: var(--fi-amber);
+  --editorial-font: var(--font-human);
+  --utility-font: var(--font-ui);
+  --headline-font: var(--font-display);
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+
 body::before {
   position: fixed;
   z-index: 2147483647;
@@ -298,6 +309,11 @@ a:focus-visible {
   outline-offset: 0.18rem;
   color: var(--fi-green);
   background: var(--fi-cyan-wash-strong);
+}
+
+body.homepage-landing a:hover,
+body.homepage-landing a:focus-visible {
+  color: var(--fi-amber);
 }
 
 ::selection {
@@ -351,6 +367,10 @@ img {
   font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   font-weight: 500;
   text-decoration: none;
+}
+
+body.homepage-landing .site-mark {
+  font-family: var(--font-ui);
 }
 
 .site-mark img {
@@ -483,6 +503,14 @@ img {
   text-transform: uppercase;
 }
 
+body.homepage-landing .masthead h1 {
+  color: inherit;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+}
+
 .tagline {
   max-width: 760px;
   margin: 1.2rem 0 0;
@@ -492,6 +520,12 @@ img {
   font-style: normal;
   font-weight: 400;
   line-height: 1.62;
+}
+
+body.homepage-landing .tagline {
+  color: var(--fi-gold);
+  font-family: var(--font-ui);
+  font-style: italic;
 }
 
 .masthead .section-label {
@@ -507,6 +541,10 @@ img {
 
 .homepage-masthead .tagline {
   font-family: var(--font-system);
+}
+
+body.homepage-landing .homepage-masthead .tagline {
+  font-family: var(--font-human);
 }
 
 /* Match the lettermark column to the primary-card grid below it (two
@@ -551,6 +589,11 @@ img {
 .site-mark:focus-visible .site-mark-shield {
   background: var(--fi-green);
   animation: none;
+}
+
+body.homepage-landing .site-mark:hover .site-mark-shield,
+body.homepage-landing .site-mark:focus-visible .site-mark-shield {
+  background: var(--fi-gold);
 }
 
 body:has(.site-mark:hover) .hero-mark::after,
@@ -4626,6 +4669,10 @@ h3 {
   color: var(--fi-green-soft);
 }
 
+body.homepage-landing .fi-provenance-plate .am {
+  color: var(--fi-amber-muted);
+}
+
 .fi-provenance-plate a.cu {
   text-decoration: none;
 }
@@ -4635,18 +4682,20 @@ h3 {
   color: var(--fi-cyan);
 }
 
-/* The ZOOT door: a compact system mark in the footer where the shield stands
-   in the header. The slick canvas is injected by zoot-mark-slick.js on capable
-   instruments and blooms on hover. */
+/* The ZOOT door: an Old Standard TT italic fi ligature standing in the
+   footer where the shield stands in the header. letter-spacing must stay
+   normal - tracking suppresses the OpenType liga substitution that forms
+   the single glyph. The slick canvas is injected by zoot-mark-slick.js on
+   capable instruments and blooms on hover. */
 a.fi-zoot-mark {
   position: relative;
   display: inline-flex;
   align-items: center;
   align-self: center;
-  color: var(--fi-green);
-  font-family: var(--font-system);
-  font-size: 3.2rem;
-  font-style: normal;
+  color: var(--fi-magenta);
+  font-family: 'Old Standard TT', serif;
+  font-size: 4.8rem;
+  font-style: italic;
   font-variant-ligatures: common-ligatures;
   letter-spacing: normal;
   line-height: 1;
