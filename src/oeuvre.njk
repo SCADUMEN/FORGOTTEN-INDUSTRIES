@@ -16,6 +16,7 @@ eleventyExcludeFromCollections: true
 
 <section class="section-directory" aria-labelledby="oeuvre-directory-heading">
   <div class="section-inner">
+    {% set doctrinePosts = collections.posts | doctrinePosts %}
     <h2 id="oeuvre-directory-heading" class="sr-only">L'Œuvre index</h2>
     <div class="directory-grid plate-card-grid oeuvre-directory-grid">
       <a id="dossiers" href="/projects/">
@@ -28,6 +29,12 @@ eleventyExcludeFromCollections: true
         <h3 class="oeuvre-card-title">
           <span>LES MANUSCRITS</span>
           <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> MANUSCRIPTS ({{ collections.posts | count }})</span>
+        </h3>
+      </a>
+      <a href="/archive/posts/">
+        <h3 class="oeuvre-card-title">
+          <span>LA DOCTRINE</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> SYSTEMS DOCTRINE ({{ doctrinePosts | count }})</span>
         </h3>
       </a>
     </div>

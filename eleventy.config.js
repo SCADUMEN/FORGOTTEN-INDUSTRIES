@@ -94,6 +94,17 @@ function recordDateValue(record) {
   )
 }
 
+function isDoctrinePost(record) {
+  const data = record?.data || record || {}
+  const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
+  const classification = [data.type, data.category, tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+  return classification.includes('doctrine')
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
@@ -181,6 +192,10 @@ export default function (eleventyConfig) {
           })
           .slice(0, Number(limit) || 3)
       : []
+  })
+
+  eleventyConfig.addFilter('doctrinePosts', function (records) {
+    return Array.isArray(records) ? records.filter(isDoctrinePost) : []
   })
 
   eleventyConfig.addFilter('isoDate', function (value) {
