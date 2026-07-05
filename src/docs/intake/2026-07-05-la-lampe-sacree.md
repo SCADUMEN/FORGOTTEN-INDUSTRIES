@@ -1,8 +1,8 @@
-# FI-TOOL-FLS-001: La Lampe Sacrée
+# FI-TOOL-FLS-001: La Lampe de Constat
 
 FORGOTTEN INDUSTRIES
 
-L'ARCHIVE ENTRY // LA LAMPE SACRÉE
+L'ARCHIVE ENTRY // LA LAMPE DE CONSTAT
 
 Classification: FI-TOOL-FLS-001
 
@@ -90,6 +90,6 @@ Today's archive object: an orange Olight inspection light, documented with the r
 
 The ruler establishes size. The lamp establishes visibility.
 
-FI-TOOL-FLS-001 — La Lampe Sacrée
+FI-TOOL-FLS-001 — La Lampe de Constat
 
 A thing illuminated is a thing allowed to testify.

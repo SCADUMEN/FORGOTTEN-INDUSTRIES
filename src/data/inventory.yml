@@ -1501,7 +1501,7 @@ items:
     date_logged: '2026-07-05'
 
   - id: FI-TOOL-KNF-001
-    name: Le Couteau Sacré
+    name: Le Couteau de Triage
     category: field instrument
     manufacturer: unknown
     model: red folding pocket knife
@@ -1538,7 +1538,7 @@ items:
     date_logged: '2026-07-05'
 
   - id: FI-TOOL-FLS-001
-    name: La Lampe Sacrée
+    name: La Lampe de Constat
     category: field instrument
     manufacturer: Olight
     model: orange flat EDC flashlight / exact model provisional
