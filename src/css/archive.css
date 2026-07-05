@@ -155,6 +155,7 @@
   --font-human: 'Courier Prime', 'Courier New', Courier, monospace;
   --font-system:
     'Space Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-report-body: var(--font-ui);
   --editorial-font: var(--font-system);
   --utility-font: var(--font-system);
   --mono-font: var(--font-system);
@@ -2557,11 +2558,11 @@ h3 {
 
 .field-log-body-atlas p {
   color: var(--fi-green-bright);
-  font-family: var(--font-system);
-  font-size: 0.9rem;
-  letter-spacing: 0.035em;
-  line-height: 1.65;
-  text-transform: uppercase;
+  font-family: var(--font-report-body);
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.7;
+  text-transform: none;
 }
 
 .field-log-atlas-provenance,
@@ -5151,6 +5152,14 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 
 .post-body {
   font-family: var(--editorial-font);
+}
+
+.post-body-system-output {
+  color: var(--fi-green-bright);
+  font-family: var(--font-report-body);
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  line-height: 1.75;
 }
 
 .post-body h2,

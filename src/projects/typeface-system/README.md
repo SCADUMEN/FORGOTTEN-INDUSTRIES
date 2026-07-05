@@ -30,6 +30,7 @@ container scripts and preserves the design decision itself.
 | ----------------------- | ----------------------- | -------------------------------------------------------------------------------- |
 | Public default          | ATLAS / SYSOUT          | Green system text for public pages, records, dossiers, posts, and route copy.    |
 | System record           | Space Mono              | IDs, timestamps, status, classification, file indexes, ATLAS-generated metadata. |
+| Report body             | IBM Plex Sans           | Long-form ATLAS/SYSOUT prose, systems doctrine, generated reports, AI records.   |
 | Reserved author mode    | LE SAUVEGARDER          | Amber / MTM / human testimony styling only when Matthew explicitly invokes it.   |
 | Historical source state | Original voice specimen | Preserved as evidence; no longer the site-wide production rule.                  |
 
@@ -49,6 +50,9 @@ The type system is not decorative. It carries authorship and source state.
 
 - ATLAS / SYSOUT voice: metadata, classification, ATLAS output, generated
   records, route copy, dossiers, manuscripts, and public-facing operational text.
+- Report body voice: long-form systems doctrine, ATLAS reports, and AI-assisted
+  instrument records use `--font-report-body` so paragraphs remain readable
+  while headers and labels stay Space Mono.
 - LE SAUVEGARDER author voice: amber / MTM / human testimony styling only when
   explicitly invoked by Matthew.
 - Historical voice split: preserved as source evidence, not treated as the
