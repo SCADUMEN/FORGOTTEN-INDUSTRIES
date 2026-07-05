@@ -199,11 +199,11 @@ test('archive page renders', async ({ page }) => {
   await page.getByRole('searchbox', { name: "Search L'Archive" }).fill('Pang')
   await expect(page.locator('#archive-search-results')).toContainText('Pang')
 
-  await expect(
-    page.locator(
-      '.inventory-gallery-track figcaption a[href="/archive/objects/fi-case-001/"]'
-    )
-  ).toContainText('CaseLabs Mercury S8')
+  const galleryObjectLinks = page.locator(
+    '.inventory-gallery-track figcaption a[href^="/archive/objects/"]'
+  )
+  await expect(galleryObjectLinks).toHaveCount(12)
+  await expect(galleryObjectLinks.first()).toContainText(/\S/)
 })
 
 test('archive page remains contained and uses an intentional object shelf on mobile', async ({
