@@ -1500,6 +1500,81 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-07-05'
 
+  - id: FI-TOOL-KNF-001
+    name: Le Couteau Sacré
+    category: field instrument
+    manufacturer: unknown
+    model: red folding pocket knife
+    quantity: 1
+    associated_project: FI-PROJ-007
+    condition: usable / red handle scales / black folding blade / inspection pending
+    status: field knife / opening tool / bench instrument
+    photos:
+      - assets/field-instruments/fi-tool-knf-001/fi-tool-knf-001-01.jpg
+      - assets/field-instruments/fi-tool-knf-001/fi-tool-knf-001-02.jpg
+      - assets/field-instruments/fi-tool-knf-001/fi-tool-knf-001-03.jpg
+      - assets/field-instruments/fi-tool-knf-001/fi-tool-knf-001-04.jpg
+    notes: >
+      Red-handled folding pocket knife with black blade, pocket clip, visible
+      pivot hardware, thumb access features, and textured handle scales.
+      Manufacturer and exact model are not confirmed from current photographs.
+      Documented in gloved hand within the active workstation environment
+      during field-instrument intake. The object functions as a small cutting
+      and opening tool for boxes, tape, packaging, soft materials, and general
+      bench operations. The blade appears deployable and intact in current
+      photographs; detailed edge condition, lockup, and maker markings require
+      direct inspection before any sharper claim is made.
+    tags:
+      - Forgotten Industries
+      - L'Archive
+      - field instrument
+      - pocket knife
+      - cutting tool
+      - bench instrument
+      - artifact documentation
+      - l-operateur
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-05'
+
+  - id: FI-TOOL-FLS-001
+    name: La Lampe Sacrée
+    category: field instrument
+    manufacturer: Olight
+    model: orange flat EDC flashlight / exact model provisional
+    quantity: 1
+    associated_project: FI-PROJ-007
+    condition: usable / orange body / pocket clip present / scale documented
+    status: field light / inspection lamp / archive illumination tool
+    photos:
+      - assets/field-instruments/fi-tool-fls-001/fi-tool-fls-001-01.jpg
+      - assets/field-instruments/fi-tool-fls-001/fi-tool-fls-001-02.jpg
+      - assets/field-instruments/fi-tool-fls-001/fi-tool-fls-001-03.jpg
+      - assets/field-instruments/fi-tool-fls-001/fi-tool-fls-001-04.jpg
+    notes: >
+      Orange flat-profile Olight flashlight or inspection light with side clip,
+      textured grip field, front control, and warning/indicator markings
+      visible in current photographs. Exact model remains provisional until
+      markings are read directly. Scale documentation places the object beside
+      FI-TOOL-RUL-001, preserving its approximate size without converting the
+      photograph into a formal measurement claim. The object serves as an
+      illumination instrument for inspection, photography, search, bench work,
+      and low-light archive operations. Current photographs show surface wear
+      consistent with use, but no obvious breakage is visible.
+    tags:
+      - Forgotten Industries
+      - L'Archive
+      - field instrument
+      - flashlight
+      - inspection light
+      - bench instrument
+      - artifact documentation
+      - measuring witness
+      - l-operateur
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-05'
+
   - id: FI-PHOTO-001
     name: Initial local archive photo batch
     category: photo evidence set
