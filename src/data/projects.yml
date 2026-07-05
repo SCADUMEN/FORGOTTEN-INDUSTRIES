@@ -326,10 +326,10 @@ projects:
     started: '2026'
     revived: '2026'
     summary: >
-      Design-evolution dossier for the Forgotten Industries type system: Old
-      Standard TT for formal archive headings, Space Mono for system records,
-      IBM Plex Sans for interface labels and descriptors, and Courier Prime for
-      human testimony, field logs, and recovered voice.
+      Design-evolution dossier for the Forgotten Industries voice system:
+      ATLAS/SYSOUT green text as the public default, Space Mono for system
+      records, and amber / MTM / author styling reserved for explicit
+      LE SAUVEGARDER authorship.
     themes:
       - typography
       - voice split
@@ -353,6 +353,6 @@ projects:
         path: src/projects/typeface-system/README.md
     documentation_style:
       - Treat type choices as evidence of voice hierarchy, not decoration
-      - Keep system-generated metadata visually separate from human testimony
+      - Default public pages to ATLAS/SYSOUT unless LE SAUVEGARDER authorship is explicit
       - Preserve the raw intake before simplifying it into site-native records
       - Build the dossier first; promote to a manual only when rules become procedural

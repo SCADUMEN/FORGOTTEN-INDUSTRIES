@@ -1,5 +1,6 @@
 ---
-title: "ZOOT Enters Service"
+title: "LE ZOOT Enters Service"
+display_title_html: "<em>LE ZOOT</em> Enters Service"
 slug: "zoot-enters-service"
 category: "ATLAS Report"
 type: "Systems Report"
@@ -14,7 +15,7 @@ ai_assistance:
     authority rests with Matthew Taylor Marx; this entry is a draft pending
     his review and authorization.
   citation: >
-    ATLAS. "ZOOT Enters Service." ATLAS Report, generated with ATLAS through
+    ATLAS. "LE ZOOT Enters Service." ATLAS Report, generated with ATLAS through
     Anthropic Claude; repository publication assisted by Claude Code.
     Forgotten Industries, 2026-07-04.
 tags:

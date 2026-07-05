@@ -6,7 +6,9 @@ Public route: `/projects/typeface-system/`
 Clean specimen: `/projects/typeface-system/voice-split-specimen.html`
 
 This dossier preserves the first clear articulation of the Forgotten Industries
-voice split as a type system.
+voice split as a type system. The current operating rule supersedes the original
+split: public pages default to ATLAS / SYSOUT voice, while amber / MTM / author
+voice is reserved for explicit `LE SAUVEGARDER` authorship.
 
 It should be a dossier first, not a manual. The artifact is evidence of an
 evolving design language: how the archive separates machine record, institutional
@@ -24,12 +26,12 @@ container scripts and preserves the design decision itself.
 
 ## Voice Split
 
-| Role                   | Typeface        | Use                                                                              |
-| ---------------------- | --------------- | -------------------------------------------------------------------------------- |
-| Formal archive title   | Old Standard TT | Dossier titles, institutional headings, major case-file names.                   |
-| System record          | Space Mono      | IDs, timestamps, status, classification, file indexes, ATLAS-generated metadata. |
-| Interface / descriptor | IBM Plex Sans   | Labels, navigation, summaries, descriptors, explanatory UI text.                 |
-| Human testimony        | Courier Prime   | Field notes, witness summaries, recorder transcripts, personal written evidence. |
+| Role                    | Typeface / mode         | Use                                                                              |
+| ----------------------- | ----------------------- | -------------------------------------------------------------------------------- |
+| Public default          | ATLAS / SYSOUT          | Green system text for public pages, records, dossiers, posts, and route copy.    |
+| System record           | Space Mono              | IDs, timestamps, status, classification, file indexes, ATLAS-generated metadata. |
+| Reserved author mode    | LE SAUVEGARDER          | Amber / MTM / human testimony styling only when Matthew explicitly invokes it.   |
+| Historical source state | Original voice specimen | Preserved as evidence; no longer the site-wide production rule.                  |
 
 ## Decision
 
@@ -45,10 +47,12 @@ instruction set.
 
 The type system is not decorative. It carries authorship and source state.
 
-- System voice: metadata, classification, ATLAS output, generated records.
-- Human voice: field logs, testimony, memoir fragments, recovered notes.
-- Institutional voice: page titles, archive labels, dossier framing.
-- Interface voice: navigation, route labels, short summaries, operational copy.
+- ATLAS / SYSOUT voice: metadata, classification, ATLAS output, generated
+  records, route copy, dossiers, manuscripts, and public-facing operational text.
+- LE SAUVEGARDER author voice: amber / MTM / human testimony styling only when
+  explicitly invoked by Matthew.
+- Historical voice split: preserved as source evidence, not treated as the
+  current production default.
 
 When uncertain, preserve the source voice before making the page look tidy.
 
