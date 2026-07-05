@@ -1,8 +1,8 @@
-# FI-TOOL-KNF-001: Le Couteau Sacré
+# FI-TOOL-KNF-001: Le Couteau de Triage
 
 FORGOTTEN INDUSTRIES
 
-L'ARCHIVE ENTRY // LE COUTEAU SACRÉ
+L'ARCHIVE ENTRY // LE COUTEAU DE TRIAGE
 
 Classification: FI-TOOL-KNF-001
 
@@ -92,6 +92,6 @@ Today's archive object: a red folding pocket knife from the active workstation.
 
 Not catalogued as a weapon. Catalogued as an opening instrument.
 
-FI-TOOL-KNF-001 — Le Couteau Sacré
+FI-TOOL-KNF-001 — Le Couteau de Triage
 
 A thing opened carefully is a thing preserved from damage.
