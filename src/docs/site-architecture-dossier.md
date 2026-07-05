@@ -19,8 +19,8 @@ L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS
 | Route         | Public name | Role                                                                        |
 | ------------- | ----------- | --------------------------------------------------------------------------- |
 | `/l-archive/` | L'ARCHIVE   | Master record, inventory, object records, source evidence, process records. |
-| `/oeuvre/`    | L'ŒUVRE     | Assembled work layer.                                                       |
-| `/signal/`    | LE SIGNAL   | Authored dispatches, field logs, essays, reports, and live updates.         |
+| `/oeuvre/`    | L'ŒUVRE     | Assembled works: dossiers, manuscripts, reports, doctrine, and provenance.  |
+| `/signal/`    | LE SIGNAL   | Incoming transmissions: blog, live feed, and voice field journal.           |
 | `/apropos/`   | À PROPOS    | Origin, maker plate, institutional context, provenance, and contact.        |
 
 Do not move Dossiers, Manuscripts, manuals, posts, projects, or field logs into
@@ -56,12 +56,18 @@ public canonical route.
 L'Œuvre is the assembled work layer. It gathers finished or actively assembled
 works without making the site feel like a portfolio.
 
-It has two public shelves:
+It has five public shelves:
 
 - **Les Dossiers**: living case files assembled from archive records, field logs,
   photographs, inventories, and observations.
-- **Les Manuscrits**: authored works, research papers, doctrines, essays, and
-  complete texts emerging from the archive.
+- **Les Manuscrits**: authored works, research papers, essays, and complete
+  non-doctrine texts emerging from the archive.
+- **Les Rapports**: ATLAS reports and system reports once they have been
+  stabilized as records.
+- **La Doctrine**: field doctrine, systems doctrine, and formal principles
+  extracted from the archive.
+- **La Provenance**: the source chain, build record, instrument chain, and
+  production evidence.
 
 Implementation notes:
 
@@ -72,6 +78,7 @@ Implementation notes:
 - `src/posts/`, `collections.posts`, and `/posts/` remain for Eleventy
   collection, feed, and URL compatibility. Public labels should say Manuscript,
   Manuscripts, or Les Manuscrits.
+- `/doctrine/` is the public shelf for La Doctrine.
 
 ### Le Signal
 
@@ -80,12 +87,13 @@ operational dispatches.
 
 Use this layer for:
 
-- ATLAS reports
-- recorder-based Field Logs
+- blog dispatches
+- En Direct live feed records
+- recorder-based voice field journals
 - imported Bluesky dispatches
 - short updates
-- essays and authored transmissions when they are presented as signal rather
-  than assembled works
+- authored transmissions when they are presented as live signal rather than
+  assembled works
 
 ### À Propos
 

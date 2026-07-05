@@ -1,15 +1,16 @@
 ---
 layout: base.njk
-title: Les Manuscrits
-description: "Authored works, research papers, essays, and complete non-doctrine texts emerging from the archive."
-permalink: /posts/index.html
+title: Le Blog
+description: "Operator dispatches and non-doctrine signal posts from Forgotten Industries."
+permalink: /blog/index.html
 eleventyExcludeFromCollections: true
 ---
-{% set posts = collections.posts | manuscriptPosts %}
+{% set posts = collections.posts | signalPosts %}
+
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">L'Œuvre / Les Manuscrits</p>
-    <h1>Les Manuscrits</h1>
+    <p class="section-label">Le Signal / Le Blog</p>
+    <h1>Le Blog</h1>
     <p class="tagline">{{ description }}</p>
   </div>
 </section>
@@ -18,14 +19,15 @@ eleventyExcludeFromCollections: true
   <div class="section-inner">
     <div class="signal-map">
       <p class="entry-note">
-        <a href="/feed.xml">Subscribe to the manuscript feed</a>. L'Archive
-        remains the complete evidence record.
+        Live transmission layer. Formal doctrines and system reports are filed under
+        <a href="/oeuvre/">L'Œuvre</a>.
       </p>
 
-      <section class="signal-section" aria-labelledby="signal-entries-heading">
+      <section class="signal-section" aria-labelledby="blog-entries-heading">
         <p class="section-label">{{ posts | countLabel("entry", "entries") }}</p>
-        <h2 id="signal-entries-heading">Manuscripts, newest first.</h2>
-        <ol class="signal-entry-list" aria-label="All manuscripts">
+        <h2 id="blog-entries-heading">Blog dispatches, newest first.</h2>
+        {% if posts.length %}
+        <ol class="signal-entry-list" aria-label="Blog dispatches">
           {% for post in posts | reverse %}
           <li>
             <header>
@@ -34,7 +36,7 @@ eleventyExcludeFromCollections: true
             </header>
             <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
             <p class="entry-note">
-              {% if post.data.type %}{{ post.data.type }}{% else %}Manuscript{% endif %}
+              {% if post.data.type %}{{ post.data.type }}{% else %}Signal dispatch{% endif %}
               {% if post.data.category %}/ {{ post.data.category }}{% endif %}
             </p>
             {% if post.data.description %}
@@ -43,8 +45,13 @@ eleventyExcludeFromCollections: true
           </li>
           {% endfor %}
         </ol>
+        {% else %}
+        <div class="callout">
+          <h3>Signal Pending</h3>
+          <p>No operator blog dispatches are published in this build.</p>
+        </div>
+        {% endif %}
       </section>
-
     </div>
   </div>
 </section>

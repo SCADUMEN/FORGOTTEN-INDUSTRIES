@@ -65,6 +65,7 @@ function isCollectionUrl(value = '') {
     pathname === '/apropos/' ||
     pathname === '/provenance/' ||
     pathname === '/atlas/' ||
+    pathname === '/doctrine/' ||
     pathname === '/posts/' ||
     pathname === '/projects/' ||
     pathname === '/field-notes/' ||
@@ -109,13 +110,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
     outputPath: '/feed.xml',
-    // The internal collection remains "posts"; the public shelf is
-    // L'Œuvre / Les Manuscrits.
+    // The internal collection remains "posts"; the public feed covers the
+    // assembled written work layer for URL and reader compatibility.
     collection: { name: 'posts', limit: 0 },
     metadata: {
-      title: 'Forgotten Industries / Les Manuscrits',
+      title: "Forgotten Industries / L'Œuvre",
       subtitle:
-        'Authored works, doctrines, essays, and complete texts from Forgotten Industries.',
+        'Assembled manuscripts and doctrine records from Forgotten Industries.',
       language: 'en',
       base: 'https://forgotten-industries.net/',
       author: { name: 'Matthew Marx' },
@@ -196,6 +197,18 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('doctrinePosts', function (records) {
     return Array.isArray(records) ? records.filter(isDoctrinePost) : []
+  })
+
+  eleventyConfig.addFilter('manuscriptPosts', function (records) {
+    return Array.isArray(records)
+      ? records.filter((record) => !isDoctrinePost(record))
+      : []
+  })
+
+  eleventyConfig.addFilter('signalPosts', function (records) {
+    return Array.isArray(records)
+      ? records.filter((record) => !isDoctrinePost(record))
+      : []
   })
 
   eleventyConfig.addFilter('isoDate', function (value) {

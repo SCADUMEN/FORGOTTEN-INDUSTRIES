@@ -70,8 +70,8 @@ npm run pretty
 The public site is organized as a four-part institution:
 
 - **`/l-archive/` — L'ARCHIVE**: master record, inventory, object records, source evidence, process records, recovered social evidence, and crawlable archive shelves.
-- **`/oeuvre/` — L'ŒUVRE**: assembled works produced from the archive.
-- **`/signal/` — LE SIGNAL**: authored dispatches, field logs, essays, imported live updates, and operational reports.
+- **`/oeuvre/` — L'ŒUVRE**: assembled works produced from the archive: dossiers, manuscripts, reports, doctrines, and provenance records.
+- **`/signal/` — LE SIGNAL**: incoming transmissions: blog dispatches, live updates, and recorded voice field journals.
 - **`/apropos/` — À PROPOS**: origin, maker plate, institutional context, provenance, and contact.
 
 The top navigation should remain this four-item spine:
@@ -85,8 +85,11 @@ L'ARCHIVE / L'ŒUVRE / LE SIGNAL / À PROPOS
 - **L'Archive** — The preserved record: documentation, provenance, research, old hardware references, forum archaeology, photographs, part identification, manuals, diagrams, unknown-component investigation, source sets, object records, and process records.
 - **L'Œuvre** — The assembled work layer:
   - **Les Dossiers** — Living case files assembled from archive records, field logs, photographs, inventories, and observations.
-  - **Les Manuscrits** — Authored works, research papers, doctrines, essays, and complete texts emerging from the archive.
-- **Le Signal** — The transmission layer: ATLAS reports, recorder-based field logs, Bluesky dispatches, and authored updates.
+  - **Les Manuscrits** — Authored works, research papers, essays, and complete non-doctrine texts emerging from the archive.
+  - **Les Rapports** — ATLAS reports and system reports once they have been stabilized as records.
+  - **La Doctrine** — Field doctrine, systems doctrine, and formal principles extracted from the archive.
+  - **La Provenance** — The source chain, build record, instrument chain, and production evidence.
+- **Le Signal** — The transmission layer: blog dispatches, Bluesky live feed records, and recorder-based voice field journals.
 - **À Propos** — The institutional context: authorship, methods, source, provenance, maker plate, and contact.
 
 ### Raw Evidence & Outputs
@@ -115,6 +118,10 @@ The repository still contains older implementation names because they protect UR
 | `projects`, `project`, `src/data/projects.yml`                 | Les Dossiers                               | Kept internally for schema stability. Public labels should say Dossier/Dossiers unless referring to legacy IDs or source fields.                       |
 | `/projects/`                                                   | Les Dossiers                               | Kept as the public Dossiers shelf for compatibility. Do not add it to the top nav.                                                                     |
 | `posts`, `src/posts/`, `/posts/`                               | Les Manuscrits                             | Kept for Eleventy collection/feed compatibility. Public labels should say Manuscripts/Les Manuscrits.                                                  |
+| `/blog/`                                                       | Le Blog                                    | Kept as the filtered Le Signal blog shelf, excluding doctrine-classified manuscripts.                                                                  |
+| `/atlas/`                                                      | Les Rapports                               | Kept as the public ATLAS reports shelf under L'Œuvre. Do not add it to the top nav.                                                                    |
+| `/doctrine/`                                                   | La Doctrine                                | Kept as the public doctrine shelf under L'Œuvre. Do not add it to the top nav.                                                                         |
+| `/provenance/`                                                 | La Provenance                              | Kept as the public source-chain shelf under L'Œuvre and as the maker-plate provenance route.                                                           |
 | `manuals`, `Manual 001`, `Manual 002`, `Hang On To Each Other` | Technical reference shelf within L'Archive | Kept where it refers to actual recovered manuals or the named reference shelf. It is not a top-level nav item.                                         |
 | `source`                                                       | Evidence/provenance/source sets            | Kept when referring to source files, source sets, provenance, or code. Avoid using it as a public section label unless source evidence is the subject. |
 

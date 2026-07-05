@@ -1,0 +1,57 @@
+---
+layout: base.njk
+title: La Doctrine
+description: "Field doctrine, systems doctrine, and formal principles extracted from the archive."
+permalink: /doctrine/index.html
+eleventyExcludeFromCollections: true
+---
+{% set posts = collections.posts | doctrinePosts %}
+
+<section class="masthead">
+  <div class="section-inner">
+    <p class="section-label">L'Œuvre / La Doctrine</p>
+    <h1>La Doctrine</h1>
+    <p class="tagline">{{ description }}</p>
+  </div>
+</section>
+
+<section class="evidence-band">
+  <div class="section-inner">
+    <div class="signal-map">
+      <p class="entry-note">
+        Stabilized principles, ATLAS systems doctrine, and field doctrine filed
+        as assembled work rather than live signal.
+      </p>
+
+      <section class="signal-section" aria-labelledby="doctrine-entries-heading">
+        <p class="section-label">{{ posts | countLabel("record", "records") }}</p>
+        <h2 id="doctrine-entries-heading">Doctrine records, newest first.</h2>
+        {% if posts.length %}
+        <ol class="signal-entry-list" aria-label="Doctrine records">
+          {% for post in posts | reverse %}
+          <li>
+            <header>
+              <span>{% if post.data.entry %}Entry {{ post.data.entry }}{% else %}Record{% endif %}</span>
+              <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+            </header>
+            <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <p class="entry-note">
+              {% if post.data.type %}{{ post.data.type }}{% else %}Doctrine{% endif %}
+              {% if post.data.category %}/ {{ post.data.category }}{% endif %}
+            </p>
+            {% if post.data.description %}
+            <p>{{ post.data.description }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+        {% else %}
+        <div class="callout">
+          <h3>Doctrine Pending</h3>
+          <p>No doctrine records are published in this build.</p>
+        </div>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</section>

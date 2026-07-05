@@ -19,24 +19,28 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
 | Public layer | Contains                                                                                                                               |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
 | L'Archive    | Master record, inventory, object records, source evidence, recovered social evidence, process records, taxonomy, technical references. |
-| L'Œuvre      | Assembled works: Les Dossiers and Les Manuscrits.                                                                                      |
-| Le Signal    | Authored dispatches, ATLAS reports, recorder field logs, imported live updates, essays as transmissions.                               |
+| L'Œuvre      | Assembled works: Les Dossiers, Les Manuscrits, Les Rapports, La Doctrine, and La Provenance.                                           |
+| Le Signal    | Incoming transmissions: Le Blog, En Direct, and recorder-based voice field journals.                                                   |
 | À Propos     | Origin, maker plate, institutional context, provenance, citation practice, contact.                                                    |
 
 ## Migration Map
 
-| Older name                            | Decision                           | Notes                                                                                              |
-| ------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `archive`                             | Keep internally.                   | `src/archive.njk` renders canonical `/l-archive/`; `/archive/*` remains for archive shelves.       |
-| `/archive/`                           | Redirect/compatibility route.      | Prefer `/l-archive/` in canonical URLs and new public links.                                       |
-| `/archive.html`                       | Redirect/compatibility route.      | Kept for old public links and preserved references.                                                |
-| `projects`, `project`                 | Keep internally; relabel publicly. | Data keys, routes, and IDs remain stable. Public language is Dossier/Dossiers.                     |
-| `/projects/`                          | Keep public route.                 | It is the Les Dossiers shelf under L'Œuvre, not a top-nav item.                                    |
-| `posts`                               | Keep internally; relabel publicly. | Eleventy collection and feed behavior depend on it. Public language is Manuscripts/Les Manuscrits. |
-| `/posts/`                             | Keep public route.                 | It is the Les Manuscrits shelf under L'Œuvre, not a top-nav item.                                  |
-| `manuals`, `Manual 001`, `Manual 002` | Keep where literal.                | Manual language is correct for recovered technical-reference artifacts.                            |
-| `hang-on-to-each-other`               | Keep.                              | Named technical-reference shelf; do not promote to top nav.                                        |
-| `source`                              | Keep where evidentiary.            | Source sets, source assets, source code, and provenance use this term intentionally.               |
+| Older name                            | Decision                           | Notes                                                                                                                                              |
+| ------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `archive`                             | Keep internally.                   | `src/archive.njk` renders canonical `/l-archive/`; `/archive/*` remains for archive shelves.                                                       |
+| `/archive/`                           | Redirect/compatibility route.      | Prefer `/l-archive/` in canonical URLs and new public links.                                                                                       |
+| `/archive.html`                       | Redirect/compatibility route.      | Kept for old public links and preserved references.                                                                                                |
+| `projects`, `project`                 | Keep internally; relabel publicly. | Data keys, routes, and IDs remain stable. Public language is Dossier/Dossiers.                                                                     |
+| `/projects/`                          | Keep public route.                 | It is the Les Dossiers shelf under L'Œuvre, not a top-nav item.                                                                                    |
+| `posts`                               | Keep internally; relabel publicly. | Eleventy collection and feed behavior depend on it. Public language is written records generally, with Manuscripts and Doctrine as public shelves. |
+| `/posts/`                             | Keep public route.                 | It is the Les Manuscrits shelf under L'Œuvre, not a top-nav item. Doctrine-classified posts are filed under `/doctrine/`.                          |
+| `/blog/`                              | Keep public route.                 | It is the filtered Le Blog shelf under Le Signal, excluding doctrine-classified manuscripts.                                                       |
+| `/atlas/`                             | Keep public route.                 | It is the Les Rapports shelf under L'Œuvre, not a top-nav item.                                                                                    |
+| `/doctrine/`                          | Keep public route.                 | It is the La Doctrine shelf under L'Œuvre, not a top-nav item.                                                                                     |
+| `/provenance/`                        | Keep public route.                 | It is the La Provenance shelf under L'Œuvre and remains linked from the maker plate.                                                               |
+| `manuals`, `Manual 001`, `Manual 002` | Keep where literal.                | Manual language is correct for recovered technical-reference artifacts.                                                                            |
+| `hang-on-to-each-other`               | Keep.                              | Named technical-reference shelf; do not promote to top nav.                                                                                        |
+| `source`                              | Keep where evidentiary.            | Source sets, source assets, source code, and provenance use this term intentionally.                                                               |
 
 ## Implementation Notes
 
@@ -44,7 +48,8 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
 - Object record URLs remain under `/archive/objects/*`.
 - Archive dossier record URLs remain under `/archive/projects/*` for
   compatibility, even though the public label is Dossier.
-- Signal/manuscript URLs remain under `/posts/*` and `/field-logs/*` where
+- Manuscript URLs remain under `/posts/*`; ATLAS report URLs remain under
+  `/field-logs/*`; voice field journal URLs remain under `/field-logs/` where
   already published.
 - Preserved raw evidence should not be renamed to satisfy taxonomy polish.
 
