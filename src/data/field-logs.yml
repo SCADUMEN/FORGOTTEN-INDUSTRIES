@@ -766,3 +766,74 @@ field_logs:
           PEREGRINE DOSSIER // HUMAN JUDGMENT PRIMARY // MACHINE OUTPUT
           PRESERVED AS PROCESS EVIDENCE.
     signature: ATLAS // Field Dossier // 2026.07.03
+
+  - id: FI-LOG-012
+    slug: atlas-nightly-report-2026-07-04-public-spine-calibration
+    title: ATLAS Nightly Report 2026.07.04 — Public Spine Calibration
+    date: '2026-07-04'
+    timestamp: '2026-07-04 Nightly CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: Forgotten Industries public spine
+    system: site architecture / route chrome / provenance interface
+    condition: public spine coherent, homepage chrome open in worktree
+    status: draft / operator review pending
+    summary: >
+      Nightly ATLAS synthesis for the July 4 public-spine calibration:
+      L'Œuvre and Le Signal settled as sister pages, À Propos returned to a
+      provisional under-construction state, the CSS/tooling warning was cleared,
+      and the ZOOT fi mark moved into the header while the maker plate
+      recentered.
+    source_path: src/docs/field-logs/atlas-nightly-report-2026-07-04.md
+    tags:
+      - atlas-report
+      - nightly report
+      - site architecture
+      - public spine
+      - route chrome
+      - Le Signal
+      - L'Œuvre
+      - À Propos
+      - ZOOT
+      - maker plate
+    sections:
+      - heading: NIGHTLY SUMMARY
+        body: >
+          PUBLIC SPINE CALIBRATION DAY. L'ŒUVRE AND LE SIGNAL MOVED FROM
+          NEIGHBORING EXPERIMENTS INTO SISTER PAGES. À PROPOS WAS TESTED AS
+          PROVENANCE / INSTITUTIONAL CONTEXT, THEN RETURNED TO UNDER
+          CONSTRUCTION WITH THE MAKER PLATE PRESERVED.
+      - heading: TAXONOMY REPAIR
+        body: >
+          L'ŒUVRE NOW PRESENTS DOSSIERS // ATLAS REPORTS // DOCTRINE AS THE
+          PRIMARY WORK LANES. LES MANUSCRITS AND LA PROVENANCE REMAIN VALID
+          CONCEPTS, BUT WERE REMOVED FROM THE FIRST HERO-CARD DECISION SURFACE
+          FOR NOW.
+      - heading: SIGNAL CALIBRATION
+        body: >
+          LE SIGNAL SETTLED INTO LE BLOG // LES DÉPOSITIONS // EN DIRECT.
+          LES DÉPOSITIONS HELD AS TESTIMONY LANGUAGE FOR RECORDED FIELD
+          JOURNALS. OM-882 AUDIO BECAME THE FIELD-INSTRUMENT LABEL. LIVE POSTS
+          SHIFTED AWAY FROM MAGENTA / CYAN SHOUTING TOWARD HUMAN SIGNAL COLOR.
+      - heading: TOOLCHAIN QUIET
+        body: >
+          NODE MODULE.REGISTER() DEPRECATION WARNING WAS TRACED TO THE CSS /
+          TOOLING PATH AND CLEARED BY UPDATING THE TAILWIND AND RELATED
+          LOCKFILE DEPENDENCY SET. BUILD OUTPUT RETURNED TO SIGNAL INSTEAD OF
+          BACKGROUND NOISE.
+      - heading: HOMEPAGE CHROME
+        body: >
+          ZOOT FI MARK MOVED FROM THE LOWER-LEFT MAKER PLATE INTO THE HEADER
+          BEFORE THE NAVIGATION, COUNTERWEIGHTING THE SHIELD. MAKER PLATE THEN
+          RECENTERED BETWEEN THE HOMEPAGE HERO-CARD COLUMNS. FOOTER RETURNED
+          TO PROVENANCE INSTEAD OF NAVIGATION.
+      - heading: OPEN WORKBENCH
+        body: >
+          HEADER FI PLACEMENT, MAKER-PLATE REMOVAL OF THE OLD FOOTER MARK, AND
+          CENTERED FOOTER GEOMETRY REMAIN OPEN IN THE WORKTREE. À PROPOS STILL
+          NEEDS ITS FULL BURGUNDY / SILVER / OFF-WHITE INSTITUTIONAL PASS.
+      - heading: CLOSING LINE
+        body: >
+          ARCHIVE ADVANCED BY REMOVING FALSE CHOICES FROM THE INTERFACE. A
+          CLEAN SIGNAL BEATS A LOUD ONE.
+    signature: ATLAS // Nightly Report // 2026.07.04
