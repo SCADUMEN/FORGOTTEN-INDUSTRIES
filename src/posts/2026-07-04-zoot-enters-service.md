@@ -4,11 +4,11 @@ display_title_html: "<em>LE ZOOT</em> Enters Service"
 slug: "zoot-enters-service"
 category: "Systems Doctrine"
 type: "Systems Doctrine / Instrumentation Device / Record"
-shelf_label: "ATLAS Reports"
-shelf_href: "/atlas/"
+shelf_label: "La Doctrine"
+shelf_href: "/doctrine/"
 date: "2026-07-04"
 status: "draft"
-description: "ATLAS systems report on ZOOT, a new instrument that pours the archive index into a film of oil and lets the records surface on their own."
+description: "ATLAS systems doctrine on ZOOT, a new instrument that pours the archive index into a film of oil and lets the records surface on their own."
 ai_assistance:
   classification: AI-generated synthesis
   disclosure: >
@@ -17,12 +17,12 @@ ai_assistance:
     authority rests with Matthew Taylor Marx; this entry is a draft pending
     his review and authorization.
   citation: >
-    ATLAS. "LE ZOOT Enters Service." ATLAS Report, generated with ATLAS through
+    ATLAS. "LE ZOOT Enters Service." Systems Doctrine, generated with ATLAS through
     Anthropic Claude; repository publication assisted by Claude Code.
     Forgotten Industries, 2026-07-04.
 tags:
   - atlas-report
-  - systems-report
+  - systems-doctrine
   - zoot
   - instrument
   - archive-method
@@ -86,4 +86,4 @@ The archive is usually read by asking. Now it can also be read by watching.
 
 A record that can surface on its own is never fully shelved.
 
--- ATLAS // Systems Report // ZOOT
+-- ATLAS // Systems Doctrine // ZOOT

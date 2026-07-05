@@ -3970,7 +3970,16 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.signal-directory-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .oeuvre-directory-grid > a {
+  align-content: center;
+  min-height: 12rem;
+}
+
+.signal-directory-grid > a {
   align-content: center;
   min-height: 12rem;
 }
@@ -3991,12 +4000,38 @@ h3 {
   text-transform: uppercase;
 }
 
+.signal-directory-grid .signal-card-title {
+  display: grid;
+  gap: 0.7rem;
+  justify-self: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--headline-font);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
 .oeuvre-directory-grid .oeuvre-card-title > span:first-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
+.signal-directory-grid .signal-card-title > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .oeuvre-directory-grid .oeuvre-card-title > span:last-child {
+  justify-self: start;
+  text-align: left;
+}
+
+.signal-directory-grid .signal-card-title > span:last-child {
   justify-self: start;
   text-align: left;
 }
@@ -5273,6 +5308,7 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 .archive-search-heading > .fi-caption-box,
 .signal-ticker-plate > .fi-caption-box,
 .oeuvre-directory-grid .oeuvre-card-title > .fi-caption-box,
+.signal-directory-grid .signal-card-title > .fi-caption-box,
 .signal-branch-meta.fi-caption-box,
 .signal-row-meta.fi-caption-box {
   font-size: 0.78rem;

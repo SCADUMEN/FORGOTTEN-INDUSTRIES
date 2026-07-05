@@ -75,6 +75,70 @@ test('primary section pages share the global maker plate', async ({ page }) => {
   }
 })
 
+test('Signal and Oeuvre keep transmission and stabilized-work shelves separate', async ({
+  page,
+}) => {
+  let response = await page.goto('/signal/')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('.signal-directory-grid > a')).toHaveCount(3)
+  await expect(page.locator('.signal-directory-grid > a')).toHaveText([
+    /LE BLOG[\s\S]*BLOG/,
+    /EN DIRECT[\s\S]*LIVE FEED/,
+    /LES DÉPOSITIONS[\s\S]*OM-882 AUDIO FIELD JOURNAL/,
+  ])
+  const signalCards = page.locator('.signal-directory-grid > a')
+  await expect(signalCards.nth(0)).toHaveAttribute('href', '/blog/')
+  await expect(signalCards.nth(1)).toHaveAttribute('href', '/en-direct/')
+  await expect(signalCards.nth(2)).toHaveAttribute('href', '/field-logs/')
+  await expect(page.locator('main')).not.toContainText('LES RAPPORTS')
+  await expect(page.locator('main')).not.toContainText('LA PROVENANCE')
+
+  response = await page.goto('/oeuvre/')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(5)
+  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveText([
+    /LES DOSSIERS/,
+    /LES MANUSCRITS/,
+    /LES RAPPORTS[\s\S]*ATLAS REPORTS/,
+    /LA DOCTRINE[\s\S]*SYSTEMS DOCTRINE/,
+    /LA PROVENANCE[\s\S]*SOURCE CHAIN/,
+  ])
+  await expect(
+    page.locator('.oeuvre-directory-grid > a').nth(3)
+  ).toHaveAttribute('href', '/doctrine/')
+
+  response = await page.goto('/blog/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/Le Blog/)
+  await expect(page.locator('main')).toContainText(
+    'A Thing Documented Is a Thing Not Yet Lost'
+  )
+  await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
+  await expect(page.locator('main')).not.toContainText(
+    'Perspective, Peregrines'
+  )
+
+  response = await page.goto('/posts/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/Les Manuscrits/)
+  await expect(page.locator('main')).toContainText(
+    'A Thing Documented Is a Thing Not Yet Lost'
+  )
+  await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
+  await expect(page.locator('main')).not.toContainText(
+    'Perspective, Peregrines'
+  )
+
+  response = await page.goto('/doctrine/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/La Doctrine/)
+  await expect(page.locator('main')).toContainText('LE ZOOT Enters Service')
+  await expect(page.locator('main')).toContainText('Perspective, Peregrines')
+  await expect(page.locator('main')).not.toContainText(
+    'A Thing Documented Is a Thing Not Yet Lost'
+  )
+})
+
 test('manual shelf publishes Manual 002', async ({ page }) => {
   let response = await page.goto('/hang-on-to-each-other/')
   expect(response?.status()).toBe(200)
@@ -267,11 +331,16 @@ test('inventory compatibility routes resolve to generated inventory', async ({
 })
 
 test('posts index lists Les Manuscrits', async ({ page }) => {
-  const response = await page.goto('/posts/')
+  let response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  // All dated manuscripts should be linked from the compatibility route.
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(3)
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(1)
+  await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
+
+  response = await page.goto('/doctrine/')
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
+  await expect(page.locator('main')).toContainText('LE ZOOT Enters Service')
 })
 
 test('En Direct lands on the imported signal', async ({ page }) => {
