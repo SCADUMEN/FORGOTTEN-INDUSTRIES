@@ -364,6 +364,14 @@ img {
   border-bottom: 2px solid var(--line);
 }
 
+.site-nav-cluster {
+  display: flex;
+  align-items: flex-start;
+  justify-content: end;
+  gap: clamp(0.8rem, 2vw, 1.35rem);
+  min-width: 0;
+}
+
 .site-mark {
   display: inline-flex;
   align-items: center;
@@ -3019,27 +3027,18 @@ h3 {
 
 .site-footer {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
+  justify-items: center;
   gap: 1.25rem;
   padding: 1.5rem 0 2rem;
-  /* The footer is full-width (see the later .site-footer override), so the
-     fi mark is inset by the shared container margin to sit at the same x
-     position as the header shield. */
-  padding-left: max(16px, calc((100% - 1120px) / 2));
-  /* Mirror the left inset so the plate can right-align to the same content
-     container edge the fi mark aligns to on the left. */
-  padding-right: max(16px, calc((100% - 1120px) / 2));
   color: var(--muted);
   font-size: var(--mono-size);
 }
 
 @media (max-width: 700px) {
   .site-footer {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding-left: 0;
-    padding-right: 0;
+    gap: 1rem;
   }
 }
 
@@ -5002,9 +5001,7 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
 }
 
 .site-footer {
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
+  max-width: min(1120px, calc(100% - 32px));
 }
 
 .fi-provenance-wrap {
@@ -5093,11 +5090,11 @@ body.homepage-landing .fi-provenance-plate .am {
   color: var(--fi-cyan);
 }
 
-/* The ZOOT door: an Old Standard TT italic fi ligature standing in the
-   footer where the shield stands in the header. letter-spacing must stay
-   normal - tracking suppresses the OpenType liga substitution that forms
-   the single glyph. The slick canvas is injected by zoot-mark-slick.js on
-   capable instruments and blooms on hover. */
+/* The ZOOT door: an Old Standard TT italic fi ligature counterweighting the
+   shield in the header. letter-spacing must stay normal - tracking suppresses
+   the OpenType liga substitution that forms the single glyph. The slick canvas
+   is injected by zoot-mark-slick.js on capable instruments and blooms on hover.
+ */
 a.fi-zoot-mark {
   position: relative;
   display: inline-flex;
@@ -5112,6 +5109,13 @@ a.fi-zoot-mark {
   line-height: 1;
   text-decoration: none;
   transition: color 0.4s ease;
+}
+
+.site-header a.fi-zoot-mark {
+  align-self: start;
+  flex: 0 0 auto;
+  margin-top: -0.34rem;
+  font-size: clamp(2.55rem, 4vw, 3.35rem);
 }
 
 a.fi-zoot-mark:hover,
@@ -5234,6 +5238,17 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 }
 
 @media (max-width: 560px) {
+  .site-nav-cluster {
+    flex-direction: column;
+    align-items: end;
+    gap: 0.1rem;
+  }
+
+  .site-header a.fi-zoot-mark {
+    margin-top: -0.2rem;
+    font-size: 2.65rem;
+  }
+
   .site-nav-row {
     flex-direction: column;
     align-items: end;

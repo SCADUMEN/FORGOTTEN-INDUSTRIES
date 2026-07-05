@@ -85,15 +85,18 @@
     <a class="site-mark" href="/" aria-label="{{ site.name }} home">
       <i class="site-mark-shield" aria-hidden="true"></i>
     </a>
-    <nav class="site-nav" aria-label="Primary">
-      {% for row in site.navRows %}
-      <div class="site-nav-row">
-        {% for item in row %}
-        <a href="{{ item.href }}"><span>{{ item.label }}</span></a>
+    <div class="site-nav-cluster">
+      <a class="fi-zoot-mark" href="/zoot/" aria-label="ZOOT">fi</a>
+      <nav class="site-nav" aria-label="Primary">
+        {% for row in site.navRows %}
+        <div class="site-nav-row">
+          {% for item in row %}
+          <a href="{{ item.href }}"><span>{{ item.label }}</span></a>
+          {% endfor %}
+        </div>
         {% endfor %}
-      </div>
-      {% endfor %}
-    </nav>
+      </nav>
+    </div>
   </header>
 
   <main id="content">
