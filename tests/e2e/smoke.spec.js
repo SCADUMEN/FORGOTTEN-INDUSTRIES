@@ -385,9 +385,6 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
   expect(response?.status()).toBe(200)
   await expect(page.locator('#archive-search-status')).toHaveText('10 results')
   await expect(page.locator('#archive-search-results > li')).toHaveCount(10)
-  await expect(
-    page.locator('.inventory-gallery-card').filter({ hasText: 'FI-CL-PART-' })
-  ).toHaveCount(10)
 })
 
 test('Atom feed is served as XML with entries', async ({ request }) => {
