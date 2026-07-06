@@ -338,7 +338,10 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   let response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(1)
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
+  await expect(page.locator('main')).toContainText(
+    "The Machinations of Time / L'Horologist"
+  )
   await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
 
   response = await page.goto('/doctrine/')
