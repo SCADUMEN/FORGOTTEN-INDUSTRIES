@@ -28,16 +28,19 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(1)
+  await expect(page.locator('.site-footer a')).toHaveCount(2)
   await expect(page.locator('.fi-provenance-plate')).toContainText(
-    "// FORGOTTEN INDUSTRIES ///// CONTRE L'OUBLI //"
+    "FORGOTTEN INDUSTRIES · CONTRE L'OUBLI"
   )
   await expect(page.locator('.fi-provenance-plate')).toContainText(
-    '// Provenance ////'
+    'Provenance · Hash'
   )
   await expect(
     page.getByRole('link', { name: 'Provenance', exact: true })
   ).toHaveAttribute('href', '/provenance/')
+  await expect(
+    page.locator('.site-footer a[data-track="outbound-commit"]')
+  ).toHaveAttribute('href', /\/commit\/[0-9a-f]{7,}/)
   await expect(
     page.getByRole('link', { name: 'ZOOT', exact: true })
   ).toHaveAttribute('href', '/zoot/')
@@ -59,7 +62,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(1)
+  await expect(page.locator('.site-footer a')).toHaveCount(2)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -67,11 +70,14 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(1)
-    await expect(page.locator('.fi-provenance-plate')).toContainText('////')
+    await expect(page.locator('.site-footer a')).toHaveCount(2)
+    await expect(page.locator('.fi-provenance-plate')).toContainText('Hash')
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
     ).toHaveAttribute('href', '/provenance/')
+    await expect(
+      page.locator('.site-footer a[data-track="outbound-commit"]')
+    ).toHaveAttribute('href', /\/commit\/[0-9a-f]{7,}/)
   }
 })
 

@@ -247,13 +247,11 @@ describe('archive crawlability output', () => {
         'aria-label="Human Judgment Machine Collaboration provenance stamp"'
       )
       expect(html).toContain('GMT')
-      // maker plate info architecture: Provenance -> date -> time, slash-delimited.
-      expect(html).toMatch(
-        /Provenance<\/a>[\s\S]*\/\/\/\/[\s\S]*\d{4}\.\d{2}\.\d{2}[\s\S]*\/\/\/\/[\s\S]*\d{2}:\d{2}[\s\S]*GMT/
-      )
+      // maker plate info architecture: Provenance -> Hash -> Built, in order.
+      expect(html).toMatch(/Provenance<\/a>[\s\S]*Hash[\s\S]*Built/)
       expect(html).toMatch(/\d{4}\.\d{2}\.\d{2}/)
       expect(html).toMatch(/\d{2}:\d{2}/)
-      expect(html).toContain('////')
+      expect(html).toMatch(/href="[^"]*\/commit\/[0-9a-f]{7,}"/)
     }
   })
 
