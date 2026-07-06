@@ -5625,6 +5625,59 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   font-family: var(--font-system);
 }
 
+.mtm-horologist-post .post-body h2:first-of-type {
+  color: var(--fi-gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  text-transform: none;
+}
+
+.mtm-horologist-post .post-body pre:first-of-type {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgb(var(--fi-amber-rgb) / 0.42);
+  border-left: 0.35rem solid var(--fi-gold);
+  padding: 1rem;
+  background:
+    linear-gradient(rgb(var(--fi-gold-rgb) / 0.07), transparent),
+    var(--fi-black-94);
+  color: var(--fi-amber);
+  font-family: var(--font-human);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.mtm-horologist-post .post-body pre:first-of-type code {
+  color: inherit;
+  font-family: inherit;
+}
+
+.mtm-horologist-post .source-error {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.12em;
+  border: 1px dotted rgb(var(--fi-cyan-rgb) / 0.7);
+  background: rgb(var(--fi-cyan-rgb) / 0.14);
+  color: inherit;
+}
+
+.mtm-horologist-post .operator-decree {
+  display: inline-block;
+  margin: 0.35rem 0;
+  border: 1px solid rgb(var(--fi-amber-rgb) / 0.7);
+  border-left: 0.35rem solid var(--fi-gold);
+  padding: 0.28rem 0.45rem;
+  background:
+    linear-gradient(90deg, rgb(var(--fi-gold-rgb) / 0.18), transparent),
+    rgb(var(--fi-black-rgb) / 0.38);
+  color: var(--fi-amber);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-shadow: 0 0 0.75rem rgb(var(--fi-amber-rgb) / 0.42);
+}
+
 .post-body li {
   margin-bottom: 0.35rem;
 }
