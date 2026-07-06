@@ -106,6 +106,17 @@ function isDoctrinePost(record) {
   return classification.includes('doctrine')
 }
 
+function isLeSignalPost(record) {
+  const data = record?.data || record || {}
+  const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
+  const classification = [data.type, data.category, data.shelf_label, tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+  return /\ble[-\s]signal\b/.test(classification)
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
@@ -201,7 +212,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('manuscriptPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter((record) => !isDoctrinePost(record))
+      ? records.filter(
+          (record) => !isDoctrinePost(record) && !isLeSignalPost(record)
+        )
       : []
   })
 
