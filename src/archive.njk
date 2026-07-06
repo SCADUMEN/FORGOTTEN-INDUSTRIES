@@ -7,6 +7,7 @@ canonical: https://forgotten-industries.net/l-archive/
 eleventyExcludeFromCollections: true
 ---
 {% set objectPreview = archive.inventory | objectGalleryPreview(12) %}
+{% set objectGalleryPool = archive.inventory | objectGalleryPayload %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <div class="spine-hero-title-block">
@@ -272,13 +273,13 @@ eleventyExcludeFromCollections: true
     <div class="archive-gallery-heading">
       <p class="section-label">Inventory</p>
       <h2 id="inventory-gallery-heading">Object Gallery</h2>
-      <p class="entry-note archive-gallery-note">
-        {{ objectPreview | countLabel("record", "records") }} shown / <a href="/archive/objects/">open object ledger</a>
+      <p class="entry-note archive-gallery-note" data-inventory-gallery-note>
+        {{ objectPreview | countLabel("record", "records") }} drawn from the photographed ledger / <a href="/archive/objects/">open object ledger</a>
       </p>
     </div>
 
     <div class="inventory-gallery-viewport" aria-label="Inventory object gallery" tabindex="0">
-      <ol class="inventory-gallery-track">
+      <ol class="inventory-gallery-track" data-inventory-gallery-track>
         {% for item in objectPreview %}
         {% set preview = "" %}
         {% if item.photos and item.photos.length %}
@@ -303,6 +304,73 @@ eleventyExcludeFromCollections: true
         {% endfor %}
       </ol>
     </div>
+    <script type="application/json" id="inventory-gallery-data">{{ objectGalleryPool | json | safe }}</script>
+    <script>
+      (function() {
+        var data = document.getElementById('inventory-gallery-data');
+        var track = document.querySelector('[data-inventory-gallery-track]');
+        var note = document.querySelector('[data-inventory-gallery-note]');
+        if (!data || !track) return;
+
+        var records = [];
+        try {
+          records = JSON.parse(data.textContent || '[]');
+        } catch (error) {
+          return;
+        }
+        if (!Array.isArray(records) || records.length <= 12) return;
+
+        var pool = records.slice();
+        for (var index = pool.length - 1; index > 0; index -= 1) {
+          var swapIndex = Math.floor(Math.random() * (index + 1));
+          var swap = pool[index];
+          pool[index] = pool[swapIndex];
+          pool[swapIndex] = swap;
+        }
+
+        var selected = pool.slice(0, 12);
+        track.replaceChildren();
+
+        selected.forEach(function(item) {
+          var card = document.createElement('li');
+          card.className = 'inventory-gallery-card';
+
+          var figure = document.createElement('figure');
+          var imageLink = document.createElement('a');
+          imageLink.className = 'inventory-gallery-image';
+          imageLink.href = item.url;
+
+          var image = document.createElement('img');
+          image.src = item.image;
+          image.alt = item.name;
+          image.loading = 'lazy';
+          imageLink.appendChild(image);
+
+          var caption = document.createElement('figcaption');
+          var id = document.createElement('span');
+          id.textContent = item.id;
+          var title = document.createElement('strong');
+          var titleLink = document.createElement('a');
+          titleLink.href = item.url;
+          titleLink.textContent = item.name;
+          title.appendChild(titleLink);
+          var category = document.createElement('em');
+          category.textContent = item.category;
+
+          caption.appendChild(id);
+          caption.appendChild(title);
+          caption.appendChild(category);
+          figure.appendChild(imageLink);
+          figure.appendChild(caption);
+          card.appendChild(figure);
+          track.appendChild(card);
+        });
+
+        if (note) {
+          note.firstChild.textContent = '12 randomized records drawn from the photographed ledger / ';
+        }
+      })();
+    </script>
   </div>
 </section>
 
