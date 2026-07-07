@@ -19,6 +19,7 @@ until it has been confirmed.
 Published source notes:
 
 - `src/docs/field-logs/2026-07-03-unmanned-systems-storage-media.md` - FI-LOG-011, field guidance for aircraft and controller microSD use.
+- `src/docs/intake/2026-07-07-perry-a01-central-oliver-night-photograph.md` - FI-PHOTO-003, recovered PEREGRINE-A01 aerial photograph source note.
 
 ## Current Aircraft
 
@@ -29,6 +30,8 @@ Published source notes:
 ## Visual Assets
 
 - `assets/projects/peregrine/peregrine-a02.png` - PEREGRINE-A02 white mark on black field, 1920x1080 PNG.
+- `assets/projects/peregrine/fi-photo-003/fi-photo-003-source.png` - supplied source PNG for FI-PHOTO-003.
+- `assets/projects/peregrine/fi-photo-003/fi-photo-003-plate.jpg` - cropped public presentation plate for FI-PHOTO-003.
 
 ## Standing Rule
 

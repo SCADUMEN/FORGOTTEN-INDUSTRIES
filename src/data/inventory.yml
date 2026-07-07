@@ -1459,6 +1459,44 @@ items:
     keep_sell_archive: keep pending test
     date_logged: '2026-06-05'
 
+  - id: FI-PHOTO-003
+    name: Perry 1 / PEREGRINE-A01 Central / Oliver Night Photograph
+    category: aerial photograph
+    manufacturer: Matthew Marx / DJI Mini 4K camera
+    model: recovered PEREGRINE-A01 microSD photograph
+    quantity: 1 image
+    associated_project: FI-PROJ-004
+    condition: recovered from aircraft media / supplied as PNG wrapper / cropped public plate derived
+    status: public archive plate / capture date not verified
+    photos:
+      - assets/projects/peregrine/fi-photo-003/fi-photo-003-plate.jpg
+    notes: >
+      Operator-reported photograph recovered from the microSD card used with
+      Perry 1 / PEREGRINE-A01, the DJI Mini 4K troubleshooting bird. The
+      current repository source is the supplied Codex clipboard PNG, preserved
+      separately from the cropped public plate. The scene is operator-identified
+      as the QuikTrip / Central and Oliver commercial intersection at night.
+      Public copy intentionally omits the operator's residential proximity to
+      the site. Raw aircraft filename, EXIF metadata, capture timestamp,
+      altitude, flight mode, and original card directory are not present in this
+      intake and remain unverified.
+    tags:
+      - PEREGRINE
+      - Perry
+      - PEREGRINE-A01
+      - Perry 1
+      - DJI Mini 4K
+      - aerial photograph
+      - drone photograph
+      - recovered microSD
+      - Central / Oliver
+      - QuikTrip
+      - night flight
+      - source evidence
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-07-07'
+
   - id: FI-TOOL-RUL-001
     name: Le Témoin de Mesure
     category: field instrument
