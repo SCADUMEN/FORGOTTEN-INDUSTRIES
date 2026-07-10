@@ -346,8 +346,11 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
 
   response = await page.goto('/doctrine/')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(3)
   await expect(page.locator('main')).toContainText('LE ZOOT Enters Service')
+  await expect(page.locator('main')).toContainText(
+    'The Yellow-Crowned Night Heron'
+  )
 })
 
 test('En Direct lands on the imported signal', async ({ page }) => {
