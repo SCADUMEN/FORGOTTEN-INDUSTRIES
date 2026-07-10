@@ -1871,3 +1871,39 @@ items:
     estimated_value:
     keep_sell_archive: archive evidence
     date_logged: '2026-06-05'
+
+  - id: FI-PHOTO-004
+    name: Yellow-crowned night heron field observation photo sequence
+    category: photo evidence set
+    manufacturer: Matthew T. Marx
+    model: JPEG derivative set
+    quantity: 6 files
+    associated_project: FI-PROJ-007
+    condition: curated public derivatives / intake package retained locally
+    status: field observation photographic evidence / registered public sequence
+    photos:
+      - assets/archive/yellow-crowned-night-heron/01-juvenile-on-car-eye-contact.jpeg
+      - assets/archive/yellow-crowned-night-heron/02-juvenile-on-car-vertical-posture.jpeg
+      - assets/archive/yellow-crowned-night-heron/03-roofline-first-ascent.jpeg
+      - assets/archive/yellow-crowned-night-heron/04-roofline-observation.jpeg
+      - assets/archive/yellow-crowned-night-heron/05-roofline-profile.jpeg
+      - assets/archive/yellow-crowned-night-heron/06-roofline-distance.jpeg
+    notes: >
+      Six-image public derivative sequence documenting a juvenile
+      yellow-crowned night heron during the 2026-07-10 field observation:
+      automobile eye-level encounter, vertical posture, roofline ascent,
+      roofline observation, roofline profile, and distance frame. Extracted
+      from intake/yellow-crowned-night-heron-post-package.zip for publication
+      alongside the related field doctrine and provenance file. Do not infer
+      original camera metadata from this derivative set; the intake package is
+      the local source bundle for the current public files.
+    tags:
+      - field observation
+      - yellow-crowned night heron
+      - Nyctanassa violacea
+      - biological observation
+      - photo evidence set
+      - temporal altitude
+    estimated_value:
+    keep_sell_archive: archive evidence
+    date_logged: '2026-07-10'

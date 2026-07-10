@@ -5619,6 +5619,51 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   margin-bottom: 1.1rem;
 }
 
+.post-body .fi-figure {
+  margin: 2rem 0;
+}
+
+.post-body .fi-figure img {
+  border: 1px solid var(--line);
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.post-body .fi-figure figcaption {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  text-transform: uppercase;
+}
+
+.post-body .fi-figure--hero {
+  margin: 2.5rem 0 3rem;
+}
+
+.post-body .fi-image-pair,
+.post-body .fi-image-sequence {
+  display: grid;
+  gap: 1rem;
+  margin: 2.25rem 0;
+}
+
+.post-body .fi-image-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.post-body .fi-image-sequence {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.post-body .fi-image-pair .fi-figure,
+.post-body .fi-image-sequence .fi-figure {
+  margin: 0;
+}
+
 .post-body blockquote {
   border-left: 3px solid var(--oxide);
   padding-left: 1rem;
@@ -5752,6 +5797,11 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 }
 
 @media (max-width: 700px) {
+  .post-body .fi-image-pair,
+  .post-body .fi-image-sequence {
+    grid-template-columns: 1fr;
+  }
+
   .archive-gallery {
     grid-template-columns: 1fr;
   }
