@@ -1,0 +1,18 @@
+[
+  {
+    "entry": 1,
+    "count": 670,
+    "timestamp_utc": "2026-07-12T12:23:05Z",
+    "note": "Counter initialized",
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "cf769d609744f66aaa3b87e4e15ad44ade4d0cc2db8f2771d53afa82c4caa723"
+  },
+  {
+    "entry": 2,
+    "count": 671,
+    "timestamp_utc": "2026-07-12T12:23:08Z",
+    "note": "",
+    "previous_hash": "cf769d609744f66aaa3b87e4e15ad44ade4d0cc2db8f2771d53afa82c4caa723",
+    "hash": "f4ebae081e9970999d0f2f23740eece6f6e71ef25f560d4a5d2d7c6f348b1a23"
+  }
+]
