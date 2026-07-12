@@ -768,6 +768,57 @@ body:has(.site-mark:focus-visible) .hero-mark::after {
   border-top: 1px solid var(--line-strong);
 }
 
+.larchive-index-figure {
+  min-height: 24rem;
+}
+
+.larchive-index-figure pre,
+.larchive-terminal,
+.larchive-protocol-grid pre {
+  margin: 0;
+  border: 1px solid var(--fi-card-border);
+  background:
+    linear-gradient(var(--fi-screen-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fi-screen-grid-line) 1px, transparent 1px),
+    var(--fi-black);
+  background-size: 22px 22px;
+  color: var(--fi-green-bright);
+  font-family: var(--mono-font);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.75;
+  overflow-x: auto;
+  padding: 1.2rem;
+  text-transform: uppercase;
+}
+
+.larchive-index-figure pre {
+  align-self: center;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
+
+.larchive-spec-grid,
+.larchive-protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.larchive-spec-grid article,
+.larchive-protocol-grid > * {
+  min-width: 0;
+  padding: 1rem;
+  background: var(--white);
+}
+
+.larchive-spec-grid p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
 .mirror-band,
 .evidence-band,
 .source-band {
@@ -5366,6 +5417,8 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   .field-log-card-meta,
   .field-log-filter-row,
   .field-log-group-grid,
+  .larchive-protocol-grid,
+  .larchive-spec-grid,
   .manual-roster-grid,
   .mini-progress,
   .phylo-branches,
