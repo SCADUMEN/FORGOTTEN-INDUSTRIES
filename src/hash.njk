@@ -1,0 +1,80 @@
+---
+permalink: /hash/index.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EAT PILL KILL GOD</title>
+  <meta name="description" content="SHA-256 hash counter.">
+  <link rel="canonical" href="{{ site.domainUrl }}/hash/">
+  <style>
+    :root {
+      color-scheme: dark;
+      background: #050706;
+      color: #d8ffe6;
+      font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(1rem, 4vw, 4rem);
+      background:
+        linear-gradient(180deg, rgb(7 15 10 / 0.96), rgb(1 2 2 / 0.98)),
+        #050706;
+    }
+
+    main {
+      width: min(100%, 56rem);
+    }
+
+    article {
+      padding: 1.1rem 0;
+      border-top: 1px solid rgb(216 255 230 / 0.32);
+    }
+
+    article:last-child {
+      border-bottom: 1px solid rgb(216 255 230 / 0.32);
+    }
+
+    p {
+      margin: 0;
+      overflow-wrap: anywhere;
+      letter-spacing: 0;
+      line-height: 1.45;
+    }
+
+    .counter-line {
+      color: #f5fff8;
+      font-size: clamp(1.35rem, 4vw, 3.25rem);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .hash-line {
+      margin-top: 0.55rem;
+      color: #80f0a5;
+      font-size: clamp(0.72rem, 2vw, 1rem);
+    }
+  </style>
+</head>
+<body>
+  <main aria-label="SHA-256 hash counter">
+    {% for entry in hashCounter.entries %}
+    <article>
+      <p class="counter-line">EAT PILL KILL GOD #{{ entry.count }}</p>
+      <p class="hash-line">SHA-256 {{ entry.hash }}</p>
+    </article>
+    {% endfor %}
+  </main>
+</body>
+</html>
