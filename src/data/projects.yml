@@ -1,4 +1,42 @@
 projects:
+  - id: FI-DSR-003
+    slug: l-archive-modular-cartridge-system
+    title: L'Archive Modular Cartridge System
+    working_title: Five-Box Cartridge Archive Prototype
+    category: Storage Display System
+    status: storage-display prototype / v0.1
+    started: '2026'
+    summary: >
+      Public prototype dossier for L'ARCHIVE as a physical storage and display
+      product: four inert archive cartridges, one index can, and a protocol that
+      keeps the physical archive independent from any single digital
+      implementation.
+    origin:
+      context: MTM + ATLAS interaction
+    themes:
+      - storage display system
+      - physical product prototype
+      - archive protocol
+      - modular cartridges
+      - physical-first preservation
+      - provenance cards
+      - identifier discipline
+      - versioned protocol
+      - reversible mounting
+      - dormant control core
+      - public-safe prototype design
+    source_links:
+      - label: Source dossier
+        type: local
+        role: public working dossier
+        path: src/projects/l-archive-modular-cartridge-system/README.md
+    documentation_style:
+      - Keep the physical cartridge useful without computers
+      - Treat the digital index as convenience until the physical protocol works
+      - Preserve top-down viewing, removable trays, reversible object mounts, and self-contained lighting
+      - Publish protocol and build constraints without exposing private inventory, locations, or unverified hardware claims
+      - Version the protocol so future boxes preserve the rules they were catalogued under
+
   - id: FI-DSR-002
     slug: marketplace-shithawk-doctrine
     title: Marketplace Shithawk Doctrine
