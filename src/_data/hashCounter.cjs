@@ -33,6 +33,10 @@ function hashRecord(entry) {
     .digest('hex')
 }
 
+function sha256Text(text) {
+  return crypto.createHash('sha256').update(text, 'utf8').digest('hex')
+}
+
 function readEntries() {
   if (!fs.existsSync(logPath)) {
     return []
@@ -83,9 +87,15 @@ function readEntries() {
 const entries = readEntries()
 
 module.exports = {
-  entries: entries.map((entry) => ({
-    count: entry.count,
-    hash: entry.hash,
-  })),
+  entries: entries.map((entry) => {
+    const statement = `eat pill kill god ${entry.count}`
+
+    return {
+      count: entry.count,
+      statement,
+      statementHash: sha256Text(statement),
+      chainHash: entry.hash,
+    }
+  }),
   latestHash: entries.at(-1)?.hash || '',
 }

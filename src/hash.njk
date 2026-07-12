@@ -72,8 +72,8 @@ eleventyExcludeFromCollections: true
   <main aria-label="SHA-256 hash counter">
     {% for entry in hashCounter.entries %}
     <article>
-      <p class="counter-line">eat pill kill god {{ entry.count }}</p>
-      <p class="hash-line">sha-256 {{ entry.hash }}</p>
+      <p class="counter-line">{{ entry.statement }}</p>
+      <p class="hash-line">sha-256 {{ entry.statementHash }}</p>
     </article>
     {% endfor %}
   </main>
