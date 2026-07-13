@@ -14,6 +14,11 @@ function argValue(name) {
 const root = path.resolve(repoRoot, argValue('--root') || 'intake')
 const batchDate = argValue('--date')
 const writePath = argValue('--write')
+const transcriptRoot = argValue('--transcript-root')
+  ? path.resolve(repoRoot, argValue('--transcript-root'))
+  : batchDate
+    ? path.join(root, '_transcripts', batchDate)
+    : null
 
 function prefixForDate(dateString) {
   const match = /^20(\d{2})-(\d{2})-(\d{2})$/.exec(dateString || '')
@@ -71,6 +76,10 @@ const records = audioFiles().map((name, index) => {
     ? probe.streams.find((stream) => stream.codec_type === 'audio')
     : undefined
   const sequenceMatch = /_(\d+)\./.exec(name)
+  const transcriptPath = transcriptRoot
+    ? path.join(transcriptRoot, `${path.parse(name).name}.json`)
+    : null
+  const hasTranscript = transcriptPath ? fs.existsSync(transcriptPath) : false
 
   return {
     sequence: sequenceMatch ? Number(sequenceMatch[1]) : index + 1,
@@ -87,8 +96,10 @@ const records = audioFiles().map((name, index) => {
       ? Number(audioStream.sample_rate)
       : null,
     channels: audioStream?.channels || null,
-    transcription_status: 'pending',
-    transcript_file: null,
+    transcription_status: hasTranscript ? 'complete' : 'pending',
+    transcript_file: hasTranscript
+      ? path.relative(repoRoot, transcriptPath).replaceAll(path.sep, '/')
+      : null,
   }
 })
 
