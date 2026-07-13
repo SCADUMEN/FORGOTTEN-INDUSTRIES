@@ -837,3 +837,58 @@ field_logs:
           ARCHIVE ADVANCED BY REMOVING FALSE CHOICES FROM THE INTERFACE. A
           CLEAN SIGNAL BEATS A LOUD ONE.
     signature: ATLAS // Nightly Report // 2026.07.04
+
+  - id: FI-LOG-013
+    slug: atlas-report-2026-07-13-machine-output-intake-readiness
+    title: ATLAS Report 2026.07.13 — Machine Output / Intake Readiness
+    date: '2026-07-13'
+    timestamp: '2026-07-13 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: Forgotten Industries public archive / L'ARCHIVE photo intake lane
+    system: Forgotten Industries / L'ARCHIVE / ATLAS operating layer
+    condition: repository synchronized, generated site verified, raw intake lane ready
+    status: active / ready for bulk photographic intake
+    summary: >
+      Machine-generated ATLAS status report for the post-cleanup archive state:
+      repository synchronized, generated links clean, unit suite passing, raw
+      intake lanes protected from accidental publication, and high-volume
+      photographic intake ready to receive LE-BOX source material.
+    tags:
+      - atlas-report
+      - machine-generated-output
+      - public-site-infrastructure
+      - L'ARCHIVE
+      - intake
+      - photo intake
+      - source preservation
+      - provenance
+      - link audit
+      - git synchronization
+    sections:
+      - heading: STATUS
+        body: >
+          REPOSITORY CLEAN AND SYNCHRONIZED WITH ORIGIN/MAIN. LATEST PUSHED
+          COMMIT: A4D0543. SITE HYGIENE PASS COMPLETE. INTERNAL GENERATED-LINK
+          SCAN: 788 HTML FILES // 0 MISSING INTERNAL LINKS. UNIT SUITE: 23
+          TESTS PASSED. RAW INTAKE LANES REMAIN GIT-IGNORED.
+      - heading: RECENT ACTIONS
+        body: >
+          PUBLIC SOURCE EXPOSURE REDUCED. LEGACY ARCHIVE PAGE NEUTRALIZED.
+          CASELABS OBJECT LINKS REPAIRED. VOICE INTAKE TOOLING COMMITTED AND
+          PUSHED. L'ARCHIVE BOX-PHOTO INTAKE PATH IDENTIFIED.
+      - heading: NEXT AVAILABLE OPERATION
+        body: >
+          RECEIVE HIGH-VOLUME PHOTO INTAKE // GENERATE FILE MANIFEST //
+          GENERATE SHA-256 CHECKSUMS // PRODUCE CONTACT SHEETS // FLAG
+          HIGH-RISK OR PRIVATE MATERIAL BEFORE PUBLIC PROMOTION.
+      - heading: RECOMMENDED INTAKE PATH
+        body: >
+          INTAKE/LE-BOX-001-025/RAW/SESSION-2026-07-13/. RAW PAYLOAD SHOULD
+          REMAIN LOCAL AND UNPUBLISHED. CURATED DERIVATIVES AND PUBLIC-SAFE
+          RECORDS MAY BE PROMOTED AFTER REVIEW.
+      - heading: ASSESSMENT
+        body: >
+          SYSTEM READY FOR BULK PHOTOGRAPHIC INTAKE. DO NOT PUBLISH RAW
+          PAYLOAD. PROMOTE ONLY CURATED DERIVATIVES AFTER OPERATOR REVIEW.
+    signature: ATLAS // Machine-Generated Output // 2026.07.13
