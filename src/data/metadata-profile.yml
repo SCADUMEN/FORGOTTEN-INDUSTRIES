@@ -1,0 +1,129 @@
+profile:
+  id: FI-METADATA-PROFILE-v0.1
+  title: Forgotten Industries Metadata Profile v0.1
+  status: draft operating profile
+  authority: Matthew Taylor Marx / Forgotten Industries
+  source_document: src/docs/metadata-profile-v0.1.md
+
+immediate_standards:
+  - id: dcterms
+    label: Dublin Core Metadata Terms
+    role: baseline descriptive metadata
+    url: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+  - id: dacs
+    label: 'Describing Archives: A Content Standard'
+    role: archival description practice
+    url: https://saa-ts-dacs.github.io/
+  - id: premis
+    label: PREMIS
+    role: preservation metadata, fixity, files, events, rights
+    url: https://www.loc.gov/standards/premis/
+  - id: prov-o
+    label: W3C PROV-O
+    role: provenance chains between entities, agents, and activities
+    url: https://www.w3.org/TR/prov-o/
+
+target_standards:
+  - id: ric-o
+    label: Records in Contexts Ontology
+    role: second-pass graph model for records, instantiations, agents, activities, and relations
+    url: https://www.ica.org/standards/RiC/ontology
+  - id: cidoc-crm
+    label: CIDOC Conceptual Reference Model
+    role: later cultural-heritage integration reference
+    url: https://cidoc-crm.org/
+  - id: iiif-presentation
+    label: IIIF Presentation API 3.0
+    role: later image, scan, audio, and transcript manifest layer
+    url: https://iiif.io/api/presentation/3.0/
+
+controlled_vocabularies:
+  record_type:
+    - dossier
+    - object
+    - component
+    - source_set
+    - field_log
+    - voice_log
+    - social_evidence
+    - process_record
+    - technical_reference
+    - box
+    - file
+    - manifest
+  public_layer:
+    - l_archive
+    - l_oeuvre
+    - le_signal
+    - a_propos
+    - private_staging
+  status:
+    - draft
+    - active
+    - provisional
+    - verified
+    - published
+    - archived
+    - superseded
+    - restricted
+    - quarantine
+    - retired
+  access:
+    - public
+    - public_summary
+    - restricted
+    - private
+    - local_only
+    - pending_review
+  public_clearance:
+    - cleared
+    - cleared_summary_only
+    - pending
+    - blocked
+    - private
+    - unknown
+  sensitivity:
+    - none
+    - privacy
+    - identity
+    - medical
+    - location
+    - credential
+    - financial
+    - third_party
+    - copyright
+    - unknown
+  certainty:
+    - confirmed
+    - probable
+    - possible
+    - unknown
+    - disputed
+    - provisional
+  preservation_event_type:
+    - created
+    - captured
+    - catalogued
+    - hashed
+    - verified
+    - redacted
+    - transcribed
+    - converted
+    - migrated
+    - published
+    - withdrawn
+
+required_review_fields:
+  - record_type
+  - public_layer
+  - access
+  - public_clearance
+  - sensitivity
+  - redaction_status
+  - certainty
+  - sha256
+  - hash_algorithm
+  - manifest_hash
+  - preservation_events
+  - custodial_history
+  - scope_and_content

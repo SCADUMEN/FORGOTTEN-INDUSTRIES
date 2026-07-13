@@ -61,6 +61,16 @@ npm run build:site
 npm run pretty
 ```
 
+### Run the Metadata Standards Sweep
+
+```bash
+npm run sweep:metadata
+```
+
+This writes the current standards and taxonomy baseline to
+`src/docs/process/2026-07-13-metadata-profile-sweep.md` and the companion JSON
+record beside it.
+
 ---
 
 ## 📖 What's Inside
@@ -245,6 +255,7 @@ All reference docs live in `src/docs/`:
 - `site-architecture-dossier.md` — Canonical site spine, navigation, and category tone rules
 - `spine-page-style-guide.md` — Color and component rules for public spine pages
 - `classification-system.md` — FI-v2.29 public taxonomy, migration map, and legacy-name policy
+- `metadata-profile-v0.1.md` — Standards-aligned metadata profile and migration plan
 - `ai-generation-citation-standard.md` — Required provenance format for ATLAS, ChatGPT, and Codex assistance
 
 ---
@@ -266,6 +277,7 @@ All reference docs live in `src/docs/`:
 ### Data & Configuration
 
 - `src/data/*.yml` — All canonical archive data (YAML)
+- `src/data/metadata-profile.yml` — Controlled vocabulary and standards profile reference
 - `src/types.ts` — TypeScript schema for generated archive
 - `src/_data/site.cjs` — Domain, GitHub, contact, identity
 - `src/_data/archive.cjs` — Loads `dist/forgotten-industries.json`
