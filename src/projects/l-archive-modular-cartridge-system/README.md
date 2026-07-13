@@ -122,7 +122,26 @@ The object ID belongs to the artifact.
 
 Do not reuse identifiers.
 
-## VII. Working States
+## VII. Curator's Note: Origin of LE-TUB
+
+`LE-TUB` entered the protocol on 2026-07-13 during provisional container
+planning for larger plastic storage units.
+
+The first proposed neutral prefix was `LE-CONT`, short for L'Archive Container.
+The operator rejected the euphemism. Large Tupperware and plastic tubs were not
+to be disguised as more formal boxes. They could enter custody under their own
+plain name.
+
+The resulting rule is practical: `LE-BOX` remains reserved for the green archive
+boxes, while `LE-TUB` identifies larger plastic tub containers. The identifier
+does not claim the contents are final, sorted, valuable, or public-ready. It
+only means the container has entered provisional archive custody and can receive
+a label, photograph, manifest line, and later revision.
+
+Field language is preserved when it improves retrieval and makes the system
+harder to lie to.
+
+## VIII. Working States
 
 - RECEIVED
 - PROVISIONAL
@@ -152,7 +171,7 @@ UNOPENED / PENDING EXAMINATION
 Do not promote it to LE-BOX-000 until the sealed state is photographed, the
 object is inspected, and the condition record is stable.
 
-## IX. Closing Line
+## X. Closing Line
 
 The archive was not founded in 2026.
 
