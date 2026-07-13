@@ -28,7 +28,7 @@ This object appears to be a bottom center filler plate that installs within a la
 
 - PHOTO-040–PHOTO-043
 
-![FI-CL-PART-009: bottom center filler plate](assets/representative-photos/fi-cl-part-009.jpg)
+![FI-CL-PART-009: bottom center filler plate](../assets/representative-photos/fi-cl-part-009.jpg)
 
 Representative derivative from PHOTO-040 (`CASELABS_S8 - 40.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

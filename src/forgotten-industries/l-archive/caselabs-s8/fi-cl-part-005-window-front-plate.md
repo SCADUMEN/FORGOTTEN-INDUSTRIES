@@ -28,7 +28,7 @@ This object appears to be an alternate main-chassis front plate configured with 
 
 - PHOTO-023–PHOTO-026
 
-![FI-CL-PART-005: window front plate](assets/representative-photos/fi-cl-part-005.jpg)
+![FI-CL-PART-005: window front plate](../assets/representative-photos/fi-cl-part-005.jpg)
 
 Representative derivative from PHOTO-024 (`CASELABS_S8 - 24.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD. A window insert is not confirmed in this photographic sequence.
+A window insert is not confirmed in this photographic sequence.
 
 ## Build Relevance
 

@@ -28,7 +28,7 @@ This object is identified as the main-chassis rear plate through which the mothe
 
 - PHOTO-027–PHOTO-030
 
-![FI-CL-PART-006: rear I/O and PSU plate](assets/representative-photos/fi-cl-part-006.jpg)
+![FI-CL-PART-006: rear I/O and PSU plate](../assets/representative-photos/fi-cl-part-006.jpg)
 
 Representative derivative from PHOTO-028 (`CASELABS_S8 - 28.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

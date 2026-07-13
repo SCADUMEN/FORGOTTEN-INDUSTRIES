@@ -28,7 +28,7 @@ This object is identified as an EATX motherboard tray from a CaseLabs STH10. It 
 
 - PHOTO-044–PHOTO-047
 
-![FI-CL-PART-010: STH10 EATX motherboard tray](assets/representative-photos/fi-cl-part-010.jpg)
+![FI-CL-PART-010: STH10 EATX motherboard tray](../assets/representative-photos/fi-cl-part-010.jpg)
 
 Representative derivative from PHOTO-047 (`CASELABS_S8 - 47.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

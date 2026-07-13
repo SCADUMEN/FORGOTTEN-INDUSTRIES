@@ -29,7 +29,7 @@ This object appears to be the normal ventilated top panel for the main CaseLabs 
 
 - PHOTO-012–PHOTO-017
 
-![FI-CL-PART-003: ventilated main chassis top panel](assets/representative-photos/fi-cl-part-003.jpg)
+![FI-CL-PART-003: ventilated main chassis top panel](../assets/representative-photos/fi-cl-part-003.jpg)
 
 Representative derivative from PHOTO-012 (`CASELABS_S8 - 12.HEIC`).
 
@@ -52,7 +52,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

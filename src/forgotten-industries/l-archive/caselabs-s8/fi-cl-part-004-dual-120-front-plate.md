@@ -28,7 +28,7 @@ This object appears to be a main-chassis front plate with two 120 mm fan opening
 
 - PHOTO-018–PHOTO-022
 
-![FI-CL-PART-004: dual-120 front plate](assets/representative-photos/fi-cl-part-004.jpg)
+![FI-CL-PART-004: dual-120 front plate](../assets/representative-photos/fi-cl-part-004.jpg)
 
 Representative derivative from PHOTO-018 (`CASELABS_S8 - 18.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 
