@@ -337,8 +337,9 @@ projects:
     summary: >
       Reusable operating interface for Forgotten Industries and adjacent
       projects: core agent instructions, rapport guidance, Matthew-specific
-      collaboration profile, downstream repository templates, and Les Trois
-      Témoins: Le Sauvegarder, Le Continuant, and Le Rédempteur.
+      collaboration profile, downstream repository templates, and L'Archive
+      witness doctrine: L'Opérateur, ATLAS, Les Trois Témoins, and the Sceptique
+      audit function.
     themes:
       - Codex collaboration
       - archive-first workflow
@@ -347,9 +348,12 @@ projects:
       - endurance and maintenance
       - project handoff
       - reusable instructions
+      - L'Opérateur
+      - Les Trois Témoins
       - Le Sauvegarder
       - Le Rédempteur
       - Le Continuant
+      - Le Sceptique
     source_links:
       - label: Local ATLAS repository
         type: local
@@ -363,8 +367,10 @@ projects:
       - Keep source-of-truth instructions in the ATLAS repository
       - Mirror only public-safe context into Forgotten Industries
       - Treat subroutines as practical operating modes, not roleplay
+      - Keep L'Opérateur as the human authority and ATLAS as the interface
       - Preserve local project authority before reusable guidance
-      - Present Les Trois Témoins as archive method, not mascot language
+      - Present Les Trois Témoins as temporal witness doctrine, not mascot language
+      - Treat Le Sceptique as an auditor rather than a fourth witness
 
   - id: FI-PROJ-007
     slug: l-archive
