@@ -28,7 +28,7 @@ This object appears to be a main-chassis side plate or frame configured to accep
 
 - PHOTO-031–PHOTO-034
 
-![FI-CL-PART-007: full-window side frame](assets/representative-photos/fi-cl-part-007.jpg)
+![FI-CL-PART-007: full-window side frame](../assets/representative-photos/fi-cl-part-007.jpg)
 
 Representative derivative from PHOTO-031 (`CASELABS_S8 - 31.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD. The window insert itself is not confirmed in this photographic sequence.
+The window insert itself is not confirmed in this photographic sequence.
 
 ## Build Relevance
 

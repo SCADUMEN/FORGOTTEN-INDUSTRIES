@@ -28,7 +28,7 @@ This object appears to be a top mounting plate configured for two 360 mm drop-in
 
 - PHOTO-035–PHOTO-039
 
-![FI-CL-PART-008: dual-360 radiator top mount](assets/representative-photos/fi-cl-part-008.jpg)
+![FI-CL-PART-008: dual-360 radiator top mount](../assets/representative-photos/fi-cl-part-008.jpg)
 
 Representative derivative from PHOTO-036 (`CASELABS_S8 - 36.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

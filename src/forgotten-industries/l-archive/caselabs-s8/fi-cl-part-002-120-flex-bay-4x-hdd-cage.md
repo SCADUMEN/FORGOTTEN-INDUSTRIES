@@ -29,7 +29,7 @@ This object is identified as a 120 mm flex-bay unit with a four-drive HDD cage m
 
 - PHOTO-006–PHOTO-011
 
-![FI-CL-PART-002: 120 mm flex-bay HDD cage](assets/representative-photos/fi-cl-part-002.jpg)
+![FI-CL-PART-002: 120 mm flex-bay HDD cage](../assets/representative-photos/fi-cl-part-002.jpg)
 
 Representative derivative from PHOTO-008 (`CASELABS_S8 - 8.HEIC`).
 
@@ -52,7 +52,7 @@ Service required at two stripped/threaded screws. Other condition details are un
 
 ## Hardware Present
 
-Corsair static pressure fan and visible mounting screws are present. The full fastener inventory is TBD.
+Corsair static pressure fan and visible mounting screws are present. The full fastener inventory is not confirmed in the current photographic sequence.
 
 ## Build Relevance
 

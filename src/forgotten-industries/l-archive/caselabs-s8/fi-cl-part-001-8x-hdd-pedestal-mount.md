@@ -28,7 +28,7 @@ This object appears to be a CaseLabs pedestal storage plate with capacity for ei
 
 - PHOTO-001–PHOTO-005
 
-![FI-CL-PART-001: 8× HDD pedestal mount](assets/representative-photos/fi-cl-part-001.jpg)
+![FI-CL-PART-001: 8× HDD pedestal mount](../assets/representative-photos/fi-cl-part-001.jpg)
 
 Representative derivative from PHOTO-003 (`CASELABS_S8 - 3.HEIC`).
 
@@ -51,7 +51,7 @@ Unknown.
 
 ## Hardware Present
 
-TBD.
+Not confirmed in the current photographic sequence.
 
 ## Build Relevance
 
