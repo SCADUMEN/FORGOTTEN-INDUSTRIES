@@ -21,6 +21,7 @@ projects:
       - physical-first preservation
       - provenance cards
       - identifier discipline
+      - LE-TUB
       - versioned protocol
       - reversible mounting
       - dormant control core
@@ -35,6 +36,7 @@ projects:
       - Treat the digital index as convenience until the physical protocol works
       - Preserve top-down viewing, removable trays, reversible object mounts, and self-contained lighting
       - Publish protocol and build constraints without exposing private inventory, locations, or unverified hardware claims
+      - Preserve LE-TUB as the provisional prefix for larger plastic tub containers
       - Version the protocol so future boxes preserve the rules they were catalogued under
 
   - id: FI-DSR-002
