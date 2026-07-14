@@ -140,11 +140,12 @@ def post_documents(posts_dir)
 
     data = YAML.safe_load(front_matter, permitted_classes: [Date, Time], aliases: false) || {}
     basename = File.basename(path, ".md")
+    url = data["permalink"] || "/posts/#{basename}.html"
     search_document(
       id: data["entry"] || data["slug"] || basename,
       type: data["type"] || "post",
       title: data["title"] || basename,
-      url: "/posts/#{basename}.html",
+      url: url,
       date: data["date"],
       category: data["category"],
       object: data["object"],
