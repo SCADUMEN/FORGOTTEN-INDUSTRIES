@@ -6,6 +6,7 @@ export default {
     // the date prefix): /posts/2026-06-06-some-post.html
     permalink: (data) => {
       if (!data.page.inputPath.endsWith('.md')) return data.permalink
+      if (data.permalink) return data.permalink
       const filename = data.page.inputPath.split('/').pop()
       return `/posts/${filename.replace(/\.md$/, '')}.html`
     },
