@@ -117,6 +117,10 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   await expect(page.locator('main')).toContainText(
     'A Thing Documented Is a Thing Not Yet Lost'
   )
+  await expect(page.locator('main')).toContainText('A Way In // Le Signal Form')
+  await expect(page.locator('main')).not.toContainText(
+    'Short Form / Curated Entry'
+  )
   await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
   await expect(page.locator('main')).not.toContainText(
     'Perspective, Peregrines'
@@ -127,6 +131,10 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   await expect(page).toHaveTitle(/Les Manuscrits/)
   await expect(page.locator('main')).toContainText(
     'A Thing Documented Is a Thing Not Yet Lost'
+  )
+  await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).not.toContainText(
+    'A Way In // Le Signal Form'
   )
   await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
   await expect(page.locator('main')).not.toContainText(
@@ -141,6 +149,21 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   await expect(page.locator('main')).not.toContainText(
     'A Thing Documented Is a Thing Not Yet Lost'
   )
+})
+
+test('A Way In renders as the short application-facing route', async ({
+  page,
+}) => {
+  const response = await page.goto('/a-way-in/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/A Way In/)
+  await expect(page.locator('main')).toContainText(
+    'Short Form / Curated Entry / Entry 004'
+  )
+  await expect(page.locator('main')).toContainText(
+    'If you found this from a resume, a cover letter, or an application link, start here.'
+  )
+  await expect(page.locator('main')).toContainText('A Way In // Le Signal Form')
 })
 
 test('manual shelf publishes Manual 002', async ({ page }) => {

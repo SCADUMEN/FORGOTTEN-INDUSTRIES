@@ -117,6 +117,28 @@ function isLeSignalPost(record) {
   return /\ble[-\s]signal\b/.test(classification)
 }
 
+function isLeBlogPost(record) {
+  const data = record?.data || record || {}
+  const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
+  const classification = [data.type, data.category, data.shelf_label, tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+  return /\ble[-\s]blog\b/.test(classification)
+}
+
+function isPreludePost(record) {
+  const data = record?.data || record || {}
+  const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
+  const classification = [data.type, data.category, data.shelf_label, tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+  return /\bprelude\b/.test(classification)
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
@@ -220,7 +242,13 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('signalPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter((record) => !isDoctrinePost(record))
+      ? records.filter(
+          (record) =>
+            !isDoctrinePost(record) &&
+            (isLeSignalPost(record) ||
+              isLeBlogPost(record) ||
+              isPreludePost(record))
+        )
       : []
   })
 
