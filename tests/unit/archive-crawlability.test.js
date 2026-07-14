@@ -162,6 +162,7 @@ describe('archive crawlability output', () => {
     const dailySummary = index.documents.find(
       (record) => record.id === 'FI-LOG-008'
     )
+    const wayIn = index.documents.find((record) => record.id === '004')
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
@@ -180,6 +181,11 @@ describe('archive crawlability output', () => {
       url: '/field-logs/accumulation-across-active-fronts/',
       category: 'atlas-report',
       associated_project: 'FI-PROJ-006',
+    })
+    expect(wayIn).toMatchObject({
+      title: 'A Way In',
+      type: 'Short Form / Curated Entry',
+      url: '/a-way-in/',
     })
   })
 
