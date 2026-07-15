@@ -181,6 +181,7 @@ const sitemapExtraUrls = [
   '/hang-on-to-each-other/wrist-field-instruments/',
   '/colophon/',
   '/plan-du-site/',
+  '/styleguide/',
   '/archive/aerial-documentation/',
   '/archive/inventory/',
   '/archive/objects/',
@@ -279,7 +280,7 @@ module.exports = {
     'An archive and evidence-based memoir that explores what happens to the things we leave behind; abandoned places, unfinished projects, deserted machines, and the parts of ourselves we once thought lost.',
   defaultDescription:
     'An archive of restoration, memory, machines, recorded field logs, and the work of refusing disappearance.',
-  defaultImage: '/assets/forgotten-industries-noise.png',
+  defaultImage: '/assets/forgotten-industries.png',
   defaultImageAlt: 'Forgotten Industries logo, EST MMXIV',
 
   navRows,
