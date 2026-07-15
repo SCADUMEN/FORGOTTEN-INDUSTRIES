@@ -1,0 +1,90 @@
+---
+layout: base.njk
+permalink: /restricted/phase-2-briefing/
+eleventyExcludeFromCollections: true
+title: Restricted Briefing
+description: Access-controlled working documents.
+robots: noindex, nofollow, noarchive, nosnippet
+disableAnalytics: true
+page_class: restricted-briefing-page
+---
+
+<section class="restricted-access-masthead" aria-labelledby="restricted-title">
+  <div class="restricted-access-frame">
+    <p class="restricted-access-label">&gt;RESTRICTED DOSSIER / CIPHERTEXT</p>
+    <h1 id="restricted-title">Restricted Briefing</h1>
+    <p class="restricted-access-deck">
+      TWO WORKING DOCUMENTS / PROVISIONAL / LOCAL DECRYPTION REQUIRED
+    </p>
+  </div>
+</section>
+
+<section class="restricted-access-section" aria-label="Briefing access">
+  <div class="restricted-access-grid">
+    <aside class="restricted-access-notice" aria-labelledby="handling-title">
+      <p class="restricted-kicker">HANDLING NOTE // 01</p>
+      <h2 id="handling-title">Encrypted working surface</h2>
+      <p>
+        The briefing payload is stored as ciphertext. Decryption occurs only in
+        this browser after the correct passphrase is entered.
+      </p>
+      <dl class="restricted-facts">
+        <div>
+          <dt>Index status</dt>
+          <dd>Excluded</dd>
+        </div>
+        <div>
+          <dt>Analytics</dt>
+          <dd>Disabled</dd>
+        </div>
+        <div>
+          <dt>Passphrase retention</dt>
+          <dd>None by this page</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div id="restricted-access-gate" class="restricted-gate">
+      <p class="restricted-kicker">ACCESS INSTRUMENT // 02</p>
+      <h2>Enter passphrase</h2>
+      <form id="restricted-access-form" class="restricted-gate-form">
+        <label for="restricted-passphrase">Briefing passphrase</label>
+        <div class="restricted-input-row">
+          <input
+            id="restricted-passphrase"
+            name="passphrase"
+            type="password"
+            autocomplete="current-password"
+            required
+            spellcheck="false"
+          >
+          <button type="submit">Decrypt</button>
+        </div>
+      </form>
+      <p
+        id="restricted-access-status"
+        class="restricted-status"
+        role="status"
+        aria-live="polite"
+      >
+        Awaiting local authorization.
+      </p>
+      <noscript>
+        <p class="restricted-status restricted-status-error">
+          JavaScript is required for browser-local decryption.
+        </p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<section id="restricted-briefing-content" hidden></section>
+
+<div id="restricted-lock-row" class="restricted-lock-row" hidden>
+  <button id="restricted-lock" type="button">Lock briefing</button>
+</div>
+
+<script
+  type="module"
+  src="/assets/js/restricted-briefing.js?v={{ site.assetVersion }}"
+></script>
