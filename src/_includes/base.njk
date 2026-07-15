@@ -98,7 +98,8 @@
         {% for row in site.navRows %}
         <div class="site-nav-row">
           {% for item in row %}
-          <a href="{{ item.href }}"><span>{{ item.label }}</span></a>
+          {% set isActive = page.url == item.href or page.url.startsWith(item.href) %}
+          <a href="{{ item.href }}"{% if isActive %} aria-current="page"{% endif %}><span>{{ item.label }}</span></a>
           {% endfor %}
         </div>
         {% endfor %}
