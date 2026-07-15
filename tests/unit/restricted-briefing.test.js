@@ -25,6 +25,7 @@ describe('restricted Phase 2 briefing', () => {
   it('publishes an encrypted payload behind a no-index gate', () => {
     const page = readSite('restricted/phase-2-briefing/index.html')
     const rawPayload = readSite('assets/restricted/phase-2-briefing.json')
+    const client = readSite('assets/js/restricted-briefing.js')
     const payload = JSON.parse(rawPayload)
 
     expect(page).toContain(
@@ -32,6 +33,14 @@ describe('restricted Phase 2 briefing', () => {
     )
     expect(page).toContain('id="restricted-access-form"')
     expect(page).not.toContain('googletagmanager.com')
+    expect(page).not.toContain('fonts.googleapis.com')
+    expect(page).not.toContain('fonts.gstatic.com')
+    expect(page).toContain('<meta name="referrer" content="no-referrer">')
+    expect(page).toContain('http-equiv="Content-Security-Policy"')
+    expect(page).toContain('default-src &#39;none&#39;')
+    expect(client).toContain('new DOMParser()')
+    expect(client).toContain('Restricted briefing refuses framed execution.')
+    expect(client).not.toContain('content.innerHTML = plaintext')
     expect(payload).toMatchObject({
       version: 1,
       algorithm: 'AES-GCM',

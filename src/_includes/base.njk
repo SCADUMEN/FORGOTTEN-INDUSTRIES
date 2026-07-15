@@ -16,6 +16,8 @@
   <meta name="description" content="{{ metaDescription }}">
   <meta name="author" content="{{ author or site.author }}">
   {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+  {% if referrerPolicy %}<meta name="referrer" content="{{ referrerPolicy }}">{% endif %}
+  {% if contentSecurityPolicy %}<meta http-equiv="Content-Security-Policy" content="{{ contentSecurityPolicy }}">{% endif %}
   <meta name="generator" content="{{ site.generator }}">
   <link rel="canonical" href="{{ metaCanonical }}">
   <meta property="og:site_name" content="{{ site.name }}">
@@ -40,10 +42,13 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} public writing feed" href="/feed.xml">
+  {% if not disableExternalFonts %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
+  {% endif %}
   <link rel="stylesheet" href="/css/archive.css?v={{ site.assetVersion }}">
+  {% if not disableStructuredData %}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -70,6 +75,7 @@
       {% endif %}
     }
   </script>
+  {% endif %}
   {% if site.analytics.googleMeasurementId and not disableAnalytics %}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.googleMeasurementId }}"></script>
   <script>

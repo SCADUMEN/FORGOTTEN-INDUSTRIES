@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -22,27 +20,31 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: .nvmrc
 
       # build:site runs scripts/build.rb, which needs Ruby. Pin the same
       # version as CI instead of relying on the runner's default Ruby.
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@8e41b362d2589a22a44c1cfa214b3c83052c195b # v1
         with:
           ruby-version: '3.3'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Eleventy mirror
         run: npm run build:site
+
+      - name: Audit public release surface
+        run: npm run audit:public
 
       - name: Preserve GitHub Pages marker
         run: touch _site/.nojekyll
@@ -51,11 +53,11 @@ jobs:
       # check but must not configure or claim the custom domain.
       - name: Configure Pages
         if: github.repository == 'SCADUMEN/FORGOTTEN-INDUSTRIES'
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
       - name: Upload Pages artifact
         if: github.repository == 'SCADUMEN/FORGOTTEN-INDUSTRIES'
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           path: _site
 
@@ -64,6 +66,9 @@ jobs:
     if: github.repository == 'SCADUMEN/FORGOTTEN-INDUSTRIES'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -71,4 +76,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
