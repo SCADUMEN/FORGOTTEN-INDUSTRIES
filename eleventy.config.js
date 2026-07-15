@@ -151,8 +151,12 @@ function buildSitemapTree(pathnames) {
     const children = [...node.children.values()]
       .map(finalize)
       .sort((a, b) => a.name.localeCompare(b.name))
-    const name =
-      node.segment === '/' ? '/' : node.segment + (node.isHtml ? '' : '/')
+    // A trailing slash marks a directory (a node with descendants); leaf pages
+    // read as files without one. The link href keeps the real URL either way.
+    let name
+    if (node.segment === '/') name = '/'
+    else if (node.isHtml) name = node.segment
+    else name = node.segment + (children.length ? '/' : '')
     return { name, url: node.url || null, children }
   }
 
