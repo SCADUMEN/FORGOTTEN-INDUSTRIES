@@ -24,6 +24,7 @@
     "build:site": "npm run clean:site && ruby scripts/build.rb && eleventy && sh scripts/build_css.sh --minify",
     "serve:site": "npm run clean:site && ruby scripts/build.rb && eleventy && sh scripts/build_css.sh && eleventy --serve",
     "audit:metadata": "node scripts/audit_metadata_profile.cjs",
+    "audit:public": "node scripts/audit_public_surface.cjs",
     "sweep:metadata": "npm run build && node scripts/audit_metadata_profile.cjs --write",
     "pretty": "prettier --write .",
     "pretest": "npm run build:site",

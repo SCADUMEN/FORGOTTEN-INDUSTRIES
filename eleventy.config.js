@@ -159,6 +159,7 @@ export default function (eleventyConfig) {
   // Published verbatim at their root URLs (Eleventy strips the input dir).
   // The markdown and yaml inside are documents, not templates — ignored.
   eleventyConfig.addPassthroughCopy('src/assets')
+  eleventyConfig.addPassthroughCopy({ 'src/.well-known': '.well-known' })
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
   // src/projects is a legacy source-dossier directory. Keep it published for
@@ -320,19 +321,6 @@ export default function (eleventyConfig) {
         .slice(0, Number(limit) || 12)
     }
   )
-
-  eleventyConfig.addFilter('objectGalleryPayload', function (items, limit = 0) {
-    const records = objectGalleryCandidates(items)
-    const selected = Number(limit) ? records.slice(0, Number(limit)) : records
-
-    return selected.map((item) => ({
-      id: item?.id || '',
-      name: item?.name || item?.id || 'Unlabeled object',
-      category: item?.category || 'object record',
-      url: `/archive/objects/${archiveSlug(item?.id || item?.name)}/`,
-      image: `/${publicObjectPhotos(item)[0]}`,
-    }))
-  })
 
   eleventyConfig.addFilter('relatedObjects', function (items, item) {
     if (!Array.isArray(items) || !item) return []

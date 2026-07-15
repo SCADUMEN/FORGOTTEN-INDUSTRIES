@@ -33,4 +33,4 @@ Several CaseLabs parts are intentionally grouped rather than individually named.
 
 The visible fan labels in this pass identify Corsair fans, so they were recorded separately from the remembered Noiseblocker eLoop fan inventory.
 
-The Splunking HEIC files were reviewed through native macOS Quick Look previews generated into `/private/tmp`; those previews are not canonical archive files. The original HEIC files remain the source evidence.
+The Splunking HEIC files were reviewed through native macOS Quick Look previews generated in a temporary local directory; those previews are not canonical archive files. The original HEIC files remain the source evidence.

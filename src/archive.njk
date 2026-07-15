@@ -7,7 +7,7 @@ canonical: https://forgotten-industries.net/l-archive/
 eleventyExcludeFromCollections: true
 ---
 {% set objectPreview = archive.inventory | objectGalleryPreview(12) %}
-{% set objectGalleryPool = archive.inventory | objectGalleryPayload %}
+{% set objectGallery = archive.inventory | objectGalleryCandidates %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <div class="spine-hero-title-block">
@@ -280,12 +280,12 @@ eleventyExcludeFromCollections: true
 
     <div class="inventory-gallery-viewport" aria-label="Inventory object gallery" tabindex="0">
       <ol class="inventory-gallery-track" data-inventory-gallery-track>
-        {% for item in objectPreview %}
+        {% for item in objectGallery %}
         {% set preview = "" %}
         {% if item.photos and item.photos.length %}
         {% set preview = item.photos[0] %}
         {% endif %}
-        <li class="inventory-gallery-card">
+        <li class="inventory-gallery-card"{% if loop.index > 12 %} hidden{% endif %}>
           <figure>
             <a class="inventory-gallery-image" href="{{ item | archiveObjectUrl }}">
               {% if preview and (preview.indexOf("assets/") == 0 or preview.indexOf("forgotten-industries/") == 0) %}
@@ -304,23 +304,14 @@ eleventyExcludeFromCollections: true
         {% endfor %}
       </ol>
     </div>
-    <script type="application/json" id="inventory-gallery-data">{{ objectGalleryPool | json | safe }}</script>
     <script>
       (function() {
-        var data = document.getElementById('inventory-gallery-data');
         var track = document.querySelector('[data-inventory-gallery-track]');
         var note = document.querySelector('[data-inventory-gallery-note]');
-        if (!data || !track) return;
+        if (!track) return;
 
-        var records = [];
-        try {
-          records = JSON.parse(data.textContent || '[]');
-        } catch (error) {
-          return;
-        }
-        if (!Array.isArray(records) || records.length <= 12) return;
-
-        var pool = records.slice();
+        var pool = Array.prototype.slice.call(track.children);
+        if (pool.length <= 12) return;
         for (var index = pool.length - 1; index > 0; index -= 1) {
           var swapIndex = Math.floor(Math.random() * (index + 1));
           var swap = pool[index];
@@ -331,38 +322,8 @@ eleventyExcludeFromCollections: true
         var selected = pool.slice(0, 12);
         track.replaceChildren();
 
-        selected.forEach(function(item) {
-          var card = document.createElement('li');
-          card.className = 'inventory-gallery-card';
-
-          var figure = document.createElement('figure');
-          var imageLink = document.createElement('a');
-          imageLink.className = 'inventory-gallery-image';
-          imageLink.href = item.url;
-
-          var image = document.createElement('img');
-          image.src = item.image;
-          image.alt = item.name;
-          image.loading = 'lazy';
-          imageLink.appendChild(image);
-
-          var caption = document.createElement('figcaption');
-          var id = document.createElement('span');
-          id.textContent = item.id;
-          var title = document.createElement('strong');
-          var titleLink = document.createElement('a');
-          titleLink.href = item.url;
-          titleLink.textContent = item.name;
-          title.appendChild(titleLink);
-          var category = document.createElement('em');
-          category.textContent = item.category;
-
-          caption.appendChild(id);
-          caption.appendChild(title);
-          caption.appendChild(category);
-          figure.appendChild(imageLink);
-          figure.appendChild(caption);
-          card.appendChild(figure);
+        selected.forEach(function(card) {
+          card.hidden = false;
           track.appendChild(card);
         });
 
