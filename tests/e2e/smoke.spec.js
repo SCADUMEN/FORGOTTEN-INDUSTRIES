@@ -320,7 +320,7 @@ test('object records without photographs show a restrained placeholder', async (
   await expect(page.locator('.object-primary-figure')).toHaveCount(0)
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     'content',
-    'https://forgotten-industries.net/assets/forgotten-industries-noise.png'
+    'https://forgotten-industries.net/assets/forgotten-industries.png'
   )
 })
 

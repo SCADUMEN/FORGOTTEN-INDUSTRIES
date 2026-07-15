@@ -1,0 +1,232 @@
+---
+layout: base.njk
+title: Styleguide
+description: "The Forgotten Industries design language: type, color, components, and the heuristics that hold them together."
+permalink: /styleguide/index.html
+eleventyExcludeFromCollections: true
+---
+{# Every specimen below is rendered with the same classes and tokens the rest
+   of the site uses, so this page can never drift from what ships. #}
+<section class="section-landing-hero">
+  <div class="section-inner">
+    <div class="spine-hero-title-block">
+      <h1>STYLEGUIDE</h1>
+      <p class="spine-hero-meta fi-caption-box"><span class="fi-prompt-marker">&gt;</span> The design language of the archive.</p>
+    </div>
+    <p class="tagline" style="margin-inline: auto; max-width: 64ch; text-align: center;">
+      Type, color, components, and the heuristics that hold them together. Every specimen
+      below is rendered with the same classes and tokens the rest of the site uses, so this
+      page can never drift from what ships.
+    </p>
+  </div>
+</section>
+
+<section class="section-inner" style="padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);" aria-labelledby="typography">
+  <p class="section-label">&gt; 01 / Type</p>
+  <h2 id="typography" style="color: var(--fi-cyan); font-family: var(--font-system); font-weight: 700; text-transform: uppercase;">Typography</h2>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p style="margin: 0; color: var(--fi-cyan); font-family: var(--font-system); font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; line-height: 0.98; text-transform: uppercase;">A thing documented.</p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">--font-system &middot; Space Mono &middot; route titles, headlines, default voice</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p style="margin: 0; color: var(--fi-gold); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-style: italic; font-weight: 700; line-height: 1;">Le Sauvegarder.</p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">--font-display &middot; Old Standard TT &middot; LE SAUVEGARDER and homepage-landing titles</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p style="margin: 0; max-width: 64ch; color: var(--ink); font-family: var(--font-ui); font-size: 1.15rem; line-height: 1.62;">
+      Report body copy is set in IBM Plex Sans at the reading measure used across dossiers
+      and briefings &mdash; comfortable line length, generous leading, sentence case.
+    </p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">--font-ui / --font-report-body &middot; IBM Plex Sans &middot; report body copy</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p style="margin: 0; max-width: 64ch; color: var(--fi-paper-light); font-family: var(--font-human); font-size: 1.1rem; line-height: 1.7;">
+      Field note, written by hand. Courier Prime carries authored testimony and the human
+      voice when green or cyan would over-systematize the copy.
+    </p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">--font-human &middot; Courier Prime &middot; authored testimony, human voice</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p class="section-label">Recent Work Shelves</p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">.section-label &middot; small green uppercase eyebrow above a section</p>
+  </div>
+
+  <div style="padding-block: 1.5rem;">
+    <p style="margin: 0; max-width: 64ch; color: var(--ink); font-family: var(--font-ui); font-size: 1.1rem; line-height: 1.62;">
+      Inline treatments: a <a href="/styleguide/">primary link</a> in blueprint cyan with its
+      underline, and the yellow-green <code style="color: var(--fi-green); font-family: var(--font-system);">::selection</code>
+      highlight &mdash; select this text to see the focus color fill behind it.
+    </p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">a (blueprint, hover &rarr; green) &middot; ::selection (bg --focus) &middot; a:focus-visible (3px cyan outline)</p>
+  </div>
+</section>
+
+<section class="section-inner" style="padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);" aria-labelledby="color">
+  <p class="section-label">&gt; 02 / Color</p>
+  <h2 id="color" style="color: var(--fi-cyan); font-family: var(--font-system); font-weight: 700; text-transform: uppercase;">Color</h2>
+  <p class="tagline" style="max-width: 64ch;">
+    Color is role-based, not decorative. Each token below carries a fixed job across every
+    route.
+  </p>
+
+  <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4" style="margin: 1.5rem 0 0; padding: 0; list-style: none;">
+    {% set swatches = [
+      { token: "--fi-bg", hex: "#000000", role: "Base archive field, page background" },
+      { token: "--fi-surface", hex: "#020617", role: "Panels, ticker beds, shadow interiors" },
+      { token: "--fi-cyan", hex: "#22d3ee", role: "System structure: borders, rails, metadata" },
+      { token: "--fi-green", hex: "#4ade80", role: "SYSOUT: machine output, caption plates, counts" },
+      { token: "--fi-magenta", hex: "#e879f9", role: "Prompt syntax, rare operator marks (sparingly)" },
+      { token: "--fi-amber", hex: "#fbbf24", role: "Warning, authored emphasis, warm accent" },
+      { token: "--fi-gold", hex: "#f59e0b", role: "LE SAUVEGARDER / MTM title energy, human warmth" },
+      { token: "--fi-copper", hex: "#c47a3a", role: "Provenance, source chain, maker plate, custody" },
+      { token: "--fi-maroon", hex: "#7f1d1d", role: "À Propos primary accent (provenance)" },
+      { token: "--fi-silver", hex: "#c0c0c0", role: "Steel / silver institutional register" },
+      { token: "--fi-slate", hex: "#94a3b8", role: "Muted text (--muted)" },
+      { token: "--fi-paper-light", hex: "#f7f4ef", role: "Readable human text, light paper surface" }
+    ] %}
+    {% for s in swatches %}
+    <li>
+      <div style="height: 6rem; width: 100%; border: 1px solid var(--line); background: var({{ s.token }});"></div>
+      <div class="pt-2 font-mono text-sm">
+        <div style="color: var(--ink);">{{ s.token }}</div>
+        <div class="text-fi-slate">{{ s.hex }}</div>
+        <div class="text-fi-slate">{{ s.role }}</div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="mt-5 font-mono text-sm text-fi-slate" style="margin-top: 1.5rem;">
+    Semantic aliases sit on top of these raw tokens: --ink (green), --muted (slate),
+    --line (cyan), --steel (cyan), --oxide (magenta), --brass (green), --focus (cyan).
+    Style new components with the aliases so a route re-theme flows through automatically.
+  </p>
+
+  <h3 style="margin-top: 2.5rem;">Route Families</h3>
+  <p class="tagline" style="max-width: 64ch;">
+    Structure is shared across sibling routes; only the color temperature changes, set by a
+    body class.
+  </p>
+
+  <div style="border-top: 1px solid var(--line); padding-block: 1.25rem;">
+    <p class="section-label">L'Œuvre &middot; default</p>
+    <div class="flex flex-wrap" style="gap: 0.5rem; margin: 0.6rem 0;">
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-cyan);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-green);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-magenta);"></span>
+    </div>
+    <p style="margin: 0; max-width: 64ch; color: var(--muted); font-family: var(--font-ui);">Assembled work. Cyan structure, green SYSOUT, magenta only as prompt syntax or a faint wash. No <span class="font-mono text-fi-slate">body</span> class needed.</p>
+  </div>
+
+  <div style="border-top: 1px solid var(--line); padding-block: 1.25rem;">
+    <p class="section-label">Le Signal &middot; body.signal-sauvegarder</p>
+    <div class="flex flex-wrap" style="gap: 0.5rem; margin: 0.6rem 0;">
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-gold);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-amber);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-copper);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-green);"></span>
+    </div>
+    <p style="margin: 0; max-width: 64ch; color: var(--muted); font-family: var(--font-ui);">Human-authored transmission with machine-assisted provenance. Gold titles, amber and copper warm structure, green SYSOUT captions, paper body prose.</p>
+  </div>
+
+  <div style="border-top: 1px solid var(--line); padding-block: 1.25rem;">
+    <p class="section-label">À Propos &middot; body.apropos-provenance</p>
+    <div class="flex flex-wrap" style="gap: 0.5rem; margin: 0.6rem 0;">
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-maroon);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-silver);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-amber);"></span>
+      <span style="display: inline-block; height: 2.5rem; width: 3.5rem; border: 1px solid var(--line); background: var(--fi-green);"></span>
+    </div>
+    <p style="margin: 0; max-width: 64ch; color: var(--muted); font-family: var(--font-ui);">Provenance and institutional context. Maroon primary accent, silver institutional plates, amber warmth, green for confirmed provenance facts.</p>
+  </div>
+</section>
+
+<section class="section-inner" style="padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);" aria-labelledby="components">
+  <p class="section-label">&gt; 03 / Components</p>
+  <h2 id="components" style="color: var(--fi-cyan); font-family: var(--font-system); font-weight: 700; text-transform: uppercase;">Components</h2>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> RECORDS (24)</p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">.fi-caption-box + .fi-prompt-marker &middot; green SYSOUT label: counts, statuses, declarations &mdash; never prose</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <div class="oeuvre-ticker-plate">
+      <div class="oeuvre-ticker-label" aria-hidden="true">
+        <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> L'ŒUVRE / 3 shelves</span>
+      </div>
+      <div class="oeuvre-ticker" role="list" aria-label="Ticker specimen">
+        <span class="oeuvre-ticker-item" role="listitem">
+          <span>L'Œuvre / Dossiers</span>
+          <strong>24 dossier records</strong>
+        </span>
+        <span class="oeuvre-ticker-item" role="listitem">
+          <span>L'Œuvre / Rapports</span>
+          <strong>11 ATLAS reports</strong>
+        </span>
+        <span class="oeuvre-ticker-item" role="listitem">
+          <span>L'Œuvre / Doctrine</span>
+          <strong>6 doctrine entries</strong>
+        </span>
+      </div>
+    </div>
+    <p class="mt-2 font-mono text-sm text-fi-slate">.oeuvre-ticker-plate &middot; shadow-box plate with a green SYSOUT label over a scrolling row of shelf entries</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <div class="directory-grid plate-card-grid oeuvre-directory-grid">
+      <a href="#components">
+        <h3 class="oeuvre-card-title">
+          <span>LES DOSSIERS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> RECORDS (24)</span>
+        </h3>
+      </a>
+      <a href="#components">
+        <h3 class="oeuvre-card-title">
+          <span>LES RAPPORTS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> ATLAS REPORTS (11)</span>
+        </h3>
+      </a>
+      <a href="#components">
+        <h3 class="oeuvre-card-title">
+          <span>LA DOCTRINE</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> SYSTEMS DOCTRINE (6)</span>
+        </h3>
+      </a>
+    </div>
+    <p class="mt-2 font-mono text-sm text-fi-slate">.directory-grid.plate-card-grid &middot; the route's primary navigation instrument: large label + one right-aligned SYSOUT plate per card</p>
+  </div>
+
+  <div style="border-bottom: 1px solid var(--line); padding-block: 1.5rem;">
+    <p style="margin: 0;"><a href="/styleguide/">Primary link</a> &mdash; blueprint cyan, underlined, turns green on hover.</p>
+    <p class="mt-2 font-mono text-sm text-fi-slate">a &middot; color --blueprint, hover --fi-green</p>
+  </div>
+
+  <div style="padding-block: 1.5rem;">
+    <div class="flex flex-wrap items-center" style="gap: 1rem;">
+      <button type="button" style="border: 1px solid var(--fi-cyan-border); background: var(--fi-surface); color: var(--ink); font-family: var(--font-system); padding: 0.5rem 1rem; text-transform: uppercase;">Focusable Button</button>
+      <a href="/styleguide/">Focusable link</a>
+    </div>
+    <p class="mt-2 font-mono text-sm text-fi-slate">focus state &middot; tab here for the 3px --focus (cyan) outline shared by every interactive element</p>
+  </div>
+</section>
+
+<section class="section-inner" style="padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);" aria-labelledby="heuristics">
+  <p class="section-label">&gt; 04 / Heuristics</p>
+  <h2 id="heuristics" style="color: var(--fi-cyan); font-family: var(--font-system); font-weight: 700; text-transform: uppercase;">Heuristics</h2>
+  <ul style="max-width: 70ch; margin: 1rem 0 0; padding-left: 1.2rem; color: var(--ink); font-family: var(--font-ui); font-size: 1.08rem; line-height: 1.7;">
+    <li>Dark archive field first: a black <span class="font-mono">--fi-bg</span> background under a faint fixed scan-grid and scanline. High contrast, hard-edged offset shadows, no rounded corners.</li>
+    <li>Space Mono is the default system voice. Old Standard TT and Courier Prime carry human and authored warmth; IBM Plex Sans carries report body copy.</li>
+    <li>Color is role-based: cyan is structure, green is SYSOUT machine output, magenta is prompt syntax used sparingly, gold / amber / copper are human and provenance warmth, maroon and silver are the institutional register.</li>
+    <li>Structure is shared across sibling routes; only the color temperature changes, set by a body class per route family.</li>
+    <li>Sentence case for prose; Title Case for labels, headings, and menu items. Years and machine output stay uppercase mono.</li>
+    <li>Caption boxes are machine output &mdash; labels, counts, statuses, declarations. Never use them for prose.</li>
+    <li>Accessibility: a skip link, a 3px cyan focus outline on every interactive element, and <span class="font-mono">prefers-reduced-motion</span> to disable the animated mark sheen.</li>
+    <li>Bilingual register: French route names (L'Œuvre, Le Signal, À Propos) paired with English and SYSOUT captions.</li>
+  </ul>
+  <p class="tagline" style="max-width: 64ch; margin-top: 2rem; color: var(--brass); font-style: italic;">A thing documented is a thing not yet lost.</p>
+</section>

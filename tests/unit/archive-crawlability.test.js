@@ -232,7 +232,7 @@ describe('archive crawlability output', () => {
     )
     expect(unphotographed).toContain('No image available')
     expect(unphotographed).toContain(
-      '<meta property="og:image" content="https://forgotten-industries.net/assets/forgotten-industries-noise.png">'
+      '<meta property="og:image" content="https://forgotten-industries.net/assets/forgotten-industries.png">'
     )
   })
 
