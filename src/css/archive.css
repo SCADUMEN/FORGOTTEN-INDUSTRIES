@@ -476,6 +476,12 @@ body.homepage-landing .site-mark {
   color: var(--fi-cyan);
 }
 
+.site-nav-row a[aria-current='page'] span {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
 .site-nav-row a:hover + a::before,
 .site-nav-row a:focus-visible + a::before,
 .site-nav-row:has(a:last-child:hover)::after,
