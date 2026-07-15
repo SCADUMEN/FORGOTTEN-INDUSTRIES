@@ -74,6 +74,119 @@ function isCollectionUrl(value = '') {
   )
 }
 
+// Shared URL gathering for both sitemap outputs (XML + human-readable page).
+// Returns deduped, sorted pathnames using identical inclusion/exclusion rules.
+function gatherSitemapPaths(collection, extras, archive) {
+  const paths = new Set()
+
+  function add(value) {
+    if (!value) return
+    const pathname = canonicalPath(value)
+    if (pathname === '/sitemap.xml' || pathname === '/robots.txt') return
+    if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) return
+    if (!(pathname.endsWith('/') || pathname.endsWith('.html'))) return
+    paths.add(pathname)
+  }
+
+  if (Array.isArray(collection)) {
+    collection.forEach((entry) => add(entry.url))
+  }
+  if (Array.isArray(extras)) {
+    extras.forEach(add)
+  }
+  if (Array.isArray(archive?.fieldLogs)) {
+    archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+  }
+  if (Array.isArray(archive?.inventory)) {
+    archive.inventory.forEach((item) =>
+      add(`/archive/objects/${archiveSlug(item.id || item.name)}/`)
+    )
+  }
+  if (Array.isArray(archive?.projects)) {
+    archive.projects.forEach((project) =>
+      add(
+        `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
+      )
+    )
+  }
+
+  return [...paths].sort((a, b) => a.localeCompare(b))
+}
+
+// Build a single directory-style tree rooted at "/". Every URL path segment
+// becomes a node; a node is a "page" (linkable) when a pathname terminates on
+// it, otherwise it is a pure structural directory. All pages descend logically
+// from "/", mirroring the site's URL hierarchy.
+function buildSitemapTree(pathnames) {
+  const root = { segment: '/', url: null, isHtml: false, children: new Map() }
+
+  for (const pathname of pathnames) {
+    // The site root has no segments; it is the tree root itself.
+    if (pathname === '/') {
+      root.url = '/'
+      continue
+    }
+
+    const isHtml = pathname.endsWith('.html')
+    const segments = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
+    let node = root
+    segments.forEach((segment, index) => {
+      if (!node.children.has(segment)) {
+        node.children.set(segment, {
+          segment,
+          url: null,
+          isHtml: false,
+          children: new Map(),
+        })
+      }
+      node = node.children.get(segment)
+      if (index === segments.length - 1) {
+        node.url = pathname
+        node.isHtml = isHtml
+      }
+    })
+  }
+
+  function finalize(node) {
+    const children = [...node.children.values()]
+      .map(finalize)
+      .sort((a, b) => a.name.localeCompare(b.name))
+    const name =
+      node.segment === '/' ? '/' : node.segment + (node.isHtml ? '' : '/')
+    return { name, url: node.url || null, children }
+  }
+
+  return finalize(root)
+}
+
+function collectSitemapPaths(collection, extras, archive, taxonomy) {
+  const seen = new Set()
+  const paths = []
+  const add = (pathname) => {
+    if (!pathname || seen.has(pathname)) return
+    seen.add(pathname)
+    paths.push(pathname)
+  }
+
+  for (const pathname of gatherSitemapPaths(collection, extras, archive)) {
+    add(pathname)
+  }
+
+  // Fold taxonomy term pages into the tree by their URL path, mirroring the
+  // XML sitemap's categories/tags/status/systems coverage.
+  const taxonomyTerms = [
+    ...(taxonomy?.categories || []),
+    ...(taxonomy?.tags || []),
+    ...(taxonomy?.status || []),
+    ...(taxonomy?.systems || []),
+  ]
+  for (const term of taxonomyTerms) {
+    if (term?.url) add(canonicalPath(term.url))
+  }
+
+  return paths
+}
+
 function countValue(value) {
   if (Array.isArray(value)) return value.length
 
@@ -483,40 +596,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter(
     'publicSitemapUrls',
     function (collection, extras, base, archive) {
-      const urls = new Set()
+      return gatherSitemapPaths(collection, extras, archive).map((pathname) =>
+        canonicalUrl(pathname, base)
+      )
+    }
+  )
 
-      function add(value) {
-        if (!value) return
-        const pathname = canonicalPath(value)
-        if (pathname === '/sitemap.xml' || pathname === '/robots.txt') return
-        if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) return
-        if (!(pathname.endsWith('/') || pathname.endsWith('.html'))) return
-        urls.add(canonicalUrl(pathname, base))
-      }
-
-      if (Array.isArray(collection)) {
-        collection.forEach((entry) => add(entry.url))
-      }
-      if (Array.isArray(extras)) {
-        extras.forEach(add)
-      }
-      if (Array.isArray(archive?.fieldLogs)) {
-        archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
-      }
-      if (Array.isArray(archive?.inventory)) {
-        archive.inventory.forEach((item) =>
-          add(`/archive/objects/${archiveSlug(item.id || item.name)}/`)
-        )
-      }
-      if (Array.isArray(archive?.projects)) {
-        archive.projects.forEach((project) =>
-          add(
-            `/archive/projects/${archiveSlug(project.slug || project.id || project.title)}/`
-          )
-        )
-      }
-
-      return [...urls].sort((a, b) => a.localeCompare(b))
+  eleventyConfig.addFilter(
+    'sitemapTree',
+    function (collection, extras, archive, taxonomy) {
+      const paths = collectSitemapPaths(collection, extras, archive, taxonomy)
+      return buildSitemapTree(paths)
     }
   )
 

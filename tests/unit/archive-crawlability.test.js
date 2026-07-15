@@ -284,6 +284,7 @@ describe('archive crawlability output', () => {
       path.join(SITE, 'inventory/index.html'),
       path.join(SITE, 'inventory.html'),
       path.join(SITE, 'field-logs/voice/index.html'),
+      path.join(SITE, 'sitemap/index.html'),
     ])
     const canonicals = htmlFiles
       .filter((filePath) => !compatibilityRoutes.has(filePath))

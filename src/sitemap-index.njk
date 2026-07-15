@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: Plan du Site
+description: "Complete human-readable index of the Forgotten Industries archive, mapped as a single directory tree rooted at /."
+permalink: /plan-du-site/index.html
+eleventyExcludeFromCollections: true
+page_class: sitemap-index
+---
+{% set tree = collections.all | sitemapTree(site.sitemapExtraUrls, archive, taxonomy) %}
+{% macro renderTree(nodes, root) %}
+<ul class="sitemap-tree-list{% if root %} is-root{% endif %}">
+  {%- for node in nodes %}
+  <li class="{% if node.url %}is-page{% else %}is-dir{% endif %}">
+    {%- if node.url -%}
+    <a class="node-link" href="{{ node.url }}">{{ node.name }}</a>
+    {%- else -%}
+    <span class="node-branch">{{ node.name }}</span>
+    {%- endif -%}
+    {% if node.children.length %}{{ renderTree(node.children, false) }}{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{% endmacro %}
+<section class="section-landing-hero">
+  <div class="section-inner">
+    <div class="spine-hero-title-block">
+      <h1>Plan du Site</h1>
+      <p class="spine-hero-meta fi-caption-box"><span class="fi-prompt-marker">&gt;</span> tree /site --all</p>
+    </div>
+  </div>
+</section>
+
+<section class="sitemap-group">
+  <div class="section-inner">
+    <div class="sitemap-tree">
+      {{ renderTree([tree], true) }}
+    </div>
+  </div>
+</section>
