@@ -152,6 +152,57 @@ const navRows = [
   ],
 ]
 
+// Curated public URLs seeded into both the XML sitemap (sitemap.njk) and the
+// human-readable sitemap page (sitemap-index.njk). Single source of truth so
+// the two indexes stay in sync.
+const sitemapExtraUrls = [
+  '/l-archive/',
+  '/oeuvre/',
+  '/signal/',
+  '/apropos/',
+  '/provenance/',
+  '/atlas/',
+  '/doctrine/',
+  '/blog/',
+  '/posts/',
+  '/projects/',
+  '/projects/atlas/',
+  '/projects/caselabs-mercury-s8/',
+  '/projects/l-archive-modular-cartridge-system/',
+  '/projects/marketplace-shithawk-doctrine/',
+  '/projects/petite-chaine-du-signal/',
+  '/projects/typeface-system/',
+  '/hash/',
+  '/en-direct/',
+  '/field-notes/',
+  '/field-logs/',
+  '/field-logs/voice/',
+  '/hang-on-to-each-other/',
+  '/hang-on-to-each-other/wrist-field-instruments/',
+  '/colophon/',
+  '/plan-du-site/',
+  '/styleguide/',
+  '/archive/aerial-documentation/',
+  '/archive/inventory/',
+  '/archive/objects/',
+  '/archive/taxonomy/',
+  '/archive/categories/',
+  '/archive/tags/',
+  '/archive/status/',
+  '/archive/systems/',
+  '/archive/posts/',
+  '/archive/field-logs/',
+  '/archive/projects/',
+  '/archive/source-sets/',
+  '/archive/social-evidence/',
+  '/archive/feed/',
+  '/archive/data/',
+  '/docs/process/',
+  '/docs/intake/',
+  '/site-snapshots/',
+  '/social-posts.html',
+]
+
 module.exports = {
   name: 'Forgotten Industries',
   buildTime: buildDate.toISOString(),
@@ -234,6 +285,7 @@ module.exports = {
 
   navRows,
   nav: navRows.flat(),
+  sitemapExtraUrls,
 
   shelves: [
     { label: "L'Archive", slug: 'archive', href: '/l-archive/' },

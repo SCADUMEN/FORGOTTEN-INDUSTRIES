@@ -476,6 +476,12 @@ body.homepage-landing .site-mark {
   color: var(--fi-cyan);
 }
 
+.site-nav-row a[aria-current='page'] span {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
 .site-nav-row a:hover + a::before,
 .site-nav-row a:focus-visible + a::before,
 .site-nav-row:has(a:last-child:hover)::after,
@@ -6260,4 +6266,94 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   .restricted-document {
     margin-inline: -0.25rem;
   }
+}
+
+.sitemap-group {
+  padding: clamp(2rem, 5vw, 3.25rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sitemap-group h2 {
+  margin: 0 0 1.5rem;
+  color: var(--steel);
+  font-family: var(--font-system);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Directory-tree view: monospace nodes wired together with cyan branch rails
+   drawn from pseudo-elements, echoing a terminal `tree` listing. */
+.sitemap-tree {
+  --tree-rail: rgb(var(--fi-cyan-rgb) / 0.42);
+  font-family: var(--mono-font);
+  font-size: var(--mono-size);
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.sitemap-tree-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Nested levels indent and carry the branch rails; the root level does not. */
+.sitemap-tree-list:not(.is-root) {
+  padding-left: 1.4rem;
+}
+
+.sitemap-tree-list:not(.is-root) > li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+/* Vertical rail linking siblings. */
+.sitemap-tree-list:not(.is-root) > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -0.2em;
+  bottom: 0;
+  border-left: 1px solid var(--tree-rail);
+}
+
+/* Horizontal tick into each node. */
+.sitemap-tree-list:not(.is-root) > li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.8rem;
+  border-top: 1px solid var(--tree-rail);
+}
+
+/* Last child: stop the vertical rail at the tick so it reads as an elbow. */
+.sitemap-tree-list:not(.is-root) > li:last-child::before {
+  bottom: auto;
+  height: 1.05em;
+}
+
+.sitemap-tree-list.is-root > li {
+  margin-bottom: 0.35rem;
+}
+
+/* Page nodes are links; render them as the bright cyan path tokens. */
+.sitemap-tree .node-link {
+  color: var(--steel);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sitemap-tree .node-link:hover,
+.sitemap-tree .node-link:focus-visible {
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgb(var(--fi-cyan-rgb) / 0.65);
+}
+
+/* Structural directories (no page of their own) stay dim. */
+.sitemap-tree .node-branch {
+  color: var(--muted);
+  font-weight: 400;
 }

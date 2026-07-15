@@ -28,12 +28,12 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(2)
+  await expect(page.locator('.site-footer a')).toHaveCount(3)
   await expect(page.locator('.fi-provenance-plate')).toContainText(
     "FORGOTTEN INDUSTRIES · CONTRE L'OUBLI"
   )
   await expect(page.locator('.fi-provenance-plate')).toContainText(
-    'Provenance · Hash'
+    'Provenance · Plan du Site · Hash'
   )
   await expect(
     page.getByRole('link', { name: 'Provenance', exact: true })
@@ -62,7 +62,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(2)
+  await expect(page.locator('.site-footer a')).toHaveCount(3)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -70,7 +70,7 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(2)
+    await expect(page.locator('.site-footer a')).toHaveCount(3)
     await expect(page.locator('.fi-provenance-plate')).toContainText('Hash')
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
@@ -438,4 +438,28 @@ test('sitemap is valid XML with url entries', async ({ request }) => {
   const body = await response.text()
   expect(body).toContain('<urlset')
   expect(body).toContain('<loc>')
+})
+
+test('human-readable sitemap page lists grouped links', async ({ page }) => {
+  const response = await page.goto('/plan-du-site/')
+  expect(response.status()).toBe(200)
+  await expect(
+    page.getByRole('heading', { name: 'Plan du Site' })
+  ).toBeVisible()
+  await expect(page.locator('.sitemap-group')).not.toHaveCount(0)
+  await expect(page.locator('.sitemap-tree .node-link').first()).toBeVisible()
+  // Nested lists prove the directory hierarchy renders, not a flat list.
+  await expect(
+    page.locator('.sitemap-tree-list .sitemap-tree-list').first()
+  ).toBeVisible()
+})
+
+test('/sitemap/ redirects to the canonical /plan-du-site/', async ({
+  page,
+}) => {
+  await page.goto('/sitemap/')
+  await page.waitForURL('**/plan-du-site/')
+  await expect(
+    page.getByRole('heading', { name: 'Plan du Site' })
+  ).toBeVisible()
 })
