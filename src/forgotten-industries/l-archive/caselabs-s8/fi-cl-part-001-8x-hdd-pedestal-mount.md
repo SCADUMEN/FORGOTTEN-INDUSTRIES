@@ -14,8 +14,6 @@ confidence: "medium"
 signature: "Forgotten Industries // L’Archive // 2026.06.20"
 ---
 
-# 8× Vibration-Isolated 3.5-inch HDD Pedestal Mount
-
 ## Object ID
 
 `FI-CL-PART-001`

@@ -29,6 +29,14 @@ function canonical(html) {
   return html.match(/<link\s+[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]
 }
 
+function siteOutputPath(publicUrl) {
+  const pathname = new URL(publicUrl).pathname
+  const relativePath = decodeURIComponent(pathname).replace(/^\/+/, '')
+  return pathname.endsWith('/')
+    ? path.join(relativePath, 'index.html')
+    : relativePath
+}
+
 describe('archive crawlability output', () => {
   it('generates object, dossier, and taxonomy index pages', () => {
     expect(existsSite('l-archive/index.html')).toBe(true)
@@ -163,6 +171,9 @@ describe('archive crawlability output', () => {
       (record) => record.id === 'FI-LOG-008'
     )
     const wayIn = index.documents.find((record) => record.id === '004')
+    const voiceLog = index.documents.find(
+      (record) => record.id === 'FI-VOICE-003'
+    )
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
@@ -187,6 +198,19 @@ describe('archive crawlability output', () => {
       type: 'Short Form / Curated Entry',
       url: '/a-way-in/',
     })
+    expect(voiceLog).toMatchObject({
+      type: 'voice-field-log',
+      url: '/field-logs/#FI-VOICE-003',
+    })
+  })
+
+  it('publishes complete contact records from shared site data', () => {
+    const contact = readSite('contact.html')
+
+    expect(contact).toContain('href="mailto:contact@forgotten-industries.net"')
+    expect(contact).toContain('href="mailto:archive@forgotten-industries.net"')
+    expect(contact).toContain('@forgotten-industry.bsky.social')
+    expect(contact).not.toContain('href="mailto:"')
   })
 
   it('renders system provenance and ATLAS report provenance', () => {
@@ -295,5 +319,27 @@ describe('archive crawlability output', () => {
     )
 
     expect(duplicates).toEqual([])
+  })
+
+  it('gives every sitemap route one main landmark, h1, and canonical URL', () => {
+    const sitemap = readSite('sitemap.xml')
+    const publicUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+      (match) => match[1]
+    )
+
+    expect(sitemap).not.toContain('/field-logs/voice/')
+    expect(sitemap).not.toContain('/social-posts.html')
+    for (const publicUrl of publicUrls) {
+      const outputPath = siteOutputPath(publicUrl)
+      expect(existsSite(outputPath), publicUrl).toBe(true)
+
+      const html = readSite(outputPath)
+      expect((html.match(/<main\b/g) || []).length, publicUrl).toBe(1)
+      expect((html.match(/<h1\b/g) || []).length, publicUrl).toBe(1)
+      expect(
+        (html.match(/<link\b[^>]*rel="canonical"/g) || []).length,
+        publicUrl
+      ).toBe(1)
+    }
   })
 })

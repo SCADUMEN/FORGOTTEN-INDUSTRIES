@@ -8,8 +8,6 @@ status: "active"
 signature: "Forgotten Industries // L’Archive Index // 2026.06.20"
 ---
 
-# L’Archive: CaseLabs Mercury S8 / Pedestal
-
 ## Collection Summary
 
 This index tracks object-level records for CaseLabs Mercury S8 and related pedestal, storage, radiator, tray, and chassis components. Identifications remain provisional where official CaseLabs names or cross-chassis compatibility have not been verified.

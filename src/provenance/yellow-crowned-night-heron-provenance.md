@@ -13,8 +13,6 @@ participants:
 related_work: "The Yellow-Crowned Night Heron"
 ---
 
-# PROVENANCE FILE
-
 ## THE YELLOW-CROWNED NIGHT HERON
 
 This file preserves the human–machine workthrough that produced the accompanying field report.

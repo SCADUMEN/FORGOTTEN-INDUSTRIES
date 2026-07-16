@@ -300,7 +300,7 @@ voice_logs.each do |log|
     id: log.fetch("id"),
     type: "voice-field-log",
     title: log.fetch("title"),
-    url: "/field-logs/voice/##{log.fetch("id")}",
+    url: "/field-logs/##{log.fetch("id")}",
     date: log["date"],
     category: "field-log",
     object: log["recorder"],

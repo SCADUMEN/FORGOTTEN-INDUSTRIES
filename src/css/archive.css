@@ -5221,6 +5221,23 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   }
 }
 
+@media (max-width: 360px) {
+  .manual-hero h1 {
+    font-size: 2.75rem;
+  }
+
+  .fi-plate-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem 0.7rem;
+  }
+
+  .fi-plate-meta .sep {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .inventory-gallery-track {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5796,10 +5813,6 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
 .archive-document-body {
   min-width: 0;
   font-family: var(--editorial-font);
-}
-
-.archive-document-body > h1:first-child {
-  display: none;
 }
 
 .archive-document-body table {

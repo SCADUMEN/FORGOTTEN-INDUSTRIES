@@ -14,8 +14,6 @@ confidence: "high"
 signature: "Forgotten Industries // L’Archive // 2026.06.20"
 ---
 
-# STH10 EATX Motherboard Tray
-
 ## Object ID
 
 `FI-CL-PART-010`

@@ -176,7 +176,6 @@ const sitemapExtraUrls = [
   '/en-direct/',
   '/field-notes/',
   '/field-logs/',
-  '/field-logs/voice/',
   '/hang-on-to-each-other/',
   '/hang-on-to-each-other/wrist-field-instruments/',
   '/colophon/',
@@ -200,7 +199,6 @@ const sitemapExtraUrls = [
   '/docs/process/',
   '/docs/intake/',
   '/site-snapshots/',
-  '/social-posts.html',
 ]
 
 module.exports = {
@@ -271,9 +269,11 @@ module.exports = {
   githubUrl: 'https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES',
   repository: 'SCADUMEN/FORGOTTEN-INDUSTRIES',
   eleventyUrl: 'https://www.11ty.dev/',
-  contact: 'ATLAS@forgotten-industries.net',
+  contact: 'contact@forgotten-industries.net',
+  archiveContact: 'archive@forgotten-industries.net',
   fieldNotesSubscribeUrl:
     'https://bsky.app/profile/forgotten-industry.bsky.social',
+  fieldNotesContact: '@forgotten-industry.bsky.social',
   author: 'Matthew Marx',
 
   tagline:
