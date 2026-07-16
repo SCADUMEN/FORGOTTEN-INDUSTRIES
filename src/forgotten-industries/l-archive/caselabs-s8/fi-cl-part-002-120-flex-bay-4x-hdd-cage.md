@@ -15,8 +15,6 @@ confidence: "high"
 signature: "Forgotten Industries // L’Archive // 2026.06.20"
 ---
 
-# 120 mm Flex-Bay 4× HDD Cage with Fan
-
 ## Object ID
 
 `FI-CL-PART-002`

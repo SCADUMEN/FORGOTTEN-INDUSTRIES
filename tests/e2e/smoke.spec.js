@@ -81,6 +81,66 @@ test('primary section pages share the global maker plate', async ({ page }) => {
   }
 })
 
+test('representative route families remain contained at 320px', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+
+  const routes = [
+    '/',
+    '/l-archive/',
+    '/oeuvre/',
+    '/signal/',
+    '/apropos/',
+    '/blog/',
+    '/posts/',
+    '/archive/objects/fi-case-001/',
+    '/hang-on-to-each-other/wrist-field-instruments/',
+    '/contact.html',
+    '/hash/',
+    '/zoot/',
+  ]
+
+  for (const route of routes) {
+    const response = await page.goto(route)
+    expect(response?.status(), route).toBe(200)
+
+    const dimensions = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }))
+
+    expect(dimensions.scrollWidth, route).toBe(dimensions.viewport)
+  }
+})
+
+test('contact route exposes complete archive channels', async ({ page }) => {
+  const response = await page.goto('/contact.html')
+  expect(response?.status()).toBe(200)
+
+  await expect(
+    page.getByRole('link', {
+      name: 'contact@forgotten-industries.net',
+      exact: true,
+    })
+  ).toHaveAttribute('href', 'mailto:contact@forgotten-industries.net')
+  await expect(
+    page.getByRole('link', {
+      name: 'archive@forgotten-industries.net',
+      exact: true,
+    })
+  ).toHaveAttribute('href', 'mailto:archive@forgotten-industries.net')
+  await expect(
+    page.getByRole('link', {
+      name: '@forgotten-industry.bsky.social',
+      exact: true,
+    })
+  ).toHaveAttribute(
+    'href',
+    'https://bsky.app/profile/forgotten-industry.bsky.social'
+  )
+})
+
 test('Signal and Oeuvre keep transmission and stabilized-work shelves separate', async ({
   page,
 }) => {

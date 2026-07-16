@@ -274,7 +274,7 @@ The heron teaches the preservation of perspective before action.
 
 These are not contradictory doctrines.
 
-# _They are sequence._
+## _They are sequence._
 
 First: the heron on the automobile.
 

@@ -10,8 +10,6 @@ item_count: 10
 signature: "Forgotten Industries // Inventory Intake // 2026.06.20"
 ---
 
-# Intake: CaseLabs Chassis Parts — 2026.06.20
-
 ## Session Summary
 
 This intake covers 10 photographed CaseLabs chassis-related parts across 47 photos, including HDD storage assemblies, chassis plates, a radiator mounting plate, and a motherboard tray. This remains an intake record rather than a final identification list; the current labels reflect the best available user identifications, with official CaseLabs terminology and compatibility still subject to verification.
