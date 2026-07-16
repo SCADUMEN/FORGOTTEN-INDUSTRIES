@@ -54,6 +54,27 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       touch-action: none;
       cursor: crosshair;
     }
+    .zoot-visually-hidden,
+    .zoot-access-link:not(:focus) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .zoot-access-link:focus {
+      position: fixed;
+      top: max(1rem, env(safe-area-inset-top));
+      left: max(1rem, env(safe-area-inset-left));
+      z-index: 4;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--fi-cyan);
+      background: var(--fi-surface);
+      color: var(--fi-paper-light);
+    }
     #zoot-exit {
       position: fixed;
       left: max(1.25rem, env(safe-area-inset-left));
@@ -157,17 +178,21 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
   </style>
 </head>
 <body>
-  <canvas id="zoot-canvas" aria-hidden="true"></canvas>
-  <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
-  <div id="zoot-focus" hidden></div>
-  <section id="zoot-fallback" hidden aria-label="Archive records"></section>
-  <noscript>
-    <p class="zoot-panel-heading">
-      ATLAS REPORT &mdash; this instrument requires script execution. The slick
-      will not resolve. The records remain:
-      <a href="/l-archive/">L'ARCHIVE</a>
-    </p>
-  </noscript>
+  <main>
+    <h1 class="zoot-visually-hidden">ZOOT archive instrument</h1>
+    <a class="zoot-access-link" href="/l-archive/">Open the accessible archive index</a>
+    <canvas id="zoot-canvas" aria-hidden="true"></canvas>
+    <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+    <div id="zoot-focus" hidden></div>
+    <section id="zoot-fallback" hidden aria-label="Archive records"></section>
+    <noscript>
+      <p class="zoot-panel-heading">
+        ATLAS REPORT &mdash; this instrument requires script execution. The slick
+        will not resolve. The records remain:
+        <a href="/l-archive/">L'ARCHIVE</a>
+      </p>
+    </noscript>
+  </main>
   <script type="module" src="/assets/js/zoot/main.js?v={{ site.assetVersion }}"></script>
 </body>
 </html>

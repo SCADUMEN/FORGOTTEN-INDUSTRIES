@@ -14,8 +14,6 @@ confidence: "medium"
 signature: "Forgotten Industries // L’Archive // 2026.06.20"
 ---
 
-# Window Front Plate
-
 ## Object ID
 
 `FI-CL-PART-005`
