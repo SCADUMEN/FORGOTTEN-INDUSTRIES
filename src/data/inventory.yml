@@ -1613,6 +1613,152 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-07-05'
 
+  - id: FI-HW-MB-X99-001
+    name: MSI X99S XPOWER AC motherboard
+    category: motherboard
+    manufacturer: MSI
+    model: X99S XPOWER AC
+    quantity: 1
+    associated_project: FI-PROJ-009
+    condition: recovered from storage / CPU installed / no RAM present / prior failure history
+    status: identified / fault isolation pending / do not represent as working
+    photos:
+      - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-overview.jpg
+      - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-cpu.jpg
+    notes: >
+      E-ATX Intel X99 motherboard with LGA2011-v3 socket, eight DDR4 slots,
+      onboard diagnostic display, and an installed processor. The operator
+      recalls that the platform previously failed to operate and may have
+      suffered an electrical fault. The present cause is unknown. Preserve the
+      board as a repair candidate until visual inspection, CMOS reset, minimum
+      bench configuration, and diagnostic-code capture are complete.
+    tags:
+      - MSI
+      - X99S XPOWER AC
+      - Intel X99
+      - LGA2011-v3
+      - DDR4
+      - fault isolation
+      - motherboard recovery
+    estimated_value:
+    keep_sell_archive: archive / repair candidate
+    date_logged: '2026-07-16'
+
+  - id: FI-HW-CPU-X99-001
+    name: Unidentified Intel Haswell-E processor
+    category: processor
+    manufacturer: Intel
+    model: Core i7-5930K or Core i7-5960X / operator recollection / unverified
+    quantity: 1
+    associated_project: FI-PROJ-009
+    condition: installed in FI-HW-MB-X99-001 / heat spreader obscured by thermal compound
+    status: identity and function unverified
+    photos:
+      - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-cpu.jpg
+    notes: >
+      The processor remains installed in the recovered X99 board. Operator
+      recollection narrows the candidate identity to an Intel Core i7-5930K or
+      Core i7-5960X, but the current photograph cannot distinguish them. Clean
+      the heat spreader, photograph its markings, and preserve the CPU identity
+      as provisional until direct reading or BIOS recognition confirms it.
+    tags:
+      - Intel
+      - Haswell-E
+      - LGA2011-v3
+      - Core i7-5930K
+      - Core i7-5960X
+      - provisional identification
+    estimated_value:
+    keep_sell_archive: archive / test pending
+    date_logged: '2026-07-16'
+
+  - id: FI-HW-MB-Z97-001
+    name: ASUS ROG Maximus VII Impact motherboard assembly
+    category: motherboard
+    manufacturer: ASUS
+    model: Maximus VII Impact Rev. 1.02
+    quantity: 1 assembly
+    associated_project: FI-PROJ-009
+    condition: recovered from storage / CPU socket empty / accessory modules retained
+    status: identified / socket inspection and bench validation pending
+    photos:
+      - assets/projects/x99-impact-recovery/asus-maximus-vii-impact-socket.jpg
+      - assets/projects/x99-impact-recovery/asus-supremefx-impact-ii.jpg
+    notes: >
+      Mini-ITX Intel Z97 motherboard with LGA1150 socket and two DDR3 slots.
+      Current evidence includes the loose SupremeFX Impact II audio daughterboard
+      and the matching rear I/O shield with antenna leads. The oblique socket
+      photograph is useful evidence but does not clear every pin as undamaged;
+      complete a bright, straight-on socket inspection before installing a CPU.
+    tags:
+      - ASUS ROG
+      - Maximus VII Impact
+      - Intel Z97
+      - LGA1150
+      - DDR3
+      - mini-ITX
+      - SupremeFX Impact II
+    estimated_value:
+    keep_sell_archive: archive / test pending
+    date_logged: '2026-07-16'
+
+  - id: FI-HW-BLOCK-Z97-001
+    name: EK CPU and VRM monoblock for ASUS Maximus VII Impact
+    category: water-cooling block
+    manufacturer: EK Water Blocks
+    model: exact part number unverified
+    quantity: 1
+    associated_project: FI-PROJ-009
+    condition: recovered loose / prior coolant service unknown
+    status: fitment identified by operator / cleaning and pressure test pending
+    photos:
+      - assets/projects/x99-impact-recovery/asus-impact-ek-monoblock.jpg
+    notes: >
+      Acrylic-top EK cooling block retained with the Maximus VII Impact
+      platform and identified by the operator as its monoblock. Exact retail
+      part number and mounting-hardware completeness remain unverified. Do not
+      place it into a live loop until it has been opened or flushed as
+      appropriate, inspected for plate damage and residue, re-sealed if needed,
+      and pressure-tested outside the system.
+    tags:
+      - EK Water Blocks
+      - monoblock
+      - ASUS Maximus VII Impact
+      - custom watercooling
+      - pressure test pending
+    estimated_value:
+    keep_sell_archive: archive / restoration candidate
+    date_logged: '2026-07-16'
+
+  - id: FI-HW-GPU-660TI-001
+    name: EVGA GeForce GTX 660 Ti with EK full-cover water block
+    category: graphics card / water-cooling assembly
+    manufacturer: EVGA / EK Water Blocks
+    model: GeForce GTX 660 Ti / exact board and block variants unverified
+    quantity: 1 assembly
+    associated_project: FI-PROJ-009
+    condition: recovered from storage / full-cover block and fittings installed
+    status: operator-identified / electrical and leak validation pending
+    photos:
+      - assets/projects/x99-impact-recovery/evga-gtx-660-ti-ek-waterblock.jpg
+    notes: >
+      EVGA graphics card identified by the operator as a GeForce GTX 660 Ti,
+      fitted with an EK full-cover GPU water block and two compression fittings.
+      The exact card and block part numbers are not legible in the current
+      public photograph. Treat the assembly as untested; inspect for residue or
+      corrosion, pressure-test the block separately, and use a known-good test
+      platform before assigning working status.
+    tags:
+      - EVGA
+      - GeForce GTX 660 Ti
+      - EK Water Blocks
+      - full-cover GPU block
+      - custom watercooling
+      - untested
+    estimated_value:
+    keep_sell_archive: archive / test pending
+    date_logged: '2026-07-16'
+
   - id: FI-PHOTO-001
     name: Initial local archive photo batch
     category: photo evidence set
