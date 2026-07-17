@@ -14,6 +14,13 @@ yarn-error.log*
 test-results/
 playwright-report/
 .playwright/
+.playwright-mcp/
+
+# CONTINUANCE generated data indexes (fetched/normalized at build time by
+# scripts/build_continuance_index.cjs) and dev-only CSS copy. continuance/dist
+# is covered by dist/.
+/continuance/public/data/
+/continuance/public/css/
 
 # Local raw intake payloads. Promote curated derivatives into src/ or docs/
 # before committing.

@@ -293,6 +293,19 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('dist')
 
+  // CxR (CONTINUANCExRESEARCH) is a Vite/React app built to continuance/dist by
+  // `npm run build:continuance` (which runs before eleventy in build:site). The
+  // page shell is rendered by Eleventy (src/cxr.njk, using base.njk) so CxR
+  // carries the global header/footer like any other page; here we copy only the
+  // built bundle and data next to it. It serves at /cxr/; /continuance/
+  // 301-redirects here.
+  eleventyConfig.addPassthroughCopy({ 'continuance/dist/assets': 'cxr/assets' })
+  eleventyConfig.addPassthroughCopy({ 'continuance/dist/data': 'cxr/data' })
+
+  // The canonical CONTINUANCE persona source, published for inspection like the
+  // ATLAS source dossier. Repo root is outside src/, so it needs its own copy.
+  eleventyConfig.addPassthroughCopy({ 'continuance.md': 'continuance.md' })
+
   // Les Manuscrits render through the post layout; their raw markdown stays
   // published alongside at the same /posts/*.md URLs for compatibility.
   // Imported social records are static evidence, copied verbatim.
