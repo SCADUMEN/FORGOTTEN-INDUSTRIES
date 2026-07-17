@@ -120,10 +120,10 @@ test('contact route exposes complete archive channels', async ({ page }) => {
 
   await expect(
     page.getByRole('link', {
-      name: 'contact@forgotten-industries.net',
+      name: 'LESAUVEGARDER@GMAIL.COM',
       exact: true,
     })
-  ).toHaveAttribute('href', 'mailto:contact@forgotten-industries.net')
+  ).toHaveAttribute('href', 'mailto:LESAUVEGARDER@GMAIL.COM')
   await expect(
     page.getByRole('link', {
       name: 'archive@forgotten-industries.net',

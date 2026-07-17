@@ -68,7 +68,7 @@ Real-world responses are catalogued in the [Reader Impressions Register](IMPRESS
 
 ## Security and contact
 
-Security reports follow [SECURITY.md](SECURITY.md). Corrections, provenance, and archive correspondence can be sent through [contact@forgotten-industries.net](mailto:contact@forgotten-industries.net).
+Security reports follow [SECURITY.md](SECURITY.md). Corrections, provenance, and archive correspondence can be sent through [LESAUVEGARDER@GMAIL.COM](mailto:LESAUVEGARDER@GMAIL.COM).
 
 Human authorship remains primary. Machine collaboration is recorded through repository history, process notes, and provenance where it materially shaped the record.
 
