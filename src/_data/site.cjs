@@ -174,6 +174,7 @@ const sitemapExtraUrls = [
   '/projects/marketplace-shithawk-doctrine/',
   '/projects/petite-chaine-du-signal/',
   '/projects/typeface-system/',
+  '/projects/x99-impact-recovery/',
   '/hash/',
   '/en-direct/',
   '/field-notes/',
