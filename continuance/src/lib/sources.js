@@ -13,26 +13,41 @@ const CORS_PROXY =
 // and on the dev server, so these resolve in both.
 const DATA_BASE = `${import.meta.env.BASE_URL}data/`
 
+let manifestPromise = null
+
 export async function loadManifest() {
-  const res = await fetch(`${DATA_BASE}sources.json`)
-  if (!res.ok)
-    throw new Error(`Failed to load sources manifest (${res.status})`)
-  return res.json()
+  if (manifestPromise) return manifestPromise
+  manifestPromise = fetch(`${DATA_BASE}sources.json`).then((res) => {
+    if (!res.ok)
+      throw new Error(`Failed to load sources manifest (${res.status})`)
+    return res.json()
+  })
+  return manifestPromise
 }
 
 const sourceCache = new Map()
 
 export async function loadSource(id) {
   if (sourceCache.has(id)) return sourceCache.get(id)
-  const promise = fetch(`${DATA_BASE}${id}.json`)
-    .then((res) => {
-      if (!res.ok)
-        throw new Error(`Failed to load source "${id}" (${res.status})`)
-      return res.json()
-    })
-    .then((data) => ({ ...data, records: dedupeById(data.records || []) }))
+  const promise = resolveSource(id)
   sourceCache.set(id, promise)
   return promise
+}
+
+// A build-indexed source (e.g. fi) loads its emitted JSON. A runtime "feed"
+// source (e.g. nor) is declared in the manifest with a feedUrl and fetched live
+// through the CORS proxy, normalized in-browser exactly like a pasted URL - so
+// it never depends on the build being able to reach the origin.
+async function resolveSource(id) {
+  const manifest = await loadManifest()
+  const descriptor = manifest.sources.find((source) => source.id === id)
+  if (descriptor?.kind === 'feed' && descriptor.feedUrl) {
+    return loadFeedSource(descriptor)
+  }
+  const res = await fetch(`${DATA_BASE}${id}.json`)
+  if (!res.ok) throw new Error(`Failed to load source "${id}" (${res.status})`)
+  const data = await res.json()
+  return { ...data, records: dedupeById(data.records || []) }
 }
 
 // Records feed a MiniSearch index keyed by id, which rejects duplicate ids, and
@@ -51,12 +66,10 @@ function dedupeById(records) {
   return unique
 }
 
-// A runtime URL source, fetched (via the CORS proxy) and normalized in the
-// browser. The source id is unique per URL (`url:<url>`) so the MiniSearch index
-// and record map below never reuse a stale index when the URL changes. A failed
-// fetch (proxy down, target error) rejects here; the caller surfaces it as a
-// column error.
-export async function loadUrlSource(url) {
+// Fetch a URL through the CORS proxy and normalize its payload to Records. A
+// failed fetch (proxy down, target error) rejects here; the caller surfaces it
+// as a column error.
+async function fetchAndNormalize(url, sourceId) {
   const res = await fetch(buildProxyUrl(CORS_PROXY, url))
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   const raw = await res.text()
@@ -66,8 +79,23 @@ export async function loadUrlSource(url) {
   } catch {
     payload = raw
   }
-  const records = dedupeById(normalizeUrlPayload(url, payload))
+  return dedupeById(normalizeUrlPayload(url, payload, sourceId))
+}
+
+// A pasted-URL source. The source id is unique per URL (`url:<url>`) so the
+// MiniSearch index never goes stale when the URL changes; records carry the
+// '__url__' sentinel sourceId.
+export async function loadUrlSource(url) {
+  const records = await fetchAndNormalize(url, '__url__')
   return { id: `url:${url}`, label: hostnameOf(url), kind: 'url', records }
+}
+
+// A hardcoded runtime feed source (e.g. nor). Fetched live through the proxy so
+// it never depends on the build reaching the origin; records carry the source's
+// own id as their sourceId.
+export async function loadFeedSource({ id, label, feedUrl }) {
+  const records = await fetchAndNormalize(feedUrl, id)
+  return { id, label, kind: 'feed', records }
 }
 
 // One MiniSearch index per source, built once and reused. Title and tags are
