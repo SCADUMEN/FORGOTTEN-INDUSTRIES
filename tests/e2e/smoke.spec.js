@@ -530,11 +530,3 @@ test('/sitemap/ redirects to the canonical /plan-du-site/', async ({
     page.getByRole('heading', { name: 'Plan du Site' })
   ).toBeVisible()
 })
-
-test('/continuance/ redirects to the canonical /cxr/', async ({ page }) => {
-  await page.goto('/continuance/')
-  await page.waitForURL('**/cxr/')
-  await expect(page.locator('.continuance-masthead h1')).toHaveText(
-    'CONTINUANCExRESEARCH'
-  )
-})

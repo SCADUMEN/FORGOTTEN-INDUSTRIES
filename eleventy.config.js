@@ -297,8 +297,7 @@ export default function (eleventyConfig) {
   // `npm run build:continuance` (which runs before eleventy in build:site). The
   // page shell is rendered by Eleventy (src/cxr.njk, using base.njk) so CxR
   // carries the global header/footer like any other page; here we copy only the
-  // built bundle and data next to it. It serves at /cxr/; /continuance/
-  // 301-redirects here.
+  // built bundle and data next to it. It serves at /cxr/.
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/assets': 'cxr/assets' })
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/data': 'cxr/data' })
 

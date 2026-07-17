@@ -33,8 +33,11 @@ export function hostnameOf(url) {
 export function urlHtmlToText(html) {
   if (!html) return ''
   return String(html)
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    // Drop script/style blocks whole. The closing-tag match tolerates
+    // whitespace and stray attributes (e.g. `</script >`) so content can't slip
+    // through the filter (CodeQL js/bad-tag-filter).
+    .replace(/<script\b[\s\S]*?<\/script[^>]*>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style[^>]*>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&[a-z#0-9]+;/gi, ' ')
     .replace(/\s+/g, ' ')
