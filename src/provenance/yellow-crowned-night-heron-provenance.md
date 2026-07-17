@@ -118,6 +118,18 @@ He selected the three lines above for typographic impact and directed that the f
 
 This provenance file preserves the longer developmental path without requiring the final public-facing entry to carry all of it.
 
+## CONTINUATION RECORD
+
+The observation continued after the first doctrine was published.
+
+Matthew located the nesting group and confirmed that one adult yellow-crowned night heron occupied the middle of the nest frame with two juveniles at either side. Two public derivatives preserve the three-bird count and age arrangement without disclosing the exact site, embedded location data, or its relationship to any private residence.
+
+On 2026-07-15, Matthew made a later close-range photographic sequence of one juvenile at ground level. Three public derivatives preserve the bird's visible plumage, posture, and scale. The photographs do not establish whether this was the same individual encountered on the automobile on 2026-07-10 or which of the two juveniles from the three-bird nesting group it may have been. The continuation record therefore leaves individual identity unconfirmed.
+
+Matthew directed the continuation as a family record and supplied the decisive identification: **the nest has an adult and two juveniles; the adult is in the middle**. OpenAI Codex located the later photographs in the local Photos library, selected the public-safe nest evidence from restricted intake, removed location and source metadata from the public derivatives, drafted the continuation, and registered the resulting source set as `FI-PHOTO-005`.
+
+The public continuation is filed as [The Heron Family](/posts/2026-07-17-the-heron-family.html). Raw nest material remains local and restricted.
+
 ## ATTRIBUTION
 
 **Primary authorial source:** Matthew T. Marx  
