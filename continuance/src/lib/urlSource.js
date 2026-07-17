@@ -7,9 +7,10 @@
 // shape every other source uses:
 //   Record { id, sourceId, title, text, url?, tags[], date?, type?, summary?, meta{} }
 //
-// sourceId is always '__url__' (the column-select sentinel) so the anchor
-// source-consistency guard in App treats a URL record as belonging to the URL
-// slot regardless of which URL produced it.
+// The same normalization powers two runtime sources: pasted URLs (sourceId
+// '__url__', the column-select sentinel) and hardcoded feeds like nor (sourceId
+// 'nor'). sourceId is stamped on every record so the anchor source-consistency
+// guard in App knows which column a record belongs to.
 
 const URL_SOURCE_ID = '__url__'
 
@@ -57,14 +58,13 @@ function firstOf(obj, keys) {
   return ''
 }
 
-// A JSON Feed (jsonfeed.org) item -> Record. Mirrors the build-time indexer's
-// normalizeFeedItem, minus the nor-specific bits.
-function feedItemToRecord(item, index, base) {
+// A JSON Feed (jsonfeed.org) item -> Record.
+function feedItemToRecord(item, index, base, sourceId) {
   const body =
     item.content_text || urlHtmlToText(item.content_html) || item.summary || ''
   return {
     id: String(item.id || item.url || `${base}#${index}`),
-    sourceId: URL_SOURCE_ID,
+    sourceId,
     title: item.title || String(item.id || `Item ${index + 1}`),
     text: body,
     url: item.url || item.external_url || item.id || null,
@@ -79,7 +79,7 @@ function feedItemToRecord(item, index, base) {
 // A generic JSON element -> Record. Objects are mapped by common field names;
 // primitives become a single-line record; anything else is JSON-stringified so
 // it stays searchable.
-function jsonElementToRecord(element, index, base) {
+function jsonElementToRecord(element, index, base, sourceId) {
   if (element && typeof element === 'object') {
     const text =
       firstOf(element, [
@@ -94,7 +94,7 @@ function jsonElementToRecord(element, index, base) {
       id: String(
         element.id || element.guid || element.url || element.slug || `${base}#${index}`
       ),
-      sourceId: URL_SOURCE_ID,
+      sourceId,
       title:
         firstOf(element, ['title', 'name', 'headline', 'subject', 'label']) ||
         `Item ${index + 1}`,
@@ -111,7 +111,7 @@ function jsonElementToRecord(element, index, base) {
   }
   return {
     id: `${base}#${index}`,
-    sourceId: URL_SOURCE_ID,
+    sourceId,
     title: `Item ${index + 1}`,
     text: String(element),
     url: null,
@@ -125,16 +125,18 @@ function jsonElementToRecord(element, index, base) {
 
 // Normalize a fetched payload (already JSON-parsed when possible, else the raw
 // string) into Records. Detection order: JSON Feed, JSON array, JSON object,
-// then plain text / HTML as a single record.
-export function normalizeUrlPayload(url, payload) {
+// then plain text / HTML as a single record. sourceId marks which source the
+// records belong to (the URL sentinel for pasted URLs, or a named source id
+// like 'nor' for a hardcoded runtime feed).
+export function normalizeUrlPayload(url, payload, sourceId = URL_SOURCE_ID) {
   if (payload && typeof payload === 'object' && Array.isArray(payload.items)) {
-    return payload.items.map((item, i) => feedItemToRecord(item, i, url))
+    return payload.items.map((item, i) => feedItemToRecord(item, i, url, sourceId))
   }
   if (Array.isArray(payload)) {
-    return payload.map((element, i) => jsonElementToRecord(element, i, url))
+    return payload.map((element, i) => jsonElementToRecord(element, i, url, sourceId))
   }
   if (payload && typeof payload === 'object') {
-    return [jsonElementToRecord(payload, 0, url)]
+    return [jsonElementToRecord(payload, 0, url, sourceId)]
   }
 
   const raw = String(payload || '')
@@ -143,7 +145,7 @@ export function normalizeUrlPayload(url, payload) {
   return [
     {
       id: `${url}#0`,
-      sourceId: URL_SOURCE_ID,
+      sourceId,
       title: titleFromHtml(raw) || hostnameOf(url),
       text,
       url,
