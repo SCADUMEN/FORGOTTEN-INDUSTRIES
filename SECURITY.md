@@ -4,7 +4,7 @@ Forgotten Industries is a static public archive. Security reports should concern
 
 ## Reporting
 
-Send reports to [contact@forgotten-industries.net](mailto:contact@forgotten-industries.net?subject=Security%20report). Include the affected URL, a concise reproduction, expected impact, and any evidence that can be shared safely.
+Send reports to [LESAUVEGARDER@GMAIL.COM](mailto:LESAUVEGARDER@GMAIL.COM?subject=Security%20report). Include the affected URL, a concise reproduction, expected impact, and any evidence that can be shared safely.
 
 Do not include passwords, private keys, client identities, home addresses, or unredacted restricted records in an issue or pull request. Do not perform denial-of-service testing, destructive testing, social engineering, or testing against third-party accounts.
 

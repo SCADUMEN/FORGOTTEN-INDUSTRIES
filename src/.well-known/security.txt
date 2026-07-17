@@ -1,4 +1,4 @@
-Contact: mailto:contact@forgotten-industries.net?subject=Security%20report
+Contact: mailto:LESAUVEGARDER@GMAIL.COM?subject=Security%20report
 Expires: 2027-07-15T00:00:00.000Z
 Canonical: https://forgotten-industries.net/.well-known/security.txt
 Policy: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/security/policy
