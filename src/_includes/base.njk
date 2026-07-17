@@ -93,6 +93,7 @@
       <i class="site-mark-shield" aria-hidden="true"></i>
     </a>
     <div class="site-nav-cluster">
+      <a class="site-cxr-mark" href="/cxr/"{% if page.url == '/cxr/' or page.url.startsWith('/cxr/') %} aria-current="page"{% endif %}>CxR</a>
       <a class="fi-zoot-mark" href="/zoot/" aria-label="ZOOT">fi</a>
       <nav class="site-nav" aria-label="Primary">
         {% for row in site.navRows %}

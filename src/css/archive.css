@@ -366,7 +366,7 @@ img {
 
 .site-nav-cluster {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   justify-content: end;
   gap: clamp(0.8rem, 2vw, 1.35rem);
   min-width: 0;
@@ -5128,6 +5128,17 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
   color: var(--fi-green-bright);
 }
 
+/* FORGOTTEN INDUSTRIES links home; stays green, brightens on hover. */
+.fi-provenance-plate a.hi {
+  text-decoration: none;
+}
+
+.fi-provenance-plate a.hi:hover,
+.fi-provenance-plate a.hi:focus-visible {
+  color: var(--fi-green);
+  text-decoration: underline;
+}
+
 .fi-provenance-plate .cu {
   color: var(--fi-copper);
 }
@@ -5175,9 +5186,8 @@ a.fi-zoot-mark {
 }
 
 .site-header a.fi-zoot-mark {
-  align-self: start;
+  align-self: baseline;
   flex: 0 0 auto;
-  margin-top: -0.34rem;
   font-size: clamp(2.55rem, 4vw, 3.35rem);
 }
 
@@ -5200,6 +5210,26 @@ a.fi-zoot-mark:focus-visible {
 a.fi-zoot-mark:hover .fi-zoot-slick-canvas,
 a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   opacity: 1;
+}
+
+/* CxR mark: the research instrument's wordmark, sat to the left of the zoot
+   mark in the header cluster. Zoot-sized, but all-caps blue monospace. */
+a.site-cxr-mark {
+  align-self: baseline;
+  flex: 0 0 auto;
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: clamp(1.28rem, 2vw, 1.68rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+a.site-cxr-mark:hover,
+a.site-cxr-mark:focus-visible {
+  color: var(--fi-paper-light);
 }
 
 @media (max-width: 720px) {
@@ -5379,6 +5409,29 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
     order: -1;
   }
 
+  /* Header goes mobile at 820: nav items stack, and the CxR + fi marks stack
+     below them. */
+  .site-nav-cluster {
+    flex-direction: column;
+    align-items: end;
+    gap: 0.4rem;
+  }
+
+  .site-nav-cluster > .site-nav {
+    order: -1;
+  }
+
+  a.site-cxr-mark,
+  .site-header a.fi-zoot-mark {
+    align-self: flex-end;
+  }
+
+  /* The zoot hover flourish is centered on the mark; with the mark pinned to
+     the right edge here it would overflow the page. Not needed on touch. */
+  .fi-zoot-slick-canvas {
+    display: none;
+  }
+
   .site-nav {
     gap: 0.28rem;
     font-size: var(--homepage-mono-size);
@@ -5386,23 +5439,20 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   }
 
   .site-nav-row {
-    justify-content: end;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.28rem;
+    text-align: right;
   }
 
   .site-nav-row a {
     line-height: 1.25;
   }
 
-  .site-nav-row::before {
-    margin-right: 0.38rem;
-  }
-
-  .site-nav-row::after {
-    margin-left: 0.38rem;
-  }
-
+  .site-nav-row::before,
+  .site-nav-row::after,
   .site-nav-row a + a::before {
-    margin: 0 0.38rem;
+    content: none;
   }
 
   .footer-nav {

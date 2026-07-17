@@ -1,0 +1,595 @@
+/*
+ * CONTINUANCE app layout. Additive only: every color, font, shadow, and border
+ * is a design-system token from archive.css (linked at runtime). No token roles
+ * are overridden and no new palette is introduced. Follows the styleguide
+ * heuristics - hard-edged offset shadows, no rounded corners, caption boxes for
+ * machine output, the shared 3px cyan focus outline (never restyled here).
+ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Masthead ------------------------------------------------------------ */
+.continuance-masthead {
+  border-bottom: 1px solid var(--line);
+}
+
+/* Full-width banner: the CONTINUANCE glyph big across the top, copy over it. */
+.continuance-masthead-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(16rem, 42vw, 30rem);
+  padding: clamp(1.5rem, 5vw, 3rem) 1.25rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Scrim so the copy stays legible over the image. */
+.continuance-masthead-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(6 12 14 / 0.3) 0%,
+    rgb(6 12 14 / 0.78) 100%
+  );
+  pointer-events: none;
+}
+
+.continuance-masthead-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.continuance-masthead-inner h1,
+.continuance-masthead-inner .continuance-tagline {
+  text-shadow: 0 1px 4px rgb(0 0 0 / 0.7);
+}
+
+.continuance-masthead-dossiers {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2rem) 1.25rem;
+}
+
+.continuance-masthead h1 {
+  margin: 0.4rem 0 0;
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  /* CONTINUANCExRESEARCH is one long unbroken token; size it to fit the shell
+     and let it wrap rather than overflow on narrow viewports. No uppercase
+     transform: the title is authored all-caps except the deliberate lowercase
+     "x" (the CxR brand), which must survive on this page. */
+  font-size: clamp(1.9rem, 6vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.continuance-tagline {
+  max-width: 60ch;
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.continuance-backlink {
+  margin: 1rem 0 0;
+  font-family: var(--font-system);
+  font-size: 0.85rem;
+}
+
+/* --- Dossier (expandable persona) ---------------------------------------- */
+.continuance-dossier {
+  margin: 1.25rem 0 0;
+  border: 1px solid var(--line);
+  background: var(--fi-surface);
+  box-shadow: var(--fi-stamp-shadow-xs);
+}
+
+.continuance-dossier > summary {
+  padding: 0.7rem 1rem;
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+/* Preserve the CxR brand's lowercase "x" inside uppercased labels. */
+.cxr-brand {
+  text-transform: none;
+}
+
+.continuance-dossier[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.continuance-dossier-body {
+  max-width: 68ch;
+  padding: 0.5rem 1rem 1.1rem;
+}
+
+.continuance-dossier-body h2 {
+  margin: 1.1rem 0 0.35rem;
+}
+
+.continuance-dossier-body p {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+}
+
+.continuance-dossier-body ul {
+  /* The site's Tailwind preflight resets `ol,ul,menu{list-style:none}`
+     globally, so restore discs for the dossier's lists specifically. */
+  margin: 0.35rem 0;
+  padding-left: 1.35rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  list-style: disc outside;
+}
+
+.continuance-dossier-body li {
+  margin: 0.15rem 0;
+}
+
+.continuance-dossier-urls a {
+  font-family: var(--font-system);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+.continuance-dossier-body blockquote {
+  margin: 0.4rem 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--fi-cyan);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-style: italic;
+}
+
+/* --- Shell + search ------------------------------------------------------ */
+.continuance-shell {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem) 1.25rem 4rem;
+}
+
+.continuance-searchbar {
+  margin-bottom: 1.5rem;
+}
+
+.continuance-search-field input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--fi-surface);
+  border: 1px solid var(--fi-cyan-border);
+  box-shadow: var(--fi-stamp-shadow-xs);
+  color: var(--ink);
+  font-family: var(--font-system);
+  font-size: 1.05rem;
+}
+
+.continuance-search-field input::placeholder {
+  color: var(--muted);
+}
+
+/* --- 1 / 2 / 1 workspace -------------------------------------------------- */
+/* Source column A, a double-width cross-reference panel, source column B. */
+.continuance-workspace {
+  display: grid;
+  /* minmax(0, …) lets tracks shrink below content width so the 1:2:1 ratio is
+     honored instead of being stretched by long titles/snippets. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 60rem) {
+  .continuance-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.continuance-column {
+  border: 1px solid var(--line);
+  background: var(--fi-surface);
+  box-shadow: var(--fi-stamp-shadow-xs);
+}
+
+.continuance-column-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.continuance-column-head .section-label {
+  margin: 0;
+}
+
+.continuance-column-head .fi-caption-box {
+  margin: 0 0 0 auto;
+}
+
+/* Take the full head row and allow shrinking below the longest option, so a
+   wide label (e.g. NOR.THE-RN.INFO (421)) can't push the select past the
+   narrow column. */
+.continuance-source-select {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.continuance-source-select select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: var(--fi-bg);
+  border: 1px solid var(--fi-cyan-border);
+  color: var(--ink);
+  font-family: var(--font-system);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* --- URL source entry ---------------------------------------------------- */
+.continuance-url-entry {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+}
+
+.continuance-url-entry input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.4rem 0.6rem;
+  background: var(--fi-bg);
+  border: 1px solid var(--fi-cyan-border);
+  color: var(--ink);
+  font-family: var(--font-system);
+  font-size: 0.85rem;
+}
+
+.continuance-url-entry input::placeholder {
+  color: var(--muted);
+}
+
+.continuance-url-entry button {
+  flex: none;
+  padding: 0.4rem 0.75rem;
+  background: var(--fi-bg);
+  border: 1px solid var(--fi-cyan-border);
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.continuance-url-entry button:hover {
+  border-color: var(--fi-cyan);
+}
+
+/* --- Results ------------------------------------------------------------- */
+.continuance-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 68vh;
+  overflow-y: auto;
+}
+
+.continuance-result {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.continuance-result:hover {
+  background: rgb(34 211 238 / 0.06);
+}
+
+.continuance-result.is-selected {
+  border-left-color: var(--fi-cyan);
+  background: rgb(34 211 238 / 0.1);
+}
+
+.continuance-result-title {
+  display: block;
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.continuance-result-type {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: var(--brass);
+  font-family: var(--font-system);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.continuance-snippet {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.continuance-mark {
+  padding: 0 0.1em;
+  background: var(--focus);
+  color: var(--fi-bg);
+}
+
+.continuance-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+}
+
+.continuance-tag {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.continuance-tag.is-shared {
+  border-color: var(--fi-green);
+  color: var(--fi-green);
+}
+
+.continuance-empty,
+.continuance-more {
+  padding: 0.85rem 1rem;
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+}
+
+.continuance-error {
+  padding: 1rem;
+  border: 1px solid var(--fi-amber);
+  color: var(--fi-amber);
+  font-family: var(--font-system);
+}
+
+/* --- Cross-reference (center column) ------------------------------------- */
+.continuance-crossref {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--fi-cyan);
+  background: var(--fi-surface);
+  box-shadow: var(--fi-stamp-shadow-xs);
+  max-height: 74vh;
+  overflow-y: auto;
+}
+
+.continuance-crossref.is-empty {
+  border-top-color: var(--line);
+}
+
+.continuance-crossref-hint {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+}
+
+.continuance-crossref-anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0.4rem 0 0.75rem;
+}
+
+.continuance-crossref-anchor-label {
+  color: var(--brass);
+  font-family: var(--font-system);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.continuance-crossref-anchor-title {
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.continuance-crossref-list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.continuance-crossref-item {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  background: var(--fi-bg);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.continuance-crossref-item:hover {
+  border-color: var(--fi-cyan);
+}
+
+.continuance-crossref-score {
+  display: inline-block;
+  margin-top: 0.2rem;
+  color: var(--brass);
+  font-family: var(--font-system);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.continuance-crossref-terms {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+}
+
+/* --- Cross-reference header + Save toggle -------------------------------- */
+.continuance-crossref-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.continuance-bookmark-save {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--fi-cyan-border);
+  background: var(--fi-bg);
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.continuance-bookmark-save:hover {
+  border-color: var(--fi-cyan);
+}
+
+.continuance-bookmark-save[aria-pressed='true'] {
+  border-color: var(--fi-green);
+  color: var(--fi-green);
+}
+
+/* --- Bookmark chip bar --------------------------------------------------- */
+.continuance-bookmarks {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.continuance-bookmarks-label {
+  flex: none;
+  margin: 0;
+}
+
+.continuance-bookmarks-list {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.15rem 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.continuance-bookmark {
+  display: flex;
+  flex: none;
+  align-items: stretch;
+  border: 1px solid var(--fi-cyan-border);
+  background: var(--fi-surface);
+  box-shadow: var(--fi-stamp-shadow-xs);
+}
+
+.continuance-bookmark-open {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.35rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  max-width: 22ch;
+}
+
+.continuance-bookmark-title {
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.continuance-bookmark-pair {
+  color: var(--brass);
+  font-family: var(--font-system);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.continuance-bookmark-remove {
+  flex: none;
+  padding: 0 0.55rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.continuance-bookmark-remove:hover {
+  color: var(--fi-amber);
+}
