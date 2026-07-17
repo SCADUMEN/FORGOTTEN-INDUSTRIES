@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  normalizeFiDocuments,
-  normalizeFeedItem,
-  htmlToText,
-} from '../../scripts/build_continuance_index.cjs'
+import { normalizeFiDocuments } from '../../scripts/build_continuance_index.cjs'
 import {
   tokenize,
   scorePair,
@@ -73,52 +69,6 @@ describe('normalizeFiDocuments', () => {
     expect(byId.title).toBe('B')
     expect(byId.tags).toEqual([])
     expect(byId.text).toBe('')
-  })
-})
-
-describe('normalizeFeedItem (JSON Feed -> Record)', () => {
-  it('maps a JSON Feed item, deriving plain text from content_html', () => {
-    const record = normalizeFeedItem({
-      id: 'https://nor.the-rn.info/rm_ation/2026/07/04/journal/',
-      url: 'https://nor.the-rn.info/rm_ation/2026/07/04/journal/',
-      title: 'journal',
-      date_published: '2026-07-04T00:00:00.000Z',
-      content_html: '<p>Anthology by <a href="/x">tyler</a></p>',
-      summary: 'Anthology by tyler',
-      tags: ['music', '', 'anthology'],
-    })
-
-    expect(record).toMatchObject({
-      id: 'https://nor.the-rn.info/rm_ation/2026/07/04/journal/',
-      sourceId: 'nor',
-      title: 'journal',
-      url: 'https://nor.the-rn.info/rm_ation/2026/07/04/journal/',
-      tags: ['music', 'anthology'],
-      date: '2026-07-04T00:00:00.000Z',
-      type: 'post',
-    })
-    expect(record.text).toBe('Anthology by tyler')
-  })
-
-  it('prefers content_text, honors a _nor type hint, and tolerates missing fields', () => {
-    const record = normalizeFeedItem({
-      id: 'x',
-      content_text: 'plain body',
-      _nor: { type: 'release' },
-    })
-    expect(record.text).toBe('plain body')
-    expect(record.type).toBe('release')
-    expect(record.title).toBe('x')
-    expect(record.tags).toEqual([])
-    expect(record.url).toBe('x')
-  })
-})
-
-describe('htmlToText', () => {
-  it('strips tags and entities to searchable plain text', () => {
-    expect(htmlToText('<p>a &amp; <strong>b</strong></p>')).toBe('a b')
-    expect(htmlToText('')).toBe('')
-    expect(htmlToText(undefined)).toBe('')
   })
 })
 

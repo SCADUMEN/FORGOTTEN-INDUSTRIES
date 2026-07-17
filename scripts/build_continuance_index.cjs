@@ -9,18 +9,16 @@
 //
 //   Record { id, sourceId, title, text, url?, tags[], date?, type?, summary?, meta{} }
 //
-// v1 sources:
+// Sources:
 //   fi  - Forgotten Industries' own content, from the already-built
-//         dist/search-index.json documents array.
-//   nor - nor.the-rn.info, consumed from its published JSON Feed
-//         (https://nor.the-rn.info/feed.json). nor is the user's own site with
-//         its own build, so it publishes a standard, consumer-agnostic feed
-//         rather than being vendored as a submodule - this stays current on
-//         every nor deploy, needs no cross-repo auth, and is symmetric with the
-//         fi source (both ingest a published JSON artifact). Degrades to an
-//         empty source when the feed is unreachable, so the site still builds.
-//         Override the location with CONTINUANCE_NOR_FEED (http(s) URL or a
-//         local file path) - used by tests and local dev.
+//         dist/search-index.json documents array. Indexed here into fi.json.
+//   nor - nor.the-rn.info's published JSON Feed. NOT fetched at build time: the
+//         feed sits behind Cloudflare bot protection that 403s datacenter IPs
+//         (GitHub Actions), so a build fetch is unreliable. Instead we emit only
+//         a "feed" descriptor (id + label + feedUrl) into the manifest, and the
+//         app fetches + normalizes it live in the browser through the CORS proxy
+//         (continuance/src/lib/sources.js). Override the URL with
+//         CONTINUANCE_NOR_FEED.
 
 const fs = require('fs')
 const path = require('path')
@@ -101,56 +99,11 @@ function normalizeFiDocuments(documents) {
 }
 
 // --- nor source ------------------------------------------------------------
-async function loadFeed(location) {
-  if (/^https?:\/\//.test(location)) {
-    const res = await fetch(location)
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    return res.json()
-  }
-  if (!fs.existsSync(location)) throw new Error(`no feed at ${location}`)
-  return JSON.parse(fs.readFileSync(location, 'utf8'))
-}
-
-async function buildNorRecords() {
-  let feed
-  try {
-    feed = await loadFeed(NOR_FEED)
-  } catch (err) {
-    log(`nor feed unavailable (${err.message}) - emitting empty nor source`)
-    return []
-  }
-  const items = Array.isArray(feed.items) ? feed.items : []
-  return items.map(normalizeFeedItem)
-}
-
-// Pure mapping from a JSON Feed (jsonfeed.org/version/1.1) item to a Record.
-// content_html/content_text carries the body; we index plain text.
-function normalizeFeedItem(item) {
-  const body = item.content_text || htmlToText(item.content_html) || item.summary || ''
-  return {
-    id: String(item.id),
-    sourceId: 'nor',
-    title: item.title || String(item.id),
-    text: body,
-    url: item.url || item.external_url || item.id || null,
-    tags: (Array.isArray(item.tags) ? item.tags : []).filter(Boolean),
-    date: item.date_published || null,
-    // JSON Feed has no "type"; allow a producer to hint one via the spec's
-    // `_`-prefixed extension convention, else treat feed entries as posts.
-    type: (item._nor && item._nor.type) || 'post',
-    summary: item.summary || '',
-    meta: {},
-  }
-}
-
-function htmlToText(html) {
-  if (!html) return ''
-  return String(html)
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&[a-z#0-9]+;/gi, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
+// nor is NOT indexed at build time. Its feed lives behind Cloudflare bot
+// protection that 403s datacenter IPs (GitHub Actions), so a build-time fetch
+// is unreliable. Instead nor is declared as a runtime "feed" source in the
+// manifest and fetched live in the browser through the CORS proxy - the same
+// path a pasted URL takes (continuance/src/lib/sources.js loadFeedSource).
 
 // Dev fidelity: copy the compiled stylesheet so `/css/archive.css` resolves on
 // the Vite dev server exactly as it does on the built site. No-op in the
@@ -162,30 +115,32 @@ function copyCompiledCss() {
   log('copied compiled archive.css into continuance/public/css for dev')
 }
 
-async function main() {
+function main() {
   ensureDir(OUT_DIR)
-
-  const sources = [
-    { id: 'fi', label: 'Forgotten Industries', kind: 'fi', records: buildFiRecords() },
-    { id: 'nor', label: 'nor.the-rn.info', kind: 'feed', records: await buildNorRecords() },
-  ]
 
   const manifest = { generatedAt: new Date().toISOString(), sources: [] }
 
-  for (const source of sources) {
-    const descriptor = {
-      id: source.id,
-      label: source.label,
-      kind: source.kind,
-      recordCount: source.records.length,
-    }
-    writeJSON(path.join(OUT_DIR, `${source.id}.json`), {
-      ...descriptor,
-      records: source.records,
-    })
-    manifest.sources.push(descriptor)
-    log(`${source.id}: ${source.records.length} records`)
+  // FI content is local and indexed at build time into its own JSON file.
+  const fiRecords = buildFiRecords()
+  const fiDescriptor = {
+    id: 'fi',
+    label: 'Forgotten Industries',
+    kind: 'fi',
+    recordCount: fiRecords.length,
   }
+  writeJSON(path.join(OUT_DIR, 'fi.json'), { ...fiDescriptor, records: fiRecords })
+  manifest.sources.push(fiDescriptor)
+  log(`fi: ${fiRecords.length} records`)
+
+  // nor is a runtime feed - no records emitted here, just the descriptor the
+  // app uses to fetch and index it live through the CORS proxy.
+  manifest.sources.push({
+    id: 'nor',
+    label: 'nor.the-rn.info',
+    kind: 'feed',
+    feedUrl: NOR_FEED,
+  })
+  log(`nor: runtime feed (${NOR_FEED})`)
 
   writeJSON(path.join(OUT_DIR, 'sources.json'), manifest)
   copyCompiledCss()
@@ -193,14 +148,14 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch((err) => {
+  try {
+    main()
+  } catch (err) {
     process.stderr.write(`[continuance:index] fatal: ${err.stack || err}\n`)
     process.exit(1)
-  })
+  }
 }
 
 module.exports = {
   normalizeFiDocuments,
-  normalizeFeedItem,
-  htmlToText,
 }

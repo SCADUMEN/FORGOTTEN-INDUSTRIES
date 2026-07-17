@@ -72,6 +72,15 @@ describe('normalizeUrlPayload', () => {
     })
   })
 
+  it('stamps a caller-supplied sourceId on every record (e.g. a named feed)', () => {
+    const records = normalizeUrlPayload(
+      URL,
+      { items: [{ id: 'a', title: 'A' }, { id: 'b', title: 'B' }] },
+      'nor'
+    )
+    expect(records.map((r) => r.sourceId)).toEqual(['nor', 'nor'])
+  })
+
   it('maps a generic JSON array, deriving title/text/url from common keys', () => {
     const records = normalizeUrlPayload(URL, [
       { name: 'First', body: 'body text', link: 'https://example.com/1' },
