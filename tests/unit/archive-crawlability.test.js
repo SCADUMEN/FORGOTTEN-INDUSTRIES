@@ -207,7 +207,7 @@ describe('archive crawlability output', () => {
   it('publishes complete contact records from shared site data', () => {
     const contact = readSite('contact.html')
 
-    expect(contact).toContain('href="mailto:contact@forgotten-industries.net"')
+    expect(contact).toContain('href="mailto:LESAUVEGARDER@GMAIL.COM"')
     expect(contact).toContain('href="mailto:archive@forgotten-industries.net"')
     expect(contact).toContain('@forgotten-industry.bsky.social')
     expect(contact).not.toContain('href="mailto:"')

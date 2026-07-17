@@ -269,7 +269,7 @@ module.exports = {
   githubUrl: 'https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES',
   repository: 'SCADUMEN/FORGOTTEN-INDUSTRIES',
   eleventyUrl: 'https://www.11ty.dev/',
-  contact: 'contact@forgotten-industries.net',
+  contact: 'LESAUVEGARDER@GMAIL.COM',
   archiveContact: 'archive@forgotten-industries.net',
   fieldNotesSubscribeUrl:
     'https://bsky.app/profile/forgotten-industry.bsky.social',
