@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CxR / Forgotten Industries</title>
+    <meta
+      name="description"
+      content="CxR (CONTINUANCExRESEARCH): a research instrument for searching and cross-referencing archive sources. The work continues."
+    />
+    <link rel="canonical" href="https://forgotten-industries.net/cxr/" />
+
+    <!-- Reuse the site's exact type system. Kept in step with base.njk. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap"
+    />
+
+    <!-- The compiled design system. On the built site this is served at the
+         root; on the Vite dev server the indexer copies it into public/css. -->
+    <link rel="stylesheet" href="/css/archive.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#continuance-main">Skip to research surface</a>
+    <div id="root">
+      <!-- Static fallback: crawlable and shown before hydration / without JS.
+           React replaces #root's contents on mount. -->
+      <main id="continuance-main" class="continuance-shell">
+        <h1>CONTINUANCExRESEARCH</h1>
+        <p class="fi-caption-box">
+          <span class="fi-prompt-marker">&gt;</span> INITIALIZING
+        </p>
+        <noscript>
+          <p>
+            CxR is an interactive research instrument and needs JavaScript to
+            run. Read the
+            <a href="/projects/continuance/">CONTINUANCE dossier</a> for an
+            overview of what it does.
+          </p>
+        </noscript>
+      </main>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

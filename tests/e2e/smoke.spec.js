@@ -14,6 +14,9 @@ test('home page renders', async ({ page }) => {
     'LE SIGNAL',
     'À PROPOS',
   ])
+  // CxR has its own wordmark to the left of the zoot mark, not a main-nav item.
+  await expect(page.locator('.site-cxr-mark')).toHaveAttribute('href', '/cxr/')
+  await expect(page.locator('.site-cxr-mark')).toHaveText('CxR')
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.primary-card-mark')).toHaveText([
     '> The Archive',
@@ -28,10 +31,14 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(3)
+  await expect(page.locator('.site-footer a')).toHaveCount(4)
   await expect(page.locator('.fi-provenance-plate')).toContainText(
     "FORGOTTEN INDUSTRIES · CONTRE L'OUBLI"
   )
+  // FORGOTTEN INDUSTRIES links home.
+  await expect(
+    page.getByRole('link', { name: 'FORGOTTEN INDUSTRIES', exact: true })
+  ).toHaveAttribute('href', '/')
   await expect(page.locator('.fi-provenance-plate')).toContainText(
     'Provenance · Plan du Site · Hash'
   )
@@ -62,7 +69,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(3)
+  await expect(page.locator('.site-footer a')).toHaveCount(4)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -70,7 +77,7 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(3)
+    await expect(page.locator('.site-footer a')).toHaveCount(4)
     await expect(page.locator('.fi-provenance-plate')).toContainText('Hash')
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
