@@ -6,8 +6,10 @@ permalink: /l-archive/index.html
 canonical: https://forgotten-industries.net/l-archive/
 eleventyExcludeFromCollections: true
 ---
-{% set objectPreview = archive.inventory | objectGalleryPreview(12) %}
-{% set objectGallery = archive.inventory | objectGalleryCandidates %}
+{% set objectGallery = archive.inventory %}
+{% set indexedRecordCount = (archive.projects | count) + (archive.inventory | count) + (archive.fieldLogs | count) + (archive.voiceLogs | count) + (archive.socialPosts | count) + (collections.posts | count) %}
+{% set publicRouteUrls = collections.all | publicSitemapUrls(site.sitemapExtraUrls, site.domainUrl, archive) %}
+{% set publicRouteCount = (publicRouteUrls | count) + (taxonomy.categories | count) + (taxonomy.tags | count) + (taxonomy.status | count) + (taxonomy.systems | count) %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <div class="spine-hero-title-block">
@@ -70,10 +72,14 @@ eleventyExcludeFromCollections: true
       </div>
 
       <noscript>
-        <p class="archive-search-status">JavaScript is required for search.</p>
+        <p class="archive-search-status">
+          {{ indexedRecordCount }} unique indexed records / {{ publicRouteCount }} public routes. JavaScript is required for search.
+        </p>
       </noscript>
 
-      <p id="archive-search-status" class="archive-search-status">Loading L'INDEX...</p>
+      <p id="archive-search-status" class="archive-search-status">
+        Loading L'INDEX... / {{ publicRouteCount }} public routes
+      </p>
       <ol id="archive-search-results" class="archive-search-results" aria-live="polite"></ol>
     </div>
   </div>
@@ -185,7 +191,7 @@ eleventyExcludeFromCollections: true
 
     function renderResults(matches, query) {
       if (!query.trim()) {
-        status.textContent = documents.length + ' indexed records / ready';
+        status.textContent = documents.length + ' unique indexed records / {{ publicRouteCount }} public routes / ready';
         results.innerHTML = '';
         return;
       }
@@ -273,23 +279,23 @@ eleventyExcludeFromCollections: true
     <div class="archive-gallery-heading">
       <p class="section-label">Inventory</p>
       <h2 id="inventory-gallery-heading">Object Gallery</h2>
-      <p class="entry-note archive-gallery-note" data-inventory-gallery-note>
-        {{ objectPreview | countLabel("record", "records") }} drawn from the photographed ledger / <a href="/archive/objects/">open object ledger</a>
+      <p class="entry-note archive-gallery-note">
+        {{ objectGallery | countLabel("catalogued record", "catalogued records") }} / all entries displayed / <a href="/archive/objects/">open object ledger</a>
       </p>
     </div>
 
     <div class="inventory-gallery-viewport" aria-label="Inventory object gallery" tabindex="0">
-      <ol class="inventory-gallery-track" data-inventory-gallery-track>
+      <ol class="inventory-gallery-track" data-inventory-gallery-track data-gallery-count="{{ objectGallery | count }}">
         {% for item in objectGallery %}
         {% set preview = "" %}
         {% if item.photos and item.photos.length %}
         {% set preview = item.photos[0] %}
         {% endif %}
-        <li class="inventory-gallery-card"{% if loop.index > 12 %} hidden{% endif %}>
+        <li class="inventory-gallery-card">
           <figure>
             <a class="inventory-gallery-image" href="{{ item | archiveObjectUrl }}">
               {% if preview and (preview.indexOf("assets/") == 0 or preview.indexOf("forgotten-industries/") == 0) %}
-              <img src="/{{ preview }}" alt="{{ item.name }}">
+              <img src="/{{ preview }}" alt="{{ item.name }}" loading="lazy">
               {% else %}
               <span>{{ item.id }}</span>
               {% endif %}
@@ -304,34 +310,6 @@ eleventyExcludeFromCollections: true
         {% endfor %}
       </ol>
     </div>
-    <script>
-      (function() {
-        var track = document.querySelector('[data-inventory-gallery-track]');
-        var note = document.querySelector('[data-inventory-gallery-note]');
-        if (!track) return;
-
-        var pool = Array.prototype.slice.call(track.children);
-        if (pool.length <= 12) return;
-        for (var index = pool.length - 1; index > 0; index -= 1) {
-          var swapIndex = Math.floor(Math.random() * (index + 1));
-          var swap = pool[index];
-          pool[index] = pool[swapIndex];
-          pool[swapIndex] = swap;
-        }
-
-        var selected = pool.slice(0, 12);
-        track.replaceChildren();
-
-        selected.forEach(function(card) {
-          card.hidden = false;
-          track.appendChild(card);
-        });
-
-        if (note) {
-          note.firstChild.textContent = '12 randomized records drawn from the photographed ledger / ';
-        }
-      })();
-    </script>
   </div>
 </section>
 
