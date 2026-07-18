@@ -37,11 +37,31 @@ playwright-report/
 /intake/_previews/
 /intake/_transcripts/
 /intake/LE-BOX-*/
-/intake/*.HEIC
-/intake/*.heic
-/intake/*.JPG
-/intake/*.jpg
-/intake/*.MOV
-/intake/*.MP3
-/intake/*.WAV
-/intake/*.zip
+# Media anywhere under intake/ stays local. These patterns are recursive (**) so
+# nested folders such as intake/Splunking/ are covered too — a flat /intake/*.EXT
+# rule only matches the top level and let geotagged photos slip into history.
+/intake/**/*.HEIC
+/intake/**/*.heic
+/intake/**/*.HEIF
+/intake/**/*.heif
+/intake/**/*.JPG
+/intake/**/*.jpg
+/intake/**/*.JPEG
+/intake/**/*.jpeg
+/intake/**/*.PNG
+/intake/**/*.png
+/intake/**/*.TIF
+/intake/**/*.tif
+/intake/**/*.TIFF
+/intake/**/*.tiff
+/intake/**/*.WEBP
+/intake/**/*.webp
+/intake/**/*.MOV
+/intake/**/*.mov
+/intake/**/*.MP4
+/intake/**/*.mp4
+/intake/**/*.MP3
+/intake/**/*.mp3
+/intake/**/*.WAV
+/intake/**/*.wav
+/intake/**/*.zip
