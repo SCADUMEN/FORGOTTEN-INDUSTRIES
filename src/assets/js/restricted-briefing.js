@@ -137,9 +137,13 @@ async function deriveKey(passphrase, payload) {
 }
 
 async function decryptBriefing(passphrase) {
-  const response = await fetch('/assets/restricted/phase-2-briefing.json', {
-    cache: 'no-store',
-  })
+  const payloadUrl = form?.dataset.payloadUrl
+
+  if (!payloadUrl?.startsWith('/assets/restricted/')) {
+    throw new Error('The encrypted payload route is invalid.')
+  }
+
+  const response = await fetch(payloadUrl, { cache: 'no-store' })
 
   if (!response.ok) {
     throw new Error('The encrypted payload is unavailable.')

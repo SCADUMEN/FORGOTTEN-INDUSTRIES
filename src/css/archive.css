@@ -6211,6 +6211,15 @@ a.site-cxr-mark:focus-visible {
   text-transform: uppercase;
 }
 
+.restricted-document > h2 {
+  margin: 2.5rem 0 0.8rem;
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .restricted-review-panel h3,
 .restricted-document h3 {
   margin: 2rem 0 0.75rem;
