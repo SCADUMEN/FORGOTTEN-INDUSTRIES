@@ -23,3 +23,4 @@ Use repository instructions first, then local project guidance, then ATLAS voice
 - To publish a post, add a dated Markdown file with front matter (`title`, `date`, `description`, `tags`) to `src/posts/` and rebuild. The post index, Atom feed (`/feed.xml`), and sitemap are generated from the collection.
 - Style new components with Tailwind utilities backed by the `@theme inline` tokens in `src/css/archive.css` (`text-oxide`, `font-headline`, ...). Legacy classes remain for existing pages.
 - Deploys go through GitHub Actions to GitHub Pages, only from `Forgotten-Industries/FORGOTTEN-INDUSTRIES` `main`.
+- Images must never carry a GPS location on a public repository. Scrub media in `intake/` and `src/assets/` with `npm run scrub:exif` before promoting or committing; `npm run audit:public` fails the build if any published image in `_site/` still has GPS metadata. See CLAUDE.md "Media & EXIF hygiene".

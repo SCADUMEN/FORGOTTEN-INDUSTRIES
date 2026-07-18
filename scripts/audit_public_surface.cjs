@@ -1,5 +1,6 @@
 const fs = require('node:fs')
 const path = require('node:path')
+const { exiftool } = require('exiftool-vendored')
 
 const root = path.resolve(__dirname, '..')
 const site = path.join(root, '_site')
@@ -16,6 +17,19 @@ const textExtensions = new Set([
   '.xml',
   '.yaml',
   '.yml',
+])
+// Raster image types that can carry an embedded GPS location. Location metadata
+// must never reach the public site; the scrubber (scripts/scrub_exif.cjs) clears
+// it at the source and this audit is the backstop.
+const imageExtensions = new Set([
+  '.jpg',
+  '.jpeg',
+  '.png',
+  '.heic',
+  '.heif',
+  '.tif',
+  '.tiff',
+  '.webp',
 ])
 const forbiddenNames = [
   /(^|\/)\.env(?:\.[^/]*)?$/i,
@@ -48,53 +62,80 @@ function walk(directory) {
   })
 }
 
-if (!fs.existsSync(site)) {
-  throw new Error('Public surface audit requires a completed _site build.')
-}
+async function main() {
+  if (!fs.existsSync(site)) {
+    throw new Error('Public surface audit requires a completed _site build.')
+  }
 
-const files = walk(site)
-const findings = []
-let scannedTextFiles = 0
+  const files = walk(site)
+  const findings = []
+  let scannedTextFiles = 0
+  let scannedImageFiles = 0
 
-for (const absolute of files) {
-  const relative = path.relative(site, absolute).split(path.sep).join('/')
+  for (const absolute of files) {
+    const relative = path.relative(site, absolute).split(path.sep).join('/')
 
-  for (const pattern of forbiddenNames) {
-    if (pattern.test(relative)) {
-      findings.push(`${relative}: forbidden public filename`)
+    for (const pattern of forbiddenNames) {
+      if (pattern.test(relative)) {
+        findings.push(`${relative}: forbidden public filename`)
+      }
+    }
+
+    const extension = path.extname(relative).toLowerCase()
+
+    if (imageExtensions.has(extension)) {
+      scannedImageFiles += 1
+      const tags = await exiftool.read(absolute)
+      const gpsTags = Object.keys(tags).filter((key) => /^GPS/.test(key))
+      if (gpsTags.length > 0) {
+        findings.push(
+          `${relative}: image GPS/location metadata (${gpsTags.length} tags)`
+        )
+      }
+      continue
+    }
+
+    if (!textExtensions.has(extension)) continue
+
+    let content = fs.readFileSync(absolute, 'utf8')
+    scannedTextFiles += 1
+
+    if (relative === 'assets/restricted/phase-2-briefing.json') {
+      const payload = JSON.parse(content)
+      const metadata = { ...payload }
+      delete metadata.ciphertext
+      delete metadata.iv
+      delete metadata.salt
+      content = JSON.stringify(metadata)
+    }
+
+    for (const [label, pattern] of forbiddenContent) {
+      if (pattern.test(content)) findings.push(`${relative}: ${label}`)
+    }
+
+    for (const phrase of protectedPhrases) {
+      if (content.includes(phrase)) {
+        findings.push(`${relative}: restricted briefing plaintext`)
+      }
     }
   }
 
-  if (!textExtensions.has(path.extname(relative).toLowerCase())) continue
-
-  let content = fs.readFileSync(absolute, 'utf8')
-  scannedTextFiles += 1
-
-  if (relative === 'assets/restricted/phase-2-briefing.json') {
-    const payload = JSON.parse(content)
-    const metadata = { ...payload }
-    delete metadata.ciphertext
-    delete metadata.iv
-    delete metadata.salt
-    content = JSON.stringify(metadata)
-  }
-
-  for (const [label, pattern] of forbiddenContent) {
-    if (pattern.test(content)) findings.push(`${relative}: ${label}`)
-  }
-
-  for (const phrase of protectedPhrases) {
-    if (content.includes(phrase)) {
-      findings.push(`${relative}: restricted briefing plaintext`)
-    }
+  if (findings.length > 0) {
+    process.stderr.write(
+      `Public surface audit failed:\n${findings.join('\n')}\n`
+    )
+    process.exitCode = 1
+  } else {
+    process.stdout.write(
+      `Public surface audit passed: ${files.length} files, ${scannedTextFiles} text surfaces, ${scannedImageFiles} images.\n`
+    )
   }
 }
 
-if (findings.length > 0) {
-  process.stderr.write(`Public surface audit failed:\n${findings.join('\n')}\n`)
-  process.exitCode = 1
-} else {
-  process.stdout.write(
-    `Public surface audit passed: ${files.length} files, ${scannedTextFiles} text surfaces.\n`
-  )
-}
+main()
+  .then(() => exiftool.end())
+  .catch(async (err) => {
+    await exiftool.end().catch(() => {})
+    process.stderr.write(`${err.stack || err}\n`)
+    process.exitCode = 1
+  })
