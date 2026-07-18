@@ -32,6 +32,9 @@ describe('restricted Phase 2 briefing', () => {
       '<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">'
     )
     expect(page).toContain('id="restricted-access-form"')
+    expect(page).toContain(
+      'data-payload-url="/assets/restricted/phase-2-briefing.json"'
+    )
     expect(page).not.toContain('googletagmanager.com')
     expect(page).not.toContain('fonts.googleapis.com')
     expect(page).not.toContain('fonts.gstatic.com')
@@ -64,5 +67,47 @@ describe('restricted Phase 2 briefing', () => {
 
     expect(sitemap).not.toContain('/restricted/')
     expect(robots).toContain('Disallow: /restricted/')
+  })
+})
+
+describe("restricted L'Archive mother can dossier", () => {
+  const protectedPhrases = [
+    'Five-can unit: four inert, swappable archive cans',
+    'This is higher than the ~$88 rough estimate from earlier',
+    'No electrical connection between any of the five cans',
+  ]
+
+  it('publishes the engineering spec as ciphertext behind a no-index gate', () => {
+    const page = readSite('restricted/l-archive-mother-can/index.html')
+    const rawPayload = readSite('assets/restricted/l-archive-mother-can.json')
+    const payload = JSON.parse(rawPayload)
+
+    expect(page).toContain(
+      '<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">'
+    )
+    expect(page).toContain('id="restricted-access-form"')
+    expect(page).toContain(
+      'data-payload-url="/assets/restricted/l-archive-mother-can.json"'
+    )
+    expect(page).not.toContain('googletagmanager.com')
+    expect(page).not.toContain('fonts.googleapis.com')
+    expect(page).not.toContain('fonts.gstatic.com')
+    expect(page).toContain('<meta name="referrer" content="no-referrer">')
+    expect(page).toContain('http-equiv="Content-Security-Policy"')
+    expect(payload).toMatchObject({
+      version: 1,
+      algorithm: 'AES-GCM',
+      kdf: 'PBKDF2',
+      digest: 'SHA-256',
+      iterations: 600000,
+    })
+    expect(payload.salt.length).toBeGreaterThan(20)
+    expect(payload.iv.length).toBeGreaterThan(12)
+    expect(payload.ciphertext.length).toBeGreaterThan(5000)
+
+    for (const phrase of protectedPhrases) {
+      expect(page).not.toContain(phrase)
+      expect(rawPayload).not.toContain(phrase)
+    }
   })
 })
