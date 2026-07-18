@@ -5,26 +5,13 @@
 const fs = require('fs')
 const path = require('path')
 const { exiftool } = require('exiftool-vendored')
+const {
+  findLocationTags,
+  isMedia,
+  locationStripArgs,
+} = require('./location_metadata.cjs')
 
 const root = path.resolve(__dirname, '..')
-
-// Raster image types that can carry an embedded GPS location. SVG is XML and is
-// covered by the public-surface text audit instead.
-const imageExtensions = new Set([
-  '.jpg',
-  '.jpeg',
-  '.png',
-  '.heic',
-  '.heif',
-  '.tif',
-  '.tiff',
-  '.webp',
-])
-
-// exiftool arguments that clear location metadata only. GPS holds the EXIF GPS
-// IFD (where phones write coordinates); the XMP geotag block is cleared too.
-// Camera model, timestamps, and other descriptive EXIF are left intact.
-const locationStripArgs = ['-gps:all=', '-xmp:geotag=', '-overwrite_original']
 
 // Default scrub targets: raw intake and the published asset source. Both live in
 // the public repository, so both must stay location-clean.
@@ -42,13 +29,23 @@ function walk(directory) {
   })
 }
 
-function isImage(file) {
-  return imageExtensions.has(path.extname(file).toLowerCase())
+async function readLocationTags(file) {
+  const tags = await exiftool.readRaw(file)
+  return findLocationTags(tags)
 }
 
 async function hasLocation(file) {
-  const tags = await exiftool.read(file)
-  return Object.keys(tags).some((key) => /^GPS/.test(key))
+  return (await readLocationTags(file)).length > 0
+}
+
+async function scrubLocation(file) {
+  await exiftool.write(file, {}, { writeArgs: locationStripArgs })
+  const remaining = await readLocationTags(file)
+  if (remaining.length > 0) {
+    throw new Error(
+      `Location metadata remains after scrub: ${remaining.join(', ')}`
+    )
+  }
 }
 
 async function main() {
@@ -60,10 +57,10 @@ async function main() {
     path.isAbsolute(dir) ? dir : path.join(root, dir)
   )
 
-  const files = dirs.flatMap(walk).filter(isImage)
+  const files = dirs.flatMap(walk).filter(isMedia)
   const scope = dirs.map((dir) => path.relative(root, dir) || dir).join(', ')
   log(
-    `${dryRun ? 'checking' : 'scrubbing'} ${files.length} image(s) across: ${scope}`
+    `${dryRun ? 'checking' : 'scrubbing'} ${files.length} media file(s) across: ${scope}`
   )
 
   let located = 0
@@ -76,15 +73,19 @@ async function main() {
       log(`has location: ${relative}`)
       continue
     }
-    await exiftool.write(file, {}, { writeArgs: locationStripArgs })
+    await scrubLocation(file)
     scrubbed += 1
     log(`stripped location: ${relative}`)
   }
 
   if (dryRun) {
-    log(`done (dry run): ${located} of ${files.length} image(s) carry location`)
+    log(
+      `done (dry run): ${located} of ${files.length} media file(s) carry location`
+    )
   } else {
-    log(`done: stripped location from ${scrubbed} of ${files.length} image(s)`)
+    log(
+      `done: stripped location from ${scrubbed} of ${files.length} media file(s)`
+    )
   }
 }
 
@@ -98,4 +99,11 @@ if (require.main === module) {
     })
 }
 
-module.exports = { walk, isImage, hasLocation, locationStripArgs }
+module.exports = {
+  hasLocation,
+  isMedia,
+  locationStripArgs,
+  readLocationTags,
+  scrubLocation,
+  walk,
+}
