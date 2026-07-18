@@ -291,6 +291,9 @@ test('archive page renders', async ({ page }) => {
     'grid-template-columns',
     /.+/
   )
+  await expect(page.locator('#archive-search-status')).toContainText(
+    /\d+ unique indexed records \/ \d+ public routes \/ ready/
+  )
 
   await page.getByRole('searchbox', { name: "Search L'Archive" }).fill('Pang')
   await expect(page.locator('#archive-search-results')).toContainText('Pang')
@@ -298,7 +301,13 @@ test('archive page renders', async ({ page }) => {
   const galleryObjectLinks = page.locator(
     '.inventory-gallery-track figcaption a[href^="/archive/objects/"]'
   )
-  await expect(galleryObjectLinks).toHaveCount(12)
+  const declaredGalleryCount = Number(
+    await page
+      .locator('.inventory-gallery-track')
+      .getAttribute('data-gallery-count')
+  )
+  expect(declaredGalleryCount).toBeGreaterThan(12)
+  await expect(galleryObjectLinks).toHaveCount(declaredGalleryCount)
   await expect(galleryObjectLinks.first()).toContainText(/\S/)
 })
 
