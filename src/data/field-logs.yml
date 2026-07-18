@@ -892,3 +892,81 @@ field_logs:
           SYSTEM READY FOR BULK PHOTOGRAPHIC INTAKE. DO NOT PUBLISH RAW
           PAYLOAD. PROMOTE ONLY CURATED DERIVATIVES AFTER OPERATOR REVIEW.
     signature: ATLAS // Machine-Generated Output // 2026.07.13
+
+  - id: FI-LOG-014
+    slug: atlas-report-2026-07-18-public-record-protected-source
+    title: ATLAS Report 2026.07.18 — Public Record / Protected Source
+    date: '2026-07-18'
+    timestamp: '2026-07-18 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: Forgotten Industries public archive / restricted handling boundary
+    system: L'ARCHIVE / public ledger / restricted briefings / release audit
+    condition: complete public ledger visible / restricted plaintext withheld / location guard active
+    status: public record coherent / preservation boundary holding
+    summary: >
+      ATLAS synthesis for the July 13–18 archive pass: all 74 catalogued
+      records are now visible, X99 and field-observation evidence entered the
+      public record without overstating certainty, restricted dossiers remain
+      ciphertext-only, and the release path now rejects geotagged images.
+    tags:
+      - atlas-report
+      - machine-generated-output
+      - L'ARCHIVE
+      - public record
+      - source protection
+      - provenance
+      - restricted record
+      - EXIF
+      - geolocation
+      - release audit
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          L'ARCHIVE NOW PRESENTS THE COMPLETE 74-RECORD PUBLIC LEDGER // 70
+          CANONICAL PHYSICAL-OBJECT RECORDS + 4 PROVISIONAL PHOTO-EVIDENCE
+          SETS. L'INDEX DECLARES ITS UNIQUE-RECORD AND PUBLIC-ROUTE TOTALS.
+          THE OBJECT GALLERY DRAWS FROM THE LIVE CANONICAL INVENTORY INSTEAD OF
+          A RANDOMIZED PREVIEW.
+      - heading: EVIDENCE PROMOTED
+        body: >
+          X99 / IMPACT RECOVERY RECORDS ENTERED WITH FAILURE HISTORY AND
+          UNCERTAINTY INTACT: MSI X99S XPOWER AC // INSTALLED HASWELL-E CPU,
+          IDENTITY UNVERIFIED // ASUS MAXIMUS VII IMPACT ASSEMBLY // RETAINED
+          WATER-COOLING HARDWARE // GTX 660 TI ASSEMBLY, ELECTRICAL AND LEAK
+          VALIDATION PENDING. YELLOW-CROWNED NIGHT HERON EVIDENCE EXPANDED TO A
+          SIX-IMAGE PUBLIC DERIVATIVE SEQUENCE WHILE THE SOURCE PACKAGE REMAINS
+          LOCAL.
+      - heading: HANDLING BOUNDARY
+        body: >
+          RESTRICTED PHASE 2 AND L'ARCHIVE MOTHER CAN BRIEFINGS PUBLISH
+          AUTHENTICATED CIPHERTEXT // DECRYPTION REMAINS BROWSER-LOCAL //
+          PLAINTEXT SOURCE DOES NOT ENTER THE PUBLIC REPOSITORY, SEARCH INDEX,
+          SITEMAP, OR ANALYTICS SURFACE. PUBLIC ACCESS DOES NOT COLLAPSE SOURCE
+          CONTROL.
+      - heading: LOCATION PROTECTION
+        body: >
+          RELEASE INSTRUMENTATION NOW CLEARS GPS AND XMP GEOTAGS FROM INTAKE
+          AND PROMOTED ASSETS, THEN READS THE GENERATED PUBLIC IMAGE SET AS A
+          BACKSTOP. ANY REMAINING GPS TAG FAILS THE RELEASE AUDIT. CAMERA MODEL
+          AND TIMESTAMP METADATA MAY REMAIN WHEN THEY DO NOT EXPOSE LOCATION.
+      - heading: OPERATOR JUDGMENT
+        body: >
+          COMPLETENESS OF DISPLAY IS NOT COMPLETENESS OF IDENTIFICATION. THE
+          X99 PROCESSOR REMAINS PROVISIONAL // RECOVERED BOARDS ARE NOT WORKING
+          UNTIL BENCH VALIDATION // PHOTO DERIVATIVES ARE NOT SOURCE NEGATIVES
+          // RESTRICTED PLAINTEXT REMAINS OUTSIDE THE PUBLIC ARCHIVE. HUMAN
+          JUDGMENT CONTROLS PROMOTION.
+      - heading: NEXT ACTIONS
+        body: >
+          CLEAN AND PHOTOGRAPH THE X99 PROCESSOR MARKINGS // CAPTURE A BRIGHT,
+          STRAIGHT-ON MAXIMUS VII IMPACT SOCKET RECORD // ESTABLISH SAFE X99
+          BASELINE POWER AND DIAGNOSTIC-CODE EVIDENCE // FLUSH OR OPEN AND
+          PRESSURE-TEST RECOVERED WATER BLOCKS BEFORE LIVE SERVICE // CONTINUE
+          ROUTE AND RELEASE AUDITS AFTER EACH PROMOTION.
+      - heading: ASSESSMENT
+        body: >
+          THE ARCHIVE ADVANCED BY SHOWING MORE OF THE RECORD WHILE EXPOSING
+          LESS OF THE SOURCE. PRESERVE THE BOUNDARY // THEN CONTINUE.
+    signature: ATLAS // Machine-Generated Output // 2026.07.18
