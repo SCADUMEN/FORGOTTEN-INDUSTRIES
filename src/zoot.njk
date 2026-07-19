@@ -75,23 +75,63 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       background: var(--fi-surface);
       color: var(--fi-paper-light);
     }
-    #zoot-exit {
+    /* Bottom chrome: the exit mark and the photo credits share one fixed bar
+       so they lay out together and never overlap. The bar ignores pointer
+       events (canvas keeps receiving stirs); only its links opt back in. */
+    #zoot-chrome {
       position: fixed;
-      left: max(1.25rem, env(safe-area-inset-left));
-      bottom: max(1.25rem, env(safe-area-inset-bottom));
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      padding: 0.5rem max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1.25rem, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+    #zoot-exit {
       padding: 0.5rem 0.75rem 0.5rem 0;
       color: var(--fi-paper-light);
       font-size: 0.75rem;
       letter-spacing: 0.14em;
       text-decoration: none;
+      white-space: nowrap;
       opacity: 0.3;
       transition: opacity 160ms ease;
-      z-index: 3;
+      pointer-events: auto;
     }
     #zoot-exit:hover,
     #zoot-exit:focus-visible {
       opacity: 0.85;
       outline: none;
+    }
+    #zoot-credits {
+      max-width: min(48rem, 66vw);
+      text-align: right;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      color: var(--fi-paper-light);
+      opacity: 0.42;
+    }
+    #zoot-credits .zoot-credits-label {
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-right: 0.35rem;
+    }
+    #zoot-credits a {
+      pointer-events: auto;
+      color: var(--fi-cyan);
+      text-decoration: none;
+    }
+    #zoot-credits a:hover,
+    #zoot-credits a:focus-visible {
+      text-decoration: underline;
     }
     #zoot-focus {
       position: fixed;
@@ -182,9 +222,16 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
     <h1 class="zoot-visually-hidden">ZOOT archive instrument</h1>
     <a class="zoot-access-link" href="/l-archive/">Open the accessible archive index</a>
     <canvas id="zoot-canvas" aria-hidden="true"></canvas>
-    <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
     <div id="zoot-focus" hidden></div>
     <section id="zoot-fallback" hidden aria-label="Archive records"></section>
+    <div id="zoot-chrome">
+      <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+      {% if zootPhotos.length %}
+      <nav id="zoot-credits" aria-label="Background photographs">
+        <span class="zoot-credits-label">Background Photos:</span>{% for photo in zootPhotos %}<a href="{{ photo.src }}">{{ photo.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
+      </nav>
+      {% endif %}
+    </div>
     <noscript>
       <p class="zoot-panel-heading">
         ATLAS REPORT &mdash; this instrument requires script execution. The slick
@@ -193,6 +240,7 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       </p>
     </noscript>
   </main>
+  <script type="application/json" id="zoot-photos">{{ zootPhotos | dump | safe }}</script>
   <script type="module" src="/assets/js/zoot/main.js?v={{ site.assetVersion }}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import {
 } from './fragments.js'
 import { createRenderer, MAX_FRAGS } from './gl.js'
 import { createInteraction, renderPanel } from './interact.js'
+import { createPhotos } from './photos.js'
 
 const FALLBACK_HEADING =
   'ATLAS REPORT — the slick will not resolve on this instrument. The records remain.'
@@ -26,6 +27,7 @@ const getTime = () => (performance.now() - pausedTotal) / 1000
 let renderer = null
 let slots = null
 let interaction = null
+let photos = null
 let rafId = 0
 let cssW = 0
 let cssH = 0
@@ -89,9 +91,27 @@ async function boot() {
   })
 
   resizeAll()
+  photos = createPhotos({
+    manifest: readManifest(),
+    renderer,
+    getAspect: () => cssW / cssH,
+  })
   wireLifecycle()
   lastFrameAt = getTime()
   rafId = requestAnimationFrame(frame)
+}
+
+// Background-photo manifest inlined by the page as JSON (see src/zoot.njk).
+function readManifest() {
+  const el = document.getElementById('zoot-photos')
+  if (!el) return []
+  try {
+    const parsed = JSON.parse(el.textContent || '[]')
+    return Array.isArray(parsed) ? parsed : []
+  } catch (err) {
+    console.warn('[zoot] photo manifest parse failed:', err)
+    return []
+  }
 }
 
 function frame() {
@@ -126,6 +146,7 @@ function frame() {
     phase: s.phase,
     drift: s.drift,
     grainSeed,
+    photo: photos.update(time),
   })
 
   trackPerformance(time)
@@ -195,6 +216,10 @@ function wireLifecycle() {
     }
     renderer.setQuality(quality)
     resizeAll()
+    if (photos) {
+      photos.setRenderer(renderer)
+      photos.reset()
+    }
     lastFrameAt = getTime()
     rafId = requestAnimationFrame(frame)
   })
@@ -206,6 +231,7 @@ async function staticResolution(poolPromise) {
   cssH = window.innerHeight
   const dprCap = Math.min(window.devicePixelRatio || 1, 1.5)
   renderer.resize(cssW, cssH, dprCap)
+  const photo = await staticPhoto()
   renderer.draw({
     time: 47.3,
     impulses: new Float32Array(64),
@@ -218,6 +244,7 @@ async function staticResolution(poolPromise) {
     phase: 2.0,
     drift: [0.7, 0.4],
     grainSeed,
+    photo,
   })
   const staticPool = await poolPromise
   renderPanel(
@@ -225,6 +252,26 @@ async function staticResolution(poolPromise) {
     STATIC_HEADING,
     staticPool ? pickPanelFragments(staticPool, 16) : null
   )
+}
+
+// One frozen photograph for the reduced-motion frame (no cross-fade loop).
+async function staticPhoto() {
+  const manifest = readManifest()
+  if (!manifest.length) return null
+  try {
+    const img = new Image()
+    img.decoding = 'async'
+    img.src = manifest[0].src
+    await img.decode()
+    renderer.uploadPhoto(0, img)
+    const view = cssW / cssH
+    const aspect = img.naturalWidth / img.naturalHeight
+    const scaleA = [Math.max(1, aspect / view), Math.max(1, view / aspect)]
+    return { mix: 0, amount: 0.85, scaleA, scaleB: [1, 1] }
+  } catch (err) {
+    console.warn('[zoot] static photo load failed:', err)
+    return null
+  }
 }
 
 function showFallback(loadedPool) {
