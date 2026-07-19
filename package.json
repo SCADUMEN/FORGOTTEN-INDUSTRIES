@@ -23,7 +23,7 @@
     "clean:site": "node scripts/clean_site_output.cjs",
     "build:continuance": "node scripts/build_continuance_index.cjs && (cd continuance && vite build)",
     "dev:continuance": "npm run build:css && node scripts/build_continuance_index.cjs && (cd continuance && vite)",
-    "build:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh --minify",
+    "build:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh --minify && npm run audit:public",
     "serve:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh && eleventy --serve",
     "dev:worker": "npm run build:site && wrangler dev",
     "deploy:worker": "npm run build:site && npm run audit:public && wrangler deploy",

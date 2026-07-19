@@ -1,6 +1,7 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const { exiftool } = require('exiftool-vendored')
+const { findLocationTags, isMedia } = require('./location_metadata.cjs')
 
 const root = path.resolve(__dirname, '..')
 const site = path.join(root, '_site')
@@ -17,19 +18,6 @@ const textExtensions = new Set([
   '.xml',
   '.yaml',
   '.yml',
-])
-// Raster image types that can carry an embedded GPS location. Location metadata
-// must never reach the public site; the scrubber (scripts/scrub_exif.cjs) clears
-// it at the source and this audit is the backstop.
-const imageExtensions = new Set([
-  '.jpg',
-  '.jpeg',
-  '.png',
-  '.heic',
-  '.heif',
-  '.tif',
-  '.tiff',
-  '.webp',
 ])
 const forbiddenNames = [
   /(^|\/)\.env(?:\.[^/]*)?$/i,
@@ -70,7 +58,7 @@ async function main() {
   const files = walk(site)
   const findings = []
   let scannedTextFiles = 0
-  let scannedImageFiles = 0
+  let scannedMediaFiles = 0
 
   for (const absolute of files) {
     const relative = path.relative(site, absolute).split(path.sep).join('/')
@@ -83,13 +71,13 @@ async function main() {
 
     const extension = path.extname(relative).toLowerCase()
 
-    if (imageExtensions.has(extension)) {
-      scannedImageFiles += 1
-      const tags = await exiftool.read(absolute)
-      const gpsTags = Object.keys(tags).filter((key) => /^GPS/.test(key))
-      if (gpsTags.length > 0) {
+    if (isMedia(absolute)) {
+      scannedMediaFiles += 1
+      const tags = await exiftool.readRaw(absolute)
+      const locationTags = findLocationTags(tags)
+      if (locationTags.length > 0) {
         findings.push(
-          `${relative}: image GPS/location metadata (${gpsTags.length} tags)`
+          `${relative}: media GPS/location metadata (${locationTags.length} tags)`
         )
       }
       continue
@@ -130,15 +118,19 @@ async function main() {
     process.exitCode = 1
   } else {
     process.stdout.write(
-      `Public surface audit passed: ${files.length} files, ${scannedTextFiles} text surfaces, ${scannedImageFiles} images.\n`
+      `Public surface audit passed: ${files.length} files, ${scannedTextFiles} text surfaces, ${scannedMediaFiles} media files.\n`
     )
   }
 }
 
-main()
-  .then(() => exiftool.end())
-  .catch(async (err) => {
-    await exiftool.end().catch(() => {})
-    process.stderr.write(`${err.stack || err}\n`)
-    process.exitCode = 1
-  })
+if (require.main === module) {
+  main()
+    .then(() => exiftool.end())
+    .catch(async (err) => {
+      await exiftool.end().catch(() => {})
+      process.stderr.write(`${err.stack || err}\n`)
+      process.exitCode = 1
+    })
+}
+
+module.exports = { main, walk }

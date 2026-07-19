@@ -43,9 +43,6 @@ jobs:
       - name: Build Eleventy mirror
         run: npm run build:site
 
-      - name: Audit public release surface
-        run: npm run audit:public
-
       - name: Preserve GitHub Pages marker
         run: touch _site/.nojekyll
 

@@ -26,7 +26,7 @@ That openness stops at the handling boundary:
 
 The release audit fails when common credential patterns, private-key files, workstation paths, or protected briefing phrases appear in the generated public site.
 
-Images carry an extra risk: embedded GPS location. Raw media dropped into `intake/` and any image promoted into `src/assets/` are cleared of location metadata with `npm run scrub:exif` (camera model and timestamps are left intact). The release audit also reads every published image and fails if any GPS tag reaches `_site`. Media under `intake/` is git-ignored recursively, so raw photos never enter history.
+Images and video carry an extra risk: embedded GPS location. Raw media dropped into `intake/` and public media promoted into `src/assets/` are cleared of EXIF, structured XMP, and QuickTime location metadata with `npm run scrub:exif` while camera model, timestamps, and other descriptive metadata remain intact. The canonical site build audits every published media file and fails if location tags reach `_site`. Media under `intake/` is git-ignored recursively, so raw files do not enter history through ordinary staging.
 
 ## Repository map
 

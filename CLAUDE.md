@@ -24,10 +24,10 @@ CxR is the interactive research instrument at `/cxr/` — a two-column surface f
 
 ## Media & EXIF hygiene
 
-This repository is public, so images must never carry an embedded GPS location — the demonstrated risk is phone photos (HEIC/JPEG) whose EXIF pins an exact spot such as a home or worksite.
+This repository is public, so media must never carry an embedded GPS location — the demonstrated risk is phone photos and video whose EXIF, structured XMP, or QuickTime metadata pins an exact spot such as a home or worksite.
 
-- **Scrub before promoting.** Media dropped into `intake/` and any image bound for `src/assets/` are cleared of location with `npm run scrub:exif` (`scripts/scrub_exif.cjs`). The policy is GPS/location only — camera model, timestamps, and other descriptive EXIF are left intact. Pass `--dry-run` to report without writing, or directory arguments to scope it.
-- **The build blocks leaks.** `scripts/audit_public_surface.cjs` (run by `npm run audit:public`, in `build:site` and CI) reads every published image in `_site/` and fails the build if any `GPS*` tag survives. The scrubber is the fix; the audit is the backstop.
+- **Scrub before promoting.** Media dropped into `intake/` and any image or video bound for `src/assets/` are cleared of location with `npm run scrub:exif` (`scripts/scrub_exif.cjs`). The policy is GPS/location only — camera model, timestamps, and other descriptive metadata are left intact. Pass `--dry-run` to report without writing, or directory arguments to scope it.
+- **The build blocks leaks.** `scripts/audit_public_surface.cjs` (run by `npm run audit:public` and the canonical `build:site`) reads every published image and video in `_site/` and fails the build if GPS, structured XMP location, or QuickTime coordinates survive. The scrubber is the fix; the audit is the backstop.
 - **Intake media is ignored.** `.gitignore` excludes media anywhere under `intake/` with recursive `**` patterns, so raw photos in nested folders (e.g. `intake/Splunking/`) can never be committed. Keep those rules recursive.
 
 Uses the `exiftool-vendored` devDependency (bundles the exiftool binary; works in CI).
