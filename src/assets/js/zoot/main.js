@@ -267,7 +267,7 @@ async function staticPhoto() {
     const view = cssW / cssH
     const aspect = img.naturalWidth / img.naturalHeight
     const scaleA = [Math.max(1, aspect / view), Math.max(1, view / aspect)]
-    return { mix: 0, amount: 0.85, scaleA, scaleB: [1, 1] }
+    return { mix: 0, amount: 1.1, scaleA, scaleB: [1, 1] }
   } catch (err) {
     console.warn('[zoot] static photo load failed:', err)
     return null

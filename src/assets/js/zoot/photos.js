@@ -9,7 +9,7 @@
 const HOLD = 9 // s a photo holds before fading out
 const FADE = 3.5 // s cross-fade
 const RAMP = 2.5 // s initial presence ramp-in
-const TARGET = 0.85 // peak presence
+const TARGET = 1.1 // peak presence (~30% stronger than the original 0.85)
 
 // object-fit: cover as a UV scale for coverUV() in the shader.
 function coverScale(imgAspect, viewAspect) {
