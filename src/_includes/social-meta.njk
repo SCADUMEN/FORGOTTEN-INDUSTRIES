@@ -1,0 +1,25 @@
+{# OG + Twitter card metadata. Single source of truth for social tags, included
+   by base.njk and by standalone pages that define their own <head>. The set
+   lines below are no-ops under base.njk (those vars are already set before the
+   include) and supply the fallbacks for standalone pages, so a page only needs
+   to provide title/description — or nothing, and site defaults apply. #}
+{% set metaTitle = metaTitle or title or site.name %}
+{% set metaDescription = metaDescription or description or site.defaultDescription or site.tagline %}
+{% set metaCanonical = metaCanonical or ((canonical or page.url) | canonicalUrl(site.domainUrl)) %}
+{% set metaImage = metaImage or ((image or site.defaultImage) | absoluteUrl(site.domainUrl)) %}
+{% set metaOgType = metaOgType or (page.url | ogTypeForUrl(ogType)) %}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ ogTitle or metaTitle }}">
+<meta property="og:description" content="{{ ogDescription or metaDescription }}">
+<meta property="og:type" content="{{ metaOgType }}">
+<meta property="og:url" content="{{ metaCanonical }}">
+<meta property="og:image" content="{{ metaImage }}">
+<meta property="og:image:alt" content="{{ imageAlt or site.defaultImageAlt }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle or metaTitle }}">
+<meta name="twitter:description" content="{{ ogDescription or metaDescription }}">
+<meta name="twitter:image" content="{{ metaImage }}">
+{% if metaOgType == "article" and page.date %}
+<meta property="article:published_time" content="{{ page.date | isoDate }}">
+<meta property="article:author" content="{{ author or site.author }}">
+{% endif %}
