@@ -291,6 +291,9 @@ test('archive page renders', async ({ page }) => {
     'grid-template-columns',
     /.+/
   )
+  await expect(page.locator('#archive-search-status')).toContainText(
+    /\d+ unique indexed records \/ \d+ public routes \/ ready/
+  )
 
   await page.getByRole('searchbox', { name: "Search L'Archive" }).fill('Pang')
   await expect(page.locator('#archive-search-results')).toContainText('Pang')
@@ -298,8 +301,43 @@ test('archive page renders', async ({ page }) => {
   const galleryObjectLinks = page.locator(
     '.inventory-gallery-track figcaption a[href^="/archive/objects/"]'
   )
-  await expect(galleryObjectLinks).toHaveCount(12)
-  await expect(galleryObjectLinks.first()).toContainText(/\S/)
+  const visibleGalleryObjectLinks = page.locator(
+    '.inventory-gallery-card:visible figcaption a[href^="/archive/objects/"]'
+  )
+  const galleryTrack = page.locator('.inventory-gallery-track')
+  const declaredGalleryTotal = Number(
+    await page
+      .locator('.inventory-gallery-track')
+      .getAttribute('data-gallery-total')
+  )
+  const galleryCountControl = page.getByRole('slider', {
+    name: 'Sample aperture',
+  })
+
+  expect(declaredGalleryTotal).toBeGreaterThan(8)
+  await expect(galleryObjectLinks).toHaveCount(declaredGalleryTotal)
+  await expect(visibleGalleryObjectLinks).toHaveCount(8)
+  await expect(galleryTrack).toHaveAttribute('data-gallery-count', '8')
+  await expect(galleryTrack).toHaveAttribute('data-gallery-randomized', 'true')
+  await expect(galleryCountControl).toHaveValue('8')
+  await expect(page.locator('[data-inventory-gallery-stress]')).toHaveAttribute(
+    'data-stress-level',
+    'nominal'
+  )
+
+  await galleryCountControl.fill(String(declaredGalleryTotal))
+  await expect(visibleGalleryObjectLinks).toHaveCount(declaredGalleryTotal)
+  await expect(galleryTrack).toHaveAttribute(
+    'data-gallery-count',
+    String(declaredGalleryTotal)
+  )
+  await expect(page.locator('[data-inventory-gallery-stress]')).toContainText(
+    '100% / RASTER SATURATED'
+  )
+  await expect(page.locator('[data-inventory-gallery-stress]')).toHaveAttribute(
+    'data-stress-level',
+    'critical'
+  )
 })
 
 test('archive page remains contained and uses an intentional object shelf on mobile', async ({

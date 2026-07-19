@@ -37,6 +37,8 @@ playwright-report/
 /intake/_previews/
 /intake/_transcripts/
 /intake/LE-BOX-*/
+/intake/SECURITY-GATEWAY/
+/intake/RELOCATION-2026/
 /intake/*.HEIC
 /intake/*.heic
 /intake/*.JPG

@@ -70,7 +70,7 @@ for (const absolute of files) {
   let content = fs.readFileSync(absolute, 'utf8')
   scannedTextFiles += 1
 
-  if (relative === 'assets/restricted/phase-2-briefing.json') {
+  if (relative.startsWith('assets/restricted/') && relative.endsWith('.json')) {
     const payload = JSON.parse(content)
     const metadata = { ...payload }
     delete metadata.ciphertext

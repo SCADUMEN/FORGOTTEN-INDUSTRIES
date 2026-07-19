@@ -1645,29 +1645,31 @@ items:
     date_logged: '2026-07-16'
 
   - id: FI-HW-CPU-X99-001
-    name: Unidentified Intel Haswell-E processor
+    name: Intel Core i7-5930K processor
     category: processor
     manufacturer: Intel
-    model: Core i7-5930K or Core i7-5960X / operator recollection / unverified
+    model: Core i7-5930K / SR20R / 3.50 GHz
     quantity: 1
     associated_project: FI-PROJ-009
-    condition: installed in FI-HW-MB-X99-001 / heat spreader obscured by thermal compound
-    status: identity and function unverified
+    condition: installed in FI-HW-MB-X99-001 / heat-spreader markings directly photographed
+    status: identified / function unverified
     photos:
       - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-cpu.jpg
     notes: >
-      The processor remains installed in the recovered X99 board. Operator
-      recollection narrows the candidate identity to an Intel Core i7-5930K or
-      Core i7-5960X, but the current photograph cannot distinguish them. Clean
-      the heat spreader, photograph its markings, and preserve the CPU identity
-      as provisional until direct reading or BIOS recognition confirms it.
+      A direct operator-supplied inspection photograph received 2026-07-18
+      records the heat-spreader markings Intel Core i7-5930K, SR20R, and 3.50
+      GHz, resolving the earlier 5930K / 5960X uncertainty. The processor
+      remains installed in the recovered X99 board. Direct identification does
+      not establish present function; controlled bench validation remains
+      pending. The raw identification frame remains outside the public source
+      tree.
     tags:
       - Intel
       - Haswell-E
       - LGA2011-v3
       - Core i7-5930K
-      - Core i7-5960X
-      - provisional identification
+      - SR20R
+      - confirmed identification
     estimated_value:
     keep_sell_archive: archive / test pending
     date_logged: '2026-07-16'

@@ -14,8 +14,8 @@ The record does not assume that either platform works. The MSI X99 assembly carr
 
 - Motherboard: MSI X99S XPOWER AC.
 - Socket and memory: LGA2011-v3 / eight DDR4 slots.
-- Processor: installed; operator recollection narrows it to an Intel Core i7-5930K or Core i7-5960X.
-- Processor identity: provisional until the heat spreader is cleaned and read directly.
+- Processor: Intel Core i7-5930K / S-spec SR20R / 3.50 GHz / installed.
+- Processor identity: confirmed by direct heat-spreader reading in an operator-supplied inspection photograph received July 18, 2026.
 - Known history: the platform previously failed to operate; the operator suspects that something may have burned out.
 - Present status: fault isolation pending. Do not represent as working.
 
@@ -37,7 +37,8 @@ The record does not assume that either platform works. The MSI X99 assembly carr
 ## Evidence map
 
 - `msi-x99s-xpower-ac-overview.jpg` — X99 board, installed CPU, eight DIMM slots, expansion layout, diagnostic display, and Wi-Fi module.
-- `msi-x99s-xpower-ac-cpu.jpg` — closer X99 platform view; the processor markings remain hidden by thermal compound.
+- `msi-x99s-xpower-ac-cpu.jpg` — earlier X99 platform view with the processor markings hidden by thermal compound.
+- July 18, 2026 direct inspection frame (not published) — heat-spreader markings confirm Intel Core i7-5930K / SR20R / 3.50 GHz. The raw frame remains outside the public source tree.
 - `asus-maximus-vii-impact-socket.jpg` — Maximus VII Impact Rev. 1.02 board marking and empty LGA1150 socket.
 - `asus-supremefx-impact-ii.jpg` — loose SupremeFX Impact II daughterboard with the ASUS platform behind it.
 - `asus-impact-ek-monoblock.jpg` — loose EK monoblock retained with the ASUS assembly.
@@ -50,7 +51,7 @@ Public derivatives have photographic metadata removed. Frames carrying weaker ev
 ### Preserve
 
 1. Photograph both sides of each board before cleaning.
-2. Photograph the X99 processor markings after removing thermal compound.
+2. Record the confirmed X99 processor markings without publishing batch or serial markings by default.
 3. Photograph both sockets straight-on under bright angled light.
 4. Record every serial or manufacturing label locally; do not publish it by default.
 
@@ -83,11 +84,11 @@ Public derivatives have photographic metadata removed. Frames carrying weaker ev
 - `untested` means no present working claim exists.
 - `known prior failure` applies to the X99 platform and remains part of the record even if it later returns to service.
 - `monoblock` refers to the ASUS CPU/VRM cooling artifact. The GTX 660 Ti carries a full-cover GPU block.
-- Exact CPU, graphics-card variant, block part numbers, and mounting-hardware completeness remain provisional.
+- The X99 CPU identity is confirmed. Its function, the graphics-card variant, block part numbers, and mounting-hardware completeness remain unverified.
 
 ## Next evidence
 
-- Clean X99 CPU heat spreader and record its exact model.
+- Confirm X99 CPU recognition during the controlled minimum-bench test.
 - Capture a straight-on ASUS socket photograph.
 - Inventory retained monoblock mounting hardware.
 - Read the EVGA and EK product labels locally.

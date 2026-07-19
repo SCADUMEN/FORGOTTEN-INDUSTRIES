@@ -56,6 +56,8 @@ npm run test:e2e
 
 GitHub Actions builds the exact source on `main` and deploys the resulting artifact to GitHub Pages. Generated output is validated before upload.
 
+A Cloudflare Workers Static Assets migration is staged in `wrangler.jsonc` and `.github/workflows/deploy-worker-preview.yml`. Until the Worker preview and custom-domain cutover are verified, GitHub Pages remains the production origin. See `src/docs/cloudflare-launch.md` for the migration and API-access procedure.
+
 ## Machine-readable archive
 
 - [`/dist/forgotten-industries.json`](https://forgotten-industries.net/dist/forgotten-industries.json) contains the generated archive dataset.

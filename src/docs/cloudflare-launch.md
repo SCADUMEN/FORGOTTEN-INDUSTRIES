@@ -1,142 +1,179 @@
-# Cloudflare / GitHub Pages Launch Notes
+# Cloudflare Worker Migration Record
 
 Domain target: `forgotten-industries.net`
 
-## Current Site Shape
+Migration state: `PREPARED / PREVIEW NOT YET DEPLOYED / DNS NOT CUT OVER`
 
-Forgotten Industries is currently a static archive with an Eleventy public mirror deployed through GitHub Pages.
+## Deployment Boundary
 
-- The raw HTML pages remain checked in at the repository root as durable reference shelves.
-- The Eleventy entry point lives at `src/index.njk`.
-- The deployable site is written to `_site/`.
-- `npm run build` regenerates archive data in `dist/`.
-- `npm run build:site` regenerates archive data and builds the Eleventy mirror.
+Forgotten Industries remains a static Eleventy archive. The migration changes
+the hosting instrument, not the archive build or public record boundary.
 
-## GitHub Pages Settings
+- Canonical public source remains under `src/`.
+- `npm run build:site` remains the production build.
+- `_site/` remains the only directory uploaded to the host.
+- `npm run audit:public` must pass before deployment.
+- `_redirects` and `.well-known/security.txt` remain inside `_site/`.
+- GitHub Pages remains the temporary production origin until the Worker preview
+  and custom domain are both verified.
 
-Use GitHub Pages with the checked-in Actions workflow.
+## Prepared Worker
 
-- Repository: `Forgotten-Industries/FORGOTTEN-INDUSTRIES`
-- Publishing source: GitHub Actions
-- Workflow: `.github/workflows/deploy-pages.yml`
-- Custom domain: `forgotten-industries.net`
-- HTTPS: enforce after GitHub provisions the certificate
+`wrangler.jsonc` defines an asset-only Worker named `forgotten-industries`.
+There is no application Worker script and no server-side archive state. Static
+assets are served directly from `_site/` with Cloudflare's automatic HTML path
+handling.
 
-The workflow installs dependencies, runs `npm run build:site`, preserves `_site/.nojekyll`, and deploys the `_site` artifact with `actions/deploy-pages`.
+Local verification:
 
-## Domain Registration
-
-Register `forgotten-industries.net` through Cloudflare Registrar if available.
-
-Cloudflare will perform the definitive availability check during purchase. Domains registered through Cloudflare Registrar use Cloudflare nameservers, which is fine for this project because DNS and the site are coupled by design.
-
-## DNS Setup
-
-For the apex domain, create GitHub Pages `A` records:
-
-```text
-forgotten-industries.net A 185.199.108.153
-forgotten-industries.net A 185.199.109.153
-forgotten-industries.net A 185.199.110.153
-forgotten-industries.net A 185.199.111.153
+```bash
+npm ci
+npm run build:site
+npm run audit:public
+npx wrangler deploy --dry-run
 ```
 
-Optional IPv6 records:
+Authenticated preview deployment:
 
-```text
-forgotten-industries.net AAAA 2606:50c0:8000::153
-forgotten-industries.net AAAA 2606:50c0:8001::153
-forgotten-industries.net AAAA 2606:50c0:8002::153
-forgotten-industries.net AAAA 2606:50c0:8003::153
+```bash
+CLOUDFLARE_ACCOUNT_ID='<account-id>' \
+CLOUDFLARE_API_TOKEN='<token>' \
+npm run deploy:worker
 ```
 
-For `www`, create:
+Do not place either value in the repository, a committed environment file, a
+shell-history-bearing command, an issue, or a chat message.
 
-```text
-www CNAME forgotten-industries.github.io
+## Cloudflare API Access
+
+Create a durable deployment token in Cloudflare and restrict it to the one
+Forgotten Industries account and the `forgotten-industries.net` zone. The token
+is owned operationally by the `SCADUMEN` GitHub organization, not by an
+individual repository.
+
+Required for Worker deployment and future Custom Domains such as
+`watches.forgotten-industries.net`:
+
+- Account / Workers Scripts / Edit
+- Account / Account Settings / Read
+- Zone / Workers Routes / Edit
+- Zone / Zone / Read
+
+The durable deployment token does not need general DNS edit authority. Give it
+no fixed expiration if long continuity is required, record its owner and scope,
+and rotate it only for personnel, permission, or suspected-exposure events.
+
+The initial migration may use a second short-lived local token with Zone / DNS /
+Edit to remove the GitHub Pages web-origin records. Do not store that migration
+token as an organization secret; revoke it after the cutover.
+
+Verify a user API token without printing it:
+
+```bash
+curl 'https://api.cloudflare.com/client/v4/user/tokens/verify' \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-Do not add wildcard DNS records for this domain.
-
-## GitHub Custom Domain Setup
-
-After DNS exists:
-
-1. Open `Forgotten-Industries/FORGOTTEN-INDUSTRIES`.
-2. Go to **Settings** -> **Pages**.
-3. Set the custom domain to `forgotten-industries.net`.
-4. Wait for DNS check and certificate provisioning.
-5. Enable **Enforce HTTPS**.
-
-Recommended canonical host:
+The direct API base is:
 
 ```text
-https://forgotten-industries.net
+https://api.cloudflare.com/client/v4
 ```
 
-The GitHub Pages custom-domain setting remains the source of truth for the deployed Actions artifact. `site/CNAME` is kept as a portability marker and is copied into `_site/` by the Eleventy build.
+Useful read-only preflight endpoints:
 
-## Launch Verification
+```text
+GET /zones?name=forgotten-industries.net
+GET /accounts/{account_id}/workers/scripts
+GET /accounts/{account_id}/workers/scripts/forgotten-industries/deployments
+```
 
-Check these paths after DNS and HTTPS finish provisioning:
+The static asset upload protocol is multi-step. Wrangler uses these same
+Cloudflare APIs, including the Worker assets upload-session endpoint, while
+handling manifests, deduplication, multipart upload, and deployment creation.
+Use Wrangler for the asset transfer and use the direct API for verification,
+DNS inventory, custom-domain inspection, and audit records.
+
+## GitHub Organization Secrets
+
+Install these as organization-level Actions secrets under `SCADUMEN`:
+
+```text
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
+```
+
+Use `visibility: all` only while every repository in the organization is inside
+the same trusted deployment boundary. That setting automatically makes the
+secrets available to future repositories. GitHub does not provide prefix-based
+organization-secret visibility; `selected` visibility requires adding every new
+repository manually.
+
+The account ID is not itself a credential, but it remains a secret here so every
+Forgotten Industries workflow consumes the same two-name contract. Never print
+the token in Action logs or expose it to pull-request workflows from forks.
+
+The manual `.github/workflows/deploy-worker-preview.yml` workflow consumes the
+organization secrets without repository-specific configuration.
+
+The preview workflow does not run on pushes. It builds and audits the archive,
+then deploys the `forgotten-industries` Worker to its `workers.dev` hostname.
+The current GitHub Pages workflow continues to own production during this
+verification phase.
+
+## Cutover Sequence
+
+1. Deploy the Worker preview.
+2. Verify the homepage, representative route families, `_redirects`,
+   `.well-known/security.txt`, the feed, sitemap, public JSON, and a true 404.
+3. Add `forgotten-industries.net` as a Worker Custom Domain.
+4. Verify the Cloudflare-issued certificate and production responses.
+5. Replace the preview-only workflow with the `main` deployment trigger.
+6. Remove `.github/workflows/deploy-pages.yml` and the obsolete root `CNAME`
+   marker.
+7. Disable GitHub Pages only after the Worker is confirmed live.
+8. Revoke the short-lived migration token; retain the organization deployment
+   token.
+
+Cloudflare already operates the authoritative nameservers for this zone. During
+cutover, preserve all mail-routing and verification records; only the existing
+GitHub Pages web-origin records are in scope.
+
+## Production Custom Domain Configuration
+
+After the preview is accepted, add the apex Custom Domain to `wrangler.jsonc`:
+
+```json
+"routes": [
+  {
+    "pattern": "forgotten-industries.net",
+    "custom_domain": true
+  }
+]
+```
+
+The apex is canonical. Handle `www.forgotten-industries.net` with a Cloudflare
+redirect to the apex rather than a second archive origin.
+
+Future Worker projects can attach exact subdomains such as
+`watches.forgotten-industries.net` through their own `wrangler.jsonc` Custom
+Domain entry. No wildcard DNS or wildcard Worker route is required.
+
+## Release Verification
+
+At minimum, verify:
 
 - `https://forgotten-industries.net/`
-- `https://forgotten-industries.net/about.html`
-- `https://forgotten-industries.net/archive.html`
-- `https://forgotten-industries.net/archive/inventory/`
-- `https://forgotten-industries.net/social-posts.html`
-- `https://forgotten-industries.net/assets/favicon/favicon-32x32.png`
+- `https://forgotten-industries.net/l-archive/`
+- `https://forgotten-industries.net/oeuvre/`
+- `https://forgotten-industries.net/signal/`
+- `https://forgotten-industries.net/apropos/`
+- `https://forgotten-industries.net/.well-known/security.txt`
+- `https://forgotten-industries.net/feed.xml`
+- `https://forgotten-industries.net/sitemap.xml`
 - `https://forgotten-industries.net/dist/forgotten-industries.json`
+- a legacy path from `_redirects`
+- a nonexistent path returning HTTP 404
 
-## Phase 1 Coherence Setup
-
-The public archive has one canonical spine:
-
-- Domain: `https://forgotten-industries.net`
-- Contact: `contact@forgotten-industries.net`
-- Archive mail: `archive@forgotten-industries.net`
-- Field Log mail: `fieldnotes@forgotten-industries.net`
-- GitHub source: `https://github.com/Forgotten-Industries/FORGOTTEN-INDUSTRIES`
-- Eleventy static site generator: `https://www.11ty.dev/`
-
-The live site renders GitHub, Eleventy, contact, and Field Log links from `src/_data/site.cjs`.
-
-### Email
-
-Use Cloudflare Email Routing for receive-only forwarding if the domain is managed in Cloudflare. Route:
-
-- `contact@forgotten-industries.net`
-- `archive@forgotten-industries.net`
-- `fieldnotes@forgotten-industries.net`
-
-If sending as `@forgotten-industries.net` becomes important, move to a mailbox provider such as Google Workspace, Fastmail, or Proton and update the domain DNS records accordingly.
-
-### Analytics
-
-The base layout has optional GA4 support. To activate it, add the measurement ID in `src/_data/site.cjs`:
-
-```js
-analytics: {
-  googleMeasurementId: "G-XXXXXXXXXX"
-}
-```
-
-Tracked link hooks already exist through `data-track` attributes for GitHub, Eleventy, contact, and Live Dispatches subscription clicks.
-
-### Subscription List
-
-Phase 1 uses a domain email link for Live Dispatches. When the newsletter provider is selected, replace `fieldNotesSubscribeUrl` in `src/_data/site.cjs` with the provider-hosted subscription URL.
-
-Recommended public framing:
-
-```text
-Live dispatches from the Forgotten Industries archive.
-```
-
-### Monetization
-
-Do not place ads on the archive in Phase 1. Keep `supportUrl` blank until there is a clear support destination, such as GitHub Sponsors or a dedicated support page for restoration costs.
-
-## Notes
-
-The Eleventy mirror should remain thin. Preserve the raw archive pages and generated data as the source of truth; use Eleventy to assemble the public surface, not to bury the evidence.
+The migration is complete only when those public checks pass through
+Cloudflare and the GitHub Pages deployment owner has been retired.
