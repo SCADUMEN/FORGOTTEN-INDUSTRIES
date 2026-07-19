@@ -91,13 +91,17 @@ export function createInteraction({
     link.textContent = 'OPEN RECORD →'
     focusCard.append(kindEl, titleEl, link)
     focusCard.hidden = false
-    // Anchor below the fragment rect, clamped to the viewport.
+    // Anchor below the fragment rect, clamped to the viewport and kept clear
+    // of the bottom chrome (exit mark + photo credits) so nothing overlaps.
+    const chrome = document.getElementById('zoot-chrome')
+    const chromeH = chrome ? chrome.offsetHeight : 0
+    const bottomLimit = cssH - chromeH - 16
     const cardW = Math.min(focusCard.offsetWidth || 320, cssW - 32)
     const cardH = focusCard.offsetHeight || 120
     let x = (r.x / sheetW) * cssW
     let y = ((r.y + r.h) / sheetH) * cssH + 14
     x = Math.min(Math.max(16, x), cssW - cardW - 16)
-    if (y + cardH > cssH - 16) y = (r.y / sheetH) * cssH - cardH - 14
+    if (y + cardH > bottomLimit) y = (r.y / sheetH) * cssH - cardH - 14
     focusCard.style.left = `${x}px`
     focusCard.style.top = `${Math.max(16, y)}px`
   }

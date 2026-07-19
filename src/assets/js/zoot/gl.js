@@ -22,7 +22,18 @@ const UNIFORMS = [
   'uDrift',
   'uPalette',
   'uGrainSeed',
+  'uPhotoA',
+  'uPhotoB',
+  'uPhotoScaleA',
+  'uPhotoScaleB',
+  'uPhotoMix',
+  'uPhotoAmount',
 ]
+
+// A 1x1 transparent black texel so the photo samplers always resolve even
+// before any photograph loads (uPhotoAmount gates the visual regardless).
+const BLANK_TEXEL = new Uint8Array([0, 0, 0, 0])
+const NO_PHOTO = { mix: 0, amount: 0, scaleA: [1, 1], scaleB: [1, 1] }
 
 export { MAX_IMPULSES, MAX_FRAGS }
 
@@ -58,6 +69,30 @@ export function createRenderer(canvas) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
 
+  // Photo texture units 1 and 2 (text stays on 0). NPOT-safe: LINEAR + CLAMP,
+  // no mipmaps.
+  const makePhotoTex = () => {
+    const tex = gl.createTexture()
+    gl.bindTexture(gl.TEXTURE_2D, tex)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA,
+      1,
+      1,
+      0,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      BLANK_TEXEL
+    )
+    return tex
+  }
+  const photoTex = [makePhotoTex(), makePhotoTex()]
+
   return {
     gl,
 
@@ -86,6 +121,15 @@ export function createRenderer(canvas) {
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false)
     },
 
+    // Upload a decoded photograph into slot 0 (A) or 1 (B). Called off the hot
+    // path — once per cross-fade (~every 8-12 s), not per frame.
+    uploadPhoto(slot, image) {
+      gl.bindTexture(gl.TEXTURE_2D, photoTex[slot])
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image)
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false)
+    },
+
     draw(state) {
       gl.useProgram(active.program)
       const u = active.uniforms
@@ -102,9 +146,20 @@ export function createRenderer(canvas) {
       gl.uniform2f(u.uDrift, state.drift[0], state.drift[1])
       gl.uniform3fv(u.uPalette, PALETTE)
       gl.uniform1f(u.uGrainSeed, state.grainSeed)
+      const photo = state.photo || NO_PHOTO
+      gl.uniform1f(u.uPhotoMix, photo.mix)
+      gl.uniform1f(u.uPhotoAmount, photo.amount)
+      gl.uniform2f(u.uPhotoScaleA, photo.scaleA[0], photo.scaleA[1])
+      gl.uniform2f(u.uPhotoScaleB, photo.scaleB[0], photo.scaleB[1])
       gl.activeTexture(gl.TEXTURE0)
       gl.bindTexture(gl.TEXTURE_2D, textTex)
       gl.uniform1i(u.uTextTex, 0)
+      gl.activeTexture(gl.TEXTURE1)
+      gl.bindTexture(gl.TEXTURE_2D, photoTex[0])
+      gl.uniform1i(u.uPhotoA, 1)
+      gl.activeTexture(gl.TEXTURE2)
+      gl.bindTexture(gl.TEXTURE_2D, photoTex[1])
+      gl.uniform1i(u.uPhotoB, 2)
       gl.bindVertexArray(vao)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
     },

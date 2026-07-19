@@ -35,6 +35,12 @@ uniform float uPhase;
 uniform vec2 uDrift;
 uniform vec3 uPalette[3];             // cyan, magenta, gold
 uniform float uGrainSeed;
+uniform sampler2D uPhotoA;            // background photographs, cross-faded
+uniform sampler2D uPhotoB;
+uniform vec2 uPhotoScaleA;            // cover-fit UV scale (viewport vs image aspect)
+uniform vec2 uPhotoScaleB;
+uniform float uPhotoMix;              // 0 = A, 1 = B
+uniform float uPhotoAmount;           // global presence; 0 when no photographs
 
 out vec4 outColor;
 
@@ -80,6 +86,12 @@ vec2 impulseWarp(vec2 p) {
     disp += swirl / (dist + 0.15) * imp.w * exp(-age * 0.55) * exp(-dist * dist * 6.0);
   }
   return disp;
+}
+
+// Cover-fit a photo into the viewport: scale about center so the shorter
+// image axis fills, the longer overflows (object-fit: cover).
+vec2 coverUV(vec2 uv, vec2 scale) {
+  return (uv - 0.5) / scale + 0.5;
 }
 
 // Soft interior mask for a UV rect, feathered by the soft parameter.
@@ -138,6 +150,19 @@ void main() {
     fbm(p + 2.4 * r + vec2(0.0, e)) - h
   ) / e;
   col += smoothstep(1.1, 2.4, length(grad)) * 0.10;
+
+  // Background photographs: sampled full-frame, dragged by the same domain-warp
+  // field r so they churn with the oil, cross-faded A->B, and screen-blended
+  // weighted by film height so a photo surfaces in the bright bands and sinks
+  // to black in the troughs. Composited before the text so records read on top.
+  if (uPhotoAmount > 0.001) {
+    vec2 uvP = uv + (r - 0.5) * 0.06;
+    vec3 photoA = texture(uPhotoA, coverUV(uvP, uPhotoScaleA)).rgb;
+    vec3 photoB = texture(uPhotoB, coverUV(uvP, uPhotoScaleB)).rgb;
+    vec3 photo = mix(photoA, photoB, uPhotoMix);
+    float weight = uPhotoAmount * smoothstep(0.15, 0.75, hn);
+    col = 1.0 - (1.0 - col) * (1.0 - photo * weight);
+  }
 
   // Text sheet: fragments emerge from and dissolve into the film.
   for (int i = 0; i < MAX_FRAGS; i++) {
