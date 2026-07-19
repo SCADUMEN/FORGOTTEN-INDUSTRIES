@@ -482,3 +482,21 @@ projects:
       - Default public pages to ATLAS/SYSOUT unless LE SAUVEGARDER authorship is explicit
       - Preserve the raw intake before simplifying it into site-native records
       - Build the dossier first; promote to a manual only when rules become procedural
+
+  - id: FI-PROJ-010
+    slug: the-shadow-zone
+    title: The Shadow Zone
+    category: Found Media
+    status: open
+    started: '2026'
+    summary: >
+      A holding zone for surreal found media and uncanny artifacts that surface
+      around the archive — images with no clear origin, kept as evidence of the
+      culture that accretes on forgotten machines.
+    themes:
+      - found media
+      - ephemera
+      - uncanny
+      - unverified origin
+    artifacts:
+      - FI-EPH-001

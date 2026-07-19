@@ -2091,3 +2091,21 @@ items:
     estimated_value:
     keep_sell_archive: archive evidence
     date_logged: '2026-07-17'
+
+  - id: FI-EPH-001
+    name: Papa Cream
+    category: ephemera
+    quantity: 1
+    associated_project: FI-PROJ-010
+    condition: digital / lossless PNG, 1290×1863
+    status: catalogued curio
+    photos:
+      - assets/ephemera/papa-cream.png
+    notes: >
+      Surreal found image recovered for The Shadow Zone: a grinning
+      ice-cream-cone effigy looming over a low-poly figure in an empty gym,
+      captioned "Papa Cream is on the move." Origin unverified; kept as an
+      artifact of the culture that accretes around forgotten machines.
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-18'
