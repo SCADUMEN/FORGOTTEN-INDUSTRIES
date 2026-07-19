@@ -322,9 +322,9 @@ export default function (eleventyConfig) {
 
   // Raw hand-authored support pages are static documents, not templates.
   // html is excluded from templateFormats, so these are copied verbatim.
+  // (/inventory.html is served by inventory-html-redirect.njk instead.)
   eleventyConfig.addPassthroughCopy({
     'src/field-log-template.html': 'field-log-template.html',
-    'src/inventory.html': 'inventory.html',
     'src/social-posts.html': 'social-posts.html',
   })
 
