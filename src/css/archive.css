@@ -1477,7 +1477,75 @@ h3 {
   color: var(--muted);
 }
 
+.inventory-gallery-controls {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) auto;
+  gap: 0.8rem 1.25rem;
+  align-items: end;
+  margin-top: 0.65rem;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--oxide) 4%, transparent);
+}
+
+.inventory-gallery-controls[hidden] {
+  display: none;
+}
+
+.inventory-gallery-aperture {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.inventory-gallery-aperture label {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  color: var(--steel);
+  font-family: var(--font-system);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.inventory-gallery-aperture input {
+  width: 100%;
+  accent-color: var(--oxide);
+  cursor: ew-resize;
+}
+
+.inventory-gallery-aperture output {
+  color: var(--fi-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.inventory-gallery-stress {
+  min-width: 17rem;
+  margin: 0;
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.inventory-gallery-stress[data-stress-level='elevated'] {
+  color: var(--oxide);
+}
+
+.inventory-gallery-stress[data-stress-level='critical'] {
+  color: var(--fi-magenta);
+}
+
 .inventory-gallery-viewport {
+  --gallery-stress-filter: none;
+  --gallery-stress-opacity: 0;
+  --gallery-stress-pixel-size: 4px;
   margin-inline: -0.42rem;
   max-height: min(72vh, 50rem);
   padding: 0.42rem 0.7rem 0.8rem 0.42rem;
@@ -1524,6 +1592,7 @@ h3 {
 }
 
 .inventory-gallery-image {
+  position: relative;
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 3;
@@ -1534,10 +1603,30 @@ h3 {
     var(--fi-surface-94);
 }
 
+.inventory-gallery-image::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: repeating-conic-gradient(
+      from 45deg,
+      rgb(0 0 0 / 72%) 0 25%,
+      rgb(34 207 112 / 24%) 0 50%
+    )
+    0 0 / var(--gallery-stress-pixel-size) var(--gallery-stress-pixel-size);
+  content: '';
+  mix-blend-mode: hard-light;
+  opacity: var(--gallery-stress-opacity);
+  pointer-events: none;
+}
+
 .inventory-gallery-image img {
   width: 100%;
   height: 100%;
+  filter: var(--gallery-stress-filter);
+  image-rendering: pixelated;
   object-fit: cover;
+  transform: scale(1.01);
+  transition: filter 160ms linear;
 }
 
 .inventory-gallery-image span {
@@ -5233,6 +5322,15 @@ a.site-cxr-mark:focus-visible {
 }
 
 @media (max-width: 720px) {
+  .inventory-gallery-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inventory-gallery-stress {
+    min-width: 0;
+    text-align: left;
+  }
+
   .fi-provenance-wrap {
     justify-content: center;
     padding-inline: 1rem;

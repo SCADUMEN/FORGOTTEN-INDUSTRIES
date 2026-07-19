@@ -1,0 +1,317 @@
+<!doctype html>
+<!--
+  FORGOTTEN INDUSTRIES / FIELD TERMINAL / RELEASE 1.0.0
+
+  Palette tokens are grouped at the top of the style block. Visible copy is
+  grouped near the bottom of the document. Capture at 1320 x 2868 pixels.
+  Public-use terms and adaptation notes are recorded in README.txt.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forgotten Industries — Lock Screen Instrument Plate</title>
+    <style>
+      :root {
+        --black: #000000;
+        --surface: #020617;
+        --green: #4ade80;
+        --scan-green: #00ff41;
+        --magenta: #e879f9;
+        --cyan: #22d3ee;
+        --silver: #c0c0c0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1320px;
+        height: 2868px;
+        margin: 0;
+        overflow: hidden;
+        background: var(--black);
+      }
+
+      body {
+        position: relative;
+        color: var(--green);
+        font-family: "SFMono-Regular", Menlo, Monaco, "Courier New", monospace;
+        background:
+          radial-gradient(
+            circle at 50% 42%,
+            rgb(74 222 128 / 0.08),
+            transparent 27%
+          ),
+          linear-gradient(rgb(255 255 255 / 0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgb(0 255 65 / 0.034) 1px, transparent 1px),
+          var(--black);
+        background-size:
+          auto,
+          100% 6px,
+          72px 72px,
+          auto;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 74px;
+        border: 2px solid rgb(34 211 238 / 0.26);
+        box-shadow:
+          -12px -12px 0 rgb(0 0 0 / 0.88),
+          -12px -12px 0 2px rgb(34 211 238 / 0.11),
+          inset 0 0 0 1px rgb(74 222 128 / 0.08);
+      }
+
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 94px;
+        pointer-events: none;
+        border-top: 1px solid rgb(255 255 255 / 0.12);
+        border-bottom: 1px solid rgb(255 255 255 / 0.12);
+      }
+
+      .rail {
+        position: absolute;
+        left: 116px;
+        top: 720px;
+        width: 3px;
+        height: 1730px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgb(74 222 128 / 0.74) 8%,
+          rgb(74 222 128 / 0.22) 88%,
+          transparent
+        );
+      }
+
+      .rail::before,
+      .rail::after {
+        content: "";
+        position: absolute;
+        left: -8px;
+        width: 19px;
+        height: 19px;
+        border: 2px solid var(--magenta);
+        transform: rotate(45deg);
+        background: var(--black);
+      }
+
+      .rail::before {
+        top: 88px;
+      }
+
+      .rail::after {
+        bottom: 88px;
+      }
+
+      .clock-clearance-label {
+        position: absolute;
+        top: 552px;
+        left: 132px;
+        font-size: 24px;
+        letter-spacing: 0.27em;
+        color: rgb(192 192 192 / 0.38);
+        text-transform: uppercase;
+      }
+
+      .clock-clearance-label::before {
+        content: ">";
+        margin-right: 20px;
+        color: rgb(232 121 249 / 0.66);
+      }
+
+      .mark {
+        position: absolute;
+        top: 774px;
+        left: 538px;
+        width: 244px;
+        height: 344px;
+        opacity: 0.7;
+        filter: drop-shadow(0 0 28px rgb(74 222 128 / 0.18));
+      }
+
+      .mark path {
+        fill: none;
+        stroke: var(--green);
+        stroke-width: 5;
+      }
+
+      .title {
+        position: absolute;
+        top: 1180px;
+        left: 172px;
+        right: 146px;
+        color: rgb(247 244 239 / 0.95);
+        font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif;
+        font-size: 124px;
+        font-weight: 400;
+        line-height: 0.91;
+        letter-spacing: -0.035em;
+        text-transform: uppercase;
+      }
+
+      .title .oxide {
+        display: block;
+        margin-top: 40px;
+        color: var(--green);
+        font-family: "SFMono-Regular", Menlo, Monaco, "Courier New", monospace;
+        font-size: 30px;
+        line-height: 1.25;
+        letter-spacing: 0.38em;
+      }
+
+      .sysout {
+        position: absolute;
+        top: 1655px;
+        left: 172px;
+        right: 146px;
+        min-height: 332px;
+        padding: 62px 62px 54px 74px;
+        border: 2px solid rgb(34 211 238 / 0.46);
+        background:
+          linear-gradient(135deg, rgb(34 211 238 / 0.07), transparent 44%),
+          rgb(2 6 23 / 0.94);
+        box-shadow:
+          -18px -18px 0 rgb(0 0 0 / 0.82),
+          -18px -18px 0 2px rgb(34 211 238 / 0.2),
+          inset 0 0 0 1px rgb(74 222 128 / 0.1);
+      }
+
+      .sysout .prompt {
+        position: absolute;
+        left: 28px;
+        top: 54px;
+        color: var(--magenta);
+        font-size: 42px;
+      }
+
+      .sysout .label {
+        color: rgb(192 192 192 / 0.55);
+        font-size: 24px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+      }
+
+      .sysout .status {
+        margin-top: 26px;
+        color: var(--green);
+        font-size: 50px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .sysout .substatus {
+        margin-top: 24px;
+        color: rgb(34 211 238 / 0.76);
+        font-size: 25px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .motto {
+        position: absolute;
+        left: 172px;
+        right: 146px;
+        bottom: 404px;
+        padding-top: 42px;
+        border-top: 2px solid rgb(74 222 128 / 0.38);
+        color: rgb(247 244 239 / 0.76);
+        font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif;
+        font-size: 50px;
+        line-height: 1.22;
+        letter-spacing: 0.02em;
+      }
+
+      .maker-plate {
+        position: absolute;
+        left: 172px;
+        right: 146px;
+        bottom: 196px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 0;
+        border-top: 1px solid rgb(192 192 192 / 0.18);
+        border-bottom: 1px solid rgb(192 192 192 / 0.18);
+        color: rgb(192 192 192 / 0.46);
+        font-size: 20px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .maker-plate strong {
+        color: rgb(74 222 128 / 0.74);
+        font-weight: 500;
+      }
+
+      .registration {
+        position: absolute;
+        right: 98px;
+        top: 720px;
+        writing-mode: vertical-rl;
+        color: rgb(192 192 192 / 0.25);
+        font-size: 18px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+      }
+
+      .ghost {
+        position: absolute;
+        right: 118px;
+        bottom: 72px;
+        color: rgb(74 222 128 / 0.05);
+        font-family: "Iowan Old Style", Baskerville, serif;
+        font-size: 420px;
+        line-height: 0.7;
+        letter-spacing: -0.08em;
+        text-transform: lowercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rail" aria-hidden="true"></div>
+    <div class="clock-clearance-label">local instrument / lock field</div>
+
+    <svg
+      class="mark"
+      viewBox="0 0 252.47 355.24"
+      aria-label="Forgotten Industries shield"
+    >
+      <path
+        d="M126.21,355.24c-49.28-35.83-94.03-74.87-113.79-134.33-6.46-20.72-9.58-41.27-11.14-62.83L.06,127.62,0,0h252.47s-.08,127.6-.08,127.6c-.01,20.87-1.62,40.19-4.64,60.61-11.65,76.55-61.29,123.43-121.54,167.02ZM240.61,190.01c3.32-20.09,5.06-39.33,5.09-59.82l.18-123.38L6.83,115.31c-.38,23.13.66,46.03,4.12,69.11,5.56,38.86,21.73,73.72,47.74,103.01,20.18,22.52,42.81,41.87,67.61,59.53,56.82-41.68,102.18-85.22,114.32-156.95Z"
+      />
+    </svg>
+
+    <main>
+      <h1 class="title">
+        Forgotten<br />Industries
+        <span class="oxide">archive / instrument / witness</span>
+      </h1>
+
+      <section class="sysout" aria-label="System status">
+        <span class="prompt">&gt;</span>
+        <div class="label">archive terminal</div>
+        <div class="status">system / ready</div>
+        <div class="substatus">record remains available</div>
+      </section>
+
+      <blockquote class="motto">
+        A thing documented is a thing<br />not yet lost.
+      </blockquote>
+    </main>
+
+    <div class="maker-plate">
+      <span><strong>FI</strong> //// local instrument</span>
+      <span>provenance //// operator-held</span>
+    </div>
+
+    <div class="registration">forgotten industries / archival systems</div>
+    <div class="ghost" aria-hidden="true">fi</div>
+  </body>
+</html>

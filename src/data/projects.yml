@@ -8,10 +8,10 @@ projects:
     started: '2026'
     summary: >
       Recovery dossier for two enthusiast-era platforms returned from storage:
-      an MSI X99S XPOWER AC with an installed but unidentified Haswell-E CPU and
-      a known prior failure history, and an ASUS ROG Maximus VII Impact with its
-      modular audio hardware, matching EK monoblock, and an EVGA GTX 660 Ti
-      full-cover water-cooling assembly.
+      an MSI X99S XPOWER AC with an installed Intel Core i7-5930K and a known
+      prior failure history, and an ASUS ROG Maximus VII Impact with its modular
+      audio hardware, matching EK monoblock, and an EVGA GTX 660 Ti full-cover
+      water-cooling assembly.
     origin:
       context: >
         The hardware re-entered the Forgotten Industries bench in July 2026.
@@ -39,7 +39,7 @@ projects:
         path: src/projects/x99-impact-recovery/README.md
     documentation_style:
       - Preserve the known failure history before attempting repair
-      - Keep CPU identity provisional until the heat spreader is cleaned and read directly
+      - Keep confirmed CPU identity separate from the still-unverified function claim
       - Photograph sockets, labels, debug codes, and test configuration before changing parts
       - Bench-test with minimum known-good hardware and no storage devices attached
       - Treat water blocks as unvalidated cooling artifacts until cleaned and pressure-tested
