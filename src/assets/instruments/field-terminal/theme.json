@@ -1,0 +1,48 @@
+{
+  "name": "Forgotten Industries / Field Terminal",
+  "version": "1.0.0",
+  "released": "2026-07-18",
+  "route": "https://forgotten-industries.net/instruments/field-terminal/",
+  "lockScreen": {
+    "file": "fi-field-terminal-lock-screen.png",
+    "width": 1320,
+    "height": 2868,
+    "format": "image/png",
+    "clockClearance": "upper register"
+  },
+  "homeScreen": {
+    "type": "solid-color",
+    "color": "#000000"
+  },
+  "iconTint": {
+    "preferred": "#4ADE80",
+    "fallback": "native"
+  },
+  "palette": {
+    "background": "#000000",
+    "surface": "#020617",
+    "sysout": "#4ADE80",
+    "scan": "#00FF41",
+    "prompt": "#E879F9",
+    "structure": "#22D3EE",
+    "silver": "#C0C0C0"
+  },
+  "layout": {
+    "firstPage": "essential instruments only",
+    "remainder": "app library or drawer",
+    "deletesApps": false
+  },
+  "source": {
+    "file": "fi-field-terminal-source.html",
+    "dependencies": []
+  },
+  "privacyBoundary": [
+    "no app roster",
+    "no account information",
+    "no device identifier",
+    "no location",
+    "no private intake record",
+    "no operator credential"
+  ],
+  "permission": "personal device use and personal non-commercial adaptation; see README.txt"
+}

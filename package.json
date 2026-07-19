@@ -25,6 +25,8 @@
     "dev:continuance": "npm run build:css && node scripts/build_continuance_index.cjs && (cd continuance && vite)",
     "build:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh --minify",
     "serve:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh && eleventy --serve",
+    "dev:worker": "npm run build:site && wrangler dev",
+    "deploy:worker": "npm run build:site && npm run audit:public && wrangler deploy",
     "audit:metadata": "node scripts/audit_metadata_profile.cjs",
     "audit:public": "node scripts/audit_public_surface.cjs",
     "scrub:exif": "node scripts/scrub_exif.cjs",
@@ -61,7 +63,8 @@
     "react-dom": "19.2.7",
     "tailwindcss": "4.3.2",
     "vite": "8.1.5",
-    "vitest": "4.1.9"
+    "vitest": "4.1.9",
+    "wrangler": "4.112.0"
   },
   "engines": {
     "node": ">=22",

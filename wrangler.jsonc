@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "forgotten-industries",
+  "compatibility_date": "2026-07-17",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./_site",
+    "html_handling": "auto-trailing-slash",
+  },
+}

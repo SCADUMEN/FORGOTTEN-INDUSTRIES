@@ -6,7 +6,9 @@ permalink: /l-archive/index.html
 canonical: https://forgotten-industries.net/l-archive/
 eleventyExcludeFromCollections: true
 ---
-{% set objectGallery = archive.inventory %}
+{% set objectGallery = archive.inventory | objectGalleryCandidates %}
+{% set galleryMinimumCount = 4 %}
+{% set galleryDefaultCount = 8 %}
 {% set indexedRecordCount = (archive.projects | count) + (archive.inventory | count) + (archive.fieldLogs | count) + (archive.voiceLogs | count) + (archive.socialPosts | count) + (collections.posts | count) %}
 {% set publicRouteUrls = collections.all | publicSitemapUrls(site.sitemapExtraUrls, site.domainUrl, archive) %}
 {% set publicRouteCount = (publicRouteUrls | count) + (taxonomy.categories | count) + (taxonomy.tags | count) + (taxonomy.status | count) + (taxonomy.systems | count) %}
@@ -279,19 +281,43 @@ eleventyExcludeFromCollections: true
     <div class="archive-gallery-heading">
       <p class="section-label">Inventory</p>
       <h2 id="inventory-gallery-heading">Object Gallery</h2>
-      <p class="entry-note archive-gallery-note">
-        {{ objectGallery | countLabel("catalogued record", "catalogued records") }} / all entries displayed / <a href="/archive/objects/">open object ledger</a>
+      <p class="entry-note archive-gallery-note" data-inventory-gallery-note>
+        {{ galleryDefaultCount }} records drawn from {{ objectGallery | countLabel("photographed object", "photographed objects") }} / <a href="/archive/objects/">open object ledger</a>
       </p>
+      <div class="inventory-gallery-controls" data-inventory-gallery-controls hidden>
+        <div class="inventory-gallery-aperture">
+          <label for="inventory-gallery-count">
+            <span>Sample aperture</span>
+            <output for="inventory-gallery-count" data-inventory-gallery-output>{{ galleryDefaultCount }} records</output>
+          </label>
+          <input
+            id="inventory-gallery-count"
+            type="range"
+            min="{{ galleryMinimumCount }}"
+            max="{{ objectGallery | count }}"
+            value="{{ galleryDefaultCount }}"
+            step="1"
+          >
+        </div>
+        <p class="inventory-gallery-stress" data-inventory-gallery-stress data-stress-level="nominal" aria-live="polite" aria-atomic="true">
+          SIMULATED SYS.LOAD // <span>CALCULATING</span>
+        </p>
+      </div>
     </div>
 
-    <div class="inventory-gallery-viewport" aria-label="Inventory object gallery" tabindex="0">
-      <ol class="inventory-gallery-track" data-inventory-gallery-track data-gallery-count="{{ objectGallery | count }}">
+    <div class="inventory-gallery-viewport" data-inventory-gallery-viewport aria-label="Inventory object gallery" tabindex="0">
+      <ol
+        class="inventory-gallery-track"
+        data-inventory-gallery-track
+        data-gallery-count="{{ galleryDefaultCount }}"
+        data-gallery-total="{{ objectGallery | count }}"
+      >
         {% for item in objectGallery %}
         {% set preview = "" %}
         {% if item.photos and item.photos.length %}
         {% set preview = item.photos[0] %}
         {% endif %}
-        <li class="inventory-gallery-card">
+        <li class="inventory-gallery-card"{% if loop.index > galleryDefaultCount %} hidden{% endif %}>
           <figure>
             <a class="inventory-gallery-image" href="{{ item | archiveObjectUrl }}">
               {% if preview and (preview.indexOf("assets/") == 0 or preview.indexOf("forgotten-industries/") == 0) %}
@@ -310,6 +336,63 @@ eleventyExcludeFromCollections: true
         {% endfor %}
       </ol>
     </div>
+    <script>
+      (function() {
+        var track = document.querySelector('[data-inventory-gallery-track]');
+        var viewport = document.querySelector('[data-inventory-gallery-viewport]');
+        var controls = document.querySelector('[data-inventory-gallery-controls]');
+        var countControl = document.querySelector('#inventory-gallery-count');
+        var countOutput = document.querySelector('[data-inventory-gallery-output]');
+        var note = document.querySelector('[data-inventory-gallery-note]');
+        var stressOutput = document.querySelector('[data-inventory-gallery-stress]');
+        if (!track || !viewport || !controls || !countControl || !countOutput || !note || !stressOutput) return;
+
+        var cards = Array.prototype.slice.call(track.children);
+        var minimum = Number(countControl.min);
+        var maximum = cards.length;
+
+        for (var index = cards.length - 1; index > 0; index -= 1) {
+          var swapIndex = Math.floor(Math.random() * (index + 1));
+          var swap = cards[index];
+          cards[index] = cards[swapIndex];
+          cards[swapIndex] = swap;
+        }
+
+        cards.forEach(function(card) {
+          track.appendChild(card);
+        });
+
+        function renderGalleryCount(requestedCount) {
+          var visibleCount = Math.max(minimum, Math.min(maximum, Number(requestedCount)));
+          var stress = maximum === minimum ? 0 : (visibleCount - minimum) / (maximum - minimum);
+          var load = Math.round((visibleCount / maximum) * 100);
+          var stressLevel = stress < 0.4 ? 'nominal' : stress < 0.75 ? 'elevated' : 'critical';
+          var rasterState = stressLevel === 'nominal' ? 'RASTER STABLE' : stressLevel === 'elevated' ? 'RASTER DEGRADED' : 'RASTER SATURATED';
+
+          cards.forEach(function(card, cardIndex) {
+            card.hidden = cardIndex >= visibleCount;
+          });
+
+          track.dataset.galleryCount = String(visibleCount);
+          track.dataset.galleryRandomized = 'true';
+          countOutput.value = visibleCount + (visibleCount === 1 ? ' record' : ' records');
+          note.firstChild.textContent = visibleCount + ' randomized records drawn from ' + maximum + ' photographed objects / ';
+          stressOutput.dataset.stressLevel = stressLevel;
+          stressOutput.querySelector('span').textContent = load + '% / ' + rasterState;
+
+          viewport.style.setProperty('--gallery-stress-opacity', (stress * 0.52).toFixed(2));
+          viewport.style.setProperty('--gallery-stress-pixel-size', Math.round(4 + stress * 14) + 'px');
+          viewport.style.setProperty('--gallery-stress-filter', 'grayscale(' + Math.round(stress * 58) + '%) contrast(' + (1 + stress * 0.72).toFixed(2) + ') blur(' + (stress * 1.25).toFixed(2) + 'px)');
+        }
+
+        controls.hidden = false;
+        countControl.max = String(maximum);
+        renderGalleryCount(countControl.value);
+        countControl.addEventListener('input', function(event) {
+          renderGalleryCount(event.target.value);
+        });
+      })();
+    </script>
   </div>
 </section>
 
