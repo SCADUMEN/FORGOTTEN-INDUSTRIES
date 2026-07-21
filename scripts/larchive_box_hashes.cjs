@@ -11,6 +11,7 @@ const intakeRoot = path.resolve(repoRoot, rootArg || defaultRoot)
 
 const includedTopLevel = new Set([
   'protocol-v0.1-larchive-protocol.md',
+  'cataloguing-register.yml',
   'box-ledger.yml',
   'capacity-model.yml',
   'ledger-verification-2026-07-12.yml',
