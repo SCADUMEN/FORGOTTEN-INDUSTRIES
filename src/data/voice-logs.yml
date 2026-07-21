@@ -1,4 +1,18 @@
 voice_logs:
+  - id: FI-VOICE-004
+    title: Field Log 004 — Signal Identification
+    date: '2026-07-21'
+    recorded_at: '2026-07-21 15:09 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260721_0103.MP3
+    duration: '00:25'
+    summary: 'A Forgotten Industries identification sequence: dormant systems awaken by sequence, human judgment remains primary, and machine collaboration remains visible.'
+    transcript: "A dormant system awakens. Not by force, but by sequence. Progress is voltage held steady. Forgotten Industries. Human judgment. Machine collaboration. Contre l'Oubli. Resist forgetting. Provenance From On High."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - signal
   - id: FI-VOICE-003
     title: Field Log 003
     date: '2026-07-01'
