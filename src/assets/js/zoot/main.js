@@ -9,6 +9,8 @@ import {
 import { createRenderer, MAX_FRAGS } from './gl.js'
 import { createInteraction, renderPanel } from './interact.js'
 import { createPhotos } from './photos.js'
+import { createAudio } from './audio.js'
+import { createIntro } from './intro.js'
 
 const FALLBACK_HEADING =
   'ATLAS REPORT — the slick will not resolve on this instrument. The records remain.'
@@ -46,6 +48,14 @@ let lastFrameAt = 0
 boot()
 
 async function boot() {
+  // Background mixtape + its ignition modal — wired before any capability
+  // branch so they work in the normal, reduced-motion, and no-WebGL fallback
+  // views alike. Both no-op when the page did not inline an audio URL. The
+  // modal button supplies the gesture browsers require, then drives setEnabled.
+  const audio = createAudio()
+  if (audio)
+    createIntro({ onChoose: (wantsSound) => audio.setEnabled(wantsSound) })
+
   const poolPromise = loadFragmentPool().catch((err) => {
     console.error('[zoot] data load failed:', err)
     return null

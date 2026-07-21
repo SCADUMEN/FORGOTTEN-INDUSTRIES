@@ -95,9 +95,20 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
         max(1.25rem, env(safe-area-inset-left));
       pointer-events: none;
     }
-    #zoot-exit {
+    /* The exit link and the sound toggle share one control cluster on the left
+       of the chrome; the toggle reuses the exit link's muted-until-hover look. */
+    #zoot-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 0 0.75rem;
+      pointer-events: none;
+    }
+    #zoot-exit,
+    #zoot-audio-toggle {
       padding: 0.5rem 0.75rem 0.5rem 0;
       color: var(--fi-paper-light);
+      font-family: inherit;
       font-size: 0.75rem;
       letter-spacing: 0.14em;
       text-decoration: none;
@@ -106,8 +117,16 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       transition: opacity 160ms ease;
       pointer-events: auto;
     }
+    #zoot-audio-toggle {
+      border: 0;
+      background: none;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
     #zoot-exit:hover,
-    #zoot-exit:focus-visible {
+    #zoot-exit:focus-visible,
+    #zoot-audio-toggle:hover,
+    #zoot-audio-toggle:focus-visible {
       opacity: 0.85;
       outline: none;
     }
@@ -216,17 +235,96 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
     noscript a {
       color: var(--fi-cyan);
     }
+    /* Ignition modal: the entry gate. Ships hidden and is revealed by JS
+       (src/assets/js/zoot/intro.js), so no-JS visitors fall through to the
+       <noscript> panel instead of a dead overlay. */
+    #zoot-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(2rem, 7vh, 4.5rem);
+      padding: 2rem;
+      background: var(--fi-bg);
+      text-align: center;
+    }
+    #zoot-intro[hidden] {
+      display: none;
+    }
+    #zoot-intro-title {
+      margin: 0;
+      font-family: var(--zoot-mono);
+      font-weight: 700;
+      font-size: clamp(4rem, 24vw, 15rem);
+      line-height: 0.85;
+      letter-spacing: 0.06em;
+      color: var(--fi-paper-light);
+    }
+    #zoot-intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+    }
+    .zoot-intro-btn {
+      min-height: 44px;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--zoot-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fi-paper-light);
+      background: var(--fi-surface);
+      border: 1px solid var(--fi-cyan);
+      cursor: pointer;
+      transition:
+        background 160ms ease,
+        color 160ms ease;
+    }
+    .zoot-intro-btn--primary {
+      color: var(--fi-bg);
+      background: var(--fi-cyan);
+    }
+    .zoot-intro-btn:hover {
+      color: var(--fi-bg);
+      background: var(--fi-cyan);
+    }
+    .zoot-intro-btn--primary:hover {
+      background: var(--fi-paper-light);
+      border-color: var(--fi-paper-light);
+    }
+    .zoot-intro-btn:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
   <main>
     <h1 class="zoot-visually-hidden">ZOOT archive instrument</h1>
     <a class="zoot-access-link" href="/l-archive/">Open the accessible archive index</a>
+    {% if zootMixtape %}
+    <div id="zoot-intro" role="dialog" aria-modal="true" aria-labelledby="zoot-intro-title" hidden>
+      <h2 id="zoot-intro-title">ZOOT</h2>
+      <div id="zoot-intro-actions">
+        <button type="button" class="zoot-intro-btn" data-zoot-sound="off">Silent Running</button>
+        <button type="button" class="zoot-intro-btn zoot-intro-btn--primary" data-zoot-sound="on">Extra Crispy</button>
+      </div>
+    </div>
+    {% endif %}
     <canvas id="zoot-canvas" aria-hidden="true"></canvas>
     <div id="zoot-focus" hidden></div>
     <section id="zoot-fallback" hidden aria-label="Archive records"></section>
     <div id="zoot-chrome">
-      <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+      <div id="zoot-controls">
+        <a id="zoot-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+        {% if zootMixtape %}
+        <button id="zoot-audio-toggle" type="button" aria-pressed="true">Sound On</button>
+        {% endif %}
+      </div>
       {% if zootPhotos.length %}
       <nav id="zoot-credits" aria-label="Background photographs">
         <span class="zoot-credits-label">Background Photos:</span>{% for photo in zootPhotos %}<a href="{{ photo.src }}">{{ photo.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
@@ -242,6 +340,9 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
     </noscript>
   </main>
   <script type="application/json" id="zoot-photos">{{ zootPhotos | dump | safe }}</script>
+  {% if zootMixtape %}
+  <script type="application/json" id="zoot-audio">{{ zootMixtape | dump | safe }}</script>
+  {% endif %}
   <script type="module" src="/assets/js/zoot/main.js?v={{ site.assetVersion }}"></script>
 </body>
 </html>
