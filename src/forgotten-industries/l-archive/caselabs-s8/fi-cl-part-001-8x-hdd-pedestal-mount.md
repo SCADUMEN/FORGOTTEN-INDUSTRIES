@@ -49,7 +49,31 @@ Unknown.
 
 ## Hardware Present
 
-Not confirmed in the current photographic sequence.
+The operator reports that the original drive mounting hardware and
+`FI-HDD-ICEPACK-001`, a retained set of WD IcePack mounting frames / heat sinks,
+are present. Direct piece count, condition capture, and fit inspection remain
+pending.
+
+## Assigned Drive Set
+
+`FI-HDD-001` registers the operator-reported set of eight WD VelociRaptor 450 GB
+drives acquired for this mount around 2014. Four drives received preliminary
+non-destructive inspection on 2026-07-20 and identified as 450.1 GB
+`WD4500BLHX-01V7BV0` units. None presented a recognized partition map. Direct
+read-only probes of the first three reported no physical I/O errors; the fourth
+bridge session did not permit a direct raw-device read. No bridge session
+exposed SMART data. The four drives remain test candidates, not certified array
+members. Four drives remain to be inspected.
+
+WD literature distinguishes `WD4500BLHX`, the 2.5-inch drive, from
+`WD4500HLHX`, the 3.5-inch IcePack-equipped assembly. The retained IcePack
+frames remain a separate carrier record until their count, part numbers,
+revisions, and completeness are photographed.
+
+The current design baseline is four mirrored pairs striped across the set, with
+each mirror split across the two physical stacks. This is a proposed topology,
+not a recovered historical configuration. The array must remain a working or
+exhibition tier rather than the only copy of archive material.
 
 ## Build Relevance
 
@@ -60,7 +84,9 @@ Planned as the large pedestal storage plate / side-panel drive bay assembly for 
 - [ ] Verify official CaseLabs part name.
 - [ ] Verify chassis compatibility.
 - [ ] Confirm orientation.
-- [ ] Confirm whether related inserts, windows, trays, screws, or rails are stored separately.
+- [ ] Count and inspect the retained IcePack frames, adapters, thermal pads,
+      screws, and rails.
+- [ ] Qualify all eight drives by direct SATA SMART, self-test, and full read pass.
 - [ ] Decide keep / install / spare / sell / archive.
 
 ## Notes
