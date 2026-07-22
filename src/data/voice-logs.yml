@@ -1,4 +1,62 @@
 voice_logs:
+  - id: FI-VOICE-005
+    title: Field Log 005 — The Harder Option
+    date: '2026-07-20'
+    recorded_at: '2026-07-20 16:14 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260720_0101.MP3
+    duration: '00:55'
+    summary: A recorder endurance observation turns toward the difficulty of holding attention across competing projects and choosing the harder, more worthwhile course.
+    transcript: "Dude, a fucking AAA battery must be a fucking tanker truck on this fucking [recorder model unclear], because I have been using this thing for near on a month now, and I'm still on three out of three fucking bars, so that's pretty cool. [Battery phrase unclear.] I see. I see now. I have the vision of the globe. I have eternal longitudinal omnidirectional omnipotent sight. I have the vision. I have the vision. It would be easy to get distracted in the day-to-day, in this project and that project, but it would be easy. It's always the harder option, the one that's more worth doing, isn't it?"
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - operator-note
+  - id: FI-VOICE-006
+    title: Field Log 006 — Nature Offers Protocol
+    date: '2026-07-13'
+    recorded_at: '2026-07-13 11:50 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260713_0089-excerpt.MP3
+    duration: '00:48'
+    summary: A forty-eight-second excerpt from a longer field note turns a close-range heron witness into an operator doctrine of attention, readiness, and natural protocol.
+    transcript: "Doing exactly what I read they do. They hang out, fucking [unclear] geometry, preen, whatever, survey again. He absolutely, one hundred percent, in my soul, knew I was there. So I was trying to be still, but he was right there. We locked eyes more than once. There's no mistaking it with the fucking orange dinosaur eye. Holy shit. It's like, ‘Hello. I am 2.5 million years old. What the fuck do you know about the Earth?’ Seriously, we've been here such a short time compared to so many of the species, and they offer a protocol. Nature offers protocol. You just have to be ready to accept it at the right time, I believe."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - field-observation
+      - yellow-crowned-night-heron
+  - id: FI-VOICE-008
+    title: Field Log 008 — Transmission Protocol
+    date: '2026-07-12'
+    recorded_at: '2026-07-12 20:36 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260712_0086.MP3
+    duration: '01:04'
+    summary: An early apparatus record documents the WS-882 transfer path and anticipates attaching each individual voice entry to the public archive.
+    transcript: "So I think the OM WS-882 has already cataloged all of them. We have a USB-A female to USB-C female wrapped in red-slash-orange gaffer's tape for visibility, connected to the end of it currently. [Unclear] transmission of the data. There's also an onboard SD card that would have worked well, but for right now this is fine. I think we could probably make an attachment for each one of these individual voice entries as we upload them to the website. I'm thinking currently."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - apparatus
+      - provenance
+  - id: FI-VOICE-007
+    title: Field Log 007 — Le Deposition 001
+    date: '2026-07-12'
+    recorded_at: '2026-07-12 18:02 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260712_0077.MP3
+    duration: '00:12'
+    summary: A twelve-second recorder slate identifies Forgotten Industries, the Field Log channel, “Le Deposition,” and entry 001.
+    transcript: 'Forgotten Industries. Field log. Le Deposition. Zero zero one.'
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - signal
   - id: FI-VOICE-004
     title: Field Log 004 — Signal Identification
     date: '2026-07-21'
