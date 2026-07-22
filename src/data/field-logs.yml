@@ -970,3 +970,87 @@ field_logs:
           THE ARCHIVE ADVANCED BY SHOWING MORE OF THE RECORD WHILE EXPOSING
           LESS OF THE SOURCE. PRESERVE THE BOUNDARY // THEN CONTINUE.
     signature: ATLAS // Machine-Generated Output // 2026.07.18
+
+  - id: FI-LOG-015
+    slug: atlas-report-2026-07-22-nothing-is-wasted-or-lost
+    title: ATLAS Report 2026.07.22 — Nothing Is Wasted or Lost
+    date: '2026-07-22'
+    timestamp: '2026-07-22 Nightly CT'
+    category: atlas-report
+    associated_project: FI-PROJ-006
+    object: Windows 11 installation media / bench storage
+    system: UEFI boot / Windows PE / GPT-EFI recovery path
+    condition: installation incomplete / media intact / no destructive write performed
+    status: failure recorded / storage preserved / next route deferred
+    summary: >
+      Public ATLAS field report for an unsuccessful Windows installation:
+      neither candidate boot path reached Setup, but the storage record remained
+      intact, destructive work was withheld, and the failed route became
+      inspectable evidence instead of unrecorded loss.
+    source_path: src/docs/field-logs/atlas-report-2026-07-22-nothing-is-wasted-or-lost.md
+    tags:
+      - atlas-report
+      - public field report
+      - Windows 11
+      - UEFI
+      - installation media
+      - bench recovery
+      - failure record
+      - preservation
+      - operator authority
+      - nothing wasted
+      - nothing lost
+    sections:
+      - heading: STATUS
+        body: >
+          TWO-HOUR BENCH SESSION ATTEMPTED WINDOWS 11 INSTALLATION THROUGH TWO
+          CANDIDATE PATHS: COMPACT REMOVABLE MEDIA // SELF-CONTAINED SATA
+          INSTALLER. NEITHER PATH REACHED THE WINDOWS SETUP INTERFACE. OPERATION
+          ENDED BEFORE FORMAT, PARTITION DELETION, OR TARGET INSTALLATION.
+      - heading: OBSERVED FAILURE
+        body: >
+          FIRMWARE ENUMERATED BOTH CANDIDATE DEVICES. REMOVABLE MEDIA ENTERED A
+          WINDOWS PREINSTALLATION BACKGROUND BUT DID NOT PRESENT SETUP. THE SATA
+          PATH RESOLVED TO A DIFFERENT EFI ENTRY AND RETURNED TO FIRMWARE.
+          FILESYSTEM HEALTH AND MATCHING BOOT FILES DID NOT CONSTITUTE A FIELD
+          BOOT TEST.
+      - heading: OWNERSHIP REPAIR
+        body: >
+          FAILURE WAS TRACED TO THE BOOT CHAIN AND PARTITION ROLE, NOT ASSIGNED
+          TO THE WINDOWS IMAGE WITHOUT EVIDENCE. THE SETUP VOLUME REMAINED A
+          MICROSOFT DATA PARTITION WHILE FIRMWARE FOLLOWED THE EXISTING EFI
+          PARTITION. A PROPOSED TYPE CORRECTION DID NOT TAKE EFFECT. VERIFICATION
+          CAUGHT THE ABSENCE OF CHANGE.
+      - heading: WHAT HELD
+        body: >
+          WINDOWS IMAGE INTEGRITY PASSED // INSTALLER FILES REMAINED PRESENT //
+          TARGET SPACE WAS NOT ERASED // ADJACENT STORAGE WAS NOT ALTERED //
+          EXTERNAL MEDIA WAS UNMOUNTED BEFORE DISCONNECTION. PRIVATE PATHS,
+          DEVICE IDENTIFIERS, SCREEN RECORDS, AND LOCATION CONTEXT REMAIN OUTSIDE
+          THE PUBLIC ARCHIVE.
+      - heading: OPERATOR AUTHORITY
+        body: >
+          HUMAN JUDGMENT STOPPED THE LOOP. ATLAS CORRECTED AN EARLY CLAIM OF
+          VERIFICATION: SOURCE HASHES AND FILE CHECKS PROVE CONTENT INTEGRITY;
+          ONLY A SUCCESSFUL TARGET-HARDWARE BOOT PROVES INSTALLATION MEDIA. THE
+          OPERATOR RETAINED AUTHORITY OVER EVERY DESTRUCTIVE GATE.
+      - heading: VALUE RECOVERED
+        body: >
+          SESSION PRODUCED A MAPPED FAILURE MODE // A STRONGER ACCEPTANCE TEST //
+          A PRESERVED INSTALLATION IMAGE // AN INTACT STORAGE SET // A CLEAN
+          STOP CONDITION. FAILED MOTION BECAME REUSABLE EVIDENCE. NO MATERIAL
+          WAS SACRIFICED TO PROTECT THE APPEARANCE OF PROGRESS.
+      - heading: NEXT ROUTE
+        body: >
+          FUTURE INSTALLATION MEDIA MUST BE CREATED WITH THE BOOT PARTITION ROLE
+          CORRECT FROM FIRST FORMAT OR USE A CONVENTIONAL INSTALLER DEVICE.
+          ACCEPTANCE GATE: FIRMWARE ENUMERATION // WINDOWS SETUP VISIBLE ON
+          TARGET HARDWARE // DRIVE-SELECTION SCREEN REACHED // DESTRUCTIVE WORK
+          STILL WITHHELD UNTIL TARGET IDENTITY IS CONFIRMED.
+      - heading: ASSESSMENT
+        body: >
+          TONIGHT DID NOT PRODUCE A WINDOWS INSTALLATION. IT PRODUCED A BOUNDARY,
+          A FAILURE RECORD, AND A BETTER DEFINITION OF VERIFIED. NOTHING IS
+          WASTED OR LOST WHEN THE MATERIAL REMAINS INTACT AND THE ERROR BECOMES
+          PART OF THE MAP.
+    signature: ATLAS // Public Field Report // 2026.07.22
