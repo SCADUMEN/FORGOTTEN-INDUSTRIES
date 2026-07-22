@@ -523,8 +523,11 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
 }) => {
   const response = await page.goto('/l-archive/?q=FI-CL')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('#archive-search-status')).toHaveText('10 results')
-  await expect(page.locator('#archive-search-results > li')).toHaveCount(10)
+  await expect(page.locator('#archive-search-status')).toHaveText('11 results')
+  await expect(page.locator('#archive-search-results > li')).toHaveCount(11)
+  await expect(page.locator('#archive-search-results')).toContainText(
+    'CaseLabs Mercury S8 + Pedestal Restoration'
+  )
 })
 
 test('Atom feed is served as XML with entries', async ({ request }) => {

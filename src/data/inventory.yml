@@ -78,6 +78,74 @@ items:
     keep_sell_archive: undecided
     date_logged: '2026-06-20'
 
+  - id: FI-HDD-001
+    name: WD VelociRaptor 450 GB drive set
+    category: hard disk drive
+    manufacturer: Western Digital
+    model: WD4500BLHX / observed suffix WD4500BLHX-01V7BV0
+    quantity: 8 reported / 4 directly identified / 4 pending inspection
+    associated_project: FI-PROJ-001
+    condition: stored / four preliminary identifications completed / full health state unknown
+    status: registered set / direct-SATA qualification pending
+    photos: []
+    notes: >
+      Operator reports eight 450 GB WD VelociRaptor drives acquired for the
+      CaseLabs pedestal storage assembly around 2014. Four units inspected
+      through a USB bridge on 2026-07-20 each reported model
+      WD4500BLHX-01V7BV0 and 450.1 GB capacity. None presented a recognized
+      partition map. Read-only probes of the first three logged no physical I/O
+      errors; the fourth bridge session did not permit a direct raw-device read.
+      The USB bridge did not expose SMART data. WD product literature
+      distinguishes the WD4500BLHX as the 2.5-inch drive and the WD4500HLHX as
+      the 3.5-inch IcePack-equipped assembly. Do not promote any unit to
+      working-array status
+      before direct-SATA identity, SMART, short and extended self-tests, and a
+      complete read pass. Individual non-public test handles VR-01 through
+      VR-08 may be assigned after label photography; serial numbers remain
+      outside the public record.
+    tags:
+      - Western Digital
+      - WD VelociRaptor
+      - WD4500BLHX
+      - 450 GB
+      - 10000 RPM HDD
+      - SATA 6 Gb/s
+      - CaseLabs pedestal storage
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-07-20'
+
+  - id: FI-HDD-ICEPACK-001
+    name: WD IcePack 2.5-to-3.5-inch mounting-frame set
+    category: hard drive carrier / heat sink
+    manufacturer: Western Digital
+    model: IcePack mounting frame / exact part number and revision pending
+    quantity: retained set / direct count pending
+    associated_project: FI-PROJ-001
+    condition: stored / direct inspection pending
+    status: operator-confirmed identity / count and completeness pending
+    photos: []
+    notes: >
+      Operator identifies the retained VelociRaptor carriers as WD IcePack
+      frames. The IcePack is the Western Digital 2.5-to-3.5-inch mounting frame
+      and heat sink associated with 3.5-inch VelociRaptor assemblies. Exact
+      frame part number, revision, quantity, adapter-board presence, thermal-pad
+      condition, screws, and relationship to each WD4500BLHX drive require
+      direct photography and reconciliation. Do not assume the presence of an
+      IcePack changes a drive's device-reported model from WD4500BLHX to the
+      WD4500HLHX retail-assembly designation.
+    tags:
+      - Western Digital
+      - WD IcePack
+      - hard drive carrier
+      - heat sink
+      - 2.5-inch to 3.5-inch
+      - WD VelociRaptor
+      - CaseLabs pedestal storage
+    estimated_value:
+    keep_sell_archive: keep pending inspection
+    date_logged: '2026-07-20'
+
   - id: FI-CL-PART-002
     name: 120 mm Flex-Bay 4× HDD Cage with Fan
     category: case accessory

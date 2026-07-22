@@ -189,6 +189,9 @@ projects:
       - FI-RES-001
       - FI-PSU-001
       - FI-BLOCK-MOSFET-001
+      - FI-CL-PART-001
+      - FI-HDD-001
+      - FI-HDD-ICEPACK-001
       - FI-FIT-QDC-001
       - FI-CASE-PANEL-001
       - FI-CASE-FRAME-001
@@ -241,6 +244,15 @@ projects:
         Complete inventory and chassis restoration before selling any
         restoration-critical component. Do not decide whether to sell the ship
         while it is still in dry dock.
+    source_links:
+      - label: Subsystems dossier
+        type: local
+        role: public working dossier
+        path: src/projects/caselabs-mercury-s8/README.md
+      - label: X99 recovery dossier
+        type: local
+        role: candidate compute-core fault history
+        path: src/projects/x99-impact-recovery/README.md
     documentation_style:
       - Photograph before cleaning
       - Identify panel by panel
