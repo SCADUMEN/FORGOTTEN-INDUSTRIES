@@ -1,4 +1,33 @@
 voice_logs:
+  - id: FI-VOICE-010
+    title: Field Log 010 — Label Visibility Protocol
+    date: '2026-07-30'
+    recorded_at: '2026-07-30 10:57 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260730_0106-excerpt.MP3
+    duration: '01:48'
+    summary: An approved excerpt from an L'Archive labeling trial defines three-point label placement for photographic verification against the written ledger and records how latch geometry constrains the visible record.
+    transcript: "I've got about fifteen. Oh, let's see what's up here. The orange film tape. I think it's two-inch tape. It's important that the label be visible from the top and on the front, and then the inside of the lid at the very base. For photo verification against the written ledger, the label needs to be visible. So if we start with three label spots, with the latch facing me at the top, and then the handle, and then the front, and then the latch at the base. The latch itself obscures a lot of the middle of the front side. There's various states of activation. This is going to be sixteen, I think."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - apparatus
+      - provenance
+  - id: FI-VOICE-009
+    title: Field Log 009 — Archive Identification Sequence
+    date: '2026-07-30'
+    recorded_at: '2026-07-30 10:47 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260730_0105.MP3
+    duration: '00:56'
+    summary: A compact sequence of public identifications states L'Archive's purpose, repeats the preservation maxim, and joins system awakening to provenance, resistance, and an inherited ammunition can.
+    transcript: "You have entered L'Archive. An elegant organizing solution, because some things are worth remembering. We know where data goes to die. L'Archive makes sure it doesn't. A thing documented is a thing not yet lost. This is how the system awakens. Not by force, but by sequence. Progress is voltage held steady. ForgottenIndustries.net. Contre l'Oubli. Resist forgetting. Provenance from on high. My dad's ammo can."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - signal
   - id: FI-VOICE-005
     title: Field Log 005 — The Harder Option
     date: '2026-07-20'
