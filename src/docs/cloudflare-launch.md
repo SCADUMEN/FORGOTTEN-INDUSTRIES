@@ -13,7 +13,8 @@ the hosting instrument, not the archive build or public record boundary.
 - `npm run build:site` remains the production build.
 - `_site/` remains the only directory uploaded to the host.
 - `npm run audit:public` must pass before deployment.
-- `_redirects` and `.well-known/security.txt` remain inside `_site/`.
+- `_redirects`, `_headers`, and `.well-known/security.txt` remain inside
+  `_site/`.
 - GitHub Pages remains the temporary production origin until the Worker preview
   and custom domain are both verified.
 
@@ -30,7 +31,7 @@ Local verification:
 npm ci
 npm run build:site
 npm run audit:public
-npx wrangler deploy --dry-run
+npm run worker:dry-run
 ```
 
 Authenticated preview deployment:
@@ -117,15 +118,18 @@ The manual `.github/workflows/deploy-worker-preview.yml` workflow consumes the
 organization secrets without repository-specific configuration.
 
 The preview workflow does not run on pushes. It builds and audits the archive,
-then deploys the `forgotten-industries` Worker to its `workers.dev` hostname.
-The current GitHub Pages workflow continues to own production during this
-verification phase.
+validates the Worker bundle, deploys the `forgotten-industries` Worker to its
+`workers.dev` hostname, and runs the release verifier against the deployed
+routes. Every `workers.dev` response carries `X-Robots-Tag: noindex`; the
+production custom domain remains indexable. The current GitHub Pages workflow
+continues to own production during this verification phase.
 
 ## Cutover Sequence
 
 1. Deploy the Worker preview.
-2. Verify the homepage, representative route families, `_redirects`,
-   `.well-known/security.txt`, the feed, sitemap, public JSON, and a true 404.
+2. Confirm the automated `npm run verify:worker` checks for the homepage,
+   representative route families, `_redirects`, `.well-known/security.txt`, the
+   feed, sitemap, public JSON, a true 404, and the preview noindex header.
 3. Add `forgotten-industries.net` as a Worker Custom Domain.
 4. Verify the Cloudflare-issued certificate and production responses.
 5. Replace the preview-only workflow with the `main` deployment trigger.

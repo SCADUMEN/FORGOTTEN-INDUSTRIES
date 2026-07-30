@@ -67,3 +67,8 @@ playwright-report/
 /intake/**/*.WAV
 /intake/**/*.wav
 /intake/**/*.zip
+
+# Cloudflare local state and credentials never enter the archive.
+.wrangler/
+.dev.vars
+.dev.vars.*
