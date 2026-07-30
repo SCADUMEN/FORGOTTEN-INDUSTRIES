@@ -12,6 +12,41 @@ eleventyExcludeFromCollections: true
 {% set indexedRecordCount = (archive.projects | count) + (archive.inventory | count) + (archive.fieldLogs | count) + (archive.voiceLogs | count) + (archive.socialPosts | count) + (collections.posts | count) %}
 {% set publicRouteUrls = collections.all | publicSitemapUrls(site.sitemapExtraUrls, site.domainUrl, archive) %}
 {% set publicRouteCount = (publicRouteUrls | count) + (taxonomy.categories | count) + (taxonomy.tags | count) + (taxonomy.status | count) + (taxonomy.systems | count) %}
+{% macro archiveContainerCard(box, expanded) %}
+<button
+  class="archive-container-card"
+  type="button"
+  data-box-id="{{ box.id }}"
+  data-box-state="{{ box.state }}"
+  data-box-state-label="{{ box.stateLabel }}"
+  data-box-evidence="{{ box.evidenceLabel }}"
+  data-box-manifest="{{ box.manifestLabel }}"
+  data-box-ledger="{{ box.ledgerLabel }}"
+  data-box-clearance="{{ box.clearance }}"
+  aria-controls="archive-container-observation"
+  aria-expanded="{{ expanded }}"
+>
+  <span class="archive-container-ordinal">{{ box.sequenceLabel }}</span>
+  <span class="archive-container-figure" data-box-figure aria-hidden="true">
+    <span class="archive-container-profile">
+      <span class="archive-container-lid">
+        <span class="archive-container-handle"></span>
+      </span>
+      <span class="archive-container-body">
+        <span class="archive-container-stencil">M19A1<br>.30 CAL</span>
+        <span class="archive-container-label">{{ box.sequenceLabel }}</span>
+        <span class="archive-container-redaction">RECORD</span>
+      </span>
+      <span class="archive-container-latch"></span>
+    </span>
+  </span>
+  <span class="archive-container-card-meta">
+    <strong>{{ box.id }}</strong>
+    <span>{{ box.stateLabel }}</span>
+    <em>{{ box.clearance }} minimum</em>
+  </span>
+</button>
+{% endmacro %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <div class="spine-hero-title-block">
@@ -395,6 +430,457 @@ eleventyExcludeFromCollections: true
     </script>
   </div>
 </section>
+
+<section class="archive-container-register" aria-labelledby="archive-container-register-heading">
+  <div class="section-inner">
+    <header class="archive-register-header">
+      <div>
+        <p class="section-label">Physical archive / digital register</p>
+        <h2 id="archive-container-register-heading">LE-BOX · 000–025</h2>
+        <p class="archive-register-deck">
+          Twenty-six container records represented as finding aids. The
+          projection changes with clearance; the physical record does not.
+        </p>
+      </div>
+      <dl class="archive-register-instrumentation" aria-label="LE-BOX register state">
+        <div>
+          <dt>Container class</dt>
+          <dd>LE-BOX</dd>
+        </div>
+        <div>
+          <dt>Register span</dt>
+          <dd>000–025</dd>
+        </div>
+        <div>
+          <dt>Handling unit</dt>
+          <dd>05 open maximum</dd>
+        </div>
+        <div>
+          <dt>Custody</dt>
+          <dd>Local / private</dd>
+        </div>
+      </dl>
+    </header>
+
+    <div class="archive-clearance-console" aria-labelledby="archive-clearance-heading">
+      <div class="archive-clearance-heading">
+        <p id="archive-clearance-heading" class="section-label fi-caption-box">
+          <span class="fi-prompt-marker">&gt;</span> Projection clearance
+        </p>
+        <p id="archive-clearance-status" class="archive-clearance-status" aria-live="polite">
+          C0 / public reference projection
+        </p>
+      </div>
+      <div class="archive-clearance-levels" role="group" aria-label="Projection clearance">
+        <button type="button" data-clearance="C0" aria-pressed="true">
+          <span>C0</span>
+          <strong>Public reference</strong>
+          <small>Identifier + lifecycle state</small>
+        </button>
+        <button type="button" data-clearance="C1" aria-pressed="false">
+          <span>C1</span>
+          <strong>Reading room</strong>
+          <small>Finding-aid metadata</small>
+        </button>
+        <button type="button" data-clearance="C2" aria-pressed="false">
+          <span>C2</span>
+          <strong>Operator custody</strong>
+          <small>Local evidence + manifest</small>
+        </button>
+      </div>
+      <p class="archive-clearance-doctrine">
+        Clearance controls representation, not source custody. C2 resolves only
+        when the ignored local operator register is present.
+      </p>
+    </div>
+
+    <div class="archive-container-filter">
+      <label for="archive-container-filter-input">
+        <span>Filter this register</span>
+        <small>ID, state, evidence, or visible operator description</small>
+      </label>
+      <input
+        id="archive-container-filter-input"
+        type="search"
+        autocomplete="off"
+        placeholder="LE-BOX-012, image required, cooling…"
+      >
+      <output id="archive-container-filter-count" for="archive-container-filter-input">
+        26 / 26 records
+      </output>
+    </div>
+
+    <div class="archive-register-worktable">
+      <div class="archive-container-shelf">
+        <section class="archive-container-control-tier" aria-labelledby="archive-container-control-heading">
+          <header>
+            <p class="section-label">Register control / outside working rows</p>
+            <h3 id="archive-container-control-heading">LE-BOX-000</h3>
+            <p>
+              Index and control can. Held apart from the five-container physical
+              access units below.
+            </p>
+            <dl>
+              <div>
+                <dt>Physical pattern</dt>
+                <dd>M19A1 · drawing 7553315</dd>
+              </div>
+              <div>
+                <dt>Maximum envelope</dt>
+                <dd>11 × 3 13/16 × 7 1/4 in</dd>
+              </div>
+            </dl>
+          </header>
+          {% for box in larchiveBoxes %}
+            {% if box.sequence == 0 %}
+            <div class="archive-container-control-card" data-box-list-item>
+              {{ archiveContainerCard(box, "true") }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </section>
+
+        <header class="archive-container-shelf-heading">
+          <div>
+            <p class="section-label">Five-container access units</p>
+            <h3>Working shelves · 001–025</h3>
+          </div>
+          <p>
+            05 rows / 05 cans per row<br>
+            one row = one manageable open set
+          </p>
+        </header>
+
+        <ol class="archive-container-grid" aria-label="LE-BOX working-shelf digital representations">
+        {% for box in larchiveBoxes %}
+          {% if box.sequence > 0 %}
+          <li data-box-list-item>
+            {{ archiveContainerCard(box, "false") }}
+          </li>
+          {% endif %}
+        {% endfor %}
+        </ol>
+      </div>
+
+      <article
+        id="archive-container-observation"
+        class="archive-container-observation"
+        aria-labelledby="archive-container-observation-heading"
+        data-clearance-view="C0"
+      >
+        <header class="archive-observation-header">
+          <div>
+            <p class="section-label">Inline observation</p>
+            <h3 id="archive-container-observation-heading">LE-BOX-000</h3>
+          </div>
+          <p class="archive-observation-stamp" data-detail-stamp>C0 / reference</p>
+        </header>
+
+        <div class="archive-observation-evidence">
+          <figure class="archive-observation-figure" data-photo-figure>
+            <div class="archive-evidence-image" data-photo-frame>
+              <span>PHYSICAL STATE<br>WITHHELD</span>
+            </div>
+            <figcaption>
+              <span>Witness A</span>
+              <strong>Single-box visual state</strong>
+            </figcaption>
+          </figure>
+          <figure class="archive-observation-figure archive-ledger-figure" data-ledger-figure>
+            <div class="archive-evidence-image" data-ledger-frame>
+              <span>LEDGER WITNESS<br>WITHHELD</span>
+            </div>
+            <figcaption>
+              <span>Witness B</span>
+              <strong>Handwritten historical ledger</strong>
+            </figcaption>
+          </figure>
+        </div>
+
+        <dl class="archive-observation-fields">
+          <div>
+            <dt>Record state</dt>
+            <dd data-detail-state>Visual state held</dd>
+          </div>
+          <div>
+            <dt>Evidence</dt>
+            <dd data-detail-evidence>Withheld at C0</dd>
+          </div>
+          <div>
+            <dt>Manifest</dt>
+            <dd data-detail-manifest>Withheld at C0</dd>
+          </div>
+          <div>
+            <dt>Ledger relation</dt>
+            <dd data-detail-ledger>Withheld at C0</dd>
+          </div>
+        </dl>
+
+        <div class="archive-observation-contents">
+          <p class="section-label">Contents observation</p>
+          <ul data-detail-contents>
+            <li><span class="archive-redacted-line">REDACTED</span></li>
+            <li><span class="archive-redacted-line archive-redacted-line-short">REDACTED</span></li>
+          </ul>
+          <p class="entry-note" data-detail-limits>
+            Contents, source paths, and evidence images are withheld in the
+            public reference projection.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <aside class="archive-container-class-boundary" aria-label="Container class boundary">
+      <div>
+        <span>Active register</span>
+        <strong>LE-BOX</strong>
+        <p>Small numbered box / this wall only.</p>
+      </div>
+      <div>
+        <span>Separate register</span>
+        <strong>LE-TUPPER</strong>
+        <p>Sterilite / Tupperware storage remains a distinct container class.</p>
+      </div>
+      <p>
+        No identifier, image, ledger entry, or contents record crosses this
+        boundary by inference.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var register = document.querySelector('.archive-container-register');
+    if (!register) return;
+
+    var cards = Array.prototype.slice.call(register.querySelectorAll('[data-box-id]'));
+    var listItems = Array.prototype.slice.call(register.querySelectorAll('[data-box-list-item]'));
+    var clearanceButtons = Array.prototype.slice.call(register.querySelectorAll('[data-clearance]'));
+    var clearanceStatus = document.getElementById('archive-clearance-status');
+    var filterInput = document.getElementById('archive-container-filter-input');
+    var filterCount = document.getElementById('archive-container-filter-count');
+    var observation = document.getElementById('archive-container-observation');
+    var observationHeading = document.getElementById('archive-container-observation-heading');
+    var detailStamp = observation.querySelector('[data-detail-stamp]');
+    var detailState = observation.querySelector('[data-detail-state]');
+    var detailEvidence = observation.querySelector('[data-detail-evidence]');
+    var detailManifest = observation.querySelector('[data-detail-manifest]');
+    var detailLedger = observation.querySelector('[data-detail-ledger]');
+    var detailContents = observation.querySelector('[data-detail-contents]');
+    var detailLimits = observation.querySelector('[data-detail-limits]');
+    var photoFrame = observation.querySelector('[data-photo-frame]');
+    var ledgerFrame = observation.querySelector('[data-ledger-frame]');
+    var currentClearance = 'C0';
+    var selectedId = cards.length ? cards[0].dataset.boxId : '';
+    var operatorRecords = {};
+    var operatorReady = false;
+
+    function replaceFrame(frame, source, alternative, withheldLabel) {
+      frame.replaceChildren();
+      if (source) {
+        var image = document.createElement('img');
+        image.src = source;
+        image.alt = alternative;
+        image.loading = 'eager';
+        frame.appendChild(image);
+        return;
+      }
+
+      var placeholder = document.createElement('span');
+      placeholder.innerHTML = withheldLabel.replace(' / ', '<br>');
+      frame.appendChild(placeholder);
+    }
+
+    function replaceContents(items, redacted) {
+      detailContents.replaceChildren();
+      if (redacted) {
+        ['REDACTED', 'REDACTED'].forEach(function(label, index) {
+          var item = document.createElement('li');
+          var line = document.createElement('span');
+          line.className = 'archive-redacted-line' + (index ? ' archive-redacted-line-short' : '');
+          line.textContent = label;
+          item.appendChild(line);
+          detailContents.appendChild(item);
+        });
+        return;
+      }
+
+      (items && items.length ? items : ['No contents observation recorded.']).forEach(function(value) {
+        var item = document.createElement('li');
+        item.textContent = value;
+        detailContents.appendChild(item);
+      });
+    }
+
+    function updateCardFigures() {
+      cards.forEach(function(card) {
+        var figure = card.querySelector('[data-box-figure]');
+        var operatorRecord = operatorRecords[card.dataset.boxId];
+        if (currentClearance === 'C2' && operatorRecord && operatorRecord.photo) {
+          figure.style.setProperty('--box-preview', 'url("' + operatorRecord.photo + '")');
+          figure.dataset.evidenceVisible = 'true';
+        } else {
+          figure.style.removeProperty('--box-preview');
+          delete figure.dataset.evidenceVisible;
+        }
+      });
+    }
+
+    function renderObservation(id) {
+      var card = cards.find(function(candidate) {
+        return candidate.dataset.boxId === id;
+      });
+      if (!card) return;
+
+      selectedId = id;
+      cards.forEach(function(candidate) {
+        var active = candidate === card;
+        candidate.setAttribute('aria-expanded', active ? 'true' : 'false');
+      });
+
+      var operatorRecord = operatorRecords[id];
+      var operatorView = currentClearance === 'C2' && operatorReady && operatorRecord;
+      observation.dataset.clearanceView = currentClearance;
+      observationHeading.textContent = id;
+      detailState.textContent = card.dataset.boxStateLabel;
+
+      if (operatorView) {
+        detailStamp.textContent = 'C2 / operator custody';
+        detailEvidence.textContent = operatorRecord.evidence || card.dataset.boxEvidence;
+        detailManifest.textContent = operatorRecord.manifest || card.dataset.boxManifest;
+        detailLedger.textContent = operatorRecord.ledger || card.dataset.boxLedger;
+        detailLimits.textContent = operatorRecord.limits || 'No additional evidence limit recorded.';
+        replaceContents(operatorRecord.contents, false);
+        replaceFrame(
+          photoFrame,
+          operatorRecord.photo,
+          id + ' labelled open-top contents state',
+          'IMAGE / REQUIRED'
+        );
+        replaceFrame(
+          ledgerFrame,
+          operatorRecord.ledgerImage,
+          'Handwritten LE-BOX ledger witness',
+          'LEDGER / NOT ASSIGNED'
+        );
+        return;
+      }
+
+      if (currentClearance === 'C1') {
+        detailStamp.textContent = 'C1 / reading room';
+        detailEvidence.textContent = card.dataset.boxEvidence;
+        detailManifest.textContent = card.dataset.boxManifest;
+        detailLedger.textContent = card.dataset.boxLedger;
+        detailLimits.textContent =
+          'Finding-aid metadata is visible. Contents descriptions, source paths, and evidence images remain redacted pending explicit curatorial clearance.';
+        replaceContents([], true);
+        replaceFrame(photoFrame, '', '', 'PHYSICAL STATE / REDACTED');
+        replaceFrame(ledgerFrame, '', '', 'LEDGER WITNESS / REDACTED');
+        return;
+      }
+
+      detailStamp.textContent = 'C0 / public reference';
+      detailEvidence.textContent = 'Withheld at C0';
+      detailManifest.textContent = 'Withheld at C0';
+      detailLedger.textContent = 'Withheld at C0';
+      detailLimits.textContent =
+        'Contents, source paths, and evidence images are withheld in the public reference projection.';
+      replaceContents([], true);
+      replaceFrame(photoFrame, '', '', 'PHYSICAL STATE / WITHHELD');
+      replaceFrame(ledgerFrame, '', '', 'LEDGER WITNESS / WITHHELD');
+    }
+
+    function setClearance(clearance) {
+      if (clearance === 'C2' && !operatorReady) {
+        clearanceStatus.textContent = 'C2 / local operator register unavailable';
+        return;
+      }
+
+      currentClearance = clearance;
+      clearanceButtons.forEach(function(button) {
+        button.setAttribute('aria-pressed', button.dataset.clearance === clearance ? 'true' : 'false');
+      });
+      clearanceStatus.textContent =
+        clearance === 'C0'
+          ? 'C0 / public reference projection'
+          : clearance === 'C1'
+            ? 'C1 / mediated reading-room projection'
+            : 'C2 / local operator register resolved';
+      updateCardFigures();
+      renderObservation(selectedId);
+      runFilter();
+    }
+
+    function runFilter() {
+      var query = filterInput.value.trim().toLowerCase();
+      var visible = 0;
+
+      cards.forEach(function(card, index) {
+        var operatorRecord = operatorRecords[card.dataset.boxId];
+        var operatorText =
+          currentClearance === 'C2' && operatorRecord
+            ? [operatorRecord.contents, operatorRecord.limits, operatorRecord.ledger]
+                .flat()
+                .join(' ')
+            : '';
+        var haystack = [
+          card.dataset.boxId,
+          card.dataset.boxStateLabel,
+          card.dataset.boxEvidence,
+          card.dataset.boxManifest,
+          card.dataset.boxLedger,
+          operatorText
+        ]
+          .join(' ')
+          .toLowerCase();
+        var match = !query || haystack.indexOf(query) !== -1;
+        listItems[index].hidden = !match;
+        if (match) visible += 1;
+      });
+
+      filterCount.value = visible + ' / ' + cards.length + ' records';
+    }
+
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        renderObservation(card.dataset.boxId);
+        if (window.matchMedia('(max-width: 1120px)').matches) {
+          observation.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    clearanceButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        setClearance(button.dataset.clearance);
+      });
+    });
+
+    filterInput.addEventListener('input', runFilter);
+    renderObservation(selectedId);
+
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      fetch('/__operator/register.json', { cache: 'no-store' })
+        .then(function(response) {
+          if (!response.ok) throw new Error('operator register unavailable');
+          return response.json();
+        })
+        .then(function(payload) {
+          operatorRecords = payload.records || {};
+          operatorReady = true;
+          register.dataset.operatorRegister = 'ready';
+          clearanceStatus.textContent = 'C0 / public reference projection / C2 local source ready';
+        })
+        .catch(function() {
+          register.dataset.operatorRegister = 'absent';
+        });
+    }
+  })();
+</script>
 
 <section class="section-directory archive-finding-aid" aria-labelledby="archive-directory-heading">
   <div class="section-inner">
