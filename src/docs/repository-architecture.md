@@ -15,11 +15,11 @@ GitHub repository slugs cannot reliably carry spaces and parentheses, so use the
 
 ## Proposed Repository Map
 
-| Human name      | Suggested slug                         | Visibility                   | Role                                                                                       |
-| --------------- | -------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------ |
-| `FI (src)`      | `fi-src` or `FORGOTTEN-INDUSTRIES`     | private or restricted public | Canonical YAML, markdown drafts, archive notes, build scripts, generated data package.     |
-| `FI (pub)`      | `fi-pub` or `forgotten-industries.net` | public                       | Eleventy/static public shell, public pages, deploy workflows, public assets, domain/CNAME. |
-| Private staging | not public                             | private                      | Sensitive raw staging, credentials, private identity/account material, unredacted intake.  |
+| Human name      | Suggested slug                         | Visibility                   | Role                                                                                               |
+| --------------- | -------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------- |
+| `FI (src)`      | `fi-src` or `FORGOTTEN-INDUSTRIES`     | private or restricted public | Canonical YAML, markdown drafts, archive notes, build scripts, generated data package.             |
+| `FI (pub)`      | `fi-pub` or `forgotten-industries.net` | public                       | Eleventy/static public shell, public pages, deploy workflows, public assets, Worker configuration. |
+| Private staging | not public                             | private                      | Sensitive raw staging, credentials, private identity/account material, unredacted intake.          |
 
 ## Boundary Rules
 
@@ -62,7 +62,7 @@ forgotten-industries.net
 - public pages
 - public assets
 - deployment workflows
-- `CNAME`
+- `wrangler.jsonc`
 - imported public bundle from `FI (src)`
 
 ### Private Staging
@@ -80,7 +80,7 @@ forgotten-industries.net
 3. Move Eleventy-specific files from this repository into `FI (pub)`:
    - `eleventy.config.cjs`
    - `site/`
-   - `.github/workflows/deploy-pages.yml`
+   - `.github/workflows/deploy-worker.yml`
    - public deploy docs
 4. Keep canonical archive data and package generation in `FI (src)`.
 5. Create an explicit export step from `FI (src)` to `FI (pub)`.
