@@ -13,6 +13,7 @@
   {% if redirectTo %}<noscript><meta http-equiv="refresh" content="0; url={{ redirectTo }}"></noscript>{% endif %}
   <title>{{ metaTitle }}{% if metaTitle != site.name %} &mdash; {{ site.name }}{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
   <meta name="description" content="{{ metaDescription }}">
   <meta name="author" content="{{ author or site.author }}">
   {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}

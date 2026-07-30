@@ -1,7 +1,12 @@
 // Saved cross-references, as a removable chip bar under the search box. Each
 // chip restores a whole configuration (both sources, query, anchored post);
 // the ✕ removes it. Renders nothing when there are no bookmarks.
-export default function BookmarkBar({ bookmarks, manifest, onRestore, onRemove }) {
+export default function BookmarkBar({
+  bookmarks,
+  manifest,
+  onRestore,
+  onRemove,
+}) {
   if (!bookmarks.length) return null
 
   // Short SYSOUT-style source code from a source id (fi -> FI). Falls back to

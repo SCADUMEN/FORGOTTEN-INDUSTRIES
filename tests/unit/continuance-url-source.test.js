@@ -11,7 +11,10 @@ const URL = 'https://example.com/data'
 describe('buildProxyUrl', () => {
   it('routes a target through the proxy as an encoded ?url= param', () => {
     expect(
-      buildProxyUrl('https://cors-proxy.vaporwavemall.com/', 'https://arxiv.org/abs/2607.13309')
+      buildProxyUrl(
+        'https://cors-proxy.vaporwavemall.com/',
+        'https://arxiv.org/abs/2607.13309'
+      )
     ).toBe(
       'https://cors-proxy.vaporwavemall.com/?url=https%3A%2F%2Farxiv.org%2Fabs%2F2607.13309'
     )
@@ -41,7 +44,9 @@ describe('hostnameOf', () => {
 describe('urlHtmlToText', () => {
   it('strips tags, scripts, and entities', () => {
     expect(
-      urlHtmlToText('<style>x{}</style><p>a &amp; <b>b</b></p><script>y()</script>')
+      urlHtmlToText(
+        '<style>x{}</style><p>a &amp; <b>b</b></p><script>y()</script>'
+      )
     ).toBe('a b')
   })
 })
@@ -75,7 +80,12 @@ describe('normalizeUrlPayload', () => {
   it('stamps a caller-supplied sourceId on every record (e.g. a named feed)', () => {
     const records = normalizeUrlPayload(
       URL,
-      { items: [{ id: 'a', title: 'A' }, { id: 'b', title: 'B' }] },
+      {
+        items: [
+          { id: 'a', title: 'A' },
+          { id: 'b', title: 'B' },
+        ],
+      },
       'nor'
     )
     expect(records.map((r) => r.sourceId)).toEqual(['nor', 'nor'])
@@ -99,7 +109,10 @@ describe('normalizeUrlPayload', () => {
   })
 
   it('wraps a single JSON object as one record', () => {
-    const records = normalizeUrlPayload(URL, { title: 'Solo', description: 'd' })
+    const records = normalizeUrlPayload(URL, {
+      title: 'Solo',
+      description: 'd',
+    })
     expect(records).toHaveLength(1)
     expect(records[0].title).toBe('Solo')
     expect(records[0].summary).toBe('d')

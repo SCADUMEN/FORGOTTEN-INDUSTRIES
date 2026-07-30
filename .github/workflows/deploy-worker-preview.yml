@@ -45,10 +45,19 @@ jobs:
       - name: Audit public release surface
         run: npm run audit:public
 
+      - name: Validate Worker asset bundle
+        run: npx wrangler deploy --dry-run
+
       - name: Deploy Worker preview
         id: deploy
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.112.0'
           command: deploy
+
+      - name: Verify Worker preview
+        env:
+          WORKER_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: npm run verify:worker -- "$WORKER_BASE_URL"

@@ -1,0 +1,4 @@
+# Prevent temporary Workers preview and version URLs from becoming a second
+# indexed origin. The production custom domain remains indexable.
+https://:version.:subdomain.workers.dev/*
+  X-Robots-Tag: noindex

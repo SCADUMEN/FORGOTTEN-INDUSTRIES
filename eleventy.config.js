@@ -277,6 +277,7 @@ export default function (eleventyConfig) {
   // The markdown and yaml inside are documents, not templates — ignored.
   eleventyConfig.addPassthroughCopy('src/assets')
   eleventyConfig.addPassthroughCopy({ 'src/.well-known': '.well-known' })
+  eleventyConfig.addPassthroughCopy('src/_headers')
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
   // src/projects is a legacy source-dossier directory. Keep it published for

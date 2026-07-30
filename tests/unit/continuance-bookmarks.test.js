@@ -25,7 +25,12 @@ describe('bookmarkKey', () => {
   })
 
   it('differs when any identity field differs', () => {
-    const k = bookmarkKey({ colA: 'fi', colB: 'nor', anchorSide: 'A', anchorId: 'x' })
+    const k = bookmarkKey({
+      colA: 'fi',
+      colB: 'nor',
+      anchorSide: 'A',
+      anchorId: 'x',
+    })
     expect(k).not.toBe(
       bookmarkKey({ colA: 'nor', colB: 'fi', anchorSide: 'A', anchorId: 'x' })
     )
@@ -107,7 +112,10 @@ describe('upsertBookmark', () => {
 
 describe('isBookmarked', () => {
   const list = [
-    makeBookmark({ colA: 'fi', colB: 'nor', query: '', anchorSide: 'A', record }, 1),
+    makeBookmark(
+      { colA: 'fi', colB: 'nor', query: '', anchorSide: 'A', record },
+      1
+    ),
   ]
   it('matches by key and tolerates a null key', () => {
     expect(isBookmarked(list, 'fi|nor|A|post:le-signal')).toBe(true)

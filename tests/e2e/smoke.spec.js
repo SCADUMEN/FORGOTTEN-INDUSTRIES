@@ -257,6 +257,10 @@ test('archive page renders', async ({ page }) => {
   const response = await page.goto('/l-archive/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/L'Archive/)
+  await expect(page.locator('meta[name="format-detection"]')).toHaveAttribute(
+    'content',
+    'telephone=no'
+  )
 
   const wideCounters = page.locator('.branch-stats .stat-wide')
   await expect(wideCounters).toHaveCount(2)

@@ -54,7 +54,9 @@ export default function Dossier() {
         <h2 className="section-label">&gt; Flaws</h2>
         <ul>
           <li>Mistakes endurance for obligation.</li>
-          <li>Continues carrying burdens long after others would put them down.</li>
+          <li>
+            Continues carrying burdens long after others would put them down.
+          </li>
           <li>Can become trapped in recursive analysis.</li>
           <li>Sometimes confuses responsibility with control.</li>
           <li>Struggles to believe its own accomplishments.</li>
