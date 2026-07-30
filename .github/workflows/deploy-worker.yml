@@ -1,23 +1,26 @@
-name: Deploy Cloudflare Worker Preview
+name: Deploy Cloudflare Worker
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: cloudflare-worker-preview
+  group: cloudflare-worker-production
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Build and deploy Worker preview
+    name: Build, deploy, and verify Worker
     if: github.repository == 'SCADUMEN/FORGOTTEN-INDUSTRIES'
     runs-on: ubuntu-latest
     environment:
-      name: cloudflare-worker-preview
-      url: ${{ steps.deploy.outputs.deployment-url }}
+      name: cloudflare-worker-production
+      url: https://forgotten-industries.net
 
     steps:
       - name: Checkout
@@ -48,8 +51,7 @@ jobs:
       - name: Validate Worker asset bundle
         run: npx wrangler deploy --dry-run
 
-      - name: Deploy Worker preview
-        id: deploy
+      - name: Deploy Worker
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -57,7 +59,8 @@ jobs:
           wranglerVersion: '4.112.0'
           command: deploy
 
-      - name: Verify Worker preview
-        env:
-          WORKER_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
-        run: npm run verify:worker -- "$WORKER_BASE_URL"
+      - name: Verify production custom domain
+        run: npm run verify:worker -- https://forgotten-industries.net
+
+      - name: Verify workers.dev noindex boundary
+        run: npm run verify:worker -- https://forgotten-industries.bagelmanrichard.workers.dev

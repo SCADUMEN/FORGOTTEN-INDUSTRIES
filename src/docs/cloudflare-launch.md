@@ -2,7 +2,7 @@
 
 Domain target: `forgotten-industries.net`
 
-Migration state: `PREVIEW VERIFIED / CUSTOM DOMAIN CONFIGURED / DNS NOT CUT OVER`
+Migration state: `COMPLETE / CLOUDFLARE WORKER PRODUCTION`
 
 ## Deployment Boundary
 
@@ -15,8 +15,7 @@ the hosting instrument, not the archive build or public record boundary.
 - `npm run audit:public` must pass before deployment.
 - `_redirects`, `_headers`, and `.well-known/security.txt` remain inside
   `_site/`.
-- GitHub Pages remains the temporary production origin until the Worker preview
-  and custom domain are both verified.
+- Cloudflare Workers Static Assets owns the production custom domain.
 
 ## Prepared Worker
 
@@ -60,13 +59,9 @@ Required for Worker deployment and future Custom Domains such as
 - Zone / Workers Routes / Edit
 - Zone / Zone / Read
 
-The durable deployment token does not need general DNS edit authority. Give it
-no fixed expiration if long continuity is required, record its owner and scope,
-and rotate it only for personnel, permission, or suspected-exposure events.
-
-The initial migration may use a second short-lived local token with Zone / DNS /
-Edit to remove the GitHub Pages web-origin records. Do not store that migration
-token as an organization secret; revoke it after the cutover.
+The durable deployment token does not have general DNS edit authority. It is
+restricted to the Forgotten Industries account and zone. Record its owner and
+scope, and rotate it for personnel, permission, or suspected-exposure events.
 
 Verify a user API token without printing it:
 
@@ -95,49 +90,41 @@ handling manifests, deduplication, multipart upload, and deployment creation.
 Use Wrangler for the asset transfer and use the direct API for verification,
 DNS inventory, custom-domain inspection, and audit records.
 
-## GitHub Organization Secrets
+## GitHub Actions Secrets
 
-Install these as organization-level Actions secrets under `SCADUMEN`:
+The canonical repository stores these as repository-level Actions secrets:
 
 ```text
 CLOUDFLARE_ACCOUNT_ID
 CLOUDFLARE_API_TOKEN
 ```
 
-Use `visibility: all` only while every repository in the organization is inside
-the same trusted deployment boundary. That setting automatically makes the
-secrets available to future repositories. GitHub does not provide prefix-based
-organization-secret visibility; `selected` visibility requires adding every new
-repository manually.
-
 The account ID is not itself a credential, but it remains a secret here so every
 Forgotten Industries workflow consumes the same two-name contract. Never print
 the token in Action logs or expose it to pull-request workflows from forks.
 
-The manual `.github/workflows/deploy-worker-preview.yml` workflow consumes the
-organization secrets without repository-specific configuration.
+The `.github/workflows/deploy-worker.yml` workflow runs on every push to `main`
+and by manual dispatch. It builds and audits the archive, validates the Worker
+bundle, deploys the `forgotten-industries` Worker, and runs the release verifier
+against both the production custom domain and the `workers.dev` hostname. Every
+`workers.dev` response carries `X-Robots-Tag: noindex`; the production custom
+domain remains indexable.
 
-The preview workflow does not run on pushes. It builds and audits the archive,
-validates the Worker bundle, deploys the `forgotten-industries` Worker to its
-`workers.dev` hostname, and runs the release verifier against the deployed
-routes. Every `workers.dev` response carries `X-Robots-Tag: noindex`; the
-production custom domain remains indexable. The current GitHub Pages workflow
-continues to own production during this verification phase.
+## Cutover Record
 
-## Cutover Sequence
+The production cutover completed on 2026-07-30.
 
-1. Deploy the Worker preview.
-2. Confirm the automated `npm run verify:worker` checks for the homepage,
-   representative route families, `_redirects`, `.well-known/security.txt`, the
-   feed, sitemap, public JSON, a true 404, and the preview noindex header.
-3. Add `forgotten-industries.net` as a Worker Custom Domain.
-4. Verify the Cloudflare-issued certificate and production responses.
-5. Replace the preview-only workflow with the `main` deployment trigger.
-6. Remove `.github/workflows/deploy-pages.yml` and the obsolete root `CNAME`
-   marker.
-7. Disable GitHub Pages only after the Worker is confirmed live.
-8. Revoke the short-lived migration token; retain the organization deployment
-   token.
+1. The `workers.dev` preview passed the automated release verifier.
+2. The four GitHub Pages apex A records were removed.
+3. `forgotten-industries.net` was attached as the Worker Custom Domain.
+4. Production passed the 13-endpoint verifier through Cloudflare, including
+   `.well-known/security.txt`, `_redirects`, public data, the field-terminal ZIP,
+   and a true 404.
+5. The legacy `www` GitHub CNAME was replaced with a proxied placeholder record
+   and an active 301 redirect to the apex that preserves path and query string.
+6. Mail-routing, SPF, and DKIM records were preserved.
+7. The Pages workflow and root `CNAME` marker were retired in favor of the
+   `main` Worker deployment workflow.
 
 Cloudflare already operates the authoritative nameservers for this zone. During
 cutover, preserve all mail-routing and verification records; only the existing
@@ -179,5 +166,5 @@ At minimum, verify:
 - a legacy path from `_redirects`
 - a nonexistent path returning HTTP 404
 
-The migration is complete only when those public checks pass through
-Cloudflare and the GitHub Pages deployment owner has been retired.
+The migration is complete when those public checks pass through Cloudflare and
+the GitHub Pages deployment owner remains retired.
