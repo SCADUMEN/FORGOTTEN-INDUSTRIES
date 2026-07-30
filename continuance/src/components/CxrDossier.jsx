@@ -22,8 +22,8 @@ export default function CxrDossier() {
           <li>One search box queries both sources at once.</li>
           <li>
             Select any result to anchor it; the centre panel cross-references
-            that anchor against the other column&rsquo;s source, ranked by shared
-            terms and tags.
+            that anchor against the other column&rsquo;s source, ranked by
+            shared terms and tags.
           </li>
           <li>
             Changing the opposite column re-scores the cross-reference; changing
@@ -43,20 +43,25 @@ export default function CxrDossier() {
           </li>
           <li>
             Any pasted URL &mdash; a JSON Feed, a JSON document, or a web page
-            &mdash; fetched through a CORS proxy and indexed live in the browser.
+            &mdash; fetched through a CORS proxy and indexed live in the
+            browser.
           </li>
         </ul>
 
         <h2 className="section-label">&gt; URLs</h2>
         <p>
-          The URL source is the sharp edge: paste any URL and CxR fetches it live
-          (through the CORS proxy), reads it &mdash; a JSON Feed, a JSON document,
-          or a plain web page &mdash; and cross-references it against the other
-          column. A few to try:
+          The URL source is the sharp edge: paste any URL and CxR fetches it
+          live (through the CORS proxy), reads it &mdash; a JSON Feed, a JSON
+          document, or a plain web page &mdash; and cross-references it against
+          the other column. A few to try:
         </p>
         <ul className="continuance-dossier-urls">
           <li>
-            <a href="https://arxiv.org/abs/2607.13309" target="_blank" rel="noopener">
+            <a
+              href="https://arxiv.org/abs/2607.13309"
+              target="_blank"
+              rel="noopener"
+            >
               https://arxiv.org/abs/2607.13309
             </a>
           </li>
@@ -70,7 +75,11 @@ export default function CxrDossier() {
             </a>
           </li>
           <li>
-            <a href="https://en.wikipedia.org/wiki/Stuxnet" target="_blank" rel="noopener">
+            <a
+              href="https://en.wikipedia.org/wiki/Stuxnet"
+              target="_blank"
+              rel="noopener"
+            >
               https://en.wikipedia.org/wiki/Stuxnet
             </a>
           </li>

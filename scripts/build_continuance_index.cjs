@@ -28,7 +28,8 @@ const SEARCH_INDEX = path.join(ROOT, 'dist', 'search-index.json')
 // nor serves under a /rm_ation/ path prefix (a bare /feed.json 301-redirects
 // here); target the canonical URL directly to skip the redirect hop.
 const NOR_FEED =
-  process.env.CONTINUANCE_NOR_FEED || 'https://nor.the-rn.info/rm_ation/feed.json'
+  process.env.CONTINUANCE_NOR_FEED ||
+  'https://nor.the-rn.info/rm_ation/feed.json'
 const OUT_DIR = path.join(ROOT, 'continuance', 'public', 'data')
 const COMPILED_CSS = path.join(ROOT, '_site', 'css', 'archive.css')
 const CSS_DEST = path.join(ROOT, 'continuance', 'public', 'css', 'archive.css')
@@ -128,7 +129,10 @@ function main() {
     kind: 'fi',
     recordCount: fiRecords.length,
   }
-  writeJSON(path.join(OUT_DIR, 'fi.json'), { ...fiDescriptor, records: fiRecords })
+  writeJSON(path.join(OUT_DIR, 'fi.json'), {
+    ...fiDescriptor,
+    records: fiRecords,
+  })
   manifest.sources.push(fiDescriptor)
   log(`fi: ${fiRecords.length} records`)
 

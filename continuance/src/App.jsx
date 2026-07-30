@@ -6,7 +6,12 @@ import Dossier from './components/Dossier.jsx'
 import CxrDossier from './components/CxrDossier.jsx'
 import bannerUrl from './assets/continuance.gif'
 import { useLocalStorage } from './lib/useLocalStorage.js'
-import { loadManifest, loadSource, loadUrlSource, search } from './lib/sources.js'
+import {
+  loadManifest,
+  loadSource,
+  loadUrlSource,
+  search,
+} from './lib/sources.js'
 import { relatedRecords, tokenize } from './lib/crossref.js'
 import {
   bookmarkKey,

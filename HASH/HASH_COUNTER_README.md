@@ -33,11 +33,13 @@ The data is stored in `counter_log.json`.
 It can reveal whether an older record was edited, reordered, or removed.
 
 It does **not** independently prove:
+
 - that the count was accurate when entered;
 - that the timestamp reflects the real-world event;
 - who entered the record.
 
 For stronger provenance, periodically copy the latest hash to a separate location:
+
 - email it to yourself;
 - send it in a message;
 - commit it to a private Git repository;

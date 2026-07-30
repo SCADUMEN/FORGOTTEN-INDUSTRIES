@@ -33,16 +33,18 @@ export function hostnameOf(url) {
 
 export function urlHtmlToText(html) {
   if (!html) return ''
-  return String(html)
-    // Drop script/style blocks whole. The closing-tag match tolerates
-    // whitespace and stray attributes (e.g. `</script >`) so content can't slip
-    // through the filter (CodeQL js/bad-tag-filter).
-    .replace(/<script\b[\s\S]*?<\/script[^>]*>/gi, ' ')
-    .replace(/<style\b[\s\S]*?<\/style[^>]*>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&[a-z#0-9]+;/gi, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
+  return (
+    String(html)
+      // Drop script/style blocks whole. The closing-tag match tolerates
+      // whitespace and stray attributes (e.g. `</script >`) so content can't slip
+      // through the filter (CodeQL js/bad-tag-filter).
+      .replace(/<script\b[\s\S]*?<\/script[^>]*>/gi, ' ')
+      .replace(/<style\b[\s\S]*?<\/style[^>]*>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&[a-z#0-9]+;/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  )
 }
 
 function titleFromHtml(html) {
@@ -92,7 +94,11 @@ function jsonElementToRecord(element, index, base, sourceId) {
       ]) || JSON.stringify(element)
     return {
       id: String(
-        element.id || element.guid || element.url || element.slug || `${base}#${index}`
+        element.id ||
+          element.guid ||
+          element.url ||
+          element.slug ||
+          `${base}#${index}`
       ),
       sourceId,
       title:
@@ -130,10 +136,14 @@ function jsonElementToRecord(element, index, base, sourceId) {
 // like 'nor' for a hardcoded runtime feed).
 export function normalizeUrlPayload(url, payload, sourceId = URL_SOURCE_ID) {
   if (payload && typeof payload === 'object' && Array.isArray(payload.items)) {
-    return payload.items.map((item, i) => feedItemToRecord(item, i, url, sourceId))
+    return payload.items.map((item, i) =>
+      feedItemToRecord(item, i, url, sourceId)
+    )
   }
   if (Array.isArray(payload)) {
-    return payload.map((element, i) => jsonElementToRecord(element, i, url, sourceId))
+    return payload.map((element, i) =>
+      jsonElementToRecord(element, i, url, sourceId)
+    )
   }
   if (payload && typeof payload === 'object') {
     return [jsonElementToRecord(payload, 0, url, sourceId)]
