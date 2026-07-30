@@ -2,7 +2,7 @@
 
 Domain target: `forgotten-industries.net`
 
-Migration state: `PREPARED / PREVIEW NOT YET DEPLOYED / DNS NOT CUT OVER`
+Migration state: `PREVIEW VERIFIED / CUSTOM DOMAIN CONFIGURED / DNS NOT CUT OVER`
 
 ## Deployment Boundary
 

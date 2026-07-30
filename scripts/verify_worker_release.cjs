@@ -43,7 +43,12 @@ async function request(pathname, options = {}) {
     }
   }
 
-  const body = options.readBody === false ? '' : await response.text()
+  let body = ''
+  if (options.readBody === false) {
+    await response.body?.cancel()
+  } else {
+    body = await response.text()
+  }
   if (options.includes && !body.includes(options.includes)) {
     throw new Error(`${pathname}: expected response marker is absent`)
   }
