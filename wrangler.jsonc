@@ -4,6 +4,12 @@
   "compatibility_date": "2026-07-17",
   "workers_dev": true,
   "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "forgotten-industries.net",
+      "custom_domain": true,
+    },
+  ],
   "assets": {
     "directory": "./_site",
     "html_handling": "auto-trailing-slash",
