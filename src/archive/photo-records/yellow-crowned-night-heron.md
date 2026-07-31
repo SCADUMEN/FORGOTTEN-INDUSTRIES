@@ -38,7 +38,7 @@ into the public file; access to the unobscured source requires C2 clearance.
     <figcaption>FIG. 01 — Eye-level encounter. Juvenile plumage, bill, eye, and neck streaking remain visible.</figcaption>
   </figure>
   <figure class="fi-figure">
-    <img src="/assets/archive/yellow-crowned-night-heron/02-juvenile-on-car-vertical-posture.jpeg"
+    <img src="/assets/archive/yellow-crowned-night-heron/02-juvenile-on-car-vertical-posture.jpeg?v=c2-redacted-20260731"
          alt="Juvenile yellow-crowned night heron stretching into a tall vertical posture on the parked car."
          width="1320"
          height="2868"
