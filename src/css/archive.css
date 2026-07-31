@@ -2430,6 +2430,10 @@ h3 {
   box-shadow: var(--fi-stamp-shadow-lg);
 }
 
+.archive-container-observation[hidden] {
+  display: none;
+}
+
 .archive-observation-header {
   display: flex;
   align-items: end;

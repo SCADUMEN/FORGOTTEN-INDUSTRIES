@@ -344,6 +344,62 @@ test('archive page renders', async ({ page }) => {
   )
 })
 
+test('archive container register keeps witness and filter states aligned', async ({
+  page,
+}) => {
+  const response = await page.goto('/l-archive/')
+  expect(response?.status()).toBe(200)
+
+  const observation = page.locator('#archive-container-observation')
+  const c0 = page.locator('[data-clearance="C0"]')
+  const c1 = page.locator('[data-clearance="C1"]')
+  const c2 = page.locator('[data-clearance="C2"]')
+  const box000 = page.locator('[data-box-id="LE-BOX-000"]')
+  const box002 = page.locator('[data-box-id="LE-BOX-002"]')
+  const box006 = page.locator('[data-box-id="LE-BOX-006"]')
+  const box010 = page.locator('[data-box-id="LE-BOX-010"]')
+  const filter = page.locator('#archive-container-filter-input')
+
+  await expect(page.locator('[data-photo-caption]')).toHaveText(
+    'Physical-state visual witness'
+  )
+
+  await c2.click()
+  await expect(c0).toHaveAttribute('aria-pressed', 'true')
+  await expect(c2).toHaveAttribute('aria-pressed', 'false')
+  await expect(page.locator('#archive-clearance-status')).toHaveText(
+    'C2 / local operator register unavailable'
+  )
+  await expect(observation).toHaveAttribute('data-clearance-view', 'C0')
+
+  await box002.click()
+  await c1.click()
+  await expect(page.locator('[data-detail-evidence]')).toHaveText(
+    'Labelled multi-box image held'
+  )
+  await expect(page.locator('[data-photo-caption]')).toHaveText(
+    'Physical-state visual witness'
+  )
+
+  await box006.click()
+  await filter.fill('LE-BOX-010')
+  await expect(page.locator('[data-box-list-item]:visible')).toHaveCount(1)
+  await expect(box006).toHaveAttribute('aria-expanded', 'false')
+  await expect(box010).toHaveAttribute('aria-expanded', 'true')
+  await expect(
+    page.locator('#archive-container-observation-heading')
+  ).toHaveText('LE-BOX-010')
+
+  await filter.fill('no-such-record')
+  await expect(page.locator('[data-box-list-item]:visible')).toHaveCount(0)
+  await expect(observation).toBeHidden()
+
+  await filter.fill('')
+  await expect(page.locator('[data-box-list-item]:visible')).toHaveCount(26)
+  await expect(observation).toBeVisible()
+  await expect(box000).toHaveAttribute('aria-expanded', 'true')
+})
+
 test('archive page remains contained and uses an intentional object shelf on mobile', async ({
   page,
 }) => {

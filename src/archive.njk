@@ -583,7 +583,7 @@ eleventyExcludeFromCollections: true
             </div>
             <figcaption>
               <span>Witness A</span>
-              <strong>Single-box visual state</strong>
+              <strong data-photo-caption>Physical-state visual witness</strong>
             </figcaption>
           </figure>
           <figure class="archive-observation-figure archive-ledger-figure" data-ledger-figure>
@@ -670,6 +670,7 @@ eleventyExcludeFromCollections: true
     var detailContents = observation.querySelector('[data-detail-contents]');
     var detailLimits = observation.querySelector('[data-detail-limits]');
     var photoFrame = observation.querySelector('[data-photo-frame]');
+    var photoCaption = observation.querySelector('[data-photo-caption]');
     var ledgerFrame = observation.querySelector('[data-ledger-frame]');
     var currentClearance = 'C0';
     var selectedId = cards.length ? cards[0].dataset.boxId : '';
@@ -751,11 +752,13 @@ eleventyExcludeFromCollections: true
         detailManifest.textContent = operatorRecord.manifest || card.dataset.boxManifest;
         detailLedger.textContent = operatorRecord.ledger || card.dataset.boxLedger;
         detailLimits.textContent = operatorRecord.limits || 'No additional evidence limit recorded.';
+        photoCaption.textContent =
+          operatorRecord.photoLabel || 'Physical-state visual witness';
         replaceContents(operatorRecord.contents, false);
         replaceFrame(
           photoFrame,
           operatorRecord.photo,
-          id + ' labelled open-top contents state',
+          operatorRecord.photoAlt || id + ' operator-held physical-state witness',
           'IMAGE / REQUIRED'
         );
         replaceFrame(
@@ -774,6 +777,7 @@ eleventyExcludeFromCollections: true
         detailLedger.textContent = card.dataset.boxLedger;
         detailLimits.textContent =
           'Finding-aid metadata is visible. Contents descriptions, source paths, and evidence images remain redacted pending explicit curatorial clearance.';
+        photoCaption.textContent = 'Physical-state visual witness';
         replaceContents([], true);
         replaceFrame(photoFrame, '', '', 'PHYSICAL STATE / REDACTED');
         replaceFrame(ledgerFrame, '', '', 'LEDGER WITNESS / REDACTED');
@@ -786,6 +790,7 @@ eleventyExcludeFromCollections: true
       detailLedger.textContent = 'Withheld at C0';
       detailLimits.textContent =
         'Contents, source paths, and evidence images are withheld in the public reference projection.';
+      photoCaption.textContent = 'Physical-state visual witness';
       replaceContents([], true);
       replaceFrame(photoFrame, '', '', 'PHYSICAL STATE / WITHHELD');
       replaceFrame(ledgerFrame, '', '', 'LEDGER WITNESS / WITHHELD');
@@ -815,6 +820,7 @@ eleventyExcludeFromCollections: true
     function runFilter() {
       var query = filterInput.value.trim().toLowerCase();
       var visible = 0;
+      var firstVisibleId = '';
 
       cards.forEach(function(card, index) {
         var operatorRecord = operatorRecords[card.dataset.boxId];
@@ -836,10 +842,33 @@ eleventyExcludeFromCollections: true
           .toLowerCase();
         var match = !query || haystack.indexOf(query) !== -1;
         listItems[index].hidden = !match;
-        if (match) visible += 1;
+        if (match) {
+          if (!firstVisibleId) firstVisibleId = card.dataset.boxId;
+          visible += 1;
+        }
       });
 
       filterCount.value = visible + ' / ' + cards.length + ' records';
+
+      if (!visible) {
+        selectedId = '';
+        observation.hidden = true;
+        cards.forEach(function(card) {
+          card.setAttribute('aria-expanded', 'false');
+        });
+        return;
+      }
+
+      observation.hidden = false;
+      var selectedCard = cards.find(function(card) {
+        return card.dataset.boxId === selectedId;
+      });
+      var selectedItem = selectedCard
+        ? selectedCard.closest('[data-box-list-item]')
+        : null;
+      if (!selectedItem || selectedItem.hidden) {
+        renderObservation(firstVisibleId);
+      }
     }
 
     cards.forEach(function(card) {
