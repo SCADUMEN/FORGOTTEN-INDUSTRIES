@@ -83,7 +83,7 @@ Neither party appeared to possess a plan.
     <img src="/assets/archive/yellow-crowned-night-heron/02-juvenile-on-car-vertical-posture.jpeg"
          alt="Juvenile yellow-crowned night heron stretching into a tall uncertain posture on the car."
          loading="lazy">
-    <figcaption>FIG. 02B — Protocol unclear. Become extremely vertical.</figcaption>
+    <figcaption>FIG. 02B — Protocol unclear. Become extremely vertical. Public derivative; black-bar reveal requires C2 clearance.</figcaption>
   </figure>
 </div>
 
