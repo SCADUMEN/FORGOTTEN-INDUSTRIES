@@ -65,6 +65,12 @@ describe("L'Archive container register", () => {
         String(sequence).padStart(3, '0')
       )
     )
+    expect(boxes[2]).toMatchObject({
+      clearance: 'C1',
+      evidenceLabel: 'Labelled multi-box image held',
+      id: 'LE-BOX-002',
+      state: 'observed',
+    })
     expect(html).toContain('LE-TUPPER')
     expect(html).toContain("fetch('/__operator/register.json'")
     expect(html).not.toContain('private-preview')

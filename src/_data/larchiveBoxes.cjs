@@ -1,4 +1,6 @@
-const observedIds = new Set([0, 1, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16])
+const observedIds = new Set([
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16,
+])
 
 module.exports = Array.from({ length: 26 }, (_, sequence) => {
   const sequenceLabel = String(sequence).padStart(3, '0')
@@ -39,7 +41,10 @@ module.exports = Array.from({ length: 26 }, (_, sequence) => {
     state: sequence === 16 ? 'controlled' : 'observed',
     stateLabel:
       sequence === 16 ? 'Controlled record held' : 'Visual state held',
-    evidenceLabel: 'Labelled single-box image held',
+    evidenceLabel:
+      sequence === 2
+        ? 'Labelled multi-box image held'
+        : 'Labelled single-box image held',
     manifestLabel: 'Local provisional manifest',
     ledgerLabel:
       sequence >= 1 && sequence <= 13
