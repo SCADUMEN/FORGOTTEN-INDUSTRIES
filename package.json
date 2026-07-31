@@ -25,6 +25,7 @@
     "dev:continuance": "npm run build:css && node scripts/build_continuance_index.cjs && (cd continuance && vite)",
     "build:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh --minify && npm run audit:public",
     "serve:site": "npm run clean:site && ruby scripts/build.rb && npm run build:continuance && eleventy && sh scripts/build_css.sh && eleventy --serve",
+    "serve:larchive-private": "node scripts/serve_larchive_private_preview.cjs",
     "dev:worker": "npm run build:site && WRANGLER_LOG_PATH=.wrangler/logs WRANGLER_REGISTRY_PATH=.wrangler/registry wrangler dev --local",
     "worker:dry-run": "npm run build:site && WRANGLER_LOG_PATH=.wrangler/logs WRANGLER_REGISTRY_PATH=.wrangler/registry wrangler deploy --dry-run",
     "deploy:worker": "npm run build:site && WRANGLER_LOG_PATH=.wrangler/logs WRANGLER_REGISTRY_PATH=.wrangler/registry wrangler deploy",
