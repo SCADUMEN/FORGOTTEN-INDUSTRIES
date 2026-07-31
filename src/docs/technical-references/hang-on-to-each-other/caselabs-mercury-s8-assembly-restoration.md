@@ -173,7 +173,7 @@ Photograph:
 If the original midplate cannot be located, replacement options in order of
 preference:
 
-1. Secondary market: eBay, r/hardwareswap, Overclock.net buy/sell/trade, HardForum.
+1. Secondary market: established auction marketplaces, r/hardwareswap, Overclock.net buy/sell/trade, HardForum.
 2. Fabrication from measurement: waterjet or laser-cut aluminum based on verified local dimensions.
 3. Community CAD files: Overclock.net S8 threads, r/caselabs, and surviving CaseLabs-owner archives.
 

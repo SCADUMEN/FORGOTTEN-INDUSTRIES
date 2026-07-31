@@ -65,7 +65,7 @@ The work of Forgotten Industries is increasingly visible not only on the website
 - Location: Wichita, Kansas
 - Primary Activities: Gaming, collecting, archival development, research planning, restoration
 - Observed Strength: Sustained curiosity across multiple disciplines
-- Observed Hazard: eBay remains an active threat to financial stability
+- Observed Hazard: online marketplaces remain an active threat to financial stability
 - Project Status: Advancing on all fronts
 - Overall Assessment: Productive day marked by steady forward movement rather than dramatic milestones.
 

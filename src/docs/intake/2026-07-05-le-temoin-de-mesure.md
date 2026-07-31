@@ -32,7 +32,7 @@ Documented: 2026.07.05
 
 A compact stainless steel measuring rule bearing Johnson U.S.A. markings, with both inch and millimeter graduations. The object is worn but functional, with surface scuffing, softened reflectivity, and shop patina consistent with repeated handling among tools, cases, hardware, media, and sales inventory.
 
-It was identified during a high-throughput listing session involving eBay shipments, PC/DVD game inventory, and Facebook Marketplace drone liquidation. The ruler appears in photographic documentation alongside a Games for Windows / Skyrim PC DVD case, establishing its practical role as a scale reference for reselling, cataloguing, and artifact condition photography.
+It was identified during a high-throughput listing session involving online marketplace shipments, PC/DVD game inventory, and local drone liquidation. The ruler appears in photographic documentation alongside a Games for Windows / Skyrim PC DVD case, establishing its practical role as a scale reference for reselling, cataloguing, and artifact condition photography.
 
 ## Function
 
