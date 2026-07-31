@@ -586,7 +586,7 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
   await expect(page.locator('#archive-search-status')).toHaveText('11 results')
   await expect(page.locator('#archive-search-results > li')).toHaveCount(11)
   await expect(page.locator('#archive-search-results')).toContainText(
-    'CaseLabs Mercury S8 + Pedestal Restoration'
+    'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
   )
 })
 
