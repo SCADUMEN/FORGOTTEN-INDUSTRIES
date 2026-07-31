@@ -100,15 +100,12 @@ This chronology joins dated public records to the operator's direct account. It 
 
 Public derivatives have photographic metadata removed. Frames carrying weaker evidence, room context, or labels unnecessary to the public record remain outside the published set.
 
-### Local container scale and addressing
+### Public custody summary
 
 The July 30 recovery cluster came from only one ammo can and one Tupperware.
-The room inventory currently records 25 ammo cans, 16 labeled; approximately 20
-Tupperware containers, approximately 20 labeled; and three larger tubs whose
-label state is not yet established. Garage storage remains additional and
-unquantified. Existing container labels are authoritative and will not be
-replaced or renumbered. Cataloguing proceeds container-first before item-level
-deep inventory.
+The broader container register remains local. Existing container labels are
+authoritative and will not be replaced or renumbered. Cataloguing proceeds
+container-first before item-level deep inventory.
 
 ## Recovery sequence
 
