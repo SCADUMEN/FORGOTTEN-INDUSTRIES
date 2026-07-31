@@ -1,4 +1,34 @@
 voice_logs:
+  - id: FI-VOICE-012
+    title: Field Log 012 — Everything We See Overhead
+    date: '2026-07-30'
+    recorded_at: '2026-07-30 20:19 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260730_0108-everything-overhead.MP3
+    duration: '00:19'
+    summary: A cleared operator-only excerpt defines a minimal observation method—one notebook, routine intervals, and identifying everything seen overhead as valuable data.
+    transcript: "If I had just one notebook, the only requirement would be that I'd have to observe at the same—at routine times. But if I could, even if I could only identify everything we see overhead, that would be valuable data."
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - field-observation
+      - birds
+  - id: FI-VOICE-011
+    title: Field Log 011 — Handsome Site Supervisor
+    date: '2026-07-30'
+    recorded_at: '2026-07-30 20:19 CT'
+    recorder: WS-882 portable recorder
+    audio: /assets/audio/field-logs/260730_0108-potato-handsome.MP3
+    duration: '00:09'
+    summary: A brief field-walk address to Potato records the site supervisor before departure.
+    transcript: 'Okay, you ready? Let me show everybody how handsome you are.'
+    tags:
+      - field-log
+      - voice-note
+      - audio
+      - potato
+      - site-supervisor
   - id: FI-VOICE-010
     title: Field Log 010 — Label Visibility Protocol
     date: '2026-07-30'
