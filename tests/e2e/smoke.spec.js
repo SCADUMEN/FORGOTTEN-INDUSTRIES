@@ -586,8 +586,41 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
   await expect(page.locator('#archive-search-status')).toHaveText('11 results')
   await expect(page.locator('#archive-search-results > li')).toHaveCount(11)
   await expect(page.locator('#archive-search-results')).toContainText(
-    'CaseLabs Mercury S8 + Pedestal Restoration'
+    'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
   )
+})
+
+test('restoration dossiers preserve canonical identity and public custody boundaries', async ({
+  page,
+  request,
+}) => {
+  const response = await page.goto('/projects/')
+  expect(response?.status()).toBe(200)
+
+  const x99Card = page.locator('a[href="/projects/x99-impact-recovery/"]')
+  await expect(x99Card).toContainText('LE RÉDEMPTEURE / X99 Recovery Dossier')
+  await expect(x99Card).toContainText('Function unverified')
+  await expect(x99Card).not.toContainText('Two platforms')
+
+  const larchiveCard = page.locator('a[href="/projects/caselabs-mercury-s8/"]')
+  await expect(larchiveCard).toContainText(
+    'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
+  )
+  await expect(larchiveCard).toContainText(
+    'LE RÉDEMPTEURE, the boutique hardline-cooled X99 main cube'
+  )
+  await expect(larchiveCard).toContainText(
+    'LE SAUVEGARDER, the preservation and storage-array pedestal'
+  )
+
+  const sourceResponse = await request.get(
+    '/projects/x99-impact-recovery/README.md'
+  )
+  expect(sourceResponse.status()).toBe(200)
+  const sourceBody = await sourceResponse.text()
+  expect(sourceBody).toContain('The broader container register remains local.')
+  expect(sourceBody).not.toContain('25 ammo cans')
+  expect(sourceBody).not.toContain('Garage storage')
 })
 
 test('Atom feed is served as XML with entries', async ({ request }) => {

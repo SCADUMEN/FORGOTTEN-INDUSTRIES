@@ -1691,24 +1691,37 @@ items:
     model: X99S XPOWER AC
     quantity: 1
     associated_project: FI-PROJ-009
-    condition: recovered from storage / CPU installed / no RAM present / prior failure history
-    status: identified / fault isolation pending / do not represent as working
+    condition: recovered from storage / stored in plastic tray / CPU seated and latched / zero RAM installed / old paste preliminarily wiped
+    status: identified / no current-pass power-on / function completely unverified / fault isolation pending
     photos:
       - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-overview.jpg
       - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-cpu.jpg
     notes: >
       E-ATX Intel X99 motherboard with LGA2011-v3 socket, eight DDR4 slots,
-      onboard diagnostic display, and an installed processor. The operator
-      recalls that the platform previously failed to operate and may have
-      suffered an electrical fault. The present cause is unknown. Preserve the
-      board as a repair candidate until visual inspection, CMOS reset, minimum
-      bench configuration, and diagnostic-code capture are complete.
+      onboard diagnostic display, and an installed processor. Recovered records
+      and operator identification establish that the board operated in the 2014
+      test-bench system. It later became difficult to configure and would not
+      boot reliably; the historical cause was never established, and no
+      electrical failure was confirmed. The platform is the historically
+      intended compute core for LE RÉDEMPTEURE, the main Mercury S8 cube within
+      L’ARCHIVE, the artwork as a whole. As of July 30, 2026, the board remains
+      in its plastic storage tray with the i7-5930K seated and the socket latched.
+      Only a preliminary wipe of old thermal paste from the heat spreader has
+      occurred. All eight DIMM slots are empty. A local intake from one ammo can
+      and one Tupperware visibly establishes custody of loose HyperX Fury and
+      Corsair Vengeance LPX DDR4, but exact capacities, speeds, part numbers,
+      compatibility, and function remain unconfirmed. No power-on has occurred
+      during the current recovery pass. Move the board to a rigid nonconductive
+      bench surface before power. Preserve it as a repair candidate until visual
+      inspection, CMOS reset, minimum bench configuration, and diagnostic-code
+      capture are complete.
     tags:
       - MSI
       - X99S XPOWER AC
       - Intel X99
       - LGA2011-v3
       - DDR4
+      - LE RÉDEMPTEURE
       - fault isolation
       - motherboard recovery
     estimated_value:
