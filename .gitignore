@@ -39,6 +39,7 @@ playwright-report/
 /intake/LE-BOX-*/
 /intake/SECURITY-GATEWAY/
 /intake/RELOCATION-2026/
+/intake/STORAGE-MAP/
 # Media anywhere under intake/ stays local. These patterns are recursive (**) so
 # nested folders such as intake/Splunking/ are covered too — a flat /intake/*.EXT
 # rule only matches the top level and let geotagged photos slip into history.
