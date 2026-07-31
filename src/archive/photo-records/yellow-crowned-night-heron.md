@@ -22,6 +22,9 @@ The archive records the working identification as **yellow-crowned night heron
 three encounters. Exact site, GPS data, residence-relative context, and source
 metadata remain withheld.
 
+FIG. 02 is published only as a redacted derivative. The black bars are baked
+into the public file; access to the unobscured source requires C2 clearance.
+
 ## 01. EYE-LEVEL ENCOUNTER // 2026.07.10
 
 <div class="fi-image-pair">
@@ -41,7 +44,7 @@ metadata remain withheld.
          height="2868"
          loading="lazy"
          decoding="async">
-    <figcaption>FIG. 02 — Vertical posture. A second angle preserves the head profile and full body.</figcaption>
+    <figcaption>FIG. 02 — Vertical posture. Public derivative; black-bar reveal requires C2 clearance.</figcaption>
   </figure>
 </div>
 
