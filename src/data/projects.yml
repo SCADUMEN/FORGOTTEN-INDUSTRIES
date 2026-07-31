@@ -1,4 +1,74 @@
 projects:
+  - id: FI-DSR-004
+    slug: inventaire
+    title: L'Inventaire
+    working_title: Système des objets et des mouvements
+    category: Operating System Dossier
+    status: active / local runtime / public doctrine
+    started: '2026'
+    summary: >
+      Public system dossier for the private operating register that witnesses
+      physical units, locations, condition, work performed, photography,
+      listings, dispositions, fulfillment, archive state, and attributable
+      per-item result.
+    origin:
+      context: MTM + ATLAS interaction
+    themes:
+      - object identity
+      - custody and movement
+      - condition and refurbishment
+      - photography
+      - disposition and fulfillment
+      - per-item result
+      - local-first operations
+      - public-safe doctrine
+    source_links:
+      - label: Shared operating instrument
+        type: local
+        role: public-safe source code and operating doctrine
+        path: scripts/inventory-os/README.md
+    documentation_style:
+      - Keep runtime records, photographs, locations, counterparties, and fulfillment evidence local
+      - Preserve a distinct event for each movement through the object lifecycle
+      - Do not treat a listing as a sale or a sale as a shipment
+      - Attribute result only after value, costs, fees, and adjustments are evidenced
+      - Promote only selected public-safe object evidence into L'ARCHIVE
+
+  - id: FI-DSR-005
+    slug: laboratoire
+    title: Le Laboratoire
+    working_title: Système de recherche et de développement
+    category: Operating System Dossier
+    status: active / local runtime / public doctrine
+    started: '2026'
+    summary: >
+      Public system dossier for the private research-and-development register
+      that witnesses deployments, instruments, bench infrastructure, training,
+      experiments, productive-capacity basis, intended profit pathways, and
+      attributable realized return.
+    origin:
+      context: MTM + ATLAS interaction
+    themes:
+      - research and development
+      - resource deployment
+      - bench infrastructure
+      - training and experiments
+      - productive capacity
+      - attributable return
+      - local-first operations
+      - public-safe doctrine
+    source_links:
+      - label: Shared operating instrument
+        type: local
+        role: public-safe source code and operating doctrine
+        path: scripts/inventory-os/README.md
+    documentation_style:
+      - Keep live deployments, sources, balances, vendors, locations, and transaction evidence local
+      - Preserve SLUSH as the private authority for cleared liquid movements
+      - Keep cash, non-cash basis, productive capacity, and realized return distinct
+      - Record an intended profit pathway as a hypothesis rather than revenue
+      - Attribute return only when cleared value can be linked to the capability
+
   - id: FI-PROJ-009
     slug: x99-impact-recovery
     title: LE RÉDEMPTEURE / X99 Recovery Dossier

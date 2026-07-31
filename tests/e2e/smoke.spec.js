@@ -501,7 +501,7 @@ test('archive compatibility route contains a real archive link', async ({
   expect(body).not.toContain('The preserved record now lives at /archive/')
 })
 
-test('inventory compatibility routes resolve to generated inventory', async ({
+test("L'Inventaire and Le Laboratoire retain the archive compatibility door", async ({
   page,
   request,
 }) => {
@@ -513,13 +513,18 @@ test('inventory compatibility routes resolve to generated inventory', async ({
   expect(legacyBody).toContain('href="/archive/inventory/"')
   expect(legacyBody).not.toContain('<h2>Core Items</h2>')
 
-  const response = await page.goto('/inventory/')
+  let response = await page.goto('/inventory/')
   expect(response?.status()).toBe(200)
-  await page.waitForURL('**/archive/inventory/')
-  await expect(page).toHaveTitle(/Inventory/)
-  await expect(
-    page.locator('a[href="/archive/objects/fi-cl-part-010/"]')
-  ).toHaveCount(1)
+  await expect(page).toHaveTitle(/L'Inventaire/)
+  await expect(page.locator('h1')).toHaveText("L'INVENTAIRE")
+  await expect(page.locator('main')).toContainText('FI-INV-DEMO-0001')
+  await expect(page.locator('a[href="/archive/inventory/"]')).toHaveCount(1)
+
+  response = await page.goto('/rd/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/Le Laboratoire/)
+  await expect(page.locator('h1')).toHaveText('LE LABORATOIRE')
+  await expect(page.locator('main')).toContainText('FI-RD-DEMO-0001')
 })
 
 test('posts index lists Les Manuscrits', async ({ page }) => {

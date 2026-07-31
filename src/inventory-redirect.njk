@@ -1,17 +1,154 @@
 ---
 layout: base.njk
-title: Inventory Has Moved
-description: Compatibility route for the Forgotten Industries inventory shelf.
-permalink: /inventory/index.html
-canonical: https://forgotten-industries.net/archive/inventory/
-redirectTo: /archive/inventory/
-eleventyExcludeFromCollections: true
+title: L'Inventaire
+description: L'Inventaire is the Forgotten Industries system for physical objects, custody, condition, movement, disposition, and attributable per-item result.
+canonical: https://forgotten-industries.net/inventory/
+permalink: /inventory/
 ---
-<section class="section-landing-hero route-redirect">
-  <div class="section-inner">
-    <p class="section-label">Route preserved</p>
-    <h1>Inventory</h1>
-    <p class="tagline">The inventory shelf now lives at <a href="/archive/inventory/">/archive/inventory/</a>.</p>
+<section class="masthead reference-masthead">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">L'Œuvre / Les Dossiers / FI-DSR-004</p>
+      <h1>L'INVENTAIRE</h1>
+      <p class="tagline">
+        SYSTÈME DES OBJETS ET DES MOUVEMENTS.
+      </p>
+      <p>
+        The operating doctrine for physical units from intake through archive:
+        identity, custody, condition, work performed, public disposition, and
+        attributable result.
+      </p>
+    </div>
+    <aside class="reference-figure system-status-panel">
+      <div>
+        <p class="section-label">System state</p>
+        <p class="stamp-row">
+          <span class="stamp">Active</span>
+          <span class="stamp stamp-muted">Local runtime</span>
+          <span class="stamp stamp-muted">Public doctrine</span>
+        </p>
+        <p class="entry-note">
+          Live records, photographs, locations, buyers, orders, labels,
+          tracking, and private transaction evidence do not enter this public
+          dossier.
+        </p>
+      </div>
+    </aside>
   </div>
 </section>
-<script>window.location.replace('/archive/inventory/' + window.location.search + window.location.hash);</script>
+
+<section class="source-band signal-chain-dossier" aria-labelledby="inventory-jurisdiction-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>JURISDICTION</p>
+      <h2 id="inventory-jurisdiction-heading">ONE UNIT. ONE RECORD. EVERY MOVEMENT WITNESSED.</h2>
+    </div>
+    <div class="larchive-spec-grid">
+      <article>
+        <h3>IDENTITY</h3>
+        <p>Non-reused item identifier, object class, condition, and source profile.</p>
+      </article>
+      <article>
+        <h3>CUSTODY</h3>
+        <p>Local location, intake state, movement history, and present responsibility.</p>
+      </article>
+      <article>
+        <h3>WORK</h3>
+        <p>Inspection, cleaning, refurbishment, photography, and packing checks.</p>
+      </article>
+      <article>
+        <h3>DISPOSITION</h3>
+        <p>Listing, sale, trade, shipment, archive, or an explicitly unresolved state.</p>
+      </article>
+      <article>
+        <h3>RESULT</h3>
+        <p>Per-item basis, fees, adjustments, and recognized result after clearance.</p>
+      </article>
+      <article>
+        <h3>PROMOTION</h3>
+        <p>Selected public-safe object evidence may enter <a href="/archive/inventory/">L'ARCHIVE's inventory shelf</a>; the operating register does not.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band signal-chain-dossier" aria-labelledby="inventory-sequence-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>OPERATING SEQUENCE</p>
+      <h2 id="inventory-sequence-heading">A LISTING IS NOT A SALE. A SALE IS NOT A SHIPMENT.</h2>
+    </div>
+    <ol class="progression-list">
+      <li class="complete">
+        <span>01</span>
+        <h3>INTAKE</h3>
+        <p>Assign the unit record before cleaning, sorting, or interpretation erases its received state.</p>
+      </li>
+      <li class="complete">
+        <span>02</span>
+        <h3>PREPARE</h3>
+        <p>Inspect, clean, photograph, and grade against the applicable object profile.</p>
+      </li>
+      <li class="complete">
+        <span>03</span>
+        <h3>DISPOSE</h3>
+        <p>Record publication, sale, trade, packing, and carrier handoff as distinct events.</p>
+      </li>
+      <li class="active">
+        <span>04</span>
+        <h3>RECONCILE</h3>
+        <p>Recognize per-item result only when value, costs, fees, and adjustments are evidenced.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="source-band signal-chain-dossier" aria-labelledby="inventory-demo-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>SANITIZED DEMONSTRATION</p>
+      <h2 id="inventory-demo-heading">INTERFACE LOGIC WITHOUT AN OPERATIONAL RECORD.</h2>
+      <p class="entry-note">
+        Synthetic example only. The identifier, object, zone, values, and state
+        below do not describe a Forgotten Industries object or transaction.
+      </p>
+    </div>
+    <div class="larchive-spec-grid" aria-label="Synthetic L'Inventaire record">
+      <article>
+        <h3>FI-INV-DEMO-0001</h3>
+        <p>Sample storage container / condition grade B / basis $10.00.</p>
+      </article>
+      <article>
+        <h3>ZONE-DEMO</h3>
+        <p>Photography complete / listing prepared / disposition unresolved.</p>
+      </article>
+      <article>
+        <h3>RESULT WITHHELD</h3>
+        <p>No sale is recognized and no profit is calculated from a hypothetical outcome.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band signal-chain-dossier" aria-labelledby="inventory-boundary-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>RECORD BOUNDARY</p>
+      <h2 id="inventory-boundary-heading">THE PUBLIC DOSSIER DOCUMENTS THE SYSTEM, NOT THE HOUSEHOLD.</h2>
+    </div>
+    <ul class="link-list">
+      <li>
+        <h3>LOCAL CORE</h3>
+        <p>The loopback instrument stores runtime JSON, attached photographs, locations, counterparties, fulfillment evidence, and audit history outside the public tree.</p>
+      </li>
+      <li>
+        <h3>SLUSH AUTHORITY</h3>
+        <p>SLUSH remains the private authority for cleared liquid movements. L'Inventaire may attribute an evidenced per-item result; it does not declare the cash position.</p>
+      </li>
+      <li>
+        <h3>SHARED INSTRUMENT</h3>
+        <p>L'Inventaire and <a href="/rd/">Le Laboratoire</a> use one local data and API core while preserving distinct jurisdictions.</p>
+      </li>
+    </ul>
+  </div>
+</section>
