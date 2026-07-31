@@ -175,6 +175,8 @@ The archive can watch without making itself the center of that process.
 
 **SOURCE SET:** [FI-PHOTO-005](/archive/objects/fi-photo-005/)
 
+**PHOTOGRAPHIC RECORD:** [Eleven-image public plate](/archive/photo-records/yellow-crowned-night-heron/)
+
 **PROVENANCE:** [Human–Machine Workthrough](/provenance/yellow-crowned-night-heron-provenance/)
 
 _A thing documented is a thing not yet lost._
