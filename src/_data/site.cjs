@@ -167,6 +167,8 @@ const sitemapExtraUrls = [
   '/blog/',
   '/posts/',
   '/projects/',
+  '/inventory/',
+  '/rd/',
   '/projects/atlas/',
   '/projects/continuance/',
   '/projects/caselabs-mercury-s8/',

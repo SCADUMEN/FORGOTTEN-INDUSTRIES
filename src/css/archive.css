@@ -688,6 +688,18 @@ body:has(.site-mark:focus-visible) .hero-mark::after {
   line-height: 1.45;
 }
 
+.system-status-panel > div {
+  padding: 1.25rem;
+}
+
+.system-status-panel .stamp-row {
+  margin: 1rem 0;
+}
+
+.system-status-panel .entry-note {
+  margin-bottom: 0;
+}
+
 .type-specimen-figure {
   background: var(--fi-surface);
 }

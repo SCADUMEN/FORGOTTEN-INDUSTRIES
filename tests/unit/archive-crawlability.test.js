@@ -44,6 +44,7 @@ describe('archive crawlability output', () => {
     expect(existsSite('archive.html')).toBe(true)
     expect(existsSite('inventory/index.html')).toBe(true)
     expect(existsSite('inventory.html')).toBe(true)
+    expect(existsSite('rd/index.html')).toBe(true)
     expect(existsSite('archive/inventory/index.html')).toBe(true)
     expect(existsSite('archive/objects/index.html')).toBe(true)
     expect(existsSite('archive/taxonomy/index.html')).toBe(true)
@@ -112,23 +113,31 @@ describe('archive crawlability output', () => {
     ).toBe(true)
   })
 
-  it('routes legacy inventory doors to the generated inventory shelf', () => {
+  it("separates L'Inventaire from the legacy archive inventory route", () => {
     const redirects = fs.readFileSync(path.join(SITE, '_redirects'), 'utf8')
-    expect(redirects).toContain('/inventory /archive/inventory/ 301')
-    expect(redirects).toContain('/inventory/ /archive/inventory/ 301')
+    expect(redirects).not.toContain('/inventory /archive/inventory/ 301')
+    expect(redirects).not.toContain('/inventory/ /archive/inventory/ 301')
     expect(redirects).toContain('/inventory.html /archive/inventory/ 301')
 
     const inventoryRoute = readSite('inventory/index.html')
     const inventoryHtml = readSite('inventory.html')
+    const laboratoryRoute = readSite('rd/index.html')
     const generatedInventory = readSite('archive/inventory/index.html')
 
     expect(canonical(inventoryRoute)).toBe(
-      'https://forgotten-industries.net/archive/inventory/'
+      'https://forgotten-industries.net/inventory/'
     )
     expect(canonical(inventoryHtml)).toBe(
       'https://forgotten-industries.net/archive/inventory/'
     )
+    expect(canonical(laboratoryRoute)).toBe(
+      'https://forgotten-industries.net/rd/'
+    )
     expect(inventoryRoute).toContain('href="/archive/inventory/"')
+    expect(inventoryRoute).toContain("L'INVENTAIRE")
+    expect(inventoryRoute).toContain('FI-INV-DEMO-0001')
+    expect(laboratoryRoute).toContain('LE LABORATOIRE')
+    expect(laboratoryRoute).toContain('FI-RD-DEMO-0001')
     expect(inventoryHtml).toContain('href="/archive/inventory/"')
     expect(inventoryHtml).not.toContain('<h2>Core Items</h2>')
     expect(generatedInventory).toContain('FI-CL-PART-010')

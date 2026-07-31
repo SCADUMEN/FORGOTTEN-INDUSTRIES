@@ -1,0 +1,49 @@
+{
+  "id": "m13-ammo-can",
+  "sku": "M13-AMMO-CAN",
+  "name": "M13 steel ammunition can",
+  "version": 1,
+  "checklists": {
+    "inspection": [
+      "Confirm container identity and markings",
+      "Inspect hinge and latch operation",
+      "Inspect gasket and sealing surfaces",
+      "Record dents, corrosion, paint loss, and residue",
+      "Confirm the interior is empty and safe to handle"
+    ],
+    "cleaning": [
+      "Dry-brush loose material",
+      "Clean exterior without removing original markings",
+      "Clean and dry interior",
+      "Treat only documented active corrosion",
+      "Complete final residue and odor check"
+    ],
+    "photography": [
+      "Front three-quarter view",
+      "Rear and hinge view",
+      "Both side markings",
+      "Open interior",
+      "Gasket and latch detail",
+      "Condition defects",
+      "Scale or dimensions witness"
+    ],
+    "packing": [
+      "Match item ID to order",
+      "Confirm lid and latch are secure",
+      "Protect corners and prevent movement",
+      "Insert packing record",
+      "Verify package weight and dimensions",
+      "Affix carrier label and scan tracking"
+    ]
+  },
+  "listing": {
+    "titleTemplate": "{{condition}} | {{productName}} | {{id}}",
+    "descriptionTemplate": "{{productName}}\n\nInventory record: {{id}}\nCondition grade: {{condition}}\n\n{{notes}}\n\nThis unit is individually inspected, cleaned, photographed, and packed against its inventory record. Review the photographs and condition notes for the exact unit offered."
+  },
+  "shipping": {
+    "lengthIn": 0,
+    "widthIn": 0,
+    "heightIn": 0,
+    "weightOz": 0
+  }
+}

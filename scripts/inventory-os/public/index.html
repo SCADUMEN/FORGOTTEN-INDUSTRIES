@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>L'INVENTAIRE // Local Operator Instrument</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="module-inventaire">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">FORGOTTEN INDUSTRIES // LOCAL OPERATOR RECORD</p>
+        <h1 id="instrument-title">L'INVENTAIRE</h1>
+        <p class="lede" id="instrument-lede">
+          Système des objets et des mouvements.
+        </p>
+      </div>
+      <div class="system-state">
+        <span class="status-light" aria-hidden="true"></span>
+        <span id="connection-state">LOCAL DATA ONLINE</span>
+      </div>
+    </header>
+
+    <nav class="module-nav" aria-label="Local operating systems">
+      <a href="/inventory/" data-module="inventaire">
+        <span>L'INVENTAIRE</span>
+        <small>Objets + mouvements</small>
+      </a>
+      <a href="/rd/" data-module="laboratoire">
+        <span>LE LABORATOIRE</span>
+        <small>Recherche + développement</small>
+      </a>
+      <p>ONE LOCAL CORE // TWO OPERATING REGISTERS</p>
+    </nav>
+
+    <main>
+      <section
+        class="metrics"
+        aria-label="Operating metrics"
+        id="metrics"
+      ></section>
+
+      <section class="workspace">
+        <aside class="stage-rail" aria-label="Lifecycle stages">
+          <div class="panel-label">LIFECYCLE</div>
+          <nav id="stage-nav"></nav>
+          <div class="rail-note">
+            <kbd>N</kbd> intake <kbd>/</kbd> search <kbd>J</kbd
+            ><kbd>K</kbd> select <kbd>Enter</kbd> open
+          </div>
+          <section class="stage-time-panel" aria-labelledby="stage-time-title">
+            <h2 id="stage-time-title">AVERAGE TIME PER STAGE</h2>
+            <div id="stage-times" class="stage-times"></div>
+          </section>
+        </aside>
+
+        <section class="inventory-panel">
+          <div class="toolbar">
+            <div>
+              <p class="panel-label">ACTIVE REGISTER</p>
+              <p class="record-count" id="record-count">0 records</p>
+            </div>
+            <label class="search-field">
+              <span class="sr-only">Search inventory</span>
+              <input
+                id="search"
+                type="search"
+                placeholder="Scan ID, SKU, location, or note…"
+                autocomplete="off"
+              />
+            </label>
+            <button class="button secondary" id="export-csv">EXPORT CSV</button>
+            <button class="button primary" id="new-item">
+              NEW INTAKE <kbd>N</kbd>
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>SKU</th>
+                  <th>Stage</th>
+                  <th>Grade</th>
+                  <th>Location</th>
+                  <th>Cost</th>
+                  <th>Value</th>
+                  <th>Updated</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-body"></tbody>
+            </table>
+            <div class="empty-state" id="empty-state" hidden>
+              <p>NO RECORDS IN THIS VIEW</p>
+              <button class="text-button" id="empty-intake">
+                Create the first item
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="research-panel" aria-labelledby="research-title">
+        <div class="research-header">
+          <div>
+            <p class="panel-label">LE LABORATOIRE / DEPLOYMENT REGISTER</p>
+            <h2 id="research-title">Capacity committed toward future work</h2>
+            <p>
+              Basis is recorded when resources are deployed. Returns remain zero
+              until cleared revenue can be linked to the capability.
+            </p>
+          </div>
+          <button class="button primary" id="new-research-deployment">
+            NEW R+D DEPLOYMENT
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Deployment</th>
+                <th>Class</th>
+                <th>Funding</th>
+                <th>Basis</th>
+                <th>Status</th>
+                <th>Realized return</th>
+              </tr>
+            </thead>
+            <tbody id="research-body"></tbody>
+          </table>
+          <div class="empty-state" id="research-empty" hidden>
+            <p>NO R+D DEPLOYMENTS RECORDED</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="audit-panel">
+        <div>
+          <p class="panel-label">RECENT AUDIT</p>
+          <p>Every mutation leaves a local witness.</p>
+        </div>
+        <ol id="audit-log"></ol>
+      </section>
+    </main>
+
+    <dialog id="research-dialog">
+      <form method="dialog" id="research-form">
+        <header class="dialog-header">
+          <div>
+            <p class="panel-label">R+D // CAPITAL DEPLOYMENT</p>
+            <h2>Register productive capacity</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close">
+            ×
+          </button>
+        </header>
+        <div class="form-grid">
+          <label>Deployment<input id="research-name" required /></label>
+          <label>Date<input id="research-date" type="date" /></label>
+          <label
+            >Basis<input
+              id="research-amount"
+              type="number"
+              min="0"
+              step="0.01"
+              required
+          /></label>
+          <label
+            >Funding type<select id="research-funding-type">
+              <option>cash</option>
+              <option value="store-credit">store credit</option>
+              <option>barter</option>
+              <option>grant</option>
+            </select></label
+          >
+          <label>Funding source<input id="research-funding-source" /></label>
+          <label
+            >Classification<select id="research-classification">
+              <option value="capability-asset">capability asset</option>
+              <option value="bench-infrastructure">bench infrastructure</option>
+              <option value="training-consumable">training consumable</option>
+              <option value="pilot-inventory">pilot inventory</option>
+              <option value="research-object">research object</option>
+              <option value="software-service">software / service</option>
+            </select></label
+          >
+          <label
+            >Status<select id="research-status">
+              <option>active</option>
+              <option value="acquired-unused">acquired / unused</option>
+              <option>consumed</option>
+              <option>retired</option>
+              <option>planned</option>
+            </select></label
+          >
+          <label>Operating region<input id="research-region" /></label>
+          <label class="wide"
+            >Purpose<textarea id="research-purpose" rows="3"></textarea>
+          </label>
+          <label class="wide"
+            >Profit pathway<textarea
+              id="research-profit-pathway"
+              rows="3"
+            ></textarea>
+          </label>
+          <label class="wide"
+            >Evidence and notes<textarea
+              id="research-notes"
+              rows="3"
+            ></textarea>
+          </label>
+        </div>
+        <footer class="dialog-actions">
+          <button class="button secondary" value="cancel">CANCEL</button>
+          <button class="button primary" value="default">REGISTER</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog id="intake-dialog">
+      <form method="dialog" id="intake-form">
+        <header class="dialog-header">
+          <div>
+            <p class="panel-label">INTAKE // BATCH CAPABLE</p>
+            <h2>Register inventory</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close">
+            ×
+          </button>
+        </header>
+        <div class="form-grid">
+          <label>SKU profile<select id="intake-profile"></select></label>
+          <label
+            >Quantity<input
+              id="intake-quantity"
+              type="number"
+              min="1"
+              max="500"
+              value="1"
+          /></label>
+          <label
+            >Cost per item<input
+              id="intake-cost"
+              type="number"
+              min="0"
+              step="0.01"
+          /></label>
+          <label
+            >Condition grade
+            <select id="intake-grade">
+              <option>ungraded</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+            </select>
+          </label>
+          <label class="span-2"
+            >Storage location<input id="intake-location" autocomplete="off"
+          /></label>
+          <label class="span-2"
+            >Intake notes<textarea id="intake-notes" rows="4"></textarea>
+          </label>
+        </div>
+        <footer class="dialog-actions">
+          <button class="button secondary" value="cancel">CANCEL</button>
+          <button class="button primary" id="create-intake" value="default">
+            REGISTER
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog id="item-dialog" class="item-dialog">
+      <form method="dialog" id="item-form">
+        <header class="dialog-header item-header">
+          <div>
+            <p class="panel-label" id="item-sku"></p>
+            <h2 id="item-id"></h2>
+            <p id="item-name"></p>
+          </div>
+          <div class="item-header-actions">
+            <button type="button" class="button secondary" id="print-label">
+              PRINT ID LABEL
+            </button>
+            <button type="button" class="button secondary" id="print-pack">
+              PRINT PACK RECORD
+            </button>
+            <button class="icon-button" value="cancel" aria-label="Close">
+              ×
+            </button>
+          </div>
+        </header>
+
+        <div class="item-layout">
+          <section class="editor-section">
+            <h3>Object record</h3>
+            <div class="form-grid">
+              <label>Lifecycle stage<select id="edit-stage"></select></label>
+              <label
+                >Condition grade
+                <select id="edit-grade">
+                  <option>ungraded</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>D</option>
+                </select>
+              </label>
+              <label>Storage location<input id="edit-location" /></label>
+              <label
+                >Purchase cost<input
+                  id="edit-cost"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label class="span-2"
+                >Notes<textarea id="edit-notes" rows="5"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <h3>Stage standards</h3>
+            <div id="checklists" class="checklists"></div>
+          </section>
+
+          <section class="editor-section">
+            <div class="section-heading">
+              <h3>Photography</h3>
+              <label class="button secondary upload-button"
+                >ATTACH PHOTOS
+                <input
+                  id="photo-input"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/heic"
+                  multiple
+                />
+              </label>
+            </div>
+            <div id="photo-grid" class="photo-grid"></div>
+          </section>
+
+          <section class="editor-section">
+            <div class="section-heading">
+              <h3>Listing</h3>
+              <button
+                type="button"
+                class="button secondary"
+                id="generate-listing"
+              >
+                REGENERATE COPY
+              </button>
+            </div>
+            <div class="form-grid">
+              <label class="span-2">Title<input id="listing-title" /></label>
+              <label class="span-2"
+                >Description<textarea
+                  id="listing-description"
+                  rows="9"
+                ></textarea>
+              </label>
+              <label>Marketplace<input id="listing-marketplace" /></label>
+              <label
+                >Status
+                <select id="listing-status">
+                  <option>draft</option>
+                  <option>ready</option>
+                  <option>published</option>
+                  <option>sold</option>
+                  <option>closed</option>
+                </select>
+              </label>
+              <label
+                >Asking price<input
+                  id="listing-asking"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label
+                >Sale price<input
+                  id="listing-sale"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label
+                >Marketplace fees<input
+                  id="listing-fees"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label>Listing URL<input id="listing-url" type="url" /></label>
+            </div>
+            <button type="button" class="text-button" id="copy-listing">
+              Copy title + description
+            </button>
+          </section>
+
+          <section class="editor-section">
+            <h3>Disposition and shipment</h3>
+            <div class="form-grid">
+              <label
+                >Disposition type<select id="disposition-type">
+                  <option value=""></option>
+                  <option>sale</option>
+                  <option>trade</option>
+                  <option>archive</option>
+                </select></label
+              >
+              <label
+                >Proceeds type<select id="proceeds-type">
+                  <option value=""></option>
+                  <option value="cash">cash</option>
+                  <option value="store-credit">store credit</option>
+                  <option value="none">none</option>
+                </select></label
+              >
+              <label
+                >Recognized value<input
+                  id="disposition-value"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label
+                >Store credit redeemed<input
+                  id="credit-redeemed"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label
+                >Financial state<select id="financial-status">
+                  <option>unresolved</option>
+                  <option>recognized</option>
+                </select></label
+              >
+              <label
+                >Consideration received<input id="consideration-description"
+              /></label>
+              <label
+                >Consideration status<input id="consideration-status"
+              /></label>
+              <div class="adjustment-register">
+                <span>Financial adjustments</span>
+                <div id="financial-adjustments"></div>
+              </div>
+              <label
+                >Package L × W × H
+                <span class="inline-inputs"
+                  ><input
+                    id="ship-length"
+                    type="number"
+                    min="0"
+                    step="0.1" /><input
+                    id="ship-width"
+                    type="number"
+                    min="0"
+                    step="0.1" /><input
+                    id="ship-height"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                /></span>
+              </label>
+              <label
+                >Weight (oz)<input
+                  id="ship-weight"
+                  type="number"
+                  min="0"
+                  step="0.1"
+              /></label>
+              <label>Carrier<input id="ship-carrier" /></label>
+              <label>Tracking<input id="ship-tracking" /></label>
+              <label
+                >Shipping cost<input
+                  id="ship-cost"
+                  type="number"
+                  min="0"
+                  step="0.01"
+              /></label>
+              <label
+                >Carrier label URL<input id="ship-label-url" type="url"
+              /></label>
+            </div>
+          </section>
+        </div>
+
+        <footer class="dialog-actions sticky-actions">
+          <span id="save-state">No unsaved changes</span>
+          <button class="button secondary" value="cancel">CLOSE</button>
+          <button type="button" class="button primary" id="save-item">
+            SAVE RECORD
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <section id="print-sheet" aria-hidden="true">
+      <div class="print-label">
+        <p>FORGOTTEN INDUSTRIES // INVENTORY</p>
+        <strong id="print-id"></strong>
+        <div id="barcode"></div>
+        <span id="print-product"></span>
+        <span id="print-location"></span>
+      </div>
+      <div class="pack-record">
+        <h1>PACKING RECORD</h1>
+        <p id="pack-id"></p>
+        <dl id="pack-details"></dl>
+        <div id="pack-checklist"></div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
