@@ -2193,3 +2193,138 @@ items:
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-07-18'
+  - id: FI-EPH-002
+    name: ODÜS Great / Headset Expression
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1536×2048 / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-002-headset-expression.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a close portrait of ODÜS Great
+      wearing over-ear headphones and looking upward with an exaggerated
+      expression. The operator supplied the identification and confirmed
+      clearance for inclusion. Authorship, source date, and upstream context
+      remain unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; identification and clearance recorded; authorship and source context remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
+
+  - id: FI-EPH-003
+    name: Game Two
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 320×320 / sticker-like cutout / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-003-game-two.jpeg
+    notes: >
+      Found-image cutout supplied for The Shadow Zone: an unidentified
+      basketball player in tinted glasses above a small scoreboard graphic
+      reading "GAME TWO." Subject, authorship, source frame, and alteration
+      history remain unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; subject, authorship, source frame, and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
+
+  - id: FI-EPH-004
+    name: White Mask
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 320×320 / sticker-like cutout / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-004-white-mask.jpeg
+    notes: >
+      Found-image cutout supplied for The Shadow Zone: an unidentified person
+      photographed from below while wearing a pale facial mask and dark barber
+      cape or garment. Subject, setting, authorship, and source context remain
+      unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; subject, setting, authorship, and source context remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
+
+  - id: FI-EPH-005
+    name: Armored Salute
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 320×320 / sticker-like cutout / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-005-armored-salute.jpeg
+    notes: >
+      Found-image cutout supplied for The Shadow Zone: a heavily armored
+      fantasy figure with both arms raised against a white field. Character,
+      source work, authorship, and alteration history remain unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; character, source work, authorship, and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
+
+  - id: FI-EPH-006
+    name: Chromatic World
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 320×320 / composite cutout / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-006-chromatic-world.jpeg
+    notes: >
+      Found-image composite supplied for The Shadow Zone: a fantasy strongman
+      positioned above a saturated circular world motif. Character, source
+      works, authorship, and compositing history remain unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; character, source works, authorship, and compositing history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
+
+  - id: FI-EPH-007
+    name: Standing Figure
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 307×498 / cutout / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-007-standing-figure.jpeg
+    notes: >
+      Found-image cutout supplied for The Shadow Zone: an unidentified
+      shirtless figure standing against a white field. Subject, original
+      creator, source frame, date, and alteration history remain unverified.
+    lifecycle:
+      - date: '2026-07-31'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; subject, original creator, source frame, date, and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-07-31'
