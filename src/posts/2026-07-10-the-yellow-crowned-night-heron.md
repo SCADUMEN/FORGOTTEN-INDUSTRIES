@@ -322,6 +322,8 @@ Patience allows me to see it.
 **Interpretation:** Patience as temporal altitude  
 **Disposition:** Continue observation. Do not interfere.
 
+**PHOTOGRAPHIC RECORD:** [Eleven-image public plate](/archive/photo-records/yellow-crowned-night-heron/)
+
 **PROVENANCE:** [Human–Machine Workthrough](/provenance/yellow-crowned-night-heron-provenance/)
 
 _A thing documented is a thing not yet lost._
