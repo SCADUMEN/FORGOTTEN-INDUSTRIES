@@ -85,7 +85,7 @@ items:
     model: WD4500BLHX / observed suffix WD4500BLHX-01V7BV0
     quantity: 8 reported / 4 directly identified / 4 pending inspection
     associated_project: FI-PROJ-001
-    condition: stored / four preliminary identifications completed / full health state unknown
+    condition: stored / four label identities reconciled / full health state unknown
     status: registered set / direct-SATA qualification pending
     photos: []
     notes: >
@@ -97,12 +97,13 @@ items:
       errors; the fourth bridge session did not permit a direct raw-device read.
       The USB bridge did not expose SMART data. WD product literature
       distinguishes the WD4500BLHX as the 2.5-inch drive and the WD4500HLHX as
-      the 3.5-inch IcePack-equipped assembly. Do not promote any unit to
-      working-array status
+      the 3.5-inch IcePack-equipped assembly. Label photography on 2026-07-30
+      reconciled four distinct units and showed each installed in a retained
+      IcePack carrier; serial numbers remain in the private register. Do not
+      promote any unit to working-array status
       before direct-SATA identity, SMART, short and extended self-tests, and a
-      complete read pass. Individual non-public test handles VR-01 through
-      VR-08 may be assigned after label photography; serial numbers remain
-      outside the public record.
+      complete read pass. Private canonical carrier IDs and test handles are
+      assigned only to the four photographed units.
     tags:
       - Western Digital
       - WD VelociRaptor
@@ -120,20 +121,22 @@ items:
     category: hard drive carrier / heat sink
     manufacturer: Western Digital
     model: IcePack mounting frame / exact part number and revision pending
-    quantity: retained set / direct count pending
+    quantity: 4 directly photographed / wider retained count pending
     associated_project: FI-PROJ-001
-    condition: stored / direct inspection pending
-    status: operator-confirmed identity / count and completeness pending
+    condition: four photographed with drives installed / completeness and thermal state pending
+    status: four units evidenced / exact part number, revision, and wider count pending
     photos: []
     notes: >
       Operator identifies the retained VelociRaptor carriers as WD IcePack
       frames. The IcePack is the Western Digital 2.5-to-3.5-inch mounting frame
-      and heat sink associated with 3.5-inch VelociRaptor assemblies. Exact
-      frame part number, revision, quantity, adapter-board presence, thermal-pad
-      condition, screws, and relationship to each WD4500BLHX drive require
-      direct photography and reconciliation. Do not assume the presence of an
-      IcePack changes a drive's device-reported model from WD4500BLHX to the
-      WD4500HLHX retail-assembly designation.
+      and heat sink associated with 3.5-inch VelociRaptor assemblies.
+      Photography on 2026-07-30 shows four carriers, each holding one of the
+      four privately reconciled WD4500BLHX drives and each bearing a B1
+      marking. Exact frame part number, revision, adapter-board completeness,
+      thermal-pad condition, screws, and any additional retained carriers
+      remain pending. Do not assume the presence of an IcePack changes a
+      drive's device-reported model from WD4500BLHX to the WD4500HLHX
+      retail-assembly designation.
     tags:
       - Western Digital
       - WD IcePack
