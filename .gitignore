@@ -74,6 +74,12 @@ playwright-report/
 /intake/**/*.mp3
 /intake/**/*.WAV
 /intake/**/*.wav
+/intake/**/*.M4A
+/intake/**/*.m4a
+/intake/**/*.AIFF
+/intake/**/*.aiff
+/intake/**/*.AIF
+/intake/**/*.aif
 /intake/**/*.zip
 
 # Cloudflare local state and credentials never enter the archive.

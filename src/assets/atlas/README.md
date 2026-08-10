@@ -9,7 +9,7 @@ Public record:
 - SHA-256: `8497f764eab890f3a91b12b54417c38e14a4a998d44d0af6e30f29623ebd66bc`
 - Format: WebP
 - Dimensions: 1536 x 2288 pixels
-- Color space: RGB
+- Color space: RGBA (RGB + alpha)
 - Embedded color profile: none reported by macOS ImageIO
 - Local filesystem path, package metadata, and workstation identity: not
   published
