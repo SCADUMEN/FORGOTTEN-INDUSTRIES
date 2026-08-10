@@ -12,9 +12,15 @@ eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">Dossier Record / {{ project.id }}</p>
+    <p class="section-label">{% if project.division %}{{ project.division }} / {% endif %}Dossier Record / {{ project.id }}</p>
     <h1>{{ project.title }}</h1>
     <p class="tagline">{{ project.summary }}</p>
+    {% if project.doctrine %}
+    <p class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> {{ project.doctrine }}</p>
+    {% endif %}
+    {% if project.flight_call %}
+    <p class="entry-note">{{ project.flight_call }}</p>
+    {% endif %}
   </div>
 </section>
 

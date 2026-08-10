@@ -6,6 +6,14 @@ Public route: `/projects/caselabs-mercury-s8/`
 
 Record state: working architecture / physical verification in progress
 
+Governing line:
+
+> THIS IS HOW THE SYSTEM AWAKENS. NOT BY FORCE, BUT BY SEQUENCE. PROGRESS IS
+> VOLTAGE HELD STEADY.
+
+The line describes the restoration method. It does not declare that the machine
+is assembled, powered, stable, or operational.
+
 ## Purpose
 
 This dossier divides the CaseLabs Mercury S8 and pedestal restoration into

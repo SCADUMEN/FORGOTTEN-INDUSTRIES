@@ -269,6 +269,57 @@ describe('archive crawlability output', () => {
     )
   })
 
+  it('publishes Provenance From On High as a permanent archival capability', () => {
+    const archive = readSite('l-archive/index.html')
+    const aerial = readSite('archive/aerial-documentation/index.html')
+    const peregrine = readSite(
+      'archive/projects/peregrine-drone-experiments/index.html'
+    )
+
+    expect(archive).toContain(
+      'Machines, documents, projects, photographs, and evidence retained against loss.'
+    )
+    expect(archive).toContain('Archives are searched.')
+    expect(archive).toContain('class="archive-aerial-tier"')
+    expect(archive).toContain('Project Number: None')
+    expect(archive).not.toContain('Dossier Number: None')
+    expect(aerial).toContain('It is not PROJET 009.')
+    expect(aerial).toContain('Phase I / Survey Records')
+    expect(aerial).toContain('Phase II / Geospatial Records')
+    expect(aerial).toContain('Phase III / Regional Memory System')
+    expect(aerial).toContain('The map is an index, not the archive.')
+    expect(aerial).toContain('FORGOTTEN INDUSTRIES UAV DIVISION')
+    expect(aerial).toContain('The PEREGRINE Drone Experiments')
+    expect(aerial).toContain(
+      'PATIENCE AS TEMPORAL PERSPECTIVE // ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE'
+    )
+    expect(aerial).toContain('ON THE FIVE, FLY FLY FLY...')
+    expect(aerial).toContain('A THING DOCUMENTED IS A THING NOT YET LOST')
+    expect(aerial).toContain(
+      'ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE</strong> governs the UAV Division'
+    )
+    expect(peregrine).toContain('FORGOTTEN INDUSTRIES UAV DIVISION')
+    expect(peregrine).toContain('ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE')
+    expect(peregrine).toContain('The PEREGRINE Drone Experiments')
+    expect(peregrine).toContain('ON THE FIVE, FLY FLY FLY...')
+  })
+
+  it('publishes the Mercury restoration doctrine without overstating function', () => {
+    const mercury = readSite('projects/caselabs-mercury-s8/index.html')
+    const mercuryRecord = readSite(
+      'archive/projects/caselabs-mercury-s8-pedestal-restoration/index.html'
+    )
+
+    for (const page of [mercury, mercuryRecord]) {
+      expect(page).toContain('THIS IS HOW THE SYSTEM AWAKENS.')
+      expect(page).toContain('NOT BY FORCE')
+      expect(page).toContain('BUT BY SEQUENCE.')
+      expect(page).toContain('PROGRESS IS VOLTAGE HELD STEADY.')
+    }
+    expect(mercury).toContain('final function remains unverified')
+    expect(mercuryRecord).toContain('assembly and function remain unverified')
+  })
+
   it('keeps the maker plate on generated record page types', () => {
     const generatedPages = [
       'archive/objects/fi-case-001/index.html',
