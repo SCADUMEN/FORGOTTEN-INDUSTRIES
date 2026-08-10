@@ -24,6 +24,20 @@ test('home page renders', async ({ page }) => {
     '> The Signal',
     '> About',
   ])
+  const homeSections = page.locator('#content > section')
+  await expect(homeSections.nth(0)).toHaveClass(/homepage-masthead/)
+  await expect(homeSections.nth(1)).toHaveClass(/homepage-docent/)
+  await expect(homeSections.nth(2)).toHaveClass(/primary-finding-aid/)
+  await expect(page.locator('.homepage-docent')).toContainText(
+    'Atlas, the Archive Docent.'
+  )
+  await expect(
+    page.getByRole('link', { name: 'Open the ATLAS dossier' })
+  ).toHaveAttribute('href', '/projects/atlas/')
+  await expect(page.locator('.homepage-docent img')).toHaveAttribute(
+    'src',
+    '/assets/atlas/atlas-archive-docent-spritesheet.webp'
+  )
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
@@ -65,6 +79,8 @@ test('home page remains contained on mobile', async ({ page }) => {
 
   expect(dimensions.scrollWidth).toBe(dimensions.viewport)
   await expect(page.locator('.homepage-masthead .hero-mark')).toBeVisible()
+  await expect(page.locator('.homepage-docent')).toBeVisible()
+  await expect(page.locator('.homepage-docent img')).toBeVisible()
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)

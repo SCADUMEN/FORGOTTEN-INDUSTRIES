@@ -4535,6 +4535,63 @@ h3 {
   color: var(--fi-magenta);
 }
 
+.homepage-docent {
+  border-block: 1px solid var(--line);
+  background: var(--fi-cyan-wash);
+}
+
+.homepage-docent-panel {
+  display: grid;
+  grid-template-columns: clamp(5.5rem, 10vw, 7rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.homepage-docent-portrait {
+  width: 100%;
+}
+
+.homepage-docent-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem 1.5rem;
+  min-width: 0;
+}
+
+.homepage-docent-copy h2 {
+  color: var(--fi-cyan);
+  font-family: var(--font-system);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-style: normal;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.homepage-docent-orientation {
+  max-width: 54rem;
+  margin: 0.35rem 0 0;
+  color: var(--fi-green);
+  font-family: var(--font-system);
+  font-size: var(--homepage-mono-size);
+  line-height: 1.45;
+}
+
+.homepage-docent-action {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.homepage-docent-action a {
+  color: var(--fi-green-bright);
+}
+
+.homepage-docent-action span {
+  color: var(--fi-magenta);
+}
+
 .primary-finding-aid,
 .instrument-strip,
 .latest-activity,
@@ -6538,6 +6595,15 @@ a.site-cxr-mark:focus-visible {
 }
 
 @media (max-width: 700px) {
+  .homepage-docent-copy {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .homepage-docent-action {
+    white-space: normal;
+  }
+
   .primary-card-grid,
   .directory-grid,
   .signal-source-grid,
