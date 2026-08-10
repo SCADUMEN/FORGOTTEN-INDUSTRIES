@@ -4,9 +4,14 @@ Date logged: 2026-06-05 04:39 CT
 
 ## Project Identity
 
-PEREGRINE is the drone field-system branch of Forgotten Industries. It covers
-small aircraft experiments, flight logs, recovery routes, crash reports,
-maintenance notes, and repair diagnostics.
+PEREGRINE is the experimental flight program of the Forgotten Industries UAV
+Division. It covers small aircraft experiments, flight logs, recovery routes,
+crash reports, maintenance notes, and repair diagnostics beneath the permanent
+archival capability Provenance From On High.
+
+Doctrine: **PATIENCE AS TEMPORAL PERSPECTIVE // ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE**
+
+Flight call: **ON THE FIVE, FLY FLY FLY...**
 
 This is not a generic drone content track. It is a machine dossier: what flew,
 what failed, what was recovered, what remains uncertain, and what must be

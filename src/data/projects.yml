@@ -236,6 +236,7 @@ projects:
     slug: caselabs-mercury-s8-pedestal-restoration
     title: L’ARCHIVE / CaseLabs Mercury S8 Restoration
     working_title: LE RÉDEMPTEURE + LE SAUVEGARDER
+    doctrine: THIS IS HOW THE SYSTEM AWAKENS. NOT BY FORCE, BUT BY SEQUENCE. PROGRESS IS VOLTAGE HELD STEADY.
     category: CaseLabs Archive
     status: restoration active / function unverified
     started: '2015'
@@ -390,8 +391,11 @@ projects:
 
   - id: FI-PROJ-004
     slug: peregrine-drone-experiments
-    title: PEREGRINE Drone Experiments
+    title: The PEREGRINE Drone Experiments
     working_title: PERRY / PEREGRINE Aircraft Dossier
+    division: FORGOTTEN INDUSTRIES UAV DIVISION
+    doctrine: ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE
+    flight_call: ON THE FIVE, FLY FLY FLY...
     category: Drone Field Systems
     status: active / A01 grounded / A02 lost / A03 planned
     started: '2026'
@@ -404,6 +408,7 @@ projects:
       notes, recovery routes, error codes, safety calls, and uncertain details
       as evidence.
     themes:
+      - altitude in flight as vertical perspective
       - small aircraft recovery
       - flight logging
       - crash diagnostics
@@ -505,7 +510,7 @@ projects:
       - label: Local ATLAS repository
         type: local
         role: canonical working source
-        path: ~/Documents/ATLAS
+        path: '[local workstation path withheld]'
       - label: Public ATLAS mirror
         type: git
         role: public source route

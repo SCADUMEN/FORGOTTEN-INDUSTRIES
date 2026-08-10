@@ -1,8 +1,20 @@
-# PEREGRINE Drone Experiments
+# Forgotten Industries UAV Division: The PEREGRINE Drone Experiments
 
 ![PEREGRINE-A02 mark](../../assets/projects/peregrine/peregrine-a02.png)
 
-PEREGRINE is the Forgotten Industries drone field-system dossier.
+PEREGRINE is the experimental flight program of the Forgotten Industries UAV
+Division. It is the operational branch beneath Provenance From On High: the
+aircraft, flight, crash, recovery, maintenance, and source-image record through
+which aerial observation becomes archival practice.
+
+> PATIENCE AS TEMPORAL PERSPECTIVE // ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE
+
+`ON THE FIVE, FLY FLY FLY...`
+
+`A THING DOCUMENTED IS A THING NOT YET LOST` is the governing line for
+L'ARCHIVE. `ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE` is the corresponding
+governing line for the UAV Division. It defines why the aircraft ascends: to
+make relationships visible and return that context to the record.
 
 This folder preserves the working material for Perry 1 / PEREGRINE-A01,
 Perry 2 / PEREGRINE-A02, and the planned Perry 3 / PEREGRINE-A03 replacement.

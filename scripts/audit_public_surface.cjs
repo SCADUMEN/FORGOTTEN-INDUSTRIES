@@ -35,6 +35,10 @@ const forbiddenContent = [
   ['Windows user path', /[A-Z]:\\Users\\[^\\]+\\/i],
   ['temporary workstation path', /\/private\/tmp(?:\/|\b)/],
   ['mounted-volume path', /\/Volumes\//],
+  [
+    'home-relative workstation path',
+    /~\/(?:Documents|Desktop|Downloads)(?:\/|\b)/,
+  ],
 ]
 const protectedPhrases = [
   'Boutique Systems Division',

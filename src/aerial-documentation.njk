@@ -5,6 +5,7 @@ description: Aerial documentation methodology and instrument record for the Forg
 permalink: /archive/aerial-documentation/index.html
 eleventyExcludeFromCollections: true
 ---
+{% set peregrine = archive.projects | findById("FI-PROJ-004") %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <p class="section-label">L'Archive / archival capability</p>
@@ -26,7 +27,7 @@ eleventyExcludeFromCollections: true
           <dd>L'ARCHIVE Shelf</dd>
         </div>
         <div>
-          <dt>Dossier Number</dt>
+          <dt>Project Number</dt>
           <dd>None</dd>
         </div>
         <div>
@@ -34,9 +35,79 @@ eleventyExcludeFromCollections: true
           <dd>Aerial and geospatial contextual documentation</dd>
         </div>
       </dl>
+      <p>Provenance From On High is a permanent observational capability of Forgotten Industries: a way the archive sees systems, landscapes, infrastructure, and places from altitude. It is not PROJET 009.</p>
       <p>Aerial systems extend the archive's field of view. They document site context, access conditions, object location, spatial relationships, and observations that cannot be made safely or honestly from ground level.</p>
       <p>The aircraft, camera, flight conditions, operator decisions, failures, and recovery limits all belong to the chain of provenance. Aerial imagery is evidence only when its context remains attached.</p>
       <p class="action-row"><a href="/l-archive/?q=drone">Retrieve aerial records from L'Index</a> / <a href="/provenance/#instrument-heading">Read instrument provenance</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="aerial-uav-division-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">FORGOTTEN INDUSTRIES UAV DIVISION</p>
+      <h2 id="aerial-uav-division-heading">The PEREGRINE Drone Experiments</h2>
+    </header>
+    <div>
+      <p>PEREGRINE is the experimental flight program that exercises this archival capability. Flights, failures, recoveries, maintenance, aircraft state, source imagery, and the decision not to fly all remain part of the record.</p>
+      <p>As <strong>A THING DOCUMENTED IS A THING NOT YET LOST</strong> governs L'ARCHIVE, <strong>ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE</strong> governs the UAV Division. The line defines the instrument's purpose: ascend so relationships that are hidden at ground level can enter the record.</p>
+      <p class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> PATIENCE AS TEMPORAL PERSPECTIVE // ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE</p>
+      <p class="entry-note">ON THE FIVE, FLY FLY FLY...</p>
+      {% if peregrine %}<p class="action-row"><a href="{{ peregrine | archiveProjectUrl }}">Open the PEREGRINE Drone Experiments dossier</a></p>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="aerial-doctrine-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">Premise / doctrine</p>
+      <h2 id="aerial-doctrine-heading">From above, memory regains its context.</h2>
+    </header>
+    <div>
+      <p>Provenance From On High is the aerial expression of the archive. Its purpose is not cinematography but contextual documentation. Objects, systems, projects, landscapes, and infrastructure are recorded from altitude so that relationships become visible.</p>
+      <p>An object exists within a system. A system exists within a landscape. Aerial documentation therefore belongs inside L'ARCHIVE as a preservation method rather than beside it as a temporary project.</p>
+      <p><strong>Mission:</strong> create a long-term aerial record of places, infrastructure, restoration efforts, landscapes, and systems at risk of alteration, neglect, or disappearance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="aerial-phases-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">Capability development</p>
+      <h2 id="aerial-phases-heading">Build the record in three phases.</h2>
+    </header>
+    <div>
+      <dl class="provenance-definitions">
+        <div>
+          <dt>Phase I / Survey Records</dt>
+          <dd>Aerial documentation, archive integration, field notes, repeatable survey standards, photographic records, site metadata, and geographic indexing.</dd>
+        </div>
+        <div>
+          <dt>Phase II / Geospatial Records</dt>
+          <dd>Orthomosaics, photogrammetry, change detection, seasonal comparison, and longitudinal site observation.</dd>
+        </div>
+        <div>
+          <dt>Phase III / Regional Memory System</dt>
+          <dd>Public map index, linked archive records, temporal comparison, related objects, projects, field logs, and aerial surveys.</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="provenance-record" aria-labelledby="aerial-relationship-heading">
+  <div class="section-inner provenance-grid">
+    <header>
+      <p class="section-label">Archive relationship</p>
+      <h2 id="aerial-relationship-heading">The map is an index, not the archive.</h2>
+    </header>
+    <div>
+      <p><strong>Object -&gt; Project -&gt; Field Log -&gt; Survey -&gt; Location.</strong></p>
+      <p>Geographic indexing must lead back to the evidence record. Location is context, not a substitute for custody, source history, operator testimony, inspection, or verification.</p>
+      <p class="entry-note">Developed through dialogue between Matthew Marx and ATLAS. Human judgment retains final editorial authority. Machine collaboration is documented as part of the chain of provenance.</p>
     </div>
   </div>
 </section>

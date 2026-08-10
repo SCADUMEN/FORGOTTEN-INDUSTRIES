@@ -10,11 +10,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.swp
+__pycache__/
+*.py[cod]
 .claude/
 test-results/
 playwright-report/
 .playwright/
 .playwright-mcp/
+
+# Local runtimes, model weights, scratch logs, and recovery work never enter
+# the public archive.
+/work/
 
 # CONTINUANCE generated data indexes (fetched/normalized at build time by
 # scripts/build_continuance_index.cjs) and dev-only CSS copy. continuance/dist
@@ -40,6 +46,7 @@ playwright-report/
 /intake/SECURITY-GATEWAY/
 /intake/RELOCATION-2026/
 /intake/STORAGE-MAP/
+/intake/social/
 # Media anywhere under intake/ stays local. These patterns are recursive (**) so
 # nested folders such as intake/Splunking/ are covered too — a flat /intake/*.EXT
 # rule only matches the top level and let geotagged photos slip into history.
@@ -67,6 +74,12 @@ playwright-report/
 /intake/**/*.mp3
 /intake/**/*.WAV
 /intake/**/*.wav
+/intake/**/*.M4A
+/intake/**/*.m4a
+/intake/**/*.AIFF
+/intake/**/*.aiff
+/intake/**/*.AIF
+/intake/**/*.aif
 /intake/**/*.zip
 
 # Cloudflare local state and credentials never enter the archive.

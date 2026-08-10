@@ -611,12 +611,10 @@ test('restoration dossiers preserve canonical identity and public custody bounda
   await expect(larchiveCard).toContainText(
     'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
   )
-  await expect(larchiveCard).toContainText(
-    'LE RÉDEMPTEURE, the boutique hardline-cooled X99 main cube'
-  )
-  await expect(larchiveCard).toContainText(
-    'LE SAUVEGARDER, the preservation and storage-array pedestal'
-  )
+  await expect(larchiveCard).toContainText('Principal project')
+  await expect(larchiveCard).toContainText('Preserved chassis')
+  await expect(larchiveCard).toContainText('Function unverified')
+  await expect(larchiveCard).toContainText('The archive master thesis.')
 
   const sourceResponse = await request.get(
     '/projects/x99-impact-recovery/README.md'
