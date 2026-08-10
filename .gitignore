@@ -16,6 +16,10 @@ playwright-report/
 .playwright/
 .playwright-mcp/
 
+# Local runtimes, model weights, scratch logs, and recovery work never enter
+# the public archive.
+/work/
+
 # CONTINUANCE generated data indexes (fetched/normalized at build time by
 # scripts/build_continuance_index.cjs) and dev-only CSS copy. continuance/dist
 # is covered by dist/.

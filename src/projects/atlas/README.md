@@ -3,7 +3,7 @@
 Project id: `FI-PROJ-006`
 Archive status: active operating layer
 Public route: `/projects/atlas/`
-Local working source: `~/Documents/ATLAS`
+Local working source: separate repository; workstation path withheld from the public record
 Public mirror: `Forgotten-Industries/ATLAS`
 
 ATLAS is the reusable operating interface behind Forgotten Industries. It carries the core collaboration rules, rapport layer, Matthew-specific profile, reusable templates, and witness doctrine that can be copied into downstream project repositories.

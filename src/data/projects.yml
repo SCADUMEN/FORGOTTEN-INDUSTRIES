@@ -505,7 +505,7 @@ projects:
       - label: Local ATLAS repository
         type: local
         role: canonical working source
-        path: ~/Documents/ATLAS
+        path: '[local workstation path withheld]'
       - label: Public ATLAS mirror
         type: git
         role: public source route
