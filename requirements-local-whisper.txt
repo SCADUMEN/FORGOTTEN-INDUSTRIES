@@ -1,0 +1,4 @@
+# Local-only audio transcription. Audio never leaves this machine.
+openai-whisper>=20250625
+# Provides a local ffmpeg binary for the helper when the system has none.
+imageio-ffmpeg>=0.6.0
