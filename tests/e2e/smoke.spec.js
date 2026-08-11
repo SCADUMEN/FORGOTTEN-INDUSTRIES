@@ -118,6 +118,7 @@ test('representative route families remain contained at 320px', async ({
     '/blog/',
     '/posts/',
     '/archive/objects/fi-case-001/',
+    '/archive/taxonomy/',
     '/hang-on-to-each-other/wrist-field-instruments/',
     '/contact.html',
     '/hash/',
@@ -135,6 +136,33 @@ test('representative route families remain contained at 320px', async ({
 
     expect(dimensions.scrollWidth, route).toBe(dimensions.viewport)
   }
+})
+
+test('native taxonomy separates authority from source vocabulary', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive/taxonomy/')
+  expect(response?.status()).toBe(200)
+
+  await expect(page.locator('main')).toContainText('FI-TAXONOMY-v1.0')
+  await expect(
+    page.getByRole('heading', { name: 'Our language first.' })
+  ).toBeVisible()
+  await expect(page.locator('#public-layers')).toContainText("L'ŒUVRE")
+  await expect(page.locator('#record-families')).toContainText('ATLAS report')
+  await expect(page.locator('#evidence-states')).toContainText(
+    'Machine transcription'
+  )
+  await expect(page.locator('#lifecycle')).toContainText('Quarantine')
+  await expect(page.locator('#source-vocabulary')).toContainText(
+    'discovery vocabulary, not the controlled FI authority'
+  )
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.scrollWidth).toBe(dimensions.viewport)
 })
 
 test('contact route exposes complete archive channels', async ({ page }) => {

@@ -24,6 +24,13 @@ Public pages generally use the ATLAS / SYSOUT instrument voice. Amber / MTM
 styling is reserved for work explicitly authored through **LE SAUVEGARDER**.
 Human authorship and judgment remain primary.
 
+The native filing authority is `src/data/taxonomy.yml`. It separates four
+questions that older source fields often combine: public layer, record family,
+evidence state, and `lifecycle_state`. Categories, tags, system names, and narrative
+status notes remain preserved discovery indexes rather than controlled terms.
+External archival standards are later crosswalk targets; FI language converges
+first. The public authority is rendered at `/archive/taxonomy/`.
+
 ## Repository authority
 
 Read these files before changing the archive:

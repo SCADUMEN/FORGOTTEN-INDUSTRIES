@@ -11,6 +11,7 @@ SRC = File.join(ROOT, "src")
 DIST = File.join(ROOT, "dist")
 
 SOURCE_FILES = [
+  { "label" => "taxonomy", "path" => "src/data/taxonomy.yml" },
   { "label" => "projects", "path" => "src/data/projects.yml" },
   { "label" => "inventory", "path" => "src/data/inventory.yml" },
   { "label" => "fieldLogs", "path" => "src/data/field-logs.yml" },
@@ -65,6 +66,8 @@ end
 def search_document(
   id:,
   type:,
+  record_type:,
+  public_layer:,
   title:,
   url:,
   date: nil,
@@ -87,6 +90,8 @@ def search_document(
   tag_terms = normalize_terms(tags)
   category_text = compact_text(category)
   type_text = compact_text(type)
+  record_type_text = compact_text(record_type)
+  public_layer_text = compact_text(public_layer)
   object_text = compact_text(object)
   system_text = compact_text(system)
   condition_text = compact_text(condition)
@@ -97,6 +102,8 @@ def search_document(
   {
     "id" => id.to_s,
     "type" => type_text,
+    "record_type" => record_type_text,
+    "public_layer" => public_layer_text,
     "title" => title_text,
     "url" => url,
     "date" => date&.to_s,
@@ -115,6 +122,8 @@ def search_document(
     "tokens" => [
       id,
       type_text,
+      record_type_text,
+      public_layer_text,
       title_text,
       category_text,
       object_text,
@@ -144,6 +153,8 @@ def post_documents(posts_dir)
     search_document(
       id: data["entry"] || data["slug"] || basename,
       type: data["type"] || "post",
+      record_type: "manuscript",
+      public_layer: post_public_layer(data),
       title: data["title"] || basename,
       url: url,
       date: data["date"],
@@ -162,6 +173,23 @@ def post_documents(posts_dir)
   end.compact
 end
 
+def post_public_layer(data)
+  classification = [data["category"], data["type"], data["tags"]]
+    .flatten
+    .compact
+    .join(" ")
+    .downcase
+
+  return "le_signal" if classification.match?(/\ble signal\b|\ble blog\b|\bprelude\b/)
+
+  "l_oeuvre"
+end
+
+def field_log_record_type(log)
+  category = compact_text(log["category"]).downcase
+  category.include?("atlas") && category.include?("report") ? "atlas_report" : "field_log"
+end
+
 def inventory_tags(item)
   [
     item["tags"],
@@ -172,11 +200,13 @@ def inventory_tags(item)
 end
 
 projects_path = File.join(ROOT, "src/data/projects.yml")
+taxonomy_path = File.join(ROOT, "src/data/taxonomy.yml")
 inventory_path = File.join(ROOT, "src/data/inventory.yml")
 field_logs_path = File.join(ROOT, "src/data/field-logs.yml")
 voice_logs_path = File.join(ROOT, "src/data/voice-logs.yml")
 social_posts_path = File.join(ROOT, "src/data/social-posts.yml")
 
+taxonomy = load_yaml(taxonomy_path).fetch("taxonomy")
 projects = assert_array!(load_yaml(projects_path), "projects", projects_path)
 inventory = assert_array!(load_yaml(inventory_path), "items", inventory_path)
 field_logs_data = load_yaml(field_logs_path)
@@ -221,6 +251,7 @@ archive = {
     "voice" => "intimate, precise, archival, technical, emotionally honest",
     "sourceFiles" => SOURCE_FILES
   },
+  "taxonomy" => taxonomy,
   "projects" => projects,
   "inventory" => inventory,
   "atlasReportProvenance" => atlas_report_provenance,
@@ -235,6 +266,8 @@ projects.each do |project|
   search_documents << search_document(
     id: project.fetch("id"),
     type: "project",
+    record_type: "dossier",
+    public_layer: "l_oeuvre",
     title: project.fetch("title"),
     url: "/archive/projects/#{slugify(project["slug"] || project.fetch("id"))}/",
     date: project["revived"] || project["started"],
@@ -256,6 +289,8 @@ inventory.each do |item|
   search_documents << search_document(
     id: item.fetch("id"),
     type: "inventory",
+    record_type: "object",
+    public_layer: "l_archive",
     title: item["name"] || item.fetch("id"),
     url: "/archive/objects/#{slugify(item.fetch("id"))}/",
     date: item["date"] || item["date_logged"],
@@ -274,9 +309,12 @@ inventory.each do |item|
 end
 
 field_logs.each do |log|
+  record_type = field_log_record_type(log)
   search_documents << search_document(
     id: log.fetch("id"),
     type: log["category"] || "field-log",
+    record_type: record_type,
+    public_layer: record_type == "atlas_report" ? "l_oeuvre" : "le_signal",
     title: log.fetch("title"),
     url: "/field-logs/#{log.fetch("slug")}/",
     date: log["date"],
@@ -299,6 +337,8 @@ voice_logs.each do |log|
   search_documents << search_document(
     id: log.fetch("id"),
     type: "voice-field-log",
+    record_type: "voice_log",
+    public_layer: "le_signal",
     title: log.fetch("title"),
     url: "/field-logs/##{log.fetch("id")}",
     date: log["date"],
@@ -316,6 +356,8 @@ social_posts.each do |post|
   search_documents << search_document(
     id: post.fetch("id"),
     type: "social-post",
+    record_type: "social_evidence",
+    public_layer: "l_archive",
     title: post["title"] || post.fetch("slug"),
     url: post["post_path"] ? "/#{post["post_path"]}" : "/social-posts.html",
     date: post["date"],
@@ -339,6 +381,8 @@ search_index = {
   "queryLanguage" => {
     "name" => "L'INDEX Query Language",
     "examples" => [
+      "family:dossier",
+      "layer:l_archive",
       "title:\"Pang\"",
       "tag:watercooling",
       "type:doctrine",

@@ -87,6 +87,23 @@ describe('archive crawlability output', () => {
     expect(dossierLinks).toContain('/archive/status/')
   })
 
+  it('publishes the native FI taxonomy before discovery vocabulary', () => {
+    const taxonomy = readSite('archive/taxonomy/index.html')
+    const categories = readSite('archive/categories/index.html')
+    const statusNotes = readSite('archive/status/index.html')
+
+    expect(taxonomy).toContain('FI-TAXONOMY-v1.0')
+    expect(taxonomy).toContain('Our language first.')
+    expect(taxonomy).toContain('Axis 01 / Public layer')
+    expect(taxonomy).toContain('Axis 02 / Record family')
+    expect(taxonomy).toContain('Axis 03 / Evidence state')
+    expect(taxonomy).toContain('Axis 04 / Lifecycle')
+    expect(taxonomy).toContain('Source language remains reachable.')
+    expect(categories).toContain('Source Categories')
+    expect(categories).toContain('not a controlled axis')
+    expect(statusNotes).toContain('Source State Notes')
+  })
+
   it('publishes Manual 002 and its preserved source asset', () => {
     const manualShelf = readSite('hang-on-to-each-other/index.html')
     const manual = readSite(
@@ -186,11 +203,15 @@ describe('archive crawlability output', () => {
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
+      record_type: 'object',
+      public_layer: 'l_archive',
       object: 'CaseLabs Mercury S8',
       associated_project: 'FI-PROJ-001',
       condition: 'stored / needs inspection and cleaning',
     })
     expect(fieldLog).toMatchObject({
+      record_type: 'atlas_report',
+      public_layer: 'l_oeuvre',
       object: 'CaseLabs Mercury S8 + pedestal',
       system: 'custom watercooling restoration',
       associated_project: 'FI-PROJ-001',
@@ -200,15 +221,21 @@ describe('archive crawlability output', () => {
       title: 'ATLAS Report 2026.06.20 — Accumulation Across Active Fronts',
       url: '/field-logs/accumulation-across-active-fronts/',
       category: 'atlas-report',
+      record_type: 'atlas_report',
+      public_layer: 'l_oeuvre',
       associated_project: 'FI-PROJ-006',
     })
     expect(wayIn).toMatchObject({
       title: 'A Way In',
       type: 'Short Form / Curated Entry',
+      record_type: 'manuscript',
+      public_layer: 'l_oeuvre',
       url: '/a-way-in/',
     })
     expect(voiceLog).toMatchObject({
       type: 'voice-field-log',
+      record_type: 'voice_log',
+      public_layer: 'le_signal',
       url: '/field-logs/#FI-VOICE-003',
     })
   })
