@@ -307,7 +307,7 @@ When Potato appears in archive language, preserve the warmth, humor, loyalty, an
 
 Potato's concern is a signal, not a bug. For late-night work, garage sessions, desk marathons, or intense project bursts, remember that sustainable progress includes keeping the lab partner settled too.
 
-Full context lives in `docs/potato-dossier.md`.
+Full context lives in `src/docs/potato-dossier.md`.
 
 ## Decision Rules
 

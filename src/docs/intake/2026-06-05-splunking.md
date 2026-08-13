@@ -25,6 +25,6 @@
 
 This is a raw evidence intake, not a curated public asset set. The camera filenames are preserved to maintain export order and original capture continuity.
 
-Next archive pass should identify visible object groups, assign temporary object IDs where useful, and map selected filenames to `src/inventory.yml`, project dossiers, or field logs.
+Next archive pass should identify visible object groups, assign temporary object IDs where useful, and map selected filenames to `src/data/inventory.yml`, project dossiers, or field logs.
 
 Do not depend on camera roll order alone after this stage. Any future renamed files should be derived working copies that preserve the original filename in their metadata or notes.

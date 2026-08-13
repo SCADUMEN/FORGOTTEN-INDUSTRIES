@@ -23,7 +23,7 @@
 
 Matthew referenced "the first 150" and "the 80 from today." In this working tree, the locally present files are 129 in `assets/initial-photos/` and 80 in `Splunking/`, for 209 newly registered source files in this sweep.
 
-Existing recovered social-media assets remain tracked through `src/social-posts.yml`, `posts/social/`, and the REDEEMER evidence records already present in `src/inventory.yml`. This sweep does not duplicate those social records; it registers the two local raw/photo-source batches that needed collection-level inventory coverage.
+Existing recovered social-media assets remain tracked through `src/data/social-posts.yml`, `posts/social/`, and the REDEEMER evidence records already present in `src/data/inventory.yml`. This sweep does not duplicate those social records; it registers the two local raw/photo-source batches that needed collection-level inventory coverage.
 
 ## Next Pass
 

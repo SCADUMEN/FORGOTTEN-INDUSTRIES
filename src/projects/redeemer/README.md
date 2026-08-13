@@ -6,7 +6,7 @@ Evidence window: 2016-03-14 through 2016-05-17
 
 REDEEMER was the Forgotten Industries white NZXT H440 custom liquid-cooled PC documented across the 2016 Instagram run. The recovered posts establish a build sequence from fittings and loop planning through dual-pump assembly, storage selection, RAM and GPU watercooling prep, tubing, leak testing, custom cabling, Windows install, HUE+ lighting, and final game testing.
 
-This file is an evidence map, not a memory replacement. The canonical recovered social records live in `src/social-posts.yml`; the generated post files under `posts/social/` preserve captions, timestamps, media, source links, likes, and comments.
+This file is an evidence map, not a memory replacement. The canonical recovered social records live in `src/data/social-posts.yml`; the generated post files under `posts/social/` preserve captions, timestamps, media, source links, likes, and comments.
 
 ## Primary Spec
 

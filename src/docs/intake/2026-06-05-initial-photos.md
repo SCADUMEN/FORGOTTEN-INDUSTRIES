@@ -26,4 +26,4 @@ Matthew referred to this body as the first 150 photos during the sweep. The loca
 
 Visual contact-sheet review of the rendered JPEG/PNG files shows CaseLabs chassis and panel evidence, radiator and fan hardware, filters, trays, packaging, cable and component context, room/process context, and the Forgotten Industries identity asset. The two MOV files are preserved as source evidence but are not visually described in this pass.
 
-Next archive pass should assign object-level links from this set into `src/inventory.yml`, project dossiers, or field logs. The current record is a source-set inventory, not a final identification pass.
+Next archive pass should assign object-level links from this set into `src/data/inventory.yml`, project dossiers, or field logs. The current record is a source-set inventory, not a final identification pass.

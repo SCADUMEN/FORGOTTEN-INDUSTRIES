@@ -20,9 +20,9 @@ This folder preserves the working material for Perry 1 / PEREGRINE-A01,
 Perry 2 / PEREGRINE-A02, and the planned Perry 3 / PEREGRINE-A03 replacement.
 The canonical archive records live in:
 
-- `src/projects.yml`
-- `src/inventory.yml`
-- `src/field-logs.yml`
+- `src/data/projects.yml`
+- `src/data/inventory.yml`
+- `src/data/field-logs.yml`
 
 The project-local files here hold richer source notes, aircraft registry data,
 templates, and repair context that should not be flattened into the main YAML
