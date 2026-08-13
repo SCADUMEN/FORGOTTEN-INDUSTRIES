@@ -35,12 +35,18 @@ uniform float uPhase;
 uniform vec2 uDrift;
 uniform vec3 uPalette[3];             // cyan, magenta, gold
 uniform float uGrainSeed;
-uniform sampler2D uPhotoA;            // background photographs, cross-faded
+uniform sampler2D uPhotoA;            // base layer photographs, cross-faded
 uniform sampler2D uPhotoB;
 uniform vec2 uPhotoScaleA;            // cover-fit UV scale (viewport vs image aspect)
 uniform vec2 uPhotoScaleB;
 uniform float uPhotoMix;              // 0 = A, 1 = B
-uniform float uPhotoAmount;           // global presence; 0 when no photographs
+uniform float uPhotoAmount;           // base presence; 0 when no base photographs
+uniform sampler2D uPhotoC;            // Shadow Zone overlay, cross-faded on top
+uniform sampler2D uPhotoD;
+uniform vec2 uPhotoScaleC;
+uniform vec2 uPhotoScaleD;
+uniform float uPhotoMix2;             // 0 = C, 1 = D
+uniform float uPhotoAmount2;          // overlay presence; 0 when no overlay photos
 
 out vec4 outColor;
 
@@ -155,13 +161,24 @@ void main() {
   // field r so they churn with the oil, cross-faded A->B, and screen-blended
   // weighted by film height so a photo surfaces in the bright bands and sinks
   // to black in the troughs. Composited before the text so records read on top.
+  vec2 uvP = uv + (r - 0.5) * 0.06;
   if (uPhotoAmount > 0.001) {
-    vec2 uvP = uv + (r - 0.5) * 0.06;
     vec3 photoA = texture(uPhotoA, coverUV(uvP, uPhotoScaleA)).rgb;
     vec3 photoB = texture(uPhotoB, coverUV(uvP, uPhotoScaleB)).rgb;
     vec3 photo = mix(photoA, photoB, uPhotoMix);
     float weight = uPhotoAmount * smoothstep(0.15, 0.75, hn);
     col = 1.0 - (1.0 - col) * (1.0 - photo * weight);
+  }
+
+  // Shadow Zone overlay: a second cross-fade (C->D) that runs continuously, so
+  // one found image is always mid-transition. Screen-blended over the base with
+  // the same height weighting so it churns with the oil too.
+  if (uPhotoAmount2 > 0.001) {
+    vec3 photoC = texture(uPhotoC, coverUV(uvP, uPhotoScaleC)).rgb;
+    vec3 photoD = texture(uPhotoD, coverUV(uvP, uPhotoScaleD)).rgb;
+    vec3 overlay = mix(photoC, photoD, uPhotoMix2);
+    float weight2 = uPhotoAmount2 * smoothstep(0.15, 0.75, hn);
+    col = 1.0 - (1.0 - col) * (1.0 - overlay * weight2);
   }
 
   // Text sheet: fragments emerge from and dissolve into the film.

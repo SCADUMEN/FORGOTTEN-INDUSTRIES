@@ -101,8 +101,10 @@ async function boot() {
   })
 
   resizeAll()
+  const manifest = readManifest()
   photos = createPhotos({
-    manifest: readManifest(),
+    base: manifest.base,
+    overlay: manifest.overlay,
     renderer,
     getAspect: () => cssW / cssH,
   })
@@ -111,16 +113,21 @@ async function boot() {
   rafId = requestAnimationFrame(frame)
 }
 
-// Background-photo manifest inlined by the page as JSON (see src/zoot.njk).
+// Background-photo manifest inlined by the page as JSON (see src/zoot.njk):
+// { base, overlay }, each an array of { src }. Missing/malformed -> empty layers.
 function readManifest() {
+  const empty = { base: [], overlay: [] }
   const el = document.getElementById('zoot-photos')
-  if (!el) return []
+  if (!el) return empty
   try {
-    const parsed = JSON.parse(el.textContent || '[]')
-    return Array.isArray(parsed) ? parsed : []
+    const parsed = JSON.parse(el.textContent || '{}')
+    return {
+      base: Array.isArray(parsed.base) ? parsed.base : [],
+      overlay: Array.isArray(parsed.overlay) ? parsed.overlay : [],
+    }
   } catch (err) {
     console.warn('[zoot] photo manifest parse failed:', err)
-    return []
+    return empty
   }
 }
 
@@ -264,20 +271,30 @@ async function staticResolution(poolPromise) {
   )
 }
 
-// One frozen photograph for the reduced-motion frame (no cross-fade loop).
+// One frozen base photograph for the reduced-motion frame (no cross-fade loop,
+// no Shadow Zone overlay).
 async function staticPhoto() {
-  const manifest = readManifest()
-  if (!manifest.length) return null
+  const { base } = readManifest()
+  if (!base.length) return null
   try {
     const img = new Image()
     img.decoding = 'async'
-    img.src = manifest[0].src
+    img.src = base[0].src
     await img.decode()
     renderer.uploadPhoto(0, img)
     const view = cssW / cssH
     const aspect = img.naturalWidth / img.naturalHeight
     const scaleA = [Math.max(1, aspect / view), Math.max(1, view / aspect)]
-    return { mix: 0, amount: 1.1, scaleA, scaleB: [1, 1] }
+    return {
+      mix: 0,
+      amount: 1.1,
+      scaleA,
+      scaleB: [1, 1],
+      mix2: 0,
+      amount2: 0,
+      scaleC: [1, 1],
+      scaleD: [1, 1],
+    }
   } catch (err) {
     console.warn('[zoot] static photo load failed:', err)
     return null
