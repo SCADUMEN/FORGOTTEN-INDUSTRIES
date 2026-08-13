@@ -76,9 +76,9 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       background: var(--fi-surface);
       color: var(--fi-paper-light);
     }
-    /* Bottom chrome: the exit mark and the photo credits share one fixed bar
-       so they lay out together and never overlap. The bar ignores pointer
-       events (canvas keeps receiving stirs); only its links opt back in. */
+    /* Bottom chrome: the exit mark and sound toggle sit in one fixed bar. The
+       bar ignores pointer events (canvas keeps receiving stirs); only its
+       links opt back in. */
     #zoot-chrome {
       position: fixed;
       left: 0;
@@ -129,29 +129,6 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
     #zoot-audio-toggle:focus-visible {
       opacity: 0.85;
       outline: none;
-    }
-    #zoot-credits {
-      max-width: min(48rem, 66vw);
-      text-align: right;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      line-height: 1.5;
-      color: var(--fi-paper-light);
-      opacity: 0.42;
-    }
-    #zoot-credits .zoot-credits-label {
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-right: 0.35rem;
-    }
-    #zoot-credits a {
-      pointer-events: auto;
-      color: var(--fi-cyan);
-      text-decoration: none;
-    }
-    #zoot-credits a:hover,
-    #zoot-credits a:focus-visible {
-      text-decoration: underline;
     }
     #zoot-focus {
       position: fixed;
@@ -325,11 +302,6 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
         <button id="zoot-audio-toggle" type="button" aria-pressed="true">Sound On</button>
         {% endif %}
       </div>
-      {% if zootPhotos.length %}
-      <nav id="zoot-credits" aria-label="Background photographs">
-        <span class="zoot-credits-label">Background Photos:</span>{% for photo in zootPhotos %}<a href="{{ photo.src }}">{{ photo.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
-      </nav>
-      {% endif %}
     </div>
     <noscript>
       <p class="zoot-panel-heading">

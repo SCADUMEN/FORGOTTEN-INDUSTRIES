@@ -28,12 +28,27 @@ const UNIFORMS = [
   'uPhotoScaleB',
   'uPhotoMix',
   'uPhotoAmount',
+  'uPhotoC',
+  'uPhotoD',
+  'uPhotoScaleC',
+  'uPhotoScaleD',
+  'uPhotoMix2',
+  'uPhotoAmount2',
 ]
 
 // A 1x1 transparent black texel so the photo samplers always resolve even
-// before any photograph loads (uPhotoAmount gates the visual regardless).
+// before any photograph loads (uPhotoAmount/uPhotoAmount2 gate the visual).
 const BLANK_TEXEL = new Uint8Array([0, 0, 0, 0])
-const NO_PHOTO = { mix: 0, amount: 0, scaleA: [1, 1], scaleB: [1, 1] }
+const NO_PHOTO = {
+  mix: 0,
+  amount: 0,
+  scaleA: [1, 1],
+  scaleB: [1, 1],
+  mix2: 0,
+  amount2: 0,
+  scaleC: [1, 1],
+  scaleD: [1, 1],
+}
 
 export { MAX_IMPULSES, MAX_FRAGS }
 
@@ -69,8 +84,9 @@ export function createRenderer(canvas) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
 
-  // Photo texture units 1 and 2 (text stays on 0). NPOT-safe: LINEAR + CLAMP,
-  // no mipmaps.
+  // Photo texture units 1-4 (text stays on 0): slots 0/1 are the base layer's
+  // cross-fade pair (A/B), slots 2/3 the Shadow Zone overlay pair (C/D).
+  // NPOT-safe: LINEAR + CLAMP, no mipmaps.
   const makePhotoTex = () => {
     const tex = gl.createTexture()
     gl.bindTexture(gl.TEXTURE_2D, tex)
@@ -91,7 +107,12 @@ export function createRenderer(canvas) {
     )
     return tex
   }
-  const photoTex = [makePhotoTex(), makePhotoTex()]
+  const photoTex = [
+    makePhotoTex(),
+    makePhotoTex(),
+    makePhotoTex(),
+    makePhotoTex(),
+  ]
 
   return {
     gl,
@@ -121,8 +142,8 @@ export function createRenderer(canvas) {
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false)
     },
 
-    // Upload a decoded photograph into slot 0 (A) or 1 (B). Called off the hot
-    // path — once per cross-fade (~every 8-12 s), not per frame.
+    // Upload a decoded photograph into a texture slot: 0/1 = base A/B,
+    // 2/3 = overlay C/D. Called off the hot path — once per cross-fade.
     uploadPhoto(slot, image) {
       gl.bindTexture(gl.TEXTURE_2D, photoTex[slot])
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
@@ -151,6 +172,10 @@ export function createRenderer(canvas) {
       gl.uniform1f(u.uPhotoAmount, photo.amount)
       gl.uniform2f(u.uPhotoScaleA, photo.scaleA[0], photo.scaleA[1])
       gl.uniform2f(u.uPhotoScaleB, photo.scaleB[0], photo.scaleB[1])
+      gl.uniform1f(u.uPhotoMix2, photo.mix2)
+      gl.uniform1f(u.uPhotoAmount2, photo.amount2)
+      gl.uniform2f(u.uPhotoScaleC, photo.scaleC[0], photo.scaleC[1])
+      gl.uniform2f(u.uPhotoScaleD, photo.scaleD[0], photo.scaleD[1])
       gl.activeTexture(gl.TEXTURE0)
       gl.bindTexture(gl.TEXTURE_2D, textTex)
       gl.uniform1i(u.uTextTex, 0)
@@ -160,6 +185,12 @@ export function createRenderer(canvas) {
       gl.activeTexture(gl.TEXTURE2)
       gl.bindTexture(gl.TEXTURE_2D, photoTex[1])
       gl.uniform1i(u.uPhotoB, 2)
+      gl.activeTexture(gl.TEXTURE3)
+      gl.bindTexture(gl.TEXTURE_2D, photoTex[2])
+      gl.uniform1i(u.uPhotoC, 3)
+      gl.activeTexture(gl.TEXTURE4)
+      gl.bindTexture(gl.TEXTURE_2D, photoTex[3])
+      gl.uniform1i(u.uPhotoD, 4)
       gl.bindVertexArray(vao)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
     },
