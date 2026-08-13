@@ -1,10 +1,10 @@
 # L'Archive Local Photo Intake
 
-This folder is the local Forgotten Industries L'Archive photo dump copied from:
-
-```text
-/Users/matthewmarx/Pictures/FORGOTTEN-INDUSTRIES
-```
+This folder is the local Forgotten Industries L'Archive photo dump copied from
+a local `Pictures/FORGOTTEN-INDUSTRIES` folder on Matthew's workstation. The
+originating absolute path is intentionally withheld here since this file is
+public-tracked; the redacted form still identifies the source unambiguously
+for provenance purposes.
 
 ## Intake Summary
 
