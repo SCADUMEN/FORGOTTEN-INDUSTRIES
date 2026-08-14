@@ -37,6 +37,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           include_comments_by_actor: Forgotten-Industries
+          track_progress: true
           prompt: |
             REPOSITORY: ${{ github.repository }}
             PULL REQUEST: ${{ github.event.issue.number }}
@@ -55,11 +56,12 @@ jobs:
             evidence integrity. Do not promote inference, machine transcription,
             or an unverified state into a verified claim.
 
-            Post inline comments only for specific, actionable findings. Post one
-            concise top-level summary with blocking findings first, then
-            non-blocking findings, followed by what could not be verified. For
-            every finding include severity, exact file and line, evidence,
-            impact, and the smallest safe fix. Do not invent findings. If there
-            are no blockers, say so explicitly.
+            Post inline comments only for specific, actionable findings. Return
+            one concise final summary for the action's tracking comment, with
+            blocking findings first, then non-blocking findings, followed by what
+            could not be verified. For every finding include severity, exact file
+            and line, evidence, impact, and the smallest safe fix. Do not invent
+            findings. If there are no blockers, say so explicitly.
           claude_args: |
-            --allowedTools "Read,Grep,Glob,Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr checks:*),Bash(gh pr comment:*),mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "Read,Grep,Glob,Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr checks:*),mcp__github_inline_comment__create_inline_comment"
+            --disallowedTools "Edit,Write,NotebookEditCell"
