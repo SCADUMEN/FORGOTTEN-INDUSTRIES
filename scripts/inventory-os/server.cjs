@@ -84,6 +84,26 @@ function roundMoney(value) {
   return Math.round((value + Number.EPSILON) * 100) / 100
 }
 
+function normalizeSilverProfile(value) {
+  if (!value || typeof value !== 'object') return null
+  return {
+    pieceCount: Math.max(0, Math.trunc(numberOrZero(value.pieceCount))),
+    grossWeightGrams: roundMoney(
+      Math.max(0, numberOrZero(value.grossWeightGrams))
+    ),
+    elementalSilverGrams: roundMoney(
+      Math.max(0, numberOrZero(value.elementalSilverGrams))
+    ),
+    fineTroyOunces: roundMoney(Math.max(0, numberOrZero(value.fineTroyOunces))),
+    provisionalPieceCount: Math.max(
+      0,
+      Math.trunc(numberOrZero(value.provisionalPieceCount))
+    ),
+    verificationState: String(value.verificationState || 'unverified'),
+    basisScope: String(value.basisScope || ''),
+  }
+}
+
 function loadProfiles() {
   return fs
     .readdirSync(profilesRoot)
@@ -128,6 +148,10 @@ function createStore({ dataRoot = defaultDataRoot, clock = Date } = {}) {
   let database = JSON.parse(fs.readFileSync(databasePath, 'utf8'))
   database.nextResearchSequence ||= 1
   database.researchDeployments ||= []
+  for (const deployment of database.researchDeployments) {
+    deployment.inventoryRole ||= 'research'
+    if (!('draftListing' in deployment)) deployment.draftListing = null
+  }
   let writeQueue = Promise.resolve()
 
   function read() {
@@ -205,6 +229,15 @@ function calculateMetrics(database) {
     (sum, deployment) => sum + numberOrZero(deployment.realizedReturn),
     0
   )
+  const silverPrograms = researchDeployments.filter(
+    (deployment) => deployment.silverProfile
+  )
+  const silverMetric = (field) =>
+    silverPrograms.reduce(
+      (sum, deployment) =>
+        sum + numberOrZero(deployment.silverProfile?.[field]),
+      0
+    )
   const fulfillmentStages = new Set(['sold', 'label', 'packing', 'shipped'])
   const soldItems = database.items.filter(
     (item) =>
@@ -345,6 +378,14 @@ function calculateMetrics(database) {
     researchNonCashDeployed: roundMoney(researchNonCashDeployed),
     researchCapacityBasis: roundMoney(researchCapacityBasis),
     researchRealizedReturn: roundMoney(researchRealizedReturn),
+    researchSilverProgramCount: silverPrograms.length,
+    researchSilverPieceCount: silverMetric('pieceCount'),
+    researchSilverGrossGrams: roundMoney(silverMetric('grossWeightGrams')),
+    researchElementalSilverGrams: roundMoney(
+      silverMetric('elementalSilverGrams')
+    ),
+    researchFineSilverOzt: roundMoney(silverMetric('fineTroyOunces')),
+    researchSilverProvisionalPieceCount: silverMetric('provisionalPieceCount'),
   }
 }
 
@@ -375,6 +416,29 @@ function createResearchDeployment(database, input, timestamp) {
     profitPathway: String(input.profitPathway || ''),
     realizedReturn: roundMoney(numberOrZero(input.realizedReturn)),
     evidenceState: String(input.evidenceState || 'operator stated'),
+    catalogRef: String(input.catalogRef || ''),
+    seller: String(input.seller || ''),
+    orderStatus: String(input.orderStatus || ''),
+    deliveryState: String(input.deliveryState || ''),
+    identificationConfidence: String(
+      input.identificationConfidence || 'unresolved'
+    ),
+    inventoryRole: String(input.inventoryRole || 'research'),
+    silverProfile: normalizeSilverProfile(input.silverProfile),
+    draftListing:
+      input.draftListing && typeof input.draftListing === 'object'
+        ? {
+            status: String(input.draftListing.status || 'draft'),
+            title: String(input.draftListing.title || ''),
+            description: String(input.draftListing.description || ''),
+            suggestedAsk: roundMoney(
+              numberOrZero(input.draftListing.suggestedAsk)
+            ),
+            floorPrice: roundMoney(numberOrZero(input.draftListing.floorPrice)),
+            marketplace: String(input.draftListing.marketplace || 'eBay'),
+          }
+        : null,
+    photos: [],
     linkedTransactionGroup: String(input.linkedTransactionGroup || ''),
     notes: String(input.notes || ''),
     createdAt: timestamp,
@@ -393,6 +457,52 @@ function createResearchDeployment(database, input, timestamp) {
       classification: deployment.classification,
     },
   })
+  return deployment
+}
+
+function mergeResearchDeploymentPatch(deployment, patch, timestamp) {
+  const textFields = [
+    'deployedAt',
+    'title',
+    'fundingType',
+    'fundingSource',
+    'classification',
+    'status',
+    'operatingRegion',
+    'purpose',
+    'profitPathway',
+    'evidenceState',
+    'catalogRef',
+    'seller',
+    'orderStatus',
+    'deliveryState',
+    'identificationConfidence',
+    'inventoryRole',
+    'linkedTransactionGroup',
+    'notes',
+  ]
+  for (const field of textFields) {
+    if (field in patch) deployment[field] = String(patch[field] ?? '')
+  }
+  for (const field of ['amount', 'realizedReturn']) {
+    if (field in patch) {
+      deployment[field] = roundMoney(numberOrZero(patch[field]))
+    }
+  }
+  if (patch.draftListing && typeof patch.draftListing === 'object') {
+    deployment.draftListing = {
+      status: String(patch.draftListing.status || 'draft'),
+      title: String(patch.draftListing.title || ''),
+      description: String(patch.draftListing.description || ''),
+      suggestedAsk: roundMoney(numberOrZero(patch.draftListing.suggestedAsk)),
+      floorPrice: roundMoney(numberOrZero(patch.draftListing.floorPrice)),
+      marketplace: String(patch.draftListing.marketplace || 'eBay'),
+    }
+  }
+  if ('silverProfile' in patch) {
+    deployment.silverProfile = normalizeSilverProfile(patch.silverProfile)
+  }
+  deployment.updatedAt = timestamp
   return deployment
 }
 
@@ -873,6 +983,106 @@ function createInventoryServer(options = {}) {
         return
       }
 
+      const researchDeploymentMatch = pathname.match(
+        /^\/api\/research-deployments\/([^/]+)$/
+      )
+      if (researchDeploymentMatch && method === 'PATCH') {
+        const body = await readJsonBody(request)
+        const timestamp = nowIso(clock)
+        let updated
+        await store.mutate((database) => {
+          const deployment = database.researchDeployments.find(
+            (entry) => entry.id === researchDeploymentMatch[1]
+          )
+          if (!deployment) return
+          updated = mergeResearchDeploymentPatch(deployment, body, timestamp)
+          database.audit.unshift({
+            id: randomUUID(),
+            itemId: deployment.id,
+            action: 'research.deployment.updated',
+            at: timestamp,
+            detail: { fields: Object.keys(body) },
+          })
+        })
+        if (!updated) {
+          send(response, 404, { error: 'R+D deployment not found.' })
+          return
+        }
+        send(response, 200, updated)
+        return
+      }
+
+      const researchPhotoMatch = pathname.match(
+        /^\/api\/research-deployments\/([^/]+)\/photos$/
+      )
+      if (researchPhotoMatch && method === 'POST') {
+        const body = await readJsonBody(request)
+        const type = String(body.type || '').toLowerCase()
+        const allowedTypes = new Map([
+          ['image/jpeg', '.jpg'],
+          ['image/png', '.png'],
+          ['image/webp', '.webp'],
+          ['image/heic', '.heic'],
+        ])
+        const extension = allowedTypes.get(type)
+        const escapedType = type.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        const match = String(body.data || '').match(
+          new RegExp(`^data:${escapedType};base64,(.+)$`)
+        )
+        if (!extension || !match) {
+          send(response, 400, { error: 'Unsupported or invalid image.' })
+          return
+        }
+        const buffer = Buffer.from(match[1], 'base64')
+        if (!buffer.length || buffer.length > 20 * 1024 * 1024) {
+          send(response, 400, {
+            error: 'Image must be between 1 byte and 20 MB.',
+          })
+          return
+        }
+        const timestamp = nowIso(clock)
+        let updated
+        await store.mutate((database) => {
+          const deployment = database.researchDeployments.find(
+            (entry) => entry.id === researchPhotoMatch[1]
+          )
+          if (!deployment) return
+          deployment.photos ||= []
+          const photoId = randomUUID()
+          const deploymentRoot = path.join(store.uploadsRoot, deployment.id)
+          fs.mkdirSync(deploymentRoot, { recursive: true, mode: 0o700 })
+          const filename = `${photoId}${extension}`
+          fs.writeFileSync(path.join(deploymentRoot, filename), buffer, {
+            mode: 0o600,
+          })
+          deployment.photos.push({
+            id: photoId,
+            originalName: path.basename(
+              String(body.name || `photo${extension}`)
+            ),
+            type,
+            path: `${deployment.id}/${filename}`,
+            addedAt: timestamp,
+            status: body.status || 'source-evidence',
+          })
+          deployment.updatedAt = timestamp
+          updated = deployment
+          database.audit.unshift({
+            id: randomUUID(),
+            itemId: deployment.id,
+            action: 'research.photo.attached',
+            at: timestamp,
+            detail: { photoId, originalName: body.name || '' },
+          })
+        })
+        if (!updated) {
+          send(response, 404, { error: 'R+D deployment not found.' })
+          return
+        }
+        send(response, 201, updated)
+        return
+      }
+
       if (pathname === '/api/batches' && method === 'POST') {
         const body = await readJsonBody(request)
         const profile = profilesById.get(body.profileId || profiles[0]?.id)
@@ -1122,5 +1332,6 @@ module.exports = {
   createStore,
   databaseToCsv,
   isAllowedHost,
+  mergeResearchDeploymentPatch,
   resolveWithin,
 }

@@ -211,18 +211,50 @@ function renderResearch() {
   $('#research-empty').hidden = deployments.length > 0
   $('#research-body').innerHTML = deployments
     .map(
-      (deployment) => `<tr>
-        <td>${esc(deployment.id)}</td>
+      (deployment) => `<tr class="research-record">
+        <td class="research-object-cell">
+          ${deployment.photos?.[0] ? `<img class="research-thumbnail" src="/uploads/${encodeURI(deployment.photos[0].path)}" alt="Evidence thumbnail for ${esc(deployment.title)}" />` : '<span class="research-thumbnail research-thumbnail-empty">NO IMAGE</span>'}
+          <span><strong>${esc(deployment.id)}</strong><br><small>${esc(deployment.catalogRef || 'Catalog reference pending')}</small></span>
+        </td>
         <td>${date(deployment.deployedAt)}</td>
-        <td><strong>${esc(deployment.title)}</strong><br><small>${esc(deployment.profitPathway || deployment.purpose || 'No pathway recorded')}</small></td>
-        <td>${esc(deployment.classification)}</td>
+        <td><strong>${esc(deployment.title)}</strong><br><small>${esc(deployment.seller || 'Seller not recorded')} / ${esc(deployment.identificationConfidence || 'unresolved')}</small><br><small>${esc(deployment.profitPathway || deployment.purpose || 'No pathway recorded')}</small>${deployment.draftListing ? `<details class="listing-draft"><summary>LISTING DRAFT / ${money(deployment.draftListing.suggestedAsk)}</summary><strong>${esc(deployment.draftListing.title)}</strong><p>${esc(deployment.draftListing.description)}</p><small>${esc(deployment.draftListing.status)} / floor ${money(deployment.draftListing.floorPrice)} / ${esc(deployment.draftListing.marketplace)}</small></details>` : ''}</td>
+        <td>${esc(deployment.classification)}<br><small>${esc(deployment.inventoryRole || 'research')}</small></td>
         <td>${esc(deployment.fundingType)}<br><small>${esc(deployment.fundingSource)}</small></td>
         <td>${money(deployment.amount)}</td>
-        <td><span class="stage-chip">${esc(deployment.status)}</span></td>
+        <td><span class="stage-chip">${esc(deployment.status)}</span><br><small>${esc(deployment.deliveryState || deployment.orderStatus || 'state pending')}</small></td>
         <td>${money(deployment.realizedReturn)}</td>
       </tr>`
     )
     .join('')
+}
+
+function renderSilverProgram() {
+  const silverPrograms = (app.state.database.researchDeployments || []).filter(
+    (deployment) => deployment.silverProfile
+  )
+  const panel = $('#silver-program')
+  panel.hidden = app.module !== 'laboratoire' || silverPrograms.length === 0
+  if (panel.hidden) return
+
+  const metrics = app.state.metrics
+  const profile = silverPrograms[0].silverProfile
+  $('#silver-fine-grams').textContent =
+    `${Number(metrics.researchElementalSilverGrams).toFixed(2)} g`
+  $('#silver-fine-ozt').textContent =
+    `${Number(metrics.researchFineSilverOzt).toFixed(2)} ozt`
+  $('#silver-piece-count').textContent =
+    `${metrics.researchSilverPieceCount} conditional`
+  $('#silver-gross-grams').textContent =
+    `${Number(metrics.researchSilverGrossGrams).toFixed(2)} g`
+  $('#silver-basis').textContent = money(
+    silverPrograms.reduce(
+      (sum, deployment) => sum + Number(deployment.amount || 0),
+      0
+    )
+  )
+  $('#silver-verification-state').textContent = profile.verificationState
+  $('#silver-boundary').textContent =
+    `${profile.basisScope} ${metrics.researchSilverProvisionalPieceCount} provisional pieces are included in the working inventory estimate but excluded from the cleared basis. Receipt, authenticity, scale weight, fineness, and condition remain unverified until physical intake.`
 }
 
 function render() {
@@ -230,6 +262,7 @@ function render() {
   renderStages()
   renderInventory()
   renderResearch()
+  renderSilverProgram()
   renderAudit()
 }
 
@@ -270,6 +303,11 @@ async function createResearchDeployment(event) {
     purpose: $('#research-purpose').value.trim(),
     profitPathway: $('#research-profit-pathway').value.trim(),
     evidenceState: 'operator stated',
+    catalogRef: $('#research-catalog-ref').value.trim(),
+    seller: $('#research-seller').value.trim(),
+    orderStatus: $('#research-order-status').value.trim(),
+    deliveryState: $('#research-delivery-state').value.trim(),
+    identificationConfidence: $('#research-confidence').value,
     notes: $('#research-notes').value.trim(),
   }
   await api('/api/research-deployments', {

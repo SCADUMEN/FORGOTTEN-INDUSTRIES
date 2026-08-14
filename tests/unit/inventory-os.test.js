@@ -234,6 +234,20 @@ describe('inventory operating instrument', () => {
         status: 'active',
         operatingRegion: 'Kansas',
         profitPathway: 'Supports future paid restoration work.',
+        catalogRef: '49097',
+        seller: 'source-seller',
+        orderStatus: 'paid',
+        deliveryState: 'tracking available',
+        identificationConfidence: 'model-visible',
+        silverProfile: {
+          pieceCount: 104,
+          grossWeightGrams: 627.38,
+          elementalSilverGrams: 580.31,
+          fineTroyOunces: 18.66,
+          provisionalPieceCount: 2,
+          verificationState: 'conditional working estimate',
+          basisScope: 'Completed coin-category orders only.',
+        },
       },
     })
     const state = await request('/api/state')
@@ -244,6 +258,57 @@ describe('inventory operating instrument', () => {
     expect(state.body.metrics.researchCashDeployed).toBe(0)
     expect(state.body.metrics.researchCapacityBasis).toBe(30)
     expect(state.body.metrics.researchRealizedReturn).toBe(0)
+    expect(state.body.metrics.researchSilverPieceCount).toBe(104)
+    expect(state.body.metrics.researchElementalSilverGrams).toBe(580.31)
+    expect(state.body.metrics.researchFineSilverOzt).toBe(18.66)
+    expect(state.body.metrics.researchSilverProvisionalPieceCount).toBe(2)
+    expect(created.body.catalogRef).toBe('49097')
+    expect(created.body.seller).toBe('source-seller')
+    expect(created.body.photos).toEqual([])
+    expect(created.body.silverProfile.verificationState).toBe(
+      'conditional working estimate'
+    )
+  })
+
+  it('attaches local evidence thumbnails to R+D deployments', async () => {
+    const created = await request('/api/research-deployments', {
+      method: 'POST',
+      body: { title: 'Watch evidence test', amount: 20 },
+    })
+    const photo = await request(
+      `/api/research-deployments/${created.body.id}/photos`,
+      {
+        method: 'POST',
+        body: {
+          name: 'watch.png',
+          type: 'image/png',
+          data: 'data:image/png;base64,iVBORw0KGgo=',
+        },
+      }
+    )
+
+    expect(photo.status).toBe(201)
+    expect(photo.body.photos).toHaveLength(1)
+    expect(photo.body.photos[0].status).toBe('source-evidence')
+
+    const patched = await request(
+      `/api/research-deployments/${created.body.id}`,
+      {
+        method: 'PATCH',
+        body: {
+          title: 'Identified watch',
+          amount: 25,
+          status: 'acquired-unused',
+        },
+      }
+    )
+    expect(patched.status).toBe(200)
+    expect(patched.body).toMatchObject({
+      title: 'Identified watch',
+      amount: 25,
+      status: 'acquired-unused',
+    })
+    expect(patched.body.photos).toHaveLength(1)
   })
 
   it('exports safe CSV and restricts service to loopback paths and hosts', async () => {
@@ -270,7 +335,8 @@ describe('inventory operating instrument', () => {
     expect(laboratory.headers['x-robots-tag']).toContain('noindex')
     expect(inventory.body).toContain("L'INVENTAIRE")
     expect(laboratory.body).toContain('LE LABORATOIRE')
+    expect(laboratory.body).toContain('ELEMENTAL AG')
     expect(state.body.database.items).toHaveLength(9)
-    expect(state.body.database.researchDeployments).toHaveLength(1)
+    expect(state.body.database.researchDeployments).toHaveLength(2)
   })
 })
