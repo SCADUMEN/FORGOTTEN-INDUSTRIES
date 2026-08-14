@@ -87,6 +87,9 @@ does not treat a listing as a sale or a sale as a shipment.
   stage-duration metrics
 - R+D deployment register separating cash from non-cash capacity, basis from
   realized return, and capability assets from training consumables
+- silver-program register with elemental-Ag grams first, conditional gross
+  mass, troy-ounce conversion, piece count, cleared coin-order basis, and an
+  explicit physical-intake verification boundary
 - CSV and JSON export
 - atomic JSON persistence and full mutation audit
 
@@ -105,6 +108,12 @@ software/services. Capability is not cash, and hoped-for profit is not revenue.
 Deployment basis is not future revenue. A profit pathway records the intended
 commercial use; `realizedReturn` stays zero until cleared revenue can be linked
 to that capacity. This is an operating record, not a tax classification.
+
+Silver metrics are working inventory estimates, not assays or valuations.
+Elemental-Ag grams remain primary; piece count, gross mass, and fine troy ounces
+must stay labeled as conditional until receipt, order reconciliation, weighing,
+and testing are recorded. Provisional wins may appear in the working count while
+their uncleared hammer prices remain outside deployed basis.
 
 ## Add a SKU
 

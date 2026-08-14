@@ -1,0 +1,170 @@
+taxonomy:
+  id: FI-TAXONOMY-v1.0
+  title: Forgotten Industries Taxonomy
+  status: working authority
+  authority: Matthew Taylor Marx / Forgotten Industries
+  source_document: src/docs/classification-system.md
+  rule: Forgotten Industries language is canonical. External standards are crosswalk targets only after this vocabulary is stable in use.
+
+  axes:
+    public_layers:
+      label: Public layer
+      field: public_layer
+      question: Where does the record belong in the public institution?
+      terms:
+        - id: l_archive
+          label: L'ARCHIVE
+          route: /l-archive/
+          definition: Evidence, objects, source records, inventories, process records, and the instruments that keep them reachable.
+        - id: l_oeuvre
+          label: L'ŒUVRE
+          route: /oeuvre/
+          definition: Assembled work drawn from the archive, including dossiers, manuscripts, reports, doctrine, and provenance.
+        - id: le_signal
+          label: LE SIGNAL
+          route: /signal/
+          definition: Time-based transmissions, field dispatches, live notes, and recorder-based journals.
+        - id: a_propos
+          label: À PROPOS
+          route: /apropos/
+          definition: Authorship, institutional context, method, citation practice, and contact.
+
+    record_types:
+      label: Record family
+      field: record_type
+      question: What kind of record is this?
+      terms:
+        - id: dossier
+          label: Dossier
+          definition: A living case file assembled from multiple archive records and observations.
+        - id: object
+          label: Object
+          definition: A catalogued physical or digital thing treated as an archive record.
+        - id: component
+          label: Component
+          definition: A part documented in relation to a larger object or system.
+        - id: manuscript
+          label: Manuscript
+          definition: An authored essay, paper, or complete written work emerging from the archive.
+        - id: atlas_report
+          label: ATLAS report
+          definition: A stabilized operational synthesis produced under Matthew's authority with its instrument chain disclosed.
+        - id: field_log
+          label: Field log
+          definition: A dated record of observation, handling, testing, repair, or field activity.
+        - id: voice_log
+          label: Voice field journal
+          definition: A recorder-based field record and its explicitly separated derivatives or review state.
+        - id: social_evidence
+          label: Recovered social evidence
+          definition: A preserved record recovered from an earlier public social platform.
+        - id: source_set
+          label: Source set
+          definition: A bounded group of source files or records preserved together.
+        - id: process_record
+          label: Process record
+          definition: A durable account of archive handling, transformation, audit, or publication work.
+        - id: provenance_record
+          label: Provenance record
+          definition: A record of origin, custody, derivation, authorship, or production chain.
+        - id: technical_reference
+          label: Technical reference
+          definition: A manual, specification, comparison plate, method, or other reusable technical instrument.
+        - id: archive_box
+          label: Archive box
+          definition: A physical or logical container described as a record set before item-level promotion.
+        - id: file
+          label: File
+          definition: An individual digital file documented as an archive object or representation.
+        - id: manifest
+          label: Manifest
+          definition: A machine-readable inventory or fixity record for a bounded set of files.
+
+    evidence_states:
+      label: Evidence state
+      field: evidence_state
+      question: What kind of support does the record or claim currently have?
+      terms:
+        - id: verified_source_fact
+          label: Verified source fact
+          definition: Directly supported by an identified file, hash, photograph, manual, inspection, measurement, or repeatable test.
+        - id: operator_report
+          label: Operator report
+          definition: A dated statement from Matthew about custody, condition, history, or intent.
+        - id: machine_transcription
+          label: Machine transcription
+          definition: Locally generated text derived from audio and not yet established as listening-reviewed evidence.
+        - id: listening_review
+          label: Listening review
+          definition: A human has checked what a recording audibly says; this does not independently prove every statement in it.
+        - id: inference
+          label: Inference
+          definition: A reasoned interpretation that remains labeled and linked to its supporting record.
+        - id: future_work
+          label: Future work or candidate
+          definition: Planned, proposed, desired, or under consideration; not acquired, installed, tested, or completed.
+
+    lifecycle_states:
+      label: Lifecycle
+      field: lifecycle_state
+      question: What is the record's current archive or publication stage?
+      terms:
+        - id: intake
+          label: Intake
+          definition: Received or identified but not yet fully described or cleared.
+        - id: draft
+          label: Draft
+          definition: In active preparation and not yet stabilized as a record.
+        - id: active
+          label: Active
+          definition: Current work with a maintained next action or open operating state.
+        - id: provisional
+          label: Provisional
+          definition: Usable with explicit uncertainty or incomplete verification.
+        - id: verified
+          label: Verified
+          definition: Checked against the evidence required by the record's stated scope.
+        - id: published
+          label: Published
+          definition: Deliberately released on the public surface.
+        - id: archived
+          label: Archived
+          definition: Preserved as a stable historical record with no implied current activity.
+        - id: superseded
+          label: Superseded
+          definition: Retained for provenance but replaced by a later record or decision.
+        - id: restricted
+          label: Restricted
+          definition: Described but not publicly accessible at its full level.
+        - id: quarantine
+          label: Quarantine
+          definition: Isolated pending safety, privacy, integrity, or provenance review.
+        - id: retired
+          label: Retired
+          definition: Intentionally withdrawn from active use while its record is preserved.
+
+  discovery_indexes:
+    - id: categories
+      label: Source categories
+      route: /archive/categories/
+      definition: Existing broad labels that currently mix object classes, record lanes, platforms, and dossier language.
+    - id: tags
+      label: Source terms and tags
+      route: /archive/tags/
+      definition: Dossier themes, field handles, inventory terms, and recovered social hashtags preserved for discovery.
+    - id: systems
+      label: System contexts
+      route: /archive/systems/
+      definition: Named machines, dossiers, restoration contexts, and operating environments drawn from source records.
+    - id: status_notes
+      label: Source state notes
+      route: /archive/status/
+      definition: Existing narrative status prose preserved as evidence-bearing notes until records receive a separate controlled lifecycle value.
+
+  migration_order:
+    - Assign a public layer and record family to new or materially revised records.
+    - Keep evidence state separate from lifecycle, condition, and access.
+    - Use lifecycle_state for the controlled stage; preserve lifecycle for dated event history where it already exists.
+    - Preserve legacy category, tag, system, and status wording as source vocabulary.
+    - Normalize repeated source terms only through an explicit alias or migration record.
+    - Build external standards crosswalks only after FI terms are stable in real records.

@@ -1,17 +1,17 @@
 ---
 layout: base.njk
-title: L'Archive / Taxonomy
-description: Conservative browse taxonomy for Forgotten Industries archive records.
+title: L'Archive / Forgotten Industries Taxonomy
+description: The native Forgotten Industries filing authority for public layers, record families, evidence states, and lifecycle.
 permalink: /archive/taxonomy/
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
   <div class="section-inner">
-    <p class="section-label">L'Archive / Taxonomy</p>
-    <h1>Archive Taxonomy</h1>
+    <p class="section-label">L'Archive / {{ taxonomy.native.id }} / {{ taxonomy.native.status }}</p>
+    <h1>Forgotten Industries Taxonomy</h1>
     <p class="tagline">
-      A conservative browse layer over existing records: object/component,
-      system/dossier, status, tag, and category.
+      Four controlled axes for filing the institution's own records: public
+      layer, record family, evidence state, and lifecycle.
     </p>
   </div>
 </section>
@@ -19,35 +19,150 @@ eleventyExcludeFromCollections: true
 <section class="evidence-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">Browse Routes</p>
-      <h2>Plain HTML paths.</h2>
+      <p class="section-label">Working Authority</p>
+      <h2>Our language first.</h2>
     </div>
 
-    <ul class="link-list">
+    <div class="prose-stack">
+      <p>{{ taxonomy.native.rule }}</p>
+      <p>
+        A record receives one public layer and one record family. Evidence state
+        remains separate from lifecycle, physical condition, access, and longer
+        operational notes. A missing assignment stays visibly unassigned; it is
+        not inferred from tone or publication alone.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" id="public-layers">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Axis 01 / {{ taxonomy.native.publicLayers.label }}</p>
+      <h2>{{ taxonomy.native.publicLayers.question }}</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.native.publicLayers.terms %}
       <li>
-        <h3><a href="/archive/objects/">Object/component</a></h3>
-        <p>{{ archive.inventory | countLabel("inventory record", "inventory records") }} with generated object pages.</p>
+        <p class="entry-note">{{ term.id }} / {{ term.records.length | countLabel("indexed record", "indexed records") }}</p>
+        <h3><a href="{{ term.url }}">{{ term.label }}</a></h3>
+        <p>{{ term.definition }}</p>
       </li>
-      <li>
-        <h3><a href="/archive/projects/">Dossier</a></h3>
-        <p>{{ archive.projects | countLabel("dossier record", "dossier records") }} with generated archive pages.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/status/">Status</a></h3>
-        <p>{{ taxonomy.status | countLabel("status term", "status terms") }} across indexed records.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/tags/">Tag</a></h3>
-        <p>{{ taxonomy.tags | countLabel("tag", "tags") }} from posts, field logs, social evidence, inventory, and dossier themes.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/categories/">Category</a></h3>
-        <p>{{ taxonomy.categories | count }} categories across the archive.</p>
-      </li>
-      <li>
-        <h3><a href="/archive/systems/">System</a></h3>
-        <p>{{ taxonomy.systems | countLabel("system term", "system terms") }} from dossier, object, and field-log metadata.</p>
-      </li>
+      {% endfor %}
     </ul>
+  </div>
+</section>
+
+<section class="evidence-band" id="record-families">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Axis 02 / {{ taxonomy.native.recordTypes.label }}</p>
+      <h2>{{ taxonomy.native.recordTypes.question }}</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.native.recordTypes.terms %}
+      <li>
+        <p class="entry-note">{{ term.id }} / {{ term.records.length | countLabel("indexed record", "indexed records") }}</p>
+        <h3>
+          {% if term.records.length %}<a href="{{ term.url }}">{{ term.label }}</a>{% else %}{{ term.label }}{% endif %}
+        </h3>
+        <p>{{ term.definition }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="source-band" id="evidence-states">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Axis 03 / {{ taxonomy.native.evidenceStates.label }}</p>
+      <h2>{{ taxonomy.native.evidenceStates.question }}</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.native.evidenceStates.terms %}
+      <li>
+        <p class="entry-note">{{ term.id }}</p>
+        <h3>{{ term.label }}</h3>
+        <p>{{ term.definition }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" id="lifecycle">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Axis 04 / {{ taxonomy.native.lifecycleStates.label }}</p>
+      <h2>{{ taxonomy.native.lifecycleStates.question }}</h2>
+    </div>
+
+    <ul class="link-list archive-record-list">
+      {% for term in taxonomy.native.lifecycleStates.terms %}
+      <li>
+        <p class="entry-note">{{ term.id }}</p>
+        <h3>{{ term.label }}</h3>
+        <p>{{ term.definition }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="mirror-band" id="source-vocabulary">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Discovery Indexes / {{ taxonomy.sourceTerms | count }} preserved terms</p>
+      <h2>Source language remains reachable.</h2>
+    </div>
+
+    <div>
+      <p>
+        These indexes preserve useful words already present in records. They are
+        discovery vocabulary, not the controlled FI authority, and they are not
+        silently normalized or promoted into evidence.
+      </p>
+      <ul class="link-list archive-record-list">
+        <li>
+          <p class="entry-note">{{ taxonomy.categories | count }} terms</p>
+          <h3><a href="/archive/categories/">Source categories</a></h3>
+          <p>Object classes, record lanes, platforms, and inherited dossier labels.</p>
+        </li>
+        <li>
+          <p class="entry-note">{{ taxonomy.tags | count }} terms</p>
+          <h3><a href="/archive/tags/">Source terms and tags</a></h3>
+          <p>Dossier themes, field handles, inventory terms, and recovered social hashtags.</p>
+        </li>
+        <li>
+          <p class="entry-note">{{ taxonomy.systems | count }} terms</p>
+          <h3><a href="/archive/systems/">System contexts</a></h3>
+          <p>Named machines, dossiers, restoration contexts, and operating environments.</p>
+        </li>
+        <li>
+          <p class="entry-note">{{ taxonomy.status | count }} notes</p>
+          <h3><a href="/archive/status/">Source state notes</a></h3>
+          <p>Evidence-bearing operational prose retained until a separate lifecycle value is assigned.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" id="migration-order">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Convergence Order</p>
+      <h2>Stabilize before crosswalk.</h2>
+    </div>
+
+    <ol class="link-list archive-record-list">
+      {% for step in taxonomy.native.migrationOrder %}
+      <li><p>{{ step }}</p></li>
+      {% endfor %}
+    </ol>
   </div>
 </section>

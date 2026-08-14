@@ -1,6 +1,6 @@
 # Forgotten Industries Metadata Profile v0.1
 
-Status: draft operating profile
+Status: deferred interoperability crosswalk
 
 Authority: Matthew Taylor Marx / Forgotten Industries
 
@@ -8,25 +8,28 @@ Applies to: canonical YAML records, public archive shelves, source documents,
 process records, object records, dossier records, field logs, voice logs,
 recovered social evidence, and future L'Archive box records.
 
+Depends on: `src/data/taxonomy.yml` and `classification-system.md`
+
 ## Purpose
 
-This profile defines the first standards-aligned metadata layer for Forgotten
-Industries. It does not replace the public taxonomy in
-`classification-system.md`. It gives the archive a crosswalk between its own
-source fields and established archival, preservation, and provenance standards.
+This profile records possible interoperability mappings for Forgotten
+Industries. It does not define the institution's taxonomy and should not drive a
+record migration until the native FI authority in `src/data/taxonomy.yml` has
+stabilized through actual use.
 
 The working rule is:
 
 ```text
-FI language remains canonical for the institution.
-Standards language provides interoperability, validation, and migration paths.
+FI language is defined, applied, and tested first.
+Standards language is added later as an explicit crosswalk.
 ```
 
-## Adopted Standards
+## External Crosswalk Targets
 
-### Immediate Profile
+### First Crosswalk Candidates
 
-Use these standards now as the first-pass reference layer:
+Evaluate these standards after the FI public layers, record families, evidence
+states, and lifecycle vocabulary are stable:
 
 - Dublin Core Metadata Terms for baseline descriptive metadata:
   `title`, `creator`, `date`, `description`, `type`, `identifier`, `subject`,
@@ -90,14 +93,15 @@ Existing records may use legacy names until migrated.
 
 ### Description
 
-| FI field            | Meaning                           | Standards mapping                                             |
-| ------------------- | --------------------------------- | ------------------------------------------------------------- |
-| `summary`           | Short public description          | `dcterms:description`; DACS scope/content                     |
-| `scope_and_content` | Longer archival description       | DACS scope/content; `dcterms:description`                     |
-| `category`          | Broad local category              | `dcterms:subject`; future SKOS concept                        |
-| `tags` / `themes`   | Search and browse terms           | `dcterms:subject`; future SKOS concepts                       |
-| `condition`         | Physical or operational condition | DACS physical access/condition note; PREMIS preservation note |
-| `status`            | Current archive/processing state  | DACS description control; local status vocabulary             |
+| FI field            | Meaning                              | Standards mapping                                             |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------- |
+| `summary`           | Short public description             | `dcterms:description`; DACS scope/content                     |
+| `scope_and_content` | Longer archival description          | DACS scope/content; `dcterms:description`                     |
+| `category`          | Broad local category                 | `dcterms:subject`; future SKOS concept                        |
+| `tags` / `themes`   | Search and browse terms              | `dcterms:subject`; future SKOS concepts                       |
+| `condition`         | Physical or operational condition    | DACS physical access/condition note; PREMIS preservation note |
+| `status`            | Preserved narrative state note       | DACS description control note                                 |
+| `lifecycle_state`   | Controlled archive/publication stage | DACS description control; FI lifecycle authority              |
 
 ### Dates
 
@@ -162,145 +166,42 @@ Existing records may use legacy names until migrated.
 | `open_questions`       | Unresolved questions                         | DACS notes                                                  |
 | `provisional`          | Whether the record is explicitly provisional | DACS description control; local status vocabulary           |
 
-## Controlled Vocabularies
+## FI Authority Boundary
 
-Use controlled values where possible. Existing records can keep legacy values
-until the sweep has a migration table.
+The canonical public layers, record families, evidence states, and lifecycle
+terms live only in `src/data/taxonomy.yml`. This crosswalk must reference those
+identifiers rather than maintain a second controlled list.
 
-### `record_type`
+Access, public clearance, sensitivity, redaction, certainty, condition, fixity,
+and preservation events remain operational metadata controls. They should not
+be collapsed into the four public taxonomy axes.
 
-```text
-dossier
-object
-component
-source_set
-field_log
-voice_log
-social_evidence
-process_record
-technical_reference
-box
-file
-manifest
-```
-
-### `public_layer`
-
-```text
-l_archive
-l_oeuvre
-le_signal
-a_propos
-private_staging
-```
-
-### `status`
-
-```text
-draft
-active
-provisional
-verified
-published
-archived
-superseded
-restricted
-quarantine
-retired
-```
-
-Legacy status strings may remain visible when they carry useful operational
-meaning, but future records should separate the controlled status from longer
-free-text notes.
-
-### `access`
-
-```text
-public
-public_summary
-restricted
-private
-local_only
-pending_review
-```
-
-### `public_clearance`
-
-```text
-cleared
-cleared_summary_only
-pending
-blocked
-private
-unknown
-```
-
-### `sensitivity`
-
-```text
-none
-privacy
-identity
-medical
-location
-credential
-financial
-third_party
-copyright
-unknown
-```
-
-### `certainty`
-
-```text
-confirmed
-probable
-possible
-unknown
-disputed
-provisional
-```
-
-### `preservation_event_type`
-
-```text
-created
-captured
-catalogued
-hashed
-verified
-redacted
-transcribed
-converted
-migrated
-published
-withdrawn
-```
-
-## First-Pass Sweep
+## FI-First Sweep
 
 The first pass should be conservative and non-destructive.
 
-1. Inventory all existing fields in `src/data/*.yml` and generated archive JSON.
-2. List all category, tag, status, and system terms currently in use.
-3. Identify fields that already map cleanly to Dublin Core, DACS, PREMIS, or
-   PROV-O.
-4. Identify fields that need controlled vocabulary cleanup.
-5. Identify missing safety fields: `access`, `public_clearance`,
+1. Assign the native FI `public_layer` and `record_type` to new or materially
+   revised index records.
+2. Keep evidence state separate from lifecycle, condition, custody, and access.
+3. Preserve category, tag, system, and narrative status language as discovery
+   vocabulary until an explicit alias or migration record exists.
+4. Identify missing safety fields: `access`, `public_clearance`,
    `sensitivity`, and `redaction_status`.
-6. Identify missing preservation fields: `sha256`, `hash_algorithm`,
+5. Identify missing preservation fields: `sha256`, `hash_algorithm`,
    `manifest_hash`, and `preservation_events`.
-7. Do not rename public routes, legacy implementation fields, preserved source
+6. Do not rename public routes, legacy implementation fields, preserved source
    text, or evidence files during this pass.
+7. Delay external field mapping until the FI assignments are coherent and
+   useful on the website.
 
-## Second-Pass Target
+## Later Crosswalk Target
 
-The second pass should choose a target export shape.
+After the FI taxonomy stabilizes, choose a target export shape.
 
 Recommended target:
 
 ```text
-FI Metadata Profile v0.2
+FI Metadata Crosswalk v0.2
   -> Dublin Core compatible descriptive export
   -> PREMIS-inspired fixity and preservation-event block
   -> PROV-O-inspired provenance-event block

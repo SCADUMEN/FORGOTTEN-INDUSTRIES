@@ -12,6 +12,8 @@ The styleguide (`/styleguide/`, rendered from `src/styleguide.njk`) is the canon
 
 **Keep the styleguide in sync.** Any change that adds or alters a token, component, route color family, or heuristic must update `src/styleguide.njk` in the same change, so the page never drifts from what ships.
 
+New components are also styled via Tailwind utility classes bound to `@theme inline` tokens (e.g. `text-oxide`, `font-headline`) defined in `src/css/archive.css` — see `AGENTS.md` for the full list. Legacy pages still use the `--fi-*` system above; the two coexist, so don't assume one covers everything.
+
 ## CxR (CONTINUANCExRESEARCH)
 
 CxR is the interactive research instrument at `/cxr/` — a two-column surface for searching and cross-referencing archive sources two at a time (pick a source per column, one query searches both, select a record to cross-reference it against the other column). It is the operational avatar of the **CONTINUANCE** persona; the persona and its dossier remain named CONTINUANCE (`/projects/continuance/`, source `continuance.md`), while the tool is CxR.
@@ -21,6 +23,10 @@ CxR is the interactive research instrument at `/cxr/` — a two-column surface f
 - **Design:** like any rendered surface, CxR reuses the styleguide tokens/idioms — it introduces no new tokens or route families.
 
 **Keep the CxR dossier in sync.** CxR carries its own in-app dossier (`continuance/src/components/CxrDossier.jsx`, the second disclosure in the masthead) documenting what the instrument does. Any feature change that is important to the user — a new source type, a new capability like bookmarks, a change to how cross-referencing or state works — must be reflected in that dossier in the same change, so it stays a faithful, current description of what ships.
+
+## scripts/inventory-os/
+
+A separate, local-only Node instrument (inventory/R&D tracking, `L'Inventaire`/`Le Laboratoire`) run via `node scripts/inventory-os/server.cjs`, binds to loopback only. It is not part of the Eleventy site or CxR build pipeline — it has its own README (`scripts/inventory-os/README.md`) and its own test file (`tests/unit/inventory-os.test.js`). Consult its README before changing it.
 
 ## Media & EXIF hygiene
 

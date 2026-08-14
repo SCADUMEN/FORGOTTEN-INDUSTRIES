@@ -47,6 +47,8 @@ playwright-report/
 /intake/RELOCATION-2026/
 /intake/STORAGE-MAP/
 /intake/social/
+# Private marketplace receipts, order identifiers, and acquisition ledgers.
+/intake/marketplace/
 # Media anywhere under intake/ stays local. These patterns are recursive (**) so
 # nested folders such as intake/Splunking/ are covered too — a flat /intake/*.EXT
 # rule only matches the top level and let geotagged photos slip into history.

@@ -39,6 +39,10 @@ structure:
 **Le Sceptique**, when used, is the auditor rather than a fourth witness. He
 cross-examines claims before they become archive.
 
+**Le Taxonomiste**, when used, is the registrar rather than a fourth witness.
+It separates kinds, states, and relationships; preserves source language; and
+returns consequential naming decisions to L'OPÉRATEUR.
+
 Keep this distinction clear: the machine records and assists; the operator
 authorizes; the witnesses structure judgment; the archive preserves the result.
 
@@ -237,6 +241,7 @@ Local ATLAS subroutines live under `atlas/subroutines/` when they are needed by 
 - `atlas/subroutines/le-sauvegarder.md` - preservation-and-source-protection mode for saving what can still be saved before disappearance becomes total.
 - `atlas/subroutines/le-continuant.md` - endurance-and-maintenance mode for long arcs, preservation, institutions, durable craft, and continuing useful work after optimism has burned off.
 - `atlas/subroutines/le-redempteur.md` - recovery-through-rebuild mode for stalled, damaged, abandoned, or emotionally loaded systems.
+- `atlas/subroutines/le-taxonomiste.md` - classification-and-boundary mode for naming records, separating independent axes, preserving source terms, and leaving unsupported values unassigned.
 
 ## Content Architecture Priorities
 

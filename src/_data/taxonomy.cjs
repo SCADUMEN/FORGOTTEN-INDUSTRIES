@@ -52,6 +52,8 @@ function recordsFromSearch(searchIndex) {
   return (searchIndex.documents || []).map((record) => ({
     id: compact(record.id),
     type: compact(record.type),
+    record_type: compact(record.record_type),
+    public_layer: compact(record.public_layer),
     title: compact(record.title || record.id),
     url: record.url,
     date: compact(record.date),
@@ -81,6 +83,16 @@ module.exports = function () {
   const projectsById = Object.fromEntries(
     archive.projects.map((project) => [project.id, project])
   )
+
+  const authority = archive.taxonomy || {
+    id: 'FI-TAXONOMY-unavailable',
+    title: 'Forgotten Industries Taxonomy',
+    status: 'unavailable',
+    rule: 'Run the archive build to load the working taxonomy authority.',
+    axes: {},
+    discovery_indexes: [],
+    migration_order: [],
+  }
 
   const groups = {
     categories: new Map(),
@@ -132,7 +144,57 @@ module.exports = function () {
     }),
   }
 
-  taxonomy.allTerms = [
+  function authorityTerms(axisName, recordField, queryField) {
+    const axis = authority.axes?.[axisName] || {
+      label: axisName,
+      question: '',
+      terms: [],
+    }
+
+    return {
+      label: axis.label,
+      question: axis.question,
+      terms: (axis.terms || []).map((term) => {
+        const matchingRecords = recordField
+          ? records.filter((record) => record[recordField] === term.id)
+          : []
+        const query = queryField
+          ? encodeURIComponent(`${queryField}:${term.id}`)
+          : ''
+
+        return {
+          ...term,
+          slug: slug(term.id),
+          records: matchingRecords,
+          url: term.route || (query ? `/l-archive/?q=${query}` : ''),
+        }
+      }),
+    }
+  }
+
+  taxonomy.native = {
+    id: authority.id,
+    title: authority.title,
+    status: authority.status,
+    authority: authority.authority,
+    sourceDocument: authority.source_document,
+    rule: authority.rule,
+    publicLayers: authorityTerms('public_layers', 'public_layer', 'layer'),
+    recordTypes: authorityTerms('record_types', 'record_type', 'family'),
+    evidenceStates: authorityTerms('evidence_states'),
+    lifecycleStates: authorityTerms('lifecycle_states'),
+    discoveryIndexes: authority.discovery_indexes || [],
+    migrationOrder: authority.migration_order || [],
+  }
+
+  taxonomy.native.allTerms = [
+    ...taxonomy.native.publicLayers.terms,
+    ...taxonomy.native.recordTypes.terms,
+    ...taxonomy.native.evidenceStates.terms,
+    ...taxonomy.native.lifecycleStates.terms,
+  ]
+
+  taxonomy.sourceTerms = [
     ...taxonomy.categories,
     ...taxonomy.tags,
     ...taxonomy.status,
@@ -140,6 +202,10 @@ module.exports = function () {
     ...taxonomy.objects,
     ...taxonomy.projects,
   ]
+
+  // allTerms is retained for existing instrumentation. It now means the
+  // controlled FI authority, not every recovered hashtag or narrative note.
+  taxonomy.allTerms = taxonomy.native.allTerms
 
   return taxonomy
 }

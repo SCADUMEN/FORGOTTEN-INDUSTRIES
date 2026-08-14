@@ -20,6 +20,44 @@ export interface ArchiveMeta {
   sourceFiles: ArchiveSourceFile[]
 }
 
+export interface TaxonomyTerm {
+  id: string
+  label: string
+  definition: string
+  route?: string
+}
+
+export interface TaxonomyAxis {
+  label: string
+  field: string
+  question: string
+  terms: TaxonomyTerm[]
+}
+
+export interface TaxonomyDiscoveryIndex {
+  id: string
+  label: string
+  route: string
+  definition: string
+}
+
+export interface ArchiveTaxonomy {
+  id: string
+  title: string
+  status: string
+  authority: string
+  source_document: string
+  rule: string
+  axes: {
+    public_layers: TaxonomyAxis
+    record_types: TaxonomyAxis
+    evidence_states: TaxonomyAxis
+    lifecycle_states: TaxonomyAxis
+  }
+  discovery_indexes: TaxonomyDiscoveryIndex[]
+  migration_order: string[]
+}
+
 export interface ProjectOrigin {
   purchased?: string
   stored_for?: string
@@ -166,6 +204,7 @@ export interface ForgottenIndustriesArchive {
   schemaVersion: string
   generatedAt: string
   meta: ArchiveMeta
+  taxonomy: ArchiveTaxonomy
   projects: ArchiveProject[]
   inventory: InventoryItem[]
   atlasReportProvenance: AtlasReportProvenance

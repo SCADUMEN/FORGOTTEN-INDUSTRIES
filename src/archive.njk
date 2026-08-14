@@ -147,7 +147,7 @@ eleventyExcludeFromCollections: true
     function parseQuery(query) {
       var filters = [];
       var terms = [];
-      var pattern = /([a-z]+)(:|>=|<=|>|<)(?:"([^"]+)"|(\S+))|"([^"]+)"|(\S+)/gi;
+    var pattern = /([a-z_]+)(:|>=|<=|>|<)(?:"([^"]+)"|(\S+))|"([^"]+)"|(\S+)/gi;
       var match;
 
       while ((match = pattern.exec(query)) !== null) {
@@ -168,6 +168,8 @@ eleventyExcludeFromCollections: true
     function fieldValue(document, field) {
       if (field === 'tag') field = 'tags';
       if (field === 'shelf') field = 'category';
+      if (field === 'family') field = 'record_type';
+      if (field === 'layer') field = 'public_layer';
       if (field === 'after' || field === 'before') field = 'date';
       var value = document[field];
       return Array.isArray(value) ? value.join(' ') : String(value || '');
@@ -914,6 +916,7 @@ eleventyExcludeFromCollections: true
     <nav class="open-stacks-list open-stacks-plate-list" aria-label="L'Archive shelves">
       <a href="/archive/inventory/">Inventory</a>
       <a href="/archive/objects/">Object Records</a>
+      <a href="/archive/taxonomy/">FI Taxonomy</a>
       <a href="/oeuvre/#dossiers">Dossiers</a>
       <a href="/hang-on-to-each-other/">Les Manuels</a>
       <a href="/archive/field-logs/">Process Records</a>
@@ -943,7 +946,7 @@ eleventyExcludeFromCollections: true
           <span class="stat-label">{{ archive.inventory | countObjectsWithPhotos | pluralLabel("Object photographed", "Objects photographed") }} <span class="stat-count">({{ archive.inventory | countObjectsWithPhotos }})</span></span>
         </a>
         <a class="stat" href="/archive/taxonomy/">
-          <span class="stat-label">{{ taxonomy.allTerms | pluralLabel("Taxonomy term", "Taxonomy terms") }} <span class="stat-count">({{ taxonomy.allTerms | count }})</span></span>
+          <span class="stat-label">{{ taxonomy.allTerms | pluralLabel("Controlled FI term", "Controlled FI terms") }} <span class="stat-count">({{ taxonomy.allTerms | count }})</span></span>
         </a>
         <a class="stat" href="/hang-on-to-each-other/">
           <span class="stat-label">{{ 2 | pluralLabel("Manuel", "Manuels") }} <span class="stat-count">(2)</span></span>
