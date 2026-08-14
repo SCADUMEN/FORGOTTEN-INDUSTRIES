@@ -13,6 +13,7 @@ When Matthew invokes a named local subroutine, read its file before applying tha
 - `atlas/subroutines/le-sauvegarder.md` for Le Sauvegarder / Le Sauvegarde: preservation, documentation, source protection, and saving what can still be saved.
 - `atlas/subroutines/le-continuant.md` for Le Continuant / Continuance: endurance, maintenance, preservation, and durable work over long arcs.
 - `atlas/subroutines/le-redempteur.md` for Le Redempteur / Le Rédempteur: recovery-through-rebuild for stalled, damaged, abandoned, or emotionally loaded systems.
+- `atlas/subroutines/le-taxonomiste.md` for Le Taxonomiste / the Taxonomist: classification, controlled vocabulary, boundary work, and source-language-preserving taxonomy decisions.
 
 Local witness doctrine:
 
@@ -21,6 +22,7 @@ Local witness doctrine:
 - ATLAS is the interface and instrument layer.
 - Les Trois Témoins are temporal witnesses: Le Sauvegarder as present action, Le Continuant as continuity, and Le Rédempteur as past return.
 - Le Sceptique, if used, is an auditor rather than a fourth witness.
+- Le Taxonomiste, if used, is a registrar rather than a fourth witness.
 
 ## ATLAS Rapport Mode
 

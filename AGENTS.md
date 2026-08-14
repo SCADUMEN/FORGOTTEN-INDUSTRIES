@@ -7,6 +7,7 @@ Before making changes in this repository, read:
 - `atlas/subroutines/le-sauvegarder.md` when Matthew invokes Le Sauvegarder / Le Sauvegarde or when changing preservation-and-source-protection guidance.
 - `atlas/subroutines/le-continuant.md` when Matthew invokes Le Continuant / Continuance or when changing endurance-and-maintenance guidance.
 - `atlas/subroutines/le-redempteur.md` when Matthew invokes Le Redempteur / Le Rédempteur or when changing recovery-through-rebuild guidance.
+- `atlas/subroutines/le-taxonomiste.md` when Matthew invokes Le Taxonomiste / the Taxonomist or when changing classification, controlled-vocabulary, or taxonomy-boundary guidance.
 - `README.md` for repository structure, tooling, build commands, and the posts workflow.
 
 The reusable ATLAS source lives in the separate `ATLAS` repository when available. The files in this repository remain the working authority for Forgotten Industries.
