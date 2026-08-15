@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 
+# The archive's sources are UTF-8 — French route names, accented object records,
+# typographic dashes. Ruby takes its default external encoding from the locale,
+# so a shell or CI container with no LANG set reads them as US-ASCII and the
+# build dies on the first accented byte. Pin the encoding rather than depend on
+# the environment being configured.
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 require "fileutils"
 require "date"
 require "json"

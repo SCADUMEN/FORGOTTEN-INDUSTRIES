@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import nodePath from 'node:path'
 import { feedPlugin } from '@11ty/eleventy-plugin-rss'
 
 function canonicalPath(value = '/') {
@@ -277,6 +279,9 @@ export default function (eleventyConfig) {
   // The markdown and yaml inside are documents, not templates — ignored.
   eleventyConfig.addPassthroughCopy('src/assets')
   eleventyConfig.addPassthroughCopy({ 'src/.well-known': '.well-known' })
+  // Standalone pages that deliberately skip archive.css still need the
+  // self-hosted @font-face rules, so the generated sheet ships on its own too.
+  eleventyConfig.addPassthroughCopy({ 'src/css/fonts.css': 'css/fonts.css' })
   eleventyConfig.addPassthroughCopy('src/_headers')
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
@@ -397,7 +402,15 @@ export default function (eleventyConfig) {
     return `/archive/objects/${archiveSlug(item?.id || item?.name)}/`
   })
 
-  function publicObjectPhotos(item) {
+  // `photos` is a mixed media list: source stills, QuickTime clips from a
+  // phone, and private HEIC originals that never clear the public path check.
+  // Renderers need the stills and the footage kept apart, because an extension
+  // the browser cannot decode in an <img> is a broken record, not a photograph.
+  // Anything unrecognised (.heic today) is withheld rather than published broken.
+  const OBJECT_IMAGE_EXTENSIONS = /\.(avif|gif|jpe?g|png|svg|webp)$/i
+  const OBJECT_VIDEO_EXTENSIONS = /\.(mov|mp4|webm)$/i
+
+  function publicObjectMedia(item) {
     return Array.isArray(item?.photos)
       ? item.photos.filter(
           (photo) =>
@@ -408,7 +421,67 @@ export default function (eleventyConfig) {
       : []
   }
 
+  function publicObjectPhotos(item) {
+    return publicObjectMedia(item).filter((photo) =>
+      OBJECT_IMAGE_EXTENSIONS.test(photo)
+    )
+  }
+
+  function publicObjectVideos(item) {
+    return publicObjectMedia(item).filter((photo) =>
+      OBJECT_VIDEO_EXTENSIONS.test(photo)
+    )
+  }
+
+  const MEDIA_MIME_TYPES = {
+    mov: 'video/quicktime',
+    mp4: 'video/mp4',
+    webm: 'video/webm',
+  }
+
   eleventyConfig.addFilter('publicObjectPhotos', publicObjectPhotos)
+  eleventyConfig.addFilter('publicObjectVideos', publicObjectVideos)
+
+  eleventyConfig.addFilter('mediaMimeType', function (value) {
+    const extension = String(value || '')
+      .split('.')
+      .pop()
+      .toLowerCase()
+    return MEDIA_MIME_TYPES[extension] || ''
+  })
+
+  // Inventory `photos` entries name the preserved source, which for phone
+  // footage is a QuickTime .mov only Safari will play. Where
+  // scripts/build_media_derivatives.cjs has written web-playable siblings, they
+  // are offered first and the original stays as the final <source>, so the
+  // record still points at the file the archive actually holds.
+  const VIDEO_DERIVATIVE_ORDER = ['webm', 'mp4']
+
+  eleventyConfig.addFilter('videoSources', function (value) {
+    const original = String(value || '')
+    if (!original) return []
+
+    const base = original.replace(/\.[^.]+$/, '')
+    const originalExtension = original.split('.').pop().toLowerCase()
+    const sources = []
+
+    for (const extension of VIDEO_DERIVATIVE_ORDER) {
+      if (extension === originalExtension) continue
+      const candidate = `${base}.${extension}`
+      if (fs.existsSync(nodePath.join('src', candidate))) {
+        sources.push({
+          src: `/${candidate}`,
+          type: MEDIA_MIME_TYPES[extension],
+        })
+      }
+    }
+
+    sources.push({
+      src: `/${original}`,
+      type: MEDIA_MIME_TYPES[originalExtension] || '',
+    })
+    return sources
+  })
 
   eleventyConfig.addFilter('objectPrimaryImage', function (item) {
     const photo = publicObjectPhotos(item)[0]

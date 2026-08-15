@@ -34,10 +34,17 @@ test('home page renders', async ({ page }) => {
   await expect(
     page.getByRole('link', { name: 'Open the ATLAS dossier' })
   ).toHaveAttribute('href', '/projects/atlas/')
-  await expect(page.locator('.homepage-docent img')).toHaveAttribute(
+  // The homepage shows the extracted display cell, never the full sprite
+  // sheet: serving the sheet meant shipping 2.65 MB to display one 192x208
+  // frame. The intrinsic size is asserted alongside the source so a regression
+  // back to the sheet cannot pass by swapping the filename alone.
+  const docentImage = page.locator('.homepage-docent img')
+  await expect(docentImage).toHaveAttribute(
     'src',
-    '/assets/atlas/atlas-archive-docent-spritesheet.webp'
+    '/assets/atlas/atlas-archive-docent-cell-01.webp'
   )
+  await expect(docentImage).toHaveAttribute('width', '192')
+  await expect(docentImage).toHaveAttribute('height', '208')
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)

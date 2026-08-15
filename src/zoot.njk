@@ -18,10 +18,25 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
   <link rel="icon" href="/assets/favicon/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
   <style>
+    /* Space Mono only. This page does not load archive.css, so the two weights
+       it uses are declared here against the self-hosted files. */
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-400-normal-latin.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-700-normal-latin.woff2') format('woff2');
+    }
+
     /* Tokens sourced from src/css/archive.css:4-25 — that file is the source of
        truth; this page deliberately does not load the shared stylesheet. */
     :root {
