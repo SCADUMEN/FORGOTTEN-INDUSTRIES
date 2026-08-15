@@ -10,7 +10,11 @@ const ROOT = path.resolve(
   '..'
 )
 const SITE = path.join(ROOT, '_site')
+// The preserved sheet stays published byte-identical and linked whole; pages
+// display the extracted single-cell derivative instead of shipping 2.65 MB of
+// unshown animation frames.
 const ASSET_ROUTE = 'assets/atlas/atlas-archive-docent-spritesheet.webp'
+const CELL_ROUTE = 'assets/atlas/atlas-archive-docent-cell-01.webp'
 const TEXT_EXTENSIONS = new Set([
   '.css',
   '.html',
@@ -45,8 +49,49 @@ describe('Atlas gallery dossier', () => {
 
   it('publishes the white Shiba as Atlas, the Archive Docent', () => {
     expect(page).toContain('Atlas, the Archive Docent')
-    expect(page).toContain(`src="/${ASSET_ROUTE}"`)
+    expect(page).toContain(`src="/${CELL_ROUTE}"`)
     expect(page).toContain('white Shiba archivist-engineer')
+  })
+
+  it('displays the cell derivative rather than the whole sheet', () => {
+    expect(page).not.toContain(`src="/${ASSET_ROUTE}"`)
+    // The full preserved sheet stays reachable for inspection.
+    expect(page).toContain(`href="/${ASSET_ROUTE}"`)
+  })
+
+  it('keeps the display cell a faithful extraction of the preserved sheet', async () => {
+    const { default: sharp } = await import('sharp')
+
+    const fromSheet = await sharp(path.join(SITE, ASSET_ROUTE))
+      .extract({ left: 0, top: 0, width: 192, height: 208 })
+      .raw()
+      .toBuffer()
+    const fromCell = await sharp(path.join(SITE, CELL_ROUTE)).raw().toBuffer()
+
+    expect(fromCell.length).toBe(fromSheet.length)
+
+    // Every visible pixel must match exactly. RGB under fully transparent
+    // pixels is deliberately not compared: a lossless WebP encoder is free to
+    // rewrite colour it is never going to draw, and it does.
+    const alphaMismatches = []
+    const visibleMismatches = []
+    for (let offset = 0; offset < fromSheet.length; offset += 4) {
+      if (fromSheet[offset + 3] !== fromCell[offset + 3]) {
+        alphaMismatches.push(offset / 4)
+        continue
+      }
+      if (fromSheet[offset + 3] === 0) continue
+      if (
+        fromSheet[offset] !== fromCell[offset] ||
+        fromSheet[offset + 1] !== fromCell[offset + 1] ||
+        fromSheet[offset + 2] !== fromCell[offset + 2]
+      ) {
+        visibleMismatches.push(offset / 4)
+      }
+    }
+
+    expect(alphaMismatches).toEqual([])
+    expect(visibleMismatches).toEqual([])
   })
 
   it('keeps the operator and evidence boundary explicit', () => {

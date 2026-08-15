@@ -13,6 +13,7 @@ eleventyComputed:
 eleventyExcludeFromCollections: true
 ---
 {% set publicPhotos = object | publicObjectPhotos %}
+{% set publicVideos = object | publicObjectVideos %}
 {% set sourcePhotos = object.photos or [] %}
 {% set captionPrefix = object.id + " / " + object.name + " / source photograph " %}
 {% set project = archive.projects | findById(object.associated_project) %}
@@ -71,6 +72,23 @@ eleventyExcludeFromCollections: true
         <span>{{ object.id }}</span>
         <strong>No image available</strong>
         <p>Source photography has not yet been registered for this object.</p>
+      </div>
+      {% endif %}
+
+      {% if publicVideos.length %}
+      <div class="object-motion-strip">
+        <p class="section-label">Motion evidence</p>
+        {% for clip in publicVideos %}
+        <figure class="object-motion-figure">
+          <video controls preload="metadata" playsinline>
+            {% for source in clip | videoSources %}
+            <source src="{{ source.src }}" type="{{ source.type }}">
+            {% endfor %}
+            <a href="/{{ clip }}">Download {{ object.id }} source footage {{ loop.index }}</a>
+          </video>
+          <figcaption>{{ object.id }} / {{ object.name }} / source footage {{ loop.index }}</figcaption>
+        </figure>
+        {% endfor %}
       </div>
       {% endif %}
     </div>
