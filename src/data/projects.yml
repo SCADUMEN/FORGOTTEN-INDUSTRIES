@@ -491,8 +491,8 @@ projects:
       Reusable operating interface for Forgotten Industries and adjacent
       projects: core agent instructions, rapport guidance, Matthew-specific
       collaboration profile, downstream repository templates, and L'Archive
-      witness doctrine: L'Opérateur, ATLAS, Les Trois Témoins, and the Sceptique
-      audit function.
+      witness doctrine: L'Opérateur, ATLAS, Les Trois Témoins, Le Sceptique as
+      auditor, and Le Taxonomiste as registrar.
     themes:
       - Codex collaboration
       - archive-first workflow
@@ -507,6 +507,7 @@ projects:
       - Le Rédempteur
       - Le Continuant
       - Le Sceptique
+      - Le Taxonomiste
     source_links:
       - label: Local ATLAS repository
         type: local
@@ -524,6 +525,9 @@ projects:
       - Preserve local project authority before reusable guidance
       - Present Les Trois Témoins as temporal witness doctrine, not mascot language
       - Treat Le Sceptique as an auditor rather than a fourth witness
+      - Treat Le Taxonomiste as a registrar rather than a fourth witness
+      - Keep source content distinct from operating instructions
+      - Keep consequential final actions with L'Opérateur
 
   - id: FI-PROJ-007
     slug: l-archive
