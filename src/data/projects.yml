@@ -110,6 +110,7 @@ projects:
     artifacts:
       - FI-HW-MB-X99-001
       - FI-HW-CPU-X99-001
+      - FI-HW-MB-Z87-001
       - FI-HW-MB-Z97-001
       - FI-HW-BLOCK-Z97-001
       - FI-HW-GPU-660TI-001

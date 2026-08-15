@@ -2328,3 +2328,453 @@ items:
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-07-31'
+
+  - id: FI-BOOK-001
+    accession_number: '001'
+    name: LE ZOHAR / Special Pocket-Sized Edition
+    category: book
+    manufacturer: Kabbalah Centre International, Inc. (publisher)
+    model: Special pocket-sized edition / May 2016 China printing
+    publisher: Kabbalah Centre International, Inc.
+    isbn: '978-1-57189-903-3'
+    copyright_year: '2000'
+    printing: China / May 2016
+    quantity: 1 volume
+    associated_project: FI-PROJ-007
+    condition: in hand / cover, publication page, and front matter pages iii-v photographed / edge and gutter wear / localized staining or discoloration visible / completeness not established
+    status: accessioned / bibliographic identity verified / physical inspection incomplete
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos:
+      - assets/archive/objects/fi-book-001-le-zohar/01-cover-in-hand.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/02-publication-page.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/03-front-matter-page-iii.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/04-front-matter-page-iv.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/05-getting-started-page-v.jpg
+    notes: >
+      Operator-designated LE ZOHAR accession. The cover photograph directly
+      verifies a dark blue, gold-stamped pocket volume whose cover reads
+      "ZOHAR," "SPECIAL POCKET-SIZED EDITION," and "THE KABBALAH CENTRE."
+      The photographed publication page records copyright 2000, publisher
+      Kabbalah Centre International, Inc., ISBN 978-1-57189-903-3, and "Printed
+      in China, May 2016." English-language explanatory front matter is visible
+      on pages iii-v. Visible evidence includes cover-edge and gutter wear plus
+      localized brown and olive discoloration or staining on the photographed
+      leaves; its cause and extent are unverified. The title page, total
+      pagination, completeness, full internal condition, acquisition history,
+      and wider provenance remain unverified. Byte-identical source photographs
+      are retained in local ignored intake; all five registered public assets
+      were checked and carry no location metadata detected by the repository
+      audit instrument.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record
+        evidence: operator-directed accession supported by one supplied cover photograph; bibliographic and internal inspection remains pending
+      - date: '2026-08-14'
+        event: bibliographic identity verified
+        state: provisional record retained pending complete physical inspection
+        evidence: publication-page photograph verifies copyright, publisher, ISBN, printing place, and printing date; front matter pages iii-v document language and visible condition
+    tags:
+      - LE ZOHAR
+      - Zohar
+      - The Kabbalah Centre
+      - pocket-sized edition
+      - May 2016 printing
+      - book
+      - printed matter
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-08-14'
+
+  - id: FI-WATCH-001
+    accession_number: '002'
+    name: Invicta Celestial Orbitha Automatic 69545
+    category: wristwatch
+    manufacturer: Invicta
+    model: Celestial Orbitha 69545
+    quantity: 1 watch
+    associated_project: FI-PROJ-007
+    condition: in hand / dial, exhibition caseback, and orange strap photographed / visible handling marks / controlled condition, operation, and timekeeping inspection pending
+    status: accessioned / model identity verified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    movement: mechanical automatic / caliber 3267z / Singapore / 24 jewels per official catalog
+    case: 45 mm / orange K9 glass per official catalog
+    crystal: sapphire per official catalog
+    band: orange rubber / 27 mm wide / 200 mm long per official catalog
+    water_resistance: caseback marked 5 bar / 50 m / 165 ft; not pressure-tested
+    photos:
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/01-dial-front.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/02-caseback-angle.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/03-dial-angle.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/04-caseback-straight.jpg
+    notes: >
+      ACCESSION 002. The supplied photographs directly verify an Invicta
+      skeleton-format automatic wristwatch with a translucent orange case,
+      orange strap, exhibition caseback, and caseback reference 69545. The
+      caseback is marked "AUTOMATIC," "ALL STAINLESS STEEL," "WATER RESISTANT
+      5bar (50m/165ft)," and "Singapore Movement." The current official Invicta
+      Stores product record identifies 69545 as the orange 45 mm Invicta
+      Celestial Orbitha Automatic with skeleton dial and supplies the recorded
+      catalog specifications. The photographs establish identity and custody,
+      not operation, accuracy, power reserve, pressure integrity, service
+      history, completeness, accessories, or final physical disposition.
+    reference_sources:
+      - title: Invicta Celestial Orbitha Automatic Men's Watch 69545
+        url: https://invictastores.com/products/invicta-celestial-mechanical-mens-watch-w-skeleton-dial-45mm-orange-69545
+        retrieved: '2026-08-14'
+        scope: manufacturer-store identity and specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 002
+        evidence: four operator-supplied photographs plus current official Invicta Stores model record; functional inspection remains pending
+    tags:
+      - ACCESSION 002
+      - Invicta
+      - Celestial Orbitha
+      - '69545'
+      - automatic watch
+      - skeleton dial
+      - exhibition caseback
+      - orange watch
+      - Singapore movement
+    estimated_value:
+    keep_sell_archive: unassigned / operator decision pending
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MB-Z87-001
+    accession_number: '003'
+    name: ASUS ROG Maximus VI Impact motherboard assembly
+    category: motherboard
+    manufacturer: ASUS
+    model: Maximus VI Impact / exact PCB revision not photographed
+    quantity: 1 board assembly
+    associated_project: FI-PROJ-009
+    condition: in hand / CPU socket empty with retention frame open / no CPU or DIMMs installed / loose surface debris visible / socket pins and accessory completeness not cleared by current photographs
+    status: accessioned / model identity verified / socket inspection and bench validation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    chipset: Intel Z87 per official ASUS specification
+    socket: Intel LGA1150 per official ASUS specification / empty in supplied photographs
+    form_factor: Mini-ITX / 17 cm × 17 cm per official ASUS specification
+    memory: 2 × DDR3 DIMM / maximum 16 GB per official ASUS specification
+    photos:
+      - assets/archive/objects/fi-hw-mb-z87-001-asus-maximus-vi-impact/01-board-overview.jpg
+      - assets/archive/objects/fi-hw-mb-z87-001-asus-maximus-vi-impact/02-socket-overview.jpg
+    notes: >
+      ACCESSION 003. The motherboard silkscreen directly identifies an ASUS ROG
+      Maximus VI Impact. The photographs show a mini-ITX board with an empty
+      LGA1150-style socket, open retention frame, two red DIMM slots, rear I/O,
+      onboard Start control, and installed vertical daughterboard assemblies.
+      No CPU or memory is installed. Loose fibrous or dust-like debris is
+      visible near the upper daughterboard and power section; its nature and
+      extent are unverified. The official ASUS specification identifies the
+      Maximus VI Impact as an Intel Z87, LGA1150, mini-ITX motherboard with two
+      DDR3 DIMM slots. The current photographs do not establish the exact PCB
+      revision, straight socket pins, complete accessory set, clean electrical
+      condition, successful POST, BIOS state, or any functional result.
+    reference_sources:
+      - title: ROG Maximus VI Impact technical specifications
+        url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-vi-impact-model/spec/
+        retrieved: '2026-08-14'
+        scope: manufacturer identity and platform specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 003
+        evidence: two operator-supplied photographs plus current official ASUS specification; socket and functional inspection remain pending
+    tags:
+      - ACCESSION 003
+      - ASUS ROG
+      - Maximus VI Impact
+      - Intel Z87
+      - LGA1150
+      - DDR3
+      - mini-ITX
+      - motherboard recovery
+      - socket inspection pending
+    estimated_value:
+    keep_sell_archive: unassigned / operator decision pending
+    date_logged: '2026-08-14'
+
+  - id: FI-EPH-008
+    accession_number: '004'
+    name: Forgotten Industries founder business card
+    category: ephemera
+    manufacturer: Forgotten Industries
+    model: Founder business card / early identity artifact
+    quantity: 1 card
+    associated_project: FI-PROJ-007
+    condition: in hand / both faces photographed / creasing, edge and corner wear, staining, and discoloration visible
+    status: accessioned / identity and service scope verified / contact-bearing face restricted
+    lifecycle_state: restricted
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos:
+      - assets/archive/objects/fi-eph-008-forgotten-industries-founder-card/01-logo-reverse.jpg
+    notes: >
+      ACCESSION 004. The photographed card identifies Matthew Marx as the
+      founder of Forgotten Industries and records an early service scope of
+      custom PC builds, gaming, office, and repairs. Its reverse carries an
+      early Forgotten Industries identity mark. The contact-bearing face
+      contains direct personal contact fields and is therefore retained only
+      in restricted, repository-ignored intake; those fields are deliberately
+      omitted from this public record. The registered public photograph shows
+      only the logo reverse. Visible evidence establishes substantial handling
+      wear, including creasing, softened or damaged corners, edge wear, and
+      localized staining or discoloration. Production date, printer, print
+      run, distribution history, and acquisition or custody history beyond the
+      operator-directed accession remain unverified.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent restricted L'Archive object record / accession 004
+        evidence: two operator-supplied source photographs retained locally; one location-checked logo-reverse photograph admitted as the public derivative; direct contact fields withheld
+    tags:
+      - ACCESSION 004
+      - Forgotten Industries
+      - business card
+      - founder artifact
+      - identity artifact
+      - ephemera
+      - early service scope
+      - contact information restricted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-001
+    accession_number: '005'
+    name: SK hynix H5AN4G8NMFR-TFC desktop DDR4 UDIMM
+    category: memory
+    manufacturer: SK hynix
+    model: H5AN4G8NMFR-TFC packages / unbranded desktop UDIMM
+    quantity: 1 module
+    associated_project: FI-PROJ-009
+    condition: in hand / one populated face closely photographed / white residue or foreign material and surface marks visible / reverse face, contacts, label area, and SPD contents not inspected
+    status: accessioned / package marking verified / capacity and nominal speed inferred / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - inference
+      - operator_report
+    memory_type: DDR4 UDIMM / inferred from visible package marking and desktop-DIMM form factor
+    capacity: 4 GB / inferred from one visible single-sided eight-package configuration of 4 Gb devices; SPD validation pending
+    nominal_data_rate: DDR4-2133 / inferred from H5AN4G8NMFR-TFC marking and ASUS X99 U-DIMM QVL; not electrically verified
+    voltage: 1.2 V / reference configuration only; module behavior unverified
+    photos:
+      - assets/archive/objects/fi-hw-mem-001-skhynix-ddr4-udimm/01-module-overview.jpg
+      - assets/archive/objects/fi-hw-mem-001-skhynix-ddr4-udimm/02-package-marking.jpg
+    notes: >
+      ACCESSION 005. Four supplied photographs directly establish custody of a
+      desktop memory module with visible SK hynix DRAM package markings
+      "H5AN4G8NMFR" and "TFC." The visible populated face appears to carry
+      eight packages. An official ASUS X99 U-DIMM qualified-vendor list records
+      4 GB single-sided DDR4-2133 modules using the matching
+      H5AN4G8NMFRTFC package identifier; the 4 GB and DDR4-2133 descriptions in
+      this record are therefore labeled inferences rather than a final module
+      identification. The photographs also show a small unlabeled numeric
+      sticker, but no manufacturer module label, part number, or SPD readout.
+      White residue or foreign material and surface marks are visible around the
+      packages. The present evidence does not establish the reverse-side
+      configuration, capacity, rank, timing profile, provenance, compatibility,
+      contact condition, electrical condition, or successful memory test. It is
+      cataloged as a candidate for controlled X99 recovery testing, not as
+      proven compatible or operational memory.
+    reference_sources:
+      - title: ASUS X99 Series Motherboard U-DIMM Qualified Vendors Lists
+        url: https://dlcdnets.asus.com.cn/pub/ASUS/mb/LGA2011/X99-A/X99_Series_DRAM_QVL0603.pdf?model=X99-DELUXE%2FU3.1
+        retrieved: '2026-08-14'
+        scope: official X99 U-DIMM reference showing 4 GB single-sided DDR4-2133 modules with H5AN4G8NMFRTFC packages
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 005
+        evidence: four operator-supplied photographs plus an official ASUS X99 U-DIMM reference; all electrical and SPD-derived attributes remain pending controlled inspection
+    tags:
+      - ACCESSION 005
+      - SK hynix
+      - H5AN4G8NMFR-TFC
+      - DDR4
+      - DDR4-2133 inferred
+      - desktop UDIMM
+      - 4 GB inferred
+      - X99 recovery candidate
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-002
+    accession_number: '006'
+    name: Kingston HyperX Genesis KHX1600C9D3/4G DDR3 memory pair
+    category: memory
+    manufacturer: Kingston Technology
+    model: HyperX Genesis KHX1600C9D3/4G / labels read KHX1600C9D3/4GETR
+    quantity: 2 modules / 8 GB total
+    associated_project: FI-PROJ-007
+    condition: in hand / blue heat spreaders, labels, and contact edges photographed / visible light surface dust or debris and minor cosmetic marks / reverse faces and electrical condition not inspected
+    status: accessioned / identity and catalog specifications verified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    memory_type: DDR3 non-ECC unbuffered DIMM / 240-pin
+    capacity: 4 GB per module / 8 GB total
+    nominal_data_rate: DDR3-1600 / 1600 MT/s / CL9
+    memory_profile: 9-9-9 at 1.65 V per Kingston record
+    rank: 1Rx8 per Kingston record
+    photos:
+      - assets/archive/objects/fi-hw-mem-002-kingston-hyperx-genesis-ddr3/01-pair-overview.jpg
+      - assets/archive/objects/fi-hw-mem-002-kingston-hyperx-genesis-ddr3/02-labels-and-contacts.jpg
+    notes: >
+      ACCESSION 006. Three supplied photographs directly establish custody of
+      two matching blue Kingston HyperX Genesis desktop DIMMs. Each label reads
+      KHX1600C9D3/4GETR, identifies a 1.65 V module, and carries Kingston
+      branding. Kingston's discontinued-product record for the base module part
+      KHX1600C9D3/4G identifies it as a 4 GB DDR3-1600, CL9, non-ECC,
+      unbuffered 240-pin DIMM with a 1Rx8 layout and a 9-9-9 / 1.65 V profile.
+      The photographs establish matching label identity and physical custody,
+      not the pair's original retail-kit provenance, SPD contents, contact
+      condition, compatibility with a particular host, stability, or successful
+      memory-test result. Light surface dust or debris and minor cosmetic marks
+      are visible. This DDR3 pair is retained as a separate archive memory set;
+      it is not a candidate for the DDR4-only X99 recovery platform.
+    reference_sources:
+      - title: Kingston KHX1600C9D3/4G discontinued-model record
+        url: https://www.kingston.com/en/memory/search/discontinuedmodels?partid=KHX1600C9D3%2F4G
+        retrieved: '2026-08-14'
+        scope: manufacturer identity, capacity, DDR3-1600 speed, CL9, 1Rx8, 1.65 V, non-ECC unbuffered, and 240-pin specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 006
+        evidence: three operator-supplied photographs plus manufacturer discontinued-product record; controlled inspection and memory testing remain pending
+    tags:
+      - ACCESSION 006
+      - Kingston
+      - HyperX Genesis
+      - KHX1600C9D3/4G
+      - DDR3
+      - DDR3-1600
+      - 8 GB pair
+      - desktop DIMM
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-003
+    accession_number: '007'
+    name: Corsair XMS3 CMX4GX3M1A1600C9 DDR3 modules
+    category: memory
+    manufacturer: Corsair
+    model: XMS3 CMX4GX3M1A1600C9
+    quantity: 2 modules / 8 GB total
+    associated_project: FI-PROJ-007
+    condition: in hand / labels and partial contact edges photographed / black XMS heat spreaders present / full reverse-side, contact, and electrical inspection pending
+    status: accessioned / identity and catalog specifications verified / matched model pair, original retail-kit provenance unverified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    memory_type: DDR3 DIMM / 240-pin
+    capacity: 4 GB per module / 8 GB total
+    nominal_data_rate: DDR3-1600 / 1600 MHz / PC3-12800 / CL9
+    memory_profile: 9-9-9-24 at 1.65 V tested profile; 1333 MHz at 1.5 V SPD profile per Corsair record
+    pcb_revisions: 5.11 and 2.12 as printed on the photographed module labels
+    assembly: Taiwan per labels
+    photos:
+      - assets/archive/objects/fi-hw-mem-003-corsair-xms3-ddr3/01-pair-labels.jpg
+    notes: >
+      ACCESSION 007. The supplied photograph directly establishes custody of
+      two Corsair XMS3 desktop DIMMs with the identical base part number
+      CMX4GX3M1A1600C9. Each label records 1600 MHz, 4 GB (1×4 GB), 9-9-9-24,
+      and 1.65 V. The two modules carry different printed PCB revisions, 5.11
+      and 2.12; they are therefore cataloged as a matched-model pair rather
+      than an asserted original two-module retail kit. Corsair's product record
+      identifies this SKU as a 4 GB DDR3-1600 C9 XMS3 module with a 240-pin
+      DIMM interface, PC3-12800 speed rating, 1.65 V tested profile, and 1333
+      MHz / 1.5 V SPD profile. The photographed state does not establish full
+      contact condition, reverse-side configuration, SPD contents, prior use,
+      host compatibility, stability, or successful memory testing. This DDR3
+      pair is retained separately from the DDR4-only X99 recovery platform.
+    reference_sources:
+      - title: Corsair XMS3 4GB DDR3-1600 C9 memory kit CMX4GX3M1A1600C9
+        url: https://www.corsair.com/ww/en/p/memory/cmx4gx3m1a1600c9/xms3-a-4gb-1x4gb-ddr3-1600mhz-c9-memory-kit-cmx4gx3m1a1600c9
+        retrieved: '2026-08-14'
+        scope: manufacturer identity, module capacity, DDR3-1600 speed, PC3-12800 rating, timing, tested and SPD voltage, and 240-pin specification
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 007
+        evidence: one operator-supplied photograph plus the current Corsair product record; controlled inspection and memory testing remain pending
+    tags:
+      - ACCESSION 007
+      - Corsair
+      - XMS3
+      - CMX4GX3M1A1600C9
+      - DDR3
+      - DDR3-1600
+      - PC3-12800
+      - 8 GB pair
+      - desktop DIMM
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-EPH-009
+    accession_number: '008'
+    name: Vault Show auction-screen capture for blue-dial wristwatch
+    category: ephemera
+    manufacturer: unidentified
+    model: Vault Show display / lot 49097
+    quantity: 1 restricted screen capture
+    associated_project: FI-PROJ-007
+    condition: source screenshot retained locally / third-party account handles and live-auction interface visible / no physical object inspection
+    status: accessioned / screen state transcribed / object identity, auction outcome, acquisition, custody, and function unverified
+    lifecycle_state: restricted
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos: []
+    notes: >
+      ACCESSION 008. The supplied screen capture shows a Vault Show auction
+      display for a blue-dial, multi-register wristwatch with a metal bracelet.
+      The visible listing identifier is 49097. At the captured screen state,
+      the displayed amount is $23.00, the interface shows 00:10 remaining, and
+      the viewer-facing control reads "Ineligible to bid." These are
+      time-bounded screen facts only: the capture does not establish the
+      watch's maker, model, materials, movement, condition, authenticity,
+      ownership, auction completion, winning bidder, payment, shipment,
+      receipt, or physical custody. The source image includes third-party
+      account handles and live-auction interface material; it is retained in
+      restricted local intake and deliberately omitted from the public asset
+      tree. No claim is made that this accession documents a purchased,
+      received, or inspected wristwatch.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent restricted L'Archive screen-evidence record / accession 008
+        evidence: one operator-supplied screenshot retained in ignored intake; public record is a non-identifying transcription only
+    tags:
+      - ACCESSION 008
+      - Vault Show
+      - auction screen capture
+      - blue-dial wristwatch
+      - lot 49097
+      - transaction state unverified
+      - restricted source
+    estimated_value:
+    keep_sell_archive: unassigned / no physical custody established
+    date_logged: '2026-08-14'
