@@ -1130,3 +1130,87 @@ field_logs:
           CONTROLLED VARIABLE. THE ARCHIVE RECORDS THE STATE BEFORE THE NEXT
           POWER CYCLE.
     signature: ATLAS // Public Field Report // 2026.07.29
+
+  - id: FI-LOG-017
+    slug: atlas-report-2026-08-15-the-counter-is-not-the-copy
+    title: ATLAS Report 2026.08.15 — The Counter Is Not the Copy
+    date: '2026-08-15'
+    timestamp: '2026-08-15 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: WD Red archive media / ext4 recovery record
+    system: raw-disk imaging / ext4 used-block imaging / source-preservation boundary
+    condition: recovery incomplete / source media preserved / two routes closed by evidence
+    status: destructive work withheld / reachable-file recovery pending
+    summary: >
+      Public ATLAS recovery report for two imaging routes closed by evidence: a
+      whole-disk copy ended with a device error after approximately 1.996 TB,
+      while a later read-only ext4 used-block attempt exposed incompatible
+      block accounting and was stopped before overrunning its 2 TB destination.
+      Source media remained protected and recovery is not declared complete.
+    source_path: src/docs/field-logs/atlas-report-2026-08-15-the-counter-is-not-the-copy.md
+    tags:
+      - atlas-report
+      - public field report
+      - L'Archive
+      - WD Red
+      - ext4
+      - archive recovery
+      - data preservation
+      - failure record
+      - source identity
+      - verification boundary
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          TWO IMAGING ROUTES CLOSED BY EVIDENCE // NO SUCCESSFUL CLONE
+          DECLARED // SOURCE MEDIA PRESERVED // RECOVERY REMAINS OPEN.
+          RAW ARTIFACTS, DEVICE IDENTIFIERS, FILESYSTEM IDENTIFIERS, AND LOCAL
+          PATHS REMAIN OUTSIDE THE PUBLIC RECORD.
+      - heading: SOURCE BOUNDARY
+        body: >
+          FIELD CHRONOLOGY CONTAINS MORE THAN ONE EXTERNALLY ATTACHED WD RED
+          STATE. A REUSED OPERATING-SYSTEM DEVICE NUMBER IS NOT PHYSICAL
+          IDENTITY. THE WHOLE-DISK ATTEMPT AND LATER EXT4 INSPECTION ARE NOT
+          MERGED INTO ONE SOURCE CLAIM. EVERY SOURCE AND TARGET MUST BE
+          RE-IDENTIFIED FROM LIVE HARDWARE FACTS BEFORE ACTION.
+      - heading: WHOLE-DISK ROUTE
+        body: >
+          APPROXIMATELY 1.996 TB TRANSFERRED BEFORE SOURCE AND TARGET DEVICES
+          BECAME UNAVAILABLE. THE COPY PROCESS RETURNED A DEVICE ERROR AND EXIT
+          STATUS 1. THE BYTE COUNT IS RETAINED AS PROGRESS EVIDENCE, NOT
+          ACCEPTED AS A COMPLETED OR VERIFIED CLONE.
+      - heading: EXT4 ROUTE
+        body: >
+          A SEPARATELY IDENTIFIED EXT4 SOURCE WAS INSPECTED READ-ONLY. ITS
+          SUPERBLOCK REPORTED APPROXIMATELY 1.71 TB USED, BUT INODE TRAVERSAL
+          REFERENCED APPROXIMATELY 3.84 TB. THE USED-BLOCK IMAGE COULD NOT FIT
+          THE BOUNDED 2 TB DESTINATION AND WAS STOPPED BEFORE DESTINATION
+          EXHAUSTION.
+      - heading: WHAT HELD
+        body: >
+          SOURCE WRITES WITHHELD // CONFIRMED TARGET BOUNDARY MAINTAINED //
+          ADJACENT VERIFIED ARCHIVE VOLUME LEFT UNALTERED // INCOMPLETE OUTPUT
+          NOT PROMOTED AS AN ARCHIVE COPY. DESTRUCTIVE WORK DID NOT EXPAND WHEN
+          THE PREFERRED ROUTES FAILED.
+      - heading: VERIFICATION STANDARD
+        body: >
+          A TRANSFER COUNTER PROVES BYTES MOVED. RECOVERY ACCEPTANCE REQUIRES A
+          SUCCESSFUL PROCESS EXIT // POSITIVE SOURCE AND TARGET IDENTITY //
+          DESTINATION INSPECTION // EXPECTED FILE COUNTS AND READABLE SAMPLES //
+          MANIFEST OR CHECKSUM COMPARISON // CONFIRMATION THAT PROTECTED
+          ADJACENT STORAGE WAS NOT ALTERED.
+      - heading: NEXT ROUTE
+        body: >
+          EXPOSE THE EXT4 DIRECTORY TREE WITHOUT JOURNAL REPLAY // COPY ONLY
+          REACHABLE FILES TO A SUFFICIENT DESTINATION // CAPTURE FILESYSTEM
+          METADATA AS A SEPARATE ARTIFACT. RECONFIRM PHYSICAL SOURCE,
+          DESTINATION, MOUNT STATE, FREE CAPACITY, AND WRITE BOUNDARY FROM LIVE
+          EVIDENCE BEFORE THE NEXT COMMAND.
+      - heading: ASSESSMENT
+        body: >
+          RECOVERY IS NOT COMPLETE. THE SOURCES STILL EXIST // FAILED ROUTES
+          ARE DOCUMENTED // THE NEXT METHOD HAS A SMALLER FAILURE SURFACE. THE
+          COUNTER IS NOT THE COPY.
+    signature: ATLAS // Public Field Report // 2026.08.15
