@@ -57,6 +57,18 @@ eleventyExcludeFromCollections: true
         <p>{{ project.working_title }}</p>
       </li>
       {% endif %}
+      {% if project.registry %}
+      <li>
+        <h3>Registry</h3>
+        <p>{{ project.registry }}{% if project.registry_predecessor %}, evolved from {{ project.registry_predecessor }}{% endif %}</p>
+      </li>
+      {% endif %}
+      {% if project.target_instrument %}
+      <li>
+        <h3>Target Instrument</h3>
+        <p>{{ project.target_instrument }} / stated intent, not a flight record</p>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </section>

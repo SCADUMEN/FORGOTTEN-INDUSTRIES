@@ -75,18 +75,30 @@ legacy implementation language, not a public canonical route.
 L'Œuvre is the assembled work layer. It gathers finished or actively assembled
 works without making the site feel like a portfolio.
 
-It has five public shelves:
+It has five public shelves, and the route's card grid carries one card per
+shelf. The count is not capped by layout.
 
-- **Les Dossiers**: living case files assembled from archive records, field logs,
-  photographs, inventories, and observations.
-- **Les Manuscrits**: authored works, research papers, essays, and complete
-  non-doctrine texts emerging from the archive.
-- **Les Rapports**: ATLAS reports and system reports once they have been
-  stabilized as records.
-- **La Doctrine**: field doctrine, systems doctrine, and formal principles
-  extracted from the archive.
-- **La Provenance**: the source chain, build record, instrument chain, and
-  production evidence.
+| Shelf              | Route          | Holds                                                                        |
+| ------------------ | -------------- | ---------------------------------------------------------------------------- |
+| **Les Dossiers**   | `/projects/`   | Living case files assembled from archive records, field logs, photographs, inventories, and observations. |
+| **Les Manuscrits** | `/posts/`      | Authored works, research papers, essays, and complete non-doctrine texts emerging from the archive. |
+| **Les Rapports**   | `/atlas/`      | ATLAS reports and system reports once they have been stabilized as records.  |
+| **La Doctrine**    | `/doctrine/`   | Field doctrine, systems doctrine, and formal principles extracted from the archive. |
+| **La Provenance**  | `/provenance/` | The source chain, build record, instrument chain, and production evidence.   |
+
+Every shelf in this table must have a card on `/oeuvre/`. A shelf that exists
+as a page but not as a card is an orphan, and orphans are the failure this
+table exists to prevent.
+
+La Provenance is also surfaced from À Propos, which is correct — provenance is
+both an assembled work and institutional context. L'Œuvre remains its owning
+door.
+
+Beneath the shelf grid, L'Œuvre also carries the **two local registers**,
+L'Inventaire (`/inventory/`) and Le Laboratoire (`/rd/`). These are public
+doctrine for private operating instruments: the interfaces and architecture may
+be inspected, but live records remain local. They are not shelves and do not
+take cards.
 
 Implementation notes:
 

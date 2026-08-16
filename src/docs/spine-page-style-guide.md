@@ -15,12 +15,27 @@ They share:
 - a large route title
 - a caption-box subtitle under the title
 - a shadow-box ticker band below the hero
-- three primary hero cards below the ticker
+- a primary hero-card grid below the ticker, one card per public shelf
 - green SYSOUT caption plates inside the ticker and cards
 - a black archive field with faint grid and scan texture
 
 The sibling rule is structural, not identical color. Each route can have its
 own color temperature as long as the roles remain stable.
+
+### Card count follows the shelves
+
+The card grid carries **one card per public shelf on that route**, as defined by
+the site architecture dossier. The count is an outcome, not a constraint.
+
+This rule replaces an earlier fixed three-card rule. That rule silently
+outranked the dossier: L'Œuvre was specified with five shelves and had three
+slots, so Les Manuscrits and La Provenance were dropped from the route and
+became orphaned pages reachable only by stray link. A layout constraint must
+never decide which shelves exist.
+
+When a route's shelf count changes, the grid changes with it. Compose the row
+break deliberately rather than letting cards wrap ragged — L'Œuvre's five sit
+on a 6-column field as 2+2+2 over 3+3.
 
 ## Color Roles
 
@@ -130,14 +145,16 @@ Shared behavior:
 - inner ruled border
 - green SYSOUT label
 - horizontal scroll row for compact repeated entries
-- three to four items only on landing pages
+- landing-page tickers summarize the route's shelves; the row scrolls, so the
+  item count follows the shelves rather than a fixed cap
 
 L'Œuvre and Le Signal can share ticker structure, but their item colors should
 remain route-specific.
 
 ### Hero Cards
 
-The three-card grid is the route's primary navigation instrument.
+The hero-card grid is the route's primary navigation instrument. It carries one
+card per public shelf; see "Card count follows the shelves" above.
 
 Use:
 

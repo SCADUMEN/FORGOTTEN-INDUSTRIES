@@ -296,6 +296,43 @@ describe('archive crawlability output', () => {
     )
   })
 
+  it("gives every L'Œuvre shelf a card on its own route", () => {
+    // The architecture dossier defines these five shelves. A shelf that exists
+    // as a page but has no card on /oeuvre/ is an orphan reachable only by
+    // stray link, which is how Les Manuscrits and La Provenance were lost when
+    // a fixed three-card layout rule silently outranked the dossier.
+    const shelves = [
+      ['/projects/', 'LES DOSSIERS'],
+      ['/posts/', 'LES MANUSCRITS'],
+      ['/atlas/', 'LES RAPPORTS'],
+      ['/doctrine/', 'LA DOCTRINE'],
+      ['/provenance/', 'LA PROVENANCE'],
+    ]
+    const oeuvre = readSite('oeuvre/index.html')
+    const cardLinks = hrefs(oeuvre)
+
+    for (const [route, label] of shelves) {
+      expect(cardLinks, `${label} shelf link`).toContain(route)
+      expect(oeuvre, `${label} card label`).toContain(`<span>${label}</span>`)
+    }
+
+    // The two local registers sit below the shelf grid and are not shelves.
+    expect(cardLinks).toContain('/inventory/')
+    expect(cardLinks).toContain('/rd/')
+  })
+
+  it('records the SCADUBIRD registry and keeps target instrument out of the flight record', () => {
+    const peregrine = readSite(
+      'archive/projects/peregrine-drone-experiments/index.html'
+    )
+
+    expect(peregrine).toContain('SCADUBIRD, evolved from PEREGRINE')
+    expect(peregrine).toContain('DJI Air 3S / stated intent, not a flight record')
+    // Aircraft that passed through custody without flying stay in the record.
+    expect(peregrine).toContain('PEREGRINE-A05 / SCADUBIRD-SB001')
+    expect(peregrine).toContain('Perry 4 / PEREGRINE-A04')
+  })
+
   it('publishes Provenance From On High as a permanent archival capability', () => {
     const archive = readSite('l-archive/index.html')
     const aerial = readSite('l-archive/from-on-high/index.html')
