@@ -5918,8 +5918,9 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
   color: var(--ink);
 }
 
+/* One card per shelf, per the spine style guide; À Propos carries four. */
 .apropos-directory-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .archive-finding-aid {
@@ -6624,7 +6625,8 @@ a.site-cxr-mark:focus-visible {
 }
 
 @media (max-width: 900px) {
-  .oeuvre-directory-grid {
+  .oeuvre-directory-grid,
+  .apropos-directory-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

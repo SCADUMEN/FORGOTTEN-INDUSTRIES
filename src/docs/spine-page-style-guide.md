@@ -3,8 +3,28 @@
 This guide records the current production pattern for the public spine pages
 after the L'Œuvre and Le Signal passes.
 
-It is a color and component map for future route work, especially À Propos. It
-does not replace the broader moodboard or typeface dossier.
+It is a color and component map for future route work, especially À Propos.
+
+## Which Document Wins
+
+Four documents describe the archive's design, and they had no stated order.
+When they disagree, resolve in this order:
+
+1. **`src/styleguide.njk`** (`/styleguide/`) is canonical. It is rendered with
+   the site's own classes and tokens, so it shows what actually ships. Any
+   change that adds or alters a token, component, route color family, or
+   heuristic updates it in the same change.
+2. **This guide** owns the spine route families — the per-route color
+   temperature, the ticker/hero-card structure, and the component rules below.
+   Where it names a token, the styleguide's definition governs.
+3. **`frontend-moodboard.md`** is direction and reference, not specification.
+   It never overrides 1 or 2.
+4. **The typeface dossier** (`/projects/typeface-system/`, FI-PROJ-008) is a
+   design-evolution case file. It records how the voice system arrived at its
+   current state; it is history and rationale, not a live spec.
+
+A rule that exists only in 3 or 4 is a proposal. It becomes binding when it
+lands in 1 or 2.
 
 ## Core Pattern
 

@@ -2,6 +2,7 @@
 title: "003 - L'INCIDENT"
 slug: "003-l-incident"
 category: "Le Signal"
+shelf: "signal"
 type: "PREVIEW / Signal Dispatch / Incident Plate"
 entry: "003"
 shelf_label: "Le Signal"

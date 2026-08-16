@@ -216,6 +216,23 @@ function recordDateValue(record) {
   )
 }
 
+// Controlled shelf vocabulary. A post declares exactly one, and it decides the
+// shelf outright. The heuristics below remain only as a fallback for records
+// that predate the field: they inspect freeform `type`, `category`, and
+// `shelf_label` strings, which produced a partition that both overlapped (a
+// Le Blog dispatch and the Prelude were listed on Les Manuscrits *and* Le
+// Blog) and could not be predicted when writing a new post.
+const POST_SHELVES = new Set(['doctrine', 'signal', 'manuscrit'])
+
+function declaredShelf(record) {
+  const data = record?.data || record || {}
+  const value = String(data.shelf || '')
+    .toLowerCase()
+    .trim()
+
+  return POST_SHELVES.has(value) ? value : null
+}
+
 function isDoctrinePost(record) {
   const data = record?.data || record || {}
   const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
@@ -258,6 +275,22 @@ function isPreludePost(record) {
     .toLowerCase()
 
   return /\bprelude\b/.test(classification)
+}
+
+// The three shelves partition the post collection: every post lands on exactly
+// one. Signal absorbs blog and prelude records; manuscripts are the remainder.
+function postShelf(record) {
+  const declared = declaredShelf(record)
+  if (declared) return declared
+  if (isDoctrinePost(record)) return 'doctrine'
+  if (
+    isLeSignalPost(record) ||
+    isLeBlogPost(record) ||
+    isPreludePost(record)
+  ) {
+    return 'signal'
+  }
+  return 'manuscrit'
 }
 
 export default function (eleventyConfig) {
@@ -367,28 +400,24 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('doctrinePosts', function (records) {
-    return Array.isArray(records) ? records.filter(isDoctrinePost) : []
+    return Array.isArray(records)
+      ? records.filter((record) => postShelf(record) === 'doctrine')
+      : []
   })
 
   eleventyConfig.addFilter('manuscriptPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) => !isDoctrinePost(record) && !isLeSignalPost(record)
-        )
+      ? records.filter((record) => postShelf(record) === 'manuscrit')
       : []
   })
 
   eleventyConfig.addFilter('signalPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) =>
-            !isDoctrinePost(record) &&
-            (isLeSignalPost(record) ||
-              isLeBlogPost(record) ||
-              isPreludePost(record))
-        )
+      ? records.filter((record) => postShelf(record) === 'signal')
       : []
   })
+
+  eleventyConfig.addFilter('postShelf', postShelf)
 
   eleventyConfig.addFilter('isoDate', function (value) {
     return value.toISOString().split('T')[0]

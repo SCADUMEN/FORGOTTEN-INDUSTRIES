@@ -154,6 +154,28 @@ Compatibility wins over purity.
 | `/field-logs/<slug>/`     | Compatibility route to `/atlas/<slug>/`. ATLAS report detail pages moved to their own index.     |
 | `/archive/field-logs/`    | Compatibility route to `/archive/atlas-reports/`.                                                |
 
+## Post Shelf Vocabulary
+
+Every file in `src/posts/` declares one controlled `shelf` value. It decides
+the shelf outright, and the three values partition the collection — a post
+lands on exactly one.
+
+| `shelf`     | Route        | Public name    |
+| ----------- | ------------ | -------------- |
+| `doctrine`  | `/doctrine/` | La Doctrine    |
+| `manuscrit` | `/posts/`    | Les Manuscrits |
+| `signal`    | `/blog/`     | Le Blog        |
+
+Routing previously inferred the shelf from freeform `type`, `category`, and
+`shelf_label` strings. Around seventeen distinct values across ten posts meant
+the destination could not be predicted when writing a new post, and the
+matching overlapped: the Prelude and a Le Blog dispatch were listed on Les
+Manuscrits *and* Le Blog, so the counts summed to more posts than existed.
+
+`type`, `category`, and `shelf_label` remain as human descriptive labels. They
+no longer decide routing. The heuristics survive in `eleventy.config.js` only
+as a fallback for records that predate the field.
+
 ## Field Log Naming
 
 Three different records were all called "field logs", and the source

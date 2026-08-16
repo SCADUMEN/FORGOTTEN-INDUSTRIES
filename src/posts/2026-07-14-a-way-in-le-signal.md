@@ -2,6 +2,7 @@
 title: "A Way In // Le Signal Form"
 slug: "a-way-in-le-signal"
 category: "Le Signal"
+shelf: "signal"
 type: "Signal Dispatch / Reader's Note"
 entry: "004-S"
 shelf_label: "Le Signal"

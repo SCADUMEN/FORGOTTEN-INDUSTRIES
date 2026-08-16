@@ -253,10 +253,16 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  await expect(page.locator('main')).toContainText(
+  await expect(page.locator('main')).toContainText('A Way In')
+  // The shelves partition the collection: a post appears on exactly one. The
+  // Prelude and the Le Horologist dispatch are Le Blog records, and used to be
+  // listed here as well because the old string matching let them match twice.
+  await expect(page.locator('main')).not.toContainText(
     'A Thing Documented Is a Thing Not Yet Lost'
   )
-  await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).not.toContainText(
+    'The Machinations of Time'
+  )
   await expect(page.locator('main')).not.toContainText(
     'A Way In // Le Signal Form'
   )
@@ -588,8 +594,11 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   let response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
-  await expect(page.locator('main')).toContainText(
+  // "A Way In" is the shelf's only entry and carries a custom permalink, so it
+  // is not matched by the dated /posts/ pattern.
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(0)
+  await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).not.toContainText(
     "The Machinations of Time / L'Horologist"
   )
   await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')

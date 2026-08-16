@@ -296,6 +296,40 @@ describe('archive crawlability output', () => {
     )
   })
 
+  it('partitions posts across exactly one shelf each', () => {
+    // Routing used to key off freeform `type`/`category`/`shelf_label` strings,
+    // which let a post match two shelves at once: the Prelude and a Le Blog
+    // dispatch were listed on Les Manuscrits *and* Le Blog. Every post now
+    // declares a controlled `shelf`, and the three shelves must partition the
+    // collection — no post on two, none on none.
+    const shelves = ['doctrine', 'signal', 'manuscrit']
+    const posts = fs
+      .readdirSync(path.join(ROOT, 'src', 'posts'))
+      .filter((name) => name.endsWith('.md') && name !== 'README.md')
+
+    const counts = { doctrine: 0, signal: 0, manuscrit: 0 }
+    for (const name of posts) {
+      const source = fs.readFileSync(
+        path.join(ROOT, 'src', 'posts', name),
+        'utf8'
+      )
+      const declared = source.match(/^shelf:\s*"?([a-z]+)"?\s*$/m)?.[1]
+      expect(shelves, `${name} declares a controlled shelf`).toContain(declared)
+      counts[declared] += 1
+    }
+
+    expect(counts.doctrine + counts.signal + counts.manuscrit).toBe(
+      posts.length
+    )
+
+    // The rendered shelves must agree with the declared counts.
+    const oeuvre = readSite('oeuvre/index.html')
+    const signal = readSite('signal/index.html')
+    expect(oeuvre).toContain(`SYSTEMS DOCTRINE (${counts.doctrine})`)
+    expect(oeuvre).toContain(`MANUSCRIPTS (${counts.manuscrit})`)
+    expect(signal).toContain(`BLOG (${counts.signal})`)
+  })
+
   it("gives every L'Œuvre shelf a card on its own route", () => {
     // The architecture dossier defines these five shelves. A shelf that exists
     // as a page but has no card on /oeuvre/ is an orphan reachable only by
