@@ -186,7 +186,7 @@ const sitemapExtraUrls = [
   '/colophon/',
   '/plan-du-site/',
   '/styleguide/',
-  '/archive/aerial-documentation/',
+  '/l-archive/from-on-high/',
   '/archive/inventory/',
   '/archive/objects/',
   '/archive/taxonomy/',

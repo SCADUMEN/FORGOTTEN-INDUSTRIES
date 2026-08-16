@@ -395,6 +395,8 @@ projects:
     title: The PEREGRINE Drone Experiments
     working_title: PERRY / PEREGRINE Aircraft Dossier
     division: FORGOTTEN INDUSTRIES UAV DIVISION
+    capability: Provenance From On High
+    capability_url: /l-archive/from-on-high/
     doctrine: ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE
     flight_call: ON THE FIVE, FLY FLY FLY...
     category: Drone Field Systems

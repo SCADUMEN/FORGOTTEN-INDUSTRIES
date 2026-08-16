@@ -298,7 +298,7 @@ describe('archive crawlability output', () => {
 
   it('publishes Provenance From On High as a permanent archival capability', () => {
     const archive = readSite('l-archive/index.html')
-    const aerial = readSite('archive/aerial-documentation/index.html')
+    const aerial = readSite('l-archive/from-on-high/index.html')
     const peregrine = readSite(
       'archive/projects/peregrine-drone-experiments/index.html'
     )

@@ -21,6 +21,9 @@ eleventyExcludeFromCollections: true
     {% if project.flight_call %}
     <p class="entry-note">{{ project.flight_call }}</p>
     {% endif %}
+    {% if project.capability and project.capability_url %}
+    <p class="action-row"><a href="{{ project.capability_url }}">Open {{ project.capability }}, the archival capability this dossier exercises</a></p>
+    {% endif %}
   </div>
 </section>
 

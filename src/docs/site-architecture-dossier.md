@@ -51,6 +51,25 @@ Implementation note: `src/archive.njk` intentionally remains the Eleventy source
 file for `/l-archive/`. The filename is legacy implementation language, not a
 public canonical route.
 
+#### Archival capabilities
+
+An archival capability is a permanent method the archive uses to produce
+evidence. It is not a dossier and carries no project number. Capabilities are
+instrument subpages beneath the L'Archive door and must appear in the
+Registered Shelves finding aid so the archive's own index stays honest.
+
+| Capability                | Route                      | Exercised by                       |
+| ------------------------- | -------------------------- | ---------------------------------- |
+| Provenance From On High   | `/l-archive/from-on-high/` | FI-PROJ-004 PEREGRINE (UAV Division) |
+
+A capability and the dossier that exercises it must link to each other. The
+dossier link is data-driven through `capability` and `capability_url` in
+`src/data/projects.yml`.
+
+Implementation note: `src/aerial-documentation.njk` remains the Eleventy source
+file for `/l-archive/from-on-high/`. As with `archive.njk`, the filename is
+legacy implementation language, not a public canonical route.
+
 ### L'Œuvre
 
 L'Œuvre is the assembled work layer. It gathers finished or actively assembled
@@ -119,6 +138,7 @@ Compatibility wins over purity.
 | `/projects/`              | Kept as the public Les Dossiers shelf. It is not a top-nav item.                                 |
 | `/posts/`                 | Kept as the public Les Manuscrits shelf and feed source. It is not a top-nav item.               |
 | `/hang-on-to-each-other/` | Kept as a named technical-reference/manual shelf inside the archive.                             |
+| `/archive/aerial-documentation/` | Compatibility route to `/l-archive/from-on-high/`. Do not use as canonical in new public links. |
 
 Do not create duplicate competing archive pages. If an older route exists for
 compatibility, point it to the canonical door or document why it remains an
