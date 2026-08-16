@@ -43,12 +43,14 @@ function isArticleUrl(value = '') {
   )
 }
 
-function isFieldLogUrl(value = '') {
+// ATLAS report detail pages live under /atlas/, matching their index. They
+// previously sat under /field-logs/, which is the recorded voice Field Log
+// index — a different dataset entirely.
+function isAtlasReportUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
-    pathname.startsWith('/field-logs/') &&
-    pathname !== '/field-logs/' &&
-    pathname !== '/field-logs/voice/' &&
+    pathname.startsWith('/atlas/') &&
+    pathname !== '/atlas/' &&
     pathname.endsWith('/')
   )
 }
@@ -97,7 +99,7 @@ function gatherSitemapPaths(collection, extras, archive) {
     extras.forEach(add)
   }
   if (Array.isArray(archive?.fieldLogs)) {
-    archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+    archive.fieldLogs.forEach((log) => add(`/atlas/${log.slug}/`))
   }
   if (Array.isArray(archive?.inventory)) {
     archive.inventory.forEach((item) =>
@@ -668,7 +670,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('ogTypeForUrl', function (url, explicit) {
     if (explicit) return explicit
-    return isArticleUrl(url) || isFieldLogUrl(url) ? 'article' : 'website'
+    return isArticleUrl(url) || isAtlasReportUrl(url) ? 'article' : 'website'
   })
 
   eleventyConfig.addFilter(
@@ -677,7 +679,7 @@ export default function (eleventyConfig) {
       if (explicit) return explicit
       if (title === siteName || canonicalPath(url) === '/') return 'WebSite'
       if (isArticleUrl(url)) return 'Article'
-      if (isFieldLogUrl(url)) return 'CreativeWork'
+      if (isAtlasReportUrl(url)) return 'CreativeWork'
       if (isCollectionUrl(url)) return 'CollectionPage'
       return 'WebPage'
     }

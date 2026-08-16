@@ -1,0 +1,244 @@
+---
+layout: base.njk
+title: ATLAS Reports
+description: "ATLAS index for completed work, recovered evidence, decisions, unresolved questions, and next actions."
+permalink: /atlas/index.html
+eleventyExcludeFromCollections: true
+---
+{% set logs = archive.atlasReports | fieldLogsNewest %}
+<section class="masthead field-log-atlas-shell field-log-atlas-masthead atlas-voice-index">
+  <div class="section-inner">
+    <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>ATLAS / REPORT INDEX</p>
+    <h1>ATLAS REPORTS</h1>
+    <p class="tagline">{{ description }}</p>
+  </div>
+</section>
+
+<section class="source-band field-log-atlas-shell field-log-atlas-panel atlas-voice-panel" aria-labelledby="field-logs-status">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>{{ archive.atlasReports | countLabel("record", "records") }}</p>
+      <h2 id="field-logs-status">REPORT CHANNEL // OPERATOR VERIFIED</h2>
+    </div>
+
+    <div class="callout field-log-atlas-callout">
+      <h3>ATLAS // REPORT QUEUE</h3>
+      <p>SYSTEM OUTPUT // EVIDENCE // DECISIONS // UNRESOLVED QUESTIONS // NEXT ACTIONS</p>
+      <p>HUMAN JUDGMENT PRIMARY // MACHINE COLLABORATION VISIBLE // RECORDS INSPECTABLE</p>
+      <p class="action-row"><a href="/field-logs/">OPEN FIELD LOGS</a> / <a href="/archive/field-logs/">OPEN ARCHIVE VIEW</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="archive-search-band field-log-atlas-shell field-log-atlas-panel atlas-voice-search" aria-labelledby="field-log-filter-heading">
+  <div class="section-inner">
+    <div class="archive-search-shell">
+      <div class="archive-search-intro">
+        <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>ATLAS REPORTS INDEX</p>
+        <h2 id="field-log-filter-heading">FILTER MATRIX // NEWEST FIRST</h2>
+        <p class="archive-search-meta">
+          TEXT // TAG // TYPE // DOSSIER // STATUS. EVIDENCE BEFORE INTERPRETATION.
+        </p>
+      </div>
+
+      <form id="field-log-filter-form" class="archive-search-form field-log-filter-form" role="search">
+        <label class="sr-only" for="field-log-search">Search ATLAS reports</label>
+        <input
+          id="field-log-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="SEARCH REPORTS // TAGS // SYSTEMS // OBJECTS // IDS"
+        >
+        <button type="reset">RESET</button>
+      </form>
+
+      <div class="field-log-filter-row" aria-label="Field log filters">
+        <label>
+          <span>TYPE</span>
+          <select id="field-log-category">
+            <option value="">ALL TYPES</option>
+            {% for category in archive.atlasReports | fieldLogCategories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>
+          <span>DOSSIER</span>
+          <select id="field-log-project">
+            <option value="">ALL DOSSIERS</option>
+            {% for project in archive.projects %}
+            <option value="{{ project.id }}">{{ project.title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>
+          <span>STATUS</span>
+          <select id="field-log-status-filter">
+            <option value="">ALL STATUS</option>
+            {% for log in logs %}
+            <option value="{{ log.status }}">{{ log.status }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+
+      <p id="field-log-filter-status" class="archive-search-status">{{ logs | countLabel("record", "records") }} / ready</p>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band field-log-atlas-shell field-log-atlas-panel atlas-voice-list" aria-labelledby="field-logs-list">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>NEWEST RECORDS</p>
+      <h2 id="field-logs-list">SYSTEM OUTPUT // REPORT LANE</h2>
+    </div>
+
+    {% if logs.length %}
+    <ol id="field-log-list" class="field-note-list field-log-list">
+      {% for log in logs %}
+      {% set project = archive.projects | findById(log.associated_project) %}
+      <li
+        class="field-note-card field-log-card"
+        data-field-log-card
+        data-category="{{ log.category }}"
+        data-project="{{ log.associated_project }}"
+        data-status="{{ log.status }}"
+        data-tags="{{ log.tags | join(' ') | lower }}"
+      >
+        <header>
+          <time datetime="{{ log.date }}">{{ log.date | replace('-', '.') | replace('-', '.') }}</time>
+          <span>{{ log.id }} / {{ log.category }}</span>
+        </header>
+        <h3><a href="/atlas/{{ log.slug }}/">{{ log.title }}</a></h3>
+        <p>{{ log.summary or log.object }}</p>
+        <dl class="field-log-card-meta">
+          {% if log.object %}
+          <div>
+            <dt>Object</dt>
+            <dd>{{ log.object }}</dd>
+          </div>
+          {% endif %}
+          {% if log.system %}
+          <div>
+            <dt>System</dt>
+            <dd>{{ log.system }}</dd>
+          </div>
+          {% endif %}
+          {% if log.status %}
+          <div>
+            <dt>Status</dt>
+            <dd>{{ log.status }}</dd>
+          </div>
+          {% endif %}
+          {% if project %}
+          <div>
+            <dt>Dossier</dt>
+            <dd><a href="{{ project | archiveProjectUrl }}">{{ project.title }}</a></dd>
+          </div>
+          {% endif %}
+        </dl>
+        {% if log.tags and log.tags.length %}
+        <footer aria-label="Field log tags">
+          {% for tag in log.tags %}
+          <button class="tag-filter" type="button" data-field-log-tag="{{ tag }}">{{ tag }}</button>
+          {% endfor %}
+        </footer>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <div class="callout field-note-empty field-log-atlas-callout">
+      <h3>NO ATLAS REPORTS YET</h3>
+      <p>ROUTE ACTIVE // WAITING FOR DATED REPORT SOURCE.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="source-band field-log-atlas-shell field-log-atlas-panel atlas-voice-groups" aria-labelledby="field-log-groups-heading">
+  <div class="section-inner">
+    <div class="field-notes-heading">
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>GROUPED BY TYPE</p>
+      <h2 id="field-log-groups-heading">CATEGORY CHANNELS // INDEXED</h2>
+    </div>
+
+    <div class="field-log-group-grid">
+      {% for category in archive.atlasReports | fieldLogCategories %}
+      {% set categoryLogs = archive.atlasReports | byCategory(category) | fieldLogsNewest %}
+      <section class="field-log-group">
+        <p class="section-label fi-caption-box"><span class="fi-prompt-marker">&gt;</span>{{ categoryLogs | countLabel("record", "records") }}</p>
+        <h3>{{ category }}</h3>
+        <ol>
+          {% for log in categoryLogs %}
+          <li>
+            <a href="/atlas/{{ log.slug }}/">{{ log.title }}</a>
+            <span>{{ log.date }} / {{ log.id }}</span>
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var form = document.getElementById('field-log-filter-form');
+    var search = document.getElementById('field-log-search');
+    var category = document.getElementById('field-log-category');
+    var project = document.getElementById('field-log-project');
+    var status = document.getElementById('field-log-status-filter');
+    var resultStatus = document.getElementById('field-log-filter-status');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('[data-field-log-card]'));
+
+    function normalize(value) {
+      return String(value || '').toLowerCase().trim();
+    }
+
+    function update() {
+      var query = normalize(search.value);
+      var categoryValue = category.value;
+      var projectValue = project.value;
+      var statusValue = status.value;
+      var visible = 0;
+
+      cards.forEach(function(card) {
+        var text = normalize(card.textContent + ' ' + card.dataset.tags);
+        var matches =
+          (!query || text.indexOf(query) !== -1) &&
+          (!categoryValue || card.dataset.category === categoryValue) &&
+          (!projectValue || card.dataset.project === projectValue) &&
+          (!statusValue || card.dataset.status === statusValue);
+
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      resultStatus.textContent = visible + ' record' + (visible === 1 ? '' : 's') + ' visible';
+    }
+
+    form.addEventListener('reset', function() {
+      window.setTimeout(function() {
+        category.value = '';
+        project.value = '';
+        status.value = '';
+        update();
+      }, 0);
+    });
+    search.addEventListener('input', update);
+    category.addEventListener('change', update);
+    project.addEventListener('change', update);
+    status.addEventListener('change', update);
+
+    document.querySelectorAll('[data-field-log-tag]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        search.value = button.dataset.fieldLogTag || '';
+        update();
+      });
+    });
+  })();
+</script>

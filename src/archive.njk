@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
 {% set objectGallery = archive.inventory | objectGalleryCandidates %}
 {% set galleryMinimumCount = 4 %}
 {% set galleryDefaultCount = 8 %}
-{% set indexedRecordCount = (archive.projects | count) + (archive.inventory | count) + (archive.fieldLogs | count) + (archive.voiceLogs | count) + (archive.socialPosts | count) + (collections.posts | count) %}
+{% set indexedRecordCount = (archive.projects | count) + (archive.inventory | count) + (archive.atlasReports | count) + (archive.voiceLogs | count) + (archive.socialPosts | count) + (collections.posts | count) %}
 {% set publicRouteUrls = collections.all | publicSitemapUrls(site.sitemapExtraUrls, site.domainUrl, archive) %}
 {% set publicRouteCount = (publicRouteUrls | count) + (taxonomy.categories | count) + (taxonomy.tags | count) + (taxonomy.status | count) + (taxonomy.systems | count) %}
 {% macro archiveContainerCard(box, expanded) %}
@@ -920,7 +920,9 @@ eleventyExcludeFromCollections: true
       <a href="/l-archive/from-on-high/">Provenance From On High</a>
       <a href="/oeuvre/#dossiers">Dossiers</a>
       <a href="/hang-on-to-each-other/">Les Manuels</a>
-      <a href="/archive/field-logs/">Process Records</a>
+      <a href="/archive/atlas-reports/">ATLAS Reports</a>
+      <a href="/field-logs/">Field Log</a>
+      <a href="/docs/process/">Process Records</a>
       <a href="/social-posts.html">Recovered Social Records</a>
       <a href="/site-snapshots/">Stowed Snapshots</a>
       <a href="/dist/forgotten-industries.json">Archive JSON</a>
@@ -961,8 +963,8 @@ eleventyExcludeFromCollections: true
         <a class="stat" href="/archive/posts/">
           <span class="stat-label">{{ collections.posts | pluralLabel("Written record", "Written records") }} <span class="stat-count">({{ collections.posts | count }})</span></span>
         </a>
-        <a class="stat" href="/archive/field-logs/">
-          <span class="stat-label">{{ archive.fieldLogs | pluralLabel("ATLAS report", "ATLAS reports") }} <span class="stat-count">({{ archive.fieldLogs | count }})</span></span>
+        <a class="stat" href="/archive/atlas-reports/">
+          <span class="stat-label">{{ archive.atlasReports | pluralLabel("ATLAS report", "ATLAS reports") }} <span class="stat-count">({{ archive.atlasReports | count }})</span></span>
         </a>
         <a class="stat stat-wide" href="/archive/objects/">
           <span class="stat-label">{{ archive.inventory | pluralLabel("Object catalogued", "Objects catalogued") }} <span class="stat-count">({{ archive.inventory | count }})</span></span>

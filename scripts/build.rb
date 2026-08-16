@@ -324,7 +324,7 @@ field_logs.each do |log|
     record_type: record_type,
     public_layer: record_type == "atlas_report" ? "l_oeuvre" : "le_signal",
     title: log.fetch("title"),
-    url: "/field-logs/#{log.fetch("slug")}/",
+    url: "/atlas/#{log.fetch("slug")}/",
     date: log["date"],
     category: log["category"],
     object: log["object"],

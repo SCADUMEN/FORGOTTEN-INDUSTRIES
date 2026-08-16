@@ -151,6 +151,33 @@ Compatibility wins over purity.
 | `/posts/`                 | Kept as the public Les Manuscrits shelf and feed source. It is not a top-nav item.               |
 | `/hang-on-to-each-other/` | Kept as a named technical-reference/manual shelf inside the archive.                             |
 | `/archive/aerial-documentation/` | Compatibility route to `/l-archive/from-on-high/`. Do not use as canonical in new public links. |
+| `/field-logs/<slug>/`     | Compatibility route to `/atlas/<slug>/`. ATLAS report detail pages moved to their own index.     |
+| `/archive/field-logs/`    | Compatibility route to `/archive/atlas-reports/`.                                                |
+
+## Field Log Naming
+
+Three different records were all called "field logs", and the source
+filenames disagreed with the routes they served. The names are now fixed and
+must not drift back.
+
+| Public name        | Route                     | Source file                     | Data              |
+| ------------------ | ------------------------- | ------------------------------- | ----------------- |
+| **ATLAS Reports**  | `/atlas/`, `/atlas/<slug>/` | `atlas-reports.njk`, `atlas-report-page.njk` | `archive.atlasReports` |
+| **Field Log**      | `/field-logs/`            | `field-logs.njk`                | `archive.voiceLogs` |
+| **Process Records**| `/docs/process/`          | `process-records.njk`           | source documents  |
+
+Rules:
+
+- A source filename must name the route it serves. `field-logs.njk` serves
+  `/field-logs/` and nothing else.
+- ATLAS report detail pages live under their own index at `/atlas/`. They
+  previously sat under `/field-logs/<slug>/` while `/field-logs/` itself listed
+  voice recordings, so an index and its children were different datasets.
+- Templates address ATLAS reports as `archive.atlasReports`. The published
+  `dist/forgotten-industries.json` keeps `fieldLogs` as its key because renaming
+  it would break schemaVersion 0.1.0 for consumers; `src/_data/archive.cjs`
+  aliases the same array so internal names match the public label.
+- "Process Records" means `/docs/process/`. It is not an ATLAS view.
 
 Do not create duplicate competing archive pages. If an older route exists for
 compatibility, point it to the canonical door or document why it remains an

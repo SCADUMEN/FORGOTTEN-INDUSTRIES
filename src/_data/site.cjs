@@ -195,7 +195,7 @@ const sitemapExtraUrls = [
   '/archive/status/',
   '/archive/systems/',
   '/archive/posts/',
-  '/archive/field-logs/',
+  '/archive/atlas-reports/',
   '/archive/projects/',
   '/archive/source-sets/',
   '/archive/social-evidence/',

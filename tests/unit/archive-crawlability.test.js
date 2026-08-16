@@ -63,7 +63,7 @@ describe('archive crawlability output', () => {
       existsSite('hang-on-to-each-other/wrist-field-instruments/index.html')
     ).toBe(true)
     expect(
-      existsSite('field-logs/accumulation-across-active-fronts/index.html')
+      existsSite('atlas/accumulation-across-active-fronts/index.html')
     ).toBe(true)
   })
 
@@ -219,7 +219,7 @@ describe('archive crawlability output', () => {
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
     expect(dailySummary).toMatchObject({
       title: 'ATLAS Report 2026.06.20 — Accumulation Across Active Fronts',
-      url: '/field-logs/accumulation-across-active-fronts/',
+      url: '/atlas/accumulation-across-active-fronts/',
       category: 'atlas-report',
       record_type: 'atlas_report',
       public_layer: 'l_oeuvre',
@@ -254,7 +254,7 @@ describe('archive crawlability output', () => {
       fs.readFileSync(path.join(DIST, 'forgotten-industries.json'), 'utf8')
     )
     const home = readSite('index.html')
-    const report = readSite('field-logs/playonline-senses-weakness/index.html')
+    const report = readSite('atlas/playonline-senses-weakness/index.html')
     const entry = readSite(
       'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html'
     )
@@ -388,7 +388,7 @@ describe('archive crawlability output', () => {
     const generatedPages = [
       'archive/objects/fi-case-001/index.html',
       'archive/projects/caselabs-mercury-s8-pedestal-restoration/index.html',
-      'field-logs/rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule/index.html',
+      'atlas/rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule/index.html',
       'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html',
     ]
 
