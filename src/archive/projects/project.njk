@@ -21,6 +21,9 @@ eleventyExcludeFromCollections: true
     {% if project.flight_call %}
     <p class="entry-note">{{ project.flight_call }}</p>
     {% endif %}
+    {% if project.capability and project.capability_url %}
+    <p class="action-row"><a href="{{ project.capability_url }}">Open {{ project.capability }}, the archival capability this dossier exercises</a></p>
+    {% endif %}
   </div>
 </section>
 
@@ -54,12 +57,30 @@ eleventyExcludeFromCollections: true
         <p>{{ project.working_title }}</p>
       </li>
       {% endif %}
+      {% if project.registry %}
+      <li>
+        <h3>Registry</h3>
+        <p>{{ project.registry }}{% if project.registry_predecessor %}, evolved from {{ project.registry_predecessor }}{% endif %}</p>
+      </li>
+      {% endif %}
+      {% if project.airframe_lineage %}
+      <li>
+        <h3>Airframe Lineage</h3>
+        <p>{{ project.airframe_lineage }}</p>
+      </li>
+      {% endif %}
+      {% if project.target_instrument %}
+      <li>
+        <h3>Target Instrument</h3>
+        <p>{{ project.target_instrument }} / stated intent, not a flight record</p>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </section>
 
 {% set projectObjects = archive.inventory | whereAssociatedProject(project.id) %}
-{% set projectLogs = archive.fieldLogs | whereAssociatedProject(project.id) %}
+{% set projectLogs = archive.atlasReports | whereAssociatedProject(project.id) %}
 
 <section class="source-band">
   <div class="section-inner band-grid">
@@ -92,7 +113,7 @@ eleventyExcludeFromCollections: true
       {% for log in projectLogs | fieldLogsNewest %}
       <li>
         <p class="entry-note">{{ log.id }} / {{ log.date }} / {{ log.category }}</p>
-        <h3><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></h3>
+        <h3><a href="/atlas/{{ log.slug }}/">{{ log.title }}</a></h3>
         <p>{{ log.object }}. {{ log.status }}.</p>
       </li>
       {% endfor %}

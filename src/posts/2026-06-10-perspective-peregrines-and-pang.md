@@ -2,6 +2,7 @@
 title: "Perspective, Peregrines, & “Pang”"
 slug: "perspective-peregrines-and-pang"
 category: "ATLAS Report"
+shelf: "doctrine"
 type: "Field Doctrine"
 entry: "001"
 date: "2026-06-10"

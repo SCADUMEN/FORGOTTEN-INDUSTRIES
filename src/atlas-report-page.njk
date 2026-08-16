@@ -1,14 +1,14 @@
 ---
 layout: base.njk
 pagination:
-  data: archive.fieldLogs
+  data: archive.atlasReports
   size: 1
   alias: log
-permalink: /field-logs/{{ log.slug }}/
+permalink: /atlas/{{ log.slug }}/
 eleventyComputed:
   title: "{{ log.title }}"
   description: "{{ log.summary or log.title }}"
-  canonical: "{{ site.domainUrl }}/field-logs/{{ log.slug }}/"
+  canonical: "{{ site.domainUrl }}/atlas/{{ log.slug }}/"
 ---
 {% set project = archive.projects | findById(log.associated_project) %}
 <section class="masthead field-log-atlas-shell field-log-atlas-masthead">
@@ -121,7 +121,7 @@ eleventyComputed:
       {% if log.source_path %}
       <p>Draft/source note: <a href="/{{ log.source_path | replace('src/', '') }}">{{ log.source_path }}</a></p>
       {% endif %}
-      <p>Route: <code>/field-logs/{{ log.slug }}/</code></p>
+      <p>Route: <code>/atlas/{{ log.slug }}/</code></p>
       <p class="action-row"><a href="/atlas/">Return to ATLAS Reports</a> / <a href="/field-logs/">Open Field Logs</a></p>
     </div>
   </div>

@@ -399,18 +399,31 @@ projects:
     title: The PEREGRINE Drone Experiments
     working_title: PERRY / PEREGRINE Aircraft Dossier
     division: FORGOTTEN INDUSTRIES UAV DIVISION
+    registry: SCADUBIRD
+    registry_predecessor: PEREGRINE
+    airframe_lineage: A01 DJI Mini 4K / A02-A04 DJI Mini 3 / A05 SB001 DJI Mini 5 Pro
+    capability: Provenance From On High
+    capability_url: /l-archive/from-on-high/
     doctrine: ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE
     flight_call: ON THE FIVE, FLY FLY FLY...
+    target_instrument: DJI Air 3S
     category: Drone Field Systems
-    status: active / A01 grounded / A02 lost / A03 planned
+    status: active / no airworthy aircraft / A01 grounded / A02 lost / A03-A05 not retained
     started: '2026'
     summary: >
-      Small aircraft experimentation and recovery dossier covering Perry 1 /
-      PEREGRINE-A01 as the DJI Mini 4K awning recovery and troubleshooting
-      bird, Perry 2 / PEREGRINE-A02 as the DJI Mini 3 lost after a 3 AM roof
-      incident, and Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement
-      aircraft. The archive preserves flight logs, crash reports, maintenance
-      notes, recovery routes, error codes, safety calls, and uncertain details
+      Small aircraft experimentation and recovery dossier for the UAV Division,
+      covering the PEREGRINE series and its evolution into the SCADUBIRD
+      registry. Perry 1 / PEREGRINE-A01 is the DJI Mini 4K awning recovery and
+      troubleshooting bird, grounded pending inspection. Perry 2 /
+      PEREGRINE-A02 is the DJI Mini 3 lost after a 3 AM roof incident. A03
+      through A05 each passed through custody without entering service: A03
+      returned to Amazon defective, A04 flipped on Facebook Marketplace, and
+      A05 returned to Best Buy under chargeback. A05 is also SCADUBIRD-SB001,
+      the designation hinge where PEREGRINE becomes SCADUBIRD. The division
+      currently holds ground and optics equipment but no airworthy aircraft.
+      The DJI Air 3S is the target instrument. The archive preserves flight
+      logs, crash reports, maintenance notes, recovery routes, error codes,
+      safety calls, acquisition and disposition events, and uncertain details
       as evidence.
     themes:
       - altitude in flight as vertical perspective
@@ -421,15 +434,22 @@ projects:
       - awning retrieval
       - roof loss and no-unsafe-recovery decisions
       - evidence before calibration
+      - acquisition and disposition as record
+      - registry evolution
     artifacts:
       - FI-DRONE-001
       - FI-DRONE-002
       - FI-DRONE-003
+      - FI-DRONE-004
+      - FI-DRONE-005
+      - FI-DRONE-ACC-001
     documentation_style:
       - Preserve flight conditions, error codes, and recovery route before interpretation
       - Treat calibration as secondary until physical damage is inspected
       - Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION
       - Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair
+      - Record aircraft that passed through custody without flying; a return, a resale, and a chargeback are archive events
+      - Keep target instrument separate from acquired instrument; intent is not a flight record
 
   - id: FI-PROJ-005
     slug: redeemer-nzxt-h440-watercooled-build

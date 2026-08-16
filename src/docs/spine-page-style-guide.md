@@ -3,8 +3,28 @@
 This guide records the current production pattern for the public spine pages
 after the L'Œuvre and Le Signal passes.
 
-It is a color and component map for future route work, especially À Propos. It
-does not replace the broader moodboard or typeface dossier.
+It is a color and component map for future route work, especially À Propos.
+
+## Which Document Wins
+
+Four documents describe the archive's design, and they had no stated order.
+When they disagree, resolve in this order:
+
+1. **`src/styleguide.njk`** (`/styleguide/`) is canonical. It is rendered with
+   the site's own classes and tokens, so it shows what actually ships. Any
+   change that adds or alters a token, component, route color family, or
+   heuristic updates it in the same change.
+2. **This guide** owns the spine route families — the per-route color
+   temperature, the ticker/hero-card structure, and the component rules below.
+   Where it names a token, the styleguide's definition governs.
+3. **`frontend-moodboard.md`** is direction and reference, not specification.
+   It never overrides 1 or 2.
+4. **The typeface dossier** (`/projects/typeface-system/`, FI-PROJ-008) is a
+   design-evolution case file. It records how the voice system arrived at its
+   current state; it is history and rationale, not a live spec.
+
+A rule that exists only in 3 or 4 is a proposal. It becomes binding when it
+lands in 1 or 2.
 
 ## Core Pattern
 
@@ -15,12 +35,27 @@ They share:
 - a large route title
 - a caption-box subtitle under the title
 - a shadow-box ticker band below the hero
-- three primary hero cards below the ticker
+- a primary hero-card grid below the ticker, one card per public shelf
 - green SYSOUT caption plates inside the ticker and cards
 - a black archive field with faint grid and scan texture
 
 The sibling rule is structural, not identical color. Each route can have its
 own color temperature as long as the roles remain stable.
+
+### Card count follows the shelves
+
+The card grid carries **one card per public shelf on that route**, as defined by
+the site architecture dossier. The count is an outcome, not a constraint.
+
+This rule replaces an earlier fixed three-card rule. That rule silently
+outranked the dossier: L'Œuvre was specified with five shelves and had three
+slots, so Les Manuscrits and La Provenance were dropped from the route and
+became orphaned pages reachable only by stray link. A layout constraint must
+never decide which shelves exist.
+
+When a route's shelf count changes, the grid changes with it. Compose the row
+break deliberately rather than letting cards wrap ragged — L'Œuvre's five sit
+on a 6-column field as 2+2+2 over 3+3.
 
 ## Color Roles
 
@@ -130,14 +165,16 @@ Shared behavior:
 - inner ruled border
 - green SYSOUT label
 - horizontal scroll row for compact repeated entries
-- three to four items only on landing pages
+- landing-page tickers summarize the route's shelves; the row scrolls, so the
+  item count follows the shelves rather than a fixed cap
 
 L'Œuvre and Le Signal can share ticker structure, but their item colors should
 remain route-specific.
 
 ### Hero Cards
 
-The three-card grid is the route's primary navigation instrument.
+The hero-card grid is the route's primary navigation instrument. It carries one
+card per public shelf; see "Card count follows the shelves" above.
 
 Use:
 

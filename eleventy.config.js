@@ -43,12 +43,14 @@ function isArticleUrl(value = '') {
   )
 }
 
-function isFieldLogUrl(value = '') {
+// ATLAS report detail pages live under /atlas/, matching their index. They
+// previously sat under /field-logs/, which is the recorded voice Field Log
+// index — a different dataset entirely.
+function isAtlasReportUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
-    pathname.startsWith('/field-logs/') &&
-    pathname !== '/field-logs/' &&
-    pathname !== '/field-logs/voice/' &&
+    pathname.startsWith('/atlas/') &&
+    pathname !== '/atlas/' &&
     pathname.endsWith('/')
   )
 }
@@ -97,7 +99,7 @@ function gatherSitemapPaths(collection, extras, archive) {
     extras.forEach(add)
   }
   if (Array.isArray(archive?.fieldLogs)) {
-    archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+    archive.fieldLogs.forEach((log) => add(`/atlas/${log.slug}/`))
   }
   if (Array.isArray(archive?.inventory)) {
     archive.inventory.forEach((item) =>
@@ -214,6 +216,23 @@ function recordDateValue(record) {
   )
 }
 
+// Controlled shelf vocabulary. A post declares exactly one, and it decides the
+// shelf outright. The heuristics below remain only as a fallback for records
+// that predate the field: they inspect freeform `type`, `category`, and
+// `shelf_label` strings, which produced a partition that both overlapped (a
+// Le Blog dispatch and the Prelude were listed on Les Manuscrits *and* Le
+// Blog) and could not be predicted when writing a new post.
+const POST_SHELVES = new Set(['doctrine', 'signal', 'manuscrit'])
+
+function declaredShelf(record) {
+  const data = record?.data || record || {}
+  const value = String(data.shelf || '')
+    .toLowerCase()
+    .trim()
+
+  return POST_SHELVES.has(value) ? value : null
+}
+
 function isDoctrinePost(record) {
   const data = record?.data || record || {}
   const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
@@ -256,6 +275,22 @@ function isPreludePost(record) {
     .toLowerCase()
 
   return /\bprelude\b/.test(classification)
+}
+
+// The three shelves partition the post collection: every post lands on exactly
+// one. Signal absorbs blog and prelude records; manuscripts are the remainder.
+function postShelf(record) {
+  const declared = declaredShelf(record)
+  if (declared) return declared
+  if (isDoctrinePost(record)) return 'doctrine'
+  if (
+    isLeSignalPost(record) ||
+    isLeBlogPost(record) ||
+    isPreludePost(record)
+  ) {
+    return 'signal'
+  }
+  return 'manuscrit'
 }
 
 export default function (eleventyConfig) {
@@ -365,28 +400,24 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('doctrinePosts', function (records) {
-    return Array.isArray(records) ? records.filter(isDoctrinePost) : []
+    return Array.isArray(records)
+      ? records.filter((record) => postShelf(record) === 'doctrine')
+      : []
   })
 
   eleventyConfig.addFilter('manuscriptPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) => !isDoctrinePost(record) && !isLeSignalPost(record)
-        )
+      ? records.filter((record) => postShelf(record) === 'manuscrit')
       : []
   })
 
   eleventyConfig.addFilter('signalPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) =>
-            !isDoctrinePost(record) &&
-            (isLeSignalPost(record) ||
-              isLeBlogPost(record) ||
-              isPreludePost(record))
-        )
+      ? records.filter((record) => postShelf(record) === 'signal')
       : []
   })
+
+  eleventyConfig.addFilter('postShelf', postShelf)
 
   eleventyConfig.addFilter('isoDate', function (value) {
     return value.toISOString().split('T')[0]
@@ -668,7 +699,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('ogTypeForUrl', function (url, explicit) {
     if (explicit) return explicit
-    return isArticleUrl(url) || isFieldLogUrl(url) ? 'article' : 'website'
+    return isArticleUrl(url) || isAtlasReportUrl(url) ? 'article' : 'website'
   })
 
   eleventyConfig.addFilter(
@@ -677,7 +708,7 @@ export default function (eleventyConfig) {
       if (explicit) return explicit
       if (title === siteName || canonicalPath(url) === '/') return 'WebSite'
       if (isArticleUrl(url)) return 'Article'
-      if (isFieldLogUrl(url)) return 'CreativeWork'
+      if (isAtlasReportUrl(url)) return 'CreativeWork'
       if (isCollectionUrl(url)) return 'CollectionPage'
       return 'WebPage'
     }

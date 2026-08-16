@@ -18,7 +18,7 @@ eleventyExcludeFromCollections: true
 {% set captionPrefix = object.id + " / " + object.name + " / source photograph " %}
 {% set project = archive.projects | findById(object.associated_project) %}
 {% set relatedObjects = archive.inventory | relatedObjects(object) %}
-{% set projectLogs = archive.fieldLogs | fieldLogsForProject(object.associated_project) %}
+{% set projectLogs = archive.atlasReports | fieldLogsForProject(object.associated_project) %}
 
 <article class="object-record">
   <header class="section-landing-hero object-record-hero">
@@ -195,7 +195,7 @@ eleventyExcludeFromCollections: true
           <p class="section-label">Field logs / dossiers</p>
           <ul>
             {% for log in projectLogs %}
-            <li><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></li>
+            <li><a href="/atlas/{{ log.slug }}/">{{ log.title }}</a></li>
             {% endfor %}
           </ul>
         </section>

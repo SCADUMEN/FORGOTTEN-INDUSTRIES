@@ -5399,8 +5399,20 @@ h3 {
   margin-top: 1.8rem;
 }
 
+/* L'Œuvre carries five shelves, so the grid is a 6-column field: three cards
+   spanning 2 on the first row, two spanning 3 on the second. The composition is
+   deliberate rather than a ragged auto-fit wrap. */
 .oeuvre-directory-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.oeuvre-directory-grid > a {
+  grid-column: span 2;
+}
+
+.oeuvre-directory-grid > a:nth-last-child(2),
+.oeuvre-directory-grid > a:last-child {
+  grid-column: span 3;
 }
 
 .signal-directory-grid,
@@ -5906,8 +5918,9 @@ body.apropos-provenance .apropos-directory-grid > a:focus-visible {
   color: var(--ink);
 }
 
+/* One card per shelf, per the spine style guide; À Propos carries four. */
 .apropos-directory-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .archive-finding-aid {
@@ -6612,6 +6625,17 @@ a.site-cxr-mark:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .oeuvre-directory-grid,
+  .apropos-directory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oeuvre-directory-grid > a,
+  .oeuvre-directory-grid > a:nth-last-child(2),
+  .oeuvre-directory-grid > a:last-child {
+    grid-column: auto;
+  }
+
   .inventory-gallery-track {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
