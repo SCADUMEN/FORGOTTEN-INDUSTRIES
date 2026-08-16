@@ -397,6 +397,7 @@ projects:
     division: FORGOTTEN INDUSTRIES UAV DIVISION
     registry: SCADUBIRD
     registry_predecessor: PEREGRINE
+    airframe_lineage: A01 DJI Mini 4K / A02-A04 DJI Mini 3 / A05 SB001 DJI Mini 5 Pro
     capability: Provenance From On High
     capability_url: /l-archive/from-on-high/
     doctrine: ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE

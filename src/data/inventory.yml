@@ -1537,7 +1537,7 @@ items:
     name: Perry 4 / PEREGRINE-A04
     category: drone aircraft
     manufacturer: DJI
-    model: NEEDS_CONFIRMATION
+    model: Mini 3
     quantity: 0 retained
     associated_project: FI-PROJ-004
     condition: acquired / resold / not retained
@@ -1545,10 +1545,11 @@ items:
     photos: []
     notes: >
       A04 was acquired after the A03 return and moved on through Facebook
-      Marketplace rather than entering the flight program. Aircraft model,
-      acquisition channel, and resale particulars are NEEDS_CONFIRMATION. No
-      flight record. Recorded because the aircraft passed through custody, and
-      custody is part of the chain whether or not the airframe ever flew.
+      Marketplace rather than entering the flight program. Operator-confirmed as
+      a Mini 3, matching the A02 through A04 airframe. Acquisition channel and
+      resale particulars remain NEEDS_CONFIRMATION. No flight record. Recorded
+      because the aircraft passed through custody, and custody is part of the
+      chain whether or not the airframe ever flew.
     estimated_value:
     keep_sell_archive: archive evidence / not retained
     date_logged: '2026-08-16'

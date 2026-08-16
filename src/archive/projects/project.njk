@@ -63,6 +63,12 @@ eleventyExcludeFromCollections: true
         <p>{{ project.registry }}{% if project.registry_predecessor %}, evolved from {{ project.registry_predecessor }}{% endif %}</p>
       </li>
       {% endif %}
+      {% if project.airframe_lineage %}
+      <li>
+        <h3>Airframe Lineage</h3>
+        <p>{{ project.airframe_lineage }}</p>
+      </li>
+      {% endif %}
       {% if project.target_instrument %}
       <li>
         <h3>Target Instrument</h3>

@@ -37,6 +37,15 @@ Published source notes:
 - `src/docs/field-logs/2026-07-03-unmanned-systems-storage-media.md` - FI-LOG-011, field guidance for aircraft and controller microSD use.
 - `src/docs/intake/2026-07-07-perry-a01-central-oliver-night-photograph.md` - FI-PHOTO-003, recovered PEREGRINE-A01 aerial photograph source note.
 
+## Airframe Lineage
+
+Three airframes across two registries:
+
+- **A01** is the DJI Mini 4K, the starter bird the program began on.
+- **A02, A03, and A04** are DJI Mini 3s. This is the PEREGRINE airframe proper.
+- **A05 / SB001** is the DJI Mini 5 Pro, and the airframe change is the reason
+  the registry turns here. SCADUBIRD is a new platform, not just a new name.
+
 ## Aircraft Register
 
 No airworthy aircraft are currently in service.
@@ -44,7 +53,7 @@ No airworthy aircraft are currently in service.
 - Perry 1 / PEREGRINE-A01: DJI Mini 4K awning recovery and troubleshooting bird. Grounded pending inspection.
 - Perry 2 / PEREGRINE-A02: DJI Mini 3 with DJI RC, lost after the 3 AM roof incident. Not recovered.
 - Perry 3 / PEREGRINE-A03: DJI Mini 3, arrived defective, returned to Amazon. Never flew.
-- Perry 4 / PEREGRINE-A04: acquired and flipped on Facebook Marketplace. Never flew. Model NEEDS_CONFIRMATION.
+- Perry 4 / PEREGRINE-A04: DJI Mini 3, acquired and flipped on Facebook Marketplace. Never flew.
 - Perry 5 / PEREGRINE-A05 / SCADUBIRD-SB001: DJI Mini 5 Pro Fly More. Best Buy charge returned and charged back. Never flew. The designation hinge.
 
 ## Ground Equipment
