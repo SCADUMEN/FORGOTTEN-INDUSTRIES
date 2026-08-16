@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
 {% set relatedObjects = archive.inventory | relatedObjects(object) %}
 {% set projectLogs = archive.atlasReports | fieldLogsForProject(object.associated_project) %}
 
-<article class="object-record">
+<article class="object-record" data-caption-prefix="{{ captionPrefix }}">
   <header class="section-landing-hero object-record-hero">
     <div class="section-inner">
       <p class="section-label">Object Record / {{ object.id }}</p>
@@ -242,34 +242,4 @@ eleventyExcludeFromCollections: true
   </section>
 </article>
 
-<script>
-  (function() {
-    var captionPrefix = {{ captionPrefix | json | safe }};
-    var gallery = document.querySelector('.object-record');
-    if (!gallery) return;
-
-    var primaryLink = gallery.querySelector('[data-object-primary-link]');
-    var primaryImage = gallery.querySelector('[data-object-primary-image]');
-    var primaryCaption = gallery.querySelector('[data-object-primary-caption]');
-    var thumbnails = gallery.querySelectorAll('[data-object-thumbnail]');
-    if (!primaryLink || !primaryImage || !thumbnails.length) return;
-
-    thumbnails.forEach(function(thumbnail) {
-      thumbnail.addEventListener('click', function(event) {
-        event.preventDefault();
-        var image = thumbnail.querySelector('img');
-        var index = thumbnail.getAttribute('data-photo-index');
-        primaryLink.href = thumbnail.href;
-        primaryImage.src = thumbnail.href;
-        primaryImage.alt = image ? image.alt : primaryImage.alt;
-        if (primaryCaption) {
-          primaryCaption.textContent = captionPrefix + String(index).padStart(2, '0');
-        }
-        thumbnails.forEach(function(item) {
-          item.removeAttribute('aria-current');
-        });
-        thumbnail.setAttribute('aria-current', 'true');
-      });
-    });
-  })();
-</script>
+<script src="/assets/js/object-gallery.js?v={{ site.assetVersion }}" defer></script>
