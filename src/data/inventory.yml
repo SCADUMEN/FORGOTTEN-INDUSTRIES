@@ -2778,3 +2778,203 @@ items:
     estimated_value:
     keep_sell_archive: unassigned / no physical custody established
     date_logged: '2026-08-14'
+
+  - id: FI-COIN-001
+    name: 1900 Indian Head cent
+    category: coin / numismatic object
+    manufacturer: United States Mint
+    model: Indian Head cent / dated 1900 / exact mint and variety unverified
+    quantity: 1 coin
+    associated_project: FI-DSR-004
+    condition: in hand / circulated brown copper-colored coin in stapled cardboard 2x2 holder / visible wear, marks, and discoloration / cleaning history, alteration, authenticity, and grade unverified
+    status: new accession / date and design family visually identified / controlled numismatic inspection pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/01-holder-obverse-overview.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/02-obverse-and-holder.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/03-reverse-close.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/04-reverse-overview.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/05-obverse-close.jpg
+    notes: >
+      The operator supplied the intake label "WHEAT PENNY." Five photographs
+      instead show a coin dated 1900 with the Indian Head obverse and the
+      shield, wreath, and ONE CENT reverse; the holder is also handwritten
+      "1900 Indian Cent." The United States Mint records the Indian Head
+      design as appearing from 1859 through 1909, while the Wheat reverse belongs
+      to Lincoln cents issued from 1909 through 1958. The original operator
+      wording is preserved in the accession manifest, but the controlled object
+      identity is therefore 1900 Indian Head cent. The coin remains in a stapled
+      white cardboard 2x2 holder. Its visible surfaces show circulated wear,
+      brown coloration, marks, and areas of discoloration. These photographs do
+      not establish authenticity, exact composition, weight, diameter, edge
+      condition, die variety, mint of manufacture, alteration, cleaning,
+      environmental damage, or a numerical or adjectival grade. The holder's
+      handwritten $20 is recorded only as a prior holder or asking-price
+      annotation; it is not an appraisal, verified sale price, or current value.
+      A separate handwritten "4x" notation is visible but remains uninterpreted.
+      A read-only review of authenticated eBay purchase history on 2026-08-15
+      returned no matching order for searches "1900," "Indian," or "cent."
+      Acquisition provenance therefore remains uncorroborated; this negative
+      keyword result does not prove nonpurchase because generic live-auction
+      titles may omit the physical object's identity.
+      Do not clean, polish, dip, or otherwise alter the coin. Preserve it in the
+      current holder until a controlled inspection can photograph both faces and
+      the edge and record weight and diameter; if rehoused, use an inert archival
+      coin holder and preserve the annotated original holder as associated
+      evidence.
+    reference_sources:
+      - title: United States Mint penny history
+        url: https://www.usmint.gov/learn/coins-and-medals/circulating-coins/penny
+        retrieved: '2026-08-15'
+        scope: official design chronology identifying the Indian Head design as 1859-1909 and the Wheat reverse as 1909-1958
+      - title: United States Mint penny FAQs
+        url: https://www.usmint.gov/news/media-kit/penny
+        retrieved: '2026-08-15'
+        scope: official early-design chronology and Wheat Penny date range
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic-object record / 1900 Indian Head cent identity visually established
+        evidence: five operator-supplied photographs, visible holder annotations, and United States Mint design chronology; authenticity, grade, cleaning history, and value remain unverified
+    tags:
+      - Indian Head cent
+      - 1900 cent
+      - United States one cent
+      - numismatic object
+      - circulated coin
+      - cardboard 2x2 holder
+      - prior $20 holder annotation
+      - authenticity pending
+      - grade pending
+      - cleaning history unverified
+    estimated_value:
+    keep_sell_archive: archive / numismatic inspection pending
+    date_logged: '2026-08-15'
+
+  - id: FI-COIN-002
+    name: Auction-labeled numismatic lots 600, 601, 602, and 605
+    category: coin / numismatic lot group
+    manufacturer: mixed or unidentified
+    model: labeled lots 600 / 601 / 602 / 605
+    quantity: 4 labeled lots / individual piece counts unverified
+    associated_project: FI-DSR-004
+    condition: in hand / mixed coin-like pieces retained in clear bags and a rigid clear tube / surface condition not individually inspectable through packaging
+    status: new accession / lot labels visually documented / detailed inventory, attribution, composition, authenticity, and valuation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-002-auction-lots-600-601-602-605/01-lots-600-601-602-overview.jpg
+      - assets/archive/objects/fi-coin-002-auction-lots-600-601-602-605/02-lot-605-and-group-overview.jpg
+    notes: >
+      The operator assigns four auction-labeled groups to this accession: lots
+      600, 601, 602, and 605. Two photographs show the numbered labels and QR
+      codes. The visible secondary label codes are 0402-0600, 0402-0601,
+      0402-0602, and 0402-0605. Lots 600, 601, and 602 are retained in clear zip
+      bags; lot 605 is retained in a rigid clear tube containing a stack of
+      silver-colored coin-like pieces. Additional coin-like pieces, packaging,
+      and handling tools are visible contextually but are not assigned to this
+      accession without a matching visible label. Individual piece counts are
+      unverified because contents overlap and are partly obscured by packaging.
+      A read-only review of authenticated eBay purchase history on 2026-08-15
+      found four orders dated 2026-08-11 whose generic live-auction listing
+      titles end in lot identifiers 600, 601, 602, and 605. This corroborates
+      acquisition through eBay and the mapping of those four auction lot numbers
+      to the photographed labels only. The order titles do not identify the
+      enclosed coins, and private order identifiers, account details, seller
+      identity, and acquisition totals are deliberately excluded from this
+      public record.
+      Some visible pieces show portraits, legends, and reeded edges, but the
+      photographs do not establish denominations, dates, mints, countries,
+      varieties, exact object types, metal composition, precious-metal content,
+      weight, dimensions, authenticity, grade, value, or provenance beyond the
+      corroborated eBay lot-level acquisition. The QR codes are preserved
+      photographically but were not decoded.
+      Keep the four lots physically separated and retain each original numbered
+      label with its contents. Do not clean, polish, dip, or otherwise alter any
+      piece. Before attribution, photograph each piece individually on both
+      faces and the edge, then record weight and diameter.
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic lot-group record / lots 600, 601, 602, and 605
+        evidence: two operator-supplied photographs establish the visible lot labels, packaging, and presence of multiple coin-like pieces; detailed contents and all numismatic determinations remain pending
+    tags:
+      - auction lot 600
+      - auction lot 601
+      - auction lot 602
+      - auction lot 605
+      - numismatic lot group
+      - mixed coin-like pieces
+      - original lot labels retained
+      - inventory pending
+      - composition unverified
+      - authenticity pending
+    estimated_value:
+    keep_sell_archive: archive / lot-level inspection pending
+    date_logged: '2026-08-15'
+
+  - id: FI-COIN-003
+    name: Hand-labeled 859 worn Charles IV-era portrait coin
+    category: coin / numismatic object
+    manufacturer: unidentified mint / probable Spanish or Spanish colonial issue
+    model: right-facing Charles IV-era portrait type / date appears 1800 / denomination and mint unverified
+    quantity: 1 coin-like object
+    associated_project: FI-DSR-004
+    condition: in hand / heavily worn gray-colored coin in clear zip bag / visible marks, discoloration, and irregular rim / full surface and edge condition unverified through packaging
+    status: new accession / handwritten identifier 859 documented / probable historical design family inferred / exact attribution, composition, authenticity, grade, and valuation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-003-hand-labeled-859-portrait-coin/01-bag-and-handwritten-859-overview.jpg
+      - assets/archive/objects/fi-coin-003-hand-labeled-859-portrait-coin/02-portrait-face-close.jpg
+    notes: >
+      Two photographs show one heavily worn gray-colored coin-like object in a
+      clear zip bag with a white handwritten sticker reading 859 over the upper
+      part of the object. The documented face shows a right-facing portrait,
+      peripheral legend fragments, star-like devices, and a bottom date that
+      appears to read 1800. These visible features are consistent with a Charles
+      IV-era Spanish or Spanish colonial portrait coin, but that identification
+      remains a provisional visual inference rather than a completed
+      attribution. Wear, packaging, glare, and the sticker prevent definitive
+      transcription. Only the portrait face is documented; the reverse and edge
+      are not shown. The photographs do not establish exact denomination, date,
+      mint, issuing authority, variety, country of issue, metal composition,
+      precious-metal content, weight, diameter, authenticity, grade, cleaning or
+      alteration history, value, provenance, or acquisition state. A read-only
+      review of authenticated eBay purchase history on 2026-08-15 returned no
+      matching order for the search "859." Acquisition provenance therefore
+      remains uncorroborated; this negative keyword result does not prove
+      nonpurchase because generic live-auction titles may omit the physical
+      object's identifier. Keep the object in its current bag and retain the
+      handwritten 859 identifier with it. Do not clean, polish, dip, or
+      otherwise alter it. For controlled
+      attribution, photograph both faces and the edge outside the bag, then
+      record weight and diameter.
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic-object record / handwritten identifier 859
+        evidence: two operator-supplied photographs establish the bagged object, handwritten identifier, and visible portrait face; all exact numismatic determinations remain pending
+    tags:
+      - handwritten identifier 859
+      - Charles IV-era portrait type
+      - probable Spanish or Spanish colonial coin
+      - date appears 1800
+      - heavily worn coin
+      - attribution pending
+      - composition unverified
+      - authenticity pending
+      - reverse not documented
+    estimated_value:
+    keep_sell_archive: archive / numismatic inspection pending
+    date_logged: '2026-08-15'
