@@ -219,15 +219,21 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
 
   response = await page.goto('/oeuvre/')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(3)
+  // One card per public shelf, per the architecture dossier's shelf table.
+  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(5)
   await expect(page.locator('.oeuvre-directory-grid > a')).toHaveText([
     /LES DOSSIERS/,
+    /LES MANUSCRITS[\s\S]*MANUSCRIPTS/,
     /LES RAPPORTS[\s\S]*ATLAS REPORTS/,
     /LA DOCTRINE[\s\S]*SYSTEMS DOCTRINE/,
+    /LA PROVENANCE[\s\S]*SOURCE CHAIN/,
   ])
-  await expect(
-    page.locator('.oeuvre-directory-grid > a').nth(2)
-  ).toHaveAttribute('href', '/doctrine/')
+  const oeuvreCards = page.locator('.oeuvre-directory-grid > a')
+  await expect(oeuvreCards.nth(0)).toHaveAttribute('href', '/projects/')
+  await expect(oeuvreCards.nth(1)).toHaveAttribute('href', '/posts/')
+  await expect(oeuvreCards.nth(2)).toHaveAttribute('href', '/atlas/')
+  await expect(oeuvreCards.nth(3)).toHaveAttribute('href', '/doctrine/')
+  await expect(oeuvreCards.nth(4)).toHaveAttribute('href', '/provenance/')
 
   response = await page.goto('/blog/')
   expect(response?.status()).toBe(200)
