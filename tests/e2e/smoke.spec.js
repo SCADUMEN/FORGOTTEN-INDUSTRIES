@@ -639,8 +639,13 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
 }) => {
   const response = await page.goto('/l-archive/?q=FI-CL')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('#archive-search-status')).toHaveText('11 results')
-  await expect(page.locator('#archive-search-results > li')).toHaveCount(11)
+  // 11 FI-CL-PART-* objects, plus the CaseLabs dossier and any object whose
+  // own notes cross-reference a Flex-Bay part (e.g. a radiator mounted in
+  // FI-CL-PART-011, or a plate explicitly disambiguated from FI-CL-PART-004)
+  // — search matches the substring anywhere in a record's indexed text, not
+  // only in its id, so a careful cross-reference is a legitimate extra hit.
+  await expect(page.locator('#archive-search-status')).toHaveText('14 results')
+  await expect(page.locator('#archive-search-results > li')).toHaveCount(14)
   await expect(page.locator('#archive-search-results')).toContainText(
     'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
   )

@@ -97,6 +97,14 @@ describe('Atlas gallery dossier', () => {
   it('keeps the operator and evidence boundary explicit', () => {
     expect(page).toContain("does not replace Matthew's authority")
     expect(page).toContain('human review, or archive evidence')
+    expect(page).toContain('Source material is evidence')
+    expect(page).toContain("L'Opérateur authorizes consequential final actions")
+  })
+
+  it('keeps the witnesses, auditor, and registrar distinct', () => {
+    expect(page).toContain('Three temporal witnesses')
+    expect(page).toContain('Le Sceptique is not a fourth witness')
+    expect(page).toContain('Le Taxonomiste is not a fourth witness')
   })
 
   it('publishes the preserved, expected sprite bytes', () => {
