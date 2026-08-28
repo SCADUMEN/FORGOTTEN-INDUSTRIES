@@ -99,3 +99,7 @@ playwright-report/
 /src/assets/initial-photos/*.mp4
 /src/assets/reference/**/*-timelapse-*.mp4
 /src/assets/reference/**/*-timelapse-*.webm
+
+# Nested independent git repo (SCADUMEN/ATLAS clone) — not tracked by this repo
+atlas/
+atlas.stray-backup-*/
