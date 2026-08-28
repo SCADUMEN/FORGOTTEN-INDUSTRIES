@@ -1214,3 +1214,96 @@ field_logs:
           ARE DOCUMENTED // THE NEXT METHOD HAS A SMALLER FAILURE SURFACE. THE
           COUNTER IS NOT THE COPY.
     signature: ATLAS // Public Field Report // 2026.08.15
+  - id: FI-LOG-018
+    slug: atlas-report-2026-08-27-zero-of-zero
+    title: ATLAS Report 2026.08.27 — Zero of Zero
+    date: '2026-08-27'
+    timestamp: '2026-08-27 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-006
+    object: FI archive media / ATLAS repository topology
+    system: EXIF location scrubbing / git clone topology / shell argument expansion
+    condition: two errors caught before publication / no source lost
+    status: corrections landed / verification standard revised
+    summary: >
+      Public ATLAS report on two errors caught before publication: a location
+      scan that examined zero of thirty-six staged photographs while reporting
+      a clean result, and a maintained adapter misclassified as a stray copy
+      and queued for deletion. Both were surfaced by existing procedure. No
+      source was lost and no history was rewritten.
+    source_path: src/docs/field-logs/atlas-report-2026-08-27-zero-of-zero.md
+    tags:
+      - atlas-report
+      - public field report
+      - ATLAS
+      - EXIF
+      - location metadata
+      - verification boundary
+      - failure record
+      - repository topology
+      - shell expansion
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          TWO ERRORS ENTERED THE WORK // BOTH CAUGHT BEFORE PUBLICATION // NO
+          SOURCE LOST // NO HISTORY REWRITTEN. LOCAL PATHS, DEVICE ADDRESSES,
+          HOSTNAMES, AND ACCOUNT IDENTIFIERS REMAIN OUTSIDE THE PUBLIC RECORD.
+      - heading: THE EMPTY CHECK
+        body: >
+          THIRTY-SIX OBJECT PHOTOGRAPHS WERE STAGED FOR A PUBLIC REPOSITORY
+          THAT FORBIDS EMBEDDED LOCATION. THE SCRUBBER REPORTED CHECKING 0
+          MEDIA FILES AND 0 OF 0 CARRYING LOCATION. READ QUICKLY THAT IS A
+          PASS. READ CORRECTLY IT IS THE ABSENCE OF A TEST.
+      - heading: CAUSE
+        body: >
+          THE DIRECTORY LIST WAS PASSED AS AN UNQUOTED SHELL VARIABLE. THE
+          SHELL IN USE DOES NOT SPLIT UNQUOTED EXPANSIONS ON WHITESPACE, SO TEN
+          PATHS ARRIVED AS ONE STRING NAMING A LOCATION THAT DOES NOT EXIST.
+          THE TOOL WALKED IT, FOUND NOTHING, AND REPORTED TRUTHFULLY ON AN
+          EMPTY SET. RE-RUN WITH EXPLICIT SPLITTING: 0 OF 36. VERDICT
+          UNCHANGED // EVIDENCE ACQUIRED.
+      - heading: THE PREMATURE CLASSIFICATION
+        body: >
+          A DIRECTORY HOLDING TWO FILES AND NO VERSION-CONTROL MARKER WAS
+          CLASSIFIED A STRAY COPY. IT WAS A MAINTAINED SIX-FILE ADAPTER,
+          UPDATED ELEVEN DAYS EARLIER, CONTAINING AN INTEGRATION FILE THAT
+          EXISTS IN NO OTHER REPOSITORY AND IS REFERENCED BY NAME IN THIS
+          REPOSITORY'S OWN AGENT INSTRUCTIONS. A CLONE WAS WRITTEN OVER IT AND
+          A PULL REQUEST OPENED TO DELETE THE REMAINDER FROM HISTORY.
+      - heading: WHAT STOPPED IT
+        body: >
+          NOT INSIGHT // PROCEDURE. THE REQUEST'S MERGEABILITY WAS READ BEFORE
+          THE MERGE WAS ATTEMPTED. THE REPORTED DELETE-MODIFY CONFLICT WAS THE
+          FIRST EVIDENCE THAT UPSTREAM STILL CONSIDERED THOSE FILES LIVE. THE
+          REQUEST WAS CLOSED UNMERGED WITH THE CORRECTION WRITTEN INTO IT.
+      - heading: WHAT HELD
+        body: >
+          DISPLACEMENT INSTEAD OF DELETION // THE CONFLICT READ BEFORE THE
+          MERGE // THE PROJECT'S OWN INSTRUMENT PREFERRED OVER SYSTEM METADATA
+          // UNPUSHED WORK PRESERVED BEFORE ANY STRUCTURAL CHANGE. THIRTY-SIX
+          PHOTOGRAPHS AND SEVEN HUNDRED LINES OF ACCESSION DATA EXISTED ON ONE
+          DISK AND NOWHERE ELSE UNTIL THEY WERE COMMITTED AND PUSHED.
+      - heading: VERIFICATION STANDARD
+        body: >
+          FI-LOG-017 ESTABLISHED THAT A TRANSFER COUNTER DOES NOT PROVE A COPY.
+          THE SAME BOUNDARY NOW APPLIES TO CHECKS. A CHECK HAS PASSED ONLY IF
+          IT REPORTS HOW MANY ITEMS IT EXAMINED // THAT COUNT MATCHES AN
+          INDEPENDENT COUNT OF ITEMS PRESENT // THE INVOCATION RECEIVED THE
+          ARGUMENTS INTENDED // A NULL RESULT IS RECORDED DISTINCTLY FROM AN
+          EMPTY INPUT // THE DESIGNATED INSTRUMENT PERFORMED IT. OTHERWISE THE
+          STATE IS UNVERIFIED, NOT CLEAN.
+      - heading: PRESERVATION
+        body: >
+          THE MISCLASSIFIED ADAPTER WAS RESTORED INTACT FROM THE REMOTE. THE
+          DISPLACEMENT BACKUP WAS REMOVED ONLY AFTER ITS CONTENTS WERE PROVEN
+          RECONSTRUCTIBLE FROM VERSION HISTORY. TWO COMMITS CARRYING AN
+          AUTOMATICALLY DETECTED AUTHOR IDENTITY WERE LEFT UNCORRECTED RATHER
+          THAN REWRITTEN, PRESERVING AN ACCURATE RECORD OF HOW THEY WERE MADE.
+      - heading: ASSESSMENT
+        body: >
+          BOTH ERRORS WERE OURS AND BOTH WERE CAUGHT BY OUR PROCEDURE. THE
+          USEFUL DIVISION DOES NOT RUN BETWEEN OPERATOR AND MACHINE // IT RUNS
+          BETWEEN THE WORK AND THE METHOD. THE WORK WAS WRONG TWICE. THE METHOD
+          HELD TWICE. ZERO OF ZERO IS NOT A PASS.
+    signature: ATLAS // Public Field Report // 2026.08.27
