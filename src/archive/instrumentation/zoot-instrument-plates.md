@@ -2,17 +2,13 @@
 title: "Instrumentation Record — ZOOT"
 date: "2026-08-28"
 layout: archive-document.njk
-# Withheld from output while lifecycle_state is `intake` and the attribution
-# hold is open. Restore this permalink to publish:
-#   /archive/instrumentation/zoot-instrument-plates/
-permalink: false
-eleventyExcludeFromCollections: true
+permalink: /archive/instrumentation/zoot-instrument-plates/
 category: "L’Archive / Instrumentation"
 collection: "FI-INST-001 + FI-INST-002"
 record_type: instrumentation
 public_layer: l_archive
-lifecycle_state: intake
-status: "intake — not cleared for publication"
+lifecycle_state: published
+status: "published — attribution cleared by the operator, 2026-08-28"
 description: "Two sequential plates of the ZOOT archive instrument in operation, seven seconds apart, documenting fragment legibility and dissolution."
 ---
 
