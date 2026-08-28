@@ -13,7 +13,7 @@ established by recovered social records, physical intake, and direct operator
 testimony. The separately retained ASUS Impact assembly remains in the record as
 an adjacent hardware artifact.
 
-The record does not assume that either platform works. The MSI X99 assembly operated in the 2014 test-bench system before developing unresolved boot and configuration problems. The operator replaced it rather than completing fault isolation. The ASUS assembly has not yet received a controlled bench test. The water-cooling parts are treated as separate pressure-test subjects until their internal condition is known.
+The record does not assume that any platform works. The MSI X99 assembly operated in the 2014 test-bench system before developing unresolved boot and configuration problems. The operator replaced it rather than completing fault isolation. The ASUS assemblies have not yet received controlled bench tests. The water-cooling parts are treated as separate pressure-test subjects until their internal condition is known.
 
 ## Restoration identity
 
@@ -59,19 +59,25 @@ This chronology joins dated public records to the operator's direct account. It 
   repeatable cold boots, stable firmware recognition, memory validation, and
   stock thermal and load stability.
 
-## Platform B / ASUS Impact
+## Platform B / ASUS Impact assemblies
 
-- Motherboard: ASUS ROG Maximus VII Impact Rev. 1.02.
-- Socket and memory: LGA1150 / two DDR3 slots / mini-ITX.
-- Processor: not present in the current photographs.
-- Retained hardware: SupremeFX Impact II audio daughterboard, rear I/O shield with antenna leads, and an EK CPU/VRM monoblock identified by the operator as matched to the board.
+- Z87 motherboard: ASUS ROG Maximus VI Impact / exact PCB revision not yet photographed.
+- Z87 cooling artifact: EK-FB ASUS M6I all-in-one CPU, PCH, and VRM/MOSFET block, corrected by the operator on August 15, 2026 from the earlier Maximus VII association.
+- Z87 processor recollection: the operator recalls that the platform may have used an Intel Core i7-4790K, but confidence is explicitly uncertain; the current board photographs show an empty socket, so no processor object is assigned.
+- Z97 motherboard: ASUS ROG Maximus VII Impact Rev. 1.02.
+- Shared platform form: LGA1150 / two DDR3 slots / mini-ITX.
+- Processors: not present in the current board photographs.
+- Retained Z97 hardware: SupremeFX Impact II audio daughterboard and rear I/O shield with antenna leads.
 - Present status: socket inspection and minimum bench validation pending.
 
 ## Supporting graphics assembly
 
 - Card: EVGA GeForce GTX 660 Ti, identified by the operator.
-- Cooling: EK full-cover GPU water block with two fittings installed.
-- Exact variants: not yet read from labels.
+- Cooling: EK-FC670 GTX full-cover GPU water block, black EK retention backplate,
+  two fittings, and attached tubing photographed as one assembly.
+- Visible I/O: dual DVI, HDMI, and DisplayPort.
+- Exact variants: EVGA submodel, memory capacity, PCB revision, and block
+  cold-plate material not yet resolved from labels.
 - Present status: electrical test, internal block inspection, and pressure test pending.
 
 ## Evidence map
@@ -85,6 +91,13 @@ This chronology joins dated public records to the operator's direct account. It 
 - `msi-x99s-xpower-ac-overview.jpg` — X99 board, installed CPU, eight DIMM slots, expansion layout, diagnostic display, and Wi-Fi module.
 - `msi-x99s-xpower-ac-cpu.jpg` — earlier X99 platform view with the processor markings hidden by thermal compound.
 - July 18, 2026 direct inspection frame (not published) — heat-spreader markings confirm Intel Core i7-5930K / SR20R / 3.50 GHz. The raw frame remains outside the public source tree.
+- ACCESSION 009 / July 18, 2026 board-detail set — seven Apple Photos
+  derivative cache JPEGs show the complete MSI X99S XPOWER AC, its empty DIMM
+  slots, onboard diagnostic and OC controls, visible power-stage area, and
+  unconnected power sockets while the processor remains seated. Exact supplied
+  bytes are retained locally outside the public tree; registered derivatives
+  have location metadata removed. These frames strengthen visual condition and
+  configuration evidence but do not establish POST or present function.
 - July 30, 2026 local intake set (not published) — seven source frames from one
   ammo can and one Tupperware visibly record the original MSI X99S XPOWER AC
   box, manuals and guides, driver discs, SATA labels, loose HyperX Fury DDR4,
@@ -95,8 +108,16 @@ This chronology joins dated public records to the operator's direct account. It 
   compatibility, and function remain unconfirmed.
 - `asus-maximus-vii-impact-socket.jpg` — Maximus VII Impact Rev. 1.02 board marking and empty LGA1150 socket.
 - `asus-supremefx-impact-ii.jpg` — loose SupremeFX Impact II daughterboard with the ASUS platform behind it.
-- `asus-impact-ek-monoblock.jpg` — loose EK monoblock retained with the ASUS assembly.
+- `asus-impact-ek-monoblock.jpg` — earlier loose-block photograph, now corrected to the EK-FB ASUS M6I retained for the Maximus VI Impact.
+- August 15, 2026 identity-correction set — four Apple Photos derivative JPEGs show the EK-FB ASUS M6I transparent top, metallic base, retained fasteners or standoffs, edge profile, and old thermal compound on the CPU-contact region. Exact supplied bytes remain local; public derivatives have location metadata removed.
 - `evga-gtx-660-ti-ek-waterblock.jpg` — water-cooled EVGA graphics assembly with EK full-cover block and fittings.
+- August 15, 2026 GTX 660 Ti evidence-expansion set — four Apple Photos
+  derivative JPEGs show the assembled card, dual-DVI/HDMI/DisplayPort bracket,
+  PCIe edge, black retention backplate, two installed fittings with tubing, and
+  the visible `FC670 GTX` marking beside the EK logo. Exact supplied bytes remain local;
+  public derivatives have location metadata removed. The set resolves the block
+  family as EK-FC670 GTX but does not expose an EVGA product label or establish
+  electrical function, internal cleanliness, or leak integrity.
 
 Public derivatives have photographic metadata removed. Frames carrying weaker evidence, room context, or labels unnecessary to the public record remain outside the published set.
 
@@ -187,8 +208,10 @@ container-first before item-level deep inventory.
   speed, compatibility, or function.
 - `L’ARCHIVE` names the completed physical artwork as a whole. It does not mean
   that the cube, pedestal, loop, or arrays are presently assembled or working.
-- `monoblock` refers to the ASUS CPU/VRM cooling artifact. The GTX 660 Ti carries a full-cover GPU block.
-- The X99 CPU identity is confirmed. Its function, the graphics-card variant, block part numbers, and mounting-hardware completeness remain unverified.
+- `monoblock` refers to the EK-FB ASUS M6I CPU, Z87 PCH, and VRM/MOSFET cooling artifact retained for the Maximus VI Impact. The GTX 660 Ti carries a separate full-cover GPU block.
+- The X99 CPU identity is confirmed. Its function, the exact EVGA graphics-card
+  variant, the EK-FC670 GTX material variant, and mounting-hardware completeness
+  remain unverified.
 
 ## Next evidence
 
@@ -201,5 +224,6 @@ container-first before item-level deep inventory.
 - Confirm X99 CPU recognition during the controlled minimum-bench test.
 - Capture a straight-on ASUS socket photograph.
 - Inventory retained monoblock mounting hardware.
-- Read the EVGA and EK product labels locally.
+- Locate and photograph the EVGA product label; the block family is now resolved
+  as EK-FC670 GTX, but its cold-plate material variant remains unverified.
 - Run dry visual inspection before any power or coolant enters the assemblies.

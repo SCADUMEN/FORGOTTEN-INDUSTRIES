@@ -80,8 +80,9 @@ projects:
       Recovery dossier for the intended X99 compute platform of LE
       RÉDEMPTEURE, the boutique hardline-cooled main cube of the CaseLabs
       Mercury S8 artwork L’ARCHIVE. The record also preserves an ASUS ROG
-      Maximus VII Impact with its modular audio hardware, matching EK monoblock,
-      and an EVGA GTX 660 Ti full-cover water-cooling assembly.
+      Maximus VI Impact with its matching EK-FB ASUS M6I monoblock, a separate
+      Maximus VII Impact with modular audio hardware, and an operator-identified
+      EVGA GTX 660 Ti fitted with an EK-FC670 GTX full-cover water block.
     origin:
       context: >
         The hardware re-entered the Forgotten Industries bench in July 2026.
@@ -112,7 +113,7 @@ projects:
       - FI-HW-CPU-X99-001
       - FI-HW-MB-Z87-001
       - FI-HW-MB-Z97-001
-      - FI-HW-BLOCK-Z97-001
+      - FI-HW-BLOCK-Z87-001
       - FI-HW-GPU-660TI-001
     source_links:
       - label: Source dossier
@@ -271,15 +272,18 @@ projects:
       - FI-PED-001
       - FI-RAD-001
       - FI-RAD-002
+      - FI-RAD-003
       - FI-FAN-001
       - FI-FAN-002
       - FI-PUMP-001
       - FI-PUMP-002
       - FI-CTRL-001
+      - FI-SENSOR-FLOW-001
       - FI-RES-001
       - FI-PSU-001
       - FI-BLOCK-MOSFET-001
       - FI-CL-PART-001
+      - FI-CL-PART-011
       - FI-HDD-001
       - FI-HDD-ICEPACK-001
       - FI-FIT-QDC-001
