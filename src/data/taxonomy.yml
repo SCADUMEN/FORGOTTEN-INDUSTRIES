@@ -70,6 +70,9 @@ taxonomy:
         - id: technical_reference
           label: Technical reference
           definition: A manual, specification, comparison plate, method, or other reusable technical instrument.
+        - id: instrumentation
+          label: Instrumentation
+          definition: A record of a working instrument captured in operation, preserving rendered state or behaviour that its own source cannot convey.
         - id: archive_box
           label: Archive box
           definition: A physical or logical container described as a record set before item-level promotion.

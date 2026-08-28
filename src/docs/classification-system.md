@@ -1,4 +1,4 @@
-# FI-v2.29 Classification System
+# FI-v2.30 Classification System
 
 Status: working Forgotten Industries authority
 
@@ -66,6 +66,7 @@ source_set
 process_record
 provenance_record
 technical_reference
+instrumentation
 archive_box
 file
 manifest
@@ -74,6 +75,23 @@ manifest
 Record family answers what the record is. It does not answer what the record is
 about, whether it is true, whether it is public, or whether the underlying
 object works.
+
+### Boundary: instrumentation, technical reference, process record
+
+These three families sit close together, and `technical_reference` already uses
+the word *instrument* for a reusable method. They are separated by what the
+record carries, not by its subject.
+
+- `instrumentation` carries **behaviour** — evidence that a system did a thing,
+  captured rather than described.
+- `technical_reference` carries **method** — instructions sufficient for someone
+  to do the thing again.
+- `process_record` carries **labour** — an account of work performed on the
+  archive itself.
+
+One instrument can generate all three. The ZOOT shader source is a technical
+reference; a plate of ZOOT rendering is instrumentation; the account of
+accessioning that plate is a process record.
 
 ## Evidence States
 
