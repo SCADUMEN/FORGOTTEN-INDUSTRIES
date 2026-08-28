@@ -96,8 +96,13 @@ derivatives are 1600 × 1252 JPEG.
   `inference`. Five frames over twelve seconds cannot distinguish a drift from
   the low phase of an oscillation. A sixty-to-ninety second sample has not been
   taken.
-- Whether the dissolution is a defect or the design is **not established**. The
-  archive records no finding either way.
+- The dissolution behaviour is **intended**. `operator_report`, recorded
+  2026-08-28: the operator states the transience is by design, not a defect.
+  This is consistent with the source — `uFragReveal` is a deliberate
+  per-fragment reveal envelope, not an artifact of the interference field — but
+  that reading is `inference`, and source structure cannot establish intent.
+  Confirmation from the builder is pending; PR #141 carries a review request to
+  Tyler Etters.
 
 ## ATTRIBUTION
 
@@ -122,8 +127,11 @@ resolves neither.
 
 Contact details for the builder are deliberately not published here.
 
-The archive holds no finding on whether the dissolution behaviour documented
-above is intended. That question belongs to the builder, not to the record.
+The question of design intent and the question of attribution are the same
+question, and the archive notes the overlap rather than resolving it: whoever
+authored the reading model knows whether the dissolution is intended. The
+operator has stated that it is. Whether that statement is the builder speaking
+is what PR #141 is open to establish.
 
 ## NOTES
 
