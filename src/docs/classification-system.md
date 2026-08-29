@@ -1,5 +1,28 @@
 # FI-v2.29 Classification System
 
+Status: working Forgotten Industries authority
+
+Machine-readable source: `src/data/taxonomy.yml`
+
+## Convergence Rule
+
+Forgotten Industries defines and tests its own filing language before mapping it
+to Dublin Core, DACS, PREMIS, PROV-O, RiC-O, or another established system.
+Those standards may later provide interoperability and export rules; they do not
+choose the institution's first names, shelves, or evidence distinctions.
+
+The local order is:
+
+```text
+FI public layer -> FI record family -> FI evidence state -> FI lifecycle
+                                           |
+                                           v
+                              descriptive source vocabulary
+                                           |
+                                           v
+                                later external crosswalk
+```
+
 ## Canonical Spine
 
 The public institution is organized by four doors:
@@ -14,7 +37,7 @@ The public institution is organized by four doors:
 These are the public navigation surfaces. Do not add Dossiers, Manuscripts,
 manuals, posts, projects, field logs, or source sets to the top navigation.
 
-## Taxonomy
+## Public Layers
 
 | Public layer | Contains                                                                                                                               |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,6 +45,93 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
 | L'Œuvre      | Assembled works: Les Dossiers, Les Manuscrits, Les Rapports, La Doctrine, and La Provenance.                                           |
 | Le Signal    | Incoming transmissions: Le Blog, En Direct, and recorder-based voice field journals.                                                   |
 | À Propos     | Origin, maker plate, institutional context, provenance, citation practice, contact.                                                    |
+
+Every public record belongs to one of these four institutional layers. Private
+staging is an access state, not a fifth public door.
+
+## Record Families
+
+The controlled record families are:
+
+```text
+dossier
+object
+component
+manuscript
+atlas_report
+field_log
+voice_log
+social_evidence
+source_set
+process_record
+provenance_record
+technical_reference
+archive_box
+file
+manifest
+```
+
+Record family answers what the record is. It does not answer what the record is
+about, whether it is true, whether it is public, or whether the underlying
+object works.
+
+## Evidence States
+
+Use one or more explicit evidence states at claim level where necessary:
+
+```text
+verified_source_fact
+operator_report
+machine_transcription
+listening_review
+inference
+future_work
+```
+
+Evidence state is not lifecycle. A published page can contain a labeled
+inference; a draft can contain verified source facts. Listening review verifies
+what audio audibly says, not every claim spoken in the recording.
+
+## Lifecycle
+
+Use `lifecycle_state` only for the record's archive or publication stage:
+
+```text
+intake
+draft
+active
+provisional
+verified
+published
+archived
+superseded
+restricted
+quarantine
+retired
+```
+
+Physical condition, functional state, custody, access, and the next repair step
+remain separate fields or notes.
+
+The existing `lifecycle` arrays on accessioned inventory are dated event
+histories, not stage values. Preserve them. `lifecycle_state` is deliberately a
+separate scalar field.
+
+## Discovery Vocabulary
+
+The existing category, tag, system, and status-note indexes remain public and
+searchable, but they are not controlled axes:
+
+- Categories currently mix object classes, record lanes, platforms, and
+  dossier language.
+- Tags include deliberate FI themes alongside recovered social hashtags.
+- Systems carry named machine and operating contexts from source records.
+- Existing `status` strings often combine lifecycle, condition, custody,
+  verification gaps, and next actions. Preserve that prose as a source state
+  note until those facets are separated.
+
+Do not silently merge spellings or rewrite preserved source vocabulary. Record
+aliases and migrations explicitly after repeated terms have been reviewed.
 
 ## Migration Map
 
@@ -52,6 +162,12 @@ manuals, posts, projects, field logs, or source sets to the top navigation.
   `/field-logs/*`; voice field journal URLs remain under `/field-logs/` where
   already published.
 - Preserved raw evidence should not be renamed to satisfy taxonomy polish.
+- New or materially revised index records should receive `record_type` and
+  `public_layer` before new controlled axes are added.
+- Absence of an evidence-state or lifecycle assignment remains visible. Do not
+  infer one merely because a record is currently reachable on the public site.
+- The external metadata profile in `metadata-profile-v0.1.md` is a deferred
+  crosswalk over this authority, not a replacement for it.
 
 ## Public Label Rules
 

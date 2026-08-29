@@ -148,16 +148,33 @@ function writeSweepReport(report) {
     `- Canonical records counted: ${report.totals.canonicalRecords}`,
     `- Search/index records counted: ${report.totals.indexRecords}`,
     '',
-    '## Immediate Standards',
+    '## FI Taxonomy Authority',
+    '',
+    `- Authority: ${report.taxonomyAuthority.id}`,
+    `- Status: ${report.taxonomyAuthority.status}`,
+    `- Public layers: ${report.taxonomyAuthority.publicLayers}`,
+    `- Record families: ${report.taxonomyAuthority.recordTypes}`,
+    `- Evidence states: ${report.taxonomyAuthority.evidenceStates}`,
+    `- Lifecycle states: ${report.taxonomyAuthority.lifecycleStates}`,
+    '',
+    'FI language is assigned and tested before an external standards crosswalk is attempted.',
+    '',
+    '### Generated Index Assignment',
+    '',
+    '| Field | Coverage | Percent |',
+    '| --- | --- | --- |',
+    markdownCoverageRows(report.indexAssignmentCoverage),
+    '',
+    '## External Crosswalk Candidates',
     '',
     '- Dublin Core Metadata Terms: descriptive metadata',
     '- DACS: archival description practice',
     '- PREMIS: preservation metadata and fixity',
     '- W3C PROV-O: provenance chains',
     '',
-    '## Second-Pass Target',
+    '## Later Crosswalk Target',
     '',
-    'Use Records in Contexts / RiC-O as the graph-capable target after the local FI profile stabilizes.',
+    'Use Records in Contexts / RiC-O as the graph-capable target only after the local FI taxonomy stabilizes.',
     '',
     '## Record Family Coverage',
     '',
@@ -185,7 +202,7 @@ function writeSweepReport(report) {
     '',
     markdownList(report.taxonomy.tags),
     '',
-    '## Standards-Alignment Gaps',
+    '## Canonical Source Field Gaps',
     '',
     '| Field | Coverage | Percent |',
     '| --- | --- | --- |',
@@ -194,9 +211,9 @@ function writeSweepReport(report) {
     '## Interpretation',
     '',
     '- Core descriptive fields are strong across current canonical records.',
-    '- Browse taxonomy is large and should be normalized before being treated as a controlled vocabulary.',
+    '- The large browse vocabulary remains a preserved discovery index, not the controlled FI authority.',
     '- Access, public clearance, sensitivity, certainty, fixity, and preservation events are the priority fields for the first data migration.',
-    '- The second pass should add RiC-O-ready relation language after these local controls exist.',
+    '- External crosswalk and RiC-O-ready relation language come after the native assignments are coherent in use.',
     '',
   ].join('\n')
 
@@ -282,6 +299,21 @@ console.log('Forgotten Industries metadata profile audit')
 console.log(`schemaVersion: ${archive.schemaVersion || 'unknown'}`)
 console.log(`generatedAt: ${archive.generatedAt || 'unknown'}`)
 
+const taxonomyAuthority = archive.taxonomy || { axes: {} }
+const authorityAxes = taxonomyAuthority.axes || {}
+const authorityTermCount = (axis) =>
+  Array.isArray(authorityAxes[axis]?.terms)
+    ? authorityAxes[axis].terms.length
+    : 0
+
+console.log('\nFI taxonomy authority')
+console.log(`  id: ${taxonomyAuthority.id || 'missing'}`)
+console.log(`  status: ${taxonomyAuthority.status || 'missing'}`)
+console.log(`  public layers: ${authorityTermCount('public_layers')}`)
+console.log(`  record families: ${authorityTermCount('record_types')}`)
+console.log(`  evidence states: ${authorityTermCount('evidence_states')}`)
+console.log(`  lifecycle states: ${authorityTermCount('lifecycle_states')}`)
+
 for (const family of familiesWithCoverage) {
   printCoverage(
     family.label,
@@ -310,15 +342,23 @@ console.log(`  status terms: ${statuses.length}`)
 console.log(`  systems: ${systems.length}`)
 console.log(`  tags: ${tags.length}`)
 
-console.log('\nStandards-alignment gaps to review')
+const indexAssignmentFields = ['record_type', 'public_layer']
+const indexAssignmentCoverage = fieldCoverage(documents, indexAssignmentFields)
+
+console.log('\nGenerated index assignment coverage')
+for (const row of indexAssignmentCoverage) {
+  console.log(`  ${row.field}: ${row.count}/${row.total} (${row.percent}%)`)
+}
+
+console.log('\nCanonical source field gaps to review')
 for (const field of reviewFields) {
   const count = countField(allCanonicalRecords, field)
   console.log(`  ${field}: ${count}/${allCanonicalRecords.length}`)
 }
 
-console.log('\nSecond-pass target')
+console.log('\nLater crosswalk target')
 console.log(
-  '  Keep FI public taxonomy stable; add controlled fields before attempting RiC-O/RDF export.'
+  '  Stabilize FI assignments first; attempt RiC-O/RDF export only through a later explicit crosswalk.'
 )
 
 const report = {
@@ -333,6 +373,15 @@ const report = {
     canonicalRecords: allCanonicalRecords.length,
     indexRecords: documents.length,
   },
+  taxonomyAuthority: {
+    id: taxonomyAuthority.id || 'missing',
+    status: taxonomyAuthority.status || 'missing',
+    publicLayers: authorityTermCount('public_layers'),
+    recordTypes: authorityTermCount('record_types'),
+    evidenceStates: authorityTermCount('evidence_states'),
+    lifecycleStates: authorityTermCount('lifecycle_states'),
+  },
+  indexAssignmentCoverage,
   families: familiesWithCoverage.map((family) => ({
     label: family.label,
     recordCount: family.recordCount,
@@ -348,7 +397,7 @@ const report = {
   reviewFieldCoverage: fieldCoverage(allCanonicalRecords, reviewFields),
   secondPassTarget: {
     standard: 'Records in Contexts / RiC-O',
-    rule: 'Add controlled FI fields before attempting RiC-O/RDF export.',
+    rule: 'Stabilize native FI assignments before attempting a RiC-O/RDF crosswalk.',
   },
 }
 

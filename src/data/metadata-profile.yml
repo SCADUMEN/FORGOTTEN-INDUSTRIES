@@ -1,11 +1,14 @@
 profile:
   id: FI-METADATA-PROFILE-v0.1
   title: Forgotten Industries Metadata Profile v0.1
-  status: draft operating profile
+  status: deferred interoperability crosswalk
   authority: Matthew Taylor Marx / Forgotten Industries
   source_document: src/docs/metadata-profile-v0.1.md
+  depends_on:
+    - src/data/taxonomy.yml
+    - src/docs/classification-system.md
 
-immediate_standards:
+crosswalk_candidates:
   - id: dcterms
     label: Dublin Core Metadata Terms
     role: baseline descriptive metadata
@@ -37,81 +40,21 @@ target_standards:
     role: later image, scan, audio, and transcript manifest layer
     url: https://iiif.io/api/presentation/3.0/
 
-controlled_vocabularies:
-  record_type:
-    - dossier
-    - object
-    - component
-    - source_set
-    - field_log
-    - voice_log
-    - social_evidence
-    - process_record
-    - technical_reference
-    - box
-    - file
-    - manifest
-  public_layer:
-    - l_archive
-    - l_oeuvre
-    - le_signal
-    - a_propos
-    - private_staging
-  status:
-    - draft
-    - active
-    - provisional
-    - verified
-    - published
-    - archived
-    - superseded
-    - restricted
-    - quarantine
-    - retired
-  access:
-    - public
-    - public_summary
-    - restricted
-    - private
-    - local_only
-    - pending_review
-  public_clearance:
-    - cleared
-    - cleared_summary_only
-    - pending
-    - blocked
-    - private
-    - unknown
-  sensitivity:
-    - none
-    - privacy
-    - identity
-    - medical
-    - location
-    - credential
-    - financial
-    - third_party
-    - copyright
-    - unknown
-  certainty:
-    - confirmed
-    - probable
-    - possible
-    - unknown
-    - disputed
-    - provisional
-  preservation_event_type:
-    - created
-    - captured
-    - catalogued
-    - hashed
-    - verified
-    - redacted
-    - transcribed
-    - converted
-    - migrated
-    - published
-    - withdrawn
+fi_authority:
+  source: src/data/taxonomy.yml
+  rule: Reference native FI identifiers; do not maintain a second controlled vocabulary in the external crosswalk.
+
+operational_controls:
+  - access
+  - public_clearance
+  - sensitivity
+  - redaction_status
+  - certainty
+  - condition
+  - sha256
+  - hash_algorithm
+  - manifest_hash
+  - preservation_events
 
 required_review_fields:
   - record_type

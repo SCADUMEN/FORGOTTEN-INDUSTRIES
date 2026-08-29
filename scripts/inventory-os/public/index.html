@@ -138,6 +138,36 @@
         </div>
       </section>
 
+      <section class="silver-program" id="silver-program" hidden>
+        <div class="silver-program-header">
+          <div>
+            <p class="panel-label">LE LABORATOIRE / ARGENT</p>
+            <h2>Silver acquisition program</h2>
+          </div>
+          <strong id="silver-verification-state"></strong>
+        </div>
+        <div class="silver-program-metrics">
+          <article>
+            <span>ELEMENTAL AG</span><strong id="silver-fine-grams"></strong>
+          </article>
+          <article>
+            <span>FINE TROY OUNCES</span><strong id="silver-fine-ozt"></strong>
+          </article>
+          <article>
+            <span>PIECES</span><strong id="silver-piece-count"></strong>
+          </article>
+          <article>
+            <span>CONDITIONAL GROSS MASS</span
+            ><strong id="silver-gross-grams"></strong>
+          </article>
+          <article>
+            <span>CLEARED COIN-ORDER BASIS</span
+            ><strong id="silver-basis"></strong>
+          </article>
+        </div>
+        <p id="silver-boundary"></p>
+      </section>
+
       <section class="audit-panel">
         <div>
           <p class="panel-label">RECENT AUDIT</p>
@@ -178,6 +208,21 @@
             </select></label
           >
           <label>Funding source<input id="research-funding-source" /></label>
+          <label
+            >Catalog / lot reference<input id="research-catalog-ref"
+          /></label>
+          <label>Seller<input id="research-seller" /></label>
+          <label>Order state<input id="research-order-status" /></label>
+          <label>Delivery state<input id="research-delivery-state" /></label>
+          <label
+            >Identification confidence<select id="research-confidence">
+              <option value="unresolved">unresolved</option>
+              <option value="operator-identified">operator identified</option>
+              <option value="listing-visible">listing visible</option>
+              <option value="model-visible">model visible</option>
+              <option value="inspection-verified">inspection verified</option>
+            </select></label
+          >
           <label
             >Classification<select id="research-classification">
               <option value="capability-asset">capability asset</option>

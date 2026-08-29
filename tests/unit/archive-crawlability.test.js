@@ -63,7 +63,7 @@ describe('archive crawlability output', () => {
       existsSite('hang-on-to-each-other/wrist-field-instruments/index.html')
     ).toBe(true)
     expect(
-      existsSite('field-logs/accumulation-across-active-fronts/index.html')
+      existsSite('atlas/accumulation-across-active-fronts/index.html')
     ).toBe(true)
   })
 
@@ -85,6 +85,23 @@ describe('archive crawlability output', () => {
     expect(dossierLinks).toContain('/archive/objects/')
     expect(dossierLinks).toContain('/archive/systems/')
     expect(dossierLinks).toContain('/archive/status/')
+  })
+
+  it('publishes the native FI taxonomy before discovery vocabulary', () => {
+    const taxonomy = readSite('archive/taxonomy/index.html')
+    const categories = readSite('archive/categories/index.html')
+    const statusNotes = readSite('archive/status/index.html')
+
+    expect(taxonomy).toContain('FI-TAXONOMY-v1.0')
+    expect(taxonomy).toContain('Our language first.')
+    expect(taxonomy).toContain('Axis 01 / Public layer')
+    expect(taxonomy).toContain('Axis 02 / Record family')
+    expect(taxonomy).toContain('Axis 03 / Evidence state')
+    expect(taxonomy).toContain('Axis 04 / Lifecycle')
+    expect(taxonomy).toContain('Source language remains reachable.')
+    expect(categories).toContain('Source Categories')
+    expect(categories).toContain('not a controlled axis')
+    expect(statusNotes).toContain('Source State Notes')
   })
 
   it('publishes Manual 002 and its preserved source asset', () => {
@@ -186,11 +203,15 @@ describe('archive crawlability output', () => {
 
     expect(caseRecord).toMatchObject({
       url: '/archive/objects/fi-case-001/',
+      record_type: 'object',
+      public_layer: 'l_archive',
       object: 'CaseLabs Mercury S8',
       associated_project: 'FI-PROJ-001',
       condition: 'stored / needs inspection and cleaning',
     })
     expect(fieldLog).toMatchObject({
+      record_type: 'atlas_report',
+      public_layer: 'l_oeuvre',
       object: 'CaseLabs Mercury S8 + pedestal',
       system: 'custom watercooling restoration',
       associated_project: 'FI-PROJ-001',
@@ -198,17 +219,23 @@ describe('archive crawlability output', () => {
     expect(fieldLog.signature).toContain('Forgotten Industries // ATLAS Report')
     expect(dailySummary).toMatchObject({
       title: 'ATLAS Report 2026.06.20 — Accumulation Across Active Fronts',
-      url: '/field-logs/accumulation-across-active-fronts/',
+      url: '/atlas/accumulation-across-active-fronts/',
       category: 'atlas-report',
+      record_type: 'atlas_report',
+      public_layer: 'l_oeuvre',
       associated_project: 'FI-PROJ-006',
     })
     expect(wayIn).toMatchObject({
       title: 'A Way In',
       type: 'Short Form / Curated Entry',
+      record_type: 'manuscript',
+      public_layer: 'l_oeuvre',
       url: '/a-way-in/',
     })
     expect(voiceLog).toMatchObject({
       type: 'voice-field-log',
+      record_type: 'voice_log',
+      public_layer: 'le_signal',
       url: '/field-logs/#FI-VOICE-003',
     })
   })
@@ -227,7 +254,7 @@ describe('archive crawlability output', () => {
       fs.readFileSync(path.join(DIST, 'forgotten-industries.json'), 'utf8')
     )
     const home = readSite('index.html')
-    const report = readSite('field-logs/playonline-senses-weakness/index.html')
+    const report = readSite('atlas/playonline-senses-weakness/index.html')
     const entry = readSite(
       'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html'
     )
@@ -269,9 +296,80 @@ describe('archive crawlability output', () => {
     )
   })
 
+  it('partitions posts across exactly one shelf each', () => {
+    // Routing used to key off freeform `type`/`category`/`shelf_label` strings,
+    // which let a post match two shelves at once: the Prelude and a Le Blog
+    // dispatch were listed on Les Manuscrits *and* Le Blog. Every post now
+    // declares a controlled `shelf`, and the three shelves must partition the
+    // collection — no post on two, none on none.
+    const shelves = ['doctrine', 'signal', 'manuscrit']
+    const posts = fs
+      .readdirSync(path.join(ROOT, 'src', 'posts'))
+      .filter((name) => name.endsWith('.md') && name !== 'README.md')
+
+    const counts = { doctrine: 0, signal: 0, manuscrit: 0 }
+    for (const name of posts) {
+      const source = fs.readFileSync(
+        path.join(ROOT, 'src', 'posts', name),
+        'utf8'
+      )
+      const declared = source.match(/^shelf:\s*"?([a-z]+)"?\s*$/m)?.[1]
+      expect(shelves, `${name} declares a controlled shelf`).toContain(declared)
+      counts[declared] += 1
+    }
+
+    expect(counts.doctrine + counts.signal + counts.manuscrit).toBe(
+      posts.length
+    )
+
+    // The rendered shelves must agree with the declared counts.
+    const oeuvre = readSite('oeuvre/index.html')
+    const signal = readSite('signal/index.html')
+    expect(oeuvre).toContain(`SYSTEMS DOCTRINE (${counts.doctrine})`)
+    expect(oeuvre).toContain(`MANUSCRIPTS (${counts.manuscrit})`)
+    expect(signal).toContain(`BLOG (${counts.signal})`)
+  })
+
+  it("gives every L'Œuvre shelf a card on its own route", () => {
+    // The architecture dossier defines these five shelves. A shelf that exists
+    // as a page but has no card on /oeuvre/ is an orphan reachable only by
+    // stray link, which is how Les Manuscrits and La Provenance were lost when
+    // a fixed three-card layout rule silently outranked the dossier.
+    const shelves = [
+      ['/projects/', 'LES DOSSIERS'],
+      ['/posts/', 'LES MANUSCRITS'],
+      ['/atlas/', 'LES RAPPORTS'],
+      ['/doctrine/', 'LA DOCTRINE'],
+      ['/provenance/', 'LA PROVENANCE'],
+    ]
+    const oeuvre = readSite('oeuvre/index.html')
+    const cardLinks = hrefs(oeuvre)
+
+    for (const [route, label] of shelves) {
+      expect(cardLinks, `${label} shelf link`).toContain(route)
+      expect(oeuvre, `${label} card label`).toContain(`<span>${label}</span>`)
+    }
+
+    // The two local registers sit below the shelf grid and are not shelves.
+    expect(cardLinks).toContain('/inventory/')
+    expect(cardLinks).toContain('/rd/')
+  })
+
+  it('records the SCADUBIRD registry and keeps target instrument out of the flight record', () => {
+    const peregrine = readSite(
+      'archive/projects/peregrine-drone-experiments/index.html'
+    )
+
+    expect(peregrine).toContain('SCADUBIRD, evolved from PEREGRINE')
+    expect(peregrine).toContain('DJI Air 3S / stated intent, not a flight record')
+    // Aircraft that passed through custody without flying stay in the record.
+    expect(peregrine).toContain('PEREGRINE-A05 / SCADUBIRD-SB001')
+    expect(peregrine).toContain('Perry 4 / PEREGRINE-A04')
+  })
+
   it('publishes Provenance From On High as a permanent archival capability', () => {
     const archive = readSite('l-archive/index.html')
-    const aerial = readSite('archive/aerial-documentation/index.html')
+    const aerial = readSite('l-archive/from-on-high/index.html')
     const peregrine = readSite(
       'archive/projects/peregrine-drone-experiments/index.html'
     )
@@ -324,7 +422,7 @@ describe('archive crawlability output', () => {
     const generatedPages = [
       'archive/objects/fi-case-001/index.html',
       'archive/projects/caselabs-mercury-s8-pedestal-restoration/index.html',
-      'field-logs/rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule/index.html',
+      'atlas/rebuilding-and-archiving-a-caselabs-mercury-s8-time-capsule/index.html',
       'posts/2026-06-06-prelude-a-thing-documented-is-a-thing-not-yet-lost.html',
     ]
 

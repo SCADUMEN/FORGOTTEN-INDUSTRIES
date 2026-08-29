@@ -18,10 +18,25 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
   <link rel="icon" href="/assets/favicon/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
   <style>
+    /* Space Mono only. This page does not load archive.css, so the two weights
+       it uses are declared here against the self-hosted files. */
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-400-normal-latin.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-700-normal-latin.woff2') format('woff2');
+    }
+
     /* Tokens sourced from src/css/archive.css:4-25 — that file is the source of
        truth; this page deliberately does not load the shared stylesheet. */
     :root {
@@ -76,9 +91,9 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
       background: var(--fi-surface);
       color: var(--fi-paper-light);
     }
-    /* Bottom chrome: the exit mark and the photo credits share one fixed bar
-       so they lay out together and never overlap. The bar ignores pointer
-       events (canvas keeps receiving stirs); only its links opt back in. */
+    /* Bottom chrome: the exit mark and sound toggle sit in one fixed bar. The
+       bar ignores pointer events (canvas keeps receiving stirs); only its
+       links opt back in. */
     #zoot-chrome {
       position: fixed;
       left: 0;
@@ -129,29 +144,6 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
     #zoot-audio-toggle:focus-visible {
       opacity: 0.85;
       outline: none;
-    }
-    #zoot-credits {
-      max-width: min(48rem, 66vw);
-      text-align: right;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      line-height: 1.5;
-      color: var(--fi-paper-light);
-      opacity: 0.42;
-    }
-    #zoot-credits .zoot-credits-label {
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-right: 0.35rem;
-    }
-    #zoot-credits a {
-      pointer-events: auto;
-      color: var(--fi-cyan);
-      text-decoration: none;
-    }
-    #zoot-credits a:hover,
-    #zoot-credits a:focus-visible {
-      text-decoration: underline;
     }
     #zoot-focus {
       position: fixed;
@@ -325,11 +317,6 @@ description: A non-linear instrument for reading the Forgotten Industries archiv
         <button id="zoot-audio-toggle" type="button" aria-pressed="true">Sound On</button>
         {% endif %}
       </div>
-      {% if zootPhotos.length %}
-      <nav id="zoot-credits" aria-label="Background photographs">
-        <span class="zoot-credits-label">Background Photos:</span>{% for photo in zootPhotos %}<a href="{{ photo.src }}">{{ photo.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
-      </nav>
-      {% endif %}
     </div>
     <noscript>
       <p class="zoot-panel-heading">

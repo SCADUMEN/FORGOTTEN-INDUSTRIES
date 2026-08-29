@@ -9,6 +9,20 @@ Part of `Hang On To Each Other`, the Forgotten Industries third-party reference 
 | `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif` | `SLUSH/45L6WTm.gif`                                                   | `c20168603d3886996e52c2431b63410345cac9fb67b3d59842e97973e2d0633a` | Confirmed as embedded in the ExtremeRigs CaseLabs Mercury S8 review. |
 | `CaseLabs_Mercury_S8_Manual_001_ForgottenIndustries.pdf`  | `intake/SLUSH/CaseLabs_Mercury_S8_Manual_001_ForgottenIndustries.pdf` | `07975a2f69d4718bd97dc457193d7d228f18696bdb9bcb4d8a38edab23e6d2a0` | Recovered Forgotten Industries Manual 001 PDF export.                |
 
+## Display derivatives
+
+The preserved GIF above stays byte-identical to its recorded SHA-256. Because a
+5 MB animated GIF is a poor delivery format, the shelf page plays video
+derivatives of it instead and keeps the GIF as the final fallback:
+
+| Derivative                                                 | Size    | Encode                     |
+| ---------------------------------------------------------- | ------- | -------------------------- |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.webm` | 0.46 MB | VP9, CRF 34                |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.mp4`  | 0.74 MB | H.264, CRF 23, faststart   |
+
+These are generated, not evidence. Regenerate with
+`node scripts/build_media_derivatives.cjs`.
+
 ## Source
 
 - Page: `https://www.xtremerigs.net/2014/04/04/caselabs-mercury-s8/`

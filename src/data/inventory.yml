@@ -153,17 +153,48 @@ items:
     name: 120 mm Flex-Bay 4× HDD Cage with Fan
     category: case accessory
     manufacturer: CaseLabs
+    model: four-drive Flex-Bay cage / exact historical catalog name unverified
     quantity: 1
     associated_project: FI-PROJ-001
-    condition: two stripped/threaded screws require documentation before service
-    status: intake / service required
+    condition: used white powder-coated cage with installed black fan and vibration grommets / dust and handling marks visible / two previously reported damaged screws require location and close documentation
+    status: physical cage and four-drive layout documented / fan model, hardware completeness, screw damage, fitment, and function pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - forgotten-industries/l-archive/caselabs-s8/assets/representative-photos/fi-cl-part-002.jpg
+      - assets/archive/objects/fi-cl-part-002-120-flex-bay-4x-hdd-cage/01-cage-oblique.jpeg
+      - assets/archive/objects/fi-cl-part-002-120-flex-bay-4x-hdd-cage/02-cage-front.jpeg
     notes: >
-      120 mm flex-bay unit with a four-drive cage and Corsair static pressure
-      fan. Candidate for the front-right pedestal storage position. Do not
-      attempt removal of the two stripped/threaded screws before close-up
-      documentation.
+      Two August 15, 2026 photographs expand the existing provisional CaseLabs
+      accessory record rather than creating a second cage object. The images
+      show a white powder-coated open-sided cage with four vertically stacked
+      3.5-inch drive positions, black vibration-isolation grommets along both
+      side panels, a black fan mounted across the lower plate, an attached fan
+      lead, and multiple retained fasteners. The fan label carries visible
+      Corsair branding, consistent with the prior operator identification as a
+      Corsair static-pressure fan, but the exact model, electrical rating, and
+      connector are not legible enough in these frames for a definitive model
+      assignment. The assembly remains a candidate for the front-right
+      pedestal storage position. The photographs do not establish the exact
+      historical CaseLabs retail name, grommet count or condition on hidden
+      faces, loose-hardware completeness, thread integrity, fan function,
+      installed airflow direction, drive fitment, or chassis fitment. Two
+      stripped or thread-damaged screws were previously reported, but these
+      frames do not isolate them clearly. Do not attempt removal until their
+      positions, heads, and surrounding threads have been photographed closely.
+    reference_sources:
+      - title: CaseLabs manuals index
+        url: https://caselabs.se/home/manuals/
+        retrieved: '2026-08-15'
+        scope: current manufacturer manuals portal; no exact historical four-drive cage catalog name located during this accession
+    lifecycle:
+      - date: '2026-08-15'
+        event: evidence expanded
+        state: persistent provisional L'Archive CaseLabs four-drive cage record / physical layout and installed fan documented
+        evidence: two supplied Apple Photos derivative JPEGs, prior inventory record, and operator identification
     archive_entry: /forgotten-industries/l-archive/caselabs-s8/fi-cl-part-002-120-flex-bay-4x-hdd-cage/
     tags:
       - CaseLabs
@@ -172,6 +203,10 @@ items:
       - flex-bay
       - HDD cage
       - Corsair fan
+      - vibration isolation
+      - four 3.5-inch drives
+      - screw service pending
+      - fan test pending
     estimated_value:
     keep_sell_archive: undecided
     date_logged: '2026-06-20'
@@ -381,15 +416,74 @@ items:
     keep_sell_archive: undecided
     date_logged: '2026-06-20'
 
+  - id: FI-CL-PART-011
+    name: STH10 Magnum-class 480 mm drop-in radiator mount
+    category: case accessory / radiator mount
+    manufacturer: CaseLabs
+    model: STH10 / Magnum-class 480 mm drop-in mount / exact historical catalog name unverified
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used white powder-coated mount photographed with radiator and fans installed / exposed condition, fastener completeness, and rail fitment not fully visible
+    status: new accession / operator-identified STH10 Magnum-class 480 mm drop-in mount / exact catalog name, revision, completeness, and chassis fitment pending
+    lifecycle_state: provisional
+    evidence_state:
+      - operator_report
+      - verified_source_fact
+      - inference
+    photos:
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/01-assembly-overview.jpeg
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/02-fan-side-detail.jpeg
+    notes: >
+      The operator identifies the retained white frame surrounding FI-RAD-003 as
+      an STH10 Magnum-class 480 mm drop-in radiator mount. Two August 15, 2026
+      photographs show portions of the white powder-coated frame around the
+      radiator and fan assembly, including extended end sections and mounting
+      geometry. The mount is not photographed separately, from below, or in an
+      installed chassis, so the exact historical CaseLabs retail name, revision,
+      full dimensions, rail relationship, fastener count, thread condition, and
+      STH10 fitment are not independently established. A separate loose white
+      rectangular frame or plate visible beside the assembly is photographic
+      context and is not assigned to this object by these frames. Preserve the
+      operator identification as the controlled provisional name until the
+      radiator and fans can be removed or lifted for complete mount photography,
+      measurement, hardware inventory, and dry-fit confirmation in the intended
+      CaseLabs chassis.
+    reference_sources:
+      - title: CaseLabs manuals index
+        url: https://caselabs.se/home/manuals/
+        retrieved: '2026-08-15'
+        scope: current manufacturer manuals portal; no exact historical 480 mm drop-in mount catalog name confirmed during this accession
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive CaseLabs 480 mm drop-in radiator-mount record
+        evidence: operator identification and two supplied Apple Photos master-derivative JPEGs showing the mount as part of the retained assembly
+    tags:
+      - CaseLabs
+      - STH10
+      - Magnum class
+      - 480 mm radiator mount
+      - drop-in radiator mount
+      - white powder coat
+      - fitment verification pending
+    estimated_value:
+    keep_sell_archive: archive / fitment pending
+    date_logged: '2026-08-15'
+
   - id: FI-RAD-001
-    name: EK XTX 360 radiator
+    name: EK-CoolStream RAD XTX (360) radiators
     category: radiator
-    manufacturer: EK
-    model: XTX 360
+    manufacturer: EK Water Blocks
+    model: EK-CoolStream RAD XTX (360) / EAN 3831109860229
     quantity: 3
     associated_project: FI-PROJ-001
-    condition: used / needs cleaning and leak test
-    status: candidate for restored loop
+    condition: used three-radiator inventory group / one unit documented in close views with dust or debris, surface discoloration, and localized fin deformation / additional two units documented together with mounted fan assemblies / all units need individual inspection
+    status: manufacturer model verified / three-unit count now visually reconciled across two accession sets / individual labeling, cleaning, flush, thread inspection, and independent leak tests pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - assets/initial-photos/matthewmarx-002.jpeg
       - assets/initial-photos/matthewmarx-003.jpeg
@@ -414,11 +508,64 @@ items:
       - assets/initial-photos/matthewmarx-124.jpeg
       - assets/initial-photos/matthewmarx-126.jpeg
       - assets/initial-photos/matthewmarx-127.jpeg
+      - assets/archive/objects/fi-rad-001-ek-coolstream-xtx-360/01-radiator-oblique.jpeg
+      - assets/archive/objects/fi-rad-001-ek-coolstream-xtx-360/02-radiator-face.jpeg
+      - assets/archive/objects/fi-rad-001-ek-coolstream-xtx-360/03-fin-condition.jpeg
+      - assets/archive/objects/fi-rad-001-ek-coolstream-xtx-360/04-end-tank-and-fins.jpeg
+      - assets/archive/objects/fi-rad-001-ek-coolstream-xtx-360/05-additional-pair-with-fans.jpeg
     notes: >
       Heavy cooling overhead from the original watercooling plan. First photo
       mapping shows used EK radiators with visible fin dust/debris and fan
-      assemblies. Needs flush, exterior cleaning, thread inspection, fin check,
-      and leak test.
+      assemblies. The August 15, 2026 evidence-expansion set documents one
+      individual radiator from the three-unit inventory group. Four supplied
+      photographs show the thick black radiator body, three 120 mm fan sections,
+      two ports at one end, dust or debris across the fin field, surface
+      discoloration, and several localized bent or compressed fins. A second
+      accession frame supplied the same day shows the operator-identified two
+      remaining XTX 360 radiators side-by-side, each with a three-fan assembly
+      mounted. That frame reconciles the prior three-unit count at group level:
+      one radiator in the close-view set plus two additional radiators in the
+      paired overview. It does not establish fan manufacturer or model, hidden
+      fin condition, port configuration, or which physical radiator corresponds
+      to any earlier photograph. The white support beneath the first radiator,
+      nearby loose ties and leads, bed covering, and objects at the margins are
+      photographic context only. None of the radiators has a photographed serial
+      number or permanent sub-identifier, and the images do not establish
+      internal cleanliness, thread condition, prior coolant chemistry, flow, or
+      leak integrity. EK's manufacturer product page identifies the XTX 360 as a
+      400 x 130 x 64 mm, 11-FPI radiator with copper fins, copper tubing, brass
+      chambers, steel housing, three 120 mm fan positions, G1/4 ports on both
+      sides, and a separate bleed/fill/drain port. Retain the three-unit group
+      count as visually reconciled but provisional at the individual-unit level.
+      Separate and label RAD-001-A, RAD-001-B, and RAD-001-C during physical
+      inspection; photograph each radiator and fan labels independently. Each
+      unit needs exterior cleaning, careful fin inspection, thread inspection,
+      flush, and an independent pressure or leak test before loop service.
+    reference_sources:
+      - title: EK-CoolStream RAD XTX (360) product page
+        url: https://www.ekwb.com/shop/ek-coolstream-rad-xtx-360
+        retrieved: '2026-08-15'
+        scope: manufacturer model identity, EAN, materials, dimensions, capacity, FPI, ports, fan mounting, pressure test, and original contents
+      - title: EK-CoolStream 360 XTX dimensional template
+        url: https://www.ekwb.com/shop/EK-PSS/EK-PSS-3831109860229.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer dimensional reference
+    lifecycle:
+      - date: '2026-08-15'
+        event: evidence expanded
+        state: persistent provisional L'Archive three-radiator inventory group / one unit documented in close views and two additional units documented together
+        evidence: operator accession, five supplied Apple Photos derivative JPEGs across two sets, prior inventory record, and EK manufacturer references
+    tags:
+      - EK Water Blocks
+      - EK-CoolStream RAD XTX 360
+      - XTX 360
+      - 360 mm radiator
+      - 64 mm radiator
+      - three 120 mm fans
+      - G1/4
+      - custom watercooling
+      - cleaning pending
+      - leak test pending
     estimated_value:
     keep_sell_archive: keep pending test
     date_logged: '2026-06-05'
@@ -440,19 +587,115 @@ items:
     keep_sell_archive: undecided
     date_logged: '2026-06-05'
 
+  - id: FI-RAD-003
+    name: EK-CoolStream RAD XTX (480)
+    category: radiator
+    manufacturer: EK Water Blocks
+    model: EK-CoolStream RAD XTX (480) / EAN 3831109860243
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: used / photographed installed in CaseLabs drop-in mount with Noiseblocker fan assembly / exposed fin, port, thread, and internal condition not fully documented
+    status: new accession / manufacturer model verified / separation, cleaning, flush, port inspection, and independent leak test pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/01-assembly-overview.jpeg
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/02-fan-side-detail.jpeg
+    notes: >
+      The operator identifies the black four-fan radiator in this retained
+      assembly as an EK-CoolStream RAD XTX (480). EK's manufacturer page lists
+      EAN 3831109860243 and specifies copper fins, 90% copper tubing, brass
+      chambers, a steel housing, 520 x 130 x 64 mm dimensions, approximately
+      600 ml capacity, 11 FPI, four 120 mm fan positions per side, M3 fan threads
+      on both sides, G1/4 ports on both sides, and a separate bleed/fill/drain
+      port. Those are manufacturer specifications, not measurements or tests of
+      this physical unit. The supplied photographs show the radiator mounted in
+      FI-CL-PART-011 with four white Noiseblocker eLoop fans visible on the near
+      face. The operator reports eight eLoops total, indicating a push-pull
+      arrangement, but the four opposite-side fans are hidden and are therefore
+      operator-reported rather than directly visible. The frames do not establish
+      individual fan model labels, complete fan fasteners, hidden fin condition,
+      port plugs, thread condition, prior coolant chemistry, internal cleanliness,
+      flow, or leak integrity. Remove or lift the assembly only after documenting
+      cable routing and fastener positions; then inspect the radiator independently,
+      flush it, verify all ports and plugs, and perform an isolated pressure or
+      leak test before loop service.
+    reference_sources:
+      - title: EK-CoolStream RAD XTX (480) product page
+        url: https://www.ekwb.com/shop/ek-coolstream-rad-xtx-480
+        retrieved: '2026-08-15'
+        scope: manufacturer model identity, EAN, materials, dimensions, capacity, FPI, ports, fan mounting, pressure test, and original contents
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive 480 mm radiator record / retained assembly relationship documented
+        evidence: operator identification, two supplied Apple Photos master-derivative JPEGs, and EK manufacturer reference
+    tags:
+      - EK Water Blocks
+      - EK-CoolStream RAD XTX 480
+      - XTX 480
+      - 480 mm radiator
+      - 64 mm radiator
+      - four 120 mm fans per side
+      - G1/4
+      - push-pull cooling
+      - cleaning pending
+      - leak test pending
+    estimated_value:
+    keep_sell_archive: archive / test pending
+    date_logged: '2026-08-15'
+
   - id: FI-FAN-001
     name: Noiseblocker eLoop white PWM fans
     category: fan
     manufacturer: Noiseblocker
-    model: eLoop white PWM
+    model: eLoop white PWM / exact B12-series variant or variants unverified
     quantity: approximately 20+
     associated_project: FI-PROJ-001
-    condition: needs testing
-    status: inventory / possible reuse or sale
-    photos: []
+    condition: retained group / four units directly visible installed on FI-RAD-003 / operator reports eight units on that push-pull assembly / all units need individual label, cable, bearing, and PWM inspection
+    status: group inventory / eight-unit relationship to FI-RAD-003 operator-reported / wider count and individual models remain unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - operator_report
+      - verified_source_fact
+      - inference
+    photos:
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/01-assembly-overview.jpeg
+      - assets/archive/objects/fi-rad-003-ek-xtx-480-sth10-mount-eloop-assembly/02-fan-side-detail.jpeg
     notes: >
-      Test bearing noise, PWM response, cable condition, and visual yellowing.
-      Decide later which units remain with the archive.
+      The August 15, 2026 assembly photographs directly show four white
+      Noiseblocker eLoop fans installed on the near face of FI-RAD-003. The
+      operator reports eight eLoops total on the 480 mm XTX push-pull assembly;
+      the four opposite-side units are hidden in the supplied views, so the
+      eight-unit assignment is retained as an operator report rather than direct
+      visual count. Fan labels are not visible, and the exact B12-series variant,
+      voltage, current, speed range, PWM status, connector type, and whether all
+      eight units match remain unverified. Loose white and black leads are
+      visible, but the full cable routing and connector condition are not
+      established. This eight-fan relationship is part of the existing
+      approximately 20-plus retained eLoop group and does not increase the wider
+      estimated count. Before reuse, separate and label each fan, photograph both
+      faces and product labels, inspect frames and blades, check visual yellowing
+      and cable condition, then test startup, tachometer response, PWM range,
+      bearing noise, and vibration individually. Decide later which units remain
+      with the archive.
+    lifecycle:
+      - date: '2026-08-15'
+        event: assembly relationship documented
+        state: persistent provisional L'Archive Noiseblocker fan group / eight units operator-assigned to FI-RAD-003 push-pull assembly and four directly visible
+        evidence: operator identification, two supplied Apple Photos master-derivative JPEGs, and prior group inventory
+    tags:
+      - Noiseblocker
+      - eLoop
+      - white fan
+      - 120 mm fan
+      - push-pull
+      - FI-RAD-003
+      - label verification pending
+      - PWM test pending
     estimated_value:
     keep_sell_archive: undecided
     date_logged: '2026-06-05'
@@ -500,11 +743,16 @@ items:
     name: Aquaero 6 XT
     category: controller
     manufacturer: Aqua Computer
-    model: Aquaero 6 XT
+    model: aquaero 6 XT / stainless-steel front panel / exact article number unverified
     quantity: 1
     associated_project: FI-PROJ-001
-    condition: needs power-on test
-    status: candidate for restored loop
+    condition: recovered loose with stainless-steel front panel and mounting brackets attached / exposed PCB and connectors photographed / dust, handling marks, and possible front-panel scuffing visible
+    status: XT identity visually and manufacturer documented / display, buttons, headers, USB, aquabus, fan channels, sensors, infrared control, and firmware untested
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - assets/initial-photos/matthewmarx-033.jpeg
       - assets/initial-photos/matthewmarx-034.jpeg
@@ -513,13 +761,138 @@ items:
       - assets/initial-photos/matthewmarx-037.jpeg
       - assets/initial-photos/matthewmarx-038.jpeg
       - assets/initial-photos/matthewmarx-039.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/01-controller-rear-oblique.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/02-front-panel.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/03-front-panel-oblique.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/04-pcb-rear.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/05-pcb-top.jpeg
+      - assets/archive/objects/fi-ctrl-001-aquaero-6-xt/06-front-panel-handheld.jpeg
     notes: >
-      Controller for pumps, fans, and sensors. First photo mapping shows the
-      display, front controls, and exposed PCB/header side. Confirm display,
-      buttons, headers, and Aquabus behavior.
+      Six August 15, 2026 photographs expand the existing controller record.
+      They show the loose 5.25-inch-bay controller with its stainless-steel
+      front plate, wide dark display, three-button column to the right, four
+      additional keys below the display, both mounting brackets, exposed PCB,
+      and multiple rear and top-edge connectors. Aqua Computer's manufacturer
+      manual identifies the display, three side keys, and four additional
+      programmable keys as the XT control arrangement, supporting the operator
+      identification as an aquaero 6 XT. The manual covers aquaero 6 XT article
+      numbers 53146 and 53206, but no product label or article number is legible
+      in these frames, so the exact retail revision remains unverified. The
+      manual specifies four fan outputs, USB, aquabus, temperature-sensor,
+      flow, relay, RGB, speed-signal, and other control connections; those are
+      manufacturer capabilities, not tested functions of this unit. Original
+      XT delivery also included temperature sensors, USB and aquabus cables,
+      mounting material, documentation, and an aquaremote, none of which is
+      assigned to this object by the supplied photographs. The dark display and
+      camera-flash reflections do not establish power or display operation. Do
+      not connect pumps or the full fan bank first. Inspect for corrosion,
+      damaged headers, bent pins, conductive debris, loose bracket hardware,
+      and front-panel damage; then identify the power and USB connections from
+      the manual, perform a current-limited bench power-up, confirm display and
+      button response, enumerate the device in aquasuite, record firmware, and
+      test each channel with a small known-good load before restoration service.
+    reference_sources:
+      - title: Aqua Computer aquaero 5 and aquaero 6 English operation manual
+        url: https://www.aquacomputer.de/tl_files/aquacomputer/downloads/manuals/aquaero_5_aquaero_6_english.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer XT identification, article numbers, controls, connectors, original delivery contents, configuration, and test reference
+      - title: Aqua Computer manuals index
+        url: https://aquacomputer.de/handbuecher.html
+        retrieved: '2026-08-15'
+        scope: manufacturer-hosted current manual index and supported aquaero 5 and 6 article numbers
+    lifecycle:
+      - date: '2026-08-15'
+        event: identity verified and evidence expanded
+        state: persistent provisional L'Archive cooling-controller record / XT controls and physical assembly documented
+        evidence: operator identification, six supplied Apple Photos master-derivative JPEGs, prior inventory record, and Aqua Computer manufacturer documentation
+    tags:
+      - Aqua Computer
+      - aquaero 6 XT
+      - 5.25-inch bay controller
+      - stainless-steel front panel
+      - display controller
+      - fan controller
+      - pump controller
+      - aquabus
+      - aquasuite
+      - infrared control
+      - bench test pending
     estimated_value:
     keep_sell_archive: keep pending test
     date_logged: '2026-06-05'
+
+  - id: FI-SENSOR-FLOW-001
+    name: Aqua Computer flow sensor high flow USB
+    category: flow sensor
+    manufacturer: Aqua Computer
+    model: flow sensor high flow USB / article 53129
+    quantity: 1
+    associated_project: FI-PROJ-001
+    condition: recovered loose / stainless cover and exposed connector opening photographed with dust, surface marks, and possible light oxidation or residue / internal impeller and seals not inspected
+    status: new accession / manufacturer model verified / cables, fittings, thread condition, USB enumeration, aquabus communication, calibration, flow response, and leak integrity pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-sensor-flow-001-aquacomputer-high-flow-usb/01-sensor-and-loose-fittings.jpeg
+      - assets/archive/objects/fi-sensor-flow-001-aquacomputer-high-flow-usb/02-sensor-scale-and-fittings.jpeg
+      - assets/archive/objects/fi-sensor-flow-001-aquacomputer-high-flow-usb/03-connector-labels.jpeg
+    notes: >
+      Three August 15, 2026 photographs establish a new L'Archive sensor object.
+      The stainless cover is engraved `aqua computer` and `made in germany`,
+      while the exposed connector area is labeled `temp`, `USB`, `alarm`, and
+      `aquabus`. These features and the operator identification match Aqua
+      Computer's flow sensor `high flow USB`, article 53129. The manufacturer
+      manual describes this model as a mechanical inline flow sensor whose
+      coolant-driven impeller is electronically converted to a flow value; flow
+      direction is not relevant. It supports USB and aquabus communication, a
+      programmable alarm or speed-signal output, and an external temperature
+      sensor input. Original delivery included the sensor, an internal USB
+      cable, a three-contact aquabus/speed-signal cable, and a manual. No cables
+      are visible in this accession. Two loose metal fitting components and a
+      ruler appear beside the sensor, but the photographs do not establish the
+      fittings' manufacturer, thread, completeness, seal condition, or ownership
+      relationship to this sensor; they remain contextual evidence rather than
+      registered contents. No fluid ports or permanent product label are visible
+      clearly enough to document thread condition or a serial identifier. The
+      photographs do not establish free impeller movement, internal cleanliness,
+      prior coolant chemistry, seal condition, USB enumeration, aquabus address,
+      firmware, calibration, flow accuracy, alarm output, external-temperature
+      input, or leak integrity. Inspect the ports and seals dry, identify any
+      retained cables and fittings, configure and verify article type 53129 over
+      USB in aquasuite, then wet-test with known flow and pressure outside a
+      powered computer before restoration service.
+    reference_sources:
+      - title: Aqua Computer MPS user and installation manual
+        url: https://www.aquacomputer.de/tl_files/aquacomputer/downloads/manuals/mps_english.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer identity, article number, original delivery contents, impeller operation, installation, connectors, aquabus configuration, firmware, and service cautions
+      - title: Aqua Computer manuals index
+        url: https://aquacomputer.de/handbuecher.html
+        retrieved: '2026-08-15'
+        scope: manufacturer-hosted current manual index
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive inline flow-sensor record / manufacturer model verified
+        evidence: operator identification, three supplied Apple Photos derivative JPEGs, visible manufacturer and connector engravings, and Aqua Computer manufacturer documentation
+    tags:
+      - Aqua Computer
+      - high flow USB
+      - article 53129
+      - inline flow sensor
+      - mechanical impeller
+      - aquabus
+      - USB
+      - aquasuite
+      - external temperature input
+      - flow test pending
+      - leak test pending
+    estimated_value:
+    keep_sell_archive: keep pending test
+    date_logged: '2026-08-15'
 
   - id: FI-RES-001
     name: EK-Multioption RES X2 - 250 Advanced
@@ -575,21 +948,73 @@ items:
     date_logged: '2026-06-05'
 
   - id: FI-BLOCK-MOSFET-001
-    name: EK-MOSFET MSI X99 XPower water block
+    name: EK-MOSFET MSI X99 XPower - Nickel MOSFET water block
     category: water block
-    manufacturer: EK
-    model: EK-MOSFET MSI X99 XPower
+    manufacturer: EK Water Blocks
+    model: EK-MOSFET MSI X99 XPower - Nickel / Nickel Plexi / EAN 3831109815397
     quantity: 1
     associated_project: FI-PROJ-001
-    condition: boxed / needs contents verification
-    status: inventory / needs board compatibility confirmation
+    condition: boxed packaging photographed with edge and corner wear / box contents, seals, acrylic, nickel plating, thermal pads, backplate, and mounting hardware not yet inspected
+    status: package identity and Nickel Plexi variant verified / physical contents, completeness, condition, compatibility, and function pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - assets/initial-photos/matthewmarx-017.jpeg
       - assets/initial-photos/matthewmarx-018.jpeg
+      - assets/archive/objects/fi-block-mosfet-001-ek-mosfet-msi-x99-xpower/01-box-front.jpeg
+      - assets/archive/objects/fi-block-mosfet-001-ek-mosfet-msi-x99-xpower/02-box-oblique.jpeg
     notes: >
-      Box label identifies EK-MOSFET MSI X99 XPower. Confirm whether the block,
-      thermal pads, screws, manual, and any seals are present before assigning
-      value or compatibility.
+      Two August 15, 2026 photographs document the retail box for an EK-MOSFET
+      MSI X99 XPower water block. The front label identifies the model and the
+      printed material selector visibly marks Nickel Plexi. EK's archived
+      manufacturer page names the corresponding product EK-MOSFET MSI X99
+      XPower - Nickel, EAN 3831109815397, with a nickel-plated electrolytic
+      copper base, acrylic top, G1/4 threads, preinstalled nickel-plated brass
+      standoffs, black anodized aluminium backplate, thermal pads, and mounting
+      mechanism in the original package; fittings were not included. EK lists
+      physical compatibility with the MSI X99S XPOWER AC and visual
+      compatibility with the MSI X99A XPOWER AC. These are manufacturer product
+      specifications, not a claim that this photographed box still contains
+      those parts. The box remains unopened or otherwise un-inventoried in this
+      accession. Photograph every enclosed component and count the thermal
+      pads, backplate, fasteners, washers, standoffs, instructions, and seals
+      before changing the object to physically verified. Inspect acrylic for
+      cracks or clouding, nickel for corrosion or flaking, threads and O-rings,
+      then clean and pressure-test the block before any loop service.
+    reference_sources:
+      - title: EK-MOSFET MSI X99 XPower - Nickel product page
+        url: https://www.ekwb.com/shop/ek-mosfet-msi-x99-xpower-nickel
+        retrieved: '2026-08-15'
+        scope: manufacturer model identity, EAN, materials, thread type, original package contents, and Nickel Plexi designation
+      - title: EK-MOSFET MSI X99 XPower - Nickel compatibility list
+        url: https://www.ekwb.com/configurator/waterblock/3831109815397
+        retrieved: '2026-08-15'
+        scope: manufacturer compatibility classifications for MSI X99S XPOWER AC and MSI X99A XPOWER AC
+      - title: EK-MOSFET MSI X99 XPower installation manual
+        url: https://www.ekwb.com/shop/EK-IM/EK-IM-3831109815397.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer mounting procedure, thermal-pad requirements, backplate, and mounting hardware reference
+    lifecycle:
+      - date: '2026-08-15'
+        event: identity verified and evidence expanded
+        state: persistent provisional L'Archive boxed water-block record / package identity verified and contents unverified
+        evidence: operator accession, two supplied Apple Photos derivative JPEGs, prior inventory record, and EK manufacturer references
+    tags:
+      - EK Water Blocks
+      - EK-MOSFET MSI X99 XPower
+      - Nickel Plexi
+      - EAN 3831109815397
+      - MSI X99S XPOWER AC
+      - MSI X99A XPOWER AC
+      - MOSFET water block
+      - VRM water block
+      - G1/4
+      - Clean CSQ
+      - contents verification pending
+      - pressure test pending
     estimated_value:
     keep_sell_archive: undecided
     date_logged: '2026-06-05'
@@ -922,23 +1347,64 @@ items:
     date_logged: '2026-06-12'
 
   - id: FI-CASE-FLEX-002
-    name: CaseLabs Flex-Bay vent
-    category: case filter
+    name: CaseLabs Mercury S8 360 mm front Flex-Bay radiator mount / vent
+    category: case accessory / radiator mount
     manufacturer: CaseLabs
-    model: Flex-Bay front vent panel
+    model: Mercury S8 front 360 mm Flex-Bay assembly / exact historical catalog name unverified
     quantity: 1
     associated_project: FI-PROJ-001
-    condition: used / visible dust and handling marks
-    status: L'Archive test entry / extracted from grouped filter record
+    condition: used white powder-coated perforated assembly / visible dust, handling marks, and possible edge wear / hardware completeness and fitment not yet checked
+    status: operator-identified as S8 front 360 mm Flex-Bay hardware / exact CaseLabs catalog name, component completeness, and fitment verification pending
+    lifecycle_state: provisional
+    evidence_state:
+      - operator_report
+      - verified_source_fact
+      - inference
     photos:
       - L-Archive/IMG_1127.HEIC
       - L-Archive/IMG_1128.HEIC
       - L-Archive/IMG_1129.HEIC
       - L-Archive/IMG_1130.HEIC
+      - assets/archive/objects/fi-case-flex-002-s8-360-front-flex-bay/01-front-flex-bay-panel.jpeg
     notes: >
       Human-confirmed from L'Archive Contact Sheet 2 final transition and
-      Contact Sheet 3 first image. Front Flex-Bay vent panel intended for
-      fan-backed airflow in the bay stack.
+      Contact Sheet 3 first image. The operator's August 15, 2026 accession
+      identifies this retained white perforated assembly as the 360 mm front
+      Flex-Bay hardware for the CaseLabs Mercury S8. The new photograph shows a
+      long perforated face, white powder-coated side flanges, repeated fastener
+      holes along the edges, and one attached or adjacent black lead. The frame
+      does not show a radiator, fans, loose fasteners, rear mounting geometry,
+      CaseLabs label, or an installed chassis relationship. The preserved
+      Mercury S8 reference manual identifies a nine-position 5.25-inch Flex-Bay
+      column in the left/front chassis section and a 360 mm maximum radiator
+      size, which is consistent with the operator identification but does not
+      establish the original retail accessory name. Treat "front 360 mm
+      Flex-Bay radiator mount / vent" as the controlled provisional name until
+      rear views, measurements, hardware count, and direct fitment in the S8 are
+      documented. Do not merge it with FI-CL-PART-004, the separate dual-120
+      chassis front plate.
+    reference_sources:
+      - title: CaseLabs Mercury S8 plus pedestal assembly reference and recovery manual
+        path: src/assets/reference/hang-on-to-each-other/caselabs-mercury-s8/CaseLabs_Mercury_S8_Manual_001_ForgottenIndustries.pdf
+        scope: locally preserved compiled reference for the nine-position Flex-Bay column and 360 mm chassis radiator capacity; not proof of the historical accessory catalog name
+      - title: CaseLabs manuals index
+        url: https://caselabs.se/home/manuals/
+        retrieved: '2026-08-15'
+        scope: current CaseLabs manuals portal; no exact accessory-name confirmation located
+    lifecycle:
+      - date: '2026-08-15'
+        event: identity refined and evidence expanded
+        state: persistent provisional L'Archive CaseLabs accessory record / S8 front 360 mm Flex-Bay relationship recorded
+        evidence: operator identification, one supplied Apple Photos master derivative, four earlier HEIC views, and the preserved S8 reference manual
+    tags:
+      - CaseLabs
+      - Mercury S8
+      - Flex-Bay
+      - front radiator mount
+      - 360 mm radiator
+      - perforated vent
+      - white powder coat
+      - fitment verification pending
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-06-12'
@@ -1517,18 +1983,86 @@ items:
     category: drone aircraft
     manufacturer: DJI
     model: Mini 3
-    quantity: 1 planned
+    quantity: 0 retained
     associated_project: FI-PROJ-004
-    condition: planned replacement / not acquired
-    status: target platform for next PEREGRINE aircraft
+    condition: acquired defective / returned to vendor / not retained
+    status: closed / returned to Amazon for defect
     photos: []
     notes: >
-      Planned Mini 3 replacement aircraft for Perry 3. Track acquisition,
-      baseline inspection, firmware, battery inventory, propeller package, and
-      first flight as separate archive events once the aircraft is in hand.
+      A03 was acquired as the planned Mini 3 replacement and arrived defective.
+      The aircraft was returned to Amazon rather than repaired or flown. It
+      never entered service and holds no flight record. Retained here as
+      acquisition evidence: the replacement attempt happened and failed, and
+      the archive records the attempt rather than skipping to the next
+      aircraft. Defect particulars are NEEDS_CONFIRMATION.
     estimated_value:
-    keep_sell_archive: keep pending test
+    keep_sell_archive: archive evidence / not retained
     date_logged: '2026-06-05'
+
+  - id: FI-DRONE-004
+    name: Perry 4 / PEREGRINE-A04
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 3
+    quantity: 0 retained
+    associated_project: FI-PROJ-004
+    condition: acquired / resold / not retained
+    status: closed / flipped on Facebook Marketplace
+    photos: []
+    notes: >
+      A04 was acquired after the A03 return and moved on through Facebook
+      Marketplace rather than entering the flight program. Operator-confirmed as
+      a Mini 3, matching the A02 through A04 airframe. Acquisition channel and
+      resale particulars remain NEEDS_CONFIRMATION. No flight record. Recorded
+      because the aircraft passed through custody, and custody is part of the
+      chain whether or not the airframe ever flew.
+    estimated_value:
+    keep_sell_archive: archive evidence / not retained
+    date_logged: '2026-08-16'
+
+  - id: FI-DRONE-005
+    name: Perry 5 / PEREGRINE-A05 / SCADUBIRD-SB001
+    category: drone aircraft
+    manufacturer: DJI
+    model: Mini 5 Pro Fly More
+    quantity: 0 retained
+    associated_project: FI-PROJ-004
+    condition: acquired / returned to vendor / payment charged back / not retained
+    status: closed / Best Buy charge reversed
+    photos: []
+    notes: >
+      A05 is the designation hinge. It is the last aircraft numbered in the
+      PEREGRINE series and the first designated SCADUBIRD, SB001, marking the
+      point where PEREGRINE evolves into SCADUBIRD as the program's registry.
+      Best Buy charged for the Mini 5 Pro Fly More; the aircraft was returned
+      and the charge was reversed by chargeback. It never entered service and
+      holds no flight record. Chargeback dates and resolution particulars are
+      NEEDS_CONFIRMATION.
+    estimated_value:
+    keep_sell_archive: archive evidence / not retained
+    date_logged: '2026-08-16'
+
+  - id: FI-DRONE-ACC-001
+    name: SCADUBIRD ground and optics kit
+    category: drone accessories
+    manufacturer: DJI and third party
+    model: DJI RC 2 controller / ND filter set / assorted Mini 5 Pro accessories
+    quantity: 1 set
+    associated_project: FI-PROJ-004
+    condition: on order / partially in hand
+    status: held without airframe pending target platform acquisition
+    photos: []
+    notes: >
+      Ground equipment and optics ordered against the Mini 5 Pro that was
+      returned under FI-DRONE-005. The kit currently has no aircraft to fly on.
+      Per UAV Division documentation style, compatibility against the stated
+      target instrument is recorded as uncertain rather than assumed: the DJI
+      RC 2 is expected to carry forward, while Mini 5 Pro specific ND filters
+      and airframe accessories are NEEDS_CONFIRMATION against an Air 3S. Verify
+      fitment before treating any item as usable on the target platform.
+    estimated_value:
+    keep_sell_archive: keep
+    date_logged: '2026-08-16'
 
   - id: FI-PHOTO-003
     name: Perry 1 / PEREGRINE-A01 Central / Oliver Night Photograph
@@ -1685,37 +2219,69 @@ items:
     date_logged: '2026-07-05'
 
   - id: FI-HW-MB-X99-001
+    accession_number: '009'
     name: MSI X99S XPOWER AC motherboard
     category: motherboard
     manufacturer: MSI
     model: X99S XPOWER AC
     quantity: 1
     associated_project: FI-PROJ-009
-    condition: recovered from storage / stored in plastic tray / CPU seated and latched / zero RAM installed / old paste preliminarily wiped
-    status: identified / no current-pass power-on / function completely unverified / fault isolation pending
+    condition: recovered from storage / stored in clear plastic tray / CPU seated and latched / zero RAM installed / old paste preliminarily wiped / surface dust, lint, and residual material visible
+    status: accessioned / identified / no current-pass power-on / function completely unverified / fault isolation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
     photos:
       - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-overview.jpg
       - assets/projects/x99-impact-recovery/msi-x99s-xpower-ac-cpu.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/01-board-overview.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/02-dimm-slots.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/03-controls-and-atx-power.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/04-controls-and-diagnostic-display.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/05-controls-and-voltage-points.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/06-vrm-capacitor-bank.jpg
+      - assets/archive/objects/fi-hw-mb-x99-001-msi-x99s-xpower-ac/07-eps-power-and-vrm-heatsink.jpg
     notes: >
-      E-ATX Intel X99 motherboard with LGA2011-v3 socket, eight DDR4 slots,
-      onboard diagnostic display, and an installed processor. Recovered records
-      and operator identification establish that the board operated in the 2014
+      ACCESSION 009. This accession attaches seven newly supplied July 18, 2026
+      Apple Photos derivative frames to the existing FI-HW-MB-X99-001 object;
+      it does not create a duplicate motherboard record. The photographs show
+      the MSI X99S XPOWER AC E-ATX board in a clear plastic storage tray with an
+      installed and latched processor, all eight DDR4 DIMM slots empty, the
+      onboard two-digit diagnostic display and OC controls present, and the
+      24-pin ATX and CPU-power sockets unconnected. Surface dust, lint, and
+      residual material are visible in several areas. A separate direct
+      heat-spreader photograph previously identified the seated processor as
+      FI-HW-CPU-X99-001, an Intel Core i7-5930K / SR20R / 3.50 GHz; the new
+      frames do not independently establish that marking. Recovered records and
+      operator identification establish that the board operated in the 2014
       test-bench system. It later became difficult to configure and would not
       boot reliably; the historical cause was never established, and no
       electrical failure was confirmed. The platform is the historically
       intended compute core for LE RÉDEMPTEURE, the main Mercury S8 cube within
       L’ARCHIVE, the artwork as a whole. As of July 30, 2026, the board remains
-      in its plastic storage tray with the i7-5930K seated and the socket latched.
-      Only a preliminary wipe of old thermal paste from the heat spreader has
-      occurred. All eight DIMM slots are empty. A local intake from one ammo can
-      and one Tupperware visibly establishes custody of loose HyperX Fury and
-      Corsair Vengeance LPX DDR4, but exact capacities, speeds, part numbers,
-      compatibility, and function remain unconfirmed. No power-on has occurred
-      during the current recovery pass. Move the board to a rigid nonconductive
-      bench surface before power. Preserve it as a repair candidate until visual
-      inspection, CMOS reset, minimum bench configuration, and diagnostic-code
-      capture are complete.
+      in its plastic storage tray with the i7-5930K seated and the socket
+      latched; only a preliminary wipe of old thermal paste from the heat
+      spreader has occurred. A local intake from one ammo can and one Tupperware
+      visibly establishes custody of loose HyperX Fury and Corsair Vengeance
+      LPX DDR4, but exact capacities, speeds, part numbers, compatibility, and
+      function remain unconfirmed. No power-on has occurred during the current
+      recovery pass, and the photographs do not establish POST, firmware state,
+      connector function, control function, or stability. Move the board to a
+      rigid nonconductive bench surface before power. Preserve it as a repair
+      candidate until dry visual inspection, CMOS reset, minimum bench
+      configuration, and diagnostic-code capture are complete. The seven
+      supplied files are Apple Photos derivative cache JPEGs, not unmodified
+      camera originals; exact unsanitized copies are retained locally outside
+      the public tree, while the registered derivatives have location metadata
+      removed.
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive motherboard record / accession 009
+        evidence: seven operator-supplied Apple Photos derivative cache JPEGs preserved with fixity; location-scrubbed public derivatives registered; present electrical function remains unverified
     tags:
+      - ACCESSION 009
       - MSI
       - X99S XPOWER AC
       - Intel X99
@@ -1788,28 +2354,68 @@ items:
     keep_sell_archive: archive / test pending
     date_logged: '2026-07-16'
 
-  - id: FI-HW-BLOCK-Z97-001
-    name: EK CPU and VRM monoblock for ASUS Maximus VII Impact
+  - id: FI-HW-BLOCK-Z87-001
+    name: EK-FB ASUS M6I monoblock for ASUS Maximus VI Impact
     category: water-cooling block
     manufacturer: EK Water Blocks
-    model: exact part number unverified
+    model: EK-FB ASUS M6I / transparent Original CSQ-style variant / exact SKU unverified
     quantity: 1
     associated_project: FI-PROJ-009
-    condition: recovered loose / prior coolant service unknown
-    status: fitment identified by operator / cleaning and pressure test pending
+    condition: recovered loose / transparent top and metallic base photographed / old thermal compound visible on base / prior coolant service unknown
+    status: identity corrected to Maximus VI Impact / product family verified / exact variant, completeness, cleaning, and pressure test pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - assets/projects/x99-impact-recovery/asus-impact-ek-monoblock.jpg
+      - assets/archive/objects/fi-hw-block-z87-001-ek-fb-asus-m6i/01-block-top.jpg
+      - assets/archive/objects/fi-hw-block-z87-001-ek-fb-asus-m6i/02-block-and-retained-parts.jpg
+      - assets/archive/objects/fi-hw-block-z87-001-ek-fb-asus-m6i/03-base-thermal-compound.jpg
+      - assets/archive/objects/fi-hw-block-z87-001-ek-fb-asus-m6i/04-edge-and-mounts.jpg
     notes: >
-      Acrylic-top EK cooling block retained with the Maximus VII Impact
-      platform and identified by the operator as its monoblock. Exact retail
-      part number and mounting-hardware completeness remain unverified. Do not
-      place it into a live loop until it has been opened or flushed as
-      appropriate, inspected for plate damage and residue, re-sealed if needed,
-      and pressure-tested outside the system.
+      Operator correction received 2026-08-15 identifies this block as the
+      monoblock retained for FI-HW-MB-Z87-001, the ASUS ROG Maximus VI Impact,
+      rather than the separately retained Maximus VII Impact. The durable ID is
+      therefore corrected from FI-HW-BLOCK-Z97-001 to FI-HW-BLOCK-Z87-001. EK's
+      original product announcement and installation manual identify the
+      compatible product family as EK-FB ASUS M6I, an all-in-one block for the
+      LGA1150 CPU, Intel Z87 PCH, and VRM/MOSFET section of the Maximus VI
+      Impact. The supplied photographs show a transparent Original CSQ-style
+      top, metallic base, installed fasteners or standoffs, and old thermal
+      compound on the CPU-contact region. Those visual features suggest one of
+      the nickel-base transparent variants, but no photographed SKU label or
+      packaging resolves the exact retail variant. The photographs do not
+      establish the internal plate condition, seal condition, mounting-hardware
+      completeness, original backplate retention, prior coolant chemistry,
+      cleanliness, leak integrity, flow, or successful service. Nearby tubing
+      and loose parts are context only and are not assigned to the block by
+      these frames. Do not place it into a live loop until it has been opened or
+      flushed as appropriate, inspected for plate damage and residue, re-sealed
+      if needed, and pressure-tested outside the system.
+    reference_sources:
+      - title: EK introduces ASUS Maximus VI Impact AIO water cooling solution
+        url: https://www.ekwb.com/news/ek-introduces-asus-maximus-vi-impact-aio-water-cooling-solution/
+        retrieved: '2026-08-15'
+        scope: manufacturer product-family identity, Maximus VI Impact compatibility, cooled components, construction variants, and original kit contents
+      - title: Installation and mounting manual for EK-FB ASUS M6I water block
+        url: https://www.ekwb.com/shop/EK-IM/EK-IM-3831109821053.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer fitment and installation reference for the ASUS Maximus VI Impact
+    lifecycle:
+      - date: '2026-08-15'
+        event: identity corrected
+        state: persistent provisional L'Archive cooling-artifact record / Maximus VI Impact relationship restored
+        evidence: operator correction, four supplied Apple Photos derivative JPEGs, and EK manufacturer references; former FI-HW-BLOCK-Z97-001 identifier retained in notes
     tags:
       - EK Water Blocks
+      - EK-FB ASUS M6I
       - monoblock
-      - ASUS Maximus VII Impact
+      - ASUS Maximus VI Impact
+      - Intel Z87
+      - LGA1150
+      - Original CSQ style
       - custom watercooling
       - pressure test pending
     estimated_value:
@@ -1817,30 +2423,67 @@ items:
     date_logged: '2026-07-16'
 
   - id: FI-HW-GPU-660TI-001
-    name: EVGA GeForce GTX 660 Ti with EK full-cover water block
+    name: EVGA GeForce GTX 660 Ti with EK-FC670 GTX full-cover water block
     category: graphics card / water-cooling assembly
     manufacturer: EVGA / EK Water Blocks
-    model: GeForce GTX 660 Ti / exact board and block variants unverified
+    model: GeForce GTX 660 Ti / exact EVGA board variant unverified / EK-FC670 GTX / exact material variant unverified
     quantity: 1 assembly
     associated_project: FI-PROJ-009
-    condition: recovered from storage / full-cover block and fittings installed
-    status: operator-identified / electrical and leak validation pending
+    condition: recovered from storage / full-cover block, black retention backplate, two fittings, and attached tubing photographed / prior coolant service unknown
+    status: card operator-identified / block family visually and manufacturer verified / exact card and block material variants, electrical function, cleaning, and pressure test pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
     photos:
       - assets/projects/x99-impact-recovery/evga-gtx-660-ti-ek-waterblock.jpg
+      - assets/archive/objects/fi-hw-gpu-660ti-001-evga-ek-fc670-gtx/01-assembly-top.jpeg
+      - assets/archive/objects/fi-hw-gpu-660ti-001-evga-ek-fc670-gtx/02-rear-io.jpeg
+      - assets/archive/objects/fi-hw-gpu-660ti-001-evga-ek-fc670-gtx/03-backplate-and-pcie.jpeg
+      - assets/archive/objects/fi-hw-gpu-660ti-001-evga-ek-fc670-gtx/04-block-marking.jpeg
     notes: >
-      EVGA graphics card identified by the operator as a GeForce GTX 660 Ti,
-      fitted with an EK full-cover GPU water block and two compression fittings.
-      The exact card and block part numbers are not legible in the current
-      public photograph. Treat the assembly as untested; inspect for residue or
-      corrosion, pressure-test the block separately, and use a known-good test
-      platform before assigning working status.
+      The operator identifies the retained EVGA graphics card as a GeForce GTX
+      660 Ti. Four supplied photographs show the assembled card, two installed
+      fittings with attached black tubing, dual DVI plus HDMI and DisplayPort
+      outputs, the PCIe edge, a black EK retention backplate, and the visible
+      `FC670 GTX` block marking beside the EK logo. EK's manufacturer product page and
+      manual identify the product family as EK-FC670 GTX and state compatibility
+      with supported GeForce GTX 670, GTX 660 Ti, and GTX 760 boards. The
+      photographs do not expose an EVGA product label, so the exact card
+      submodel, memory capacity, clocks, and PCB revision remain unverified. The
+      visible marking resolves the block family but not whether its cold plate
+      is bare copper or nickel-plated. The tubes and fittings are photographed
+      as installed parts of this assembly; the nearby green container and other
+      loose hardware are context only. No photograph establishes electrical
+      function, internal cleanliness, seal condition, prior coolant chemistry,
+      flow, or leak integrity. Inspect and clean the cooling assembly, confirm
+      mounting and thermal-pad condition, and pressure-test it outside a powered
+      system before applying coolant or assigning working status.
+    reference_sources:
+      - title: EK-FC670 GTX product page
+        url: https://www.ekwb.com/shop/ek-fc670-gtx
+        retrieved: '2026-08-15'
+        scope: manufacturer product-family identity, supported GPU families, cooled components, construction, thread standard, and original contents
+      - title: Installation and mounting manual for EK-FC670 GTX water block
+        url: https://www.ekwb.com/shop/EK-IM/EK-IM-3831109856482.pdf
+        retrieved: '2026-08-15'
+        scope: manufacturer reference-PCB fitment, installation, thermal-pad placement, and service cautions
+    lifecycle:
+      - date: '2026-08-15'
+        event: evidence expanded
+        state: persistent provisional L'Archive graphics and cooling assembly record / block family resolved
+        evidence: operator identification, four supplied Apple Photos derivative JPEGs, visible EK-FC670 GTX marking, and EK manufacturer references
     tags:
       - EVGA
       - GeForce GTX 660 Ti
       - EK Water Blocks
+      - EK-FC670 GTX
       - full-cover GPU block
+      - retention backplate
       - custom watercooling
       - untested
+      - pressure test pending
     estimated_value:
     keep_sell_archive: archive / test pending
     date_logged: '2026-07-16'
@@ -2329,7 +2972,7 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-07-31'
 
-  - id: FI-EPH-008
+  - id: FI-EPH-010
     name: Self-Aware
     category: ephemera
     quantity: 1 digital image
@@ -2337,7 +2980,7 @@ items:
     condition: digital / JPEG, 962×406 / captioned film still / origin unverified
     status: accessioned / catalogued curio
     photos:
-      - assets/ephemera/shadow-zone/fi-eph-008-self-aware.jpeg
+      - assets/ephemera/shadow-zone/fi-eph-010-self-aware.jpeg
     notes: >
       Found-image meme supplied for The Shadow Zone: a recognizable still from
       the Terminator franchise — a T-800 in a daylight desert — with a burned-in
@@ -2353,3 +2996,657 @@ items:
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-08-29'
+
+  - id: FI-BOOK-001
+    accession_number: '001'
+    name: LE ZOHAR / Special Pocket-Sized Edition
+    category: book
+    manufacturer: Kabbalah Centre International, Inc. (publisher)
+    model: Special pocket-sized edition / May 2016 China printing
+    publisher: Kabbalah Centre International, Inc.
+    isbn: '978-1-57189-903-3'
+    copyright_year: '2000'
+    printing: China / May 2016
+    quantity: 1 volume
+    associated_project: FI-PROJ-007
+    condition: in hand / cover, publication page, and front matter pages iii-v photographed / edge and gutter wear / localized staining or discoloration visible / completeness not established
+    status: accessioned / bibliographic identity verified / physical inspection incomplete
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos:
+      - assets/archive/objects/fi-book-001-le-zohar/01-cover-in-hand.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/02-publication-page.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/03-front-matter-page-iii.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/04-front-matter-page-iv.jpg
+      - assets/archive/objects/fi-book-001-le-zohar/05-getting-started-page-v.jpg
+    notes: >
+      Operator-designated LE ZOHAR accession. The cover photograph directly
+      verifies a dark blue, gold-stamped pocket volume whose cover reads
+      "ZOHAR," "SPECIAL POCKET-SIZED EDITION," and "THE KABBALAH CENTRE."
+      The photographed publication page records copyright 2000, publisher
+      Kabbalah Centre International, Inc., ISBN 978-1-57189-903-3, and "Printed
+      in China, May 2016." English-language explanatory front matter is visible
+      on pages iii-v. Visible evidence includes cover-edge and gutter wear plus
+      localized brown and olive discoloration or staining on the photographed
+      leaves; its cause and extent are unverified. The title page, total
+      pagination, completeness, full internal condition, acquisition history,
+      and wider provenance remain unverified. Byte-identical source photographs
+      are retained in local ignored intake; all five registered public assets
+      were checked and carry no location metadata detected by the repository
+      audit instrument.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record
+        evidence: operator-directed accession supported by one supplied cover photograph; bibliographic and internal inspection remains pending
+      - date: '2026-08-14'
+        event: bibliographic identity verified
+        state: provisional record retained pending complete physical inspection
+        evidence: publication-page photograph verifies copyright, publisher, ISBN, printing place, and printing date; front matter pages iii-v document language and visible condition
+    tags:
+      - LE ZOHAR
+      - Zohar
+      - The Kabbalah Centre
+      - pocket-sized edition
+      - May 2016 printing
+      - book
+      - printed matter
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-08-14'
+
+  - id: FI-WATCH-001
+    accession_number: '002'
+    name: Invicta Celestial Orbitha Automatic 69545
+    category: wristwatch
+    manufacturer: Invicta
+    model: Celestial Orbitha 69545
+    quantity: 1 watch
+    associated_project: FI-PROJ-007
+    condition: in hand / dial, exhibition caseback, and orange strap photographed / visible handling marks / controlled condition, operation, and timekeeping inspection pending
+    status: accessioned / model identity verified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    movement: mechanical automatic / caliber 3267z / Singapore / 24 jewels per official catalog
+    case: 45 mm / orange K9 glass per official catalog
+    crystal: sapphire per official catalog
+    band: orange rubber / 27 mm wide / 200 mm long per official catalog
+    water_resistance: caseback marked 5 bar / 50 m / 165 ft; not pressure-tested
+    photos:
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/01-dial-front.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/02-caseback-angle.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/03-dial-angle.jpg
+      - assets/archive/objects/fi-watch-001-invicta-celestial-orbitha-69545/04-caseback-straight.jpg
+    notes: >
+      ACCESSION 002. The supplied photographs directly verify an Invicta
+      skeleton-format automatic wristwatch with a translucent orange case,
+      orange strap, exhibition caseback, and caseback reference 69545. The
+      caseback is marked "AUTOMATIC," "ALL STAINLESS STEEL," "WATER RESISTANT
+      5bar (50m/165ft)," and "Singapore Movement." The current official Invicta
+      Stores product record identifies 69545 as the orange 45 mm Invicta
+      Celestial Orbitha Automatic with skeleton dial and supplies the recorded
+      catalog specifications. The photographs establish identity and custody,
+      not operation, accuracy, power reserve, pressure integrity, service
+      history, completeness, accessories, or final physical disposition.
+    reference_sources:
+      - title: Invicta Celestial Orbitha Automatic Men's Watch 69545
+        url: https://invictastores.com/products/invicta-celestial-mechanical-mens-watch-w-skeleton-dial-45mm-orange-69545
+        retrieved: '2026-08-14'
+        scope: manufacturer-store identity and specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 002
+        evidence: four operator-supplied photographs plus current official Invicta Stores model record; functional inspection remains pending
+    tags:
+      - ACCESSION 002
+      - Invicta
+      - Celestial Orbitha
+      - '69545'
+      - automatic watch
+      - skeleton dial
+      - exhibition caseback
+      - orange watch
+      - Singapore movement
+    estimated_value:
+    keep_sell_archive: unassigned / operator decision pending
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MB-Z87-001
+    accession_number: '003'
+    name: ASUS ROG Maximus VI Impact motherboard assembly
+    category: motherboard
+    manufacturer: ASUS
+    model: Maximus VI Impact / exact PCB revision not photographed
+    quantity: 1 board assembly
+    associated_project: FI-PROJ-009
+    condition: in hand / CPU socket empty with retention frame open / no CPU or DIMMs installed / loose surface debris visible / socket pins and accessory completeness not cleared by current photographs
+    status: accessioned / model identity verified / socket inspection and bench validation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    chipset: Intel Z87 per official ASUS specification
+    socket: Intel LGA1150 per official ASUS specification / empty in supplied photographs
+    form_factor: Mini-ITX / 17 cm × 17 cm per official ASUS specification
+    memory: 2 × DDR3 DIMM / maximum 16 GB per official ASUS specification
+    photos:
+      - assets/archive/objects/fi-hw-mb-z87-001-asus-maximus-vi-impact/01-board-overview.jpg
+      - assets/archive/objects/fi-hw-mb-z87-001-asus-maximus-vi-impact/02-socket-overview.jpg
+    notes: >
+      ACCESSION 003. The motherboard silkscreen directly identifies an ASUS ROG
+      Maximus VI Impact. The photographs show a mini-ITX board with an empty
+      LGA1150-style socket, open retention frame, two red DIMM slots, rear I/O,
+      onboard Start control, and installed vertical daughterboard assemblies.
+      No CPU or memory is installed. Loose fibrous or dust-like debris is
+      visible near the upper daughterboard and power section; its nature and
+      extent are unverified. The official ASUS specification identifies the
+      Maximus VI Impact as an Intel Z87, LGA1150, mini-ITX motherboard with two
+      DDR3 DIMM slots. On August 15, 2026, the operator recalled that this
+      platform may have used an Intel Core i7-4790K but explicitly expressed
+      uncertainty. No processor is present in the current photographs, and no
+      processor object is assigned from that recollection alone. The current
+      photographs do not establish the exact PCB revision, straight socket
+      pins, complete accessory set, clean electrical condition, successful
+      POST, BIOS state, or any functional result.
+    reference_sources:
+      - title: ROG Maximus VI Impact technical specifications
+        url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-vi-impact-model/spec/
+        retrieved: '2026-08-14'
+        scope: manufacturer identity and platform specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 003
+        evidence: two operator-supplied photographs plus current official ASUS specification; socket and functional inspection remain pending
+    tags:
+      - ACCESSION 003
+      - ASUS ROG
+      - Maximus VI Impact
+      - Intel Z87
+      - LGA1150
+      - DDR3
+      - mini-ITX
+      - motherboard recovery
+      - socket inspection pending
+    estimated_value:
+    keep_sell_archive: unassigned / operator decision pending
+    date_logged: '2026-08-14'
+
+  - id: FI-EPH-008
+    accession_number: '004'
+    name: Forgotten Industries founder business card
+    category: ephemera
+    manufacturer: Forgotten Industries
+    model: Founder business card / early identity artifact
+    quantity: 1 card
+    associated_project: FI-PROJ-007
+    condition: in hand / both faces photographed / creasing, edge and corner wear, staining, and discoloration visible
+    status: accessioned / identity and service scope verified / contact-bearing face restricted
+    lifecycle_state: restricted
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos:
+      - assets/archive/objects/fi-eph-008-forgotten-industries-founder-card/01-logo-reverse.jpg
+    notes: >
+      ACCESSION 004. The photographed card identifies Matthew Marx as the
+      founder of Forgotten Industries and records an early service scope of
+      custom PC builds, gaming, office, and repairs. Its reverse carries an
+      early Forgotten Industries identity mark. The contact-bearing face
+      contains direct personal contact fields and is therefore retained only
+      in restricted, repository-ignored intake; those fields are deliberately
+      omitted from this public record. The registered public photograph shows
+      only the logo reverse. Visible evidence establishes substantial handling
+      wear, including creasing, softened or damaged corners, edge wear, and
+      localized staining or discoloration. Production date, printer, print
+      run, distribution history, and acquisition or custody history beyond the
+      operator-directed accession remain unverified.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent restricted L'Archive object record / accession 004
+        evidence: two operator-supplied source photographs retained locally; one location-checked logo-reverse photograph admitted as the public derivative; direct contact fields withheld
+    tags:
+      - ACCESSION 004
+      - Forgotten Industries
+      - business card
+      - founder artifact
+      - identity artifact
+      - ephemera
+      - early service scope
+      - contact information restricted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-001
+    accession_number: '005'
+    name: SK hynix H5AN4G8NMFR-TFC desktop DDR4 UDIMM
+    category: memory
+    manufacturer: SK hynix
+    model: H5AN4G8NMFR-TFC packages / unbranded desktop UDIMM
+    quantity: 1 module
+    associated_project: FI-PROJ-009
+    condition: in hand / one populated face closely photographed / white residue or foreign material and surface marks visible / reverse face, contacts, label area, and SPD contents not inspected
+    status: accessioned / package marking verified / capacity and nominal speed inferred / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - inference
+      - operator_report
+    memory_type: DDR4 UDIMM / inferred from visible package marking and desktop-DIMM form factor
+    capacity: 4 GB / inferred from one visible single-sided eight-package configuration of 4 Gb devices; SPD validation pending
+    nominal_data_rate: DDR4-2133 / inferred from H5AN4G8NMFR-TFC marking and ASUS X99 U-DIMM QVL; not electrically verified
+    voltage: 1.2 V / reference configuration only; module behavior unverified
+    photos:
+      - assets/archive/objects/fi-hw-mem-001-skhynix-ddr4-udimm/01-module-overview.jpg
+      - assets/archive/objects/fi-hw-mem-001-skhynix-ddr4-udimm/02-package-marking.jpg
+    notes: >
+      ACCESSION 005. Four supplied photographs directly establish custody of a
+      desktop memory module with visible SK hynix DRAM package markings
+      "H5AN4G8NMFR" and "TFC." The visible populated face appears to carry
+      eight packages. An official ASUS X99 U-DIMM qualified-vendor list records
+      4 GB single-sided DDR4-2133 modules using the matching
+      H5AN4G8NMFRTFC package identifier; the 4 GB and DDR4-2133 descriptions in
+      this record are therefore labeled inferences rather than a final module
+      identification. The photographs also show a small unlabeled numeric
+      sticker, but no manufacturer module label, part number, or SPD readout.
+      White residue or foreign material and surface marks are visible around the
+      packages. The present evidence does not establish the reverse-side
+      configuration, capacity, rank, timing profile, provenance, compatibility,
+      contact condition, electrical condition, or successful memory test. It is
+      cataloged as a candidate for controlled X99 recovery testing, not as
+      proven compatible or operational memory.
+    reference_sources:
+      - title: ASUS X99 Series Motherboard U-DIMM Qualified Vendors Lists
+        url: https://dlcdnets.asus.com.cn/pub/ASUS/mb/LGA2011/X99-A/X99_Series_DRAM_QVL0603.pdf?model=X99-DELUXE%2FU3.1
+        retrieved: '2026-08-14'
+        scope: official X99 U-DIMM reference showing 4 GB single-sided DDR4-2133 modules with H5AN4G8NMFRTFC packages
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 005
+        evidence: four operator-supplied photographs plus an official ASUS X99 U-DIMM reference; all electrical and SPD-derived attributes remain pending controlled inspection
+    tags:
+      - ACCESSION 005
+      - SK hynix
+      - H5AN4G8NMFR-TFC
+      - DDR4
+      - DDR4-2133 inferred
+      - desktop UDIMM
+      - 4 GB inferred
+      - X99 recovery candidate
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-002
+    accession_number: '006'
+    name: Kingston HyperX Genesis KHX1600C9D3/4G DDR3 memory pair
+    category: memory
+    manufacturer: Kingston Technology
+    model: HyperX Genesis KHX1600C9D3/4G / labels read KHX1600C9D3/4GETR
+    quantity: 2 modules / 8 GB total
+    associated_project: FI-PROJ-007
+    condition: in hand / blue heat spreaders, labels, and contact edges photographed / visible light surface dust or debris and minor cosmetic marks / reverse faces and electrical condition not inspected
+    status: accessioned / identity and catalog specifications verified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    memory_type: DDR3 non-ECC unbuffered DIMM / 240-pin
+    capacity: 4 GB per module / 8 GB total
+    nominal_data_rate: DDR3-1600 / 1600 MT/s / CL9
+    memory_profile: 9-9-9 at 1.65 V per Kingston record
+    rank: 1Rx8 per Kingston record
+    photos:
+      - assets/archive/objects/fi-hw-mem-002-kingston-hyperx-genesis-ddr3/01-pair-overview.jpg
+      - assets/archive/objects/fi-hw-mem-002-kingston-hyperx-genesis-ddr3/02-labels-and-contacts.jpg
+    notes: >
+      ACCESSION 006. Three supplied photographs directly establish custody of
+      two matching blue Kingston HyperX Genesis desktop DIMMs. Each label reads
+      KHX1600C9D3/4GETR, identifies a 1.65 V module, and carries Kingston
+      branding. Kingston's discontinued-product record for the base module part
+      KHX1600C9D3/4G identifies it as a 4 GB DDR3-1600, CL9, non-ECC,
+      unbuffered 240-pin DIMM with a 1Rx8 layout and a 9-9-9 / 1.65 V profile.
+      The photographs establish matching label identity and physical custody,
+      not the pair's original retail-kit provenance, SPD contents, contact
+      condition, compatibility with a particular host, stability, or successful
+      memory-test result. Light surface dust or debris and minor cosmetic marks
+      are visible. This DDR3 pair is retained as a separate archive memory set;
+      it is not a candidate for the DDR4-only X99 recovery platform.
+    reference_sources:
+      - title: Kingston KHX1600C9D3/4G discontinued-model record
+        url: https://www.kingston.com/en/memory/search/discontinuedmodels?partid=KHX1600C9D3%2F4G
+        retrieved: '2026-08-14'
+        scope: manufacturer identity, capacity, DDR3-1600 speed, CL9, 1Rx8, 1.65 V, non-ECC unbuffered, and 240-pin specifications
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 006
+        evidence: three operator-supplied photographs plus manufacturer discontinued-product record; controlled inspection and memory testing remain pending
+    tags:
+      - ACCESSION 006
+      - Kingston
+      - HyperX Genesis
+      - KHX1600C9D3/4G
+      - DDR3
+      - DDR3-1600
+      - 8 GB pair
+      - desktop DIMM
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-HW-MEM-003
+    accession_number: '007'
+    name: Corsair XMS3 CMX4GX3M1A1600C9 DDR3 modules
+    category: memory
+    manufacturer: Corsair
+    model: XMS3 CMX4GX3M1A1600C9
+    quantity: 2 modules / 8 GB total
+    associated_project: FI-PROJ-007
+    condition: in hand / labels and partial contact edges photographed / black XMS heat spreaders present / full reverse-side, contact, and electrical inspection pending
+    status: accessioned / identity and catalog specifications verified / matched model pair, original retail-kit provenance unverified / function unverified
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    memory_type: DDR3 DIMM / 240-pin
+    capacity: 4 GB per module / 8 GB total
+    nominal_data_rate: DDR3-1600 / 1600 MHz / PC3-12800 / CL9
+    memory_profile: 9-9-9-24 at 1.65 V tested profile; 1333 MHz at 1.5 V SPD profile per Corsair record
+    pcb_revisions: 5.11 and 2.12 as printed on the photographed module labels
+    assembly: Taiwan per labels
+    photos:
+      - assets/archive/objects/fi-hw-mem-003-corsair-xms3-ddr3/01-pair-labels.jpg
+    notes: >
+      ACCESSION 007. The supplied photograph directly establishes custody of
+      two Corsair XMS3 desktop DIMMs with the identical base part number
+      CMX4GX3M1A1600C9. Each label records 1600 MHz, 4 GB (1×4 GB), 9-9-9-24,
+      and 1.65 V. The two modules carry different printed PCB revisions, 5.11
+      and 2.12; they are therefore cataloged as a matched-model pair rather
+      than an asserted original two-module retail kit. Corsair's product record
+      identifies this SKU as a 4 GB DDR3-1600 C9 XMS3 module with a 240-pin
+      DIMM interface, PC3-12800 speed rating, 1.65 V tested profile, and 1333
+      MHz / 1.5 V SPD profile. The photographed state does not establish full
+      contact condition, reverse-side configuration, SPD contents, prior use,
+      host compatibility, stability, or successful memory testing. This DDR3
+      pair is retained separately from the DDR4-only X99 recovery platform.
+    reference_sources:
+      - title: Corsair XMS3 4GB DDR3-1600 C9 memory kit CMX4GX3M1A1600C9
+        url: https://www.corsair.com/ww/en/p/memory/cmx4gx3m1a1600c9/xms3-a-4gb-1x4gb-ddr3-1600mhz-c9-memory-kit-cmx4gx3m1a1600c9
+        retrieved: '2026-08-14'
+        scope: manufacturer identity, module capacity, DDR3-1600 speed, PC3-12800 rating, timing, tested and SPD voltage, and 240-pin specification
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent provisional L'Archive object record / accession 007
+        evidence: one operator-supplied photograph plus the current Corsair product record; controlled inspection and memory testing remain pending
+    tags:
+      - ACCESSION 007
+      - Corsair
+      - XMS3
+      - CMX4GX3M1A1600C9
+      - DDR3
+      - DDR3-1600
+      - PC3-12800
+      - 8 GB pair
+      - desktop DIMM
+      - memory test pending
+    estimated_value:
+    keep_sell_archive: archive / controlled test candidate
+    date_logged: '2026-08-14'
+
+  - id: FI-EPH-009
+    accession_number: '008'
+    name: Vault Show auction-screen capture for blue-dial wristwatch
+    category: ephemera
+    manufacturer: unidentified
+    model: Vault Show display / lot 49097
+    quantity: 1 restricted screen capture
+    associated_project: FI-PROJ-007
+    condition: source screenshot retained locally / third-party account handles and live-auction interface visible / no physical object inspection
+    status: accessioned / screen state transcribed / object identity, auction outcome, acquisition, custody, and function unverified
+    lifecycle_state: restricted
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+    photos: []
+    notes: >
+      ACCESSION 008. The supplied screen capture shows a Vault Show auction
+      display for a blue-dial, multi-register wristwatch with a metal bracelet.
+      The visible listing identifier is 49097. At the captured screen state,
+      the displayed amount is $23.00, the interface shows 00:10 remaining, and
+      the viewer-facing control reads "Ineligible to bid." These are
+      time-bounded screen facts only: the capture does not establish the
+      watch's maker, model, materials, movement, condition, authenticity,
+      ownership, auction completion, winning bidder, payment, shipment,
+      receipt, or physical custody. The source image includes third-party
+      account handles and live-auction interface material; it is retained in
+      restricted local intake and deliberately omitted from the public asset
+      tree. No claim is made that this accession documents a purchased,
+      received, or inspected wristwatch.
+    lifecycle:
+      - date: '2026-08-14'
+        event: accessioned
+        state: persistent restricted L'Archive screen-evidence record / accession 008
+        evidence: one operator-supplied screenshot retained in ignored intake; public record is a non-identifying transcription only
+    tags:
+      - ACCESSION 008
+      - Vault Show
+      - auction screen capture
+      - blue-dial wristwatch
+      - lot 49097
+      - transaction state unverified
+      - restricted source
+    estimated_value:
+    keep_sell_archive: unassigned / no physical custody established
+    date_logged: '2026-08-14'
+
+  - id: FI-COIN-001
+    name: 1900 Indian Head cent
+    category: coin / numismatic object
+    manufacturer: United States Mint
+    model: Indian Head cent / dated 1900 / exact mint and variety unverified
+    quantity: 1 coin
+    associated_project: FI-DSR-004
+    condition: in hand / circulated brown copper-colored coin in stapled cardboard 2x2 holder / visible wear, marks, and discoloration / cleaning history, alteration, authenticity, and grade unverified
+    status: new accession / date and design family visually identified / controlled numismatic inspection pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/01-holder-obverse-overview.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/02-obverse-and-holder.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/03-reverse-close.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/04-reverse-overview.jpg
+      - assets/archive/objects/fi-coin-001-1900-indian-head-cent/05-obverse-close.jpg
+    notes: >
+      The operator supplied the intake label "WHEAT PENNY." Five photographs
+      instead show a coin dated 1900 with the Indian Head obverse and the
+      shield, wreath, and ONE CENT reverse; the holder is also handwritten
+      "1900 Indian Cent." The United States Mint records the Indian Head
+      design as appearing from 1859 through 1909, while the Wheat reverse belongs
+      to Lincoln cents issued from 1909 through 1958. The original operator
+      wording is preserved in the accession manifest, but the controlled object
+      identity is therefore 1900 Indian Head cent. The coin remains in a stapled
+      white cardboard 2x2 holder. Its visible surfaces show circulated wear,
+      brown coloration, marks, and areas of discoloration. These photographs do
+      not establish authenticity, exact composition, weight, diameter, edge
+      condition, die variety, mint of manufacture, alteration, cleaning,
+      environmental damage, or a numerical or adjectival grade. The holder's
+      handwritten $20 is recorded only as a prior holder or asking-price
+      annotation; it is not an appraisal, verified sale price, or current value.
+      A separate handwritten "4x" notation is visible but remains uninterpreted.
+      A read-only review of authenticated eBay purchase history on 2026-08-15
+      returned no matching order for searches "1900," "Indian," or "cent."
+      Acquisition provenance therefore remains uncorroborated; this negative
+      keyword result does not prove nonpurchase because generic live-auction
+      titles may omit the physical object's identity.
+      Do not clean, polish, dip, or otherwise alter the coin. Preserve it in the
+      current holder until a controlled inspection can photograph both faces and
+      the edge and record weight and diameter; if rehoused, use an inert archival
+      coin holder and preserve the annotated original holder as associated
+      evidence.
+    reference_sources:
+      - title: United States Mint penny history
+        url: https://www.usmint.gov/learn/coins-and-medals/circulating-coins/penny
+        retrieved: '2026-08-15'
+        scope: official design chronology identifying the Indian Head design as 1859-1909 and the Wheat reverse as 1909-1958
+      - title: United States Mint penny FAQs
+        url: https://www.usmint.gov/news/media-kit/penny
+        retrieved: '2026-08-15'
+        scope: official early-design chronology and Wheat Penny date range
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic-object record / 1900 Indian Head cent identity visually established
+        evidence: five operator-supplied photographs, visible holder annotations, and United States Mint design chronology; authenticity, grade, cleaning history, and value remain unverified
+    tags:
+      - Indian Head cent
+      - 1900 cent
+      - United States one cent
+      - numismatic object
+      - circulated coin
+      - cardboard 2x2 holder
+      - prior $20 holder annotation
+      - authenticity pending
+      - grade pending
+      - cleaning history unverified
+    estimated_value:
+    keep_sell_archive: archive / numismatic inspection pending
+    date_logged: '2026-08-15'
+
+  - id: FI-COIN-002
+    name: Auction-labeled numismatic lots 600, 601, 602, and 605
+    category: coin / numismatic lot group
+    manufacturer: mixed or unidentified
+    model: labeled lots 600 / 601 / 602 / 605
+    quantity: 4 labeled lots / individual piece counts unverified
+    associated_project: FI-DSR-004
+    condition: in hand / mixed coin-like pieces retained in clear bags and a rigid clear tube / surface condition not individually inspectable through packaging
+    status: new accession / lot labels visually documented / detailed inventory, attribution, composition, authenticity, and valuation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-002-auction-lots-600-601-602-605/01-lots-600-601-602-overview.jpg
+      - assets/archive/objects/fi-coin-002-auction-lots-600-601-602-605/02-lot-605-and-group-overview.jpg
+    notes: >
+      The operator assigns four auction-labeled groups to this accession: lots
+      600, 601, 602, and 605. Two photographs show the numbered labels and QR
+      codes. The visible secondary label codes are 0402-0600, 0402-0601,
+      0402-0602, and 0402-0605. Lots 600, 601, and 602 are retained in clear zip
+      bags; lot 605 is retained in a rigid clear tube containing a stack of
+      silver-colored coin-like pieces. Additional coin-like pieces, packaging,
+      and handling tools are visible contextually but are not assigned to this
+      accession without a matching visible label. Individual piece counts are
+      unverified because contents overlap and are partly obscured by packaging.
+      A read-only review of authenticated eBay purchase history on 2026-08-15
+      found four orders dated 2026-08-11 whose generic live-auction listing
+      titles end in lot identifiers 600, 601, 602, and 605. This corroborates
+      acquisition through eBay and the mapping of those four auction lot numbers
+      to the photographed labels only. The order titles do not identify the
+      enclosed coins, and private order identifiers, account details, seller
+      identity, and acquisition totals are deliberately excluded from this
+      public record.
+      Some visible pieces show portraits, legends, and reeded edges, but the
+      photographs do not establish denominations, dates, mints, countries,
+      varieties, exact object types, metal composition, precious-metal content,
+      weight, dimensions, authenticity, grade, value, or provenance beyond the
+      corroborated eBay lot-level acquisition. The QR codes are preserved
+      photographically but were not decoded.
+      Keep the four lots physically separated and retain each original numbered
+      label with its contents. Do not clean, polish, dip, or otherwise alter any
+      piece. Before attribution, photograph each piece individually on both
+      faces and the edge, then record weight and diameter.
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic lot-group record / lots 600, 601, 602, and 605
+        evidence: two operator-supplied photographs establish the visible lot labels, packaging, and presence of multiple coin-like pieces; detailed contents and all numismatic determinations remain pending
+    tags:
+      - auction lot 600
+      - auction lot 601
+      - auction lot 602
+      - auction lot 605
+      - numismatic lot group
+      - mixed coin-like pieces
+      - original lot labels retained
+      - inventory pending
+      - composition unverified
+      - authenticity pending
+    estimated_value:
+    keep_sell_archive: archive / lot-level inspection pending
+    date_logged: '2026-08-15'
+
+  - id: FI-COIN-003
+    name: Hand-labeled 859 worn Charles IV-era portrait coin
+    category: coin / numismatic object
+    manufacturer: unidentified mint / probable Spanish or Spanish colonial issue
+    model: right-facing Charles IV-era portrait type / date appears 1800 / denomination and mint unverified
+    quantity: 1 coin-like object
+    associated_project: FI-DSR-004
+    condition: in hand / heavily worn gray-colored coin in clear zip bag / visible marks, discoloration, and irregular rim / full surface and edge condition unverified through packaging
+    status: new accession / handwritten identifier 859 documented / probable historical design family inferred / exact attribution, composition, authenticity, grade, and valuation pending
+    lifecycle_state: provisional
+    evidence_state:
+      - verified_source_fact
+      - operator_report
+      - inference
+    photos:
+      - assets/archive/objects/fi-coin-003-hand-labeled-859-portrait-coin/01-bag-and-handwritten-859-overview.jpg
+      - assets/archive/objects/fi-coin-003-hand-labeled-859-portrait-coin/02-portrait-face-close.jpg
+    notes: >
+      Two photographs show one heavily worn gray-colored coin-like object in a
+      clear zip bag with a white handwritten sticker reading 859 over the upper
+      part of the object. The documented face shows a right-facing portrait,
+      peripheral legend fragments, star-like devices, and a bottom date that
+      appears to read 1800. These visible features are consistent with a Charles
+      IV-era Spanish or Spanish colonial portrait coin, but that identification
+      remains a provisional visual inference rather than a completed
+      attribution. Wear, packaging, glare, and the sticker prevent definitive
+      transcription. Only the portrait face is documented; the reverse and edge
+      are not shown. The photographs do not establish exact denomination, date,
+      mint, issuing authority, variety, country of issue, metal composition,
+      precious-metal content, weight, diameter, authenticity, grade, cleaning or
+      alteration history, value, provenance, or acquisition state. A read-only
+      review of authenticated eBay purchase history on 2026-08-15 returned no
+      matching order for the search "859." Acquisition provenance therefore
+      remains uncorroborated; this negative keyword result does not prove
+      nonpurchase because generic live-auction titles may omit the physical
+      object's identifier. Keep the object in its current bag and retain the
+      handwritten 859 identifier with it. Do not clean, polish, dip, or
+      otherwise alter it. For controlled
+      attribution, photograph both faces and the edge outside the bag, then
+      record weight and diameter.
+    lifecycle:
+      - date: '2026-08-15'
+        event: accessioned
+        state: persistent provisional L'Archive numismatic-object record / handwritten identifier 859
+        evidence: two operator-supplied photographs establish the bagged object, handwritten identifier, and visible portrait face; all exact numismatic determinations remain pending
+    tags:
+      - handwritten identifier 859
+      - Charles IV-era portrait type
+      - probable Spanish or Spanish colonial coin
+      - date appears 1800
+      - heavily worn coin
+      - attribution pending
+      - composition unverified
+      - authenticity pending
+      - reverse not documented
+    estimated_value:
+    keep_sell_archive: archive / numismatic inspection pending
+    date_logged: '2026-08-15'

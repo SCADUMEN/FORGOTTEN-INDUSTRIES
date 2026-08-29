@@ -6,11 +6,85 @@ permalink: /oeuvre/index.html
 eleventyExcludeFromCollections: true
 ---
 {% set doctrinePosts = collections.posts | doctrinePosts %}
+{% set manuscriptPosts = collections.posts | manuscriptPosts %}
 <section class="section-landing-hero">
   <div class="section-inner">
     <div class="spine-hero-title-block">
       <h1>L'ŒUVRE</h1>
       <p class="spine-hero-meta fi-caption-box"><span class="fi-prompt-marker">&gt;</span> The living body of work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="oeuvre-ticker-band" aria-labelledby="oeuvre-ticker-heading">
+  <div class="section-inner">
+    <div class="oeuvre-ticker-header">
+      <h2 id="oeuvre-ticker-heading" class="sr-only">Recent work shelves</h2>
+      <div class="oeuvre-ticker-plate">
+        <div class="oeuvre-ticker-label" aria-hidden="true">
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> L'ŒUVRE / 5 shelves</span>
+        </div>
+        <div class="oeuvre-ticker" role="list" aria-label="L'Œuvre shelves">
+          <a class="oeuvre-ticker-item" role="listitem" href="/projects/">
+            <span>L'Œuvre / Dossiers</span>
+            <strong>{{ archive.projects | count }} dossier records</strong>
+          </a>
+          <a class="oeuvre-ticker-item" role="listitem" href="/posts/">
+            <span>L'Œuvre / Manuscrits</span>
+            <strong>{{ manuscriptPosts | count }} manuscripts</strong>
+          </a>
+          <a class="oeuvre-ticker-item" role="listitem" href="/atlas/">
+            <span>L'Œuvre / Rapports</span>
+            <strong>{{ archive.atlasReports | count }} ATLAS reports</strong>
+          </a>
+          <a class="oeuvre-ticker-item" role="listitem" href="/doctrine/">
+            <span>L'Œuvre / Doctrine</span>
+            <strong>{{ doctrinePosts | count }} doctrine entries</strong>
+          </a>
+          <a class="oeuvre-ticker-item" role="listitem" href="/provenance/">
+            <span>L'Œuvre / Provenance</span>
+            <strong>Source chain and build record</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-directory" aria-labelledby="oeuvre-directory-heading">
+  <div class="section-inner">
+    <h2 id="oeuvre-directory-heading" class="sr-only">L'Œuvre index</h2>
+    <div class="directory-grid plate-card-grid oeuvre-directory-grid">
+      <a id="dossiers" href="/projects/">
+        <h3 class="oeuvre-card-title">
+          <span>LES DOSSIERS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> RECORDS ({{ archive.projects | count }})</span>
+        </h3>
+      </a>
+      <a href="/posts/">
+        <h3 class="oeuvre-card-title">
+          <span>LES MANUSCRITS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> MANUSCRIPTS ({{ manuscriptPosts | count }})</span>
+        </h3>
+      </a>
+      <a href="/atlas/">
+        <h3 class="oeuvre-card-title">
+          <span>LES RAPPORTS</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> ATLAS REPORTS ({{ archive.atlasReports | count }})</span>
+        </h3>
+      </a>
+      <a href="/doctrine/">
+        <h3 class="oeuvre-card-title">
+          <span>LA DOCTRINE</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> SYSTEMS DOCTRINE ({{ doctrinePosts | count }})</span>
+        </h3>
+      </a>
+      <a href="/provenance/">
+        <h3 class="oeuvre-card-title">
+          <span>LA PROVENANCE</span>
+          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> SOURCE CHAIN</span>
+        </h3>
+      </a>
     </div>
   </div>
 </section>
@@ -35,58 +109,5 @@ eleventyExcludeFromCollections: true
         <p>Système de recherche et de développement / deployments, instruments, productive-capacity basis, intended pathways, and attributable return.</p>
       </li>
     </ul>
-  </div>
-</section>
-
-<section class="oeuvre-ticker-band" aria-labelledby="oeuvre-ticker-heading">
-  <div class="section-inner">
-    <div class="oeuvre-ticker-header">
-      <h2 id="oeuvre-ticker-heading" class="sr-only">Recent work shelves</h2>
-      <div class="oeuvre-ticker-plate">
-        <div class="oeuvre-ticker-label" aria-hidden="true">
-          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> L'ŒUVRE / 3 shelves</span>
-        </div>
-        <div class="oeuvre-ticker" role="list" aria-label="L'Œuvre shelves">
-          <a class="oeuvre-ticker-item" role="listitem" href="/projects/">
-            <span>L'Œuvre / Dossiers</span>
-            <strong>{{ archive.projects | count }} dossier records</strong>
-          </a>
-          <a class="oeuvre-ticker-item" role="listitem" href="/atlas/">
-            <span>L'Œuvre / Rapports</span>
-            <strong>{{ archive.fieldLogs | count }} ATLAS reports</strong>
-          </a>
-          <a class="oeuvre-ticker-item" role="listitem" href="/doctrine/">
-            <span>L'Œuvre / Doctrine</span>
-            <strong>{{ doctrinePosts | count }} doctrine entries</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-directory" aria-labelledby="oeuvre-directory-heading">
-  <div class="section-inner">
-    <h2 id="oeuvre-directory-heading" class="sr-only">L'Œuvre index</h2>
-    <div class="directory-grid plate-card-grid oeuvre-directory-grid">
-      <a id="dossiers" href="/projects/">
-        <h3 class="oeuvre-card-title">
-          <span>LES DOSSIERS</span>
-          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> RECORDS ({{ archive.projects | count }})</span>
-        </h3>
-      </a>
-      <a href="/atlas/">
-        <h3 class="oeuvre-card-title">
-          <span>LES RAPPORTS</span>
-          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> ATLAS REPORTS ({{ archive.fieldLogs | count }})</span>
-        </h3>
-      </a>
-      <a href="/doctrine/">
-        <h3 class="oeuvre-card-title">
-          <span>LA DOCTRINE</span>
-          <span class="fi-caption-box"><span class="fi-prompt-marker">&gt;</span> SYSTEMS DOCTRINE ({{ doctrinePosts | count }})</span>
-        </h3>
-      </a>
-    </div>
   </div>
 </section>

@@ -3,4 +3,12 @@
 /archive.html /l-archive/ 301
 /inventory.html /archive/inventory/ 301
 /field-logs/voice/ /field-logs/ 301
+# ATLAS report detail pages moved from the voice Field Log namespace to their
+# own index at /atlas/. This splat must stay below the /field-logs/voice/ rule
+# above, which is matched first, and it only fires for deeper paths because
+# /field-logs/ itself is a real page.
+/field-logs/:slug/ /atlas/:slug/ 301
+/archive/field-logs/ /archive/atlas-reports/ 301
+/archive/aerial-documentation /l-archive/from-on-high/ 301
+/archive/aerial-documentation/ /l-archive/from-on-high/ 301
 /docs/ai-generation-citation-standard.md /provenance/#citation-standards 301

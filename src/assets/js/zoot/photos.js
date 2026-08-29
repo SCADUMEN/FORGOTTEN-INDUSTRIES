@@ -1,15 +1,17 @@
-// Background-photograph scheduler for ZOOT. Preloads/decodes images from the
-// build-time manifest and drives a two-slot cross-fade the shader composites
-// into the oil film. GL texture slot 0 is uPhotoA, slot 1 is uPhotoB; `front`
-// tracks which slot is fully shown so we fade into the back slot and never
-// re-upload the image we just displayed. Returns per-frame photo state:
-// { mix, amount, scaleA, scaleB } — amount stays 0 until the first image is
-// live and when the manifest is empty, so ZOOT is visually unchanged then.
+// Background-photograph scheduler for ZOOT. Two independent layers feed the
+// shader: the base layer holds and cross-fades the Matthew Marx set one at a
+// time, while the Shadow Zone overlay cross-fades continuously on a second
+// texture pair so one found image is always mid-transition. Each layer is a
+// two-slot cross-fade; createPhotos runs one per layer and merges their state.
+//
+// GL texture slots: base uses 0 (A) / 1 (B), overlay uses 2 (C) / 3 (D). Each
+// stream tracks its own front slot (local 0/1) and uploads at slotOffset+slot,
+// so it re-uploads only the image it is fading toward. Merged per-frame state:
+// base -> { mix, amount, scaleA, scaleB }, overlay -> { mix2, amount2, scaleC,
+// scaleD }. amount/amount2 stay 0 until the first image of that layer is live
+// and when its list is empty, so a missing layer leaves ZOOT unchanged.
 
-const HOLD = 9 // s a photo holds before fading out
-const FADE = 3.5 // s cross-fade
-const RAMP = 2.5 // s initial presence ramp-in
-const TARGET = 1.1 // peak presence (~30% stronger than the original 0.85)
+const RAMP = 2.5 // s initial presence ramp-in (shared by both layers)
 
 // object-fit: cover as a UV scale for coverUV() in the shader.
 function coverScale(imgAspect, viewAspect) {
@@ -19,20 +21,36 @@ function coverScale(imgAspect, viewAspect) {
   ]
 }
 
-export function createPhotos({ manifest, renderer, getAspect }) {
+// Fisher-Yates, in place. Runtime-only so playback order differs each page
+// load; the build manifest stays ordered and reproducible.
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
+// One two-slot cross-fade layer. `slotOffset` maps its local slots 0/1 onto the
+// renderer's absolute photo texture slots (base 0, overlay 2). `hold` 0 makes
+// the layer transition continuously. Returns per-frame { mix, amount, scaleA,
+// scaleB } for its own pair.
+function makeStream({ list, slotOffset, renderer, getAspect, hold, fade, target }) {
   const state = { mix: 0, amount: 0, scaleA: [1, 1], scaleB: [1, 1] }
-  const list = Array.isArray(manifest) ? manifest.filter((p) => p && p.src) : []
 
   if (!list.length) {
     return { update: () => state, reset() {}, setRenderer() {} }
   }
 
+  // Shuffle a copy so each load starts on a different image and order.
+  list = shuffle(list.slice())
+
   const single = list.length === 1
   const cache = new Map() // src -> { img, aspect }
-  const slotAspect = [1, 1] // GL slot 0 / 1 image aspect
+  const slotAspect = [1, 1] // local slot 0 / 1 image aspect
   let gl = renderer
   let cursor = 0
-  let front = 0 // GL slot currently fully shown
+  let front = 0 // local slot currently fully shown
   let phase = 'boot' // boot -> hold -> fade
   let fadeStart = 0
   let backReady = false // next image uploaded into the back slot
@@ -60,7 +78,7 @@ export function createPhotos({ manifest, renderer, getAspect }) {
     load(next)
       .then((entry) => {
         const back = 1 - front
-        gl.uploadPhoto(back, entry.img)
+        gl.uploadPhoto(slotOffset + back, entry.img)
         slotAspect[back] = entry.aspect
         cursor = next
         backReady = true
@@ -78,7 +96,7 @@ export function createPhotos({ manifest, renderer, getAspect }) {
   function boot() {
     load(cursor)
       .then((entry) => {
-        gl.uploadPhoto(front, entry.img)
+        gl.uploadPhoto(slotOffset + front, entry.img)
         slotAspect[front] = entry.aspect
         phase = 'hold'
         fadeStart = 0
@@ -118,18 +136,18 @@ export function createPhotos({ manifest, renderer, getAspect }) {
       }
 
       // Presence ramps in once the first photo is live, then holds.
-      state.amount += (TARGET - state.amount) * Math.min(1, dt / RAMP)
+      state.amount += (target - state.amount) * Math.min(1, dt / RAMP)
 
       if (!single) {
         if (phase === 'hold') {
           if (!backReady && !loading) primeBack()
           if (fadeStart === 0) fadeStart = time // mark hold start
-          if (backReady && time - fadeStart >= HOLD) {
+          if (backReady && time - fadeStart >= hold) {
             phase = 'fade'
             fadeStart = time
           }
         } else if (phase === 'fade') {
-          const t = Math.min(1, (time - fadeStart) / FADE)
+          const t = Math.min(1, (time - fadeStart) / fade)
           // Fade toward the back slot; direction depends on which slot is front.
           state.mix = front === 0 ? t : 1 - t
           if (t >= 1) {
@@ -146,6 +164,70 @@ export function createPhotos({ manifest, renderer, getAspect }) {
       state.scaleA = coverScale(slotAspect[0], view)
       state.scaleB = coverScale(slotAspect[1], view)
       return state
+    },
+  }
+}
+
+export function createPhotos({ base, overlay, renderer, getAspect }) {
+  const baseList = Array.isArray(base) ? base.filter((p) => p && p.src) : []
+  const overlayList = Array.isArray(overlay)
+    ? overlay.filter((p) => p && p.src)
+    : []
+
+  // Base keeps the calm hold-and-fade rhythm; overlay holds for 0s so a Shadow
+  // Zone image is always transitioning. target tempers the overlay so two
+  // stacked screen-blends do not wash out the film.
+  const baseStream = makeStream({
+    list: baseList,
+    slotOffset: 0,
+    renderer,
+    getAspect,
+    hold: 9,
+    fade: 3.5,
+    target: 1.1,
+  })
+  const overlayStream = makeStream({
+    list: overlayList,
+    slotOffset: 2,
+    renderer,
+    getAspect,
+    hold: 0,
+    fade: 7,
+    target: 0.85,
+  })
+
+  const merged = {
+    mix: 0,
+    amount: 0,
+    scaleA: [1, 1],
+    scaleB: [1, 1],
+    mix2: 0,
+    amount2: 0,
+    scaleC: [1, 1],
+    scaleD: [1, 1],
+  }
+
+  return {
+    setRenderer(r) {
+      baseStream.setRenderer(r)
+      overlayStream.setRenderer(r)
+    },
+    reset() {
+      baseStream.reset()
+      overlayStream.reset()
+    },
+    update(time) {
+      const b = baseStream.update(time)
+      const o = overlayStream.update(time)
+      merged.mix = b.mix
+      merged.amount = b.amount
+      merged.scaleA = b.scaleA
+      merged.scaleB = b.scaleB
+      merged.mix2 = o.mix
+      merged.amount2 = o.amount
+      merged.scaleC = o.scaleA
+      merged.scaleD = o.scaleB
+      return merged
     },
   }
 }

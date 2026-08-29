@@ -34,10 +34,17 @@ test('home page renders', async ({ page }) => {
   await expect(
     page.getByRole('link', { name: 'Open the ATLAS dossier' })
   ).toHaveAttribute('href', '/projects/atlas/')
-  await expect(page.locator('.homepage-docent img')).toHaveAttribute(
+  // The homepage shows the extracted display cell, never the full sprite
+  // sheet: serving the sheet meant shipping 2.65 MB to display one 192x208
+  // frame. The intrinsic size is asserted alongside the source so a regression
+  // back to the sheet cannot pass by swapping the filename alone.
+  const docentImage = page.locator('.homepage-docent img')
+  await expect(docentImage).toHaveAttribute(
     'src',
-    '/assets/atlas/atlas-archive-docent-spritesheet.webp'
+    '/assets/atlas/atlas-archive-docent-cell-01.webp'
   )
+  await expect(docentImage).toHaveAttribute('width', '192')
+  await expect(docentImage).toHaveAttribute('height', '208')
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
@@ -118,6 +125,7 @@ test('representative route families remain contained at 320px', async ({
     '/blog/',
     '/posts/',
     '/archive/objects/fi-case-001/',
+    '/archive/taxonomy/',
     '/hang-on-to-each-other/wrist-field-instruments/',
     '/contact.html',
     '/hash/',
@@ -135,6 +143,33 @@ test('representative route families remain contained at 320px', async ({
 
     expect(dimensions.scrollWidth, route).toBe(dimensions.viewport)
   }
+})
+
+test('native taxonomy separates authority from source vocabulary', async ({
+  page,
+}) => {
+  const response = await page.goto('/archive/taxonomy/')
+  expect(response?.status()).toBe(200)
+
+  await expect(page.locator('main')).toContainText('FI-TAXONOMY-v1.0')
+  await expect(
+    page.getByRole('heading', { name: 'Our language first.' })
+  ).toBeVisible()
+  await expect(page.locator('#public-layers')).toContainText("L'ŒUVRE")
+  await expect(page.locator('#record-families')).toContainText('ATLAS report')
+  await expect(page.locator('#evidence-states')).toContainText(
+    'Machine transcription'
+  )
+  await expect(page.locator('#lifecycle')).toContainText('Quarantine')
+  await expect(page.locator('#source-vocabulary')).toContainText(
+    'discovery vocabulary, not the controlled FI authority'
+  )
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.scrollWidth).toBe(dimensions.viewport)
 })
 
 test('contact route exposes complete archive channels', async ({ page }) => {
@@ -184,15 +219,21 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
 
   response = await page.goto('/oeuvre/')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(3)
+  // One card per public shelf, per the architecture dossier's shelf table.
+  await expect(page.locator('.oeuvre-directory-grid > a')).toHaveCount(5)
   await expect(page.locator('.oeuvre-directory-grid > a')).toHaveText([
     /LES DOSSIERS/,
+    /LES MANUSCRITS[\s\S]*MANUSCRIPTS/,
     /LES RAPPORTS[\s\S]*ATLAS REPORTS/,
     /LA DOCTRINE[\s\S]*SYSTEMS DOCTRINE/,
+    /LA PROVENANCE[\s\S]*SOURCE CHAIN/,
   ])
-  await expect(
-    page.locator('.oeuvre-directory-grid > a').nth(2)
-  ).toHaveAttribute('href', '/doctrine/')
+  const oeuvreCards = page.locator('.oeuvre-directory-grid > a')
+  await expect(oeuvreCards.nth(0)).toHaveAttribute('href', '/projects/')
+  await expect(oeuvreCards.nth(1)).toHaveAttribute('href', '/posts/')
+  await expect(oeuvreCards.nth(2)).toHaveAttribute('href', '/atlas/')
+  await expect(oeuvreCards.nth(3)).toHaveAttribute('href', '/doctrine/')
+  await expect(oeuvreCards.nth(4)).toHaveAttribute('href', '/provenance/')
 
   response = await page.goto('/blog/')
   expect(response?.status()).toBe(200)
@@ -212,10 +253,16 @@ test('Signal and Oeuvre keep transmission and stabilized-work shelves separate',
   response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  await expect(page.locator('main')).toContainText(
+  await expect(page.locator('main')).toContainText('A Way In')
+  // The shelves partition the collection: a post appears on exactly one. The
+  // Prelude and the Le Horologist dispatch are Le Blog records, and used to be
+  // listed here as well because the old string matching let them match twice.
+  await expect(page.locator('main')).not.toContainText(
     'A Thing Documented Is a Thing Not Yet Lost'
   )
-  await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).not.toContainText(
+    'The Machinations of Time'
+  )
   await expect(page.locator('main')).not.toContainText(
     'A Way In // Le Signal Form'
   )
@@ -547,8 +594,11 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   let response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(2)
-  await expect(page.locator('main')).toContainText(
+  // "A Way In" is the shelf's only entry and carries a custom permalink, so it
+  // is not matched by the dated /posts/ pattern.
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(0)
+  await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).not.toContainText(
     "The Machinations of Time / L'Horologist"
   )
   await expect(page.locator('main')).not.toContainText('LE ZOOT Enters Service')
@@ -604,8 +654,13 @@ test('CaseLabs intake objects are searchable canonical inventory', async ({
 }) => {
   const response = await page.goto('/l-archive/?q=FI-CL')
   expect(response?.status()).toBe(200)
-  await expect(page.locator('#archive-search-status')).toHaveText('11 results')
-  await expect(page.locator('#archive-search-results > li')).toHaveCount(11)
+  // 11 FI-CL-PART-* objects, plus the CaseLabs dossier and any object whose
+  // own notes cross-reference a Flex-Bay part (e.g. a radiator mounted in
+  // FI-CL-PART-011, or a plate explicitly disambiguated from FI-CL-PART-004)
+  // — search matches the substring anywhere in a record's indexed text, not
+  // only in its id, so a careful cross-reference is a legitimate extra hit.
+  await expect(page.locator('#archive-search-status')).toHaveText('14 results')
+  await expect(page.locator('#archive-search-results > li')).toHaveCount(14)
   await expect(page.locator('#archive-search-results')).toContainText(
     'L’ARCHIVE / CaseLabs Mercury S8 Restoration'
   )

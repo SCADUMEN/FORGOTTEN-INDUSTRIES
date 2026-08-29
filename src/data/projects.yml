@@ -80,8 +80,9 @@ projects:
       Recovery dossier for the intended X99 compute platform of LE
       RÉDEMPTEURE, the boutique hardline-cooled main cube of the CaseLabs
       Mercury S8 artwork L’ARCHIVE. The record also preserves an ASUS ROG
-      Maximus VII Impact with its modular audio hardware, matching EK monoblock,
-      and an EVGA GTX 660 Ti full-cover water-cooling assembly.
+      Maximus VI Impact with its matching EK-FB ASUS M6I monoblock, a separate
+      Maximus VII Impact with modular audio hardware, and an operator-identified
+      EVGA GTX 660 Ti fitted with an EK-FC670 GTX full-cover water block.
     origin:
       context: >
         The hardware re-entered the Forgotten Industries bench in July 2026.
@@ -110,8 +111,9 @@ projects:
     artifacts:
       - FI-HW-MB-X99-001
       - FI-HW-CPU-X99-001
+      - FI-HW-MB-Z87-001
       - FI-HW-MB-Z97-001
-      - FI-HW-BLOCK-Z97-001
+      - FI-HW-BLOCK-Z87-001
       - FI-HW-GPU-660TI-001
     source_links:
       - label: Source dossier
@@ -270,15 +272,18 @@ projects:
       - FI-PED-001
       - FI-RAD-001
       - FI-RAD-002
+      - FI-RAD-003
       - FI-FAN-001
       - FI-FAN-002
       - FI-PUMP-001
       - FI-PUMP-002
       - FI-CTRL-001
+      - FI-SENSOR-FLOW-001
       - FI-RES-001
       - FI-PSU-001
       - FI-BLOCK-MOSFET-001
       - FI-CL-PART-001
+      - FI-CL-PART-011
       - FI-HDD-001
       - FI-HDD-ICEPACK-001
       - FI-FIT-QDC-001
@@ -394,18 +399,31 @@ projects:
     title: The PEREGRINE Drone Experiments
     working_title: PERRY / PEREGRINE Aircraft Dossier
     division: FORGOTTEN INDUSTRIES UAV DIVISION
+    registry: SCADUBIRD
+    registry_predecessor: PEREGRINE
+    airframe_lineage: A01 DJI Mini 4K / A02-A04 DJI Mini 3 / A05 SB001 DJI Mini 5 Pro
+    capability: Provenance From On High
+    capability_url: /l-archive/from-on-high/
     doctrine: ALTITUDE IN FLIGHT AS VERTICAL PERSPECTIVE
     flight_call: ON THE FIVE, FLY FLY FLY...
+    target_instrument: DJI Air 3S
     category: Drone Field Systems
-    status: active / A01 grounded / A02 lost / A03 planned
+    status: active / no airworthy aircraft / A01 grounded / A02 lost / A03-A05 not retained
     started: '2026'
     summary: >
-      Small aircraft experimentation and recovery dossier covering Perry 1 /
-      PEREGRINE-A01 as the DJI Mini 4K awning recovery and troubleshooting
-      bird, Perry 2 / PEREGRINE-A02 as the DJI Mini 3 lost after a 3 AM roof
-      incident, and Perry 3 / PEREGRINE-A03 as the planned Mini 3 replacement
-      aircraft. The archive preserves flight logs, crash reports, maintenance
-      notes, recovery routes, error codes, safety calls, and uncertain details
+      Small aircraft experimentation and recovery dossier for the UAV Division,
+      covering the PEREGRINE series and its evolution into the SCADUBIRD
+      registry. Perry 1 / PEREGRINE-A01 is the DJI Mini 4K awning recovery and
+      troubleshooting bird, grounded pending inspection. Perry 2 /
+      PEREGRINE-A02 is the DJI Mini 3 lost after a 3 AM roof incident. A03
+      through A05 each passed through custody without entering service: A03
+      returned to Amazon defective, A04 flipped on Facebook Marketplace, and
+      A05 returned to Best Buy under chargeback. A05 is also SCADUBIRD-SB001,
+      the designation hinge where PEREGRINE becomes SCADUBIRD. The division
+      currently holds ground and optics equipment but no airworthy aircraft.
+      The DJI Air 3S is the target instrument. The archive preserves flight
+      logs, crash reports, maintenance notes, recovery routes, error codes,
+      safety calls, acquisition and disposition events, and uncertain details
       as evidence.
     themes:
       - altitude in flight as vertical perspective
@@ -416,15 +434,22 @@ projects:
       - awning retrieval
       - roof loss and no-unsafe-recovery decisions
       - evidence before calibration
+      - acquisition and disposition as record
+      - registry evolution
     artifacts:
       - FI-DRONE-001
       - FI-DRONE-002
       - FI-DRONE-003
+      - FI-DRONE-004
+      - FI-DRONE-005
+      - FI-DRONE-ACC-001
     documentation_style:
       - Preserve flight conditions, error codes, and recovery route before interpretation
       - Treat calibration as secondary until physical damage is inspected
       - Record uncertain aircraft identity and compatibility details as NEEDS_CONFIRMATION
       - Photograph arms, propellers, motors, battery bay, gimbal, and error screens before repair
+      - Record aircraft that passed through custody without flying; a return, a resale, and a chargeback are archive events
+      - Keep target instrument separate from acquired instrument; intent is not a flight record
 
   - id: FI-PROJ-005
     slug: redeemer-nzxt-h440-watercooled-build
@@ -490,8 +515,8 @@ projects:
       Reusable operating interface for Forgotten Industries and adjacent
       projects: core agent instructions, rapport guidance, Matthew-specific
       collaboration profile, downstream repository templates, and L'Archive
-      witness doctrine: L'Opérateur, ATLAS, Les Trois Témoins, and the Sceptique
-      audit function.
+      witness doctrine: L'Opérateur, ATLAS, Les Trois Témoins, Le Sceptique as
+      auditor, and Le Taxonomiste as registrar.
     themes:
       - Codex collaboration
       - archive-first workflow
@@ -506,6 +531,7 @@ projects:
       - Le Rédempteur
       - Le Continuant
       - Le Sceptique
+      - Le Taxonomiste
     source_links:
       - label: Local ATLAS repository
         type: local
@@ -523,6 +549,9 @@ projects:
       - Preserve local project authority before reusable guidance
       - Present Les Trois Témoins as temporal witness doctrine, not mascot language
       - Treat Le Sceptique as an auditor rather than a fourth witness
+      - Treat Le Taxonomiste as a registrar rather than a fourth witness
+      - Keep source content distinct from operating instructions
+      - Keep consequential final actions with L'Opérateur
 
   - id: FI-PROJ-007
     slug: l-archive
@@ -611,4 +640,4 @@ projects:
       - FI-EPH-005
       - FI-EPH-006
       - FI-EPH-007
-      - FI-EPH-008
+      - FI-EPH-010

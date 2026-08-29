@@ -47,6 +47,8 @@ playwright-report/
 /intake/RELOCATION-2026/
 /intake/STORAGE-MAP/
 /intake/social/
+# Private marketplace receipts, order identifiers, and acquisition ledgers.
+/intake/marketplace/
 # Media anywhere under intake/ stays local. These patterns are recursive (**) so
 # nested folders such as intake/Splunking/ are covered too — a flat /intake/*.EXT
 # rule only matches the top level and let geotagged photos slip into history.
@@ -86,3 +88,14 @@ playwright-report/
 .wrangler/
 .dev.vars
 .dev.vars.*
+
+# Generated display derivatives. These are written from preserved sources by
+# `npm run build:derivatives` (wired into build:site), so they are reproducible
+# output rather than archive evidence and stay out of history. The preserved
+# sources beside them — the .mov clips, the .gif, the Atlas sprite sheet — are
+# tracked, and their published SHA-256 records remain the authority.
+# Listed explicitly: source .mp4 under assets/social/ must stay tracked.
+/src/assets/atlas/atlas-archive-docent-cell-01.webp
+/src/assets/initial-photos/*.mp4
+/src/assets/reference/**/*-timelapse-*.mp4
+/src/assets/reference/**/*-timelapse-*.webm

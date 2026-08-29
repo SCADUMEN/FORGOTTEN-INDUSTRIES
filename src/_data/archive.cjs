@@ -30,10 +30,20 @@ module.exports = function () {
       inventory: [],
       atlasReportProvenance: {},
       fieldLogs: [],
+      atlasReports: [],
       voiceLogs: [],
       socialPosts: [],
     }
   }
 
-  return JSON.parse(fs.readFileSync(archivePath, 'utf8'))
+  return withAtlasReportAlias(JSON.parse(fs.readFileSync(archivePath, 'utf8')))
+}
+
+// `fieldLogs` is the published schema's key for what the site calls ATLAS
+// Reports, and it cannot be renamed without breaking dist/forgotten-industries
+// .json for consumers reading schemaVersion 0.1.0. Templates address the same
+// array as `atlasReports` so the name matches the route and the public label;
+// the JSON key stays put.
+function withAtlasReportAlias(archive) {
+  return { ...archive, atlasReports: archive.fieldLogs || [] }
 }

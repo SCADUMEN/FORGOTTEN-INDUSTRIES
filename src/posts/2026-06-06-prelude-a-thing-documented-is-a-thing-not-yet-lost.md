@@ -2,6 +2,7 @@
 title: "A Thing Documented Is a Thing Not Yet Lost"
 slug: "a-thing-documented-is-a-thing-not-yet-lost"
 category: "Prelude"
+shelf: "signal"
 type: "Prelude"
 entry: "000"
 date: "2026-06-06"

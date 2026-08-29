@@ -1,51 +1,45 @@
-// Build-time manifest of ZOOT background photographs. References the archive's
-// already-published photo set IN PLACE (src/assets/initial-photos, served at
-// /assets/initial-photos/*) — nothing is copied. An evenly-spaced sample keeps
-// the bottom "BACKGROUND PHOTOS:" credit line short while still drifting across
-// the set; the ZOOT film cross-fades through whatever is listed here.
+// Build-time manifest of ZOOT background photographs. References already-published
+// photo sets IN PLACE — nothing is copied. Two layers feed the ZOOT film:
+//   base    — the full Matthew Marx photo set (src/assets/initial-photos), the
+//             main rotation that holds and cross-fades one at a time.
+//   overlay — the Shadow Zone ephemera (src/assets/ephemera/shadow-zone), a
+//             second layer that cross-fades continuously on top so one found
+//             image is always mid-transition.
 //
-// Exposed to templates as `zootPhotos`: a sorted array of { src, label }.
-// The credit link points at the file itself; the label is the humanized
-// filename. To curate: change SOURCE_DIR / PHOTO / SAMPLE below. An empty or
-// missing source -> [] and the feature no-ops (ZOOT looks unchanged).
+// Exposed to templates as `zootPhotos`: { base, overlay }, each a sorted array
+// of { src }. The full sets are listed (no sampling) since the credit line was
+// retired. A missing source directory -> [] and that layer no-ops (ZOOT is
+// visually unchanged for it). To curate: edit the SOURCES table below.
 
 const fs = require('fs')
 const path = require('path')
 
-const SOURCE_DIR = path.resolve(__dirname, '..', 'assets', 'initial-photos')
-const PUBLIC_BASE = '/assets/initial-photos'
-const PHOTO = /^matthewmarx-\d+\.jpe?g$/i
-const SAMPLE = 8 // keep the credit line small; raise for a denser rotation
-
-// "matthewmarx-004.jpeg" -> "Matthewmarx 004"
-function humanize(file) {
-  return path
-    .basename(file, path.extname(file))
-    .replace(/[_-]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase())
+// Each layer: an absolute source dir, the public URL base it maps to, and the
+// filename pattern that qualifies a file.
+const SOURCES = {
+  base: {
+    dir: path.resolve(__dirname, '..', 'assets', 'initial-photos'),
+    publicBase: '/assets/initial-photos',
+    pattern: /^matthewmarx-\d+\.jpe?g$/i,
+  },
+  overlay: {
+    dir: path.resolve(__dirname, '..', 'assets', 'ephemera', 'shadow-zone'),
+    publicBase: '/assets/ephemera/shadow-zone',
+    pattern: /^fi-eph-\d+.*\.jpe?g$/i,
+  },
 }
 
-// Deterministic evenly-spaced pick (no Math.random — builds stay reproducible).
-function evenSample(items, count) {
-  if (items.length <= count) return items
-  const step = items.length / count
-  const out = []
-  for (let i = 0; i < count; i++) out.push(items[Math.floor(i * step)])
-  return out
-}
-
-module.exports = () => {
-  if (!fs.existsSync(SOURCE_DIR)) return []
-
-  const files = fs
-    .readdirSync(SOURCE_DIR)
-    .filter((file) => PHOTO.test(file))
+// All qualifying files in a directory, sorted, as { src }. Missing dir -> [].
+function listPhotos({ dir, publicBase, pattern }) {
+  if (!fs.existsSync(dir)) return []
+  return fs
+    .readdirSync(dir)
+    .filter((file) => pattern.test(file))
     .sort((a, b) => a.localeCompare(b))
-
-  return evenSample(files, SAMPLE).map((file) => ({
-    src: `${PUBLIC_BASE}/${file}`,
-    label: humanize(file),
-  }))
+    .map((file) => ({ src: `${publicBase}/${file}` }))
 }
+
+module.exports = () => ({
+  base: listPhotos(SOURCES.base),
+  overlay: listPhotos(SOURCES.overlay),
+})

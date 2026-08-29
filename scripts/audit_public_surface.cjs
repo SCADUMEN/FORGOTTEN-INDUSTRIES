@@ -24,17 +24,35 @@ const forbiddenNames = [
   /(^|\/)(?:id_rsa|id_ed25519|passphrase\.txt)$/i,
   /\.(?:key|kdbx|p12|pem|pfx)$/i,
 ]
+// A leaked local path is never itself part of a larger token — it starts at
+// a quote, whitespace, punctuation, or the start of a string. Without that
+// boundary, these patterns also match a URL path segment that happens to
+// read the same way, e.g. `/home/` inside `https://caselabs.se/home/manuals/`,
+// a real external reference a record can legitimately cite. The lookbehind
+// excludes exactly that case — the character directly before the match is a
+// domain-name character (letters, digits, `.`, `-`) — while still catching a
+// genuine `file:///home/...` URI, where the preceding character is `/`.
+const NOT_PRECEDED_BY_HOSTNAME = '(?<![A-Za-z0-9.-])'
 const forbiddenContent = [
   ['private key material', /-----BEGIN [A-Z ]*PRIVATE KEY-----/],
   ['GitHub credential', /\bgh(?:o|p|s|u|r)_[A-Za-z0-9]{20,}\b/],
   ['GitHub fine-grained credential', /\bgithub_pat_[A-Za-z0-9_]{20,}\b/],
   ['AWS access key', /\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/],
   ['OpenAI-style credential', /\bsk-[A-Za-z0-9_-]{20,}\b/],
-  ['macOS user path', /\/Users\/[A-Za-z0-9._-]+\//],
-  ['Linux user path', /\/home\/[A-Za-z0-9._-]+\//],
+  [
+    'macOS user path',
+    new RegExp(`${NOT_PRECEDED_BY_HOSTNAME}/Users/[A-Za-z0-9._-]+/`),
+  ],
+  [
+    'Linux user path',
+    new RegExp(`${NOT_PRECEDED_BY_HOSTNAME}/home/[A-Za-z0-9._-]+/`),
+  ],
   ['Windows user path', /[A-Z]:\\Users\\[^\\]+\\/i],
-  ['temporary workstation path', /\/private\/tmp(?:\/|\b)/],
-  ['mounted-volume path', /\/Volumes\//],
+  [
+    'temporary workstation path',
+    new RegExp(`${NOT_PRECEDED_BY_HOSTNAME}/private/tmp(?:/|\\b)`),
+  ],
+  ['mounted-volume path', new RegExp(`${NOT_PRECEDED_BY_HOSTNAME}/Volumes/`)],
   [
     'home-relative workstation path',
     /~\/(?:Documents|Desktop|Downloads)(?:\/|\b)/,
@@ -137,4 +155,4 @@ if (require.main === module) {
     })
 }
 
-module.exports = { main, walk }
+module.exports = { main, walk, forbiddenContent, forbiddenNames }

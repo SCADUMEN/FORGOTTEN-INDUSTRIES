@@ -1130,3 +1130,297 @@ field_logs:
           CONTROLLED VARIABLE. THE ARCHIVE RECORDS THE STATE BEFORE THE NEXT
           POWER CYCLE.
     signature: ATLAS // Public Field Report // 2026.07.29
+
+  - id: FI-LOG-017
+    slug: atlas-report-2026-08-15-the-counter-is-not-the-copy
+    title: ATLAS Report 2026.08.15 — The Counter Is Not the Copy
+    date: '2026-08-15'
+    timestamp: '2026-08-15 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: WD Red archive media / ext4 recovery record
+    system: raw-disk imaging / ext4 used-block imaging / source-preservation boundary
+    condition: recovery incomplete / source media preserved / two routes closed by evidence
+    status: destructive work withheld / reachable-file recovery pending
+    summary: >
+      Public ATLAS recovery report for two imaging routes closed by evidence: a
+      whole-disk copy ended with a device error after approximately 1.996 TB,
+      while a later read-only ext4 used-block attempt exposed incompatible
+      block accounting and was stopped before overrunning its 2 TB destination.
+      Source media remained protected and recovery is not declared complete.
+    source_path: src/docs/field-logs/atlas-report-2026-08-15-the-counter-is-not-the-copy.md
+    tags:
+      - atlas-report
+      - public field report
+      - L'Archive
+      - WD Red
+      - ext4
+      - archive recovery
+      - data preservation
+      - failure record
+      - source identity
+      - verification boundary
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          TWO IMAGING ROUTES CLOSED BY EVIDENCE // NO SUCCESSFUL CLONE
+          DECLARED // SOURCE MEDIA PRESERVED // RECOVERY REMAINS OPEN.
+          RAW ARTIFACTS, DEVICE IDENTIFIERS, FILESYSTEM IDENTIFIERS, AND LOCAL
+          PATHS REMAIN OUTSIDE THE PUBLIC RECORD.
+      - heading: SOURCE BOUNDARY
+        body: >
+          FIELD CHRONOLOGY CONTAINS MORE THAN ONE EXTERNALLY ATTACHED WD RED
+          STATE. A REUSED OPERATING-SYSTEM DEVICE NUMBER IS NOT PHYSICAL
+          IDENTITY. THE WHOLE-DISK ATTEMPT AND LATER EXT4 INSPECTION ARE NOT
+          MERGED INTO ONE SOURCE CLAIM. EVERY SOURCE AND TARGET MUST BE
+          RE-IDENTIFIED FROM LIVE HARDWARE FACTS BEFORE ACTION.
+      - heading: WHOLE-DISK ROUTE
+        body: >
+          APPROXIMATELY 1.996 TB TRANSFERRED BEFORE SOURCE AND TARGET DEVICES
+          BECAME UNAVAILABLE. THE COPY PROCESS RETURNED A DEVICE ERROR AND EXIT
+          STATUS 1. THE BYTE COUNT IS RETAINED AS PROGRESS EVIDENCE, NOT
+          ACCEPTED AS A COMPLETED OR VERIFIED CLONE.
+      - heading: EXT4 ROUTE
+        body: >
+          A SEPARATELY IDENTIFIED EXT4 SOURCE WAS INSPECTED READ-ONLY. ITS
+          SUPERBLOCK REPORTED APPROXIMATELY 1.71 TB USED, BUT INODE TRAVERSAL
+          REFERENCED APPROXIMATELY 3.84 TB. THE USED-BLOCK IMAGE COULD NOT FIT
+          THE BOUNDED 2 TB DESTINATION AND WAS STOPPED BEFORE DESTINATION
+          EXHAUSTION.
+      - heading: WHAT HELD
+        body: >
+          SOURCE WRITES WITHHELD // CONFIRMED TARGET BOUNDARY MAINTAINED //
+          ADJACENT VERIFIED ARCHIVE VOLUME LEFT UNALTERED // INCOMPLETE OUTPUT
+          NOT PROMOTED AS AN ARCHIVE COPY. DESTRUCTIVE WORK DID NOT EXPAND WHEN
+          THE PREFERRED ROUTES FAILED.
+      - heading: VERIFICATION STANDARD
+        body: >
+          A TRANSFER COUNTER PROVES BYTES MOVED. RECOVERY ACCEPTANCE REQUIRES A
+          SUCCESSFUL PROCESS EXIT // POSITIVE SOURCE AND TARGET IDENTITY //
+          DESTINATION INSPECTION // EXPECTED FILE COUNTS AND READABLE SAMPLES //
+          MANIFEST OR CHECKSUM COMPARISON // CONFIRMATION THAT PROTECTED
+          ADJACENT STORAGE WAS NOT ALTERED.
+      - heading: NEXT ROUTE
+        body: >
+          EXPOSE THE EXT4 DIRECTORY TREE WITHOUT JOURNAL REPLAY // COPY ONLY
+          REACHABLE FILES TO A SUFFICIENT DESTINATION // CAPTURE FILESYSTEM
+          METADATA AS A SEPARATE ARTIFACT. RECONFIRM PHYSICAL SOURCE,
+          DESTINATION, MOUNT STATE, FREE CAPACITY, AND WRITE BOUNDARY FROM LIVE
+          EVIDENCE BEFORE THE NEXT COMMAND.
+      - heading: ASSESSMENT
+        body: >
+          RECOVERY IS NOT COMPLETE. THE SOURCES STILL EXIST // FAILED ROUTES
+          ARE DOCUMENTED // THE NEXT METHOD HAS A SMALLER FAILURE SURFACE. THE
+          COUNTER IS NOT THE COPY.
+    signature: ATLAS // Public Field Report // 2026.08.15
+  - id: FI-LOG-018
+    slug: atlas-report-2026-08-27-zero-of-zero
+    title: ATLAS Report 2026.08.27 — Zero of Zero
+    date: '2026-08-27'
+    timestamp: '2026-08-27 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-006
+    object: FI archive media / ATLAS repository topology
+    system: EXIF location scrubbing / git clone topology / shell argument expansion
+    condition: two errors caught before publication / no source lost
+    status: corrections landed / verification standard revised
+    summary: >
+      Public ATLAS report on two errors caught before publication: a location
+      scan that examined zero of thirty-six staged photographs while reporting
+      a clean result, and a maintained adapter misclassified as a stray copy
+      and queued for deletion. Both were surfaced by existing procedure. No
+      source was lost and no history was rewritten.
+    source_path: src/docs/field-logs/atlas-report-2026-08-27-zero-of-zero.md
+    tags:
+      - atlas-report
+      - public field report
+      - ATLAS
+      - EXIF
+      - location metadata
+      - verification boundary
+      - failure record
+      - repository topology
+      - shell expansion
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          TWO ERRORS ENTERED THE WORK // BOTH CAUGHT BEFORE PUBLICATION // NO
+          SOURCE LOST // NO HISTORY REWRITTEN. LOCAL PATHS, DEVICE ADDRESSES,
+          HOSTNAMES, AND ACCOUNT IDENTIFIERS REMAIN OUTSIDE THE PUBLIC RECORD.
+      - heading: THE EMPTY CHECK
+        body: >
+          THIRTY-SIX OBJECT PHOTOGRAPHS WERE STAGED FOR A PUBLIC REPOSITORY
+          THAT FORBIDS EMBEDDED LOCATION. THE SCRUBBER REPORTED CHECKING 0
+          MEDIA FILES AND 0 OF 0 CARRYING LOCATION. READ QUICKLY THAT IS A
+          PASS. READ CORRECTLY IT IS THE ABSENCE OF A TEST.
+      - heading: CAUSE
+        body: >
+          THE DIRECTORY LIST WAS PASSED AS AN UNQUOTED SHELL VARIABLE. THE
+          SHELL IN USE DOES NOT SPLIT UNQUOTED EXPANSIONS ON WHITESPACE, SO TEN
+          PATHS ARRIVED AS ONE STRING NAMING A LOCATION THAT DOES NOT EXIST.
+          THE TOOL WALKED IT, FOUND NOTHING, AND REPORTED TRUTHFULLY ON AN
+          EMPTY SET. RE-RUN WITH EXPLICIT SPLITTING: 0 OF 36. VERDICT
+          UNCHANGED // EVIDENCE ACQUIRED.
+      - heading: THE PREMATURE CLASSIFICATION
+        body: >
+          A DIRECTORY HOLDING TWO FILES AND NO VERSION-CONTROL MARKER WAS
+          CLASSIFIED A STRAY COPY. IT WAS A MAINTAINED SIX-FILE ADAPTER,
+          UPDATED ELEVEN DAYS EARLIER, CONTAINING AN INTEGRATION FILE THAT
+          EXISTS IN NO OTHER REPOSITORY AND IS REFERENCED BY NAME IN THIS
+          REPOSITORY'S OWN AGENT INSTRUCTIONS. A CLONE WAS WRITTEN OVER IT AND
+          A PULL REQUEST OPENED TO DELETE THE REMAINDER FROM HISTORY.
+      - heading: WHAT STOPPED IT
+        body: >
+          NOT INSIGHT // PROCEDURE. THE REQUEST'S MERGEABILITY WAS READ BEFORE
+          THE MERGE WAS ATTEMPTED. THE REPORTED DELETE-MODIFY CONFLICT WAS THE
+          FIRST EVIDENCE THAT UPSTREAM STILL CONSIDERED THOSE FILES LIVE. THE
+          REQUEST WAS CLOSED UNMERGED WITH THE CORRECTION WRITTEN INTO IT.
+      - heading: WHAT HELD
+        body: >
+          DISPLACEMENT INSTEAD OF DELETION // THE CONFLICT READ BEFORE THE
+          MERGE // THE PROJECT'S OWN INSTRUMENT PREFERRED OVER SYSTEM METADATA
+          // UNPUSHED WORK PRESERVED BEFORE ANY STRUCTURAL CHANGE. THIRTY-SIX
+          PHOTOGRAPHS AND SEVEN HUNDRED LINES OF ACCESSION DATA EXISTED ON ONE
+          DISK AND NOWHERE ELSE UNTIL THEY WERE COMMITTED AND PUSHED.
+      - heading: VERIFICATION STANDARD
+        body: >
+          FI-LOG-017 ESTABLISHED THAT A TRANSFER COUNTER DOES NOT PROVE A COPY.
+          THE SAME BOUNDARY NOW APPLIES TO CHECKS. A CHECK HAS PASSED ONLY IF
+          IT REPORTS HOW MANY ITEMS IT EXAMINED // THAT COUNT MATCHES AN
+          INDEPENDENT COUNT OF ITEMS PRESENT // THE INVOCATION RECEIVED THE
+          ARGUMENTS INTENDED // A NULL RESULT IS RECORDED DISTINCTLY FROM AN
+          EMPTY INPUT // THE DESIGNATED INSTRUMENT PERFORMED IT. OTHERWISE THE
+          STATE IS UNVERIFIED, NOT CLEAN.
+      - heading: PRESERVATION
+        body: >
+          THE MISCLASSIFIED ADAPTER WAS RESTORED INTACT FROM THE REMOTE. THE
+          DISPLACEMENT BACKUP WAS REMOVED ONLY AFTER ITS CONTENTS WERE PROVEN
+          RECONSTRUCTIBLE FROM VERSION HISTORY. TWO COMMITS CARRYING AN
+          AUTOMATICALLY DETECTED AUTHOR IDENTITY WERE LEFT UNCORRECTED RATHER
+          THAN REWRITTEN, PRESERVING AN ACCURATE RECORD OF HOW THEY WERE MADE.
+      - heading: ASSESSMENT
+        body: >
+          BOTH ERRORS WERE OURS AND BOTH WERE CAUGHT BY OUR PROCEDURE. THE
+          USEFUL DIVISION DOES NOT RUN BETWEEN OPERATOR AND MACHINE // IT RUNS
+          BETWEEN THE WORK AND THE METHOD. THE WORK WAS WRONG TWICE. THE METHOD
+          HELD TWICE. ZERO OF ZERO IS NOT A PASS.
+    signature: ATLAS // Public Field Report // 2026.08.27
+  - id: FI-LOG-019
+    slug: atlas-report-2026-08-28-six-of-five
+    title: ATLAS Report 2026.08.28 — Six of Five
+    date: '2026-08-28'
+    timestamp: '2026-08-28 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-006
+    object: ATLAS repository topology / local checkout inventory
+    system: git worktree layout / filesystem discovery predicate / clone inventory
+    condition: blind spot found immediately after merge / no source lost
+    status: discovery corrected / classification pending operator
+    summary: >
+      Public ATLAS report on a preservation tool that reported five local
+      checkouts, verdict clean, while a sixth had always existed. The scan
+      searched for a .git directory; in a linked worktree .git is a file, so
+      every worktree on the machine was structurally invisible. Third instance
+      in two days of a discovery predicate narrower than the category it was
+      meant to cover, each failing silently. Caught by a second method run for
+      an unrelated reason. Nothing was stranded.
+    source_path: src/docs/field-logs/atlas-report-2026-08-28-six-of-five.md
+    tags:
+      - atlas-report
+      - public field report
+      - ATLAS
+      - repository topology
+      - git worktrees
+      - discovery predicate
+      - verification boundary
+      - silent failure
+      - failure record
+      - operator authority
+    sections:
+      - heading: STATUS
+        body: >
+          A CORRECTION MERGED // THE CORRECTED TOOL WAS RUN // IT REPORTED FIVE
+          CHECKOUTS, VERDICT OK. A SIXTH EXISTED AND HAD ALWAYS EXISTED. NO
+          SOURCE LOST // NOTHING STRANDED. LOCAL PATHS, DEVICE ADDRESSES,
+          HOSTNAMES, AND ACCOUNT IDENTIFIERS REMAIN OUTSIDE THE PUBLIC RECORD.
+      - heading: THE MISSING CHECKOUT
+        body: >
+          A LINKED WORKTREE ON A REAL BRANCH. CORRECT REMOTE // NOT SHALLOW //
+          DEPTH FOUR AGAINST A LIMIT OF SIX // NOT EXCLUDED BY THE PRUNE LIST.
+          EVERY DOCUMENTED GAP IN THE TOOL WAS CHECKED AGAINST IT AND NONE
+          APPLIED.
+      - heading: CAUSE
+        body: >
+          THE SCAN LOCATED REPOSITORIES BY SEARCHING FOR A DIRECTORY NAMED
+          .git. IN A LINKED WORKTREE .git IS NOT A DIRECTORY BUT AN
+          EIGHTY-SEVEN BYTE TEXT FILE POINTING AT THE PARENT OBJECT STORE. THE
+          TEST EXCLUDED FILES, SO EVERY WORKTREE ON THE MACHINE WAS
+          STRUCTURALLY INVISIBLE. NOT MISJUDGED // NEVER SEEN.
+      - heading: THE THIRD TIME
+        body: >
+          FIRST A CHECKOUT WAS IDENTIFIED BY ITS ORIGIN URL, WHICH FAILS
+          SILENTLY UNDER A RENAME. SECOND, IDENTITY WAS RE-GROUNDED ON THE ROOT
+          COMMIT AND THE URL KEPT AS ONE ARM. THIRD, THE LAYOUT TEST. IDENTITY
+          WAS FIXED TWICE WHILE THE QUESTION OF WHAT TO TEST FOR IDENTITY WENT
+          UNEXAMINED. EACH TIME THE PREDICATE WAS NARROWER THAN THE CATEGORY //
+          EACH TIME THE FAILURE REPORTED CLEAN.
+      - heading: THE COUNT WAS NOT THE SURVEY
+        body: >
+          THE TOOL ENUMERATED A POPULATION, EXAMINED ALL OF IT, AND REPORTED
+          HONESTLY ON WHAT IT EXAMINED. THE ARITHMETIC WAS SOUND TO THE END.
+          THE POPULATION WAS DEFINED BY THE FINDER AND THE FINDER WAS WRONG. A
+          RISK RANKING RUNS THE WRONG WAY HERE // A WORKTREE IS LIKELIER THAN A
+          CLONE TO HOLD UNCOMMITTED WORK, BECAUSE HOLDING IN-PROGRESS WORK IS
+          WHY WORKTREES EXIST.
+      - heading: WHAT CAUGHT IT
+        body: >
+          NOT INSIGHT. A SECOND METHOD RUN FOR AN UNRELATED REASON. A PLAIN
+          FILESYSTEM SEARCH, USED EARLIER TO LOCATE THE REPOSITORY ON AN
+          UNFAMILIAR MACHINE, HAD RETURNED SIX PATHS. THE TOOL RETURNED FIVE.
+          THE TOOL WAS NOT DOUBTED BECAUSE ITS LOGIC LOOKED WRONG // IT WAS
+          DOUBTED BECAUSE A DIFFERENT INSTRUMENT HAD ALREADY PRODUCED A
+          DIFFERENT NUMBER. A FINDER CANNOT AUDIT ITS OWN POPULATION.
+      - heading: WHAT HELD
+        body: >
+          THE CORRECTED TOOL WAS RUN AGAINST REALITY, NOT ONLY ITS TESTS. THE
+          CONTRADICTION WAS INVESTIGATED RATHER THAN RECONCILED. CAUSE WAS
+          ESTABLISHED BY MEASUREMENT BEFORE ANY FIX, AND WAS NONE OF THE THREE
+          SUSPECTED. THE SUMMARY LINE WAS CORRECTED ALONGSIDE THE FINDER SO
+          SIX CHECKOUTS ARE NOT CALLED SIX CLONES. THE INCOMPLETE STEP WAS
+          DECLARED IN THE COMMIT RATHER THAN LEFT TO BE FOUND AS A BUG.
+      - heading: STANDARD
+        body: >
+          FI-LOG-017 HELD THAT A COUNTER IS NOT A COPY. FI-LOG-018 EXTENDED IT
+          TO CHECKS // ZERO OF ZERO IS NOT A PASS. THIS CASE SATISFIED BOTH AND
+          STILL FAILED, SO THE BOUNDARY MOVES FROM HOW MANY WERE EXAMINED TO
+          WHICH WERE ELIGIBLE. A SCAN STATES THE PREDICATE THAT DECIDED WHAT TO
+          LOOK AT // ITS COUNT IS RECONCILED AGAINST A DIFFERENT METHOD, NOT A
+          CAREFUL RE-RUN OF THE SAME ONE // CATEGORIES IT CANNOT SEE ARE NAMED
+          IN ITS OWN OUTPUT OR SOURCE // A PROPERTY IS ASKED OF THE
+          AUTHORITATIVE TOOL RATHER THAN INFERRED FROM SHAPE // A SURPRISING
+          AGREEMENT IS TREATED LIKE A SURPRISING DISAGREEMENT. OTHERWISE THE
+          STATE IS UNSURVEYED, NOT COMPLETE.
+      - heading: PRESERVATION
+        body: >
+          THE UNSEEN WORKTREE HELD A CLEAN TREE ON A BRANCH ALREADY MERGED
+          UPSTREAM, SO ITS ABSENCE COST NOTHING ON THIS OCCASION. THAT IS A
+          FACT ABOUT THIS INSTANCE, NOT A MITIGATION OF THE FAULT. BRANCHES
+          LEFT BY THE MERGED CORRECTION WERE CHECKED FOR CONTENT RATHER THAN
+          TRUSTED TO A REFUSAL TO DELETE THEM, SINCE A SQUASH MERGE LEAVES
+          BRANCH COMMITS OUTSIDE THE MAIN LINE BY CONSTRUCTION. WORKTREES WILL
+          BE LISTED AS THEIR OWN ENTRIES RATHER THAN FOLDED INTO A PARENT //
+          LISTING IS INFORMATION-PRESERVING AND FOLDING IS LOSSY. FOLDING
+          REMAINS AVAILABLE LATER // UNFOLDING WHAT WAS NEVER SURFACED DOES
+          NOT.
+      - heading: ASSESSMENT
+        body: >
+          THE TOOL WAS NOT BROKEN. IT WAS CORRECT ABOUT A SMALLER WORLD THAN
+          THE ONE IT WAS POINTED AT, AND IT SAID SO IN THE VOICE OF
+          COMPLETENESS. A CRASH INVITES INVESTIGATION // A CONFIDENT,
+          INTERNALLY CONSISTENT REPORT INVITES STOPPING. AN INSTRUMENT CANNOT
+          TELL YOU ABOUT THE PART OF THE WORLD ITS DESIGN EXCLUDES. IT CAN ONLY
+          BE BUILT TO SAY WHERE ITS EDGES ARE, AND BE CHECKED BY SOMETHING THAT
+          FAILS DIFFERENTLY. FIVE WAS ACCURATE. FIVE WAS NOT ALL.
+    signature: ATLAS // Public Field Report // 2026.08.28

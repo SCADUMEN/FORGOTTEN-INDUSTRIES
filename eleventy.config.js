@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import nodePath from 'node:path'
 import { feedPlugin } from '@11ty/eleventy-plugin-rss'
 
 function canonicalPath(value = '/') {
@@ -41,12 +43,14 @@ function isArticleUrl(value = '') {
   )
 }
 
-function isFieldLogUrl(value = '') {
+// ATLAS report detail pages live under /atlas/, matching their index. They
+// previously sat under /field-logs/, which is the recorded voice Field Log
+// index — a different dataset entirely.
+function isAtlasReportUrl(value = '') {
   const pathname = canonicalPath(value)
   return (
-    pathname.startsWith('/field-logs/') &&
-    pathname !== '/field-logs/' &&
-    pathname !== '/field-logs/voice/' &&
+    pathname.startsWith('/atlas/') &&
+    pathname !== '/atlas/' &&
     pathname.endsWith('/')
   )
 }
@@ -95,7 +99,7 @@ function gatherSitemapPaths(collection, extras, archive) {
     extras.forEach(add)
   }
   if (Array.isArray(archive?.fieldLogs)) {
-    archive.fieldLogs.forEach((log) => add(`/field-logs/${log.slug}/`))
+    archive.fieldLogs.forEach((log) => add(`/atlas/${log.slug}/`))
   }
   if (Array.isArray(archive?.inventory)) {
     archive.inventory.forEach((item) =>
@@ -212,6 +216,23 @@ function recordDateValue(record) {
   )
 }
 
+// Controlled shelf vocabulary. A post declares exactly one, and it decides the
+// shelf outright. The heuristics below remain only as a fallback for records
+// that predate the field: they inspect freeform `type`, `category`, and
+// `shelf_label` strings, which produced a partition that both overlapped (a
+// Le Blog dispatch and the Prelude were listed on Les Manuscrits *and* Le
+// Blog) and could not be predicted when writing a new post.
+const POST_SHELVES = new Set(['doctrine', 'signal', 'manuscrit'])
+
+function declaredShelf(record) {
+  const data = record?.data || record || {}
+  const value = String(data.shelf || '')
+    .toLowerCase()
+    .trim()
+
+  return POST_SHELVES.has(value) ? value : null
+}
+
 function isDoctrinePost(record) {
   const data = record?.data || record || {}
   const tags = Array.isArray(data.tags) ? data.tags.join(' ') : ''
@@ -256,6 +277,22 @@ function isPreludePost(record) {
   return /\bprelude\b/.test(classification)
 }
 
+// The three shelves partition the post collection: every post lands on exactly
+// one. Signal absorbs blog and prelude records; manuscripts are the remainder.
+function postShelf(record) {
+  const declared = declaredShelf(record)
+  if (declared) return declared
+  if (isDoctrinePost(record)) return 'doctrine'
+  if (
+    isLeSignalPost(record) ||
+    isLeBlogPost(record) ||
+    isPreludePost(record)
+  ) {
+    return 'signal'
+  }
+  return 'manuscrit'
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
@@ -277,6 +314,9 @@ export default function (eleventyConfig) {
   // The markdown and yaml inside are documents, not templates — ignored.
   eleventyConfig.addPassthroughCopy('src/assets')
   eleventyConfig.addPassthroughCopy({ 'src/.well-known': '.well-known' })
+  // Standalone pages that deliberately skip archive.css still need the
+  // self-hosted @font-face rules, so the generated sheet ships on its own too.
+  eleventyConfig.addPassthroughCopy({ 'src/css/fonts.css': 'css/fonts.css' })
   eleventyConfig.addPassthroughCopy('src/_headers')
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/docs')
@@ -360,28 +400,24 @@ export default function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('doctrinePosts', function (records) {
-    return Array.isArray(records) ? records.filter(isDoctrinePost) : []
+    return Array.isArray(records)
+      ? records.filter((record) => postShelf(record) === 'doctrine')
+      : []
   })
 
   eleventyConfig.addFilter('manuscriptPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) => !isDoctrinePost(record) && !isLeSignalPost(record)
-        )
+      ? records.filter((record) => postShelf(record) === 'manuscrit')
       : []
   })
 
   eleventyConfig.addFilter('signalPosts', function (records) {
     return Array.isArray(records)
-      ? records.filter(
-          (record) =>
-            !isDoctrinePost(record) &&
-            (isLeSignalPost(record) ||
-              isLeBlogPost(record) ||
-              isPreludePost(record))
-        )
+      ? records.filter((record) => postShelf(record) === 'signal')
       : []
   })
+
+  eleventyConfig.addFilter('postShelf', postShelf)
 
   eleventyConfig.addFilter('isoDate', function (value) {
     return value.toISOString().split('T')[0]
@@ -397,7 +433,15 @@ export default function (eleventyConfig) {
     return `/archive/objects/${archiveSlug(item?.id || item?.name)}/`
   })
 
-  function publicObjectPhotos(item) {
+  // `photos` is a mixed media list: source stills, QuickTime clips from a
+  // phone, and private HEIC originals that never clear the public path check.
+  // Renderers need the stills and the footage kept apart, because an extension
+  // the browser cannot decode in an <img> is a broken record, not a photograph.
+  // Anything unrecognised (.heic today) is withheld rather than published broken.
+  const OBJECT_IMAGE_EXTENSIONS = /\.(avif|gif|jpe?g|png|svg|webp)$/i
+  const OBJECT_VIDEO_EXTENSIONS = /\.(mov|mp4|webm)$/i
+
+  function publicObjectMedia(item) {
     return Array.isArray(item?.photos)
       ? item.photos.filter(
           (photo) =>
@@ -408,7 +452,67 @@ export default function (eleventyConfig) {
       : []
   }
 
+  function publicObjectPhotos(item) {
+    return publicObjectMedia(item).filter((photo) =>
+      OBJECT_IMAGE_EXTENSIONS.test(photo)
+    )
+  }
+
+  function publicObjectVideos(item) {
+    return publicObjectMedia(item).filter((photo) =>
+      OBJECT_VIDEO_EXTENSIONS.test(photo)
+    )
+  }
+
+  const MEDIA_MIME_TYPES = {
+    mov: 'video/quicktime',
+    mp4: 'video/mp4',
+    webm: 'video/webm',
+  }
+
   eleventyConfig.addFilter('publicObjectPhotos', publicObjectPhotos)
+  eleventyConfig.addFilter('publicObjectVideos', publicObjectVideos)
+
+  eleventyConfig.addFilter('mediaMimeType', function (value) {
+    const extension = String(value || '')
+      .split('.')
+      .pop()
+      .toLowerCase()
+    return MEDIA_MIME_TYPES[extension] || ''
+  })
+
+  // Inventory `photos` entries name the preserved source, which for phone
+  // footage is a QuickTime .mov only Safari will play. Where
+  // scripts/build_media_derivatives.cjs has written web-playable siblings, they
+  // are offered first and the original stays as the final <source>, so the
+  // record still points at the file the archive actually holds.
+  const VIDEO_DERIVATIVE_ORDER = ['webm', 'mp4']
+
+  eleventyConfig.addFilter('videoSources', function (value) {
+    const original = String(value || '')
+    if (!original) return []
+
+    const base = original.replace(/\.[^.]+$/, '')
+    const originalExtension = original.split('.').pop().toLowerCase()
+    const sources = []
+
+    for (const extension of VIDEO_DERIVATIVE_ORDER) {
+      if (extension === originalExtension) continue
+      const candidate = `${base}.${extension}`
+      if (fs.existsSync(nodePath.join('src', candidate))) {
+        sources.push({
+          src: `/${candidate}`,
+          type: MEDIA_MIME_TYPES[extension],
+        })
+      }
+    }
+
+    sources.push({
+      src: `/${original}`,
+      type: MEDIA_MIME_TYPES[originalExtension] || '',
+    })
+    return sources
+  })
 
   eleventyConfig.addFilter('objectPrimaryImage', function (item) {
     const photo = publicObjectPhotos(item)[0]
@@ -595,7 +699,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter('ogTypeForUrl', function (url, explicit) {
     if (explicit) return explicit
-    return isArticleUrl(url) || isFieldLogUrl(url) ? 'article' : 'website'
+    return isArticleUrl(url) || isAtlasReportUrl(url) ? 'article' : 'website'
   })
 
   eleventyConfig.addFilter(
@@ -604,7 +708,7 @@ export default function (eleventyConfig) {
       if (explicit) return explicit
       if (title === siteName || canonicalPath(url) === '/') return 'WebSite'
       if (isArticleUrl(url)) return 'Article'
-      if (isFieldLogUrl(url)) return 'CreativeWork'
+      if (isAtlasReportUrl(url)) return 'CreativeWork'
       if (isCollectionUrl(url)) return 'CollectionPage'
       return 'WebPage'
     }

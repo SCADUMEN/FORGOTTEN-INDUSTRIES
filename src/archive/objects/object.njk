@@ -13,13 +13,14 @@ eleventyComputed:
 eleventyExcludeFromCollections: true
 ---
 {% set publicPhotos = object | publicObjectPhotos %}
+{% set publicVideos = object | publicObjectVideos %}
 {% set sourcePhotos = object.photos or [] %}
 {% set captionPrefix = object.id + " / " + object.name + " / source photograph " %}
 {% set project = archive.projects | findById(object.associated_project) %}
 {% set relatedObjects = archive.inventory | relatedObjects(object) %}
-{% set projectLogs = archive.fieldLogs | fieldLogsForProject(object.associated_project) %}
+{% set projectLogs = archive.atlasReports | fieldLogsForProject(object.associated_project) %}
 
-<article class="object-record">
+<article class="object-record" data-caption-prefix="{{ captionPrefix }}">
   <header class="section-landing-hero object-record-hero">
     <div class="section-inner">
       <p class="section-label">Object Record / {{ object.id }}</p>
@@ -71,6 +72,23 @@ eleventyExcludeFromCollections: true
         <span>{{ object.id }}</span>
         <strong>No image available</strong>
         <p>Source photography has not yet been registered for this object.</p>
+      </div>
+      {% endif %}
+
+      {% if publicVideos.length %}
+      <div class="object-motion-strip">
+        <p class="section-label">Motion evidence</p>
+        {% for clip in publicVideos %}
+        <figure class="object-motion-figure">
+          <video controls preload="metadata" playsinline>
+            {% for source in clip | videoSources %}
+            <source src="{{ source.src }}" type="{{ source.type }}">
+            {% endfor %}
+            <a href="/{{ clip }}">Download {{ object.id }} source footage {{ loop.index }}</a>
+          </video>
+          <figcaption>{{ object.id }} / {{ object.name }} / source footage {{ loop.index }}</figcaption>
+        </figure>
+        {% endfor %}
       </div>
       {% endif %}
     </div>
@@ -177,7 +195,7 @@ eleventyExcludeFromCollections: true
           <p class="section-label">Field logs / dossiers</p>
           <ul>
             {% for log in projectLogs %}
-            <li><a href="/field-logs/{{ log.slug }}/">{{ log.title }}</a></li>
+            <li><a href="/atlas/{{ log.slug }}/">{{ log.title }}</a></li>
             {% endfor %}
           </ul>
         </section>
@@ -224,34 +242,4 @@ eleventyExcludeFromCollections: true
   </section>
 </article>
 
-<script>
-  (function() {
-    var captionPrefix = {{ captionPrefix | json | safe }};
-    var gallery = document.querySelector('.object-record');
-    if (!gallery) return;
-
-    var primaryLink = gallery.querySelector('[data-object-primary-link]');
-    var primaryImage = gallery.querySelector('[data-object-primary-image]');
-    var primaryCaption = gallery.querySelector('[data-object-primary-caption]');
-    var thumbnails = gallery.querySelectorAll('[data-object-thumbnail]');
-    if (!primaryLink || !primaryImage || !thumbnails.length) return;
-
-    thumbnails.forEach(function(thumbnail) {
-      thumbnail.addEventListener('click', function(event) {
-        event.preventDefault();
-        var image = thumbnail.querySelector('img');
-        var index = thumbnail.getAttribute('data-photo-index');
-        primaryLink.href = thumbnail.href;
-        primaryImage.src = thumbnail.href;
-        primaryImage.alt = image ? image.alt : primaryImage.alt;
-        if (primaryCaption) {
-          primaryCaption.textContent = captionPrefix + String(index).padStart(2, '0');
-        }
-        thumbnails.forEach(function(item) {
-          item.removeAttribute('aria-current');
-        });
-        thumbnail.setAttribute('aria-current', 'true');
-      });
-    });
-  })();
-</script>
+<script src="/assets/js/object-gallery.js?v={{ site.assetVersion }}" defer></script>
