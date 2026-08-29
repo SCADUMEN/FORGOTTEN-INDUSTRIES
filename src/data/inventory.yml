@@ -2972,6 +2972,31 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-07-31'
 
+  - id: FI-EPH-010
+    name: Self-Aware
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 962×406 / captioned film still / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-010-self-aware.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a recognizable still from
+      the Terminator franchise — a T-800 in a daylight desert — with a burned-in
+      subtitle caption reading "It becomes self-aware at 2:14 a.m. Eastern time,
+      August 29." Admitted on the calendar date named in the caption. The source
+      film frame is identifiable; the authorship, capture, and captioning history
+      of this particular derivative remain unverified.
+    lifecycle:
+      - date: '2026-08-29'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative; source frame identifiable as a Terminator film still, caption transcribed verbatim; authorship and derivative history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-08-29'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
