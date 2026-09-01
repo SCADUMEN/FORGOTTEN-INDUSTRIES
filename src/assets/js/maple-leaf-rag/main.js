@@ -1,4 +1,4 @@
-// MAPLE LEAF RAG entry point: capability checks, boot, render loop, lifecycle.
+// MAPLE LEAF RAG ZONE entry point: capability checks, boot, render loop, lifecycle.
 // Forked from ZOOT's main.js (src/assets/js/zoot/main.js), with the entire
 // text-fragment system and all pointer interaction removed — this zone is a
 // passive, image-only slick. The photo scheduler is shared with ZOOT verbatim.

@@ -1,4 +1,4 @@
-// MAPLE LEAF RAG ignition modal: the entry gate the zone opens with. Forked from
+// MAPLE LEAF RAG ZONE ignition modal: the entry gate the zone opens with. Forked from
 // ZOOT's intro.js (src/assets/js/zoot/intro.js). It doubles as the user gesture
 // browsers require before audio may play with sound — "Extra Crispy" turns the
 // rag on, "Silent Running" keeps it silent.

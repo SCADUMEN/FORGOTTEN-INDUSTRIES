@@ -1,4 +1,4 @@
-// WebGL2 renderer for MAPLE LEAF RAG. Forked from ZOOT's gl.js
+// WebGL2 renderer for MAPLE LEAF RAG ZONE. Forked from ZOOT's gl.js
 // (src/assets/js/zoot/gl.js): same photo cross-fade machinery, but no text
 // texture and no pointer-impulse uniforms — this zone is image + slick only.
 

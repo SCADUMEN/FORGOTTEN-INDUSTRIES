@@ -1,4 +1,4 @@
-// MAPLE LEAF RAG background audio: a lo-fi ("extra crispy") rag looping under
+// MAPLE LEAF RAG ZONE background audio: a lo-fi ("extra crispy") rag looping under
 // the slick. Forked from ZOOT's audio.js (src/assets/js/zoot/audio.js). The file
 // URL is inlined by the page as #mlr-audio JSON (see src/maple-leaf-rag.njk); it
 // is a local asset under /assets/audio, not the discography mixtape.

@@ -1,4 +1,4 @@
-// GLSL ES 3.00 sources for MAPLE LEAF RAG. Forked from ZOOT's shaders.js
+// GLSL ES 3.00 sources for MAPLE LEAF RAG ZONE. Forked from ZOOT's shaders.js
 // (src/assets/js/zoot/shaders.js) and pared down: no text-fragment system and no
 // pointer impulses — this zone is image + slick only, passive. Template literals
 // instead of .glsl files: the site has no bundler and /assets is
