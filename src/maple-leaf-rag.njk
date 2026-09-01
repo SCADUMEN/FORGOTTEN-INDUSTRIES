@@ -1,0 +1,233 @@
+---
+permalink: /maple-leaf-rag/
+eleventyExcludeFromCollections: true
+title: MAPLE LEAF RAG
+description: A passive slick instrument — Shadow Zone ephemera surfacing under an extra-crispy rag.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MAPLE LEAF RAG &mdash; {{ site.name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ site.domainUrl }}/maple-leaf-rag/">
+  {% include "social-meta.njk" %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <style>
+    /* Space Mono only. This page does not load archive.css, so the two weights
+       it uses (the landing gate + chrome) are declared here against the
+       self-hosted files. */
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-400-normal-latin.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-700-normal-latin.woff2') format('woff2');
+    }
+
+    /* Tokens sourced from src/css/archive.css — that file is the source of
+       truth; this page deliberately does not load the shared stylesheet. The
+       gate is warm (maple gold) to match the shader; the focus outline stays
+       the site-wide 3px cyan. */
+    :root {
+      color-scheme: dark;
+      --fi-bg: #000000;
+      --fi-surface: #020617;
+      --fi-cyan: #22d3ee;
+      --fi-gold: #f59e0b;
+      --fi-paper-light: #f7f4ef;
+      --mlr-mono: 'Space Mono', ui-monospace, monospace;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--fi-bg);
+      color: var(--fi-paper-light);
+      font-family: var(--mlr-mono);
+      overflow: hidden;
+    }
+    #mlr-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      display: block;
+      touch-action: none;
+    }
+    /* Bottom chrome: the exit mark and sound toggle sit in one fixed bar. The
+       bar ignores pointer events; only its links opt back in. */
+    #mlr-chrome {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      padding: 0.5rem max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1.25rem, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+    /* The exit link and the sound toggle share one control cluster on the left
+       of the chrome; the toggle reuses the exit link's muted-until-hover look. */
+    #mlr-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 0 0.75rem;
+      pointer-events: none;
+    }
+    #mlr-exit,
+    #mlr-audio-toggle {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      color: var(--fi-paper-light);
+      font-family: inherit;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      white-space: nowrap;
+      opacity: 0.3;
+      transition: opacity 160ms ease;
+      pointer-events: auto;
+    }
+    #mlr-audio-toggle {
+      border: 0;
+      background: none;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    #mlr-exit:hover,
+    #mlr-exit:focus-visible,
+    #mlr-audio-toggle:hover,
+    #mlr-audio-toggle:focus-visible {
+      opacity: 0.85;
+      outline: none;
+    }
+    noscript p {
+      position: fixed;
+      top: clamp(1.5rem, 6vw, 4rem);
+      left: clamp(1.5rem, 6vw, 4rem);
+      max-width: 34rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+    noscript a {
+      color: var(--fi-cyan);
+    }
+    /* Ignition modal: the entry gate, and the only text this zone shows. Ships
+       hidden and is revealed by JS (src/assets/js/maple-leaf-rag/intro.js), so
+       no-JS visitors fall through to the <noscript> line instead of a dead
+       overlay. */
+    #mlr-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(2rem, 7vh, 4.5rem);
+      padding: 2rem;
+      background: var(--fi-bg);
+      text-align: center;
+    }
+    #mlr-intro[hidden] {
+      display: none;
+    }
+    #mlr-intro-title {
+      margin: 0;
+      max-width: 14ch;
+      font-family: var(--mlr-mono);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 11vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: var(--fi-paper-light);
+    }
+    #mlr-intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+    }
+    .mlr-intro-btn {
+      min-height: 44px;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--mlr-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fi-paper-light);
+      background: var(--fi-surface);
+      border: 1px solid var(--fi-gold);
+      cursor: pointer;
+      transition:
+        background 160ms ease,
+        color 160ms ease;
+    }
+    .mlr-intro-btn--primary {
+      color: var(--fi-bg);
+      background: var(--fi-gold);
+    }
+    .mlr-intro-btn:hover {
+      color: var(--fi-bg);
+      background: var(--fi-gold);
+    }
+    .mlr-intro-btn--primary:hover {
+      background: var(--fi-paper-light);
+      border-color: var(--fi-paper-light);
+    }
+    .mlr-intro-btn:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="mlr-intro" role="dialog" aria-modal="true" aria-labelledby="mlr-intro-title" hidden>
+      <h2 id="mlr-intro-title">MAPLE LEAF RAG</h2>
+      <div id="mlr-intro-actions">
+        <button type="button" class="mlr-intro-btn" data-mlr-sound="off">Silent Running</button>
+        <button type="button" class="mlr-intro-btn mlr-intro-btn--primary" data-mlr-sound="on">Extra Crispy</button>
+      </div>
+    </div>
+    <canvas id="mlr-canvas" aria-hidden="true"></canvas>
+    <div id="mlr-chrome">
+      <div id="mlr-controls">
+        <a id="mlr-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+        <button id="mlr-audio-toggle" type="button" aria-pressed="true">Sound On</button>
+      </div>
+    </div>
+    <noscript>
+      <p>
+        This instrument requires script execution. The slick will not resolve.
+        <a href="/">Return to FORGOTTEN INDUSTRIES</a>
+      </p>
+    </noscript>
+  </main>
+  <script type="application/json" id="mlr-photos">{{ mapleLeafRagPhotos | dump | safe }}</script>
+  <script type="application/json" id="mlr-audio">{"src":"/assets/audio/maple-leaf-rag-extra-crispy.mp3"}</script>
+  <script type="module" src="/assets/js/maple-leaf-rag/main.js?v={{ site.assetVersion }}"></script>
+</body>
+</html>

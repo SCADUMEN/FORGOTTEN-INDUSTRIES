@@ -15,6 +15,7 @@
   --fi-maroon: #7f1d1d;
   --fi-slate: #94a3b8;
   --fi-silver: #c0c0c0;
+  --fi-red: #ff0000;
   --fi-cyan-rgb: 34 211 238;
   --fi-green-rgb: 74 222 128;
   --fi-amber-rgb: 251 191 36;
@@ -23,6 +24,7 @@
   --fi-copper-rgb: 196 122 58;
   --fi-maroon-rgb: 127 29 29;
   --fi-silver-rgb: 192 192 192;
+  --fi-red-rgb: 255 0 0;
   --fi-surface-rgb: 2 6 23;
   --fi-scan-green-rgb: 0 255 65;
   --fi-black-rgb: 0 0 0;
@@ -195,6 +197,7 @@
   --color-fi-silver: var(--fi-silver);
   --color-fi-maroon: var(--fi-maroon);
   --color-fi-slate: var(--fi-slate);
+  --color-fi-red: var(--fi-red);
   --font-sans: var(--font-system);
   --font-serif: var(--font-system);
   --font-title: var(--font-system);
@@ -6579,6 +6582,23 @@ a.site-cxr-mark:focus-visible {
   color: var(--fi-paper-light);
 }
 
+/* Leaf mark: the Maple Leaf Rag Zone glyph, sat to the right of the CxR and
+   zoot marks in the header cluster. Pure red per the zone's identity. */
+a.site-leaf-mark {
+  align-self: baseline;
+  flex: 0 0 auto;
+  color: var(--fi-red);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+a.site-leaf-mark:hover,
+a.site-leaf-mark:focus-visible {
+  color: var(--fi-paper-light);
+}
+
 @media (max-width: 720px) {
   .inventory-gallery-controls {
     grid-template-columns: minmax(0, 1fr);
@@ -6798,6 +6818,7 @@ a.site-cxr-mark:focus-visible {
   }
 
   a.site-cxr-mark,
+  a.site-leaf-mark,
   .site-header a.fi-zoot-mark {
     align-self: flex-end;
   }
