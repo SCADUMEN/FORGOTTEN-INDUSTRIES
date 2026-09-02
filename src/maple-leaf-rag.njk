@@ -1,5 +1,5 @@
 ---
-permalink: /maple-leaf-rag/
+permalink: /maple-leaf-rag-zone/
 eleventyExcludeFromCollections: true
 title: MAPLE LEAF RAG ZONE
 description: A passive slick instrument — Shadow Zone ephemera surfacing under an extra-crispy rag.
@@ -12,7 +12,7 @@ description: A passive slick instrument — Shadow Zone ephemera surfacing under
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="{{ description }}">
   <meta name="robots" content="noindex">
-  <link rel="canonical" href="{{ site.domainUrl }}/maple-leaf-rag/">
+  <link rel="canonical" href="{{ site.domainUrl }}/maple-leaf-rag-zone/">
   {% include "social-meta.njk" %}
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -67,6 +67,18 @@ description: A passive slick instrument — Shadow Zone ephemera surfacing under
       height: 100dvh;
       display: block;
       touch-action: none;
+    }
+    /* Falling-leaves overlay: sits above the slick but never intercepts the
+       pointer, so the chrome links stay clickable and the leaves still react to
+       cursor position (tracked on window). */
+    #mlr-leaves {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      width: 100vw;
+      height: 100dvh;
+      display: block;
+      pointer-events: none;
     }
     /* Bottom chrome: the exit mark and sound toggle sit in one fixed bar. The
        bar ignores pointer events; only its links opt back in. */
@@ -213,6 +225,7 @@ description: A passive slick instrument — Shadow Zone ephemera surfacing under
       </div>
     </div>
     <canvas id="mlr-canvas" aria-hidden="true"></canvas>
+    <canvas id="mlr-leaves" aria-hidden="true"></canvas>
     <div id="mlr-chrome">
       <div id="mlr-controls">
         <a id="mlr-exit" href="/">FORGOTTEN INDUSTRIES /</a>

@@ -7,8 +7,10 @@ import { createRenderer } from './gl.js'
 import { createPhotos } from '../zoot/photos.js'
 import { createAudio } from './audio.js'
 import { createIntro } from './intro.js'
+import { createLeaves } from './leaves.js'
 
 const canvas = document.getElementById('mlr-canvas')
+const leafCanvas = document.getElementById('mlr-leaves')
 
 // Passive slick constants. In ZOOT these were driven by pointer interaction;
 // here the field churns on uTime alone. Values match ZOOT's resting look.
@@ -66,6 +68,10 @@ async function boot() {
     getAspect: () => cssW / cssH,
   })
   wireLifecycle()
+  // Falling ❦ leaves + their fading trails, on their own overlay canvas above
+  // the slick. Motion, so suppressed under prefers-reduced-motion (which
+  // returns before reaching here).
+  createLeaves(leafCanvas)
   lastFrameAt = getTime()
   rafId = requestAnimationFrame(frame)
 }

@@ -4,11 +4,11 @@
 
 import { VERT, fragmentSource } from './shaders.js'
 
-// Warm maple palette, normalized. uPalette[0] deep red (#b3121f), [1] ember
-// orange (#e8641e), [2] maple gold (#f2a900). The shader weights these by the
-// three thin-film channel responses.
+// Warm maple palette, normalized. uPalette[0] pure red (#ff0000, the zone's
+// leaf red), [1] ember orange (#e8641e), [2] maple gold (#f2a900). The shader
+// weights these by the three thin-film channel responses.
 const PALETTE = new Float32Array([
-  0.702, 0.071, 0.122, 0.91, 0.392, 0.118, 0.949, 0.663, 0.0,
+  1.0, 0.0, 0.0, 0.91, 0.392, 0.118, 0.949, 0.663, 0.0,
 ])
 
 const UNIFORMS = [
