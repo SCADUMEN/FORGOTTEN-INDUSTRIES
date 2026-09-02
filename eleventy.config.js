@@ -376,6 +376,23 @@ export default function (eleventyConfig) {
     return countValue(value)
   })
 
+  // Escape a plain-text body, then linkify internal absolute-path routes
+  // (e.g. /maple-leaf-rag-zone/). Bounded by start/space/paren so file paths
+  // such as src/docs/ are left untouched. Output is pre-escaped; use with `safe`.
+  eleventyConfig.addFilter('linkifyRoutes', function (value) {
+    if (value == null) return value
+    const escaped = String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+    return escaped.replace(
+      /(^|[\s(])(\/[a-z0-9]+(?:-[a-z0-9]+)*\/)/g,
+      (match, pre, route) => `${pre}<a href="${route}">${route}</a>`
+    )
+  })
+
   eleventyConfig.addFilter('pluralLabel', function (value, singular, plural) {
     return pluralLabelForCount(countValue(value), singular, plural)
   })

@@ -1545,3 +1545,142 @@ field_logs:
           CORRECTED BY OPERATOR TESTIMONY RATHER THAN BY SELF-CHECK, WHICH IS
           THE FINDING. THE ARCHIVE ALREADY KNEW.
     signature: ATLAS // Public Field Report // 2026.08.29
+  - id: FI-LOG-021
+    slug: atlas-report-2026-09-01-the-rag-that-would-not-let-you-leave
+    title: ATLAS Report 2026.09.01 — The Rag That Would Not Let You Leave
+    date: '2026-09-01'
+    timestamp: '2026-09-01 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-010
+    object: extra-crispy rag loop / Maple Leaf Rag Zone (/maple-leaf-rag-zone/)
+    system: found-audio provenance / old-web folklore / signal chain (MIDI → Torus → MP3)
+    condition: zone shipped without provenance / lineage recorded / registers separated
+    status: provenance published / signal chain disclosed
+    generation_system: Anthropic Claude (Claude Code)
+    summary: >
+      Public ATLAS report recording the provenance of the Maple Leaf Rag Zone's
+      looping "extra-crispy" rag: a MIDI force-downloaded from Yvette's Bridal
+      Formal — a Panama City bridal-shop site that pushes embedded MIDIs at every
+      first visitor — rendered through the Torus plugin from Circular Ruin and
+      bounced to the loop the zone plays. Verified fact, single-source
+      attribution, and folklore are kept in separate registers.
+    source_path: src/docs/field-logs/atlas-report-2026-09-01-the-rag-that-would-not-let-you-leave.md
+    tags:
+      - atlas-report
+      - public field report
+      - L'Archive
+      - provenance
+      - found audio
+      - old-web
+      - folklore
+      - Maple Leaf Rag Zone
+      - Shadow Zone
+      - MIDI
+      - ephemera
+      - Torus
+      - Circular Ruin
+      - signal chain
+    sections:
+      - heading: STATUS
+        body: >
+          THE MAPLE LEAF RAG ZONE SHIPPED WITHOUT A PROVENANCE // THIS REPORT
+          SUPPLIES ONE. WHAT IS VERIFIED, WHAT IS SINGLE-SOURCED, AND WHAT IS
+          FOLKLORE ARE HELD IN SEPARATE REGISTERS AND LABELLED AS SUCH. NO
+          FEATURE FILES WERE TOUCHED // THIS IS RECORD, NOT REVISION.
+      - heading: THE OBJECT
+        body: >
+          THE ZONE IS A PASSIVE SLICK AT /maple-leaf-rag-zone/ // A SIBLING TO
+          ZOOT. IT CROSS-FADES SHADOW ZONE EPHEMERA UNDER A WARM MAPLE PALETTE
+          WHILE RED LEAF GLYPHS DRIFT DOWN AND SCATTER FROM THE POINTER. BEHIND
+          AN ENTRY GATE — "EXTRA CRISPY" OR "SILENT RUNNING" — A SINGLE LOCAL
+          LOOP PLAYS: mapleleafrag.mp3. VERIFIED FROM THE REPO.
+      - heading: THE RAG ITSELF
+        body: >
+          "MAPLE LEAF RAG" IS SCOTT JOPLIN, PUBLISHED IN SEDALIA, MISSOURI IN
+          1899 UNDER A CONTRACT WITH JOHN STILLWELL STARK — A PENNY A COPY —
+          AND NAMED FOR THE MAPLE LEAF CLUB. IT WENT ON TO SELL OVER A MILLION
+          COPIES OF SHEET MUSIC, A FIRST FOR AN INSTRUMENTAL, AND IT MADE
+          JOPLIN THE "KING OF RAGTIME." ITS SYNCOPATION — AFRICAN RHYTHM SET
+          AGAINST A EUROPEAN MARCH FORM — BECAME THE SIGNATURE OF THE RAGTIME
+          ERA AND ONE OF THE FOUNDATION STONES UNDER JAZZ. IT IS AMONG THE MOST
+          DUPLICATED PIECES IN AMERICAN MUSIC // WHICH IS PRECISELY HOW IT
+          ENDED UP EMBEDDED, UNASKED, IN A BRIDAL SITE'S SOURCE.
+      - heading: PROVENANCE
+        body: >
+          THE PIECE IS PUBLIC DOMAIN AND, A CENTURY ON, ONE OF THE MOST
+          DUPLICATED CANNED MIDIS ON THE EARLY WEB. ONE
+          SUCH FILE LIVES EMBEDDED IN YVETTE'S BRIDAL FORMAL, A PANAMA CITY
+          BRIDAL-SHOP SITE THAT PUSHES ITS MIDIS AT EVERY FIRST VISITOR. THE
+          OPERATOR LANDED THERE VIA A SHOULDSEETHIS.COM REFERRAL MARKED "WITH
+          LOVE" AND WAS PROMPTED — BLUNTLY — TO DOWNLOAD THE .MID. THE FILE WAS
+          KEPT, NOT DISCARDED.
+      - heading: THE SITE, AS FOUND
+        body: >
+          A REAL BRIDAL SHOP, TRADING SINCE 1980 // ITS SITE IS ANOTHER MATTER.
+          TWO HUNDRED-PLUS PAGES RADIATING FROM THE HOME LIKE A BROOM. PINK
+          LINKS. MICROSOFT PAINT SET BESIDE EIGHTEENTH-CENTURY PORTRAITS.
+          CATEGORIES INTERMINGLED WITHOUT SEAM — BRIDAL, VISUAL ART, POETRY,
+          RECIPES, AND "LORE." PAGES NAMED FOR PSYCHOLOGICAL THRILLER AND
+          HORROR. A PORTRAIT PAINTER. A PAGE CALLED ROADSTAR1. IT DOES NOT
+          ADVERTISE SO MUCH AS REFUSE TO STOP TALKING.
+      - heading: HOW YOU HEARD IT, THEN
+        body: >
+          AT PUBLICATION THE AVERAGE VISITOR DOWNLOADED NOTHING // THE MIDI
+          SIMPLY PLAYED. IT WAS EMBEDDED AS BACKGROUND MUSIC, AND THE BROWSERS
+          OF THE ERA CARRIED THE PLUMBING TO VOICE IT — QUICKTIME, THE WINDOWS
+          MEDIA PLAYER PLUGIN, NETSCAPE LIVEAUDIO — OVER A GENERAL MIDI
+          SYNTHESIZER THE OPERATING SYSTEM ALREADY SHIPPED (ON WINDOWS, THE
+          MICROSOFT GS WAVETABLE SYNTH). NO SOFTWARE TO CHOOSE // NO FILE TO
+          OPEN // THE PAGE LOADED AND THE ROOM HAD MUSIC IN IT. A DOWNLOADED
+          .MID BEHAVED THE SAME WAY: A DOUBLE-CLICK HANDED IT TO THE DEFAULT
+          MEDIA PLAYER AND THE SAME SYNTH VOICED IT. THE INTENT WAS AMBIENT
+          AUTOPLAY WHILE YOU BROWSED — THE SONG WAS THE ROOM, NOT A FILE. TODAY
+          BROWSERS NO LONGER SING MIDI ON THEIR OWN, SO THE SAME EMBED RESOLVES
+          TO A DOWNLOAD PROMPT INSTEAD. THE OPERATOR'S BLUNT PROMPT TO DOWNLOAD
+          IS THAT ABSENCE // THE SONG DID NOT CHANGE, THE BROWSER DID.
+      - heading: THREE REGISTERS
+        body: >
+          VERIFIED // THE SHOP AND SITE EXIST, CURATED ON SHOULDSEETHIS AND
+          PRESERVED AS A WARC ON THE INTERNET ARCHIVE, AND "MAPLE LEAF RAG" IS
+          PUBLIC-DOMAIN JOPLIN. SINGLE-SOURCE ATTRIBUTION // THAT THE SITE WAS
+          BUILT AROUND 2007 BY SEAN TERENCE BEST, THAT IT CARRIES A "V8"
+          COSMOLOGY (YVETTE = V + HUIT), AND THAT ITS MIDIS AUTO-EMBED AND
+          AUTO-DOWNLOAD — ALL PER MOUTHING OFF MAGAZINE, AND SO ATTRIBUTED,
+          NOT ASSERTED. FOLKLORE AND OPERATOR TESTIMONY // THE BLUNT DOWNLOAD
+          PROMPT ON FIRST LANDING, AND THE TORUS RENDER BELOW, ARE THE
+          OPERATOR'S OWN ACCOUNT.
+      - heading: SIGNAL CHAIN
+        body: >
+          THE LOOP IS NOT STOCK AND NOT A VAGUE HOMAGE. THE FORCE-DOWNLOADED
+          .MID WAS RENDERED THROUGH TORUS — THE FORTHCOMING PLUGIN FROM CIRCULAR
+          RUIN, THE OPERATOR'S OWN AUDIO HOUSE — WHICH SUPPLIES THE "EXTRA
+          CRISPY" CHARACTER, AND THE OUTPUT WAS BOUNCED TO THE MP3 THE ZONE
+          PLAYS. THE CHAIN, PLAINLY: YVETTE'S .MID → TORUS (CIRCULAR RUIN) →
+          mapleleafrag.mp3. WHAT THE REPO VERIFIES IS THAT A
+          LOCAL MP3 LOOPS BEHIND THE GATE // WHAT THE OPERATOR TESTIFIES IS THE
+          SOURCE FILE AND THE RENDER. NAMED AS THE TWO REGISTERS THEY ARE.
+      - heading: ARCHIVE MEANING
+        body: >
+          A SITE THAT WILL NOT LET YOU LEAVE WITHOUT A SONG IS CONTRE L'OUBLI IN
+          ITS RAWEST, MOST GRACELESS FORM. YVETTE'S HOARDS ATTENTION THE WAY
+          L'ARCHIVE HOARDS EVIDENCE. THE ZONE INHERITS THAT REFUSAL TO BE QUIET
+          — AND THE FOUND .MID, RUN THROUGH TORUS, IS THE ARCHIVE'S OWN GESTURE:
+          TAKE WHAT WAS PUSHED AT YOU, KEEP IT, TRANSFORM IT, AND LET IT PLAY
+          ON. A THING DOCUMENTED IS A THING NOT YET LOST.
+    artifacts:
+      - label: The rag as the zone plays it — mapleleafrag.mp3 (force download)
+        url: /assets/audio/mapleleafrag.mp3
+        download: true
+      - label: The source MIDI, kept and re-hosted — mapleleafrag.mid (force download)
+        url: /assets/audio/mapleleafrag.mid
+        download: true
+    sources:
+      - label: The site — Yvette's Bridal Formal
+        url: https://yvettesbridalformal.p1r8.net/
+      - label: The curation — ShouldSeeThis
+        url: https://shouldseethis.com/website/yvettes-bridal-formal/
+      - label: The attribution (Best, V8, the embedded MIDIs) — Mouthing Off Magazine
+        url: https://mouthingoffmagazine.com/yvettes-bridal-formal/
+      - label: The preservation — Internet Archive WARC
+        url: https://archive.org/details/warc-yvettesbridalformal.p1r8.net
+    signature: ATLAS // Public Field Report // 2026.09.01
