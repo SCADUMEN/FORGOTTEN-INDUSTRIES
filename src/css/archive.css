@@ -6562,6 +6562,13 @@ a.fi-zoot-mark:focus-visible .fi-zoot-slick-canvas {
   opacity: 1;
 }
 
+/* Wrapper around the CxR/zoot/leaf marks. Inert on desktop (display:contents),
+   so the marks stay direct flex children of the cluster exactly as before; it
+   only becomes a real row at the mobile breakpoint. */
+.site-cxr-row {
+  display: contents;
+}
+
 /* CxR mark: the research instrument's wordmark, sat to the left of the zoot
    mark in the header cluster. Zoot-sized, but all-caps blue monospace. */
 a.site-cxr-mark {
@@ -6745,14 +6752,55 @@ a.site-leaf-mark:focus-visible {
 }
 
 @media (max-width: 560px) {
+  /* Dissolve the cluster (and the marks wrapper) into the header grid so the
+     shield, main nav, and the mark row can be placed independently. The header
+     reads: shield + nav / rule / CxR row / (header border) / hero. */
   .site-nav-cluster {
-    flex-direction: column;
-    align-items: end;
-    gap: 0.1rem;
+    display: contents;
+  }
+
+  .site-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "shield nav"
+      "cxr    cxr";
+    row-gap: 0.9rem;
+    align-items: start;
+  }
+
+  .site-mark {
+    grid-area: shield;
+  }
+
+  .site-nav {
+    grid-area: nav;
+  }
+
+  .site-cxr-row {
+    grid-area: cxr;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    gap: 1.1rem;
+    padding-top: 0.85rem;
+    border-top: 2px solid var(--line);
+  }
+
+  /* CxR far left, zoot mark dead center, leaf mark far right. */
+  .site-cxr-row > :first-child {
+    justify-self: start;
+  }
+
+  .site-cxr-row > :nth-child(2) {
+    justify-self: center;
+  }
+
+  .site-cxr-row > :last-child {
+    justify-self: end;
   }
 
   .site-header a.fi-zoot-mark {
-    margin-top: -0.2rem;
+    margin-top: 0;
     font-size: 2.65rem;
   }
 
