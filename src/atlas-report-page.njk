@@ -97,9 +97,25 @@ eleventyComputed:
       {% for section in log.sections %}
       <section>
         <h3><span class="fi-prompt-marker">&gt;</span>{{ section.heading }}</h3>
-        <p>{{ section.body }}</p>
+        <p>{{ section.body | linkifyRoutes | safe }}</p>
       </section>
       {% endfor %}
+      {% if log.artifacts and log.artifacts.length %}
+      <section>
+        <h3><span class="fi-prompt-marker">&gt;</span>ARTIFACTS</h3>
+        {% for artifact in log.artifacts %}
+        <p>{{ artifact.label }} — <a href="{{ artifact.url }}"{% if artifact.download %} download{% endif %}>{{ artifact.url }}</a></p>
+        {% endfor %}
+      </section>
+      {% endif %}
+      {% if log.sources and log.sources.length %}
+      <section>
+        <h3><span class="fi-prompt-marker">&gt;</span>SOURCES</h3>
+        {% for source in log.sources %}
+        <p>{{ source.label }} — <a href="{{ source.url }}" rel="noopener nofollow noreferrer">{{ source.url }}</a></p>
+        {% endfor %}
+      </section>
+      {% endif %}
     </article>
 
     <aside class="field-log-atlas-provenance" role="note" aria-label="ATLAS provenance">
