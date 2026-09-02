@@ -16,7 +16,7 @@ const COLOR_RGB = '255, 0, 0' // for rgba() trail particles
 // so the fine trail shimmers across the palette instead of flat red.
 const PIXEL_COLORS = ['255, 0, 0', '232, 100, 30', '242, 169, 0']
 const REPEL_RADIUS = 150 // px around the pointer that disturbs leaves
-const REPEL_STRENGTH = 900 // px/s² impulse at the pointer center
+const REPEL_STRENGTH = 9000 // px/s² impulse at the pointer center (10x)
 const DAMPING = 0.9 // per-frame decay of the scatter impulse back to falling
 const TRAIL_INTERVAL = 0.055 // s between soft-dot emissions per leaf
 const TRAIL_LIFE = 2.2 // s a soft-dot trail particle lives (200% longer tail)
