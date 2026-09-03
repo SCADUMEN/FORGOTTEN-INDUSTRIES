@@ -4,6 +4,7 @@
   "compatibility_date": "2026-07-17",
   "workers_dev": true,
   "preview_urls": true,
+  "main": "src/worker/index.js",
   "routes": [
     {
       "pattern": "forgotten-industries.net",
@@ -12,7 +13,18 @@
   ],
   "assets": {
     "directory": "./_site",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
   },
+  // Provision with `wrangler d1 create jjammocan-sightings`, then replace
+  // database_id below with the id it prints (see src/worker/schema.sql for
+  // the table it needs, applied with `wrangler d1 execute`).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "jjammocan-sightings",
+      "database_id": "REPLACE_AFTER_WRANGLER_D1_CREATE",
+    },
+  ],
 }
