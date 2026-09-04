@@ -2997,6 +2997,39 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-08-29'
 
+  - id: FI-EPH-011
+    name: Vertebral Column
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1320×2868 / phone screen capture of a social feed / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-011-vertebral-column.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone, captured as a full phone
+      screenshot rather than as an isolated frame: an anatomical plate of the
+      human vertebral column — skull, cervical, thoracic and lumbar segments,
+      sacrum and coccyx labelled — set beside a standing figure, with a
+      burned-in two-line caption warning the viewer not to turn around. The
+      caption's second line is a racial slur; it is recorded here by
+      description rather than transcribed, and remains legible in the image
+      itself. The operator reviewed the content and directed accession
+      uncropped. The capture also retains the host application's interface
+      chrome, including the display names and profile thumbnails of several
+      unrelated third-party accounts; those accounts are incidental to the
+      screenshot, have granted no clearance, and are not identified in this
+      record. Authorship, source date, upstream context, and alteration
+      history of the meme itself remain unverified.
+    lifecycle:
+      - date: '2026-09-04'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); slur content and visible third-party account chrome raised with the operator before accession and admitted uncropped at the operator's direction; authorship, source context, and derivative history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-04'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
