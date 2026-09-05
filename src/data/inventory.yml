@@ -3030,6 +3030,36 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-04'
 
+  - id: FI-EPH-012
+    name: Piss Man
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 890×898 / phone screen capture of a message thread / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-012-piss-man.jpeg
+    notes: >
+      Found-image cutout supplied for The Shadow Zone, captured as a phone
+      screenshot of the operator's own message thread rather than as an
+      isolated frame: a close crop of an unidentified man against a black
+      field, teeth bared, wearing small round dark-lensed spectacles. Below it
+      sit two of the operator's outgoing messages, which name the figure and
+      direct it here — "We need making piss man" / "For empherma" — and are
+      preserved as the accession's own provenance. The name "Piss Man" is the
+      operator's; it carries no known upstream attribution. Admitted uncropped
+      to match the FI-EPH-011 precedent. Only the operator's side of the
+      thread is visible; no correspondent is shown or identified. Subject,
+      authorship, source frame, date, and alteration history remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); figure named and directed to the Shadow Zone by the operator in the captured messages, which are retained in frame as provenance; subject, authorship, source frame, and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
