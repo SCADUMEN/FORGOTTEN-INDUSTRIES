@@ -3200,6 +3200,146 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-018
+    name: Kornan O'Brien
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1101 / composite / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-018-kornan-obrien.jpeg
+    notes: >
+      Found-image composite supplied for The Shadow Zone: the face of the
+      television host Conan O'Brien grafted onto a long-haired, bearded metal
+      musician photographed against a stage backdrop, captioned "KoRnAn
+      o'BRiEn" in the mirrored, distressed lettering of the band Korn's
+      wordmark. Legible as parody of both. The image carries the handle
+      "@takethesebrokenmemes" as a burned-in watermark; the handle is recorded
+      as it appears and is not treated as an attribution of authorship. The
+      underlying photographs, their photographers, and the compositing history
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a parody composite of a public figure; watermark handle recorded verbatim without inferring authorship; source photographs and compositing history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-019
+    name: Walken Seated
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1536×2048 / rephotographed screen / soft focus and moiré
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-019-walken-seated.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured by photographing a
+      display rather than by screenshot — the frame carries the soft focus,
+      tonal shift and moiré of a rephotographed screen, which is preserved as
+      part of the artifact. Shows the actor Christopher Walken seated in an
+      armchair in a dark uniform jacket, shirt and tie, hands on his knees,
+      before a heavy draped backdrop, in cold monochrome. Reads as a
+      television or film still. The production, episode or title, broadcast
+      date, and rights holder remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied rephotograph of a screen admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a public figure in what reads as a broadcast still; production, date and rights holder remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-020
+    name: Village of Bull Valley
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×2796 / phone screen capture of a web page
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-020-bull-valley.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured as a full phone
+      screenshot of an English Wikipedia article: a green municipal boundary
+      sign reading "VILLAGE OF BULL VALLEY" on a flat overcast day, flanked
+      below by two smaller signs, one setting a maximum littering fine and one
+      requiring a solicitors permit, with bare winter scrub behind. Browser
+      chrome and the search field are retained in frame. Bull Valley is a real
+      municipality in Illinois; the sign marks a public boundary and pins no
+      private address. The underlying photograph is a third-party contribution
+      to Wikipedia — its author and licence terms were not resolved before
+      accession, so no attribution or reuse licence is asserted here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); pictured sign is a public municipal boundary marker, not a private address; underlying Wikipedia photograph's author and licence terms unresolved and no licence asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-021
+    name: Congressional Portrait
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1164×1518 / screen capture of a link card / portrait unaltered
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-021-congressional-portrait.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: the official congressional
+      portrait of Representative Alexandria Ocasio-Cortez — dark blazer,
+      United States flag behind her, studio grey ground — presented inside a
+      Reddit link card headed "From stephencolbert community on Reddit." The
+      portrait itself carries no caption, overlay or alteration; the framing
+      chrome is incidental to the capture. Official portraits of members of
+      Congress are United States government works, so the underlying image is
+      not encumbered, but the sharing card and its community attribution are
+      third-party furniture and are recorded, not endorsed. No claim is made
+      here about the subject.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a named public official and her official portrait admitted unaltered and uncaptioned; surrounding link-card chrome recorded as incidental
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-022
+    name: Tim Allen Autograph
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 737×947 / low resolution / reproduction of a signed publicity still
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-022-tim-allen-autograph.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a low-resolution reproduction
+      of a publicity headshot of the actor Tim Allen — blue shirt, patterned
+      tie, wide-eyed open-mouthed expression against a graduated studio ground
+      — carrying an ink signature across the chest in the manner of a
+      fan-mail autograph. The signature is visible in the reproduction; its
+      authenticity is not established, and this record makes no claim that it
+      is genuine. Photographer, studio, date, and the provenance of the signed
+      original remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a public figure; visible signature recorded as present with no authentication claimed; photographer, studio, date and provenance of the signed original remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
