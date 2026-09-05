@@ -3598,6 +3598,146 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-032
+    name: Starbucks Mohawk
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1133×1371 / captioned candid photograph / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-032-starbucks-mohawk.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a candid interior
+      photograph of a man in a tall bleached mohawk, wraparound sunglasses and
+      a heavily studded leather jacket, seated at a small café table working
+      at a laptop trailing green-lit cables, with a spiked bag on the chair
+      beside him. A burned-in caption above the frame names the scene as a
+      self-portrait of the poster in a coffee chain on a stated dose of a
+      prescription stimulant — self-deprecating humour rather than instruction,
+      and this record neither endorses nor advises any such use. The pictured
+      man is not identified, appears to have been photographed without
+      obvious participation, and has granted no clearance. Photographer,
+      location, date, and whether the caption's claim relates to him at all
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); caption recorded as self-deprecating humour naming a prescription stimulant, with no endorsement or advice given; pictured man unidentified, apparently candid, and his clearance outstanding; photographer, location and date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-033
+    name: That Damned Smile
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1457 / four-panel subtitled composite / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-033-that-damned-smile.jpeg
+    notes: >
+      Found-image composite supplied for The Shadow Zone: a four-panel grid.
+      Three panels are subtitled stills of a young woman holding a red cup at
+      a party, reading in sequence "So you see, that's where the trouble
+      began." / "That smile." / "That damned smile." The fourth, top right,
+      cuts to an unrelated frame of a bearded man in a shirt and tie holding a
+      glass pipe and a lighter, grinning at camera — the punchline being that
+      he is what she is describing. The stills read as broadcast footage; the
+      productions, performers, rights holders, and the compositor are not
+      identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied composite admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); panels read as broadcast stills and no production, performer, rights holder or compositor is asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-034
+    name: Sad in a Happy Place
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1823 / captioned still / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-034-sad-in-a-happy-place.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a soft-focus outdoor
+      still of a young blonde woman in a grey turtleneck, brown cardigan and
+      yellow-and-black jacket over one shoulder, hair caught in the wind
+      against a blurred field of purple, looking off-frame with a flat
+      expression. A plain burned-in caption reads "when you're sad in a happy
+      place." The still reads as period broadcast footage; the production,
+      performer, rights holder and date are not identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); frame reads as a broadcast still and no production, performer, rights holder or date is asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-035
+    name: Adiós
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1164×1523 / screen capture of a link card / mocked-up trading card
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-035-adios.jpeg
+    notes: >
+      Found-image mockup supplied for The Shadow Zone, captured as a Reddit
+      link card headed "From PTCGP community on Reddit": a counterfeit
+      collectible card whose art shows a heavyset figure in a red shirt,
+      black shorts and a red bandana walking away from the viewer into a
+      luminous blue wormhole, captioned "Adiós" in the card's title bar. The
+      figure is a long-circulating internet reaction image; its origin is
+      unverified. The card layout parodies a commercial trading card game and
+      is unaffiliated with it. The sharing card and its community attribution
+      are third-party furniture, recorded rather than endorsed.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); card layout parodies a commercial property with no affiliation asserted; link-card chrome recorded as incidental; origin of the reaction image remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-036
+    name: Human-Faced Fish
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×908 / subtitled illustration / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-036-human-faced-fish.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a graphite-style illustration
+      of a fish rendered in careful naturalistic shading, but with a small
+      human face — heavy brow, long nose, reddened lips — worked into its
+      head, floating above a brown ground before scribbled green weed. A
+      subtitle in the manner of a broadcast caption reads "I want to sleep on
+      your chest tonight." Whether the subtitle belongs to a source
+      programme or was added is not established. Illustrator, source, and
+      date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subtitle's origin not established and not attributed; illustrator, source and date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
