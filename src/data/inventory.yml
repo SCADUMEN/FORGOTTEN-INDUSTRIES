@@ -3060,6 +3060,86 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-013
+    name: Reebok Snowman
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 864×1184 / original photograph / daylight exterior
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-013-reebok-snowman.jpeg
+    notes: >
+      Photograph supplied for The Shadow Zone: a snowman built against a
+      stucco wall beside a downspout, dressed in a grey Reebok hooded puffer
+      jacket with the hood up. The face carries plastic googly eyes behind a
+      pair of real black-framed spectacles, a carrot nose, a pebble smile, and
+      a cigarette set in the mouth. Unlike the found images around it in this
+      set, this is an original capture rather than a derivative. Maker,
+      location, and date are not recorded here; the exif scrub reported no
+      location metadata to strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); maker, location, and capture date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-014
+    name: Ibuprofen Together
+    category: ephemera
+    quantity: 1 digital image (animated GIF + extracted still)
+    associated_project: FI-PROJ-010
+    condition: digital / GIF 89a, 400×400, animated / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-014-ibuprofen.gif
+      - assets/ephemera/shadow-zone/fi-eph-014-ibuprofen-still.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: an animated loop of a
+      well-dressed anime figure extending an open hand toward the viewer,
+      under a burned-in caption reading "lets take ibuprofen together." The
+      source frame is anime; the specific work, authorship, and captioning
+      history are unverified. Two files are kept deliberately. The GIF is the
+      supplied source and is preserved unaltered; the JPEG is its first frame,
+      extracted so the item also qualifies for the Shadow Zone photo rotations,
+      which match JPEG filenames only and would otherwise skip an animated
+      accession entirely.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied animated GIF admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); source GIF preserved unaltered and a first-frame JPEG derived from it so the item participates in the JPEG-only zone rotations; source work, authorship, and captioning history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-015
+    name: Ya Boofter
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1320×1237 / rendered graphic / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-015-ya-boofter.jpeg
+    notes: >
+      Found-image graphic supplied for The Shadow Zone: an isometric cube
+      floating on a black halftone field, each visible face carrying a
+      chrome-bubble gradient and the words "YA" in white above "BOOFTER" in
+      magenta. Reads as deliberate late-1990s / early-web pastiche. Authorship,
+      source date, and rendering tool remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); authorship, source date, and rendering history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
