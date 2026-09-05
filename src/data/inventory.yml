@@ -3340,6 +3340,152 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-023
+    name: Temperature Check
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1091 / captioned cartoon / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-023-temperature-check.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a two-panel cartoon in a
+      soft pastel style. In the first panel a smiling bald figure holds a
+      forehead thermometer to his temple; in the second the device's screen is
+      read in close-up from bed, its display reading as reassurance rather
+      than a number. A header line completes the joke about checking one's
+      temperature. The thermometer's readout ends in a racial slur; it is
+      recorded here by description rather than transcribed, and remains
+      legible in the image. As with FI-EPH-011 the caption sits over drawn
+      figures rather than a photographed person, and no identifiable
+      individual is depicted. Authorship, source date, and alteration history
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); slur content recorded by description rather than transcription; subjects are drawn figures, so no identifiable individual is depicted and no clearance is outstanding; authorship and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-024
+    name: Kickflips
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1632 / captioned game render / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-024-kickflips.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a composite built from
+      Silent Hill 2 character renders. A grinning young man in a green jacket
+      is posed mid-kickflip on a skateboard above a hospital bed in which a
+      bandaged woman lies looking up at him, in the game's characteristic fog.
+      Two burned-in captions run the joke, the lower one profane. The source
+      renders belong to a commercial video game; the compositing, authorship,
+      and source date of this derivative remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subjects are video game character renders, not photographed people; underlying renders are commercial game assets and no reuse licence is asserted; compositing and authorship remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-025
+    name: Consider This a Warning
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1279 / heavily recompressed / captioned drawing / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-025-consider-this-a-warning.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a crudely redrawn
+      cartoon hybrid, a humanoid female figure rendered in SpongeBob
+      SquarePants' yellow porous skin and dressed in suspenders and a
+      scalloped white top, with the character's face duplicated across her
+      chest. Sexualised cartoon imagery, though nothing explicit is depicted;
+      the figure is drawn, not photographed, and no real person is involved.
+      Carries a profane burned-in caption issuing a warning. Heavy
+      recompression artefacts indicate many generations of resharing. The
+      underlying character is a commercial property; authorship and source
+      date of this derivative remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); content is sexualised cartoon drawing with nothing explicit depicted and no real person involved, flagged to the operator on accession; underlying character is a commercial property and no reuse licence is asserted; authorship remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-026
+    name: Neuralink Patient
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1306 / screen capture of a captioned video / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-026-neuralink-patient.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone, captured from a
+      captioned video: a bearded man in a cap and earphones speaks to camera
+      beside an inset cartoon of a cat fused with a cheeseburger. The
+      burned-in caption presents the drawing as the work of a Neuralink
+      patient produced by mind control after a brain implant. The caption is
+      satire and its claim is false — this record asserts no connection
+      between the pictured man and any medical procedure, company, or named
+      individual, and makes no claim about his health. He is not identified
+      and has granted no clearance. A faint burned-in watermark is present but
+      not legibly resolvable and is therefore not transcribed. Authorship,
+      source video, and date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied video screen capture admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); caption identified as satire and its medical claim recorded as false so the record asserts nothing about the pictured man; he is unidentified and his clearance is outstanding; watermark illegible and not transcribed
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-027
+    name: Pizza Banner
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1836×1134 / original photograph / printed vinyl banner, grommeted
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-027-pizza-banner.jpeg
+    notes: >
+      Photograph supplied for The Shadow Zone: a printed vinyl banner,
+      grommeted at the corners and stretched slightly slack, carrying a
+      counterfeit pizza-chain wordmark. The mark copies the orange ground,
+      white cartouche, green oval and red panels of the Little Caesars trade
+      dress, down to a registered-trademark symbol, but substitutes an
+      obscenity for the chain's name — the banner reads "CUNT BROTHERS PIZZA".
+      The wording is transcribed here because it is the object; the file and
+      record are named neutrally so the vulgarity does not propagate into
+      URLs and indexes. Unaffiliated with and unendorsed by the chain whose
+      trade dress it parodies. Maker, printer, location, and date of the
+      banner are not recorded; the exif scrub reported no location metadata to
+      strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); banner text transcribed once in the record while file and record names are kept neutral; parody of a commercial trade dress with no affiliation or endorsement asserted; maker, printer, location and date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
