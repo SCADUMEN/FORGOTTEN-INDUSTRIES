@@ -3140,6 +3140,66 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-016
+    name: ZYN Goggles
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1536×2048 / original photograph / rotated interior selfie
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-016-zyn-goggles.jpeg
+    notes: >
+      Self-portrait supplied for The Shadow Zone: the operator, mouth open,
+      holding two ZYN nicotine-pouch tins over his eyes like goggles — one
+      Coffee, one mint — beneath a framed blossom-branch print on an interior
+      wall. The frame is rotated roughly ninety degrees from upright, as
+      captured. Subject identified by the operator as himself; no other person
+      is pictured. Product packaging is legible and is incidental to the image
+      rather than an endorsement. The exif scrub reported no location metadata
+      to strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); operator identified himself as the sole subject, so no third-party clearance is outstanding
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-017
+    name: May I Help You
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1525 / captioned portrait / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-017-may-i-help-you.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a cleanly lit studio
+      headshot of an unidentified bald man in rimless spectacles against a
+      white field, looking directly at the camera, under a burned-in caption
+      offering help. The caption opens with a racial slur; it is recorded here
+      by description rather than transcribed, and remains legible in the image
+      itself. Unlike FI-EPH-011, where a comparable caption sat over an
+      anatomical plate, here the slur is attached to a specific identifiable
+      face — this was raised with the operator before accession and the item
+      was admitted uncropped at his direction. The pictured man is not
+      identified, has granted no clearance, and there is no indication he
+      consented to this use of his portrait. The image carries the handle
+      "@war_on_wes" as a burned-in watermark; that handle is recorded as it
+      appears and is not treated as an attribution of authorship. Subject,
+      photographer, source frame, and captioning history remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); slur content, the identifiability of the pictured man, and his absent clearance raised with the operator before accession and admitted uncropped at his direction; watermark handle recorded verbatim without inferring authorship; subject, photographer, and captioning history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
