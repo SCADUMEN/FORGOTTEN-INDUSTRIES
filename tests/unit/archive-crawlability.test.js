@@ -361,7 +361,9 @@ describe('archive crawlability output', () => {
     )
 
     expect(peregrine).toContain('SCADUBIRD, evolved from PEREGRINE')
-    expect(peregrine).toContain('DJI Air 3S / stated intent, not a flight record')
+    expect(peregrine).toContain(
+      'DJI Air 3S / stated intent, not a flight record'
+    )
     // Aircraft that passed through custody without flying stay in the record.
     expect(peregrine).toContain('PEREGRINE-A05 / SCADUBIRD-SB001')
     expect(peregrine).toContain('Perry 4 / PEREGRINE-A04')

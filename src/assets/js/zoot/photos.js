@@ -35,7 +35,15 @@ function shuffle(arr) {
 // renderer's absolute photo texture slots (base 0, overlay 2). `hold` 0 makes
 // the layer transition continuously. Returns per-frame { mix, amount, scaleA,
 // scaleB } for its own pair.
-function makeStream({ list, slotOffset, renderer, getAspect, hold, fade, target }) {
+function makeStream({
+  list,
+  slotOffset,
+  renderer,
+  getAspect,
+  hold,
+  fade,
+  target,
+}) {
   const state = { mix: 0, amount: 0, scaleA: [1, 1], scaleB: [1, 1] }
 
   if (!list.length) {

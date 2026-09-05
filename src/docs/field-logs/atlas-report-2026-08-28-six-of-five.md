@@ -69,7 +69,7 @@ The count was internally consistent. The tool enumerated a population, examined 
 
 The scan located repositories by searching the filesystem for a directory named `.git`.
 
-That encodes a definition: *a repository is a directory containing a `.git` directory*. It is true of ordinary clones. It is false of linked worktrees, where `.git` is not a directory but a small text file — eighty-seven bytes — containing a single line pointing at the parent repository's object store.
+That encodes a definition: _a repository is a directory containing a `.git` directory_. It is true of ordinary clones. It is false of linked worktrees, where `.git` is not a directory but a small text file — eighty-seven bytes — containing a single line pointing at the parent repository's object store.
 
 A file is not a directory, the test excluded files, and so every linked worktree on the machine was structurally invisible. Not misjudged. Never seen.
 
@@ -79,11 +79,11 @@ This was the third instance of one pattern in this tool inside two days.
 
 **Second**, identity was re-grounded on the root commit, which survives renames, transfers, and forks where a URL survives none of them. The URL test was kept as an additional arm rather than removed.
 
-**Third**, and now: the layout test. Identity had been fixed twice while the question of *what to even test for identity* went unexamined.
+**Third**, and now: the layout test. Identity had been fixed twice while the question of _what to even test for identity_ went unexamined.
 
 Each time, the predicate that decided membership was narrower than the category it was meant to cover. Each time, the resulting failure was silent — a confident `clean, in sync` rather than an error, a warning, or a gap. And each time the correction was reactive, arriving after something outside the tool contradicted it.
 
-The risk ranking runs the wrong way as well. A worktree is *more* likely than a clone to hold uncommitted work, because holding in-progress work is the reason worktrees exist. The blind spot was aimed squarely at the highest-value target.
+The risk ranking runs the wrong way as well. A worktree is _more_ likely than a clone to hold uncommitted work, because holding in-progress work is the reason worktrees exist. The blind spot was aimed squarely at the highest-value target.
 
 ## What Caught It
 
@@ -103,7 +103,7 @@ This is the operative point, and it is uncomfortable. A finder cannot audit its 
 
 **Cause was established by measurement before any fix.** Depth limit, exclusion list, and shallowness were each ruled out against the actual checkout rather than assumed away. The eventual cause was none of the three, and guessing would have produced a fix that changed nothing.
 
-**The summary line was corrected alongside the finder.** Once worktrees became visible, a headline reading *six clones* would have been a fresh instance of the exact fault the previous correction had already addressed once: an accurate body under a summary that misstates it. The wording now distinguishes clones from worktrees, and is unchanged when no worktree is present.
+**The summary line was corrected alongside the finder.** Once worktrees became visible, a headline reading _six clones_ would have been a fresh instance of the exact fault the previous correction had already addressed once: an accurate body under a summary that misstates it. The wording now distinguishes clones from worktrees, and is unchanged when no worktree is present.
 
 **The incomplete state was declared, not implied.** The classification step is deliberately unfinished. The commit says so in plain terms rather than leaving a stub to be discovered later as a bug.
 
@@ -115,13 +115,13 @@ FI-LOG-017 established that a transfer counter does not prove a copy. FI-LOG-018
 
 This case satisfies both and still failed. The tool reported how many checkouts it examined. That count matched an independent enumeration — of the population the tool itself had defined. The arithmetic was sound to the end.
 
-So the boundary extends once more, from *how many were examined* to *which were eligible to be examined at all*:
+So the boundary extends once more, from _how many were examined_ to _which were eligible to be examined at all_:
 
 - a scan states the predicate by which it decided what to look at, not only what it found;
 - the count it reports is reconciled against a count obtained by a **different method**, not a more careful re-run of the same one;
 - known categories the scan structurally cannot see are named in its own output or its own source, not held in someone's memory;
-- where a property can be asked of an authoritative tool, it is asked, rather than inferred from filesystem shape — the question *what repository is this* has a direct answer, and pattern-matching layout was a guess wearing the clothes of a test;
-- a surprising *agreement* between a tool and an expectation is treated with the same suspicion as a surprising disagreement.
+- where a property can be asked of an authoritative tool, it is asked, rather than inferred from filesystem shape — the question _what repository is this_ has a direct answer, and pattern-matching layout was a guess wearing the clothes of a test;
+- a surprising _agreement_ between a tool and an expectation is treated with the same suspicion as a surprising disagreement.
 
 Absent those, the correct state is **unsurveyed**, not **complete**.
 

@@ -77,7 +77,7 @@ The archive's discipline is to name what it knows and how it knows it, so this r
 
 **Verified.** The shop and the site exist; the site is curated on ShouldSeeThis as a notable "weird website" and preserved as a WARC on the Internet Archive; and "Maple Leaf Rag" is public-domain Joplin, 1899.
 
-**Single-source attribution.** That the site was built around 2007 by Sean Terence Best, that it carries an elaborate "V8" cosmology (Yvette = V + *huit*, eight in French), and that its MIDIs are embedded to auto-play and auto-download — these come from a single account, *Mouthing Off Magazine*, and are recorded here as attributed, not asserted.
+**Single-source attribution.** That the site was built around 2007 by Sean Terence Best, that it carries an elaborate "V8" cosmology (Yvette = V + _huit_, eight in French), and that its MIDIs are embedded to auto-play and auto-download — these come from a single account, _Mouthing Off Magazine_, and are recorded here as attributed, not asserted.
 
 **Folklore and operator testimony.** The blunt download prompt on first landing, and the Torus render described below, are the operator's own account of his own actions. They are testimony, and are marked as testimony.
 
@@ -89,7 +89,7 @@ The two ends of that chain sit in different registers, and the record keeps them
 
 ## Archive Meaning
 
-A site that will not let you leave without a song is *contre l'oubli* in its rawest, most graceless form. Yvette's hoards attention the way L'Archive hoards evidence — indiscriminately, insistently, past the point of taste. The zone inherits that refusal to be quiet. And the found `.mid`, run through Torus and set to loop under surfacing ephemera, is the archive's own version of the same gesture, made deliberate: take what was pushed at you, keep it, transform it, and let it play on.
+A site that will not let you leave without a song is _contre l'oubli_ in its rawest, most graceless form. Yvette's hoards attention the way L'Archive hoards evidence — indiscriminately, insistently, past the point of taste. The zone inherits that refusal to be quiet. And the found `.mid`, run through Torus and set to loop under surfacing ephemera, is the archive's own version of the same gesture, made deliberate: take what was pushed at you, keep it, transform it, and let it play on.
 
 A thing documented is a thing not yet lost.
 

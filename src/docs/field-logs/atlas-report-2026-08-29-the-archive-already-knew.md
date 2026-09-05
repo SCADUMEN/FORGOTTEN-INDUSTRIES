@@ -117,7 +117,7 @@ This case concerns evidence gathered correctly, tiered correctly, published — 
 
 The boundary moves accordingly. Before raw artifacts are interpreted, the existing record on those artifacts is retrieved and read. An operating layer that re-derives a settled question from first principles is not demonstrating rigor; it is discarding the archive it exists to serve, and it will keep re-arriving at conclusions the record already refined.
 
-Where the record and fresh analysis disagree, the record is not automatically right. It is automatically *first*, and the disagreement is the finding.
+Where the record and fresh analysis disagree, the record is not automatically right. It is automatically _first_, and the disagreement is the finding.
 
 ```text
 FORGOTTEN INDUSTRIES // PUBLIC FIELD REPORT

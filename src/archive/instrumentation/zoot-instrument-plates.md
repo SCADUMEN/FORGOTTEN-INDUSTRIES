@@ -115,8 +115,8 @@ Two evidence states are preserved separately rather than merged:
 - `operator_report` — the operator states that Tyler Etters built the
   instrument.
 - `verified_source_fact` — the repository history records one commit by Tyler
-  Etters touching ZOOT: `4a100249`, 2026-08-13, *"Feed Shadow Zone photos into
-  ZOOT as an always-transitioning overlay"* (#129). That work is visible in
+  Etters touching ZOOT: `4a100249`, 2026-08-13, _"Feed Shadow Zone photos into
+  ZOOT as an always-transitioning overlay"_ (#129). That work is visible in
   these plates as the `uPhotoC` / `uPhotoD` overlay samplers, the second
   photographic layer cross-fading above the base.
 
@@ -158,14 +158,14 @@ decisions; the drafting was machine work.
 The observations in EVIDENCE STATES are machine readings of machine-captured
 plates. The plates themselves are the source; the readings are not authority.
 
-> Citation — *Instrumentation Record: ZOOT* (FI-INST-001, FI-INST-002).
+> Citation — _Instrumentation Record: ZOOT_ (FI-INST-001, FI-INST-002).
 > Forgotten Industries, L'Archive, 2026-08-28. Marx, Matthew Taylor, director
 > and editor. Instrument attributed to Tyler Etters. Developed with the ATLAS
 > operating layer; capture, classification, and drafting assistance from
 > Claude Code (Anthropic) running the ATLAS plugin.
 
-*Standard note: `docs/ai-generation-citation-standard.md` and
+_Standard note: `docs/ai-generation-citation-standard.md` and
 `site.aiProvenance` enumerate OpenAI ChatGPT and OpenAI Codex only. This record
 was not produced by either, and has not been filed under either name. It is
 filed as Claude Code running the ATLAS plugin. The standard requires amendment
-to cover assisting systems it does not list.*
+to cover assisting systems it does not list._
