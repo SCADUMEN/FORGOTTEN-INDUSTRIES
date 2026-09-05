@@ -58,9 +58,9 @@ evidence. It is not a dossier and carries no project number. Capabilities are
 instrument subpages beneath the L'Archive door and must appear in the
 Registered Shelves finding aid so the archive's own index stays honest.
 
-| Capability                | Route                      | Exercised by                       |
-| ------------------------- | -------------------------- | ---------------------------------- |
-| Provenance From On High   | `/l-archive/from-on-high/` | FI-PROJ-004 PEREGRINE (UAV Division) |
+| Capability              | Route                      | Exercised by                         |
+| ----------------------- | -------------------------- | ------------------------------------ |
+| Provenance From On High | `/l-archive/from-on-high/` | FI-PROJ-004 PEREGRINE (UAV Division) |
 
 A capability and the dossier that exercises it must link to each other. The
 dossier link is data-driven through `capability` and `capability_url` in
@@ -78,13 +78,13 @@ works without making the site feel like a portfolio.
 It has five public shelves, and the route's card grid carries one card per
 shelf. The count is not capped by layout.
 
-| Shelf              | Route          | Holds                                                                        |
-| ------------------ | -------------- | ---------------------------------------------------------------------------- |
+| Shelf              | Route          | Holds                                                                                                     |
+| ------------------ | -------------- | --------------------------------------------------------------------------------------------------------- |
 | **Les Dossiers**   | `/projects/`   | Living case files assembled from archive records, field logs, photographs, inventories, and observations. |
-| **Les Manuscrits** | `/posts/`      | Authored works, research papers, essays, and complete non-doctrine texts emerging from the archive. |
-| **Les Rapports**   | `/atlas/`      | ATLAS reports and system reports once they have been stabilized as records.  |
-| **La Doctrine**    | `/doctrine/`   | Field doctrine, systems doctrine, and formal principles extracted from the archive. |
-| **La Provenance**  | `/provenance/` | The source chain, build record, instrument chain, and production evidence.   |
+| **Les Manuscrits** | `/posts/`      | Authored works, research papers, essays, and complete non-doctrine texts emerging from the archive.       |
+| **Les Rapports**   | `/atlas/`      | ATLAS reports and system reports once they have been stabilized as records.                               |
+| **La Doctrine**    | `/doctrine/`   | Field doctrine, systems doctrine, and formal principles extracted from the archive.                       |
+| **La Provenance**  | `/provenance/` | The source chain, build record, instrument chain, and production evidence.                                |
 
 Every shelf in this table must have a card on `/oeuvre/`. A shelf that exists
 as a page but not as a card is an orphan, and orphans are the failure this
@@ -142,17 +142,17 @@ Use this layer for:
 
 Compatibility wins over purity.
 
-| Route or name             | Current handling                                                                                 |
-| ------------------------- | ------------------------------------------------------------------------------------------------ |
-| `/archive/`               | Compatibility route to `/l-archive/`. Do not use as canonical in new public links.               |
-| `/archive.html`           | Compatibility route to `/l-archive/`. Kept for old links and preserved references.               |
-| `/archive/*`              | Kept for generated archive shelves, object records, taxonomy, source sets, and evidence ledgers. |
-| `/projects/`              | Kept as the public Les Dossiers shelf. It is not a top-nav item.                                 |
-| `/posts/`                 | Kept as the public Les Manuscrits shelf and feed source. It is not a top-nav item.               |
-| `/hang-on-to-each-other/` | Kept as a named technical-reference/manual shelf inside the archive.                             |
-| `/archive/aerial-documentation/` | Compatibility route to `/l-archive/from-on-high/`. Do not use as canonical in new public links. |
-| `/field-logs/<slug>/`     | Compatibility route to `/atlas/<slug>/`. ATLAS report detail pages moved to their own index.     |
-| `/archive/field-logs/`    | Compatibility route to `/archive/atlas-reports/`.                                                |
+| Route or name                    | Current handling                                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `/archive/`                      | Compatibility route to `/l-archive/`. Do not use as canonical in new public links.               |
+| `/archive.html`                  | Compatibility route to `/l-archive/`. Kept for old links and preserved references.               |
+| `/archive/*`                     | Kept for generated archive shelves, object records, taxonomy, source sets, and evidence ledgers. |
+| `/projects/`                     | Kept as the public Les Dossiers shelf. It is not a top-nav item.                                 |
+| `/posts/`                        | Kept as the public Les Manuscrits shelf and feed source. It is not a top-nav item.               |
+| `/hang-on-to-each-other/`        | Kept as a named technical-reference/manual shelf inside the archive.                             |
+| `/archive/aerial-documentation/` | Compatibility route to `/l-archive/from-on-high/`. Do not use as canonical in new public links.  |
+| `/field-logs/<slug>/`            | Compatibility route to `/atlas/<slug>/`. ATLAS report detail pages moved to their own index.     |
+| `/archive/field-logs/`           | Compatibility route to `/archive/atlas-reports/`.                                                |
 
 ## Post Shelf Vocabulary
 
@@ -170,7 +170,7 @@ Routing previously inferred the shelf from freeform `type`, `category`, and
 `shelf_label` strings. Around seventeen distinct values across ten posts meant
 the destination could not be predicted when writing a new post, and the
 matching overlapped: the Prelude and a Le Blog dispatch were listed on Les
-Manuscrits *and* Le Blog, so the counts summed to more posts than existed.
+Manuscrits _and_ Le Blog, so the counts summed to more posts than existed.
 
 `type`, `category`, and `shelf_label` remain as human descriptive labels. They
 no longer decide routing. The heuristics survive in `eleventy.config.js` only
@@ -182,11 +182,11 @@ Three different records were all called "field logs", and the source
 filenames disagreed with the routes they served. The names are now fixed and
 must not drift back.
 
-| Public name        | Route                     | Source file                     | Data              |
-| ------------------ | ------------------------- | ------------------------------- | ----------------- |
-| **ATLAS Reports**  | `/atlas/`, `/atlas/<slug>/` | `atlas-reports.njk`, `atlas-report-page.njk` | `archive.atlasReports` |
-| **Field Log**      | `/field-logs/`            | `field-logs.njk`                | `archive.voiceLogs` |
-| **Process Records**| `/docs/process/`          | `process-records.njk`           | source documents  |
+| Public name         | Route                       | Source file                                  | Data                   |
+| ------------------- | --------------------------- | -------------------------------------------- | ---------------------- |
+| **ATLAS Reports**   | `/atlas/`, `/atlas/<slug>/` | `atlas-reports.njk`, `atlas-report-page.njk` | `archive.atlasReports` |
+| **Field Log**       | `/field-logs/`              | `field-logs.njk`                             | `archive.voiceLogs`    |
+| **Process Records** | `/docs/process/`            | `process-records.njk`                        | source documents       |
 
 Rules:
 

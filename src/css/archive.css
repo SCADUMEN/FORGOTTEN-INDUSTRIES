@@ -6762,8 +6762,8 @@ a.site-leaf-mark:focus-visible {
   .site-header {
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-areas:
-      "shield nav"
-      "cxr    cxr";
+      'shield nav'
+      'cxr    cxr';
     row-gap: 0.9rem;
     align-items: start;
   }
@@ -7873,4 +7873,112 @@ a.site-leaf-mark:focus-visible {
 .sitemap-tree .node-branch {
   color: var(--muted);
   font-weight: 400;
+}
+
+/* FI-PROJ-011 public sighting intake: a stacked form, unlike the single-row
+   .restricted-input-row it borrows tokens from. */
+.sighting-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.sighting-field label {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--fi-slate);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.sighting-field input,
+.sighting-field textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--fi-cyan-border);
+  border-radius: 0;
+  background: var(--fi-bg);
+  color: var(--fi-green);
+  caret-color: var(--fi-cyan);
+  font: 0.85rem/1.4 var(--font-system);
+}
+
+.sighting-field textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.sighting-field input:focus-visible,
+.sighting-field textarea:focus-visible,
+.sighting-chip input:focus-visible + span,
+.sighting-form button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.sighting-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sighting-chip {
+  position: relative;
+  display: inline-flex;
+}
+
+.sighting-chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.sighting-chip span {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--fi-cyan-border);
+  color: var(--fi-slate);
+  font-family: var(--font-system);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sighting-chip input:checked + span {
+  border-color: var(--fi-cyan-border-hot);
+  background: var(--fi-cyan-wash);
+  color: var(--fi-cyan);
+}
+
+.sighting-form button[type='submit'] {
+  justify-self: start;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--fi-cyan-border);
+  background: var(--fi-cyan-wash);
+  color: var(--fi-cyan);
+  font: 0.85rem/1.2 var(--font-system);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sighting-form button[type='submit']:hover {
+  border-color: var(--fi-cyan-border-hot);
+  background: var(--fi-cyan-wash-hover-strong);
+}
+
+.sighting-form button[type='submit']:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.sighting-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

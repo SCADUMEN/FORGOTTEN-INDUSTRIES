@@ -283,11 +283,7 @@ function postShelf(record) {
   const declared = declaredShelf(record)
   if (declared) return declared
   if (isDoctrinePost(record)) return 'doctrine'
-  if (
-    isLeSignalPost(record) ||
-    isLeBlogPost(record) ||
-    isPreludePost(record)
-  ) {
+  if (isLeSignalPost(record) || isLeBlogPost(record) || isPreludePost(record)) {
     return 'signal'
   }
   return 'manuscrit'

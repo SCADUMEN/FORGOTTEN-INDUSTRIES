@@ -97,32 +97,49 @@ function main() {
         // Copy the existing H.264/AAC streams into MP4; faststart moves the
         // index to the front so the clip can start before it finishes loading.
         run([
-          '-i', sourcePath,
-          '-map', '0:v:0',
-          '-map', '0:a:0?',
-          '-c', 'copy',
-          '-movflags', '+faststart',
+          '-i',
+          sourcePath,
+          '-map',
+          '0:v:0',
+          '-map',
+          '0:a:0?',
+          '-c',
+          'copy',
+          '-movflags',
+          '+faststart',
           outputPath,
         ])
       } else if (output.endsWith('.mp4')) {
         run([
-          '-i', sourcePath,
-          '-movflags', '+faststart',
-          '-pix_fmt', 'yuv420p',
+          '-i',
+          sourcePath,
+          '-movflags',
+          '+faststart',
+          '-pix_fmt',
+          'yuv420p',
           // H.264 requires even dimensions.
-          '-vf', 'scale=trunc(iw/2)*2:trunc(ih/2)*2',
-          '-c:v', 'libx264',
-          '-crf', '23',
-          '-preset', 'slow',
+          '-vf',
+          'scale=trunc(iw/2)*2:trunc(ih/2)*2',
+          '-c:v',
+          'libx264',
+          '-crf',
+          '23',
+          '-preset',
+          'slow',
           outputPath,
         ])
       } else {
         run([
-          '-i', sourcePath,
-          '-c:v', 'libvpx-vp9',
-          '-crf', '34',
-          '-b:v', '0',
-          '-row-mt', '1',
+          '-i',
+          sourcePath,
+          '-c:v',
+          'libvpx-vp9',
+          '-crf',
+          '34',
+          '-b:v',
+          '0',
+          '-row-mt',
+          '1',
           outputPath,
         ])
       }

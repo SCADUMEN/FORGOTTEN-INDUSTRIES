@@ -15,10 +15,10 @@ The preserved GIF above stays byte-identical to its recorded SHA-256. Because a
 5 MB animated GIF is a poor delivery format, the shelf page plays video
 derivatives of it instead and keeps the GIF as the final fallback:
 
-| Derivative                                                 | Size    | Encode                     |
-| ---------------------------------------------------------- | ------- | -------------------------- |
-| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.webm` | 0.46 MB | VP9, CRF 34                |
-| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.mp4`  | 0.74 MB | H.264, CRF 23, faststart   |
+| Derivative                                                 | Size    | Encode                   |
+| ---------------------------------------------------------- | ------- | ------------------------ |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.webm` | 0.46 MB | VP9, CRF 34              |
+| `caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.mp4`  | 0.74 MB | H.264, CRF 23, faststart |
 
 These are generated, not evidence. Regenerate with
 `node scripts/build_media_derivatives.cjs`.

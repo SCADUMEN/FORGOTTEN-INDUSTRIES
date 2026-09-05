@@ -19,9 +19,7 @@ describe('audit_public_surface forbidden-content patterns', () => {
     expect(
       labelsMatching('See https://example.com/Users/community/ for details.')
     ).toEqual([])
-    expect(labelsMatching('https://example.com/Volumes/product/')).toEqual(
-      []
-    )
+    expect(labelsMatching('https://example.com/Volumes/product/')).toEqual([])
   })
 
   it('still flags a genuine leaked workstation path', () => {

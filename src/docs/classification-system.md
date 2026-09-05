@@ -79,7 +79,7 @@ object works.
 ### Boundary: instrumentation, technical reference, process record
 
 These three families sit close together, and `technical_reference` already uses
-the word *instrument* for a reusable method. They are separated by what the
+the word _instrument_ for a reusable method. They are separated by what the
 record carries, not by its subject.
 
 - `instrumentation` carries **behaviour** — evidence that a system did a thing,

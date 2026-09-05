@@ -69,7 +69,10 @@ function collectScriptHashes(files) {
 }
 
 function buildPolicy(scriptHashes) {
-  const scriptSrc = ["'self'", ...[...scriptHashes.keys()].sort().map((h) => `'sha256-${h}'`)]
+  const scriptSrc = [
+    "'self'",
+    ...[...scriptHashes.keys()].sort().map((h) => `'sha256-${h}'`),
+  ]
 
   return [
     "default-src 'self'",
@@ -120,7 +123,9 @@ function main() {
       console.error(
         'Content-Security-Policy in _site/_headers does not match the built site.'
       )
-      console.error('Run `npm run build:csp` (or a full build) to regenerate it.')
+      console.error(
+        'Run `npm run build:csp` (or a full build) to regenerate it.'
+      )
       process.exit(1)
     }
     console.log(
@@ -130,7 +135,9 @@ function main() {
   }
 
   if (existing.includes('Content-Security-Policy:')) {
-    console.log('Content-Security-Policy already present; leaving it unchanged.')
+    console.log(
+      'Content-Security-Policy already present; leaving it unchanged.'
+    )
     return
   }
 

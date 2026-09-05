@@ -1,0 +1,124 @@
+---
+layout: base.njk
+title: Who Is J.J. Ammo Can?
+description: "FI-PROJ-011 public dossier: sighting reports of JJAMMOCAN, a figure identified by a wide-brim sun hat and goggles, filed from cities across the country."
+canonical: https://forgotten-industries.net/projects/who-is-jjammocan/
+permalink: /projects/who-is-jjammocan/
+---
+<section class="masthead">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">Les Dossiers / FI-PROJ-011</p>
+      <h1>Who Is J.J. Ammo Can?</h1>
+      <p class="tagline">A wide-brim sun hat. A pair of goggles. No name on record, no fixed city — only reports, filed one sighting at a time.</p>
+    </div>
+    <div class="hero-mark" role="img" aria-label="Forgotten Industries logo, EST MMXIV"></div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="jjammocan-marks-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Identifying marks</p>
+      <h2 id="jjammocan-marks-heading">What every report agrees on.</h2>
+    </div>
+    <ul class="shelf-list">
+      <li>
+        <h3>Double snap brim, 3&Prime;</h3>
+        <p>Wide-brim sun hat, snapped up at two points along the front edge.</p>
+      </li>
+      <li>
+        <h3>Pinched front crown, 4&frac12;&Prime;</h3>
+        <p>Center crease runs front to back, pinched rather than domed.</p>
+      </li>
+      <li>
+        <h3>Cotton canvas construction</h3>
+        <p>Reported in khaki, green, distressed gold, earth, and black.</p>
+      </li>
+      <li>
+        <h3>Goggles, always worn</h3>
+        <p>Every report on file describes them &mdash; no sighting without.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="jjammocan-report-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>FILE A REPORT</p>
+      <h2 id="jjammocan-report-heading">Seen it? File it.</h2>
+      <p class="entry-note">Reports post directly to the public log below, unverified, exactly as filed. No account, no email required.</p>
+    </div>
+    <div>
+      <form id="sighting-form" class="sighting-form" data-track="jjammocan-report-submit">
+        <div class="sighting-field">
+          <label for="sighting-city">City &amp; state</label>
+          <input type="text" id="sighting-city" name="city" maxlength="120" required>
+        </div>
+
+        <div class="sighting-field">
+          <label for="sighting-seen-at">Date &amp; time seen</label>
+          <input type="datetime-local" id="sighting-seen-at" name="seenAt" required>
+        </div>
+
+        <div class="sighting-field">
+          <label id="sighting-colors-label">Colors observed</label>
+          <div class="sighting-chip-row" role="group" aria-labelledby="sighting-colors-label">
+            <label class="sighting-chip">
+              <input type="checkbox" name="colors" value="khaki">
+              <span>Khaki</span>
+            </label>
+            <label class="sighting-chip">
+              <input type="checkbox" name="colors" value="green">
+              <span>Green</span>
+            </label>
+            <label class="sighting-chip">
+              <input type="checkbox" name="colors" value="gold">
+              <span>Distressed gold</span>
+            </label>
+            <label class="sighting-chip">
+              <input type="checkbox" name="colors" value="earth">
+              <span>Earth</span>
+            </label>
+            <label class="sighting-chip">
+              <input type="checkbox" name="colors" value="black">
+              <span>Black</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="sighting-field">
+          <label for="sighting-note">What you saw</label>
+          <textarea id="sighting-note" name="note" maxlength="600" required></textarea>
+        </div>
+
+        <div class="sighting-honeypot" aria-hidden="true">
+          <label for="sighting-hp">Leave this field blank</label>
+          <input type="text" id="sighting-hp" name="hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit">File report</button>
+      </form>
+      <p id="sighting-status" class="restricted-status" role="status" aria-live="polite"></p>
+      <noscript>
+        <p class="restricted-status restricted-status-error">JavaScript is required to file or view reports.</p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="jjammocan-log-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Sighting log</p>
+      <h2 id="jjammocan-log-heading">Filed reports, most recent first.</h2>
+    </div>
+    <div>
+      <ul id="sighting-feed" class="shelf-list"></ul>
+      <p id="sighting-feed-empty" class="restricted-status">Loading&hellip;</p>
+    </div>
+  </div>
+</section>
+
+<script type="module" src="/assets/js/who-is-jjammocan.js?v={{ site.assetVersion }}"></script>
