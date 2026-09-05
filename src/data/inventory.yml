@@ -3486,6 +3486,118 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-028
+    name: Binocular Goggles
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×986 / rephotographed screen / playback interface in frame
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-028-binocular-goggles.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured by photographing a
+      display rather than by screenshot — the frame carries the tonal shift
+      and off-axis geometry of a rephotographed screen, and a player interface
+      reading "START OVER" and "PLAY NEXT" sits below the image with a
+      remaining-time counter at the corner. Shows a close profile of a bald,
+      moustached man wearing an elaborate pair of twin-barrel telescopic
+      goggles strapped across his eyes, one lens flaring blue. Reads as a
+      film or television still. The production, title, date and rights holder
+      are not identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied rephotograph of a screen admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); playback interface retained in frame as capture evidence; production, title, date and rights holder unidentified and not asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-029
+    name: Dock Pockets
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1286 / mocked-up package front / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-029-dock-pockets.jpeg
+    notes: >
+      Found-image mockup supplied for The Shadow Zone: a counterfeit frozen
+      sandwich carton front on a red ground, its wordmark reading "DOCK
+      POCKETS brand sandwiches" in the slab-serif cartouche of the Hot Pockets
+      trade dress, complete with a "NEW RECIPE" corner flash. Below it, two
+      hands of differing skin tone grip opposite ends of a single filled
+      pastry roll, cheese escaping the middle, under the line "2 PACK - 1 FOR
+      YOU AND 1 FOR A FRIEND." The composition is deliberate innuendo.
+      Unaffiliated with and unendorsed by the brand whose trade dress it
+      parodies. Authorship and source date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); parody of a commercial trade dress with no affiliation or endorsement asserted; authorship and source date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-030
+    name: Have You Seen This Dog
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 979×1025 / captioned cutout / desaturated / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-030-have-you-seen-this-dog.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a Shiba Inu head cut out
+      against black, desaturated and heavily contrast-crushed so the eyes read
+      as flat dark points, under the burned-in caption "HAVE YOU SEEN THIS
+      DOG?" A faint "imgflip.com" generator mark survives at the lower left
+      and is recorded as a tool credit, not an authorship attribution. The
+      breed is the same as the archive's own resident Shiba, which is
+      coincidence rather than provenance — this is not a photograph of Potato.
+      Photographer, source frame, and date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); generator mark recorded as a tool credit rather than authorship; subject is an unidentified dog and explicitly not the archive's own Shiba; photographer and source frame remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-031
+    name: Based Shadowpilled
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1474×976 / layered collage / derivative of FI-EPH-020
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-031-based-shadowpilled.jpeg
+    notes: >
+      Composite supplied for The Shadow Zone, and the first accession in this
+      set built from the Shadow Zone's own holdings: a magenta field carrying
+      the sunglasses-lowering emoji face at centre, a thumbs-up hand, scattered
+      red capsules, smeared brush marks, a black silhouetted figure, and a
+      masked face at lower right, overlaid with the words "BASED" in green and
+      "SHADOWPILLED" struck through "PILLED" in red. Set into the left edge is
+      the Bull Valley boundary sign already accessioned here as FI-EPH-020,
+      desaturated and reframed. The item therefore documents the collection
+      folding back on itself. Authorship of the composite and of its remaining
+      component images is unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied composite admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); one component identified as the archive's own FI-EPH-020 and the internal derivation recorded; authorship of the composite and its other components remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
