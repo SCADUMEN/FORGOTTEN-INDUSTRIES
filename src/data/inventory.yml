@@ -3060,6 +3060,684 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-013
+    name: Reebok Snowman
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 864×1184 / original photograph / daylight exterior
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-013-reebok-snowman.jpeg
+    notes: >
+      Photograph supplied for The Shadow Zone: a snowman built against a
+      stucco wall beside a downspout, dressed in a grey Reebok hooded puffer
+      jacket with the hood up. The face carries plastic googly eyes behind a
+      pair of real black-framed spectacles, a carrot nose, a pebble smile, and
+      a cigarette set in the mouth. Unlike the found images around it in this
+      set, this is an original capture rather than a derivative. Maker,
+      location, and date are not recorded here; the exif scrub reported no
+      location metadata to strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); maker, location, and capture date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-014
+    name: Ibuprofen Together
+    category: ephemera
+    quantity: 1 digital image (animated GIF + extracted still)
+    associated_project: FI-PROJ-010
+    condition: digital / GIF 89a, 400×400, animated / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-014-ibuprofen.gif
+      - assets/ephemera/shadow-zone/fi-eph-014-ibuprofen-still.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: an animated loop of a
+      well-dressed anime figure extending an open hand toward the viewer,
+      under a burned-in caption reading "lets take ibuprofen together." The
+      source frame is anime; the specific work, authorship, and captioning
+      history are unverified. Two files are kept deliberately. The GIF is the
+      supplied source and is preserved unaltered; the JPEG is its first frame,
+      extracted so the item also qualifies for the Shadow Zone photo rotations,
+      which match JPEG filenames only and would otherwise skip an animated
+      accession entirely.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied animated GIF admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); source GIF preserved unaltered and a first-frame JPEG derived from it so the item participates in the JPEG-only zone rotations; source work, authorship, and captioning history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-015
+    name: Ya Boofter
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1320×1237 / rendered graphic / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-015-ya-boofter.jpeg
+    notes: >
+      Found-image graphic supplied for The Shadow Zone: an isometric cube
+      floating on a black halftone field, each visible face carrying a
+      chrome-bubble gradient and the words "YA" in white above "BOOFTER" in
+      magenta. Reads as deliberate late-1990s / early-web pastiche. Authorship,
+      source date, and rendering tool remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); authorship, source date, and rendering history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-016
+    name: ZYN Goggles
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1536×2048 / original photograph / rotated interior selfie
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-016-zyn-goggles.jpeg
+    notes: >
+      Self-portrait supplied for The Shadow Zone: the operator, mouth open,
+      holding two ZYN nicotine-pouch tins over his eyes like goggles — one
+      Coffee, one mint — beneath a framed blossom-branch print on an interior
+      wall. The frame is rotated roughly ninety degrees from upright, as
+      captured. Subject identified by the operator as himself; no other person
+      is pictured. Product packaging is legible and is incidental to the image
+      rather than an endorsement. The exif scrub reported no location metadata
+      to strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); operator identified himself as the sole subject, so no third-party clearance is outstanding
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-017
+    name: May I Help You
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1525 / captioned portrait / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-017-may-i-help-you.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a cleanly lit studio
+      headshot of an unidentified bald man in rimless spectacles against a
+      white field, looking directly at the camera, under a burned-in caption
+      offering help. The caption opens with a racial slur; it is recorded here
+      by description rather than transcribed, and remains legible in the image
+      itself. Unlike FI-EPH-011, where a comparable caption sat over an
+      anatomical plate, here the slur is attached to a specific identifiable
+      face — this was raised with the operator before accession and the item
+      was admitted uncropped at his direction. The pictured man is not
+      identified, has granted no clearance, and there is no indication he
+      consented to this use of his portrait. The image carries the handle
+      "@war_on_wes" as a burned-in watermark; that handle is recorded as it
+      appears and is not treated as an attribution of authorship. Subject,
+      photographer, source frame, and captioning history remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); slur content, the identifiability of the pictured man, and his absent clearance raised with the operator before accession and admitted uncropped at his direction; watermark handle recorded verbatim without inferring authorship; subject, photographer, and captioning history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-018
+    name: Kornan O'Brien
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1101 / composite / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-018-kornan-obrien.jpeg
+    notes: >
+      Found-image composite supplied for The Shadow Zone: the face of the
+      television host Conan O'Brien grafted onto a long-haired, bearded metal
+      musician photographed against a stage backdrop, captioned "KoRnAn
+      o'BRiEn" in the mirrored, distressed lettering of the band Korn's
+      wordmark. Legible as parody of both. The image carries the handle
+      "@takethesebrokenmemes" as a burned-in watermark; the handle is recorded
+      as it appears and is not treated as an attribution of authorship. The
+      underlying photographs, their photographers, and the compositing history
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a parody composite of a public figure; watermark handle recorded verbatim without inferring authorship; source photographs and compositing history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-019
+    name: Walken Seated
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1536×2048 / rephotographed screen / soft focus and moiré
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-019-walken-seated.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured by photographing a
+      display rather than by screenshot — the frame carries the soft focus,
+      tonal shift and moiré of a rephotographed screen, which is preserved as
+      part of the artifact. Shows the actor Christopher Walken seated in an
+      armchair in a dark uniform jacket, shirt and tie, hands on his knees,
+      before a heavy draped backdrop, in cold monochrome. Reads as a
+      television or film still. The production, episode or title, broadcast
+      date, and rights holder remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied rephotograph of a screen admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a public figure in what reads as a broadcast still; production, date and rights holder remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-020
+    name: Village of Bull Valley
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×2796 / phone screen capture of a web page
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-020-bull-valley.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured as a full phone
+      screenshot of an English Wikipedia article: a green municipal boundary
+      sign reading "VILLAGE OF BULL VALLEY" on a flat overcast day, flanked
+      below by two smaller signs, one setting a maximum littering fine and one
+      requiring a solicitors permit, with bare winter scrub behind. Browser
+      chrome and the search field are retained in frame. Bull Valley is a real
+      municipality in Illinois; the sign marks a public boundary and pins no
+      private address. The underlying photograph is a third-party contribution
+      to Wikipedia — its author and licence terms were not resolved before
+      accession, so no attribution or reuse licence is asserted here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); pictured sign is a public municipal boundary marker, not a private address; underlying Wikipedia photograph's author and licence terms unresolved and no licence asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-021
+    name: Congressional Portrait
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1164×1518 / screen capture of a link card / portrait unaltered
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-021-congressional-portrait.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: the official congressional
+      portrait of Representative Alexandria Ocasio-Cortez — dark blazer,
+      United States flag behind her, studio grey ground — presented inside a
+      Reddit link card headed "From stephencolbert community on Reddit." The
+      portrait itself carries no caption, overlay or alteration; the framing
+      chrome is incidental to the capture. Official portraits of members of
+      Congress are United States government works, so the underlying image is
+      not encumbered, but the sharing card and its community attribution are
+      third-party furniture and are recorded, not endorsed. No claim is made
+      here about the subject.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a named public official and her official portrait admitted unaltered and uncaptioned; surrounding link-card chrome recorded as incidental
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-022
+    name: Tim Allen Autograph
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 737×947 / low resolution / reproduction of a signed publicity still
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-022-tim-allen-autograph.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a low-resolution reproduction
+      of a publicity headshot of the actor Tim Allen — blue shirt, patterned
+      tie, wide-eyed open-mouthed expression against a graduated studio ground
+      — carrying an ink signature across the chest in the manner of a
+      fan-mail autograph. The signature is visible in the reproduction; its
+      authenticity is not established, and this record makes no claim that it
+      is genuine. Photographer, studio, date, and the provenance of the signed
+      original remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subject identified as a public figure; visible signature recorded as present with no authentication claimed; photographer, studio, date and provenance of the signed original remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-023
+    name: Temperature Check
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1091 / captioned cartoon / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-023-temperature-check.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a two-panel cartoon in a
+      soft pastel style. In the first panel a smiling bald figure holds a
+      forehead thermometer to his temple; in the second the device's screen is
+      read in close-up from bed, its display reading as reassurance rather
+      than a number. A header line completes the joke about checking one's
+      temperature. The thermometer's readout ends in a racial slur; it is
+      recorded here by description rather than transcribed, and remains
+      legible in the image. As with FI-EPH-011 the caption sits over drawn
+      figures rather than a photographed person, and no identifiable
+      individual is depicted. Authorship, source date, and alteration history
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); slur content recorded by description rather than transcription; subjects are drawn figures, so no identifiable individual is depicted and no clearance is outstanding; authorship and alteration history remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-024
+    name: Kickflips
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1632 / captioned game render / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-024-kickflips.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a composite built from
+      Silent Hill 2 character renders. A grinning young man in a green jacket
+      is posed mid-kickflip on a skateboard above a hospital bed in which a
+      bandaged woman lies looking up at him, in the game's characteristic fog.
+      Two burned-in captions run the joke, the lower one profane. The source
+      renders belong to a commercial video game; the compositing, authorship,
+      and source date of this derivative remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subjects are video game character renders, not photographed people; underlying renders are commercial game assets and no reuse licence is asserted; compositing and authorship remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-025
+    name: Consider This a Warning
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1279 / heavily recompressed / captioned drawing / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-025-consider-this-a-warning.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a crudely redrawn
+      cartoon hybrid, a humanoid female figure rendered in SpongeBob
+      SquarePants' yellow porous skin and dressed in suspenders and a
+      scalloped white top, with the character's face duplicated across her
+      chest. Sexualised cartoon imagery, though nothing explicit is depicted;
+      the figure is drawn, not photographed, and no real person is involved.
+      Carries a profane burned-in caption issuing a warning. Heavy
+      recompression artefacts indicate many generations of resharing. The
+      underlying character is a commercial property; authorship and source
+      date of this derivative remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); content is sexualised cartoon drawing with nothing explicit depicted and no real person involved, flagged to the operator on accession; underlying character is a commercial property and no reuse licence is asserted; authorship remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-026
+    name: Neuralink Patient
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1306 / screen capture of a captioned video / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-026-neuralink-patient.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone, captured from a
+      captioned video: a bearded man in a cap and earphones speaks to camera
+      beside an inset cartoon of a cat fused with a cheeseburger. The
+      burned-in caption presents the drawing as the work of a Neuralink
+      patient produced by mind control after a brain implant. The caption is
+      satire and its claim is false — this record asserts no connection
+      between the pictured man and any medical procedure, company, or named
+      individual, and makes no claim about his health. He is not identified
+      and has granted no clearance. A faint burned-in watermark is present but
+      not legibly resolvable and is therefore not transcribed. Authorship,
+      source video, and date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied video screen capture admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); caption identified as satire and its medical claim recorded as false so the record asserts nothing about the pictured man; he is unidentified and his clearance is outstanding; watermark illegible and not transcribed
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-027
+    name: Pizza Banner
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1836×1134 / original photograph / printed vinyl banner, grommeted
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-027-pizza-banner.jpeg
+    notes: >
+      Photograph supplied for The Shadow Zone: a printed vinyl banner,
+      grommeted at the corners and stretched slightly slack, carrying a
+      counterfeit pizza-chain wordmark. The mark copies the orange ground,
+      white cartouche, green oval and red panels of the Little Caesars trade
+      dress, down to a registered-trademark symbol, but substitutes an
+      obscenity for the chain's name — the banner reads "CUNT BROTHERS PIZZA".
+      The wording is transcribed here because it is the object; the file and
+      record are named neutrally so the vulgarity does not propagate into
+      URLs and indexes. Unaffiliated with and unendorsed by the chain whose
+      trade dress it parodies. Maker, printer, location, and date of the
+      banner are not recorded; the exif scrub reported no location metadata to
+      strip.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied photograph admitted as a location-clean public image (exif scrub reported no location metadata to strip); banner text transcribed once in the record while file and record names are kept neutral; parody of a commercial trade dress with no affiliation or endorsement asserted; maker, printer, location and date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-028
+    name: Binocular Goggles
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×986 / rephotographed screen / playback interface in frame
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-028-binocular-goggles.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone, captured by photographing a
+      display rather than by screenshot — the frame carries the tonal shift
+      and off-axis geometry of a rephotographed screen, and a player interface
+      reading "START OVER" and "PLAY NEXT" sits below the image with a
+      remaining-time counter at the corner. Shows a close profile of a bald,
+      moustached man wearing an elaborate pair of twin-barrel telescopic
+      goggles strapped across his eyes, one lens flaring blue. Reads as a
+      film or television still. The production, title, date and rights holder
+      are not identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied rephotograph of a screen admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); playback interface retained in frame as capture evidence; production, title, date and rights holder unidentified and not asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-029
+    name: Dock Pockets
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1286 / mocked-up package front / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-029-dock-pockets.jpeg
+    notes: >
+      Found-image mockup supplied for The Shadow Zone: a counterfeit frozen
+      sandwich carton front on a red ground, its wordmark reading "DOCK
+      POCKETS brand sandwiches" in the slab-serif cartouche of the Hot Pockets
+      trade dress, complete with a "NEW RECIPE" corner flash. Below it, two
+      hands of differing skin tone grip opposite ends of a single filled
+      pastry roll, cheese escaping the middle, under the line "2 PACK - 1 FOR
+      YOU AND 1 FOR A FRIEND." The composition is deliberate innuendo.
+      Unaffiliated with and unendorsed by the brand whose trade dress it
+      parodies. Authorship and source date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); parody of a commercial trade dress with no affiliation or endorsement asserted; authorship and source date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-030
+    name: Have You Seen This Dog
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 979×1025 / captioned cutout / desaturated / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-030-have-you-seen-this-dog.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a Shiba Inu head cut out
+      against black, desaturated and heavily contrast-crushed so the eyes read
+      as flat dark points, under the burned-in caption "HAVE YOU SEEN THIS
+      DOG?" A faint "imgflip.com" generator mark survives at the lower left
+      and is recorded as a tool credit, not an authorship attribution. The
+      breed is the same as the archive's own resident Shiba, which is
+      coincidence rather than provenance — this is not a photograph of Potato.
+      Photographer, source frame, and date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); generator mark recorded as a tool credit rather than authorship; subject is an unidentified dog and explicitly not the archive's own Shiba; photographer and source frame remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-031
+    name: Based Shadowpilled
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1474×976 / layered collage / derivative of FI-EPH-020
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-031-based-shadowpilled.jpeg
+    notes: >
+      Composite supplied for The Shadow Zone, and the first accession in this
+      set built from the Shadow Zone's own holdings: a magenta field carrying
+      the sunglasses-lowering emoji face at centre, a thumbs-up hand, scattered
+      red capsules, smeared brush marks, a black silhouetted figure, and a
+      masked face at lower right, overlaid with the words "BASED" in green and
+      "SHADOWPILLED" struck through "PILLED" in red. Set into the left edge is
+      the Bull Valley boundary sign already accessioned here as FI-EPH-020,
+      desaturated and reframed. The item therefore documents the collection
+      folding back on itself. Authorship of the composite and of its remaining
+      component images is unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied composite admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); one component identified as the archive's own FI-EPH-020 and the internal derivation recorded; authorship of the composite and its other components remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-032
+    name: Starbucks Mohawk
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1133×1371 / captioned candid photograph / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-032-starbucks-mohawk.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a candid interior
+      photograph of a man in a tall bleached mohawk, wraparound sunglasses and
+      a heavily studded leather jacket, seated at a small café table working
+      at a laptop trailing green-lit cables, with a spiked bag on the chair
+      beside him. A burned-in caption above the frame names the scene as a
+      self-portrait of the poster in a coffee chain on a stated dose of a
+      prescription stimulant — self-deprecating humour rather than instruction,
+      and this record neither endorses nor advises any such use. The pictured
+      man is not identified, appears to have been photographed without
+      obvious participation, and has granted no clearance. Photographer,
+      location, date, and whether the caption's claim relates to him at all
+      remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); caption recorded as self-deprecating humour naming a prescription stimulant, with no endorsement or advice given; pictured man unidentified, apparently candid, and his clearance outstanding; photographer, location and date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-033
+    name: That Damned Smile
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1457 / four-panel subtitled composite / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-033-that-damned-smile.jpeg
+    notes: >
+      Found-image composite supplied for The Shadow Zone: a four-panel grid.
+      Three panels are subtitled stills of a young woman holding a red cup at
+      a party, reading in sequence "So you see, that's where the trouble
+      began." / "That smile." / "That damned smile." The fourth, top right,
+      cuts to an unrelated frame of a bearded man in a shirt and tie holding a
+      glass pipe and a lighter, grinning at camera — the punchline being that
+      he is what she is describing. The stills read as broadcast footage; the
+      productions, performers, rights holders, and the compositor are not
+      identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied composite admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); panels read as broadcast stills and no production, performer, rights holder or compositor is asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-034
+    name: Sad in a Happy Place
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×1823 / captioned still / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-034-sad-in-a-happy-place.jpeg
+    notes: >
+      Found-image meme supplied for The Shadow Zone: a soft-focus outdoor
+      still of a young blonde woman in a grey turtleneck, brown cardigan and
+      yellow-and-black jacket over one shoulder, hair caught in the wind
+      against a blurred field of purple, looking off-frame with a flat
+      expression. A plain burned-in caption reads "when you're sad in a happy
+      place." The still reads as period broadcast footage; the production,
+      performer, rights holder and date are not identified here.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); frame reads as a broadcast still and no production, performer, rights holder or date is asserted
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-035
+    name: Adiós
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1164×1523 / screen capture of a link card / mocked-up trading card
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-035-adios.jpeg
+    notes: >
+      Found-image mockup supplied for The Shadow Zone, captured as a Reddit
+      link card headed "From PTCGP community on Reddit": a counterfeit
+      collectible card whose art shows a heavyset figure in a red shirt,
+      black shorts and a red bandana walking away from the viewer into a
+      luminous blue wormhole, captioned "Adiós" in the card's title bar. The
+      figure is a long-circulating internet reaction image; its origin is
+      unverified. The card layout parodies a commercial trading card game and
+      is unaffiliated with it. The sharing card and its community attribution
+      are third-party furniture, recorded rather than endorsed.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied screenshot admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); card layout parodies a commercial property with no affiliation asserted; link-card chrome recorded as incidental; origin of the reaction image remains unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
+  - id: FI-EPH-036
+    name: Human-Faced Fish
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1290×908 / subtitled illustration / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-036-human-faced-fish.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a graphite-style illustration
+      of a fish rendered in careful naturalistic shading, but with a small
+      human face — heavy brow, long nose, reddened lips — worked into its
+      head, floating above a brown ground before scribbled green weed. A
+      subtitle in the manner of a broadcast caption reads "I want to sleep on
+      your chest tonight." Whether the subtitle belongs to a source
+      programme or was added is not established. Illustrator, source, and
+      date remain unverified.
+    lifecycle:
+      - date: '2026-09-05'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); subtitle's origin not established and not attributed; illustrator, source and date remain unverified
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-05'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
