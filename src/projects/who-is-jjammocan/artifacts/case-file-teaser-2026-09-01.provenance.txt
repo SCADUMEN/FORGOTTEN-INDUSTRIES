@@ -1,0 +1,5 @@
+artifact: https://claude.ai/code/artifact/3091d8c9-1a14-4717-97a3-2bf36653bfc8
+version: 1788407126-9826
+saved: 2026-09-13
+sha256: 86263a23e0142b3175734abb64dc917abf5cb873bc48647afb49fa3adced1964
+note: verbatim export of the published teaser, including the host wrapper skeleton
