@@ -17,6 +17,21 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
   },
+  // Per-IP and site-wide submission ceilings for the public sighting intake.
+  // The platform limiter keeps no record of the client it counts, so the
+  // archive never stores a visitor's address to enforce them.
+  "ratelimits": [
+    {
+      "name": "SIGHTING_LIMIT_IP",
+      "namespace_id": "1001",
+      "simple": { "limit": 3, "period": 60 },
+    },
+    {
+      "name": "SIGHTING_LIMIT_GLOBAL",
+      "namespace_id": "1002",
+      "simple": { "limit": 30, "period": 60 },
+    },
+  ],
   "d1_databases": [
     {
       "binding": "DB",

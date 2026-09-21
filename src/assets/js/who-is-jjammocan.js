@@ -100,7 +100,10 @@ form?.addEventListener('submit', async (event) => {
     const result = await response.json()
     if (!response.ok) throw new Error(result.error || 'Report rejected.')
 
-    setStatus('Report filed. Thank you.', false)
+    setStatus(
+      'Report filed — logged as Unverified, pending review. It appears here once confirmed.',
+      false
+    )
     form.reset()
     loadFeed()
   } catch (error) {
