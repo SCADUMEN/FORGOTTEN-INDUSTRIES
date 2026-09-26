@@ -3738,6 +3738,37 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-05'
 
+  - id: FI-EPH-037
+    name: The Compute-Cocaine Crossover
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1600×1024 / data-visualization chart / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-037-compute-cocaine-crossover.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a dark-field line chart
+      captioned "The Compute-Cocaine Crossover: $/kg, 2024–2030E," plotting
+      price per kilogram on a logarithmic axis from 2024 through 2030. It sets
+      NVIDIA NVL72 compute — an actual line plus a SemiAnalysis-attributed
+      NVL72-class projection — against US wholesale cocaine, cannabis flower,
+      fentanyl, and gold, and marks the point where the compute curve crosses
+      above the drug curves. Burned-in annotations cite figures such as gold at
+      $138k/kg, a GB300 NVL72 at roughly $5M / 1,580 kg, and a Vera Rubin NVL72
+      at roughly $2.8M. The chart's data, its projections, and every
+      attribution shown on it are reproduced as found and are not verified here;
+      it is admitted as a curio, not as a source. Maker, origin, and date are
+      not recorded; the exif scrub reported no location metadata to strip.
+    lifecycle:
+      - date: '2026-09-26'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied image admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); the chart's data, projections, and on-image attributions are reproduced as found and remain unverified; maker, origin, and date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-26'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
