@@ -1,0 +1,482 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Who Is J.J. Ammo Can?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper: #F2EBD9;
+    --paper-alt: #E8DEC4;
+    --paper-line: #D8CCA8;
+    --ink: #2B2620;
+    --ink-soft: #5B5142;
+    --khaki: #A9976B;
+    --earth: #7A4B2E;
+    --green: #4F5D3A;
+    --gold: #B8862E;
+    --red-ink: #8B3A2B;
+    --shadow: rgba(43, 38, 32, 0.16);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211C15;
+      --paper-alt: #2A2319;
+      --paper-line: #3C3322;
+      --ink: #EDE3C8;
+      --ink-soft: #B8A98A;
+      --khaki: #6E6248;
+      --earth: #C98A54;
+      --green: #8FA06C;
+      --gold: #D9A544;
+      --red-ink: #C97456;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211C15;
+    --paper-alt: #2A2319;
+    --paper-line: #3C3322;
+    --ink: #EDE3C8;
+    --ink-soft: #B8A98A;
+    --khaki: #6E6248;
+    --earth: #C98A54;
+    --green: #8FA06C;
+    --gold: #D9A544;
+    --red-ink: #C97456;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Lora", Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    background-image:
+      repeating-linear-gradient(180deg, transparent 0 39px, var(--paper-line) 39px 40px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    border-bottom: 1px solid var(--khaki);
+    padding-bottom: 0.6rem;
+  }
+
+  header.masthead {
+    margin-top: 1.4rem;
+    position: relative;
+  }
+
+  h1.title {
+    font-family: "Special Elite", "Courier New", monospace;
+    font-weight: 400;
+    font-size: clamp(2rem, 5.6vw, 3.1rem);
+    letter-spacing: 0.01em;
+    line-height: 1.08;
+    margin: 0.2rem 0 0;
+    text-wrap: balance;
+    max-width: 14ch;
+  }
+
+  .status-stamp {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--red-ink);
+    border: 2px solid var(--red-ink);
+    border-radius: 2px;
+    padding: 0.3rem 0.6rem;
+    display: inline-block;
+    transform: rotate(-3.5deg);
+    position: absolute;
+    top: 0.3rem;
+    right: 0;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+  }
+  :root:not([data-theme="light"]) .status-stamp,
+  :root[data-theme="dark"] .status-stamp {
+    mix-blend-mode: normal;
+  }
+
+  .dek {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 46ch;
+    margin: 1.1rem 0 0;
+    text-wrap: balance;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--khaki);
+    margin: 2.2rem 0;
+  }
+
+  .divider--dashed {
+    border-top: 1px dashed var(--khaki);
+  }
+
+  /* ---- ID plate ---- */
+  .id-plate {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 560px) {
+    .id-plate { grid-template-columns: 1fr; }
+  }
+
+  .plate-fig {
+    background: var(--paper-alt);
+    border: 1px solid var(--khaki);
+    padding: 1rem;
+  }
+  .plate-fig svg { width: 100%; height: auto; display: block; }
+  .plate-caption {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+
+  .marks-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin: 0 0 0.7rem;
+  }
+
+  .marks-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .marks-list li {
+    padding-left: 1rem;
+    border-left: 2px solid var(--khaki);
+  }
+  .marks-list strong {
+    display: block;
+    font-family: "Lora", serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+  .marks-list span {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  .swatches {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid var(--ink);
+    border-radius: 1px;
+    flex: none;
+  }
+
+  /* ---- sighting log ---- */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-family: "Special Elite", "Courier New", monospace;
+    font-weight: 400;
+    font-size: 1.35rem;
+    margin: 0;
+  }
+  .section-note {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .log {
+    display: flex;
+    flex-direction: column;
+  }
+  .log-entry {
+    display: grid;
+    grid-template-columns: 6.6rem 8.5rem 1fr;
+    gap: 0.4rem 1.1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--paper-line);
+    align-items: baseline;
+  }
+  .log-entry:first-child { padding-top: 0; }
+  @media (max-width: 560px) {
+    .log-entry {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+
+  .log-date {
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .log-place {
+    font-family: "Lora", serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+  .log-note {
+    color: var(--ink);
+    font-size: 0.94rem;
+  }
+  .log-note .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.4rem;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+    display: inline-block;
+    position: relative;
+    top: -0.05rem;
+  }
+  .tag--confirmed { color: var(--gold); border: 1px solid var(--gold); }
+  .tag--probable { color: var(--green); border: 1px solid var(--green); }
+  .tag--unverified { color: var(--ink-soft); border: 1px solid var(--khaki); }
+
+  /* ---- report stub ---- */
+  .stub {
+    margin-top: 2.4rem;
+    border-top: 2px dashed var(--khaki);
+    padding-top: 1.6rem;
+    position: relative;
+  }
+  .stub::before {
+    content: "\2704";
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    color: var(--khaki);
+    background: var(--paper);
+    padding: 0 0.4rem;
+    font-size: 0.85rem;
+  }
+  .stub-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin: 0 0 0.9rem;
+  }
+  .stub-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.9rem;
+  }
+  .stub-field {
+    border-bottom: 1px solid var(--khaki);
+    padding-bottom: 0.35rem;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+  .stub-field-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+  }
+  .stub-status {
+    margin-top: 1.1rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--red-ink);
+    letter-spacing: 0.03em;
+  }
+
+  footer.colophon {
+    margin-top: 2.6rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+</style>
+
+<div class="sheet">
+
+  <div class="eyebrow">
+    <span>Forgotten Industries Field Office</span>
+    <span>Case File No. 011</span>
+  </div>
+
+  <header class="masthead">
+    <span class="status-stamp">Status: Open</span>
+    <h1 class="title">Who Is J.J. Ammo Can?</h1>
+    <p class="dek">A wide-brimmed hat. A pair of goggles. No name, no face on record, no pattern anyone's pinned down yet &mdash; only sightings, filed one city at a time.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="id-plate">
+    <figure class="plate-fig">
+      <svg viewBox="0 0 320 260" role="img" aria-labelledby="plateTitle">
+        <title id="plateTitle">Field sketch of the hat and goggles associated with sightings of J.J. Ammo Can</title>
+        <ellipse cx="160" cy="164" rx="132" ry="30" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"></ellipse>
+        <path d="M 90 158 Q 100 92 160 84 Q 220 92 230 158 Q 195 146 160 146 Q 125 146 90 158 Z" fill="var(--khaki)" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"></path>
+        <path d="M 160 84 L 160 146" stroke="var(--ink)" stroke-width="1.6" opacity="0.55"></path>
+        <circle cx="70" cy="160" r="3.2" fill="var(--ink)"></circle>
+        <circle cx="250" cy="160" r="3.2" fill="var(--ink)"></circle>
+        <g transform="translate(160 188)">
+          <path d="M -70 0 Q -35 -20 0 0 Q 35 -20 70 0" fill="none" stroke="var(--ink)" stroke-width="2"></path>
+          <circle cx="-32" cy="4" r="20" fill="var(--paper-alt)" stroke="var(--ink)" stroke-width="2.5"></circle>
+          <circle cx="32" cy="4" r="20" fill="var(--paper-alt)" stroke="var(--ink)" stroke-width="2.5"></circle>
+          <line x1="-12" y1="4" x2="12" y2="4" stroke="var(--ink)" stroke-width="2.5"></line>
+          <circle cx="-32" cy="4" r="7" fill="var(--earth)" opacity="0.55"></circle>
+          <circle cx="32" cy="4" r="7" fill="var(--earth)" opacity="0.55"></circle>
+        </g>
+        <line x1="230" y1="112" x2="290" y2="80" stroke="var(--khaki)" stroke-width="1.2"></line>
+        <line x1="90" y1="112" x2="30" y2="80" stroke="var(--khaki)" stroke-width="1.2"></line>
+      </svg>
+      <p class="plate-caption">Field sketch &mdash; composite, from filed reports</p>
+    </figure>
+
+    <div>
+      <p class="marks-label">Identifying marks</p>
+      <ul class="marks-list">
+        <li>
+          <strong>Double snap brim, 3&Prime;</strong>
+          <span>Wide-brim sun hat, snapped up at two points along the front edge.</span>
+        </li>
+        <li>
+          <strong>Pinched front crown, 4&frac12;&Prime;</strong>
+          <span>Center crease runs front to back, pinched rather than domed.</span>
+        </li>
+        <li>
+          <strong>Cotton canvas construction</strong>
+          <span>Reported in khaki, green, distressed gold, earth, and black.</span>
+          <span class="swatches" aria-hidden="true">
+            <span class="swatch" style="background:#C4B48A"></span>
+            <span class="swatch" style="background:#4F5D3A"></span>
+            <span class="swatch" style="background:#B8862E"></span>
+            <span class="swatch" style="background:#7A4B2E"></span>
+            <span class="swatch" style="background:#1C1912"></span>
+          </span>
+        </li>
+        <li>
+          <strong>Goggles, always worn</strong>
+          <span>Every report to date describes them &mdash; no sighting without.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">Sighting Log</h2>
+      <span class="section-note">7 reports on file &middot; Sept 2026</span>
+    </div>
+
+    <div class="log">
+      <article class="log-entry">
+        <span class="log-date">09.02.2026</span>
+        <span class="log-place">Wichita, KS</span>
+        <p class="log-note"><span class="tag tag--confirmed">Confirmed</span>Outside a hat shop on the east side, mid-morning. Bought nothing, tried on nothing, just stood at the window a long minute before walking off.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.06.2026</span>
+        <span class="log-place">Marfa, TX</span>
+        <p class="log-note"><span class="tag tag--probable">Probable</span>Seen at dusk past the edge of town, facing the light installations. Gone by the time anyone got close enough to ask.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.11.2026</span>
+        <span class="log-place">Duluth, MN</span>
+        <p class="log-note"><span class="tag tag--unverified">Unverified</span>Reported on the lift bridge at sunrise. Description matches, but the observer only had it in view for a few seconds.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.14.2026</span>
+        <span class="log-place">Astoria, OR</span>
+        <p class="log-note"><span class="tag tag--probable">Probable</span>On the riverwalk, goggles pushed up, hat brim down against the wind. Left before the ferry it may have been waiting for.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.19.2026</span>
+        <span class="log-place">Key West, FL</span>
+        <p class="log-note"><span class="tag tag--confirmed">Confirmed</span>Two independent reports, same hour, same block near the southernmost point. Neither observer saw where it went.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.23.2026</span>
+        <span class="log-place">St. Petersburg, FL</span>
+        <p class="log-note"><span class="tag tag--probable">Probable</span>Out on the pier past sundown, goggles pushed up against the glare off the water. Walked the length of it twice, then folded into the crowd near the marina.</p>
+      </article>
+      <article class="log-entry">
+        <span class="log-date">09.27.2026</span>
+        <span class="log-place">Beloit, WI</span>
+        <p class="log-note"><span class="tag tag--unverified">Unverified</span>Crossed the footbridge over the Rock River as the farmers market was breaking down. Paused at the rail, looked downstream, kept walking.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="stub">
+    <p class="stub-title">Field Report Form</p>
+    <div class="stub-fields">
+      <div class="stub-field"><span class="stub-field-label">City &amp; state</span></div>
+      <div class="stub-field"><span class="stub-field-label">Date &amp; time seen</span></div>
+      <div class="stub-field"><span class="stub-field-label">What you saw</span></div>
+    </div>
+    <p class="stub-status">Intake is not yet open. Check back for the field kit.</p>
+  </div>
+
+  <footer class="colophon">
+    <span>Filed under FI-PROJ-011</span>
+    <span>If you know something, it can wait &mdash; it always has.</span>
+  </footer>
+
+</div>
+
+</body></html>
