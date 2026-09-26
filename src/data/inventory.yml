@@ -3769,6 +3769,37 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-26'
 
+  - id: FI-EPH-038
+    name: The Virgin AGI Existential Risk vs. the Chad Global Warming
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 1024×531 / virgin-vs-chad meme / origin unverified
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-038-virgin-agi-chad-global-warming.jpeg
+    notes: >
+      Found image supplied for The Shadow Zone: a two-panel "virgin vs. Chad"
+      meme. On the left, the virgin "AGI existential risk" is drawn as a
+      spindly figure with a CRT-monitor head and one red eye, trailing a mouse
+      cord and scattered paperclips, captioned as "fake and made up," "entirely
+      based on thought experiments," and "zero evidence." On the right, the
+      Chad Global Warming is a muscular, flaming Earth dotted with oil
+      derricks, captioned as "verified by the entire scientific community,"
+      "resists ideological simplification," and "will actually kill you."
+      The captions are the meme's argument, reproduced as found; they are not
+      endorsed or fact-checked here, and it is admitted as a curio, not as a
+      source. Maker, origin, and date are not recorded; the exif scrub
+      reported no location metadata to strip.
+    lifecycle:
+      - date: '2026-09-26'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-supplied WebP converted to a location-clean JPEG public derivative (exif scrub reported no location metadata to strip); on-image captions reproduced as found and not endorsed; maker, origin, and date not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-09-26'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
