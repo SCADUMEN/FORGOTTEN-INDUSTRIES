@@ -6,6 +6,72 @@ Proposed database: `forgotten-industries`
 
 State: `PHASE 1 PREPARED / PHASE 2 AWAITING ACCOUNT HOLDER`
 
+## Do This First: Production Is Missing the Scaduscope Tables
+
+Recorded 2026-09-26, after #161 deployed. For Matthew, or ATLAS working on his
+behalf in his terminal. Every step is read-only except step 3.
+
+Evidence, from the live site:
+
+| Endpoint                    | Response                                                 |
+| --------------------------- | -------------------------------------------------------- |
+| `GET /api/sightings`        | `200 {"sightings":[]}`: the database is reachable        |
+| `GET /api/scaduscope/tags`  | `500 {"error":"The tally is unavailable right now."}`    |
+| `GET /api/scaduscope/names` | `500 {"error":"The name log is unavailable right now."}` |
+
+#161 needed its schema applied to the remote database before deploying, and
+that step did not run, so `scaduscope_totals` and `scaduscope_names` do not
+exist. Until they do, every tag on `/bull-valley-scaduscope/` scores only in
+the visitor's browser (names marked "Unrecorded") and the shared total and
+Everyone log stay offline. Tags made in the meantime are not recoverable into
+the shared record.
+
+1. Confirm Wrangler is signed in to the account that owns the database. The
+   database must appear in the list; if it does not, stop and run
+   `npx wrangler login` with the right account.
+
+   ```bash
+   npx wrangler d1 list
+   ```
+
+   Expected: a row named `jjammocan-sightings` with id
+   `e909c0a4-b968-4b56-b673-b6351c3eef62`.
+
+2. From a checkout of `main` with this change merged, preview what will run:
+
+   ```bash
+   npx wrangler d1 migrations list jjammocan-sightings --remote
+   ```
+
+   Expected: `0000_sightings.sql` and `0001_scaduscope.sql` listed as
+   unapplied.
+
+3. Apply them. Wrangler asks for confirmation; both files are
+   `CREATE ... IF NOT EXISTS`, so the existing `sightings` table and its rows
+   are untouched.
+
+   ```bash
+   npx wrangler d1 migrations apply jjammocan-sightings --remote
+   ```
+
+   Expected: both migrations marked ✅.
+
+   If this change is not merged yet, the same fix from current `main` is
+   `npx wrangler d1 execute jjammocan-sightings --remote --file=src/worker/schema.sql`.
+   Applying the migrations later is still safe.
+
+4. Verify on the live site. No redeploy is needed.
+
+   ```bash
+   curl -s https://forgotten-industries.net/api/scaduscope/tags
+   curl -s https://forgotten-industries.net/api/scaduscope/names
+   ```
+
+   Expected: `{"tags":0,"points":0}` and `{"names":[]}` with status 200. Then
+   tag a shadowman on `/bull-valley-scaduscope/`: the name card should say
+   "First Sighting" rather than "Unrecorded", and it should appear under Field
+   Log → Everyone.
+
 ## Why
 
 The site's one D1 database was created for a single feature, the JJAMMOCAN

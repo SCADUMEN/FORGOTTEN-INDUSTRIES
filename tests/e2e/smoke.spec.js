@@ -765,3 +765,36 @@ test('bull valley scaduscope map resolves past the gate', async ({ page }) => {
   // map; it must never ship.
   expect(shaderErrors).toEqual([])
 })
+
+test('scaduscope says the shared log is offline, not empty, when D1 fails', async ({
+  page,
+}) => {
+  // Mirror production on 2026-09-26: the Scaduscope tables were missing, so
+  // both endpoints answered 500. The Everyone log must not read as "no names".
+  await page.route('https://api.open-meteo.com/**', (route) => route.abort())
+  await page.route('**/api/scaduscope/tags', (route) =>
+    route.fulfill({
+      status: 500,
+      contentType: 'application/json',
+      body: '{"error":"The tally is unavailable right now."}',
+    })
+  )
+  await page.route('**/api/scaduscope/names', (route) =>
+    route.fulfill({
+      status: 500,
+      contentType: 'application/json',
+      body: '{"error":"The name log is unavailable right now."}',
+    })
+  )
+
+  await page.goto('/bull-valley-scaduscope/')
+  await page.getByRole('button', { name: /Silent Running|Engage/ }).click()
+  await expect(page.locator('#bvs-hud-everyone')).toHaveText('Offline')
+  await page.getByRole('button', { name: 'Everyone', exact: true }).click()
+  await expect(page.locator('#bvs-log-everyone-empty')).toHaveText(
+    /Shared log offline/
+  )
+  await expect(page.locator('#bvs-log-everyone-empty')).not.toHaveText(
+    /No names yet/
+  )
+})

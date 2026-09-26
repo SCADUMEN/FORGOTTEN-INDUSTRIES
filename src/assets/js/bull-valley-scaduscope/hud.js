@@ -199,7 +199,27 @@ export function createHud() {
   const when = (ms) =>
     Date.now() - ms < 20 * 3600 * 1000 ? bvTime.format(ms) : bvDate.format(ms)
 
-  function renderEveryone(recent) {
+  // The status line under Everyone. An empty list only means "nobody has
+  // tagged anything" when the list actually loaded; when the shared record
+  // can't be reached it says so, instead of looking empty.
+  function everyoneStatus(recent, ok) {
+    const count = Array.isArray(recent) ? recent.length : 0
+    if (ok === false) {
+      return count
+        ? 'Shared log offline · last known names'
+        : 'Shared log offline. Your tags are kept in your own log for now.'
+    }
+    if (ok === null || ok === undefined) return 'Checking the shared log…'
+    return count ? '' : 'No names yet from anyone.'
+  }
+
+  function renderEveryone(recent, ok) {
+    if (everyoneEmpty) {
+      const status = everyoneStatus(recent, ok)
+      if (everyoneEmpty.textContent !== status)
+        everyoneEmpty.textContent = status
+      everyoneEmpty.hidden = status === ''
+    }
     if (!everyoneList || !Array.isArray(recent)) return
     const key = JSON.stringify(recent)
     if (key === everyoneKey) return
@@ -214,14 +234,13 @@ export function createHud() {
         })
       )
     )
-    if (everyoneEmpty) everyoneEmpty.hidden = recent.length > 0
   }
 
   return {
     update,
     updateTally(t) {
       updateTally(t)
-      renderEveryone(t.recent)
+      renderEveryone(t.recent, t.recentOk)
     },
     renderLog,
     addLogEntry,
