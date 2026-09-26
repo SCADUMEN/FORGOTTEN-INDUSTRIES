@@ -100,3 +100,4 @@ playwright-report/
 /src/assets/reference/**/*-timelapse-*.mp4
 /src/assets/reference/**/*-timelapse-*.webm
 /src/assets/ephemera/shadow-zone/motion/
+/src/assets/previews/
