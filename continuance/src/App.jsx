@@ -174,7 +174,8 @@ export default function App() {
     setUrlA(restoredUrlA)
     setUrlB(restoredUrlB)
     setQuery(bookmark.query)
-    const anchorCol = bookmark.anchorSide === 'A' ? bookmark.colA : bookmark.colB
+    const anchorCol =
+      bookmark.anchorSide === 'A' ? bookmark.colA : bookmark.colB
     const anchorUrl = bookmark.anchorSide === 'A' ? restoredUrlA : restoredUrlB
     setAnchor({
       side: bookmark.anchorSide,

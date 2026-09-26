@@ -30,9 +30,7 @@ export default function CxrDossier() {
             the anchor&rsquo;s own column &mdash; including loading a different
             URL into it &mdash; clears it.
           </li>
-          <li>
-            Related records that carry a link open in a new tab.
-          </li>
+          <li>Related records that carry a link open in a new tab.</li>
           <li>
             A source that fails to load can be retried by selecting it again.
           </li>
