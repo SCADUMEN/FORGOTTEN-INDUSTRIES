@@ -5,6 +5,8 @@ import {
   toggleBookmark,
   upsertBookmark,
   isBookmarked,
+  isValidBookmark,
+  sourceCode,
 } from '../../continuance/src/lib/bookmarks.js'
 
 const record = {
@@ -121,5 +123,94 @@ describe('isBookmarked', () => {
     expect(isBookmarked(list, 'fi|nor|A|post:le-signal')).toBe(true)
     expect(isBookmarked(list, 'fi|nor|B|post:le-signal')).toBe(false)
     expect(isBookmarked(list, null)).toBe(false)
+  })
+})
+
+describe('URL columns', () => {
+  const urlRecord = { ...record, id: 'https://a.test/#0', sourceId: '__url__' }
+
+  it('includes the URL in the key only for URL columns', () => {
+    const key = bookmarkKey({
+      colA: '__url__',
+      colB: 'fi',
+      urlA: 'https://a.test/feed.json',
+      urlB: 'ignored',
+      anchorSide: 'A',
+      anchorId: 'x',
+    })
+    expect(key).toBe('__url__:https://a.test/feed.json|fi|A|x')
+  })
+
+  it('treats two different pasted URLs as different bookmarks', () => {
+    const base = { colA: '__url__', colB: 'fi', anchorSide: 'A', anchorId: 'x' }
+    expect(bookmarkKey({ ...base, urlA: 'https://a.test/' })).not.toBe(
+      bookmarkKey({ ...base, urlA: 'https://b.test/' })
+    )
+  })
+
+  it('stores the URL of a URL column so restore can bring it back', () => {
+    const bm = makeBookmark(
+      {
+        colA: '__url__',
+        colB: 'fi',
+        urlA: 'https://a.test/feed.json',
+        urlB: 'https://not-stored.test/',
+        query: '',
+        anchorSide: 'A',
+        record: urlRecord,
+      },
+      1
+    )
+    expect(bm.urlA).toBe('https://a.test/feed.json')
+    expect(bm).not.toHaveProperty('urlB')
+  })
+
+  it('keeps non-URL keys unchanged so earlier bookmarks still match', () => {
+    const bm = makeBookmark(
+      {
+        colA: 'fi',
+        colB: 'nor',
+        urlA: 'https://stale.test/',
+        query: '',
+        anchorSide: 'A',
+        record,
+      },
+      1
+    )
+    expect(bm.key).toBe('fi|nor|A|post:le-signal')
+    expect(bm).not.toHaveProperty('urlA')
+  })
+})
+
+describe('isValidBookmark', () => {
+  it('accepts a bookmark built by makeBookmark', () => {
+    const bm = makeBookmark(
+      { colA: 'fi', colB: 'nor', query: '', anchorSide: 'A', record },
+      1
+    )
+    expect(isValidBookmark(bm)).toBe(true)
+  })
+
+  it.each([
+    [null],
+    ['string'],
+    [{ key: 'k', anchorSide: 'A' }],
+    [{ key: 'k', anchorSide: 'C', anchor: { id: 'x' } }],
+    [{ anchorSide: 'A', anchor: { id: 'x' } }],
+  ])('rejects malformed stored value %j', (value) => {
+    expect(isValidBookmark(value)).toBe(false)
+  })
+})
+
+describe('sourceCode', () => {
+  it('uppercases a manifest source id', () => {
+    expect(sourceCode('fi')).toBe('FI')
+  })
+
+  it('shows the host for a URL column, or URL when none is stored', () => {
+    expect(sourceCode('__url__', 'https://nor.the-rn.info/feed.json')).toBe(
+      'nor.the-rn.info'
+    )
+    expect(sourceCode('__url__')).toBe('URL')
   })
 })

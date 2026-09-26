@@ -50,12 +50,13 @@ function writeJSON(file, value) {
 // --- FI source -------------------------------------------------------------
 // The Ruby build already flattens every archive record into a search document
 // with title/body/tags/url, so we map documents 1:1 rather than re-deriving.
+// A missing index is fatal: emitting an empty FI source would ship a CxR with
+// no archive to search and no build failure to say why.
 function buildFiRecords() {
   if (!fs.existsSync(SEARCH_INDEX)) {
-    log(
-      `dist/search-index.json missing - run \`ruby scripts/build.rb\` first. Emitting empty FI source.`
+    throw new Error(
+      'dist/search-index.json missing - run `ruby scripts/build.rb` first.'
     )
-    return []
   }
 
   const index = JSON.parse(fs.readFileSync(SEARCH_INDEX, 'utf8'))

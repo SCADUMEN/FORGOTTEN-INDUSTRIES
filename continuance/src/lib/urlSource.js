@@ -8,11 +8,13 @@
 //   Record { id, sourceId, title, text, url?, tags[], date?, type?, summary?, meta{} }
 //
 // The same normalization powers two runtime sources: pasted URLs (sourceId
-// '__url__', the column-select sentinel) and hardcoded feeds like nor (sourceId
+// URL_SOURCE_ID, the column-select sentinel) and hardcoded feeds like nor (sourceId
 // 'nor'). sourceId is stamped on every record so the anchor source-consistency
 // guard in App knows which column a record belongs to.
 
-const URL_SOURCE_ID = '__url__'
+// Column-select sentinel for the runtime, user-pasted URL source. The single
+// definition; App, Column, and sources import it.
+export const URL_SOURCE_ID = '__url__'
 
 // Route a target URL through a CORS proxy (`<proxyBase>?url=<encoded>`). An
 // empty proxyBase means "fetch directly". Tolerates a proxyBase that already
