@@ -28,6 +28,11 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const ffmpeg = require('ffmpeg-static')
+const {
+  SHADOW_ZONE_DIR,
+  listShadowZoneGifs,
+  motionDerivativeFor,
+} = require('./lib/shadow-zone-media.cjs')
 
 const REPO = path.join(__dirname, '..')
 
@@ -40,6 +45,18 @@ const REMUX_SOURCES = [
 const GIF_SOURCES = [
   'src/assets/reference/hang-on-to-each-other/caselabs-mercury-s8/caselabs-mercury-s8-assembly-timelapse-cpachris-ocn.gif',
 ]
+
+// Every Shadow Zone GIF also gets an MP4 in shadow-zone/motion/, which is what
+// the zones' WebGL rotation plays (a texture only sees a GIF's first frame).
+// MP4 only: the rotation needs one format every browser decodes, and object
+// pages show the GIF itself in an <img>.
+const SHADOW_ZONE_GIF_SOURCES = listShadowZoneGifs().map((source) => ({
+  source: path.relative(REPO, source),
+  output: path.relative(
+    REPO,
+    motionDerivativeFor(SHADOW_ZONE_DIR, path.basename(source))
+  ),
+}))
 
 function run(args) {
   execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', ...args], {
@@ -71,6 +88,11 @@ function main() {
       outputs: [swap(source, 'mp4'), swap(source, 'webm')],
       kind: 'gif',
     })),
+    ...SHADOW_ZONE_GIF_SOURCES.map(({ source, output }) => ({
+      source,
+      outputs: [output],
+      kind: 'gif',
+    })),
   ]
 
   for (const entry of expected) {
@@ -92,6 +114,7 @@ function main() {
         missing.push(output)
         continue
       }
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true })
 
       if (entry.kind === 'remux') {
         // Copy the existing H.264/AAC streams into MP4; faststart moves the

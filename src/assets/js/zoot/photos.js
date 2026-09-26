@@ -10,6 +10,10 @@
 // base -> { mix, amount, scaleA, scaleB }, overlay -> { mix2, amount2, scaleC,
 // scaleD }. amount/amount2 stay 0 until the first image of that layer is live
 // and when its list is empty, so a missing layer leaves ZOOT unchanged.
+//
+// List entries are { src, kind }. kind 'video' plays as a muted looping clip
+// whose texture is re-uploaded each new frame while it is on screen; anything
+// else is decoded once as a still.
 
 const RAMP = 2.5 // s initial presence ramp-in (shared by both layers)
 
@@ -54,8 +58,10 @@ function makeStream({
   list = shuffle(list.slice())
 
   const single = list.length === 1
-  const cache = new Map() // src -> { img, aspect }
+  const cache = new Map() // src -> { img, aspect } (stills only)
   const slotAspect = [1, 1] // local slot 0 / 1 image aspect
+  const slotEntry = [null, null] // local slot 0 / 1 loaded entry
+  const slotFrameTime = [-1, -1] // last uploaded video currentTime per slot
   let gl = renderer
   let cursor = 0
   let front = 0 // local slot currently fully shown
@@ -66,7 +72,8 @@ function makeStream({
   let lastTime = -1
 
   function load(idx) {
-    const { src } = list[idx]
+    const { src, kind } = list[idx]
+    if (kind === 'video') return loadVideo(src)
     if (cache.has(src)) return Promise.resolve(cache.get(src))
     const img = new Image()
     img.decoding = 'async'
@@ -78,6 +85,66 @@ function makeStream({
     })
   }
 
+  // A muted, looping clip resolves once its first frame is decodable. Clips are
+  // not cached: each holds decoded frames, so it is released when its slot is
+  // overwritten and re-fetched the next time it comes round.
+  function loadVideo(src) {
+    return new Promise((resolve, reject) => {
+      const video = document.createElement('video')
+      video.muted = true
+      video.loop = true
+      video.playsInline = true
+      video.preload = 'auto'
+      video.addEventListener(
+        'loadeddata',
+        () => {
+          resolve({
+            img: video,
+            video,
+            aspect: video.videoWidth / video.videoHeight,
+          })
+        },
+        { once: true }
+      )
+      video.addEventListener(
+        'error',
+        () => reject(new Error(`video failed to load: ${src}`)),
+        { once: true }
+      )
+      video.src = src
+      // Muted inline playback needs no gesture; starting it here also makes
+      // iOS fetch the clip, which ignores preload. A clip that refuses to play
+      // still shows its first frame.
+      video.play().catch(() => {})
+    })
+  }
+
+  function release(entry) {
+    if (!entry || !entry.video) return
+    entry.video.pause()
+    entry.video.removeAttribute('src')
+    entry.video.load()
+  }
+
+  // Upload an entry into a local slot, releasing the clip it replaces.
+  function fill(slot, entry) {
+    if (slotEntry[slot] !== entry) release(slotEntry[slot])
+    slotEntry[slot] = entry
+    slotFrameTime[slot] = -1
+    gl.uploadPhoto(slotOffset + slot, entry.img)
+    slotAspect[slot] = entry.aspect
+  }
+
+  // Re-upload a visible clip's texture when it has advanced to a new frame.
+  function refreshVideo(slot) {
+    const entry = slotEntry[slot]
+    if (!entry || !entry.video || entry.video.readyState < 2) return
+    const t = entry.video.currentTime
+    if (t === slotFrameTime[slot]) return
+    slotFrameTime[slot] = t
+    gl.uploadPhoto(slotOffset + slot, entry.video)
+  }
+
   // Decode the next index and upload it into the back slot.
   function primeBack() {
     if (loading || single) return
@@ -85,9 +152,7 @@ function makeStream({
     const next = (cursor + 1) % list.length
     load(next)
       .then((entry) => {
-        const back = 1 - front
-        gl.uploadPhoto(slotOffset + back, entry.img)
-        slotAspect[back] = entry.aspect
+        fill(1 - front, entry)
         cursor = next
         backReady = true
       })
@@ -104,8 +169,7 @@ function makeStream({
   function boot() {
     load(cursor)
       .then((entry) => {
-        gl.uploadPhoto(slotOffset + front, entry.img)
-        slotAspect[front] = entry.aspect
+        fill(front, entry)
         phase = 'hold'
         fadeStart = 0
         primeBack()
@@ -126,6 +190,9 @@ function makeStream({
     // Re-boot after a WebGL context loss: textures are gone, re-upload from
     // the (still-decoded) cache without re-fetching.
     reset() {
+      release(slotEntry[0])
+      release(slotEntry[1])
+      slotEntry[0] = slotEntry[1] = null
       phase = 'boot'
       front = 0
       backReady = false
@@ -167,6 +234,11 @@ function makeStream({
           }
         }
       }
+
+      // Clips advance every frame while on screen: the front slot always, the
+      // back slot only while it is fading in.
+      refreshVideo(front)
+      if (phase === 'fade') refreshVideo(1 - front)
 
       const view = getAspect()
       state.scaleA = coverScale(slotAspect[0], view)
