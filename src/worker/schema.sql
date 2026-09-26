@@ -26,3 +26,7 @@ CREATE TABLE IF NOT EXISTS scaduscope_names (
   first_tagged_at INTEGER NOT NULL,
   last_tagged_at INTEGER NOT NULL
 );
+
+-- Everyone's field log reads the most recently tagged names.
+CREATE INDEX IF NOT EXISTS idx_scaduscope_names_last_tagged
+  ON scaduscope_names (last_tagged_at DESC);

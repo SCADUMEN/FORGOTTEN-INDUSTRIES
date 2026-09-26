@@ -167,5 +167,63 @@ export function createHud() {
     if (logEmpty) logEmpty.hidden = true
   }
 
-  return { update, updateTally, renderLog, addLogEntry }
+  // Yours / Everyone toggle.
+  const tabs = Array.from(document.querySelectorAll('[data-bvs-log]'))
+  const panels = Array.from(document.querySelectorAll('[data-bvs-log-panel]'))
+  for (const tab of tabs) {
+    tab.addEventListener('click', () => {
+      for (const t of tabs) t.setAttribute('aria-pressed', String(t === tab))
+      for (const p of panels)
+        p.hidden = p.dataset.bvsLogPanel !== tab.dataset.bvsLog
+    })
+  }
+
+  // Everyone's log: re-rendered only when the list actually changes. It is
+  // not a live region, so the refresh every 30 s is never read aloud.
+  const everyoneList = el('bvs-log-everyone')
+  const everyoneEmpty = el('bvs-log-everyone-empty')
+  let everyoneKey = ''
+
+  // Bull Valley time for today's tags; a short date for older ones.
+  const bvTime = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  })
+  const bvDate = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    month: 'short',
+    day: 'numeric',
+  })
+  const when = (ms) =>
+    Date.now() - ms < 20 * 3600 * 1000 ? bvTime.format(ms) : bvDate.format(ms)
+
+  function renderEveryone(recent) {
+    if (!everyoneList || !Array.isArray(recent)) return
+    const key = JSON.stringify(recent)
+    if (key === everyoneKey) return
+    everyoneKey = key
+    everyoneList.replaceChildren(
+      ...recent.map((r) =>
+        logRow({
+          name: r.name,
+          timesTagged: r.tags,
+          recorded: true,
+          local: when(r.lastTaggedAt),
+        })
+      )
+    )
+    if (everyoneEmpty) everyoneEmpty.hidden = recent.length > 0
+  }
+
+  return {
+    update,
+    updateTally(t) {
+      updateTally(t)
+      renderEveryone(t.recent)
+    },
+    renderLog,
+    addLogEntry,
+  }
 }

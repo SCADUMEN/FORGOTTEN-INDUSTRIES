@@ -35,9 +35,12 @@ function fakeDb({ fail = false } = {}) {
               }
             : { tags: 1, points }
         } else if (sql.includes('INTO scaduscope_names')) {
-          const [name] = args
+          const [name, , lastTaggedAt] = args
           const row = state.names.get(name)
-          state.names.set(name, { tags: (row?.tags ?? 0) + 1 })
+          state.names.set(name, {
+            tags: (row?.tags ?? 0) + 1,
+            last_tagged_at: lastTaggedAt,
+          })
         }
       },
       first: async () => {
@@ -46,6 +49,15 @@ function fakeDb({ fail = false } = {}) {
           return state.names.get(args[0]) ?? null
         }
         return state.totals
+      },
+      // The recent-names read: newest first, limited by the bound LIMIT.
+      all: async () => {
+        guard()
+        const results = [...state.names.entries()]
+          .map(([name, row]) => ({ name, ...row }))
+          .sort((a, b) => b.last_tagged_at - a.last_tagged_at)
+          .slice(0, args[0])
+        return { results }
       },
     })
     return { ...exec([]), bind: (...args) => exec(args) }
@@ -81,7 +93,7 @@ describe('/api/scaduscope/tags', () => {
     expect(typeof body.name).toBe('string')
     expect(body.name.length).toBeGreaterThan(3)
     expect(body.timesTagged).toBe(1)
-    expect(env.DB.state.names.get(body.name)).toEqual({ tags: 1 })
+    expect(env.DB.state.names.get(body.name)).toMatchObject({ tags: 1 })
   })
 
   it('counts up when a name comes around again', async () => {
@@ -158,5 +170,54 @@ describe('shadowman names', () => {
 
   it('keeps the name space finite so names recur', () => {
     expect(NAME_SPACE).toBe(3542)
+  })
+})
+
+describe('/api/scaduscope/names', () => {
+  const NAMES = 'https://forgotten-industries.net/api/scaduscope/names'
+  const get = (env, method = 'GET') =>
+    worker.fetch(new Request(NAMES, { method }), env)
+
+  it('lists the most recently tagged names, newest first, capped at 20', async () => {
+    const env = { DB: fakeDb() }
+    for (let i = 0; i < 25; i++) {
+      env.DB.state.names.set(`Name ${i}`, {
+        tags: i + 1,
+        last_tagged_at: 1000 + i,
+      })
+    }
+    const res = await get(env)
+    const body = await res.json()
+    expect(res.status).toBe(200)
+    expect(body.names).toHaveLength(20)
+    expect(body.names[0]).toEqual({
+      name: 'Name 24',
+      tags: 25,
+      lastTaggedAt: 1024,
+    })
+    expect(body.names[19].name).toBe('Name 5')
+  })
+
+  it('includes a name the moment it is tagged', async () => {
+    const env = { DB: fakeDb() }
+    const tagged = await (await call('POST', env)).json()
+    const { names } = await (await get(env)).json()
+    expect(names[0].name).toBe(tagged.name)
+  })
+
+  it('never exposes anything about who tagged', async () => {
+    const env = { DB: fakeDb() }
+    await call('POST', env)
+    const { names } = await (await get(env)).json()
+    expect(Object.keys(names[0]).sort()).toEqual([
+      'lastTaggedAt',
+      'name',
+      'tags',
+    ])
+  })
+
+  it('is read-only and reports outages', async () => {
+    expect((await get({ DB: fakeDb() }, 'POST')).status).toBe(405)
+    expect((await get({ DB: fakeDb({ fail: true }) })).status).toBe(500)
   })
 })

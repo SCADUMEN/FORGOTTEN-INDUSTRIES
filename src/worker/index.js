@@ -22,6 +22,11 @@ export default {
       return json({ error: 'Method not allowed.' }, 405)
     }
 
+    if (url.pathname === '/api/scaduscope/names') {
+      if (request.method === 'GET') return scaduscopeRecentNames(env)
+      return json({ error: 'Method not allowed.' }, 405)
+    }
+
     // Everything else is a static asset. Requests through the assets binding
     // get the html_handling and not_found_handling (the 404 page) configured
     // in wrangler.jsonc.
@@ -146,6 +151,31 @@ async function readTotals(env) {
     'SELECT tags, points FROM scaduscope_totals WHERE id = 1'
   ).first()
   return { tags: row?.tags ?? 0, points: row?.points ?? 0 }
+}
+
+// Everyone's field log: the most recently tagged names. Only what the Worker
+// already keeps (name, running tag count, last tagged time); nothing about
+// who tagged them.
+const RECENT_NAMES = 20
+
+async function scaduscopeRecentNames(env) {
+  try {
+    const { results } = await env.DB.prepare(
+      'SELECT name, tags, last_tagged_at FROM scaduscope_names ORDER BY last_tagged_at DESC LIMIT ?'
+    )
+      .bind(RECENT_NAMES)
+      .all()
+    return json({
+      names: results.map((row) => ({
+        name: row.name,
+        tags: row.tags,
+        lastTaggedAt: row.last_tagged_at,
+      })),
+    })
+  } catch (error) {
+    console.error('scaduscopeRecentNames failed', error)
+    return json({ error: 'The name log is unavailable right now.' }, 500)
+  }
 }
 
 async function scaduscopeTotals(env) {

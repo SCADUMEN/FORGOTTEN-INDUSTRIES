@@ -173,13 +173,52 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       padding: 0.55rem 0 0;
       border-top: 1px solid rgb(74 222 128 / 0.2);
     }
-    .bvs-log-title {
+    .bvs-log-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
       margin: 0 0 0.3rem;
+    }
+    .bvs-log-title {
+      margin: 0;
       color: var(--fi-slate);
       font-size: inherit;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+    }
+    /* Yours / Everyone: a two-way toggle, hard-edged like the units button. */
+    .bvs-log-tabs {
+      display: flex;
+      pointer-events: auto;
+    }
+    .bvs-log-tab {
+      min-height: 24px;
+      padding: 0.1rem 0.55rem;
+      color: var(--fi-slate);
+      background: transparent;
+      border: 1px solid rgb(74 222 128 / 0.35);
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .bvs-log-tab + .bvs-log-tab {
+      border-left: 0;
+    }
+    .bvs-log-tab[aria-pressed='true'] {
+      color: var(--fi-bg);
+      background: var(--fi-green);
+      border-color: var(--fi-green);
+    }
+    .bvs-log-tab:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 2px;
+    }
+    [data-bvs-log-panel][hidden] {
+      display: none;
     }
     .bvs-log-empty {
       margin: 0;
@@ -603,9 +642,21 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       </dl>
       <p id="bvs-hud-witching" hidden>Witching Hour</p>
       <section class="bvs-log" aria-labelledby="bvs-log-title">
-        <h2 id="bvs-log-title" class="bvs-log-title">Field Log</h2>
-        <p class="bvs-log-empty" id="bvs-log-empty">No names yet. Click a shadowman to tag it.</p>
-        <ol class="bvs-log-list" id="bvs-log-list" aria-live="polite"></ol>
+        <div class="bvs-log-head">
+          <h2 id="bvs-log-title" class="bvs-log-title">Field Log</h2>
+          <div class="bvs-log-tabs" role="group" aria-label="Whose log">
+            <button type="button" class="bvs-log-tab" data-bvs-log="yours" aria-pressed="true">Yours</button>
+            <button type="button" class="bvs-log-tab" data-bvs-log="everyone" aria-pressed="false">Everyone</button>
+          </div>
+        </div>
+        <div data-bvs-log-panel="yours">
+          <p class="bvs-log-empty" id="bvs-log-empty">No names yet. Click a shadowman to tag it.</p>
+          <ol class="bvs-log-list" id="bvs-log-list" aria-live="polite"></ol>
+        </div>
+        <div data-bvs-log-panel="everyone" hidden>
+          <p class="bvs-log-empty" id="bvs-log-everyone-empty">No names yet from anyone.</p>
+          <ol class="bvs-log-list" id="bvs-log-everyone"></ol>
+        </div>
       </section>
       <ul class="bvs-legend" aria-label="Legend">
         <li class="bvs-key-grave">✝ Graveyard</li>
