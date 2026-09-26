@@ -31,7 +31,11 @@ Use repository instructions first, then local project guidance, then ATLAS voice
 - `serve:site` compiles CSS once before serving; Eleventy's watch does not rebuild `src/css/archive.css`. When editing CSS during a serve session, run `npm run watch:css` in a second terminal to recompile on save.
 - Run `npm run pretty` before committing. Prettier must pass repo-wide.
 - To publish a post, add a dated Markdown file with front matter (`title`, `date`, `description`, `tags`) to `src/posts/` and rebuild. The post index, Atom feed (`/feed.xml`), and sitemap are generated from the collection.
-- Style new components with Tailwind utilities backed by the `@theme inline` tokens in `src/css/archive.css` (`text-oxide`, `font-headline`, ...). Legacy classes remain for existing pages.
-- Deploys go through GitHub Actions to Cloudflare Workers Static Assets, only
-  from `SCADUMEN/FORGOTTEN-INDUSTRIES` `main`; GitHub Pages is retired.
+- Style new components with Tailwind utilities backed by the `@theme inline` tokens in `src/css/archive.css`. Legacy classes remain for existing pages. The full token list (use as `text-*`, `bg-*`, `border-*`, `font-*`):
+  - Colors: `paper`, `ink`, `muted`, `line`, `steel`, `oxide`, `brass`, `blueprint`, `focus`, `fi-bg`, `fi-surface`, `fi-cyan`, `fi-green`, `fi-amber`, `fi-gold`, `fi-magenta`, `fi-copper`, `fi-silver`, `fi-maroon`, `fi-slate`, `fi-red`.
+  - Fonts: `sans`, `serif`, `title`, `interface`, `testimony`, `fi-system`, `utility`, `mono`, `headline`, `stencil`.
+- Deploys go through GitHub Actions to Cloudflare Workers, only from
+  `SCADUMEN/FORGOTTEN-INDUSTRIES` `main` and only after the CI workflow passes
+  on that commit (or on a manual dispatch from `main`); GitHub Pages is retired.
+  The Worker serves static assets plus `/api/sightings` backed by D1.
 - Public media must never carry a GPS location. Scrub images and video in `intake/` and `src/assets/` with `npm run scrub:exif` before promoting or committing; `npm run build:site` runs the public-surface audit and fails if any published media in `_site/` still has GPS metadata. See CLAUDE.md "Media & EXIF hygiene".
