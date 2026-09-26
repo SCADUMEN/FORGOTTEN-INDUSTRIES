@@ -12,8 +12,10 @@
 // for.
 //
 // Usage: node scripts/build_atlas_cell.cjs [--check]
-//   --check verifies the committed derivative matches a fresh extraction and
-//           exits non-zero if it has drifted, without writing.
+//   --check verifies the local derivative matches a fresh extraction and
+//           exits non-zero if it is missing or has drifted, without writing.
+//           The derivative is gitignored and rewritten by build:site, so this
+//           is a local freshness check, not a CI gate.
 
 const crypto = require('node:crypto')
 const fs = require('node:fs')

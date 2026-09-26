@@ -406,7 +406,9 @@ FileUtils.mkdir_p(DIST)
 
 json = JSON.pretty_generate(archive)
 File.write(File.join(DIST, "forgotten-industries.json"), "#{json}\n")
-File.write(File.join(DIST, "archive.json"), "#{json}\n")
+# Remove the retired archive.json alias from older builds; src/_redirects
+# points the old URL at forgotten-industries.json.
+FileUtils.rm_f(File.join(DIST, "archive.json"))
 File.write(File.join(DIST, "search-index.json"), "#{JSON.pretty_generate(search_index)}\n")
 
 types = File.read(File.join(SRC, "types.ts")).strip

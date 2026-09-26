@@ -2,6 +2,7 @@ const fs = require('node:fs')
 const http = require('node:http')
 const path = require('node:path')
 const { randomUUID } = require('node:crypto')
+const { isAllowedHost } = require('../lib/loopback-host.cjs')
 
 const projectRoot = path.resolve(__dirname, '..', '..')
 const defaultDataRoot = path.join(projectRoot, '.tools', 'inventory-os')
@@ -47,20 +48,6 @@ const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
-}
-
-function isAllowedHost(hostHeader) {
-  if (!hostHeader) return false
-  try {
-    const host = new URL(`http://${hostHeader}`)
-    return (
-      !host.username &&
-      !host.password &&
-      (host.hostname === '127.0.0.1' || host.hostname === 'localhost')
-    )
-  } catch {
-    return false
-  }
 }
 
 function resolveWithin(root, requestPath) {

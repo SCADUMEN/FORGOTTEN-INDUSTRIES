@@ -9,8 +9,9 @@
 // ships. Editing an inline script without rebuilding is therefore impossible to
 // get wrong — the hash is recomputed from the same bytes the browser will see.
 //
-// Run with --check to verify the committed policy matches the built site
-// without writing (used to catch a stale _headers in CI).
+// Run with --check to verify _site/_headers matches the built site without
+// writing. build:site always regenerates the header, so this is for checking a
+// local _site after hand edits, not a CI gate.
 
 const fs = require('fs')
 const path = require('path')

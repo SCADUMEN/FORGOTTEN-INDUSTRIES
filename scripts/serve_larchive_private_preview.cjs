@@ -1,6 +1,7 @@
 const fs = require('node:fs')
 const http = require('node:http')
 const path = require('node:path')
+const { isAllowedHost } = require('./lib/loopback-host.cjs')
 
 const projectRoot = path.resolve(__dirname, '..')
 const siteRoot = path.join(projectRoot, '_site')
@@ -45,21 +46,6 @@ function resolveWithin(root, requestPath) {
     return candidate
   }
   return null
-}
-
-function isAllowedHost(hostHeader) {
-  if (!hostHeader) return false
-
-  try {
-    const authority = new URL(`http://${hostHeader}`)
-    return (
-      !authority.username &&
-      !authority.password &&
-      (authority.hostname === '127.0.0.1' || authority.hostname === 'localhost')
-    )
-  } catch {
-    return false
-  }
 }
 
 function sendText(response, statusCode, body, headers = {}) {
