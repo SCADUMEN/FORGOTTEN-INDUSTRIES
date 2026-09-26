@@ -1,5 +1,15 @@
 #!/usr/bin/env ruby
 
+# Manual tool: re-import the public Forgotten Industries Tumblr and Instagram
+# feeds. Downloads post media into src/assets/social/ and rewrites
+# src/data/social-posts.yml, src/posts/social/*.md, and src/social-posts.html.
+# Run it from the repo root and review the diff before committing; scrub any
+# new media with `npm run scrub:exif`.
+#
+# Usage: ruby scripts/import_social.rb
+#
+# INSTAGRAM_HEADERS carries Instagram's public web-app id, not a credential.
+
 require "cgi"
 require "date"
 require "fileutils"

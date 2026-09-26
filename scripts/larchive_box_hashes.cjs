@@ -1,3 +1,11 @@
+// Manual tool: hash an L'Archive box intake folder for its provenance record.
+// Prints a SHA256SUMS-style listing of the box's registers, manifests, raw and
+// derivative files, plus one combined hash over that listing.
+//
+// Usage: node scripts/larchive_box_hashes.cjs [intake-root] [--write]
+//   intake-root defaults to intake/LE-BOX-001-012.
+//   --write also saves hashes/SHA256SUMS.txt and hashes/hash-report.json
+//           inside the intake root.
 const crypto = require('crypto')
 const fs = require('fs')
 const path = require('path')
