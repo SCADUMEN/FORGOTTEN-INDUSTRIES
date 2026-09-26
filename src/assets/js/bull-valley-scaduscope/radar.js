@@ -39,7 +39,7 @@ export function pulse(beatTime) {
 // Which beep the current pulse follows. The song's submarine beep is a B that
 // alternates octaves on each whole note, the higher one on the 0:00 downbeat
 // (measured: even downbeats carry strong upper-B energy, odd ones are low B3).
-// 0 = high beep (green), 1 = low beep (slightly more yellow). The colour holds
+// 0 = high beep (phosphor green), 1 = low beep (hot magenta). The colour holds
 // until the next pulse.
 export function pulseTint(beatTime) {
   const n = Math.floor(beatTime / PULSE_SECONDS)

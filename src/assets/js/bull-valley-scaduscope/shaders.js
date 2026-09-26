@@ -45,7 +45,7 @@ uniform float uSweep;       // radar line angle, radians, y-down (clockwise)
 uniform vec4 uRadar;        // drawing-buffer px: centre x, y, radius, px per km
 uniform float uRadarOn;     // 0 under reduced motion (rings only, no sweep)
 uniform float uPulse;       // 0..1 flash on the sweep line, once per whole note
-uniform float uPulseTint;   // 0 high beep (green), 1 low beep (more yellow)
+uniform float uPulseTint;   // 0 high beep (green), 1 low beep (magenta)
 uniform int uHerdCount;
 uniform vec4 uHerds[MAX_HERDS]; // x, y (map), radius (map x units), alpha
 uniform sampler2D uTerrain; // R high byte, G low byte of normalized height
@@ -209,18 +209,27 @@ void main() {
   float wedge = exp(-since / (TAU * persist) * 3.0) * uRadarOn;
   float lineWidth = (1.5 + 2.5 * uPulse) / max(rdist, 1.0);
   float sweepLine = (1.0 - smoothstep(0.0, lineWidth * 2.0, since)) * uRadarOn;
+  // The two beeps get opposite hues, phosphor green (high B) and hot magenta
+  // (low B), so the alternation reads at any setting. The trail and rings keep
+  // at least 45% of the beep colour at full zoot; the line itself is always
+  // the pure beep colour (see below).
+  vec3 beep = mix(vec3(0.0, 1.0, 0.35), vec3(1.0, 0.12, 0.85), uPulseTint);
   vec3 phosphor = mix(
-    mix(vec3(0.0, 1.0, 0.25), vec3(0.55, 1.0, 0.08), uPulseTint),
+    beep,
     psych(since * 0.35 - t * 0.08 + rdist / uRadar.z * 0.6),
-    smoothstep(0.15, 0.9, h)
+    smoothstep(0.15, 0.9, h) * 0.55
   );
   float km = rdist / uRadar.w;
   float ring = 1.0 - smoothstep(0.0, fwidth(km) * 1.2, abs(fract(km - 0.5) - 0.5));
   float tickAngle = mod(bearing + TAU, TAU / 12.0);
   float tick = (1.0 - smoothstep(0.0, 1.2 / max(rdist, 1.0), min(tickAngle, TAU / 12.0 - tickAngle)))
     * step(uRadar.z - 14.0, rdist);
-  col += phosphor * inScope * (wedge * (0.1 + 0.08 * h) * (1.0 + 0.6 * uPulse) + sweepLine * (0.45 + 0.9 * uPulse));
+  col += phosphor * inScope * wedge * (0.1 + 0.08 * h) * (1.0 + 0.6 * uPulse);
   col += phosphor * inScope * (ring * 0.07 + tick * 0.35) * (0.6 + 0.4 * wedge);
+  // The line is painted over the map, not added to it, so it stays the pure
+  // beep colour on even the brightest background; each flash whitens it.
+  vec3 sweepCol = mix(beep, vec3(1.0), 0.3 * uPulse);
+  col = mix(col, sweepCol, clamp(sweepLine * inScope * (0.75 + 0.25 * uPulse), 0.0, 1.0));
 
   // Witching hour: a slow violet breath across everything.
   col += vec3(0.25, 0.0, 0.35) * uWitching * (0.08 + 0.06 * sin(t * 0.8));

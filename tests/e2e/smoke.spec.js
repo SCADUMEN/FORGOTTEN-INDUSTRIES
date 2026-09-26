@@ -743,3 +743,25 @@ test('/sitemap/ redirects to the canonical /plan-du-site/', async ({
     page.getByRole('heading', { name: 'Plan du Site' })
   ).toBeVisible()
 })
+
+test('bull valley scaduscope map resolves past the gate', async ({ page }) => {
+  // Keep the smoke suite offline: the live weather call is refused, which the
+  // page reports as an outage rather than failing.
+  await page.route('https://api.open-meteo.com/**', (route) => route.abort())
+  const shaderErrors = []
+  page.on('console', (msg) => {
+    if (msg.type() === 'error' && /shader/i.test(msg.text())) {
+      shaderErrors.push(msg.text())
+    }
+  })
+  page.on('pageerror', (error) => shaderErrors.push(String(error)))
+
+  const response = await page.goto('/bull-valley-scaduscope/')
+  expect(response?.status()).toBe(200)
+  await page.getByRole('button', { name: /Silent Running|Engage/ }).click()
+  await expect(page.locator('body')).toHaveClass(/bvs-live/)
+  await expect(page.locator('#bvs-hud-census')).not.toHaveText('—')
+  // A GLSL compile error (e.g. a redeclared variable) logs here and hides the
+  // map; it must never ship.
+  expect(shaderErrors).toEqual([])
+})
