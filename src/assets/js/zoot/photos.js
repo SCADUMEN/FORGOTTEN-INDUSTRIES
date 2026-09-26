@@ -17,6 +17,9 @@
 
 const RAMP = 2.5 // s initial presence ramp-in (shared by both layers)
 
+// Root-relative path under /assets/ with no scheme, host, query, or "..".
+const ASSET_PATH = /^\/assets\/(?:[\w-]+\/)*[\w-]+(?:\.[\w-]+)+$/
+
 // object-fit: cover as a UV scale for coverUV() in the shader.
 function coverScale(imgAspect, viewAspect) {
   return [
@@ -73,6 +76,11 @@ function makeStream({
 
   function load(idx) {
     const { src, kind } = list[idx]
+    // The manifest is read back out of the page, so only a same-origin asset
+    // path is ever handed to an <img> or <video>.
+    if (typeof src !== 'string' || !ASSET_PATH.test(src)) {
+      return Promise.reject(new Error(`not an asset path: ${src}`))
+    }
     if (kind === 'video') return loadVideo(src)
     if (cache.has(src)) return Promise.resolve(cache.get(src))
     const img = new Image()
