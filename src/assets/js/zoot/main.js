@@ -114,7 +114,7 @@ async function boot() {
 }
 
 // Background-photo manifest inlined by the page as JSON (see src/zoot.njk):
-// { base, overlay }, each an array of { src }. Missing/malformed -> empty layers.
+// { base, overlay }, each an array of { src, kind }. Missing/malformed -> empty layers.
 function readManifest() {
   const empty = { base: [], overlay: [] }
   const el = document.getElementById('zoot-photos')
