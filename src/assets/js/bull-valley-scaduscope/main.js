@@ -38,6 +38,7 @@ import {
 } from './radar.js'
 import { animateTitle } from './title.js'
 import { readUnits, writeUnits, ringKm } from './units.js'
+import { createTally } from './tally.js'
 
 const LAT = 42.3206
 const LON = -88.3551
@@ -86,6 +87,7 @@ let pointer = null // CSS px of a hovering mouse/pen, for the herd tooltip
 let audioSource = null // the loop, when the page has one (see audio.js)
 const beatClock = createBeatClock()
 let hudRect = null // readout box bounds (CSS px), refreshed with the readout
+let tally = null // click-to-tag game layer (tally.js)
 const frameDeltas = []
 
 // Pause-corrected animation clock (seconds) so motion never jumps after a
@@ -155,6 +157,11 @@ function start() {
   herds = createHerds({ geo, terrain: decodeTerrain(terrainImage) })
   overlay = createOverlay(overlayCanvas, geo)
   hud = createHud()
+  // The bonus is judged by the real Bull Valley clock, never the ?at= preview.
+  tally = createTally({
+    isWitchingNow: () => witching(bullValleyTime(new Date()).hour) === 1,
+    onChange: (t) => hud.updateTally(t),
+  })
   document.body.classList.add('bvs-live')
 
   watchWeather((next) => {
@@ -492,6 +499,34 @@ function wireControls() {
     pointer = null
     if (redrawFrame) redrawFrame()
   })
+
+  // Game layer: clicking a shadowman on the map tags it, once per visit. It
+  // flinches and walks on; tally.js scores it. Clicks on the readout, the
+  // chrome, or the gate never tag.
+  const onMap = (event) =>
+    !(event.target instanceof Element) ||
+    !event.target.closest('#bvs-hud, #bvs-chrome, #bvs-intro, a, button, input')
+  const untaggedAt = (x, y) => {
+    const hit = overlay.hitFigure(x, y, herds.herds)
+    return hit && !hit.m.tagged ? hit : null
+  }
+  window.addEventListener('pointerdown', (event) => {
+    if (!onMap(event)) return
+    const hit = untaggedAt(event.clientX, event.clientY)
+    if (!hit) return
+    hit.m.tagged = true
+    hit.m.flinchAt = getTime()
+    tally.tag()
+    if (redrawFrame) redrawFrame()
+  })
+  window.addEventListener(
+    'pointermove',
+    (event) => {
+      const aiming = onMap(event) && untaggedAt(event.clientX, event.clientY)
+      document.body.classList.toggle('bvs-aiming', Boolean(aiming))
+    },
+    { passive: true }
+  )
 }
 
 function trackPerformance(time, dt) {

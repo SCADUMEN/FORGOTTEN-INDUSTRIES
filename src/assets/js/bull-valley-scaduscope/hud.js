@@ -26,6 +26,8 @@ export function createHud() {
     traffic: el('bvs-hud-traffic'),
     terrain: el('bvs-hud-terrain'),
     census: el('bvs-hud-census'),
+    score: el('bvs-hud-score'),
+    everyone: el('bvs-hud-everyone'),
     witching: el('bvs-hud-witching'),
   }
   const moonCanvas = el('bvs-hud-moon-glyph')
@@ -111,5 +113,23 @@ export function createHud() {
     if (fields.witching) fields.witching.hidden = !s.witching
   }
 
-  return { update }
+  // The game layer, driven by tally.js whenever a number changes.
+  // t: { visit, allTime, everyone: { tags, points } | null, online, bonus }
+  function updateTally(t) {
+    const n = (v) => v.toLocaleString('en-US')
+    set(
+      'score',
+      t.visit === 0 && t.allTime === 0
+        ? `0 · Click a Shadowman${t.bonus ? ' · ×2 Now' : ''}`
+        : `${n(t.visit)} · ${n(t.allTime)} All Time${t.bonus ? ' · ×2 Now' : ''}`
+    )
+    set(
+      'everyone',
+      t.online && t.everyone
+        ? `${n(t.everyone.points)} pts · ${n(t.everyone.tags)} Tagged`
+        : 'Offline'
+    )
+  }
+
+  return { update, updateTally }
 }

@@ -11,6 +11,8 @@ const MAX_GHOSTS = 2500
 // Between radar passes a figure's halo and outline never drop below this, so
 // the shadowmen stay findable on even the loudest background.
 const OUTLINE_FLOOR = 0.45
+// How long a tagged shadowman flinches before walking on, seconds.
+const FLINCH_SECONDS = 0.7
 
 // Map tag: "#07" for a loner, "#07 ×5" for a herd.
 function herdTag(h) {
@@ -192,7 +194,26 @@ export function createOverlay(canvas, geo) {
   // `fade` is the figure's fade in/out; `seen` its radar echo (1 as the sweep
   // crosses, dimming between passes). The body and ghosts follow the echo, but
   // the halo and outline keep a floor so every figure stays findable.
-  function drawFigure(x, y, s, fade, seen, high, t, phase) {
+  function drawFigure(x0, y0, s, fade, seen0, high, t, m) {
+    const phase = m.phase
+    // Flinch: for a moment after being tagged, the figure shakes, shows in
+    // full, and throws off a magenta ring; then it walks on.
+    const flinchAge = m.flinchAt === undefined ? Infinity : t - m.flinchAt
+    const flinching = flinchAge >= 0 && flinchAge < FLINCH_SECONDS
+    const k = flinching ? 1 - flinchAge / FLINCH_SECONDS : 0
+    // Only shake while flinching: sin(Infinity) is NaN, and NaN × 0 is NaN.
+    const x = flinching ? x0 + Math.sin(flinchAge * 60) * 3 * k : x0
+    const y = flinching ? y0 + Math.cos(flinchAge * 47) * 2 * k : y0
+    const seen = flinching ? 1 : seen0
+    if (flinching) {
+      ctx.globalAlpha = fade * k
+      ctx.strokeStyle = '#e879f9'
+      ctx.lineWidth = 2
+      ctx.beginPath()
+      ctx.arc(x0, y0 - s * 0.3, s * (1 + flinchAge * 7), 0, Math.PI * 2)
+      ctx.stroke()
+    }
+
     const alpha = fade * seen
     const marked = fade * Math.max(seen, OUTLINE_FLOOR)
     const sway = Math.sin(t * 2 + phase) * 0.8
@@ -222,6 +243,14 @@ export function createOverlay(canvas, geo) {
     ctx.globalAlpha = alpha
     ctx.fillStyle = '#000'
     ctx.fill()
+    // Tagged: a small magenta dot above the head, so you know it's counted.
+    if (m.tagged) {
+      ctx.globalAlpha = marked
+      ctx.fillStyle = '#e879f9'
+      ctx.beginPath()
+      ctx.arc(cx, y - s * 1.9, Math.max(1.6, s * 0.2), 0, Math.PI * 2)
+      ctx.fill()
+    }
   }
 
   function figurePath(x, y, s) {
@@ -243,6 +272,24 @@ export function createOverlay(canvas, geo) {
 
     setRect(r) {
       rect = r
+    },
+
+    // The figure under a click (CSS px), or null: { h, m } for the nearest
+    // clickable shadowman whose drawn body is within reach of the point.
+    hitFigure(x, y, herdList) {
+      let best = null
+      let bestD = Infinity
+      for (const h of herdList) {
+        for (const m of h.members) {
+          if (!m.clickable || m.px === undefined) continue
+          const d = Math.hypot(x - m.px, y - m.py)
+          if (d <= m.hitR && d < bestD) {
+            bestD = d
+            best = { h, m }
+          }
+        }
+      }
+      return best
     },
 
     // state: { time, dt, hour, high (0..1), dark, herds, showLabels }
@@ -371,7 +418,12 @@ export function createOverlay(canvas, geo) {
           }
           // The hovered herd stays fully visible between sweeps.
           if (hovered && hovered.h === h) seen = 1
-          drawFigure(fx, fy, figure, h.fade, seen, high, time, m.phase)
+          // Where this figure was drawn, for click hit-testing.
+          m.px = fx
+          m.py = fy - figure * 0.3
+          m.hitR = Math.max(10, figure * 1.4)
+          m.clickable = h.fade > 0.3
+          drawFigure(fx, fy, figure, h.fade, seen, high, time, m)
         }
         labels.push({
           text: herdTag(h),

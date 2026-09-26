@@ -78,6 +78,10 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       z-index: 1;
       pointer-events: none;
     }
+    /* Over an untagged shadowman the cursor becomes a crosshair: click to tag. */
+    body.bvs-aiming {
+      cursor: crosshair;
+    }
     body.bvs-idle,
     body.bvs-idle * {
       cursor: none;
@@ -548,6 +552,8 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
         <dt>Traffic</dt><dd id="bvs-hud-traffic">—</dd>
         <dt>Terrain</dt><dd id="bvs-hud-terrain">—</dd>
         <dt class="bvs-fiction">Census</dt><dd class="bvs-fiction" id="bvs-hud-census">—</dd>
+        <dt class="bvs-fiction">Score</dt><dd class="bvs-fiction" id="bvs-hud-score">0 · Click a Shadowman</dd>
+        <dt class="bvs-fiction">Everyone</dt><dd class="bvs-fiction" id="bvs-hud-everyone">—</dd>
       </dl>
       <p id="bvs-hud-witching" hidden>Witching Hour</p>
       <ul class="bvs-legend" aria-label="Legend">
