@@ -6,6 +6,7 @@
 import { hourShare, HOURLY_SHARE } from './traffic.js'
 import { behind, echo, SWEEP_SECONDS } from './radar.js'
 import { distance } from './units.js'
+import { entryNote } from './log.js'
 
 const MAX_GHOSTS = 2500
 // Between radar passes a figure's halo and outline never drop below this, so
@@ -453,12 +454,9 @@ export function createOverlay(canvas, geo) {
   }
 
   // "Mother Ostend · Tagged 14×", "· First Sighting", or "· Unrecorded" when
-  // the shared record couldn't be reached.
+  // the shared record couldn't be reached. Same wording as the field log.
   function nameLine(m) {
-    if (!m.recorded) return `${m.name} · Unrecorded`
-    return m.timesTagged > 1
-      ? `${m.name} · Tagged ${m.timesTagged}×`
-      : `${m.name} · First Sighting`
+    return `${m.name} · ${entryNote(m)}`
   }
 
   // Name card: for a few seconds after a tag lands, the new name floats by

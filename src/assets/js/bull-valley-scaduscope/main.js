@@ -39,6 +39,7 @@ import {
 import { animateTitle } from './title.js'
 import { readUnits, writeUnits, ringKm } from './units.js'
 import { createTally } from './tally.js'
+import { readLog, appendLog } from './log.js'
 
 const LAT = 42.3206
 const LON = -88.3551
@@ -88,6 +89,7 @@ let audioSource = null // the loop, when the page has one (see audio.js)
 const beatClock = createBeatClock()
 let hudRect = null // readout box bounds (CSS px), refreshed with the readout
 let tally = null // click-to-tag game layer (tally.js)
+let fieldLog = [] // named shadowmen you've tagged (log.js), newest first
 const frameDeltas = []
 
 // Pause-corrected animation clock (seconds) so motion never jumps after a
@@ -162,6 +164,8 @@ function start() {
     isWitchingNow: () => witching(bullValleyTime(new Date()).hour) === 1,
     onChange: (t) => hud.updateTally(t),
   })
+  fieldLog = readLog()
+  hud.renderLog(fieldLog)
   document.body.classList.add('bvs-live')
 
   watchWeather((next) => {
@@ -519,6 +523,15 @@ function wireControls() {
     // The server names it; the name card shows once the reply lands.
     tally.tag().then((named) => {
       Object.assign(hit.m, named, { namedAt: getTime() })
+      // Field log, stamped with the real Bull Valley time (not the preview).
+      const now = new Date()
+      const entry = {
+        ...named,
+        at: now.toISOString(),
+        local: bullValleyTime(now).text.slice(0, 5),
+      }
+      fieldLog = appendLog(fieldLog, entry)
+      hud.addLogEntry(entry)
       if (redrawFrame) redrawFrame()
     })
     if (redrawFrame) redrawFrame()

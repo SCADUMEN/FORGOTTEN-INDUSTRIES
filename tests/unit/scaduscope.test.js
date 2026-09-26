@@ -254,3 +254,34 @@ describe('radar pulse colour', async () => {
     expect(pulseTint(6.5)).toBe(1)
   })
 })
+
+describe('field log', async () => {
+  const { appendLog, entryNote, MAX_ENTRIES } =
+    await import('../../src/assets/js/bull-valley-scaduscope/log.js')
+  const entry = (name, extra = {}) => ({
+    name,
+    timesTagged: 1,
+    recorded: true,
+    at: '2026-09-26T04:00:00Z',
+    local: '23:00',
+    ...extra,
+  })
+
+  it('keeps the newest entry first and caps the log', () => {
+    let log = []
+    for (let i = 0; i < MAX_ENTRIES + 5; i++)
+      log = appendLog(log, entry(`n${i}`))
+    expect(log).toHaveLength(MAX_ENTRIES)
+    expect(log[0].name).toBe(`n${MAX_ENTRIES + 4}`)
+  })
+
+  it('notes first sightings, repeat names, and unrecorded tags', () => {
+    expect(entryNote(entry('Mother Ostend'))).toBe('First Sighting')
+    expect(entryNote(entry('Mother Ostend', { timesTagged: 14 }))).toBe(
+      'Tagged 14×'
+    )
+    expect(entryNote(entry('Mother Ostend', { recorded: false }))).toBe(
+      'Unrecorded'
+    )
+  })
+})

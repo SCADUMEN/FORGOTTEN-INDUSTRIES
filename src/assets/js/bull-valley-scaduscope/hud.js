@@ -1,7 +1,8 @@
 // BULL VALLEY SCADUSCOPE readout: the instrument panel. Every value here is
 // either measured (clock, sun, moon, weather, IDOT counts, terrain) or marked
 // as simulated/estimated; the shadowmen census is the one fictional line.
-// Text only changes twice a second, so the panel is not a live region.
+// Text only changes twice a second, so the panel is not a live region; only
+// the field log announces new entries.
 
 import { phaseName, sunLabel } from './astro.js'
 import { describeCode } from './weather.js'
@@ -12,6 +13,7 @@ import {
   elevationUnit,
   contourLabel,
 } from './units.js'
+import { entryNote, MAX_ENTRIES } from './log.js'
 
 const DEG = 180 / Math.PI
 const COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
@@ -131,5 +133,39 @@ export function createHud() {
     )
   }
 
-  return { update, updateTally }
+  // Field log. Rows are plain text (names come from the Worker, but are never
+  // parsed as HTML). New entries are prepended one at a time so the polite
+  // live region announces only the new name, not the whole list.
+  const logList = el('bvs-log-list')
+  const logEmpty = el('bvs-log-empty')
+
+  function logRow(entry) {
+    const li = document.createElement('li')
+    const time = document.createElement('span')
+    time.className = 'bvs-log-time'
+    time.textContent = entry.local
+    const body = document.createElement('span')
+    const note = document.createElement('span')
+    note.className = 'bvs-log-note'
+    note.textContent = ` · ${entryNote(entry)}`
+    body.append(entry.name, note)
+    li.append(time, body)
+    return li
+  }
+
+  function renderLog(log) {
+    if (!logList) return
+    logList.replaceChildren(...log.map(logRow))
+    if (logEmpty) logEmpty.hidden = log.length > 0
+  }
+
+  function addLogEntry(entry) {
+    if (!logList) return
+    logList.prepend(logRow(entry))
+    while (logList.children.length > MAX_ENTRIES) logList.lastChild.remove()
+    logList.scrollTop = 0
+    if (logEmpty) logEmpty.hidden = true
+  }
+
+  return { update, updateTally, renderLog, addLogEntry }
 }

@@ -165,6 +165,49 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
         opacity: 0.35;
       }
     }
+    /* Field log: the shadowmen you've named, newest first. About five rows
+       show; the rest scroll. The box ignores the pointer, so the list opts
+       back in to allow scrolling. */
+    .bvs-log {
+      margin: 0.7rem 0 0;
+      padding: 0.55rem 0 0;
+      border-top: 1px solid rgb(74 222 128 / 0.2);
+    }
+    .bvs-log-title {
+      margin: 0 0 0.3rem;
+      color: var(--fi-slate);
+      font-size: inherit;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .bvs-log-empty {
+      margin: 0;
+      color: var(--fi-slate);
+    }
+    .bvs-log-empty[hidden] {
+      display: none;
+    }
+    .bvs-log-list {
+      max-height: 7.8em;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+      list-style: none;
+      color: var(--fi-magenta);
+      pointer-events: auto;
+    }
+    .bvs-log-list li {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0 0.6rem;
+    }
+    .bvs-log-time {
+      color: var(--fi-slate);
+    }
+    .bvs-log-note {
+      color: var(--fi-slate);
+    }
     .bvs-legend {
       display: flex;
       flex-wrap: wrap;
@@ -498,6 +541,9 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       .bvs-legend {
         display: none;
       }
+      .bvs-log-list {
+        max-height: 4.7em;
+      }
       .bvs-hud-control {
         grid-template-columns: 4.4rem 1fr;
       }
@@ -556,6 +602,11 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
         <dt class="bvs-fiction">Everyone</dt><dd class="bvs-fiction" id="bvs-hud-everyone">—</dd>
       </dl>
       <p id="bvs-hud-witching" hidden>Witching Hour</p>
+      <section class="bvs-log" aria-labelledby="bvs-log-title">
+        <h2 id="bvs-log-title" class="bvs-log-title">Field Log</h2>
+        <p class="bvs-log-empty" id="bvs-log-empty">No names yet. Click a shadowman to tag it.</p>
+        <ol class="bvs-log-list" id="bvs-log-list" aria-live="polite"></ol>
+      </section>
       <ul class="bvs-legend" aria-label="Legend">
         <li class="bvs-key-grave">✝ Graveyard</li>
         <li class="bvs-key-fuel">▲ Fuel (Bearing)</li>
