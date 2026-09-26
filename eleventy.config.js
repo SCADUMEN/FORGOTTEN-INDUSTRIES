@@ -527,9 +527,18 @@ export default function (eleventyConfig) {
     return sources
   })
 
+  // The link-preview image (og:image). When the primary photo has a
+  // `<name>-still.<ext>` poster listed beside it — an animated GIF's extracted
+  // frame — the preview uses the poster: link unfurlers such as iMessage ignore
+  // images under 150px wide, and a tiny source GIF is kept unaltered, so its
+  // enlarged still is what can carry the preview.
   eleventyConfig.addFilter('objectPrimaryImage', function (item) {
-    const photo = publicObjectPhotos(item)[0]
-    return photo ? `/${photo}` : ''
+    const photos = publicObjectPhotos(item)
+    const primary = photos[0]
+    if (!primary) return ''
+    const posterPrefix = `${primary.replace(/\.[^.]+$/, '')}-still.`
+    const poster = photos.find((photo) => photo.startsWith(posterPrefix))
+    return `/${poster || primary}`
   })
 
   eleventyConfig.addFilter('countObjectsWithPhotos', function (items) {
