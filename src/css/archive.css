@@ -6606,6 +6606,26 @@ a.site-leaf-mark:focus-visible {
   color: var(--fi-paper-light);
 }
 
+/* Scaduscope mark: the Bull Valley Scaduscope's radar + new moon, sat to the
+   right of the leaf mark. Emoji carry their own colour, so the hover lifts
+   opacity instead of changing colour. */
+a.site-scaduscope-mark {
+  align-self: baseline;
+  flex: 0 0 auto;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+
+a.site-scaduscope-mark:hover,
+a.site-scaduscope-mark:focus-visible,
+a.site-scaduscope-mark[aria-current='page'] {
+  opacity: 1;
+}
+
 @media (max-width: 720px) {
   .inventory-gallery-controls {
     grid-template-columns: minmax(0, 1fr);
@@ -6776,27 +6796,16 @@ a.site-leaf-mark:focus-visible {
     grid-area: nav;
   }
 
+  /* The instrument marks spread evenly across one ruled row: CxR far left,
+     then the zoot mark and the leaf, and the Scaduscope mark far right. */
   .site-cxr-row {
     grid-area: cxr;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: baseline;
     gap: 1.1rem;
     padding-top: 0.85rem;
     border-top: 2px solid var(--line);
-  }
-
-  /* CxR far left, zoot mark dead center, leaf mark far right. */
-  .site-cxr-row > :first-child {
-    justify-self: start;
-  }
-
-  .site-cxr-row > :nth-child(2) {
-    justify-self: center;
-  }
-
-  .site-cxr-row > :last-child {
-    justify-self: end;
   }
 
   .site-header a.fi-zoot-mark {
@@ -6867,6 +6876,7 @@ a.site-leaf-mark:focus-visible {
 
   a.site-cxr-mark,
   a.site-leaf-mark,
+  a.site-scaduscope-mark,
   .site-header a.fi-zoot-mark {
     align-self: flex-end;
   }

@@ -17,6 +17,10 @@ test('home page renders', async ({ page }) => {
   // CxR has its own wordmark to the left of the zoot mark, not a main-nav item.
   await expect(page.locator('.site-cxr-mark')).toHaveAttribute('href', '/cxr/')
   await expect(page.locator('.site-cxr-mark')).toHaveText('CxR')
+  // The Bull Valley Scaduscope mark sits right of the Maple Leaf Rag Zone ❦.
+  await expect(
+    page.getByRole('link', { name: 'Bull Valley Scaduscope' })
+  ).toHaveAttribute('href', '/bull-valley-scaduscope/')
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.primary-card-mark')).toHaveText([
     '> The Archive',
