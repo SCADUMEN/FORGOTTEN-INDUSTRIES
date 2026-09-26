@@ -16,3 +16,13 @@ CREATE TABLE IF NOT EXISTS scaduscope_totals (
   tags INTEGER NOT NULL DEFAULT 0,
   points INTEGER NOT NULL DEFAULT 0
 );
+
+-- Every name a tagged shadowman has been given, kept forever, with how many
+-- times that name has been tagged. Names are chosen by the Worker from the
+-- lists in src/assets/js/bull-valley-scaduscope/names.js, never by visitors.
+CREATE TABLE IF NOT EXISTS scaduscope_names (
+  name TEXT PRIMARY KEY,
+  tags INTEGER NOT NULL DEFAULT 0,
+  first_tagged_at INTEGER NOT NULL,
+  last_tagged_at INTEGER NOT NULL
+);

@@ -12,6 +12,8 @@
 // dev server has no /api, or D1 is down), tags still score locally from the
 // real clock and the shared total reads as offline.
 
+import { generateName } from './names.js'
+
 const ENDPOINT = '/api/scaduscope/tags'
 const STORAGE_KEY = 'bull-valley-scaduscope:v1:tagged'
 const POLL_MS = 30000
@@ -67,7 +69,9 @@ export function createTally({ isWitchingNow, onChange }) {
     emit()
   }
 
-  // One tag: the server awards the points; offline, score from the real clock.
+  // One tag. The server awards the points and names the shadowman, keeping
+  // the name forever; offline, score from the real clock and name it locally
+  // (unrecorded). Resolves { name, timesTagged, recorded }.
   async function tag() {
     try {
       const res = await fetch(ENDPOINT, { method: 'POST' })
@@ -76,10 +80,12 @@ export function createTally({ isWitchingNow, onChange }) {
       state.everyone = body.total
       state.online = true
       score(body.points)
+      return { name: body.name, timesTagged: body.timesTagged, recorded: true }
     } catch (err) {
       console.warn('[scaduscope] tag not recorded on the shared tally:', err)
       state.online = false
       score(isWitchingNow() ? 2 : 1)
+      return { name: generateName(), timesTagged: 0, recorded: false }
     }
   }
 

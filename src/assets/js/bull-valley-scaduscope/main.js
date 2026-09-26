@@ -516,7 +516,11 @@ function wireControls() {
     if (!hit) return
     hit.m.tagged = true
     hit.m.flinchAt = getTime()
-    tally.tag()
+    // The server names it; the name card shows once the reply lands.
+    tally.tag().then((named) => {
+      Object.assign(hit.m, named, { namedAt: getTime() })
+      if (redrawFrame) redrawFrame()
+    })
     if (redrawFrame) redrawFrame()
   })
   window.addEventListener(

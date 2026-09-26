@@ -1,3 +1,5 @@
+import { generateName } from '../assets/js/bull-valley-scaduscope/names.js'
+
 const MAX_CITY = 120
 const MAX_NOTE = 600
 // seenAt comes from a date input (YYYY-MM-DD); the cap only bounds abuse.
@@ -155,8 +157,19 @@ async function scaduscopeTotals(env) {
   }
 }
 
+// Uniform [0, 1) from the Workers crypto API, for picking names.
+function cryptoRandom() {
+  const buf = new Uint32Array(1)
+  crypto.getRandomValues(buf)
+  return buf[0] / 2 ** 32
+}
+
 async function scaduscopeTag(env) {
   const points = tagPoints()
+  // The tagged shadowman is named here, from the curated folklore lists; the
+  // name and its running tag count are kept forever.
+  const name = generateName(cryptoRandom)
+  const now = Date.now()
   try {
     await env.DB.prepare(
       'INSERT INTO scaduscope_totals (id, tags, points) VALUES (1, 1, ?) ' +
@@ -164,10 +177,23 @@ async function scaduscopeTag(env) {
     )
       .bind(points)
       .run()
+    await env.DB.prepare(
+      'INSERT INTO scaduscope_names (name, tags, first_tagged_at, last_tagged_at) VALUES (?, 1, ?, ?) ' +
+        'ON CONFLICT(name) DO UPDATE SET tags = tags + 1, last_tagged_at = excluded.last_tagged_at'
+    )
+      .bind(name, now, now)
+      .run()
+    const named = await env.DB.prepare(
+      'SELECT tags FROM scaduscope_names WHERE name = ?'
+    )
+      .bind(name)
+      .first()
     return json({
       ok: true,
       points,
       bonus: points > 1,
+      name,
+      timesTagged: named?.tags ?? 1,
       total: await readTotals(env),
     })
   } catch (error) {

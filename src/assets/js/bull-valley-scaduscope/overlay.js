@@ -13,6 +13,8 @@ const MAX_GHOSTS = 2500
 const OUTLINE_FLOOR = 0.45
 // How long a tagged shadowman flinches before walking on, seconds.
 const FLINCH_SECONDS = 0.7
+// How long a newly named shadowman's name card floats beside it, seconds.
+const NAME_CARD_SECONDS = 4
 
 // Map tag: "#07" for a loner, "#07 ×5" for a herd.
 function herdTag(h) {
@@ -444,9 +446,58 @@ export function createOverlay(canvas, geo) {
       }
 
       if (state.showLabels) placeLabels(labels, state.reserved || [])
+      drawNameCards(time, state.herds)
       if (hovered) drawHover(state.pointer, hovered)
       ctx.globalAlpha = 1
     },
+  }
+
+  // "Mother Ostend · Tagged 14×", "· First Sighting", or "· Unrecorded" when
+  // the shared record couldn't be reached.
+  function nameLine(m) {
+    if (!m.recorded) return `${m.name} · Unrecorded`
+    return m.timesTagged > 1
+      ? `${m.name} · Tagged ${m.timesTagged}×`
+      : `${m.name} · First Sighting`
+  }
+
+  // Name card: for a few seconds after a tag lands, the new name floats by
+  // the figure, fading out; hover brings it back.
+  function drawNameCards(time, herdList) {
+    for (const h of herdList) {
+      for (const m of h.members) {
+        if (!m.name || m.namedAt === undefined || m.px === undefined) continue
+        const age = time - m.namedAt
+        if (age < 0 || age > NAME_CARD_SECONDS) continue
+        const fade = Math.min(1, (NAME_CARD_SECONDS - age) / 0.8)
+        captionBox(m.px + 12, m.py - 30 - age * 4, nameLine(m), fade)
+      }
+    }
+  }
+
+  // Caption box: hard edges and an offset shadow, per the styleguide. Kept on
+  // screen by flipping left/down near the edges.
+  function captionBox(x, y, text, alpha = 1) {
+    ctx.font = `bold 11px ${MONO}`
+    ctx.textBaseline = 'middle'
+    ctx.textAlign = 'left'
+    const w = ctx.measureText(text).width + 16
+    const boxH = 24
+    const viewW = canvas.width / dpr
+    const bx = x + w > viewW - 4 ? Math.max(4, x - w - 24) : x
+    const by = y < 4 ? y + 44 : y
+    ctx.globalAlpha = 0.58 * alpha
+    ctx.fillStyle = '#000'
+    ctx.fillRect(bx + 4, by + 4, w, boxH)
+    ctx.globalAlpha = 0.94 * alpha
+    ctx.fillStyle = '#020617'
+    ctx.fillRect(bx, by, w, boxH)
+    ctx.strokeStyle = '#e879f9'
+    ctx.lineWidth = 1
+    ctx.strokeRect(bx + 0.5, by + 0.5, w - 1, boxH - 1)
+    ctx.globalAlpha = alpha
+    ctx.fillStyle = '#e879f9'
+    ctx.fillText(text, bx + 8, by + boxH / 2 + 1)
   }
 
   // Hover: the herd under the pointer gets a ring and a count, whatever the
@@ -481,30 +532,16 @@ export function createOverlay(canvas, geo) {
     ctx.stroke()
     ctx.setLineDash([])
 
+    // A named loner shows its name; a herd shows its size and how many of
+    // its members have been named.
     const n = h.members.length
-    const text = `#${String(h.id).padStart(2, '0')} · ${n === 1 ? 'Alone' : `Herd of ${n}`}`
-    ctx.font = `bold 11px ${MONO}`
-    ctx.textBaseline = 'middle'
-    ctx.textAlign = 'left'
-    const w = ctx.measureText(text).width + 16
-    const boxH = 24
-    const viewW = canvas.width / dpr
-    let bx = pointer.x + 14
-    let by = pointer.y - boxH - 10
-    if (bx + w > viewW - 4) bx = pointer.x - w - 14
-    if (by < 4) by = pointer.y + 14
-    // Caption box: hard edges and an offset shadow, per the styleguide.
-    ctx.globalAlpha = 0.58
-    ctx.fillStyle = '#000'
-    ctx.fillRect(bx + 4, by + 4, w, boxH)
-    ctx.globalAlpha = 0.94
-    ctx.fillStyle = '#020617'
-    ctx.fillRect(bx, by, w, boxH)
-    ctx.strokeStyle = '#e879f9'
-    ctx.strokeRect(bx + 0.5, by + 0.5, w - 1, boxH - 1)
-    ctx.globalAlpha = 1
-    ctx.fillStyle = '#e879f9'
-    ctx.fillText(text, bx + 8, by + boxH / 2 + 1)
+    const id = `#${String(h.id).padStart(2, '0')}`
+    const named = h.members.filter((m) => m.name).length
+    let text
+    if (n === 1)
+      text = h.members[0].name ? nameLine(h.members[0]) : `${id} · Alone`
+    else text = `${id} · Herd of ${n}${named ? ` · ${named} Named` : ''}`
+    captionBox(pointer.x + 14, pointer.y - 34, text)
   }
 
   // Afterimages: phosphor green when sober; at height they last longer,

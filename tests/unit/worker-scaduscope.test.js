@@ -1,29 +1,55 @@
 import { describe, expect, it, vi } from 'vitest'
 import worker, { tagPoints } from '../../src/worker/index.js'
+import {
+  generateName,
+  PLACES,
+  SHORT_PLACES,
+  TITLES,
+  NOUNS,
+  EPITHETS,
+  GIVEN,
+  NAME_SPACE,
+} from '../../src/assets/js/bull-valley-scaduscope/names.js'
 
 const ENDPOINT = 'https://forgotten-industries.net/api/scaduscope/tags'
 
-// Minimal D1 stand-in holding the single totals row in memory, so the upsert
-// and the read-back agree the way the real table would. `fail` makes every
-// statement reject, as a D1 outage would.
+// Minimal D1 stand-in for the two Scaduscope tables, kept in memory so the
+// upserts and read-backs agree the way the real tables would. `fail` makes
+// every statement reject, as a D1 outage would.
 function fakeDb({ fail = false } = {}) {
-  const state = { row: null, writes: [] }
-  const prepare = vi.fn((sql) => ({
-    bind: (...args) => ({
+  const state = { totals: null, names: new Map(), writes: 0 }
+  const guard = () => {
+    if (fail) throw new Error('D1 unavailable')
+  }
+  const prepare = vi.fn((sql) => {
+    const exec = (args) => ({
       run: async () => {
-        if (fail) throw new Error('D1 unavailable')
-        state.writes.push({ sql, args })
-        const [points] = args
-        state.row = state.row
-          ? { tags: state.row.tags + 1, points: state.row.points + points }
-          : { tags: 1, points }
+        guard()
+        state.writes++
+        if (sql.includes('INTO scaduscope_totals')) {
+          const [points] = args
+          state.totals = state.totals
+            ? {
+                tags: state.totals.tags + 1,
+                points: state.totals.points + points,
+              }
+            : { tags: 1, points }
+        } else if (sql.includes('INTO scaduscope_names')) {
+          const [name] = args
+          const row = state.names.get(name)
+          state.names.set(name, { tags: (row?.tags ?? 0) + 1 })
+        }
       },
-    }),
-    first: async () => {
-      if (fail) throw new Error('D1 unavailable')
-      return state.row
-    },
-  }))
+      first: async () => {
+        guard()
+        if (sql.includes('FROM scaduscope_names')) {
+          return state.names.get(args[0]) ?? null
+        }
+        return state.totals
+      },
+    })
+    return { ...exec([]), bind: (...args) => exec(args) }
+  })
   return { prepare, state }
 }
 
@@ -47,7 +73,33 @@ describe('/api/scaduscope/tags', () => {
     expect(res.status).toBe(200)
     expect(body.ok).toBe(true)
     expect(body.total.tags).toBe(2)
-    expect(env.DB.state.writes).toHaveLength(2)
+  })
+
+  it('names the tagged shadowman and records the name forever', async () => {
+    const env = { DB: fakeDb() }
+    const body = await (await call('POST', env)).json()
+    expect(typeof body.name).toBe('string')
+    expect(body.name.length).toBeGreaterThan(3)
+    expect(body.timesTagged).toBe(1)
+    expect(env.DB.state.names.get(body.name)).toEqual({ tags: 1 })
+  })
+
+  it('counts up when a name comes around again', async () => {
+    const env = { DB: fakeDb() }
+    env.DB.state.names.set('Mother Ostend', { tags: 13 })
+    // Force the generator onto "Mother Ostend": pattern 0.5 → Title + Place.
+    const spy = vi
+      .spyOn(crypto, 'getRandomValues')
+      .mockImplementation((buf) => {
+        const seq = [0.5, TITLES.indexOf('Mother') / TITLES.length + 1e-6]
+        seq.push(SHORT_PLACES.indexOf('Ostend') / SHORT_PLACES.length + 1e-6)
+        buf[0] = Math.floor(seq[spy.mock.calls.length - 1] * 2 ** 32)
+        return buf
+      })
+    const body = await (await call('POST', env)).json()
+    spy.mockRestore()
+    expect(body.name).toBe('Mother Ostend')
+    expect(body.timesTagged).toBe(14)
   })
 
   it('refuses other methods', async () => {
@@ -69,5 +121,42 @@ describe('tag points', () => {
     expect(tagPoints(new Date('2026-09-26T08:00:00Z'))).toBe(2) // 03:00
     expect(tagPoints(new Date('2026-09-26T08:59:00Z'))).toBe(2) // 03:59
     expect(tagPoints(new Date('2026-09-26T09:00:00Z'))).toBe(1) // 04:00
+  })
+})
+
+describe('shadowman names', () => {
+  // Deterministic source for exploring the whole grammar.
+  const seeded = (seed) => () => {
+    seed = (seed * 1664525 + 1013904223) % 2 ** 32
+    return seed / 2 ** 32
+  }
+
+  it('only ever builds names from the curated lists', () => {
+    const words = new Set(
+      [...PLACES, ...SHORT_PLACES, ...TITLES, ...NOUNS, ...EPITHETS, ...GIVEN]
+        .join(' ')
+        .split(' ')
+        .concat(['The', 'of'])
+    )
+    const rand = seeded(7)
+    for (let i = 0; i < 2000; i++) {
+      for (const word of generateName(rand).split(' ')) {
+        expect(words.has(word)).toBe(true)
+      }
+    }
+  })
+
+  it('uses all three folklore patterns', () => {
+    const rand = seeded(42)
+    const names = Array.from({ length: 500 }, () => generateName(rand))
+    expect(names.some((n) => n.startsWith('The '))).toBe(true)
+    expect(names.some((n) => n.includes(' of '))).toBe(true)
+    expect(names.some((n) => TITLES.some((t) => n.startsWith(`${t} `)))).toBe(
+      true
+    )
+  })
+
+  it('keeps the name space finite so names recur', () => {
+    expect(NAME_SPACE).toBe(3542)
   })
 })
