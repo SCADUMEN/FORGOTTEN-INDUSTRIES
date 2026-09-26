@@ -76,7 +76,7 @@
     "tailwindcss": "4.3.2",
     "vite": "8.1.5",
     "vitest": "4.1.11",
-    "wrangler": "4.120.1"
+    "wrangler": "4.141.0"
   },
   "engines": {
     "node": ">=22",
