@@ -131,6 +131,114 @@ test('bookmarks save, persist, restore, and remove a cross-reference', async ({
   await expect(page.locator('.continuance-bookmark')).toHaveCount(0)
 })
 
+test('results are named by title and the bookmark toggle keeps one name', async ({
+  page,
+}) => {
+  await page.goto('/cxr/')
+  const columns = page.locator('.continuance-column')
+  await columns.nth(0).locator('select').selectOption('fi')
+  await columns.nth(1).locator('select').selectOption('fi')
+  await page.locator('.continuance-search-field input').fill('archive')
+
+  // A result button's accessible name is its title alone, not the whole card.
+  const first = columns.nth(0).locator('.continuance-result').first()
+  await expect(first).toBeVisible()
+  const title = await first.locator('.continuance-result-title').innerText()
+  await expect(first).toHaveAccessibleName(title)
+  await first.click()
+
+  // Toggling the bookmark changes aria-pressed, never the accessible name.
+  const toggle = page.getByRole('button', {
+    name: 'Bookmark this cross-reference',
+  })
+  await expect(toggle).toHaveAttribute('aria-pressed', 'false')
+  await toggle.click()
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true')
+
+  // Removing the only chip returns focus to the search box.
+  await page.locator('.continuance-bookmark-remove').click()
+  await expect(page.locator('.continuance-bookmark')).toHaveCount(0)
+  await expect(page.locator('#continuance-search')).toBeFocused()
+})
+
+test('switching a loading column to an empty URL does not stick on LOADING', async ({
+  page,
+}) => {
+  // Hold the nor feed request open so column B is mid-load when it switches.
+  await page.route(
+    (url) => url.hostname === 'cors-proxy.vaporwavemall.com',
+    () => {}
+  )
+  await page.goto('/cxr/')
+  const columnB = page.locator('.continuance-column').nth(1)
+  await columnB.locator('select').selectOption('nor')
+  await expect(columnB.locator('.fi-caption-box')).toContainText('LOADING')
+
+  await columnB.locator('select').selectOption('__url__')
+  await expect(columnB.locator('.fi-caption-box')).toContainText('RESULTS (0)')
+})
+
+test('a URL column clears its anchor on a new URL and bookmarks restore the URL', async ({
+  page,
+}) => {
+  // Serve two different JSON Feeds through the stubbed proxy, keyed by URL.
+  const feeds = {
+    'https://one.test/feed.json': 'Archive signal one',
+    'https://two.test/feed.json': 'Archive signal two',
+  }
+  await page.route(
+    (url) => url.hostname === 'cors-proxy.vaporwavemall.com',
+    (route) => {
+      const target = new URL(route.request().url()).searchParams.get('url')
+      const title = feeds[target]
+      route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          items: title ? [{ id: target, title, content_text: title }] : [],
+        }),
+      })
+    }
+  )
+  await page.goto('/cxr/')
+  const columnA = page.locator('.continuance-column').nth(0)
+  const columnB = page.locator('.continuance-column').nth(1)
+  await columnB.locator('select').selectOption('fi')
+  await columnA.locator('select').selectOption('__url__')
+
+  const loadUrl = async (url) => {
+    await columnA.locator('.continuance-url-entry input').fill(url)
+    await columnA.locator('.continuance-url-entry button').click()
+  }
+
+  await loadUrl('https://one.test/feed.json')
+  await columnA.locator('.continuance-result').first().click()
+  const crossref = page.locator('.continuance-crossref')
+  await expect(
+    crossref.locator('.continuance-crossref-anchor-title')
+  ).toHaveText('Archive signal one')
+  await page.locator('.continuance-bookmark-save').click()
+  await expect(
+    page.locator('.continuance-bookmark-pair').first()
+  ).toContainText('one.test')
+
+  // Loading a different URL into the anchor's own column clears the anchor.
+  await loadUrl('https://two.test/feed.json')
+  await expect(crossref).toHaveClass(/is-empty/)
+
+  // Restoring the bookmark brings back the first URL and its anchor.
+  await page.locator('.continuance-bookmark-open').first().click()
+  await expect(columnA.locator('.continuance-url-entry input')).toHaveValue(
+    'https://one.test/feed.json'
+  )
+  await expect(
+    crossref.locator('.continuance-crossref-anchor-title')
+  ).toHaveText('Archive signal one')
+  await expect(page.locator('.continuance-bookmark-save')).toHaveAttribute(
+    'aria-pressed',
+    'true'
+  )
+})
+
 test('selecting the URL source reveals a URL entry field', async ({ page }) => {
   await page.goto('/cxr/')
   const columnA = page.locator('.continuance-column').nth(0)
