@@ -188,6 +188,15 @@ Manual tools, run by hand when needed and not wired into any build:
 - `node scripts/larchive_box_hashes.cjs [intake-root] [--write]` hashes an
   L'Archive box intake folder (default `intake/LE-BOX-001-012`); `--write`
   saves `hashes/SHA256SUMS.txt` and `hashes/hash-report.json` inside it.
+- `node scripts/fetch_bull_valley.cjs` refreshes the real-world layers behind
+  the Bull Valley Scaduscope (`/bull-valley-scaduscope/`): boundary, public
+  roads, water, reserves, graveyards, and gas stations from OpenStreetMap,
+  Illinois DOT traffic counts, and a terrain heightmap, written to
+  `src/assets/data/bull-valley/`. Only live weather (Open-Meteo) is fetched in
+  the browser. Driveways, service roads, and buildings are never requested.
+  Review the diff before committing. The page's optional music loop is
+  `src/assets/audio/bull-valley-scaduscope.mp3`; without it the gate falls
+  back to a silent "Engage" button.
 
 ## Evidence policy
 

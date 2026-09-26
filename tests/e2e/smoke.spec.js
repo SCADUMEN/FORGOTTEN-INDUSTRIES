@@ -130,6 +130,7 @@ test('representative route families remain contained at 320px', async ({
     '/contact.html',
     '/hash/',
     '/zoot/',
+    '/bull-valley-scaduscope/',
   ]
 
   for (const route of routes) {
