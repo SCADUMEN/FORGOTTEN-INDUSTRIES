@@ -1,5 +1,7 @@
 const MAX_CITY = 120
 const MAX_NOTE = 600
+// seenAt comes from a date input (YYYY-MM-DD); the cap only bounds abuse.
+const MAX_SEEN_AT = 40
 const ALLOWED_COLORS = new Set(['khaki', 'green', 'gold', 'earth', 'black'])
 
 export default {
@@ -12,9 +14,9 @@ export default {
       return json({ error: 'Method not allowed.' }, 405)
     }
 
-    // Any path that isn't a static asset (including a genuine 404) reaches
-    // this handler rather than the platform's asset routing, so the site's
-    // configured 404 page has to be replicated explicitly here.
+    // Everything else is a static asset. Requests through the assets binding
+    // get the html_handling and not_found_handling (the 404 page) configured
+    // in wrangler.jsonc.
     return env.ASSETS.fetch(request)
   },
 }
@@ -26,10 +28,27 @@ function json(data, status = 200) {
   })
 }
 
+// A stored colors column that fails to parse renders as no colors rather than
+// failing the whole feed.
+function parseColors(value) {
+  try {
+    const colors = JSON.parse(value || '[]')
+    return Array.isArray(colors) ? colors : []
+  } catch {
+    return []
+  }
+}
+
 async function listSightings(env) {
-  const { results } = await env.DB.prepare(
-    'SELECT id, city, seen_at, note, colors, logged_at FROM sightings ORDER BY seen_at DESC LIMIT 200'
-  ).all()
+  let results
+  try {
+    ;({ results } = await env.DB.prepare(
+      'SELECT id, city, seen_at, note, colors, logged_at FROM sightings ORDER BY seen_at DESC LIMIT 200'
+    ).all())
+  } catch (error) {
+    console.error('listSightings failed', error)
+    return json({ error: 'Sightings are unavailable right now.' }, 500)
+  }
 
   return json({
     sightings: results.map((row) => ({
@@ -37,7 +56,7 @@ async function listSightings(env) {
       city: row.city,
       seenAt: row.seen_at,
       note: row.note,
-      colors: JSON.parse(row.colors || '[]'),
+      colors: parseColors(row.colors),
       loggedAt: row.logged_at,
     })),
   })
@@ -48,6 +67,11 @@ async function submitSighting(request, env) {
   try {
     body = await request.json()
   } catch {
+    return json({ error: 'Malformed request.' }, 400)
+  }
+
+  // Valid JSON can still be null, an array, or a scalar.
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
     return json({ error: 'Malformed request.' }, 400)
   }
 
@@ -63,7 +87,9 @@ async function submitSighting(request, env) {
   const note = String(body.note || '')
     .trim()
     .slice(0, MAX_NOTE)
-  const seenAt = String(body.seenAt || '').trim()
+  const seenAt = String(body.seenAt || '')
+    .trim()
+    .slice(0, MAX_SEEN_AT)
   const colors = Array.isArray(body.colors)
     ? body.colors.filter((c) => ALLOWED_COLORS.has(c)).slice(0, 5)
     : []
@@ -75,11 +101,16 @@ async function submitSighting(request, env) {
   const id = crypto.randomUUID()
   const loggedAt = Date.now()
 
-  await env.DB.prepare(
-    'INSERT INTO sightings (id, city, seen_at, note, colors, logged_at) VALUES (?, ?, ?, ?, ?, ?)'
-  )
-    .bind(id, city, seenAt, note, JSON.stringify(colors), loggedAt)
-    .run()
+  try {
+    await env.DB.prepare(
+      'INSERT INTO sightings (id, city, seen_at, note, colors, logged_at) VALUES (?, ?, ?, ?, ?, ?)'
+    )
+      .bind(id, city, seenAt, note, JSON.stringify(colors), loggedAt)
+      .run()
+  } catch (error) {
+    console.error('submitSighting failed', error)
+    return json({ error: 'Could not file that report — try again.' }, 500)
+  }
 
   return json({ ok: true, id })
 }
