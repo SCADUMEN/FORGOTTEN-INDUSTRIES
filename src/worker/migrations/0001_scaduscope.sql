@@ -1,16 +1,11 @@
-CREATE TABLE IF NOT EXISTS sightings (
-  id TEXT PRIMARY KEY,
-  city TEXT NOT NULL,
-  seen_at TEXT NOT NULL,
-  note TEXT NOT NULL,
-  colors TEXT NOT NULL DEFAULT '[]',
-  logged_at INTEGER NOT NULL
-);
+-- Migration 0001: Bull Valley Scaduscope tag counter and names
+-- (/api/scaduscope/tags, /api/scaduscope/names).
+--
+-- IF NOT EXISTS throughout, so it is safe on a database where these objects
+-- were already created by hand from the old src/worker/schema.sql.
 
-CREATE INDEX IF NOT EXISTS idx_sightings_seen_at ON sightings (seen_at DESC);
-
--- Bull Valley Scaduscope: one shared running total of shadowmen tagged by
--- every visitor. A single row (id = 1), created by the first tag's upsert.
+-- One shared running total of shadowmen tagged by every visitor. A single
+-- row (id = 1), created by the first tag's upsert.
 CREATE TABLE IF NOT EXISTS scaduscope_totals (
   id INTEGER PRIMARY KEY CHECK (id = 1),
   tags INTEGER NOT NULL DEFAULT 0,
