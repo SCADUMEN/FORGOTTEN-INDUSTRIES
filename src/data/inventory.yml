@@ -14358,13 +14358,12 @@ items:
   - id: FI-EPH-425
     name: German Shepherd in a Low-Resolution Clip
     category: ephemera
-    quantity: 1 digital image (animated GIF + extracted still)
+    quantity: 1 digital image (animated GIF)
     associated_project: FI-PROJ-010
     condition: digital / GIF, 119×90, animated / animated loop / origin unverified
     status: accessioned / catalogued curio
     photos:
       - assets/ephemera/shadow-zone/fi-eph-425-german-shepherd-tv-clip.gif
-      - assets/ephemera/shadow-zone/fi-eph-425-german-shepherd-tv-clip-still.jpeg
     notes: >
       Found clip supplied for The Shadow Zone: a tiny animated GIF of 3.2
       seconds, seen here through a representative frame. The frame shows a
@@ -14379,10 +14378,6 @@ items:
         event: accessioned
         state: persistent L'Archive ephemera record
         evidence: operator-supplied animated GIF admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); source GIF preserved unaltered; the zones play it through a build-time MP4 derivative; on-image text and any claims reproduced as found and not endorsed; maker, origin, and date not recorded
-      - date: '2026-09-26'
-        event: evidence expanded
-        state: persistent L'Archive ephemera record / link-preview still added
-        evidence: the frame at 1s (the one the record describes) extracted from the unaltered source GIF and enlarged 4× to 476×360 with Lanczos resampling, because link previews ignore images under 150px wide; the enlargement adds no detail
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-09-26'
@@ -15072,10 +15067,6 @@ items:
         event: accessioned
         state: persistent L'Archive ephemera record
         evidence: operator-supplied MP4 clip admitted as a location-clean public derivative (exif scrub reported no location metadata to strip); a still frame extracted as the object-page poster; on-image text and any claims reproduced as found and not endorsed; maker, origin, and date not recorded
-      - date: '2026-09-26'
-        event: evidence expanded
-        state: persistent L'Archive ephemera record / poster still enlarged
-        evidence: the poster re-extracted from the same frame (35s) of the unaltered source clip and enlarged 4× to 560×384 with Lanczos resampling, because link previews ignore images under 150px wide; the enlargement adds no detail
     estimated_value:
     keep_sell_archive: archive
     date_logged: '2026-09-26'

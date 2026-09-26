@@ -15,6 +15,9 @@
 //     there is no lossless path from GIF to video, and the saving is large
 //     (a 5 MB GIF becomes well under 1 MB).
 //
+// It also writes enlarged link-preview JPEGs for object stills too narrow for
+// Messages to show (see buildLinkPreviews).
+//
 // Source files are never modified or deleted. Pages prefer the derivative and
 // keep the original as a fallback <source>, so the record still points at the
 // file the archive holds.
@@ -28,6 +31,15 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const ffmpeg = require('ffmpeg-static')
+const sharp = require('sharp')
+const yaml = require('js-yaml')
+const {
+  LINK_PREVIEW_DIR,
+  LINK_PREVIEW_MIN_WIDTH,
+  LINK_PREVIEW_WIDTH,
+  linkPreviewDerivative,
+  linkPreviewPhoto,
+} = require('./lib/object-media.cjs')
 const {
   SHADOW_ZONE_DIR,
   listShadowZoneGifs,
@@ -192,4 +204,84 @@ function main() {
   )
 }
 
+// Enlarged link-preview images. An inventory object's preview still (see
+// linkPreviewPhoto) narrower than LINK_PREVIEW_MIN_WIDTH is skipped by Messages,
+// so it gets a LINK_PREVIEW_WIDTH JPEG copy under src/assets/previews/
+// (gitignored), which og:image then points at. A GIF with no poster is taken a
+// third of the way in, the frame the Shadow Zone records were described from.
+// The previews folder holds only what the current inventory needs.
+async function buildLinkPreviews(check) {
+  const expected = new Map() // output -> source, both repo-relative
+  const items =
+    yaml.load(
+      fs.readFileSync(path.join(REPO, 'src/data/inventory.yml'), 'utf8')
+    )?.items || []
+
+  for (const item of items) {
+    const photo = linkPreviewPhoto(item)
+    if (!photo) continue
+    const source = path.join('src', photo)
+    if (!fs.existsSync(path.join(REPO, source))) continue
+    const { width } = await sharp(path.join(REPO, source)).metadata()
+    if (!width || width >= LINK_PREVIEW_MIN_WIDTH) continue
+    expected.set(path.join('src', linkPreviewDerivative(photo)), source)
+  }
+
+  const stale = []
+  for (const [output, source] of expected) {
+    const outputPath = path.join(REPO, output)
+    const sourcePath = path.join(REPO, source)
+    if (
+      fs.existsSync(outputPath) &&
+      fs.statSync(outputPath).mtimeMs >= fs.statSync(sourcePath).mtimeMs
+    ) {
+      continue
+    }
+    stale.push(output)
+    if (check) continue
+
+    const { pages = 1 } = await sharp(sourcePath).metadata()
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true })
+    await sharp(sourcePath, { page: Math.floor(pages / 3) })
+      .resize({ width: LINK_PREVIEW_WIDTH, kernel: 'lanczos3' })
+      .flatten({ background: '#000000' })
+      .jpeg({ quality: 90 })
+      .toFile(outputPath)
+    console.log(`  ${output}`)
+  }
+
+  const previewRoot = path.join(REPO, 'src', LINK_PREVIEW_DIR)
+  const orphans = fs.existsSync(previewRoot)
+    ? fs
+        .readdirSync(previewRoot, { recursive: true })
+        .map((file) => path.join('src', LINK_PREVIEW_DIR, file))
+        .filter(
+          (file) =>
+            fs.statSync(path.join(REPO, file)).isFile() && !expected.has(file)
+        )
+    : []
+
+  if (check) {
+    if (stale.length || orphans.length) {
+      console.error(
+        `Link previews missing, stale, or orphaned:\n  ${[...stale, ...orphans].join('\n  ')}\n` +
+          `Run: node scripts/build_media_derivatives.cjs`
+      )
+      process.exitCode = 1
+      return
+    }
+    console.log(`All ${expected.size} link preview(s) present and current.`)
+    return
+  }
+
+  for (const orphan of orphans) fs.rmSync(path.join(REPO, orphan))
+  console.log(
+    `Link previews: ${expected.size} needed, ${stale.length} written, ${orphans.length} removed.`
+  )
+}
+
 main()
+buildLinkPreviews(process.argv.includes('--check')).catch((error) => {
+  console.error(error)
+  process.exitCode = 1
+})
