@@ -68,9 +68,10 @@ Forgotten Industries currently ships as a static Eleventy archive with a small
 Vite-built CxR research app (served at `/cxr/`, source in `continuance/`). The
 archive itself holds no server-side state. One small Worker
 (`src/worker/index.js`) serves `/api/sightings` for the JJAMMOCAN sighting
-intake, backed by the `jjammocan-sightings` D1 database (schema in
-`src/worker/schema.sql`); every other request passes through to the static
-assets.
+intake and `/api/scaduscope/tags` for the Bull Valley Scaduscope's shared
+tag counter, both backed by the `jjammocan-sightings` D1 database (schema in
+`src/worker/schema.sql`, applied by hand); every other request passes through
+to the static assets.
 
 ```text
 canonical YAML + public-safe documents + curated media
@@ -100,7 +101,7 @@ src/_includes/     Eleventy layouts and shared page structure
 src/css/           Tailwind entry point, design tokens, and legacy styles
 src/assets/        cleared public media, scripts, and encrypted payloads
 continuance/       Vite/React CxR interface (served at /cxr/)
-src/worker/        Worker entry and D1 schema for /api/sightings
+src/worker/        Worker entry and D1 schema for /api/sightings and /api/scaduscope/tags
 scripts/           build, intake, metadata, audit, and deployment instruments
 tests/unit/        generated-data and public-surface checks
 tests/e2e/         Playwright browser and route checks
@@ -188,6 +189,15 @@ Manual tools, run by hand when needed and not wired into any build:
 - `node scripts/larchive_box_hashes.cjs [intake-root] [--write]` hashes an
   L'Archive box intake folder (default `intake/LE-BOX-001-012`); `--write`
   saves `hashes/SHA256SUMS.txt` and `hashes/hash-report.json` inside it.
+- `node scripts/fetch_bull_valley.cjs` refreshes the real-world layers behind
+  the Bull Valley Scaduscope (`/bull-valley-scaduscope/`): boundary, public
+  roads, water, reserves, graveyards, and gas stations from OpenStreetMap,
+  Illinois DOT traffic counts, and a terrain heightmap, written to
+  `src/assets/data/bull-valley/`. Only live weather (Open-Meteo) is fetched in
+  the browser. Driveways, service roads, and buildings are never requested.
+  Review the diff before committing. The page's optional music loop is
+  `src/assets/audio/bull-valley-scaduscope.mp3`; without it the gate falls
+  back to a silent "Engage" button.
 
 ## Evidence policy
 

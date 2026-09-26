@@ -75,9 +75,10 @@ describe('content security policy', () => {
   })
 
   it('allows exactly the external origins the archive depends on', () => {
-    // CxR reaches nor and any pasted URL through the proxy, never directly.
+    // CxR reaches nor and any pasted URL through the proxy, never directly;
+    // the Bull Valley Scaduscope reads live weather from Open-Meteo.
     expect(policy).toContain(
-      "connect-src 'self' https://cors-proxy.vaporwavemall.com"
+      "connect-src 'self' https://cors-proxy.vaporwavemall.com https://api.open-meteo.com"
     )
     // ZOOT streams its mixtape from Northern Information's range-serving host.
     expect(policy).toContain("media-src 'self' https://assets.the-rn.info")

@@ -17,6 +17,10 @@ test('home page renders', async ({ page }) => {
   // CxR has its own wordmark to the left of the zoot mark, not a main-nav item.
   await expect(page.locator('.site-cxr-mark')).toHaveAttribute('href', '/cxr/')
   await expect(page.locator('.site-cxr-mark')).toHaveText('CxR')
+  // The Bull Valley Scaduscope mark sits right of the Maple Leaf Rag Zone ❦.
+  await expect(
+    page.getByRole('link', { name: 'Bull Valley Scaduscope' })
+  ).toHaveAttribute('href', '/bull-valley-scaduscope/')
   await expect(page.locator('.primary-section-card')).toHaveCount(4)
   await expect(page.locator('.primary-card-mark')).toHaveText([
     '> The Archive',
@@ -130,6 +134,7 @@ test('representative route families remain contained at 320px', async ({
     '/contact.html',
     '/hash/',
     '/zoot/',
+    '/bull-valley-scaduscope/',
   ]
 
   for (const route of routes) {
@@ -737,4 +742,26 @@ test('/sitemap/ redirects to the canonical /plan-du-site/', async ({
   await expect(
     page.getByRole('heading', { name: 'Plan du Site' })
   ).toBeVisible()
+})
+
+test('bull valley scaduscope map resolves past the gate', async ({ page }) => {
+  // Keep the smoke suite offline: the live weather call is refused, which the
+  // page reports as an outage rather than failing.
+  await page.route('https://api.open-meteo.com/**', (route) => route.abort())
+  const shaderErrors = []
+  page.on('console', (msg) => {
+    if (msg.type() === 'error' && /shader/i.test(msg.text())) {
+      shaderErrors.push(msg.text())
+    }
+  })
+  page.on('pageerror', (error) => shaderErrors.push(String(error)))
+
+  const response = await page.goto('/bull-valley-scaduscope/')
+  expect(response?.status()).toBe(200)
+  await page.getByRole('button', { name: /Silent Running|Engage/ }).click()
+  await expect(page.locator('body')).toHaveClass(/bvs-live/)
+  await expect(page.locator('#bvs-hud-census')).not.toHaveText('—')
+  // A GLSL compile error (e.g. a redeclared variable) logs here and hides the
+  // map; it must never ship.
+  expect(shaderErrors).toEqual([])
 })

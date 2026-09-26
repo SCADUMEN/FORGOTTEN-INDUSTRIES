@@ -1,3 +1,5 @@
+import { generateName } from '../assets/js/bull-valley-scaduscope/names.js'
+
 const MAX_CITY = 120
 const MAX_NOTE = 600
 // seenAt comes from a date input (YYYY-MM-DD); the cap only bounds abuse.
@@ -11,6 +13,17 @@ export default {
     if (url.pathname === '/api/sightings') {
       if (request.method === 'GET') return listSightings(env)
       if (request.method === 'POST') return submitSighting(request, env)
+      return json({ error: 'Method not allowed.' }, 405)
+    }
+
+    if (url.pathname === '/api/scaduscope/tags') {
+      if (request.method === 'GET') return scaduscopeTotals(env)
+      if (request.method === 'POST') return scaduscopeTag(env)
+      return json({ error: 'Method not allowed.' }, 405)
+    }
+
+    if (url.pathname === '/api/scaduscope/names') {
+      if (request.method === 'GET') return scaduscopeRecentNames(env)
       return json({ error: 'Method not allowed.' }, 405)
     }
 
@@ -113,4 +126,108 @@ async function submitSighting(request, env) {
   }
 
   return json({ ok: true, id })
+}
+
+// --- Bull Valley Scaduscope: shared tag counter ---------------------------
+//
+// Every click that tags a shadowman on /bull-valley-scaduscope/ adds to one
+// shared total. The server decides the points, so the page's ?at= preview
+// clock cannot fake the bonus: a tag is worth 1, or 2 during the witching
+// hour (03:00–03:59 in Bull Valley, America/Chicago). The request carries no
+// body; each POST is exactly one tag.
+
+const BULL_VALLEY_HOUR = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'America/Chicago',
+  hour: '2-digit',
+  hourCycle: 'h23',
+})
+
+export function tagPoints(now = new Date()) {
+  return BULL_VALLEY_HOUR.format(now) === '03' ? 2 : 1
+}
+
+async function readTotals(env) {
+  const row = await env.DB.prepare(
+    'SELECT tags, points FROM scaduscope_totals WHERE id = 1'
+  ).first()
+  return { tags: row?.tags ?? 0, points: row?.points ?? 0 }
+}
+
+// Everyone's field log: the most recently tagged names. Only what the Worker
+// already keeps (name, running tag count, last tagged time); nothing about
+// who tagged them.
+const RECENT_NAMES = 20
+
+async function scaduscopeRecentNames(env) {
+  try {
+    const { results } = await env.DB.prepare(
+      'SELECT name, tags, last_tagged_at FROM scaduscope_names ORDER BY last_tagged_at DESC LIMIT ?'
+    )
+      .bind(RECENT_NAMES)
+      .all()
+    return json({
+      names: results.map((row) => ({
+        name: row.name,
+        tags: row.tags,
+        lastTaggedAt: row.last_tagged_at,
+      })),
+    })
+  } catch (error) {
+    console.error('scaduscopeRecentNames failed', error)
+    return json({ error: 'The name log is unavailable right now.' }, 500)
+  }
+}
+
+async function scaduscopeTotals(env) {
+  try {
+    return json(await readTotals(env))
+  } catch (error) {
+    console.error('scaduscopeTotals failed', error)
+    return json({ error: 'The tally is unavailable right now.' }, 500)
+  }
+}
+
+// Uniform [0, 1) from the Workers crypto API, for picking names.
+function cryptoRandom() {
+  const buf = new Uint32Array(1)
+  crypto.getRandomValues(buf)
+  return buf[0] / 2 ** 32
+}
+
+async function scaduscopeTag(env) {
+  const points = tagPoints()
+  // The tagged shadowman is named here, from the curated folklore lists; the
+  // name and its running tag count are kept forever.
+  const name = generateName(cryptoRandom)
+  const now = Date.now()
+  try {
+    await env.DB.prepare(
+      'INSERT INTO scaduscope_totals (id, tags, points) VALUES (1, 1, ?) ' +
+        'ON CONFLICT(id) DO UPDATE SET tags = tags + 1, points = points + excluded.points'
+    )
+      .bind(points)
+      .run()
+    await env.DB.prepare(
+      'INSERT INTO scaduscope_names (name, tags, first_tagged_at, last_tagged_at) VALUES (?, 1, ?, ?) ' +
+        'ON CONFLICT(name) DO UPDATE SET tags = tags + 1, last_tagged_at = excluded.last_tagged_at'
+    )
+      .bind(name, now, now)
+      .run()
+    const named = await env.DB.prepare(
+      'SELECT tags FROM scaduscope_names WHERE name = ?'
+    )
+      .bind(name)
+      .first()
+    return json({
+      ok: true,
+      points,
+      bonus: points > 1,
+      name,
+      timesTagged: named?.tags ?? 1,
+      total: await readTotals(env),
+    })
+  } catch (error) {
+    console.error('scaduscopeTag failed', error)
+    return json({ error: 'That tag did not register — try again.' }, 500)
+  }
 }

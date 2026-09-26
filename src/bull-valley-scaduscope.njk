@@ -1,0 +1,696 @@
+---
+permalink: /bull-valley-scaduscope/
+eleventyExcludeFromCollections: true
+title: BULL VALLEY SCADUSCOPE
+description: A psychogeographic survey of Bull Valley, Illinois — real terrain, sky, weather, and traffic, and the shadowmen who move through it.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>📡🌚</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ site.domainUrl }}/bull-valley-scaduscope/">
+  {% include "social-meta.njk" %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <style>
+    /* Space Mono only. Like the Maple Leaf Rag Zone, this page does not load
+       archive.css, so the two weights it uses are declared here against the
+       self-hosted files. */
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-400-normal-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-700-normal-latin.woff2') format('woff2');
+    }
+    /* Tokens sourced from src/css/archive.css — that file is the source of
+       truth; this page deliberately does not load the shared stylesheet. The
+       readout speaks in the SYSOUT voice (green); map glyphs reuse the role
+       colors: magenta graveyards, amber fuel, cyan water, gold boundary. The
+       focus outline stays the site-wide 3px cyan. */
+    :root {
+      color-scheme: dark;
+      --fi-bg: #000000;
+      --fi-surface: #020617;
+      --fi-surface-82: rgb(2 6 23 / 0.82);
+      --fi-cyan: #22d3ee;
+      --fi-green: #4ade80;
+      --fi-amber: #fbbf24;
+      --fi-gold: #f59e0b;
+      --fi-magenta: #e879f9;
+      --fi-maroon: #7f1d1d;
+      --fi-slate: #94a3b8;
+      --fi-paper-light: #f7f4ef;
+      --fi-black-shadow: rgb(0 0 0 / 0.58);
+      --bvs-mono: 'Space Mono', ui-monospace, monospace;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--fi-bg);
+      color: var(--fi-paper-light);
+      font-family: var(--bvs-mono);
+      overflow: hidden;
+    }
+    #bvs-canvas,
+    #bvs-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      display: block;
+    }
+    #bvs-overlay {
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* Over an untagged shadowman the cursor becomes a crosshair: click to tag. */
+    body.bvs-aiming {
+      cursor: crosshair;
+    }
+    body.bvs-idle,
+    body.bvs-idle * {
+      cursor: none;
+    }
+
+    /* Readout: hard-edged caption box with an offset shadow, machine output in
+       green. Hidden until the map is live, and on demand (H / Readout toggle). */
+    #bvs-hud {
+      position: fixed;
+      top: max(1rem, env(safe-area-inset-top));
+      left: max(1rem, env(safe-area-inset-left));
+      z-index: 2;
+      width: min(21rem, calc(100vw - 2rem));
+      padding: 0.85rem 1rem 0.9rem;
+      background: var(--fi-surface-82);
+      border: 1px solid rgb(74 222 128 / 0.35);
+      box-shadow: 4px 4px 0 var(--fi-black-shadow);
+      color: var(--fi-green);
+      font-size: 0.7rem;
+      line-height: 1.55;
+      pointer-events: none;
+    }
+    body:not(.bvs-live) #bvs-hud,
+    body.bvs-hud-hidden #bvs-hud {
+      display: none;
+    }
+    #bvs-hud h1 {
+      margin: 0 0 0.1rem;
+      color: var(--fi-paper-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .bvs-hud-sub {
+      margin: 0 0 0.6rem;
+      color: var(--fi-slate);
+      letter-spacing: 0.08em;
+    }
+    #bvs-hud dl {
+      display: grid;
+      grid-template-columns: 5.2rem 1fr;
+      gap: 0.1rem 0.6rem;
+      margin: 0;
+    }
+    #bvs-hud dt {
+      color: var(--fi-slate);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    #bvs-hud dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .bvs-moon-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    #bvs-hud-moon-glyph {
+      width: 12px;
+      height: 12px;
+      flex: none;
+    }
+    .bvs-fiction {
+      color: var(--fi-magenta);
+    }
+    #bvs-hud-witching {
+      margin: 0.6rem 0 0;
+      color: var(--fi-magenta);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: bvs-blink 2.4s steps(2, jump-none) infinite;
+    }
+    #bvs-hud-witching[hidden] {
+      display: none;
+    }
+    @keyframes bvs-blink {
+      50% {
+        opacity: 0.35;
+      }
+    }
+    /* Field log: the shadowmen you've named, newest first. About five rows
+       show; the rest scroll. The box ignores the pointer, so the list opts
+       back in to allow scrolling. */
+    .bvs-log {
+      margin: 0.7rem 0 0;
+      padding: 0.55rem 0 0;
+      border-top: 1px solid rgb(74 222 128 / 0.2);
+    }
+    .bvs-log-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin: 0 0 0.3rem;
+    }
+    .bvs-log-title {
+      margin: 0;
+      color: var(--fi-slate);
+      font-size: inherit;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    /* Yours / Everyone: a two-way toggle, hard-edged like the units button. */
+    .bvs-log-tabs {
+      display: flex;
+      pointer-events: auto;
+    }
+    .bvs-log-tab {
+      min-height: 24px;
+      padding: 0.1rem 0.55rem;
+      color: var(--fi-slate);
+      background: transparent;
+      border: 1px solid rgb(74 222 128 / 0.35);
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .bvs-log-tab + .bvs-log-tab {
+      border-left: 0;
+    }
+    .bvs-log-tab[aria-pressed='true'] {
+      color: var(--fi-bg);
+      background: var(--fi-green);
+      border-color: var(--fi-green);
+    }
+    .bvs-log-tab:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 2px;
+    }
+    [data-bvs-log-panel][hidden] {
+      display: none;
+    }
+    .bvs-log-empty {
+      margin: 0;
+      color: var(--fi-slate);
+    }
+    .bvs-log-empty[hidden] {
+      display: none;
+    }
+    .bvs-log-list {
+      max-height: 7.8em;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+      list-style: none;
+      color: var(--fi-magenta);
+      pointer-events: auto;
+    }
+    .bvs-log-list li {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0 0.6rem;
+    }
+    .bvs-log-time {
+      color: var(--fi-slate);
+    }
+    .bvs-log-note {
+      color: var(--fi-slate);
+    }
+    .bvs-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.15rem 0.8rem;
+      margin: 0.7rem 0 0;
+      padding: 0.55rem 0 0;
+      border-top: 1px solid rgb(74 222 128 / 0.2);
+      color: var(--fi-slate);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      list-style: none;
+    }
+    .bvs-key-grave { color: var(--fi-magenta); }
+    .bvs-key-fuel { color: var(--fi-amber); }
+    .bvs-key-water { color: var(--fi-cyan); }
+    .bvs-key-line { color: var(--fi-gold); }
+    .bvs-key-road { color: var(--fi-paper-light); }
+
+    /* Bottom chrome: exit, sound, readout, and the in-session dial. The bar
+       ignores the pointer; only its controls opt back in. Fades when idle. */
+    #bvs-chrome {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      padding: 0.5rem max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
+      pointer-events: none;
+      transition: opacity 600ms ease;
+    }
+    body:not(.bvs-live) #bvs-chrome {
+      display: none;
+    }
+    body.bvs-idle #bvs-chrome {
+      opacity: 0;
+    }
+    #bvs-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 0.75rem;
+    }
+    #bvs-exit,
+    .bvs-chrome-btn {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      color: var(--fi-paper-light);
+      font-family: inherit;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0.45;
+      transition: opacity 160ms ease;
+      pointer-events: auto;
+    }
+    .bvs-chrome-btn {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .bvs-chrome-btn[hidden] {
+      display: none;
+    }
+    #bvs-exit:hover,
+    #bvs-exit:focus-visible,
+    .bvs-chrome-btn:hover,
+    .bvs-chrome-btn:focus-visible {
+      opacity: 0.9;
+    }
+    #bvs-exit:focus-visible,
+    .bvs-chrome-btn:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 2px;
+    }
+
+    /* Readout controls: the dial and the units toggle, at the top of the box.
+       The box itself ignores the pointer; these opt back in. Labels line up
+       with the readout's dt column. */
+    .bvs-hud-controls {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0 0 0.7rem;
+      padding: 0 0 0.6rem;
+      border-bottom: 1px solid rgb(74 222 128 / 0.2);
+    }
+    .bvs-hud-control {
+      display: grid;
+      grid-template-columns: 5.2rem 1fr;
+      align-items: center;
+      gap: 0 0.6rem;
+    }
+    .bvs-hud-control-label {
+      color: var(--fi-slate);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .bvs-dial {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-width: 0;
+      pointer-events: auto;
+    }
+    .bvs-dial input[type='range'] {
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 5rem;
+    }
+    #bvs-dial-value {
+      flex: none;
+      min-width: 7.5rem;
+      color: var(--fi-green);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .bvs-units-btn {
+      justify-self: start;
+      min-height: 28px;
+      padding: 0.2rem 0.7rem;
+      color: var(--fi-green);
+      background: transparent;
+      border: 1px solid rgb(74 222 128 / 0.5);
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+    .bvs-units-btn:hover {
+      color: var(--fi-bg);
+      background: var(--fi-green);
+    }
+    .bvs-units-btn:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 2px;
+    }
+
+    /* Credits close out the readout box. */
+    #bvs-credits {
+      margin: 0.6rem 0 0;
+      padding: 0.5rem 0 0;
+      border-top: 1px solid rgb(74 222 128 / 0.2);
+      color: var(--fi-slate);
+      font-size: 0.58rem;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      pointer-events: auto;
+    }
+    #bvs-credits a {
+      color: inherit;
+    }
+    #bvs-credits a:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 2px;
+    }
+
+    /* Range inputs: square thumb, hard edges, green track. */
+    input[type='range'] {
+      appearance: none;
+      width: 9rem;
+      height: 24px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 2px;
+      background: var(--fi-green);
+    }
+    input[type='range']::-moz-range-track {
+      height: 2px;
+      background: var(--fi-green);
+    }
+    input[type='range']::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      margin-top: -6px;
+      background: var(--fi-paper-light);
+      border: 1px solid var(--fi-bg);
+      border-radius: 0;
+    }
+    input[type='range']::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: var(--fi-paper-light);
+      border: 1px solid var(--fi-bg);
+      border-radius: 0;
+    }
+    input[type='range']:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 4px;
+    }
+
+    #bvs-fallback,
+    noscript p {
+      position: fixed;
+      top: clamp(1.5rem, 6vw, 4rem);
+      left: clamp(1rem, 6vw, 4rem);
+      right: 1rem;
+      max-width: 34rem;
+      margin: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+    noscript a {
+      color: var(--fi-cyan);
+    }
+
+    /* The gate: "How high are you?" Ships hidden; intro.js reveals it. */
+    #bvs-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vh, 3rem);
+      padding: 2rem 1rem;
+      background: var(--fi-bg);
+      text-align: center;
+    }
+    #bvs-intro[hidden] {
+      display: none;
+    }
+    #bvs-intro-title {
+      margin: 0;
+      max-width: 14ch;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 10vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: var(--fi-paper-light);
+    }
+    .bvs-intro-dial {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .bvs-intro-dial label {
+      font-size: clamp(1rem, 3.5vw, 1.35rem);
+      letter-spacing: 0.06em;
+      color: var(--fi-green);
+    }
+    .bvs-intro-dial input[type='range'] {
+      width: min(22rem, 80vw);
+    }
+    .bvs-intro-scale {
+      display: flex;
+      justify-content: space-between;
+      width: min(22rem, 80vw);
+      color: var(--fi-slate);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    #bvs-intro-high-value {
+      min-height: 1.5em;
+      color: var(--fi-paper-light);
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    #bvs-intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+    }
+    .bvs-intro-btn {
+      min-height: 44px;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--bvs-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fi-paper-light);
+      background: var(--fi-surface);
+      border: 1px solid var(--fi-green);
+      cursor: pointer;
+      transition:
+        background 160ms ease,
+        color 160ms ease;
+    }
+    .bvs-intro-btn[hidden] {
+      display: none;
+    }
+    .bvs-intro-btn--primary,
+    .bvs-intro-btn:hover {
+      color: var(--fi-bg);
+      background: var(--fi-green);
+    }
+    .bvs-intro-btn--primary:hover {
+      background: var(--fi-paper-light);
+      border-color: var(--fi-paper-light);
+    }
+    .bvs-intro-btn:focus-visible {
+      outline: 3px solid var(--fi-cyan);
+      outline-offset: 3px;
+    }
+    .bvs-intro-note {
+      max-width: 32rem;
+      margin: 0;
+      color: var(--fi-slate);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      #bvs-hud {
+        font-size: 0.62rem;
+        padding: 0.65rem 0.75rem;
+      }
+      #bvs-hud dl {
+        grid-template-columns: 4.4rem 1fr;
+      }
+      .bvs-legend {
+        display: none;
+      }
+      .bvs-log-list {
+        max-height: 4.7em;
+      }
+      .bvs-hud-control {
+        grid-template-columns: 4.4rem 1fr;
+      }
+      #bvs-dial-value {
+        min-width: 6.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="bvs-intro" role="dialog" aria-modal="true" aria-labelledby="bvs-intro-title" hidden>
+      <h2 id="bvs-intro-title">BULL VALLEY SCADUSCOPE</h2>
+      <div class="bvs-intro-dial">
+        <label for="bvs-intro-high">How high are you?</label>
+        <input id="bvs-intro-high" type="range" min="0" max="10" step="1" value="0">
+        <div class="bvs-intro-scale" aria-hidden="true"><span>0</span><span>10</span></div>
+        <output id="bvs-intro-high-value" for="bvs-intro-high"></output>
+      </div>
+      <div id="bvs-intro-actions">
+        <button type="button" class="bvs-intro-btn" data-bvs-sound="off" hidden>Silent Running</button>
+        <button type="button" class="bvs-intro-btn bvs-intro-btn--primary" data-bvs-sound="on" hidden>Tune In</button>
+        <button type="button" class="bvs-intro-btn bvs-intro-btn--primary" data-bvs-engage hidden>Engage</button>
+      </div>
+      <p class="bvs-intro-note">Terrain, sky, weather, and traffic are real.<br>The shadowmen are not, probably.</p>
+    </div>
+
+    <canvas id="bvs-canvas" aria-hidden="true"></canvas>
+    <canvas id="bvs-overlay" aria-hidden="true"></canvas>
+
+    <section id="bvs-hud" aria-label="Scaduscope readout">
+      <h1><span aria-hidden="true">📡🌚 </span>Bull Valley Scaduscope</h1>
+      <p class="bvs-hud-sub">Bull Valley, Illinois · 42.32° N 88.36° W</p>
+      <div class="bvs-hud-controls">
+        <div class="bvs-hud-control">
+          <label class="bvs-hud-control-label" for="bvs-dial">How High</label>
+          <div class="bvs-dial">
+            <input id="bvs-dial" type="range" min="0" max="10" step="1" value="0">
+            <output id="bvs-dial-value" for="bvs-dial"></output>
+          </div>
+        </div>
+        <div class="bvs-hud-control">
+          <span class="bvs-hud-control-label" aria-hidden="true">Units</span>
+          <button id="bvs-units-toggle" class="bvs-units-btn" type="button">Imperial</button>
+        </div>
+      </div>
+      <dl>
+        <dt>Local</dt><dd id="bvs-hud-clock">—</dd>
+        <dt>Sun</dt><dd id="bvs-hud-sun">—</dd>
+        <dt>Moon</dt><dd class="bvs-moon-row"><canvas id="bvs-hud-moon-glyph" width="24" height="24" aria-hidden="true"></canvas><span id="bvs-hud-moon">—</span></dd>
+        <dt>Weather</dt><dd id="bvs-hud-weather">Acquiring…</dd>
+        <dt>Traffic</dt><dd id="bvs-hud-traffic">—</dd>
+        <dt>Terrain</dt><dd id="bvs-hud-terrain">—</dd>
+        <dt class="bvs-fiction">Census</dt><dd class="bvs-fiction" id="bvs-hud-census">—</dd>
+        <dt class="bvs-fiction">Score</dt><dd class="bvs-fiction" id="bvs-hud-score">0 · Click a Shadowman</dd>
+        <dt class="bvs-fiction">Everyone</dt><dd class="bvs-fiction" id="bvs-hud-everyone">—</dd>
+      </dl>
+      <p id="bvs-hud-witching" hidden>Witching Hour</p>
+      <section class="bvs-log" aria-labelledby="bvs-log-title">
+        <div class="bvs-log-head">
+          <h2 id="bvs-log-title" class="bvs-log-title">Field Log</h2>
+          <div class="bvs-log-tabs" role="group" aria-label="Whose log">
+            <button type="button" class="bvs-log-tab" data-bvs-log="yours" aria-pressed="true">Yours</button>
+            <button type="button" class="bvs-log-tab" data-bvs-log="everyone" aria-pressed="false">Everyone</button>
+          </div>
+        </div>
+        <div data-bvs-log-panel="yours">
+          <p class="bvs-log-empty" id="bvs-log-empty">No names yet. Click a shadowman to tag it.</p>
+          <ol class="bvs-log-list" id="bvs-log-list" aria-live="polite"></ol>
+        </div>
+        <div data-bvs-log-panel="everyone" hidden>
+          <p class="bvs-log-empty" id="bvs-log-everyone-empty">No names yet from anyone.</p>
+          <ol class="bvs-log-list" id="bvs-log-everyone"></ol>
+        </div>
+      </section>
+      <ul class="bvs-legend" aria-label="Legend">
+        <li class="bvs-key-grave">✝ Graveyard</li>
+        <li class="bvs-key-fuel">▲ Fuel (Bearing)</li>
+        <li class="bvs-key-road">· Headlights (Est.)</li>
+        <li class="bvs-key-water">≈ Water</li>
+        <li class="bvs-key-line">- - Village Line</li>
+        <li class="bvs-fiction">♟ Shadowmen</li>
+      </ul>
+      <p id="bvs-credits">
+        Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) ·
+        Traffic counts: Illinois DOT AADT · Terrain: AWS Terrain Tiles / USGS 3DEP ·
+        Weather: <a href="https://open-meteo.com/">Open-Meteo</a>
+      </p>
+    </section>
+
+    <div id="bvs-chrome">
+      <div id="bvs-controls">
+        <a id="bvs-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+        <button id="bvs-audio-toggle" class="bvs-chrome-btn" type="button" aria-pressed="false" hidden>Sound Off</button>
+        <button id="bvs-hud-toggle" class="bvs-chrome-btn" type="button" aria-pressed="true">Readout On</button>
+      </div>
+    </div>
+
+    <p id="bvs-fallback" role="alert" hidden></p>
+    <noscript>
+      <p>
+        This instrument requires script execution. The survey will not resolve.
+        <a href="/">Return to FORGOTTEN INDUSTRIES</a>
+      </p>
+    </noscript>
+  </main>
+  <script type="application/json" id="bvs-config">{{ scaduscope.data | dump | safe }}</script>
+  {% if scaduscope.audio %}<script type="application/json" id="bvs-audio">{{ scaduscope.audio | dump | safe }}</script>{% endif %}
+  <script type="module" src="/assets/js/bull-valley-scaduscope/main.js?v={{ site.assetVersion }}"></script>
+</body>
+</html>

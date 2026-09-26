@@ -32,6 +32,12 @@ const CORS_PROXY = 'https://cors-proxy.vaporwavemall.com'
 // policy and reading the violation.
 const ZOOT_MEDIA = 'https://assets.the-rn.info'
 
+// The Bull Valley Scaduscope reads live weather for the village straight from
+// Open-Meteo (no key, CORS-open). Its terrain, roads, and traffic are baked
+// into same-origin files by scripts/fetch_bull_valley.cjs, so this is its only
+// external origin.
+const OPEN_METEO = 'https://api.open-meteo.com'
+
 // A <script> whose type is not a JavaScript type is a data block: the browser
 // never executes it, and CSP does not govern it. The archive's 1000+ JSON-LD
 // provenance blocks fall here and must not be hashed — doing so would bloat the
@@ -87,7 +93,7 @@ function buildPolicy(scriptHashes) {
     "img-src 'self'",
     "font-src 'self'",
     `media-src 'self' ${ZOOT_MEDIA}`,
-    `connect-src 'self' ${CORS_PROXY}`,
+    `connect-src 'self' ${CORS_PROXY} ${OPEN_METEO}`,
     "frame-src 'self'",
     "frame-ancestors 'self'",
     "base-uri 'self'",
