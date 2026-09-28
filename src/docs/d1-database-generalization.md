@@ -210,10 +210,12 @@ small.
   It protects each database against bad writes. It is not a substitute for
   keeping the old database until the new one has proven itself.
 
-## Not Included
+## Migrations on Deploy
 
-Deploys do not apply migrations; `.github/workflows/deploy-worker.yml` never
-touches D1. Adding `wrangler d1 migrations apply forgotten-industries
---remote` to that workflow would keep the schema in step with every deploy,
-but it needs the deploy token to carry D1 edit permission. That is a separate
-decision for whoever holds the account.
+`.github/workflows/deploy-worker.yml` runs
+`wrangler d1 migrations apply DB --remote` before `wrangler deploy`, so a
+schema change ships with the code that needs it and a missed manual step like
+#161's can't recur. It names the binding, so it follows whichever database
+`wrangler.jsonc` points at. The deploy token (`CLOUDFLARE_API_TOKEN`) needs
+D1 Edit permission; without it this step fails and the deploy stops before
+anything ships.
