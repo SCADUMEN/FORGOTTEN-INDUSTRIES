@@ -18,6 +18,9 @@ import {
   useItem,
 } from '../../ground-survey/src/inventory.js'
 
+// Illustrative fixtures for the pure math, deliberately NOT pinned to the
+// current src/assets/data/bull-valley/geo.json — the game reads bbox and
+// metres at runtime, so the survey frame can change without touching these.
 const METRES = { width: 9300, height: 10670 }
 const BBOX = { south: 42.2775, west: -88.4225, north: 42.374, east: -88.3095 }
 
