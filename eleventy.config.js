@@ -346,6 +346,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/assets': 'cxr/assets' })
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/data': 'cxr/data' })
 
+  // The Ground Survey is a Vite/three.js game built to ground-survey/dist by
+  // `npm run build:game` (before eleventy in build:site). Its page shell is
+  // src/bull-valley.njk — standalone like the Scaduscope, not base.njk — so
+  // only the built bundle is copied. It serves at /bull-valley/ and reads the
+  // Scaduscope's terrain + geo data from /assets/data/bull-valley/.
+  eleventyConfig.addPassthroughCopy({
+    'ground-survey/dist/assets': 'bull-valley/assets',
+  })
+
   // The canonical CONTINUANCE persona source, published for inspection like the
   // ATLAS source dossier. Repo root is outside src/, so it needs its own copy.
   eleventyConfig.addPassthroughCopy({ 'continuance.md': 'continuance.md' })

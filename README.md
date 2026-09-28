@@ -65,8 +65,10 @@ explicit confirmation.
 ## Current architecture
 
 Forgotten Industries currently ships as a static Eleventy archive with a small
-Vite-built CxR research app (served at `/cxr/`, source in `continuance/`). The
-archive itself holds no server-side state. One small Worker
+Vite-built CxR research app (served at `/cxr/`, source in `continuance/`) and
+the Ground Survey, a Vite/three.js first-person game (served at `/bull-valley/`,
+source in `ground-survey/`) that walks the Scaduscope's terrain and geo data on
+foot. The archive itself holds no server-side state. One small Worker
 (`src/worker/index.js`) serves `/api/sightings` for the JJAMMOCAN sighting
 intake and `/api/scaduscope/*` for the Bull Valley Scaduscope's shared tag
 counter and names, all backed by the `forgotten-industries` D1 database. Its
@@ -104,6 +106,7 @@ src/_includes/     Eleventy layouts and shared page structure
 src/css/           Tailwind entry point, design tokens, and legacy styles
 src/assets/        cleared public media, scripts, and encrypted payloads
 continuance/       Vite/React CxR interface (served at /cxr/)
+ground-survey/     Vite/three.js Ground Survey game (served at /bull-valley/)
 src/worker/        Worker entry and D1 migrations for /api/sightings and /api/scaduscope/*
 scripts/           build, intake, metadata, audit, and deployment instruments
 tests/unit/        generated-data and public-surface checks
@@ -116,8 +119,9 @@ work/              local runtime, model, and scratch state; created on demand,
 ```
 
 `npm run build:site` cleans the generated site, writes the media derivatives,
-builds the archive data and CxR bundle, runs Eleventy, compiles CSS, generates
-the Content-Security-Policy header, and runs the public-surface audit.
+builds the archive data, the CxR bundle, and the Ground Survey bundle, runs
+Eleventy, compiles CSS, generates the Content-Security-Policy header, and runs
+the public-surface audit.
 Production deploys `_site/` and the Worker configured in `wrangler.jsonc`.
 
 The active deployment workflow is `.github/workflows/deploy-worker.yml`. It
@@ -183,6 +187,9 @@ Notes:
   local checks, not CI gates.
 - `npm run dev:continuance` runs the CxR app on the Vite dev server. It builds
   the archive data first, since CxR indexes `dist/search-index.json`.
+- `npm run dev:game` runs the Ground Survey on the Vite dev server at
+  `/bull-valley/`. Its config serves `src/assets/` at `/assets/` so the game
+  reads the same terrain and geo data as production.
 
 Manual tools, run by hand when needed and not wired into any build:
 
@@ -193,7 +200,8 @@ Manual tools, run by hand when needed and not wired into any build:
   L'Archive box intake folder (default `intake/LE-BOX-001-012`); `--write`
   saves `hashes/SHA256SUMS.txt` and `hashes/hash-report.json` inside it.
 - `node scripts/fetch_bull_valley.cjs` refreshes the real-world layers behind
-  the Bull Valley Scaduscope (`/bull-valley-scaduscope/`): boundary, public
+  the Bull Valley Scaduscope (`/bull-valley-scaduscope/`) and the Ground
+  Survey (`/bull-valley/`): boundary, public
   roads, water, reserves, graveyards, and gas stations from OpenStreetMap,
   Illinois DOT traffic counts, and a terrain heightmap, written to
   `src/assets/data/bull-valley/`. Only live weather (Open-Meteo) is fetched in

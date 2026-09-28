@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>🥾🌚</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Dev harness only. The published page is src/bull-valley.njk, which owns
+       the real head (fonts, tokens, social meta). Keep the token block below in
+       sync with that page; both source their values from src/css/archive.css. -->
+  <style>
+    :root {
+      color-scheme: dark;
+      --fi-bg: #000000;
+      --fi-surface: #020617;
+      --fi-surface-82: rgb(2 6 23 / 0.82);
+      --fi-cyan: #22d3ee;
+      --fi-green: #4ade80;
+      --fi-amber: #fbbf24;
+      --fi-gold: #f59e0b;
+      --fi-magenta: #e879f9;
+      --fi-maroon: #7f1d1d;
+      --fi-slate: #94a3b8;
+      --fi-paper-light: #f7f4ef;
+      --fi-black-shadow: rgb(0 0 0 / 0.58);
+      --gs-mono: 'Space Mono', ui-monospace, monospace;
+    }
+    html, body { height: 100%; margin: 0; background: var(--fi-bg); }
+  </style>
+</head>
+<body>
+  <main id="gs-root"></main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
