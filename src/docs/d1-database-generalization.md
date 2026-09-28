@@ -227,6 +227,10 @@ small.
 `wrangler d1 migrations apply DB --remote` before `wrangler deploy`, so a
 schema change ships with the code that needs it and a missed manual step like
 #161's can't recur. It names the binding, so it follows whichever database
-`wrangler.jsonc` points at. The deploy token (`CLOUDFLARE_API_TOKEN`) needs
-D1 Edit permission; without it this step fails and the deploy stops before
-anything ships.
+`wrangler.jsonc` points at.
+
+The step uses its own token, `CLOUDFLARE_D1_API_TOKEN` on the
+`cloudflare-worker-production` environment: an account API token named
+`github-d1-migrations`, created 2026-09-28 with D1 Edit only. The deploy token
+(`CLOUDFLARE_API_TOKEN`) is left as it was. If the D1 token is missing or
+revoked, this step fails and the deploy stops before anything ships.
