@@ -289,7 +289,14 @@ describe('field log', async () => {
 describe('landmarks', async () => {
   const { LANDMARKS, projectLandmarks } =
     await import('../../src/assets/js/bull-valley-scaduscope/landmarks.js')
-  const bbox = { south: 42.2775, west: -88.4225, north: 42.374, east: -88.3095 }
+  const { readFileSync } = await import('node:fs')
+  const { bbox } = JSON.parse(
+    readFileSync(
+      new URL('../../src/assets/data/bull-valley/geo.json', import.meta.url),
+      'utf8'
+    )
+  )
+  const inFrame = ([x, y]) => x > 0 && x < 1 && y > 0 && y < 1
 
   it('projects the frame corners onto the unit square', () => {
     const corners = [
@@ -303,24 +310,20 @@ describe('landmarks', async () => {
     expect(se.p[1]).toBeCloseTo(1)
   })
 
-  it("places Mt. Coleman's Keep north of the village frame", () => {
+  it("keeps Mt. Coleman's Keep on the map, near the north edge", () => {
     expect(LANDMARKS.map((l) => l.n)).toContain("Mt. Coleman's Keep")
-    const coleman = projectLandmarks(bbox).find(
+    const keep = projectLandmarks(bbox).find(
       (l) => l.n === "Mt. Coleman's Keep"
     )
-    expect(coleman.p[0]).toBeGreaterThan(0)
-    expect(coleman.p[0]).toBeLessThan(1)
-    expect(coleman.p[1]).toBeLessThan(0)
+    expect(inFrame(keep.p)).toBe(true)
+    expect(keep.p[1]).toBeLessThan(0.1)
   })
 
   it('places the cabbage stand in frame, by the east end of Mason Hill Road', () => {
     const stand = projectLandmarks(bbox).find(
       (l) => l.n === 'Bull Valley Cabbage Stand'
     )
-    const [x, y] = stand.p
-    expect(x).toBeGreaterThan(0.9)
-    expect(x).toBeLessThan(1)
-    expect(y).toBeGreaterThan(0)
-    expect(y).toBeLessThan(1)
+    expect(inFrame(stand.p)).toBe(true)
+    expect(stand.p[0]).toBeGreaterThan(0.9)
   })
 })

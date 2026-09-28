@@ -31,7 +31,12 @@
 //                R (high byte) + G (low byte); the elevation range in metres is
 //                recorded in geo.json.terrain.
 //
-// Usage: node scripts/fetch_bull_valley.cjs
+// Usage: node scripts/fetch_bull_valley.cjs [--reuse-traffic]
+//
+// --reuse-traffic keeps the committed AADT segments instead of asking IDOT,
+// re-projected from the bbox they were fetched with. For when IDOT is
+// unreachable; segments beyond the old query envelope stay missing until a
+// full refresh. geo.json records the traffic's own fetch date either way.
 
 const fs = require('fs')
 const path = require('path')
@@ -42,8 +47,10 @@ const UA =
   'forgotten-industries-scaduscope/1.0 (+https://forgottenindustries.org)'
 
 // Bull Valley's OSM bounding box (relation 126046), padded ~500 m so the
-// boundary sits inside the frame rather than on its edge.
-const BBOX = { south: 42.2775, west: -88.4225, north: 42.374, east: -88.3095 }
+// boundary sits inside the frame rather than on its edge. The north edge
+// reaches on into Wonder Lake (~600 m past 42.3839) so Mt. Coleman's Keep
+// (src/assets/js/bull-valley-scaduscope/landmarks.js) sits on the map.
+const BBOX = { south: 42.2775, west: -88.4225, north: 42.3895, east: -88.3095 }
 // Bull Valley itself has no gas stations, so the fuel search reaches ~8 km past
 // the frame. Stations outside the unit square keep their out-of-range
 // coordinates; the page draws them as bearings on the frame edge.
@@ -224,6 +231,20 @@ async function fetchTraffic() {
   return segments
 }
 
+// The committed AADT segments, un-projected from the bbox recorded with them
+// and projected into the current one. See --reuse-traffic in the header.
+function reuseTraffic() {
+  const prev = JSON.parse(fs.readFileSync(path.join(OUT, 'geo.json'), 'utf8'))
+  const b = prev.bbox
+  const traffic = prev.traffic.map((s) => ({
+    ...s,
+    p: s.p.map(([x, y]) =>
+      project(b.west + x * (b.east - b.west), b.north - y * (b.north - b.south))
+    ),
+  }))
+  return { traffic, trafficFetched: prev.trafficFetched || prev.fetched }
+}
+
 // Web Mercator tile maths.
 const lonToTileX = (lon, z) => ((lon + 180) / 360) * 2 ** z
 const latToTileY = (lat, z) => {
@@ -324,14 +345,19 @@ async function fetchTerrain() {
 
 async function main() {
   fs.mkdirSync(OUT, { recursive: true })
-  const [boundary, osm, traffic, terrain] = [
+  const today = new Date().toISOString().slice(0, 10)
+  const reuse = process.argv.includes('--reuse-traffic')
+  const [boundary, osm, { traffic, trafficFetched }, terrain] = [
     await fetchBoundary(),
     await fetchOsm(),
-    await fetchTraffic(),
+    reuse
+      ? reuseTraffic()
+      : { traffic: await fetchTraffic(), trafficFetched: today },
     await fetchTerrain(),
   ]
   const geo = {
-    fetched: new Date().toISOString().slice(0, 10),
+    fetched: today,
+    trafficFetched,
     bbox: BBOX,
     metres: { width: Math.round(WIDTH_M), height: Math.round(HEIGHT_M) },
     terrain,

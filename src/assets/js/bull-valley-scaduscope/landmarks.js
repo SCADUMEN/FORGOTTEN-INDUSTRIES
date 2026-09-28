@@ -6,7 +6,7 @@
 // have agreed to be on a public map (a private home).
 
 export const LANDMARKS = [
-  // Dave Coleman's house in Wonder Lake, north of the village frame. A private
+  // Dave Coleman's house in Wonder Lake, near the frame's north edge. A private
   // home, placed with his consent.
   { n: "Mt. Coleman's Keep", lat: 42.3839451, lon: -88.3479778 },
   // The roadside cabbage stand on the southeast corner where Mason Hill Road

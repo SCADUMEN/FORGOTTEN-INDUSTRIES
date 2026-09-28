@@ -198,6 +198,9 @@ Manual tools, run by hand when needed and not wired into any build:
   Illinois DOT traffic counts, and a terrain heightmap, written to
   `src/assets/data/bull-valley/`. Only live weather (Open-Meteo) is fetched in
   the browser. Driveways, service roads, and buildings are never requested.
+  When IDOT is unreachable, `--reuse-traffic` keeps the committed traffic
+  counts, re-projected to the current frame; `geo.json` records their own
+  `trafficFetched` date.
   Hand-placed landmarks (the Bull Valley Cabbage Stand, and Mt. Coleman's
   Keep, the one private home, added with its owner's consent) live in
   `src/assets/js/bull-valley-scaduscope/landmarks.js`.
