@@ -39,7 +39,8 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
     /* Tokens sourced from src/css/archive.css — that file is the source of
        truth; this page deliberately does not load the shared stylesheet. The
        readout speaks in the SYSOUT voice (green); map glyphs reuse the role
-       colors: magenta graveyards, amber fuel, cyan water, gold boundary. The
+       colors: magenta graveyards, amber fuel, cyan water, gold boundary, cream
+       landmarks. The
        focus outline stays the site-wide 3px cyan. */
     :root {
       color-scheme: dark;
@@ -261,6 +262,7 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
     }
     .bvs-key-grave { color: var(--fi-magenta); }
     .bvs-key-fuel { color: var(--fi-amber); }
+    .bvs-key-landmark { color: var(--fi-paper-light); }
     .bvs-key-water { color: var(--fi-cyan); }
     .bvs-key-line { color: var(--fi-gold); }
     .bvs-key-road { color: var(--fi-paper-light); }
@@ -665,6 +667,7 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       <ul class="bvs-legend" aria-label="Legend">
         <li class="bvs-key-grave">✝ Graveyard</li>
         <li class="bvs-key-fuel">▲ Fuel (Bearing)</li>
+        <li class="bvs-key-landmark">⌂ Landmark</li>
         <li class="bvs-key-road">· Headlights (Est.)</li>
         <li class="bvs-key-water">≈ Water</li>
         <li class="bvs-key-line">- - Village Line</li>

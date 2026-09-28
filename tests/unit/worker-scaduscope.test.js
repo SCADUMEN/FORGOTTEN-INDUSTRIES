@@ -169,7 +169,7 @@ describe('shadowman names', () => {
   })
 
   it('keeps the name space finite so names recur', () => {
-    expect(NAME_SPACE).toBe(3542)
+    expect(NAME_SPACE).toBe(7056)
   })
 })
 

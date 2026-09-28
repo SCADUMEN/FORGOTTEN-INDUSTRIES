@@ -1,12 +1,14 @@
 // BULL VALLEY SCADUSCOPE overlay: the 2D layer above the shader. Draws what
 // needs crisp edges or text — traffic headlights on the real IDOT segments,
-// the shadowmen themselves, graveyard labels, and gas stations (all outside the
-// village) as bearings on the frame edge. Never intercepts the pointer.
+// the shadowmen themselves, graveyard labels, hand-placed landmarks, and gas
+// stations (all outside the village) as bearings on the frame edge. Never
+// intercepts the pointer.
 
 import { hourShare, HOURLY_SHARE } from './traffic.js'
 import { behind, echo, SWEEP_SECONDS } from './radar.js'
 import { distance } from './units.js'
 import { entryNote } from './log.js'
+import { projectLandmarks } from './landmarks.js'
 
 const MAX_GHOSTS = 2500
 // Between radar passes a figure's halo and outline never drop below this, so
@@ -27,6 +29,7 @@ const MAX_CARS = 520
 const PEAK_SHARE = Math.max(...HOURLY_SHARE)
 const MONO = "'Space Mono', ui-monospace, monospace"
 const LABEL_ALPHA = 0.55
+const LANDMARK_COLOR = '#f7f4ef'
 
 export function createOverlay(canvas, geo) {
   const ctx = canvas.getContext('2d')
@@ -105,6 +108,50 @@ export function createOverlay(canvas, geo) {
     return out
   }
   const bearings = fuelBearings()
+
+  // Landmarks, with a bearing and distance from the frame centre for any that
+  // sit outside the frame.
+  const landmarks = projectLandmarks(geo.bbox).map((l) => {
+    const [x, y] = l.p
+    const inside = x >= 0 && x <= 1 && y >= 0 && y <= 1
+    const dx = (x - 0.5) * W
+    const dy = (y - 0.5) * H
+    return {
+      ...l,
+      inside,
+      bearing: Math.atan2(dy, dx),
+      km: Math.hypot(dx, dy) / 1000,
+    }
+  })
+
+  // Where a bearing from the frame centre meets the frame edge, in CSS px,
+  // with the bearing's unit vector.
+  function edgePoint(bearing) {
+    const ux = Math.cos(bearing)
+    const uy = Math.sin(bearing)
+    const k = Math.min(
+      Math.abs(rect.w / 2 / (ux || 1e-6)),
+      Math.abs(rect.h / 2 / (uy || 1e-6))
+    )
+    return {
+      ex: rect.x + rect.w / 2 + ux * k,
+      ey: rect.y + rect.h / 2 + uy * k,
+      ux,
+      uy,
+    }
+  }
+  const edgeAlign = (ux) => (ux < -0.3 ? 'right' : ux > 0.3 ? 'left' : 'center')
+
+  // A small house outline: square body under a pitched roof, centred on x, y.
+  function housePath(x, y) {
+    ctx.beginPath()
+    ctx.moveTo(x - 4, y + 4)
+    ctx.lineTo(x - 4, y - 1)
+    ctx.lineTo(x, y - 5)
+    ctx.lineTo(x + 4, y - 1)
+    ctx.lineTo(x + 4, y + 4)
+    ctx.closePath()
+  }
 
   // Major street names: the ten most important named roads in frame, ranked
   // by road class and then total length. Each name sits at the midpoint of
@@ -316,8 +363,8 @@ export function createOverlay(canvas, geo) {
       }
 
       // Labels are collected as marks are drawn and placed last, on top, in
-      // priority order (graveyards, fuel, herds); one that would overlap an
-      // already-placed label is skipped rather than overprinted.
+      // priority order (graveyards, landmarks, fuel, herds); one that would
+      // overlap an already-placed label is skipped rather than overprinted.
       const labels = []
 
       // Graveyards: a mark and a name.
@@ -344,18 +391,36 @@ export function createOverlay(canvas, geo) {
         }
       }
 
+      // Landmarks: a house in place, or on the frame edge with its distance
+      // when it sits outside the village frame.
+      for (const l of landmarks) {
+        let px, py, label
+        if (l.inside) {
+          ;[px, py] = toPx(l.p)
+          label = { x: px + 8, y: py, align: 'left', text: l.n.toUpperCase() }
+        } else {
+          const { ex, ey, ux, uy } = edgePoint(l.bearing)
+          px = ex + ux * 7
+          py = ey + uy * 7
+          label = {
+            x: ex + ux * 20,
+            y: ey + uy * 20,
+            align: edgeAlign(ux),
+            text: `${l.n.toUpperCase()} ${distance(l.km, state.units)}`,
+          }
+        }
+        ctx.globalAlpha = 0.85
+        ctx.strokeStyle = LANDMARK_COLOR
+        ctx.lineWidth = 1.2
+        ctx.lineJoin = 'miter'
+        housePath(px, py)
+        ctx.stroke()
+        labels.push({ ...label, color: LANDMARK_COLOR, alpha: 0.75 })
+      }
+
       // Gas stations: none inside the village, so bearings on the frame edge.
-      const cx = rect.x + rect.w / 2
-      const cy = rect.y + rect.h / 2
       for (const b of bearings) {
-        const ux = Math.cos(b.bearing)
-        const uy = Math.sin(b.bearing)
-        const k = Math.min(
-          Math.abs(rect.w / 2 / (ux || 1e-6)),
-          Math.abs(rect.h / 2 / (uy || 1e-6))
-        )
-        const ex = cx + ux * k
-        const ey = cy + uy * k
+        const { ex, ey, ux, uy } = edgePoint(b.bearing)
         ctx.globalAlpha = 0.8
         ctx.fillStyle = '#fbbf24'
         ctx.beginPath()
@@ -369,7 +434,7 @@ export function createOverlay(canvas, geo) {
           text: `${name} ${distance(b.km, state.units)}${b.count > 1 ? ` +${b.count - 1}` : ''}`,
           x: ex + ux * 16,
           y: ey + uy * 16,
-          align: ux < -0.3 ? 'right' : ux > 0.3 ? 'left' : 'center',
+          align: edgeAlign(ux),
           color: '#fbbf24',
           alpha: LABEL_ALPHA,
         })
