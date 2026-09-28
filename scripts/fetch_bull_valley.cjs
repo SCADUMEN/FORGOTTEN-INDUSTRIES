@@ -41,6 +41,12 @@
 // road's own measured median where IDOT counts it elsewhere, else the median
 // for its road class. A full refresh replaces every estimate with IDOT data.
 // geo.json records the traffic's own fetch date either way.
+//
+// Without the flag, a refresh that cannot reach IDOT at all (DNS failure,
+// refused or dropped connection, timeout, HTTP 5xx or 429) warns and falls
+// back to the same reuse path, so the other layers still refresh. A reply
+// IDOT did send but that is wrong (an error payload, a truncated result)
+// still fails the run: that is a data problem, not an outage.
 
 const fs = require('fs')
 const path = require('path')
@@ -61,6 +67,8 @@ const BBOX = { south: 42.2775, west: -88.4225, north: 42.3895, east: -88.3095 }
 const FUEL_BBOX = { south: 42.205, west: -88.52, north: 42.446, east: -88.212 }
 const TERRAIN_SIZE = 512
 const TERRAIN_ZOOM = 13
+// How long to wait on IDOT before treating it as unreachable.
+const IDOT_TIMEOUT_MS = 60_000
 
 const OVERPASS = [
   'https://overpass-api.de/api/interpreter',
@@ -101,8 +109,23 @@ async function fetchJson(url, init = {}) {
     ...init,
     headers: { 'User-Agent': UA, ...(init.headers || {}) },
   })
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`)
+  if (!res.ok) {
+    const err = new Error(`${res.status} ${res.statusText} for ${url}`)
+    err.status = res.status
+    throw err
+  }
   return res.json()
+}
+
+// True when a request never got a usable answer from the server: Node's fetch
+// throws TypeError('fetch failed') for DNS, connection, and TLS failures;
+// AbortSignal.timeout throws a TimeoutError; 5xx and 429 mean the server is
+// down or shedding load. Anything else is a real reply and not an outage.
+function isUnreachable(err) {
+  if (!err) return false
+  if (err.name === 'TimeoutError') return true
+  if (err instanceof TypeError && err.message === 'fetch failed') return true
+  return err.status >= 500 || err.status === 429
 }
 
 async function overpass(query) {
@@ -213,7 +236,9 @@ async function fetchTraffic() {
     f: 'json',
   })
   const url = `https://gis1.dot.illinois.gov/arcgis/rest/services/AdministrativeData/AADT/MapServer/0/query?${params}`
-  const data = await fetchJson(url)
+  const data = await fetchJson(url, {
+    signal: AbortSignal.timeout(IDOT_TIMEOUT_MS),
+  })
   if (data.error) throw new Error(`IDOT: ${JSON.stringify(data.error)}`)
   if (data.exceededTransferLimit) {
     throw new Error('IDOT result was truncated; page the query')
@@ -442,13 +467,30 @@ async function main() {
   const reuse = process.argv.includes('--reuse-traffic')
   const boundary = await fetchBoundary()
   const osm = await fetchOsm()
-  const { traffic, trafficFetched, trafficBbox } = reuse
-    ? reuseTraffic(osm.roads)
-    : {
+  let trafficSource = reuse ? 'reused (--reuse-traffic)' : 'IDOT'
+  let result
+  if (reuse) {
+    result = reuseTraffic(osm.roads)
+  } else {
+    try {
+      result = {
         traffic: await fetchTraffic(),
         trafficFetched: today,
         trafficBbox: BBOX,
       }
+    } catch (err) {
+      if (!isUnreachable(err)) throw err
+      const cause = err.cause?.code || err.cause?.message || err.message
+      console.warn(
+        `\n[traffic] WARNING: IDOT is unreachable (${cause}). Falling back to ` +
+          'the committed counts plus estimates, as --reuse-traffic would. ' +
+          'Rerun once IDOT is back to replace them.\n'
+      )
+      result = reuseTraffic(osm.roads)
+      trafficSource = `reused (IDOT unreachable: ${cause})`
+    }
+  }
+  const { traffic, trafficFetched, trafficBbox } = result
   const terrain = await fetchTerrain()
   const geo = {
     fetched: today,
@@ -473,9 +515,14 @@ async function main() {
       `fuel ${osm.fuel.length}, traffic ${traffic.length}, ` +
       `terrain ${terrain.min}–${terrain.max} m`
   )
+  console.log(`traffic source: ${trafficSource}, counts from ${trafficFetched}`)
 }
 
-main().catch((err) => {
-  console.error(err)
-  process.exit(1)
-})
+module.exports = { isUnreachable }
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err)
+    process.exit(1)
+  })
+}
