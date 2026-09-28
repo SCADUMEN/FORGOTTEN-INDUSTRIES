@@ -1,12 +1,23 @@
 # D1 Database Generalization
 
-Current database: `jjammocan-sightings` (binding `DB`)
+Current database: `forgotten-industries` (binding `DB`, id
+`0ba6a720-90a4-4de9-85b6-e454be150e04`)
 
-Proposed database: `forgotten-industries`
+Previous database: `jjammocan-sightings` (id
+`e909c0a4-b968-4b56-b673-b6351c3eef62`), kept for rollback until 2026-10-28
 
-State: `PHASE 1 PREPARED / PHASE 2 AWAITING ACCOUNT HOLDER`
+State: `PHASE 1 APPLIED 2026-09-28 / PHASE 2 SWITCHED 2026-09-28`
 
-## Do This First: Production Is Missing the Scaduscope Tables
+Both databases are in the Cloudflare account `f6ea8d308195655d2149be349d7bc4e0`
+(the one serving `forgotten-industries.bagelmanrichard.workers.dev`).
+`wrangler.jsonc` pins it as `account_id`, so local `wrangler` commands reach it
+even when the login can see several accounts.
+
+## Resolved 2026-09-28: Production Was Missing the Scaduscope Tables
+
+Both migrations were applied to `jjammocan-sightings` on 2026-09-28, and
+`/api/scaduscope/tags` and `/names` returned 200. The steps below are kept as
+the record of the fix.
 
 Recorded 2026-09-26, after #161 deployed. For Matthew, or ATLAS working on his
 behalf in his terminal. Every step is read-only except step 3.

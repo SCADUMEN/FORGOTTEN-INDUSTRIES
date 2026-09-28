@@ -69,12 +69,12 @@ Vite-built CxR research app (served at `/cxr/`, source in `continuance/`). The
 archive itself holds no server-side state. One small Worker
 (`src/worker/index.js`) serves `/api/sightings` for the JJAMMOCAN sighting
 intake and `/api/scaduscope/*` for the Bull Valley Scaduscope's shared tag
-counter and names, all backed by the `jjammocan-sightings` D1 database. Its
+counter and names, all backed by the `forgotten-industries` D1 database. Its
 schema lives in numbered migrations under `src/worker/migrations/`, applied
-with `npx wrangler d1 migrations apply jjammocan-sightings --remote`; see
-`src/docs/d1-database-generalization.md` for the planned move to a
-general-purpose `forgotten-industries` database. Every other request passes
-through to the static assets.
+with `npx wrangler d1 migrations apply forgotten-industries --remote`; see
+`src/docs/d1-database-generalization.md` for how it moved from the original
+`jjammocan-sightings` database. Every other request passes through to the
+static assets.
 
 ```text
 canonical YAML + public-safe documents + curated media
