@@ -297,6 +297,7 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
       gap: 0 0.75rem;
     }
     #bvs-exit,
+    #bvs-ground,
     .bvs-chrome-btn {
       padding: 0.5rem 0.75rem 0.5rem 0;
       color: var(--fi-paper-light);
@@ -320,11 +321,14 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
     }
     #bvs-exit:hover,
     #bvs-exit:focus-visible,
+    #bvs-ground:hover,
+    #bvs-ground:focus-visible,
     .bvs-chrome-btn:hover,
     .bvs-chrome-btn:focus-visible {
       opacity: 0.9;
     }
     #bvs-exit:focus-visible,
+    #bvs-ground:focus-visible,
     .bvs-chrome-btn:focus-visible {
       outline: 3px solid var(--fi-cyan);
       outline-offset: 2px;
@@ -676,6 +680,7 @@ description: A psychogeographic survey of Bull Valley, Illinois — real terrain
     <div id="bvs-chrome">
       <div id="bvs-controls">
         <a id="bvs-exit" href="/">FORGOTTEN INDUSTRIES /</a>
+        <a id="bvs-ground" href="/bull-valley/">GROUND SURVEY 🥾</a>
         <button id="bvs-audio-toggle" class="bvs-chrome-btn" type="button" aria-pressed="false" hidden>Sound Off</button>
         <button id="bvs-hud-toggle" class="bvs-chrome-btn" type="button" aria-pressed="true">Readout On</button>
       </div>

@@ -1,0 +1,91 @@
+---
+permalink: /bull-valley/
+eleventyExcludeFromCollections: true
+title: BULL VALLEY GROUND SURVEY
+description: A first-person night survey of Bull Valley, Illinois — the real terrain and roads on foot, and the shadowmen who stalk them. The Scaduscope, carried into the field.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>🥾🌚</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ site.domainUrl }}/bull-valley/">
+  {% include "social-meta.njk" %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <style>
+    /* Space Mono only. Like the Scaduscope, this page does not load
+       archive.css, so the two weights it uses are declared here against the
+       self-hosted files. */
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-400-normal-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/assets/fonts/space-mono-700-normal-latin.woff2') format('woff2');
+    }
+    /* Tokens sourced from src/css/archive.css — that file is the source of
+       truth; this page deliberately does not load the shared stylesheet. Keep
+       this block in sync with ground-survey/index.html (the dev harness). */
+    :root {
+      color-scheme: dark;
+      --fi-bg: #000000;
+      --fi-surface: #020617;
+      --fi-surface-82: rgb(2 6 23 / 0.82);
+      --fi-cyan: #22d3ee;
+      --fi-green: #4ade80;
+      --fi-amber: #fbbf24;
+      --fi-gold: #f59e0b;
+      --fi-magenta: #e879f9;
+      --fi-maroon: #7f1d1d;
+      --fi-slate: #94a3b8;
+      --fi-paper-light: #f7f4ef;
+      --fi-black-shadow: rgb(0 0 0 / 0.58);
+      --gs-mono: 'Space Mono', ui-monospace, monospace;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--fi-bg);
+      color: var(--fi-paper-light);
+      font-family: var(--gs-mono);
+      overflow: hidden;
+    }
+    #gs-fallback {
+      padding: 2rem;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+    #gs-fallback a {
+      color: var(--fi-cyan);
+    }
+  </style>
+  <link rel="stylesheet" href="/bull-valley/assets/gs.css?v={{ site.assetVersion }}">
+</head>
+<body>
+  <main id="gs-root">
+    <noscript>
+      <p id="gs-fallback">
+        The Ground Survey is a first-person instrument and requires script
+        execution. The static <a href="/bull-valley-scaduscope/">Bull Valley
+        Scaduscope</a> also requires it. <a href="/">Return to FORGOTTEN
+        INDUSTRIES</a>
+      </p>
+    </noscript>
+  </main>
+  <script type="module" src="/bull-valley/assets/gs.js?v={{ site.assetVersion }}"></script>
+</body>
+</html>
