@@ -6,9 +6,12 @@
 //
 // The places are real public features of Bull Valley, taken from the survey
 // data (scripts/fetch_bull_valley.cjs): roads, creeks, cemeteries, and
-// conservation areas. The titles and epithets are invented. The name space is
-// finite on purpose (a few thousand), so names recur and a record like
-// "Mother Ostend · tagged 14×" can build up over time.
+// conservation areas. The titles and epithets are invented, in the register of
+// antiquarian ghost stories, folk horror, and Zone fiction: the genre's common
+// words (sexton, revenant, stalker, wicker) and original compounds, never a
+// coinage lifted from any one work. The name space is finite on purpose (about
+// seven thousand), so names recur and a record like "Mother Ostend · tagged
+// 14×" can build up over time.
 
 export const PLACES = [
   'Boone Creek',
@@ -63,6 +66,14 @@ export const TITLES = [
   'Little',
   'Pale',
   'Old',
+  'Parson',
+  'Aunt',
+  'Uncle',
+  'Squire',
+  'Canon',
+  'Father',
+  'Cousin',
+  'Granny',
 ]
 
 export const NOUNS = [
@@ -84,6 +95,24 @@ export const NOUNS = [
   'Hollow',
   'Stranger',
   'Lodger',
+  'Sexton',
+  'Verger',
+  'Antiquary',
+  'Revenant',
+  'Stalker',
+  'Warden',
+  'Reeve',
+  'Toll Keeper',
+  'Hedge Priest',
+  'Lamplighter',
+  'Bellringer',
+  'Pilgrim',
+  'Visitor',
+  'Bound Beater',
+  'Straw Man',
+  'Well Keeper',
+  'Whistler',
+  'Chorister',
 ]
 
 export const EPITHETS = [
@@ -99,6 +128,10 @@ export const EPITHETS = [
   'Rust',
   'Ash',
   'Hush',
+  'Hooded',
+  'Salt',
+  'Wicker',
+  'Thorn',
 ]
 
 export const GIVEN = [
@@ -114,6 +147,12 @@ export const GIVEN = [
   'Wren',
   'Abel',
   'June',
+  'Agnes',
+  'Tobias',
+  'Hester',
+  'Jasper',
+  'Martha',
+  'Eli',
 ]
 
 const pick = (list, rand) =>

@@ -18,8 +18,11 @@
 //   - Traffic: Illinois DOT Annual Average Daily Traffic (AADT) MapServer.
 //   - Terrain: AWS Terrain Tiles (Terrarium encoding), built from USGS 3DEP.
 //
-// Privacy: the scope is public infrastructure only. Driveways, service roads,
-// and buildings are never requested, so no output can point at a private home.
+// Privacy: the survey is public infrastructure only. Driveways, service roads,
+// and buildings are never requested, so no output of this script can point at
+// a private home. The one private place on the map, Chateau Coleman, is placed
+// by hand with its owner's consent in
+// src/assets/js/bull-valley-scaduscope/landmarks.js, not fetched here.
 //
 // Outputs (src/assets/data/bull-valley/):
 //   geo.json     boundary, roads, water, reserves, and AADT segments, projected

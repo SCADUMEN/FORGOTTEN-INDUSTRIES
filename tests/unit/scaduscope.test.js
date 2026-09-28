@@ -285,3 +285,31 @@ describe('field log', async () => {
     )
   })
 })
+
+describe('landmarks', async () => {
+  const { LANDMARKS, projectLandmarks } =
+    await import('../../src/assets/js/bull-valley-scaduscope/landmarks.js')
+  const bbox = { south: 42.2775, west: -88.4225, north: 42.374, east: -88.3095 }
+
+  it('projects the frame corners onto the unit square', () => {
+    const corners = [
+      { n: 'nw', lat: bbox.north, lon: bbox.west },
+      { n: 'se', lat: bbox.south, lon: bbox.east },
+    ]
+    const [nw, se] = projectLandmarks(bbox, corners)
+    expect(nw.p[0]).toBeCloseTo(0)
+    expect(nw.p[1]).toBeCloseTo(0)
+    expect(se.p[0]).toBeCloseTo(1)
+    expect(se.p[1]).toBeCloseTo(1)
+  })
+
+  it('places Chateau Coleman north of the village frame', () => {
+    expect(LANDMARKS.map((l) => l.n)).toContain('Chateau Coleman')
+    const coleman = projectLandmarks(bbox).find(
+      (l) => l.n === 'Chateau Coleman'
+    )
+    expect(coleman.p[0]).toBeGreaterThan(0)
+    expect(coleman.p[0]).toBeLessThan(1)
+    expect(coleman.p[1]).toBeLessThan(0)
+  })
+})
