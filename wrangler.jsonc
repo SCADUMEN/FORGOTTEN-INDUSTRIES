@@ -22,6 +22,9 @@
       "binding": "DB",
       "database_name": "jjammocan-sightings",
       "database_id": "e909c0a4-b968-4b56-b673-b6351c3eef62",
+      // Schema lives in numbered migrations, tracked per database in the
+      // d1_migrations table. See src/docs/d1-database-generalization.md.
+      "migrations_dir": "src/worker/migrations",
     },
   ],
 }

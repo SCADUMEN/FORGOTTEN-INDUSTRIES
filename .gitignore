@@ -101,3 +101,6 @@ playwright-report/
 /src/assets/reference/**/*-timelapse-*.webm
 /src/assets/ephemera/shadow-zone/motion/
 /src/assets/previews/
+
+# D1 exports hold visitor submissions; never commit them (src/docs/d1-database-generalization.md).
+d1-backup*.sql

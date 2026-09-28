@@ -45,6 +45,10 @@ export function createTally({ isWitchingNow, onChange }) {
     allTime: readAllTime(),
     everyone: null, // { tags, points } once known
     recent: null, // everyone's recently tagged names, once known
+    // Did the last attempt to read everyone's names succeed? null until the
+    // first attempt. Lets the readout tell "nobody has tagged anything" apart
+    // from "the shared record can't be reached".
+    recentOk: null,
     online: false,
   }
   const emit = () => onChange({ ...state, bonus: isWitchingNow() })
@@ -60,8 +64,10 @@ export function createTally({ isWitchingNow, onChange }) {
       const body = await res.json()
       if (!Array.isArray(body.names)) throw new Error('bad names payload')
       state.recent = body.names
+      state.recentOk = true
     } catch (err) {
-      /* offline: the shared total already reads "Offline" */
+      console.warn('[scaduscope] shared name log unavailable:', err)
+      state.recentOk = false
     }
   }
 
@@ -85,6 +91,9 @@ export function createTally({ isWitchingNow, onChange }) {
       await refreshRecent()
     } catch (err) {
       state.online = false
+      // The names come from the same Worker and database; if the total can't
+      // be read, the log can't either.
+      state.recentOk = false
     }
     emit()
   }

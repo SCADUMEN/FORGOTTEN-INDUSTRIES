@@ -68,10 +68,13 @@ Forgotten Industries currently ships as a static Eleventy archive with a small
 Vite-built CxR research app (served at `/cxr/`, source in `continuance/`). The
 archive itself holds no server-side state. One small Worker
 (`src/worker/index.js`) serves `/api/sightings` for the JJAMMOCAN sighting
-intake and `/api/scaduscope/tags` for the Bull Valley Scaduscope's shared
-tag counter, both backed by the `jjammocan-sightings` D1 database (schema in
-`src/worker/schema.sql`, applied by hand); every other request passes through
-to the static assets.
+intake and `/api/scaduscope/*` for the Bull Valley Scaduscope's shared tag
+counter and names, all backed by the `jjammocan-sightings` D1 database. Its
+schema lives in numbered migrations under `src/worker/migrations/`, applied
+with `npx wrangler d1 migrations apply jjammocan-sightings --remote`; see
+`src/docs/d1-database-generalization.md` for the planned move to a
+general-purpose `forgotten-industries` database. Every other request passes
+through to the static assets.
 
 ```text
 canonical YAML + public-safe documents + curated media
@@ -101,7 +104,7 @@ src/_includes/     Eleventy layouts and shared page structure
 src/css/           Tailwind entry point, design tokens, and legacy styles
 src/assets/        cleared public media, scripts, and encrypted payloads
 continuance/       Vite/React CxR interface (served at /cxr/)
-src/worker/        Worker entry and D1 schema for /api/sightings and /api/scaduscope/tags
+src/worker/        Worker entry and D1 migrations for /api/sightings and /api/scaduscope/*
 scripts/           build, intake, metadata, audit, and deployment instruments
 tests/unit/        generated-data and public-surface checks
 tests/e2e/         Playwright browser and route checks
