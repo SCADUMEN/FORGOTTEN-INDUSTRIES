@@ -303,13 +303,24 @@ describe('landmarks', async () => {
     expect(se.p[1]).toBeCloseTo(1)
   })
 
-  it('places Chateau Coleman north of the village frame', () => {
-    expect(LANDMARKS.map((l) => l.n)).toContain('Chateau Coleman')
+  it("places Mt. Coleman's Keep north of the village frame", () => {
+    expect(LANDMARKS.map((l) => l.n)).toContain("Mt. Coleman's Keep")
     const coleman = projectLandmarks(bbox).find(
-      (l) => l.n === 'Chateau Coleman'
+      (l) => l.n === "Mt. Coleman's Keep"
     )
     expect(coleman.p[0]).toBeGreaterThan(0)
     expect(coleman.p[0]).toBeLessThan(1)
     expect(coleman.p[1]).toBeLessThan(0)
+  })
+
+  it('places the cabbage stand in frame, by the east end of Mason Hill Road', () => {
+    const stand = projectLandmarks(bbox).find(
+      (l) => l.n === 'Bull Valley Cabbage Stand'
+    )
+    const [x, y] = stand.p
+    expect(x).toBeGreaterThan(0.9)
+    expect(x).toBeLessThan(1)
+    expect(y).toBeGreaterThan(0)
+    expect(y).toBeLessThan(1)
   })
 })

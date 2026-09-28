@@ -198,8 +198,9 @@ Manual tools, run by hand when needed and not wired into any build:
   Illinois DOT traffic counts, and a terrain heightmap, written to
   `src/assets/data/bull-valley/`. Only live weather (Open-Meteo) is fetched in
   the browser. Driveways, service roads, and buildings are never requested.
-  The only private place on the map, Chateau Coleman, is placed by hand with
-  its owner's consent in `src/assets/js/bull-valley-scaduscope/landmarks.js`.
+  Hand-placed landmarks (the Bull Valley Cabbage Stand, and Mt. Coleman's
+  Keep, the one private home, added with its owner's consent) live in
+  `src/assets/js/bull-valley-scaduscope/landmarks.js`.
   Review the diff before committing. The page's optional music loop is
   `src/assets/audio/bull-valley-scaduscope.mp3`; without it the gate falls
   back to a silent "Engage" button.

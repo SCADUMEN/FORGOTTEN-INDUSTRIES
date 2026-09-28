@@ -20,9 +20,9 @@
 //
 // Privacy: the survey is public infrastructure only. Driveways, service roads,
 // and buildings are never requested, so no output of this script can point at
-// a private home. The one private place on the map, Chateau Coleman, is placed
-// by hand with its owner's consent in
-// src/assets/js/bull-valley-scaduscope/landmarks.js, not fetched here.
+// a private home. Hand-placed landmarks, including the one private home
+// (Mt. Coleman's Keep, added with its owner's consent), live in
+// src/assets/js/bull-valley-scaduscope/landmarks.js and are not fetched here.
 //
 // Outputs (src/assets/data/bull-valley/):
 //   geo.json     boundary, roads, water, reserves, and AADT segments, projected
