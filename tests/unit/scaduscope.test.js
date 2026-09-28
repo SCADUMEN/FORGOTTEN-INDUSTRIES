@@ -117,6 +117,18 @@ describe('traffic profile', () => {
       year: 2025,
     })
   })
+
+  it('never reports an estimated segment as the busiest', () => {
+    const b = busiest(
+      [
+        { n: 'US-14', v: 18100, y: 2025 },
+        { n: 'Guess Road', v: 99999, y: null, e: 1 },
+      ],
+      17
+    )
+    expect(b.name).toBe('US-14')
+    expect(busiest([{ n: 'Guess Road', v: 5, y: null, e: 1 }], 17)).toBe(null)
+  })
 })
 
 describe('sky', () => {
@@ -283,5 +295,47 @@ describe('field log', async () => {
     expect(entryNote(entry('Mother Ostend', { recorded: false }))).toBe(
       'Unrecorded'
     )
+  })
+})
+
+describe('landmarks', async () => {
+  const { LANDMARKS, projectLandmarks } =
+    await import('../../src/assets/js/bull-valley-scaduscope/landmarks.js')
+  const { readFileSync } = await import('node:fs')
+  const { bbox } = JSON.parse(
+    readFileSync(
+      new URL('../../src/assets/data/bull-valley/geo.json', import.meta.url),
+      'utf8'
+    )
+  )
+  const inFrame = ([x, y]) => x > 0 && x < 1 && y > 0 && y < 1
+
+  it('projects the frame corners onto the unit square', () => {
+    const corners = [
+      { n: 'nw', lat: bbox.north, lon: bbox.west },
+      { n: 'se', lat: bbox.south, lon: bbox.east },
+    ]
+    const [nw, se] = projectLandmarks(bbox, corners)
+    expect(nw.p[0]).toBeCloseTo(0)
+    expect(nw.p[1]).toBeCloseTo(0)
+    expect(se.p[0]).toBeCloseTo(1)
+    expect(se.p[1]).toBeCloseTo(1)
+  })
+
+  it("keeps Mt. Coleman's Keep on the map, near the north edge", () => {
+    expect(LANDMARKS.map((l) => l.n)).toContain("Mt. Coleman's Keep")
+    const keep = projectLandmarks(bbox).find(
+      (l) => l.n === "Mt. Coleman's Keep"
+    )
+    expect(inFrame(keep.p)).toBe(true)
+    expect(keep.p[1]).toBeLessThan(0.1)
+  })
+
+  it('places the cabbage stand in frame, by the east end of Mason Hill Road', () => {
+    const stand = projectLandmarks(bbox).find(
+      (l) => l.n === 'Bull Valley Cabbage Stand'
+    )
+    expect(inFrame(stand.p)).toBe(true)
+    expect(stand.p[0]).toBeGreaterThan(0.9)
   })
 })

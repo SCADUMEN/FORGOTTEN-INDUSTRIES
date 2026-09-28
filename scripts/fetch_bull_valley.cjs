@@ -18,8 +18,11 @@
 //   - Traffic: Illinois DOT Annual Average Daily Traffic (AADT) MapServer.
 //   - Terrain: AWS Terrain Tiles (Terrarium encoding), built from USGS 3DEP.
 //
-// Privacy: the scope is public infrastructure only. Driveways, service roads,
-// and buildings are never requested, so no output can point at a private home.
+// Privacy: the survey is public infrastructure only. Driveways, service roads,
+// and buildings are never requested, so no output of this script can point at
+// a private home. Hand-placed landmarks, including the one private home
+// (Mt. Coleman's Keep, added with its owner's consent), live in
+// src/assets/js/bull-valley-scaduscope/landmarks.js and are not fetched here.
 //
 // Outputs (src/assets/data/bull-valley/):
 //   geo.json     boundary, roads, water, reserves, and AADT segments, projected
@@ -28,7 +31,16 @@
 //                R (high byte) + G (low byte); the elevation range in metres is
 //                recorded in geo.json.terrain.
 //
-// Usage: node scripts/fetch_bull_valley.cjs
+// Usage: node scripts/fetch_bull_valley.cjs [--reuse-traffic]
+//
+// --reuse-traffic keeps the committed AADT segments instead of asking IDOT,
+// re-projected from the bbox they were fetched with. For when IDOT is
+// unreachable. Major roads in any part of the frame north of the envelope
+// IDOT was last queried with (geo.json.trafficBbox) get estimated counts,
+// marked `e: 1` with no year, so the page never cites them as IDOT's: the
+// road's own measured median where IDOT counts it elsewhere, else the median
+// for its road class. A full refresh replaces every estimate with IDOT data.
+// geo.json records the traffic's own fetch date either way.
 
 const fs = require('fs')
 const path = require('path')
@@ -39,8 +51,10 @@ const UA =
   'forgotten-industries-scaduscope/1.0 (+https://forgottenindustries.org)'
 
 // Bull Valley's OSM bounding box (relation 126046), padded ~500 m so the
-// boundary sits inside the frame rather than on its edge.
-const BBOX = { south: 42.2775, west: -88.4225, north: 42.374, east: -88.3095 }
+// boundary sits inside the frame rather than on its edge. The north edge
+// reaches on into Wonder Lake (~600 m past 42.3839) so Mt. Coleman's Keep
+// (src/assets/js/bull-valley-scaduscope/landmarks.js) sits on the map.
+const BBOX = { south: 42.2775, west: -88.4225, north: 42.3895, east: -88.3095 }
 // Bull Valley itself has no gas stations, so the fuel search reaches ~8 km past
 // the frame. Stations outside the unit square keep their out-of-range
 // coordinates; the page draws them as bearings on the frame edge.
@@ -221,6 +235,109 @@ async function fetchTraffic() {
   return segments
 }
 
+// The committed AADT segments, un-projected from the bbox recorded with them
+// and projected into the current one, plus estimates for major roads north of
+// the envelope IDOT was queried with. See --reuse-traffic in the header.
+function reuseTraffic(roads) {
+  const prev = JSON.parse(fs.readFileSync(path.join(OUT, 'geo.json'), 'utf8'))
+  const b = prev.bbox
+  const envelope = prev.trafficBbox || prev.bbox
+  const measured = prev.traffic
+    .filter((s) => !s.e)
+    .map((s) => ({
+      ...s,
+      p: s.p.map(([x, y]) =>
+        project(
+          b.west + x * (b.east - b.west),
+          b.north - y * (b.north - b.south)
+        )
+      ),
+    }))
+  const estimated = estimateTraffic(roads, measured, envelope)
+  return {
+    traffic: [...measured, ...estimated],
+    trafficFetched: prev.trafficFetched || prev.fetched,
+    trafficBbox: envelope,
+  }
+}
+
+// Road classes IDOT counts; residential streets are left without estimates.
+const ESTIMATED_CLASSES = [
+  'motorway',
+  'trunk',
+  'primary',
+  'secondary',
+  'tertiary',
+]
+// IDOT abbreviates ("Thompson Rd"); OSM spells out ("Thompson Road").
+const roadKey = (n) =>
+  n
+    .toLowerCase()
+    .replace(/\broad\b/g, 'rd')
+    .replace(/\bstreet\b/g, 'st')
+    .replace(/\bavenue\b/g, 'ave')
+    .replace(/\bdrive\b/g, 'dr')
+    .trim()
+const median = (list) => {
+  const s = [...list].sort((a, b) => a - b)
+  return s[Math.floor(s.length / 2)]
+}
+
+function estimateTraffic(roads, measured, envelope) {
+  const byName = new Map()
+  for (const s of measured) {
+    if (!s.n) continue
+    const k = roadKey(s.n)
+    byName.set(k, [...(byName.get(k) || []), s.v])
+  }
+  // Class medians over distinct counted roads, so a road split into many OSM
+  // ways counts once.
+  const classRoads = new Map()
+  for (const r of roads) {
+    if (!r.n || !ESTIMATED_CLASSES.includes(r.c)) continue
+    const counts = byName.get(roadKey(r.n))
+    if (!counts) continue
+    const named = classRoads.get(r.c) || new Map()
+    named.set(roadKey(r.n), median(counts))
+    classRoads.set(r.c, named)
+  }
+  const classMedian = new Map(
+    [...classRoads].map(([c, named]) => [c, median([...named.values()])])
+  )
+
+  // The uncovered strip: everything north of the envelope's north edge.
+  const edgeY = project(envelope.west, envelope.north)[1]
+  const out = []
+  for (const r of roads) {
+    if (!ESTIMATED_CLASSES.includes(r.c)) continue
+    const own = r.n && byName.get(roadKey(r.n))
+    const v = own ? median(own) : classMedian.get(r.c)
+    if (!v) continue
+    // Runs of the way inside the strip, each reaching one point past the edge
+    // so it meets the measured network rather than stopping short.
+    let run = []
+    const flush = () => {
+      if (run.length > 1) out.push({ n: r.n, v, y: null, h: 0, e: 1, p: run })
+      run = []
+    }
+    for (let i = 0; i < r.p.length; i++) {
+      if (r.p[i][1] < edgeY) {
+        if (!run.length && i > 0) run.push(r.p[i - 1])
+        run.push(r.p[i])
+      } else if (run.length) {
+        run.push(r.p[i])
+        flush()
+      }
+    }
+    flush()
+  }
+  console.log(
+    `estimated ${out.length} segments north of y=${edgeY}; class medians ` +
+      JSON.stringify(Object.fromEntries(classMedian))
+  )
+  return out
+}
+
 // Web Mercator tile maths.
 const lonToTileX = (lon, z) => ((lon + 180) / 360) * 2 ** z
 const latToTileY = (lat, z) => {
@@ -321,14 +438,22 @@ async function fetchTerrain() {
 
 async function main() {
   fs.mkdirSync(OUT, { recursive: true })
-  const [boundary, osm, traffic, terrain] = [
-    await fetchBoundary(),
-    await fetchOsm(),
-    await fetchTraffic(),
-    await fetchTerrain(),
-  ]
+  const today = new Date().toISOString().slice(0, 10)
+  const reuse = process.argv.includes('--reuse-traffic')
+  const boundary = await fetchBoundary()
+  const osm = await fetchOsm()
+  const { traffic, trafficFetched, trafficBbox } = reuse
+    ? reuseTraffic(osm.roads)
+    : {
+        traffic: await fetchTraffic(),
+        trafficFetched: today,
+        trafficBbox: BBOX,
+      }
+  const terrain = await fetchTerrain()
   const geo = {
-    fetched: new Date().toISOString().slice(0, 10),
+    fetched: today,
+    trafficFetched,
+    trafficBbox,
     bbox: BBOX,
     metres: { width: Math.round(WIDTH_M), height: Math.round(HEIGHT_M) },
     terrain,
