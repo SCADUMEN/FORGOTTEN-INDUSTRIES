@@ -1,6 +1,9 @@
 // BULL VALLEY SCADUSCOPE traffic: real Illinois DOT annual average daily
 // traffic (AADT) per road segment, spread across the day with an assumed
 // weekday hourly profile. The counts are measured; the flow is simulated.
+// Segments marked `e` carry an estimated count instead (major roads IDOT was
+// not queried for; see scripts/fetch_bull_valley.cjs --reuse-traffic). They
+// feed the headlights but are never reported as a measured count.
 //
 // The curve is an assumed two-peak weekday shape (relative traffic in each
 // local hour, 00–23). It is a typical shape, not a measured profile for these
@@ -28,10 +31,12 @@ export function vehiclesPerHour(aadt, hour) {
   return aadt * hourShare(hour)
 }
 
-// Busiest road right now: { name, perHour, year } from the segment list.
+// Busiest road right now: { name, perHour, year } from the measured segments;
+// estimated ones are skipped, since the readout cites IDOT and the year.
 export function busiest(segments, hour) {
   let best = null
   for (const s of segments) {
+    if (s.e) continue
     if (!best || s.v > best.v) best = s
   }
   if (!best) return null

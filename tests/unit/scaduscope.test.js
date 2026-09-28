@@ -117,6 +117,18 @@ describe('traffic profile', () => {
       year: 2025,
     })
   })
+
+  it('never reports an estimated segment as the busiest', () => {
+    const b = busiest(
+      [
+        { n: 'US-14', v: 18100, y: 2025 },
+        { n: 'Guess Road', v: 99999, y: null, e: 1 },
+      ],
+      17
+    )
+    expect(b.name).toBe('US-14')
+    expect(busiest([{ n: 'Guess Road', v: 5, y: null, e: 1 }], 17)).toBe(null)
+  })
 })
 
 describe('sky', () => {

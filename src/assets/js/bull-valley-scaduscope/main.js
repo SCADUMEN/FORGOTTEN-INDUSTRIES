@@ -6,7 +6,9 @@
 // Real: the terrain, roads, water, reserves, graveyards, gas stations, IDOT
 // traffic counts (all baked by scripts/fetch_bull_valley.cjs), the sun and
 // moon (astro.js), the live weather (weather.js), and Bull Valley's clock.
-// Simulated: the hour-by-hour traffic flow. Fiction: the shadowmen.
+// Simulated: the hour-by-hour traffic flow, and estimated counts on the few
+// Wonder Lake roads north of IDOT's last query (traffic.js). Fiction: the
+// shadowmen.
 //
 // Preview: ?at=HH:MM starts the Bull Valley clock at that local time today
 // (e.g. ?at=03:15 for the witching hour); the clock then runs normally.
