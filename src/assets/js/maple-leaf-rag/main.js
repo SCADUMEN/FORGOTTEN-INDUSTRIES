@@ -77,7 +77,7 @@ async function boot() {
 }
 
 // Background-photo manifest inlined by the page as JSON (see
-// src/maple-leaf-rag.njk): { photos }, an array of { src }. The Shadow Zone
+// src/maple-leaf-rag.njk): { photos }, an array of { src, kind }. The Shadow Zone
 // ephemera feed the single base layer. Missing/malformed -> empty.
 function readManifest() {
   const el = document.getElementById('mlr-photos')
@@ -197,11 +197,13 @@ async function staticResolution() {
 // One frozen photograph for the reduced-motion frame (no cross-fade loop).
 async function staticPhoto() {
   const { photos: list } = readManifest()
-  if (!list.length) return null
+  // A frozen frame is a still; clips are motion, so skip past them.
+  const still = list.find((p) => p && p.kind !== 'video')
+  if (!still) return null
   try {
     const img = new Image()
     img.decoding = 'async'
-    img.src = list[0].src
+    img.src = still.src
     await img.decode()
     renderer.uploadPhoto(0, img)
     const view = cssW / cssH
