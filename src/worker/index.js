@@ -6,6 +6,12 @@ const MAX_NOTE = 600
 const MAX_SEEN_AT = 40
 const ALLOWED_COLORS = new Set(['khaki', 'green', 'gold', 'earth', 'black'])
 
+// Which confidence tags the public feed is willing to show. A report is born
+// 'unverified' and is only promoted out of band, so an open intake endpoint
+// can never put unreviewed text on the page. Widen this set deliberately —
+// adding 'unverified' here republishes the raw submission queue.
+const PUBLIC_STATUSES = ['confirmed']
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -53,11 +59,14 @@ function parseColors(value) {
 }
 
 async function listSightings(env) {
+  const placeholders = PUBLIC_STATUSES.map(() => '?').join(', ')
   let results
   try {
     ;({ results } = await env.DB.prepare(
-      'SELECT id, city, seen_at, note, colors, logged_at FROM sightings ORDER BY seen_at DESC LIMIT 200'
-    ).all())
+      `SELECT id, city, seen_at, note, colors, status, logged_at FROM sightings WHERE status IN (${placeholders}) ORDER BY seen_at DESC LIMIT 200`
+    )
+      .bind(...PUBLIC_STATUSES)
+      .all())
   } catch (error) {
     console.error('listSightings failed', error)
     return json({ error: 'Sightings are unavailable right now.' }, 500)
@@ -70,12 +79,42 @@ async function listSightings(env) {
       seenAt: row.seen_at,
       note: row.note,
       colors: parseColors(row.colors),
+      status: row.status,
       loggedAt: row.logged_at,
     })),
   })
 }
 
+// Two ceilings, because they fail differently. The per-IP limiter stops one
+// client hammering the intake; the site-wide limiter is what protects the D1
+// write quota when the flood arrives from many addresses at once. Cloudflare
+// counts per data centre rather than globally, so treat both as a ceiling on
+// sustained abuse, not a precise quota.
+async function overLimit(request, env) {
+  const ip = request.headers.get('cf-connecting-ip') || 'unknown'
+  const checks = [
+    [env.SIGHTING_LIMIT_IP, ip],
+    [env.SIGHTING_LIMIT_GLOBAL, 'sightings'],
+  ]
+
+  for (const [limiter, key] of checks) {
+    // Absent in local dev, where the binding is not provisioned.
+    if (!limiter) continue
+    const { success } = await limiter.limit({ key })
+    if (!success) return true
+  }
+
+  return false
+}
+
 async function submitSighting(request, env) {
+  if (await overLimit(request, env)) {
+    return json(
+      { error: 'Too many reports filed just now. Try again in a minute.' },
+      429
+    )
+  }
+
   let body
   try {
     body = await request.json()
@@ -114,9 +153,11 @@ async function submitSighting(request, env) {
   const id = crypto.randomUUID()
   const loggedAt = Date.now()
 
+  // Status is never read from the request. A submitter files a report; they
+  // do not get to say how confident the archive is about it.
   try {
     await env.DB.prepare(
-      'INSERT INTO sightings (id, city, seen_at, note, colors, logged_at) VALUES (?, ?, ?, ?, ?, ?)'
+      "INSERT INTO sightings (id, city, seen_at, note, colors, status, logged_at) VALUES (?, ?, ?, ?, ?, 'unverified', ?)"
     )
       .bind(id, city, seenAt, note, JSON.stringify(colors), loggedAt)
       .run()

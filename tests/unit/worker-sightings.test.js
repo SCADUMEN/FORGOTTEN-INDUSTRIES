@@ -7,17 +7,19 @@ const ENDPOINT = 'https://forgotten-industries.net/api/sightings'
 // `fail` makes every statement reject, as a D1 outage would.
 function fakeDb({ rows = [], fail = false } = {}) {
   const inserts = []
+  const all = async () => {
+    if (fail) throw new Error('D1 unavailable')
+    return { results: rows }
+  }
   const statement = (sql) => ({
     bind: (...args) => ({
       run: async () => {
         if (fail) throw new Error('D1 unavailable')
         inserts.push({ sql, args })
       },
+      all,
     }),
-    all: async () => {
-      if (fail) throw new Error('D1 unavailable')
-      return { results: rows }
-    },
+    all,
   })
   return { prepare: vi.fn(statement), inserts }
 }
