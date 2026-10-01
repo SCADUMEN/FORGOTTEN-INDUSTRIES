@@ -22,7 +22,10 @@ export default function Snippet({ text, summary, terms = [] }) {
   const excerpt =
     makeExcerpt(summary ? summary : text, terms) || source.slice(0, 240)
 
-  if (!terms.length) return <p className="continuance-snippet">{excerpt}</p>
+  // A <span> (block-styled), not a <p>: the snippet renders inside a result
+  // <button>, which only permits phrasing content.
+  if (!terms.length)
+    return <span className="continuance-snippet">{excerpt}</span>
 
   // Split on the terms, keeping them as captured delimiters. Each captured part
   // equals a matched term, so membership (case-insensitive) tells us what to
@@ -35,7 +38,7 @@ export default function Snippet({ text, summary, terms = [] }) {
   const parts = excerpt.split(pattern)
 
   return (
-    <p className="continuance-snippet">
+    <span className="continuance-snippet">
       {parts.map((part, i) =>
         termSet.has(part.toLowerCase()) ? (
           <mark key={i} className="continuance-mark">
@@ -45,6 +48,6 @@ export default function Snippet({ text, summary, terms = [] }) {
           <span key={i}>{part}</span>
         )
       )}
-    </p>
+    </span>
   )
 }

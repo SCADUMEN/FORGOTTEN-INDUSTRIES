@@ -74,8 +74,10 @@ export function createAudio() {
     const from = audio.volume
     const startedAt = performance.now()
     const step = (now) => {
-      const t = ms <= 0 ? 1 : Math.min(1, (now - startedAt) / ms)
-      audio.volume = from + (to - from) * t
+      // rAF's timestamp can predate startedAt by a frame, making t negative;
+      // volume outside 0..1 throws, which would kill the fade silently.
+      const t = ms <= 0 ? 1 : Math.min(1, Math.max(0, (now - startedAt) / ms))
+      audio.volume = Math.min(1, Math.max(0, from + (to - from) * t))
       if (t < 1) fadeRaf = requestAnimationFrame(step)
     }
     fadeRaf = requestAnimationFrame(step)

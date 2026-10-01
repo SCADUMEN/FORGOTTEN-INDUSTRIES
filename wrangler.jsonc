@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "forgotten-industries",
+  // Pinned so local wrangler commands reach this account even when the login
+  // can see several. CI sets the same ID through CLOUDFLARE_ACCOUNT_ID.
+  "account_id": "f6ea8d308195655d2149be349d7bc4e0",
   "compatibility_date": "2026-07-17",
   "workers_dev": true,
   "preview_urls": true,
@@ -35,8 +38,11 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "jjammocan-sightings",
-      "database_id": "e909c0a4-b968-4b56-b673-b6351c3eef62",
+      "database_name": "forgotten-industries",
+      "database_id": "0ba6a720-90a4-4de9-85b6-e454be150e04",
+      // Schema lives in numbered migrations, tracked per database in the
+      // d1_migrations table. See src/docs/d1-database-generalization.md.
+      "migrations_dir": "src/worker/migrations",
     },
   ],
 }

@@ -27,7 +27,12 @@ export default function CxrDossier() {
           </li>
           <li>
             Changing the opposite column re-scores the cross-reference; changing
-            the anchor&rsquo;s own column clears it.
+            the anchor&rsquo;s own column &mdash; including loading a different
+            URL into it &mdash; clears it.
+          </li>
+          <li>Related records that carry a link open in a new tab.</li>
+          <li>
+            A source that fails to load can be retried by selecting it again.
           </li>
         </ul>
 
@@ -89,20 +94,23 @@ export default function CxrDossier() {
         <ul>
           <li>
             Save a whole cross-reference &mdash; the anchored post, both column
-            sources, and the query &mdash; from the cross-reference panel.
+            sources, any pasted URLs, and the query &mdash; from the
+            cross-reference panel. Pressing Bookmark again on a saved
+            cross-reference removes it.
           </li>
           <li>
             Recall it later from the chip bar to restore that exact
-            configuration.
+            configuration, or remove it with the chip&rsquo;s &times;.
           </li>
         </ul>
 
         <h2 className="section-label">&gt; State</h2>
         <p>
           Source selections, the query, pasted URLs, and bookmarks persist in
-          the browser (localStorage) across sessions. The only requests that
-          reach a server are URL-source fetches, each proxied to retrieve the
-          page &mdash; no state is ever saved server-side.
+          the browser (localStorage) across sessions. CxR loads its source list
+          and the archive index from this site; Northern Information and pasted
+          URLs are fetched through the CORS proxy. Nothing is ever sent to be
+          saved server-side.
         </p>
       </div>
     </details>

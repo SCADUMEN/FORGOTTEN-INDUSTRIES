@@ -12,18 +12,26 @@ import {
   loadUrlSource,
   search,
 } from './lib/sources.js'
+import { URL_SOURCE_ID } from './lib/urlSource.js'
 import { relatedRecords, tokenize } from './lib/crossref.js'
 import {
   bookmarkKey,
   isBookmarked,
+  isValidBookmark,
   makeBookmark,
   toggleBookmark,
 } from './lib/bookmarks.js'
 
 const SITE_ORIGIN = 'https://forgotten-industries.net'
 
-// Column-select sentinel for the runtime, user-pasted URL source.
-const URL_SOURCE_ID = '__url__'
+// Absolute link for a record: external URLs as-is, archive paths resolved
+// against the site. Records without a URL have no link.
+function recordHref(record) {
+  if (!record.url) return null
+  return record.url.startsWith('http')
+    ? record.url
+    : `${SITE_ORIGIN}${record.url}`
+}
 
 export default function App() {
   const [manifest, setManifest] = useState(null)
@@ -45,11 +53,14 @@ export default function App() {
   const [errorA, setErrorA] = useState(null)
   const [errorB, setErrorB] = useState(null)
 
-  // { side: 'A' | 'B', record } - the cross-reference anchor.
+  // { side: 'A' | 'B', record, url } - the cross-reference anchor. `url` is the
+  // anchor column's URL when that column is a URL source, else null.
   const [anchor, setAnchor] = useState(null)
 
   // Load the manifest once, then seed each column to a sensible default source
   // when localStorage has none yet (A = first source, B = second or first).
+  // Functional updaters read the current selection, so the effect needs no
+  // dependencies.
   useEffect(() => {
     let cancelled = false
     loadManifest()
@@ -58,30 +69,45 @@ export default function App() {
         setManifest(data)
         const ids = data.sources.map((source) => source.id)
         // Leave a URL selection intact; it isn't a manifest source.
-        if (colA !== URL_SOURCE_ID && !ids.includes(colA))
-          setColA(ids[0] ?? null)
-        if (colB !== URL_SOURCE_ID && !ids.includes(colB))
-          setColB(ids[1] ?? ids[0] ?? null)
+        const keep = (col) => col === URL_SOURCE_ID || ids.includes(col)
+        setColA((col) => (keep(col) ? col : (ids[0] ?? null)))
+        setColB((col) => (keep(col) ? col : (ids[1] ?? ids[0] ?? null)))
       })
       .catch((err) => !cancelled && setManifestError(err.message))
     return () => {
       cancelled = true
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [setColA, setColB])
 
   useLoadedSource(colA, urlA, setSourceA, setLoadingA, setErrorA)
   useLoadedSource(colB, urlB, setSourceB, setLoadingB, setErrorB)
 
   // Drop the anchor only when its OWN column swaps to a different source (its
-  // record no longer belongs there). Changing the opposite column keeps the
-  // anchor and just re-scores the cross-reference. Because a restored anchor's
-  // side source always matches its record, this never fires on restore.
+  // record no longer belongs there), including a URL column loading a
+  // different URL. Changing the opposite column keeps the anchor and just
+  // re-scores the cross-reference. A restored anchor carries the restored
+  // column's URL, so this never fires on restore.
   useEffect(() => {
     if (!anchor) return
     const sideSource = anchor.side === 'A' ? colA : colB
-    if (anchor.record.sourceId !== sideSource) setAnchor(null)
-  }, [colA, colB, anchor])
+    const sideUrl = anchor.side === 'A' ? urlA : urlB
+    const moved =
+      anchor.record.sourceId !== sideSource ||
+      (sideSource === URL_SOURCE_ID && anchor.url !== sideUrl)
+    if (moved) setAnchor(null)
+  }, [colA, colB, urlA, urlB, anchor])
+
+  // Anything malformed in storage is ignored rather than crashing the chips.
+  const savedBookmarks = useMemo(
+    () => bookmarks.filter(isValidBookmark),
+    [bookmarks]
+  )
+
+  const selectAnchor = (side, record) => {
+    const col = side === 'A' ? colA : colB
+    const url = side === 'A' ? urlA : urlB
+    setAnchor({ side, record, url: col === URL_SOURCE_ID ? url : null })
+  }
 
   const queryTerms = useMemo(() => tokenize(query), [query])
 
@@ -109,29 +135,53 @@ export default function App() {
     ? bookmarkKey({
         colA,
         colB,
+        urlA,
+        urlB,
         anchorSide: anchor.side,
         anchorId: anchor.record.id,
       })
     : null
-  const isSaved = isBookmarked(bookmarks, currentKey)
+  const isSaved = isBookmarked(savedBookmarks, currentKey)
 
   const handleBookmark = () => {
     if (!anchor) return
     const bookmark = makeBookmark(
-      { colA, colB, query, anchorSide: anchor.side, record: anchor.record },
+      {
+        colA,
+        colB,
+        urlA,
+        urlB,
+        query,
+        anchorSide: anchor.side,
+        record: anchor.record,
+      },
       Date.now()
     )
-    setBookmarks((list) => toggleBookmark(list, bookmark))
+    setBookmarks((list) =>
+      toggleBookmark(list.filter(isValidBookmark), bookmark)
+    )
   }
 
-  // Recall a saved cross-reference: reselect both sources, refill the query, and
-  // re-anchor the post. The source-consistency guard above leaves this anchor in
-  // place because the restored state is self-consistent.
+  // Recall a saved cross-reference: reselect both sources and any URLs, refill
+  // the query, and re-anchor the post. The source-consistency guard above
+  // leaves this anchor in place because the restored state is self-consistent.
+  // Bookmarks saved before URLs were tracked keep the column's current URL.
   const handleRestore = (bookmark) => {
+    const restoredUrlA = bookmark.urlA ?? urlA
+    const restoredUrlB = bookmark.urlB ?? urlB
     setColA(bookmark.colA)
     setColB(bookmark.colB)
+    setUrlA(restoredUrlA)
+    setUrlB(restoredUrlB)
     setQuery(bookmark.query)
-    setAnchor({ side: bookmark.anchorSide, record: bookmark.anchor })
+    const anchorCol =
+      bookmark.anchorSide === 'A' ? bookmark.colA : bookmark.colB
+    const anchorUrl = bookmark.anchorSide === 'A' ? restoredUrlA : restoredUrlB
+    setAnchor({
+      side: bookmark.anchorSide,
+      record: bookmark.anchor,
+      url: anchorCol === URL_SOURCE_ID ? anchorUrl : null,
+    })
   }
 
   const handleRemoveBookmark = (key) => {
@@ -187,6 +237,7 @@ export default function App() {
           <label className="continuance-search-field">
             <span className="sr-only">Search both sources</span>
             <input
+              id="continuance-search"
               type="search"
               value={query}
               placeholder="Search both sources…"
@@ -197,8 +248,7 @@ export default function App() {
         </div>
 
         <BookmarkBar
-          bookmarks={bookmarks}
-          manifest={manifest}
+          bookmarks={savedBookmarks}
           onRestore={handleRestore}
           onRemove={handleRemoveBookmark}
         />
@@ -218,7 +268,7 @@ export default function App() {
             loading={loadingA}
             error={errorA}
             selectedId={anchor?.side === 'A' ? anchor.record.id : null}
-            onSelect={(record) => setAnchor({ side: 'A', record })}
+            onSelect={(record) => selectAnchor('A', record)}
           />
 
           <CrossReference
@@ -231,12 +281,7 @@ export default function App() {
             related={related}
             onBookmark={handleBookmark}
             isSaved={isSaved}
-            onOpen={(record) => {
-              const url = record.url?.startsWith('http')
-                ? record.url
-                : `${SITE_ORIGIN}${record.url || ''}`
-              if (record.url) window.open(url, '_blank', 'noopener')
-            }}
+            hrefFor={recordHref}
           />
 
           <Column
@@ -251,7 +296,7 @@ export default function App() {
             loading={loadingB}
             error={errorB}
             selectedId={anchor?.side === 'B' ? anchor.record.id : null}
-            onSelect={(record) => setAnchor({ side: 'B', record })}
+            onSelect={(record) => selectAnchor('B', record)}
           />
         </div>
       </div>
@@ -265,13 +310,11 @@ export default function App() {
 function useLoadedSource(id, url, setSource, setLoading, setError) {
   useEffect(() => {
     setError(null)
-    if (!id) {
+    // No source, or URL selected with nothing entered yet: nothing to load.
+    // Clear loading too, since a load this effect superseded may have set it.
+    if (!id || (id === URL_SOURCE_ID && !url)) {
       setSource(null)
-      return
-    }
-    // URL selected but nothing entered yet: nothing to load.
-    if (id === URL_SOURCE_ID && !url) {
-      setSource(null)
+      setLoading(false)
       return
     }
     let cancelled = false

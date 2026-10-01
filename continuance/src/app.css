@@ -352,6 +352,7 @@
 }
 
 .continuance-snippet {
+  display: block;
   margin: 0.5rem 0 0;
   color: var(--muted);
   font-family: var(--font-ui);
@@ -461,11 +462,17 @@
   color: var(--ink);
   font: inherit;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.continuance-crossref-item:hover {
+a.continuance-crossref-item:hover {
   border-color: var(--fi-cyan);
+}
+
+/* A related record with no URL has nowhere to go: no link, no pointer. */
+.continuance-crossref-item.is-static {
+  cursor: default;
 }
 
 .continuance-crossref-score {

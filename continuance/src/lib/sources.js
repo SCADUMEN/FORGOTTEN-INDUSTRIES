@@ -1,5 +1,10 @@
 import MiniSearch from 'minisearch'
-import { buildProxyUrl, hostnameOf, normalizeUrlPayload } from './urlSource.js'
+import {
+  URL_SOURCE_ID,
+  buildProxyUrl,
+  hostnameOf,
+  normalizeUrlPayload,
+} from './urlSource.js'
 
 // URL-source fetches route through a CORS proxy, since arbitrary origins rarely
 // send Access-Control-Allow-Origin for a browser to read cross-origin. Baked in
@@ -8,11 +13,14 @@ import { buildProxyUrl, hostnameOf, normalizeUrlPayload } from './urlSource.js'
 const CORS_PROXY =
   import.meta.env.VITE_CORS_PROXY ?? 'https://cors-proxy.vaporwavemall.com/'
 
-// Data lives beside the app under /continuance/data/, emitted by
-// scripts/build_continuance_index.cjs. BASE_URL is '/continuance/' in the build
-// and on the dev server, so these resolve in both.
+// Data lives beside the app under /cxr/data/, emitted by
+// scripts/build_continuance_index.cjs. BASE_URL is '/cxr/' (vite.config.js
+// `base`) in the build and on the dev server, so these resolve in both.
 const DATA_BASE = `${import.meta.env.BASE_URL}data/`
 
+// Loads are cached as promises so concurrent callers share one fetch. A
+// rejected load is evicted, so re-selecting a source after a failure (proxy
+// down, a 403) retries instead of replaying the old error until reload.
 let manifestPromise = null
 
 export async function loadManifest() {
@@ -21,6 +29,9 @@ export async function loadManifest() {
     if (!res.ok)
       throw new Error(`Failed to load sources manifest (${res.status})`)
     return res.json()
+  })
+  manifestPromise.catch(() => {
+    manifestPromise = null
   })
   return manifestPromise
 }
@@ -31,6 +42,7 @@ export async function loadSource(id) {
   if (sourceCache.has(id)) return sourceCache.get(id)
   const promise = resolveSource(id)
   sourceCache.set(id, promise)
+  promise.catch(() => sourceCache.delete(id))
   return promise
 }
 
@@ -47,21 +59,24 @@ async function resolveSource(id) {
   const res = await fetch(`${DATA_BASE}${id}.json`)
   if (!res.ok) throw new Error(`Failed to load source "${id}" (${res.status})`)
   const data = await res.json()
-  return { ...data, records: dedupeById(data.records || []) }
+  return { ...data, records: cleanRecords(data.records || []) }
 }
 
 // Records feed a MiniSearch index keyed by id, which rejects duplicate ids, and
-// React lists keyed by id. Arbitrary sources (a hand-made CSV, a submodule with
-// reused slugs) can carry duplicates, so we drop repeats defensively at load
-// time - keeping the first occurrence - rather than letting one bad row crash
-// the whole surface.
-function dedupeById(records) {
+// React lists keyed by id (records) and by tag (tag chips). Arbitrary sources
+// (a hand-made CSV, a submodule with reused slugs, a feed repeating a tag) can
+// carry duplicates, so we drop repeats defensively at load time - keeping the
+// first occurrence - rather than letting one bad row crash the whole surface.
+export function cleanRecords(records) {
   const seen = new Set()
   const unique = []
   for (const record of records) {
     if (seen.has(record.id)) continue
     seen.add(record.id)
-    unique.push(record)
+    const tags = Array.isArray(record.tags)
+      ? [...new Set(record.tags.filter(Boolean).map(String))]
+      : []
+    unique.push({ ...record, tags })
   }
   return unique
 }
@@ -79,14 +94,14 @@ async function fetchAndNormalize(url, sourceId) {
   } catch {
     payload = raw
   }
-  return dedupeById(normalizeUrlPayload(url, payload, sourceId))
+  return cleanRecords(normalizeUrlPayload(url, payload, sourceId))
 }
 
-// A pasted-URL source. The source id is unique per URL (`url:<url>`) so the
-// MiniSearch index never goes stale when the URL changes; records carry the
-// '__url__' sentinel sourceId.
+// A pasted-URL source. The source id is unique per URL (`url:<url>`); records
+// carry the URL_SOURCE_ID sentinel sourceId. Each load returns a fresh source
+// object, so the per-source caches below never serve a stale index.
 export async function loadUrlSource(url) {
-  const records = await fetchAndNormalize(url, '__url__')
+  const records = await fetchAndNormalize(url, URL_SOURCE_ID)
   return { id: `url:${url}`, label: hostnameOf(url), kind: 'url', records }
 }
 
@@ -98,12 +113,15 @@ export async function loadFeedSource({ id, label, feedUrl }) {
   return { id, label, kind: 'feed', records }
 }
 
-// One MiniSearch index per source, built once and reused. Title and tags are
-// boosted so a name match outranks an incidental body match.
-const indexCache = new Map()
+// One MiniSearch index per loaded source object, built once and reused. Keyed
+// by object identity (not source.id) so an empty error placeholder never
+// poisons the index for a source that later loads, and so indexes for
+// abandoned URL sources are garbage-collected. Title and tags are boosted so a
+// name match outranks an incidental body match.
+const indexCache = new WeakMap()
 
-export function buildIndex(source) {
-  if (indexCache.has(source.id)) return indexCache.get(source.id)
+function buildIndex(source) {
+  if (indexCache.has(source)) return indexCache.get(source)
 
   const mini = new MiniSearch({
     idField: 'id',
@@ -123,18 +141,18 @@ export function buildIndex(source) {
   })
 
   mini.addAll(source.records)
-  indexCache.set(source.id, mini)
+  indexCache.set(source, mini)
   return mini
 }
 
-// id -> original record, cached per source, so search hits map back to the
-// records the UI renders.
-const recordMapCache = new Map()
+// id -> original record, cached per source object, so search hits map back to
+// the records the UI renders.
+const recordMapCache = new WeakMap()
 
 function recordMap(source) {
-  if (recordMapCache.has(source.id)) return recordMapCache.get(source.id)
+  if (recordMapCache.has(source)) return recordMapCache.get(source)
   const map = new Map(source.records.map((record) => [record.id, record]))
-  recordMapCache.set(source.id, map)
+  recordMapCache.set(source, map)
   return map
 }
 
@@ -147,9 +165,4 @@ export function search(source, query) {
     .search(trimmed)
     .map((hit) => byId.get(hit.id))
     .filter(Boolean)
-}
-
-// Look a record up by id within a loaded source.
-export function recordById(source, id) {
-  return recordMap(source).get(id) || null
 }

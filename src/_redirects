@@ -12,3 +12,5 @@
 /archive/aerial-documentation /l-archive/from-on-high/ 301
 /archive/aerial-documentation/ /l-archive/from-on-high/ 301
 /docs/ai-generation-citation-standard.md /provenance/#citation-standards 301
+# dist/archive.json was a byte-identical alias of the canonical archive JSON.
+/dist/archive.json /dist/forgotten-industries.json 301

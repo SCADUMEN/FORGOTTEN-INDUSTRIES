@@ -1,0 +1,5 @@
+artifact: https://claude.ai/code/artifact/18facbbf-bdce-4b08-9308-cf829af5df8c
+version: 1789355748-591f
+saved: 2026-09-13
+sha256: 0ba3c098c837747eb2fb6b79071dc6456f701ee1993ca719b85d244d1f540833
+note: verbatim export of the published Field Kit teaser (Bulletin B), including the host wrapper skeleton; cache hint and coordinates are placeholders

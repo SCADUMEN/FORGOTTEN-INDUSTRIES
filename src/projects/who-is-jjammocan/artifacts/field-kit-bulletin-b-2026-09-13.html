@@ -1,0 +1,568 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>J.J. Ammo Can Field Kit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Stardos+Stencil:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper: #F2EBD9;
+    --paper-alt: #E8DEC4;
+    --paper-line: #D8CCA8;
+    --ink: #2B2620;
+    --ink-soft: #5B5142;
+    --khaki: #A9976B;
+    --earth: #7A4B2E;
+    --green: #4F5D3A;
+    --gold: #B8862E;
+    --red-ink: #8B3A2B;
+    --can: #4A4A2E;
+    --can-edge: #33331F;
+    --stencil: #E2C25A;
+    --redact: #2B2620;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211C15;
+      --paper-alt: #2A2319;
+      --paper-line: #3C3322;
+      --ink: #EDE3C8;
+      --ink-soft: #B8A98A;
+      --khaki: #6E6248;
+      --earth: #C98A54;
+      --green: #8FA06C;
+      --gold: #D9A544;
+      --red-ink: #C97456;
+      --can: #45452B;
+      --can-edge: #1A1A10;
+      --stencil: #E8C860;
+      --redact: #EDE3C8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211C15;
+    --paper-alt: #2A2319;
+    --paper-line: #3C3322;
+    --ink: #EDE3C8;
+    --ink-soft: #B8A98A;
+    --khaki: #6E6248;
+    --earth: #C98A54;
+    --green: #8FA06C;
+    --gold: #D9A544;
+    --red-ink: #C97456;
+    --can: #45452B;
+    --can-edge: #1A1A10;
+    --stencil: #E8C860;
+    --redact: #EDE3C8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Lora", Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    background-image: repeating-linear-gradient(180deg, transparent 0 39px, var(--paper-line) 39px 40px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .mono {
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+  }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    border-bottom: 1px solid var(--khaki);
+    padding-bottom: 0.6rem;
+  }
+
+  header.masthead {
+    margin-top: 1.4rem;
+    position: relative;
+  }
+  .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin: 0;
+  }
+  h1.title {
+    font-family: "Special Elite", "Courier New", monospace;
+    font-weight: 400;
+    font-size: clamp(2rem, 5.6vw, 3.1rem);
+    line-height: 1.08;
+    margin: 0.3rem 0 0;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+  .status-stamp {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--green);
+    border: 2px solid var(--green);
+    border-radius: 2px;
+    padding: 0.3rem 0.6rem;
+    transform: rotate(3deg);
+    position: absolute;
+    top: 0.2rem;
+    right: 0;
+    opacity: 0.9;
+  }
+  @media (max-width: 560px) {
+    .status-stamp { position: static; display: inline-block; margin-bottom: 0.8rem; }
+  }
+  .dek {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 50ch;
+    margin: 1.1rem 0 0;
+    text-wrap: balance;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--khaki);
+    margin: 2.2rem 0;
+  }
+
+  /* ---- container plate ---- */
+  .container-plate {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 600px) {
+    .container-plate { grid-template-columns: 1fr; }
+  }
+
+  .lid {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.05), transparent 40%),
+      var(--can);
+    border: 3px solid var(--can-edge);
+    box-shadow: inset 0 0 0 6px var(--can), inset 0 0 0 8px var(--can-edge);
+    padding: 1.6rem 1.3rem 1.3rem;
+    color: var(--stencil);
+    font-family: "Stardos Stencil", "Impact", "Arial Narrow", sans-serif;
+    text-transform: uppercase;
+    line-height: 1.12;
+    position: relative;
+  }
+  .lid::before {
+    content: "";
+    position: absolute;
+    top: 0.55rem;
+    left: 50%;
+    width: 40%;
+    height: 0.35rem;
+    transform: translateX(-50%);
+    background: var(--can-edge);
+    border-radius: 1px;
+  }
+  .lid-line { display: block; letter-spacing: 0.04em; }
+  .lid-big { font-size: clamp(1.7rem, 5vw, 2.1rem); font-weight: 700; margin-top: 0.4rem; }
+  .lid-mid { font-size: 1.05rem; margin-top: 0.5rem; }
+  .lid-small { font-size: 0.82rem; margin-top: 0.6rem; opacity: 0.88; }
+  .lid-rule { border: none; border-top: 2px solid var(--stencil); opacity: 0.55; margin: 0.8rem 0 0.2rem; }
+  .plate-caption {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 0.6rem 0 0;
+  }
+
+  .marks-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin: 0 0 0.7rem;
+  }
+  .contents {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .contents li {
+    padding-left: 1rem;
+    border-left: 2px solid var(--khaki);
+  }
+  .contents strong {
+    display: block;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+  .contents span {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  /* ---- section heads ---- */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-family: "Special Elite", "Courier New", monospace;
+    font-weight: 400;
+    font-size: 1.35rem;
+    margin: 0;
+  }
+  .section-note {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- cache register ---- */
+  .register { display: flex; flex-direction: column; }
+  .cache {
+    display: grid;
+    grid-template-columns: 5.4rem 1fr auto;
+    gap: 0.35rem 1.1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--paper-line);
+    align-items: baseline;
+  }
+  .cache:first-child { padding-top: 0; }
+  @media (max-width: 560px) {
+    .cache { grid-template-columns: 1fr auto; }
+    .cache-id { grid-column: 1 / -1; }
+  }
+  .cache-id {
+    font-family: "Stardos Stencil", "Impact", sans-serif;
+    font-size: 1.15rem;
+    color: var(--earth);
+    letter-spacing: 0.04em;
+  }
+  .cache-body { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+  .coords {
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.86rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.2rem;
+  }
+  .redact {
+    background: var(--redact);
+    color: transparent;
+    border-radius: 1px;
+    padding: 0 0.1rem;
+    user-select: none;
+  }
+  .cache-note { font-size: 0.93rem; color: var(--ink); margin: 0; }
+  .cache-note.is-muted { color: var(--ink-soft); }
+
+  .state {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.4rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .state--staged { color: var(--gold); border: 1px solid var(--gold); }
+  .state--pending { color: var(--ink-soft); border: 1px dashed var(--khaki); }
+
+  .hint {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .hint-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .hint-text {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.86rem;
+    color: var(--green);
+  }
+  .hint-btn {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--earth);
+    border: 1px solid var(--earth);
+    border-radius: 2px;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+  }
+  .hint-btn:hover { background: var(--paper-alt); }
+  .hint-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---- protocol ---- */
+  .protocol {
+    list-style: none;
+    counter-reset: step;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem 1.6rem;
+  }
+  .protocol li {
+    counter-increment: step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .protocol li::before {
+    content: "Step " counter(step);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--earth);
+  }
+  .protocol strong { font-weight: 600; }
+  .protocol span { color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* ---- terms ---- */
+  .terms {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0.55rem 1rem;
+    margin: 0;
+  }
+  .terms dt {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    font-size: 0.84rem;
+    color: var(--ink);
+  }
+  .terms dd { margin: 0; font-size: 0.93rem; color: var(--ink-soft); }
+
+  /* ---- addendum ---- */
+  .addendum {
+    margin-top: 2.4rem;
+    border-top: 2px dashed var(--khaki);
+    padding-top: 1.4rem;
+  }
+  .addendum-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red-ink);
+    margin: 0 0 0.6rem;
+  }
+  .addendum p { margin: 0; max-width: 62ch; }
+  .addendum p + p { margin-top: 0.6rem; }
+
+  footer.colophon {
+    margin-top: 2.6rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+</style>
+
+<div class="sheet">
+
+  <div class="eyebrow">
+    <span>Forgotten Industries Field Office</span>
+    <span>Case File No. 011 &middot; Bulletin B</span>
+  </div>
+
+  <header class="masthead">
+    <span class="status-stamp">Field kit issued</span>
+    <p class="kicker">Supplement to the sighting log</p>
+    <h1 class="title">It leaves things behind.</h1>
+    <p class="dek">Not every trace is a sighting. Some are olive-drab steel boxes, latched shut and put back where they were found. Each one holds a log and a clue. Each clue points somewhere else.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="container-plate">
+    <figure style="margin:0">
+      <div class="lid" role="img" aria-label="Stencilled lid of a .50 caliber ammunition can, marked J.J. lot 001, contents one clue">
+        <span class="lid-line lid-small">Cartridges, cal .50</span>
+        <span class="lid-line lid-big">M2A1</span>
+        <span class="lid-line lid-mid">Lot JJAC-001</span>
+        <hr class="lid-rule">
+        <span class="lid-line lid-small">Contents: 1 log &middot; 1 clue</span>
+        <span class="lid-line lid-small">Return as found</span>
+      </div>
+      <p class="plate-caption">Container type, as described in filed reports</p>
+    </figure>
+
+    <div>
+      <p class="marks-label">Contents of every can</p>
+      <ul class="contents">
+        <li>
+          <strong>A logbook</strong>
+          <span>Sign it with a handle, the date, and the time. Every name in it is a witness.</span>
+        </li>
+        <li>
+          <strong>One clue card</strong>
+          <span>Photograph it. Leave it. The next person needs it as much as you did.</span>
+        </li>
+        <li>
+          <strong>Nothing else, usually</strong>
+          <span>If you find something that isn't on this list, write it down before touching it.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">Cache Register</h2>
+      <span class="section-note">1 staged &middot; 2 pending</span>
+    </div>
+
+    <div class="register">
+      <article class="cache">
+        <span class="cache-id">001</span>
+        <div class="cache-body">
+          <div class="coords" aria-label="Coordinates withheld">
+            <span>N 37&deg; <span class="redact">00.000</span></span>
+            <span>W 097&deg; <span class="redact">00.000</span></span>
+          </div>
+          <p class="cache-note">Coordinates release with the next confirmed sighting.</p>
+          <div class="hint">
+            <span class="hint-label">Hint</span>
+            <span class="hint-text" id="hint-001" data-cipher="Fgneg jurer gur ung jnf fbyq.">Fgneg jurer gur ung jnf fbyq.</span>
+            <button class="hint-btn" id="hint-001-btn" type="button" aria-controls="hint-001" aria-pressed="false">Decode</button>
+          </div>
+        </div>
+        <span class="state state--staged">Staged</span>
+      </article>
+
+      <article class="cache">
+        <span class="cache-id">002</span>
+        <div class="cache-body">
+          <div class="coords" aria-label="Coordinates not yet assigned">
+            <span>N <span class="redact">00&deg; 00.000</span></span>
+            <span>W <span class="redact">000&deg; 00.000</span></span>
+          </div>
+          <p class="cache-note is-muted">Location depends on what 001 says.</p>
+        </div>
+        <span class="state state--pending">Pending</span>
+      </article>
+
+      <article class="cache">
+        <span class="cache-id">003</span>
+        <div class="cache-body">
+          <div class="coords" aria-label="Coordinates not yet assigned">
+            <span>N <span class="redact">00&deg; 00.000</span></span>
+            <span>W <span class="redact">000&deg; 00.000</span></span>
+          </div>
+          <p class="cache-note is-muted">No report yet.</p>
+        </div>
+        <span class="state state--pending">Pending</span>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">Finding a Can</h2>
+    </div>
+    <ol class="protocol">
+      <li><strong>Get to the spot</strong><span>Coordinates get you close, within about 30 feet. The last stretch is on you.</span></li>
+      <li><strong>Look, don't dig</strong><span>No can is ever buried. Check under, behind, and inside, never beneath the ground.</span></li>
+      <li><strong>Sign and photograph</strong><span>Log your handle and time. Photograph the clue card, not the hiding spot.</span></li>
+      <li><strong>Put it back</strong><span>Latch it and return it exactly as found. Then file what you saw.</span></li>
+    </ol>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">Field Terms</h2>
+    </div>
+    <dl class="terms">
+      <dt>GZ</dt><dd>Ground zero. Where the coordinates say the can is.</dd>
+      <dt>DNF</dt><dd>Did not find. File it anyway. A DNF is still data.</dd>
+      <dt>ROT13</dt><dd>How hints are scrambled: each letter shifted 13 places, so no one reads them by accident.</dd>
+      <dt>Muggle</dt><dd>Anyone not looking. Don't search in front of them.</dd>
+    </dl>
+  </section>
+
+  <div class="addendum">
+    <p class="addendum-title">Addendum &middot; Unconfirmed pattern</p>
+    <p>Two filed reports mention a small aircraft overhead in the minutes before a sighting. Low, quiet, gone before anyone thought to look for it.</p>
+    <p>If you see one, note the time. If you carry something that can listen to what it broadcasts, listen.</p>
+  </div>
+
+  <footer class="colophon">
+    <span>Filed under FI-PROJ-011</span>
+    <span>Return every can as found.</span>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    function rot13(s) {
+      return s.replace(/[a-z]/gi, function (c) {
+        var base = c <= "Z" ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+      });
+    }
+    document.querySelectorAll(".hint-btn").forEach(function (btn) {
+      var target = document.getElementById(btn.getAttribute("aria-controls"));
+      btn.addEventListener("click", function () {
+        var decoded = btn.getAttribute("aria-pressed") === "true";
+        target.textContent = decoded ? target.dataset.cipher : rot13(target.dataset.cipher);
+        btn.setAttribute("aria-pressed", String(!decoded));
+        btn.textContent = decoded ? "Decode" : "Encode";
+      });
+    });
+  })();
+</script>
+
+</body></html>

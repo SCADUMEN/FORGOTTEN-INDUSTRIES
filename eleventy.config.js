@@ -1,6 +1,14 @@
 import fs from 'node:fs'
 import nodePath from 'node:path'
 import { feedPlugin } from '@11ty/eleventy-plugin-rss'
+import objectMedia from './scripts/lib/object-media.cjs'
+
+const {
+  linkPreviewDerivative,
+  linkPreviewPhoto,
+  publicObjectPhotos,
+  publicObjectVideos,
+} = objectMedia
 
 function canonicalPath(value = '/') {
   const raw = String(value || '/').trim()
@@ -338,6 +346,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/assets': 'cxr/assets' })
   eleventyConfig.addPassthroughCopy({ 'continuance/dist/data': 'cxr/data' })
 
+  // The Ground Survey is a Vite/three.js game built to ground-survey/dist by
+  // `npm run build:game` (before eleventy in build:site). Its page shell is
+  // src/bull-valley.njk — standalone like the Scaduscope, not base.njk — so
+  // only the built bundle is copied. It serves at /bull-valley/ and reads the
+  // Scaduscope's terrain + geo data from /assets/data/bull-valley/.
+  eleventyConfig.addPassthroughCopy({
+    'ground-survey/dist/assets': 'bull-valley/assets',
+  })
+
   // The canonical CONTINUANCE persona source, published for inspection like the
   // ATLAS source dossier. Repo root is outside src/, so it needs its own copy.
   eleventyConfig.addPassthroughCopy({ 'continuance.md': 'continuance.md' })
@@ -446,37 +463,8 @@ export default function (eleventyConfig) {
     return `/archive/objects/${archiveSlug(item?.id || item?.name)}/`
   })
 
-  // `photos` is a mixed media list: source stills, QuickTime clips from a
-  // phone, and private HEIC originals that never clear the public path check.
-  // Renderers need the stills and the footage kept apart, because an extension
-  // the browser cannot decode in an <img> is a broken record, not a photograph.
-  // Anything unrecognised (.heic today) is withheld rather than published broken.
-  const OBJECT_IMAGE_EXTENSIONS = /\.(avif|gif|jpe?g|png|svg|webp)$/i
-  const OBJECT_VIDEO_EXTENSIONS = /\.(mov|mp4|webm)$/i
-
-  function publicObjectMedia(item) {
-    return Array.isArray(item?.photos)
-      ? item.photos.filter(
-          (photo) =>
-            typeof photo === 'string' &&
-            (photo.startsWith('assets/') ||
-              photo.startsWith('forgotten-industries/'))
-        )
-      : []
-  }
-
-  function publicObjectPhotos(item) {
-    return publicObjectMedia(item).filter((photo) =>
-      OBJECT_IMAGE_EXTENSIONS.test(photo)
-    )
-  }
-
-  function publicObjectVideos(item) {
-    return publicObjectMedia(item).filter((photo) =>
-      OBJECT_VIDEO_EXTENSIONS.test(photo)
-    )
-  }
-
+  // Public stills and footage from an object's mixed `photos` list; the rules
+  // live in scripts/lib/object-media.cjs so the derivative builder shares them.
   const MEDIA_MIME_TYPES = {
     mov: 'video/quicktime',
     mp4: 'video/mp4',
@@ -527,9 +515,16 @@ export default function (eleventyConfig) {
     return sources
   })
 
+  // The link-preview image (og:image): the item's poster-preferred still, or
+  // the enlarged copy build:derivatives writes when that still is too narrow
+  // for link unfurlers such as iMessage to show.
   eleventyConfig.addFilter('objectPrimaryImage', function (item) {
-    const photo = publicObjectPhotos(item)[0]
-    return photo ? `/${photo}` : ''
+    const photo = linkPreviewPhoto(item)
+    if (!photo) return ''
+    const enlarged = linkPreviewDerivative(photo)
+    return fs.existsSync(nodePath.join('src', enlarged))
+      ? `/${enlarged}`
+      : `/${photo}`
   })
 
   eleventyConfig.addFilter('countObjectsWithPhotos', function (items) {

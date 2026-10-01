@@ -9,8 +9,9 @@
 // ships. Editing an inline script without rebuilding is therefore impossible to
 // get wrong — the hash is recomputed from the same bytes the browser will see.
 //
-// Run with --check to verify the committed policy matches the built site
-// without writing (used to catch a stale _headers in CI).
+// Run with --check to verify _site/_headers matches the built site without
+// writing. build:site always regenerates the header, so this is for checking a
+// local _site after hand edits, not a CI gate.
 
 const fs = require('fs')
 const path = require('path')
@@ -30,6 +31,12 @@ const CORS_PROXY = 'https://cors-proxy.vaporwavemall.com'
 // invisible to a source grep — it was found by loading the page under the
 // policy and reading the violation.
 const ZOOT_MEDIA = 'https://assets.the-rn.info'
+
+// The Bull Valley Scaduscope reads live weather for the village straight from
+// Open-Meteo (no key, CORS-open). Its terrain, roads, and traffic are baked
+// into same-origin files by scripts/fetch_bull_valley.cjs, so this is its only
+// external origin.
+const OPEN_METEO = 'https://api.open-meteo.com'
 
 // A <script> whose type is not a JavaScript type is a data block: the browser
 // never executes it, and CSP does not govern it. The archive's 1000+ JSON-LD
@@ -86,7 +93,7 @@ function buildPolicy(scriptHashes) {
     "img-src 'self'",
     "font-src 'self'",
     `media-src 'self' ${ZOOT_MEDIA}`,
-    `connect-src 'self' ${CORS_PROXY}`,
+    `connect-src 'self' ${CORS_PROXY} ${OPEN_METEO}`,
     "frame-src 'self'",
     "frame-ancestors 'self'",
     "base-uri 'self'",

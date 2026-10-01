@@ -1,0 +1,399 @@
+/* Ground Survey HUD. Tokens (--fi-*) are declared by the host page —
+   src/bull-valley.njk in production, index.html in dev — both sourced from
+   src/css/archive.css. Styleguide idioms: dark field, hard edges, offset
+   shadows, role colors, SYSOUT green for machine readouts, 3px cyan focus. */
+
+.gs-shell {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  font-family: var(--gs-mono, 'Space Mono', ui-monospace, monospace);
+  color: var(--fi-paper-light);
+  background: var(--fi-bg);
+}
+
+.gs-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.gs-ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Several overlays set their own display, which would beat the UA's
+   [hidden] { display: none }. Keep hidden meaning hidden. */
+.gs-ui [hidden] {
+  display: none !important;
+}
+
+.gs-ui a {
+  color: var(--fi-cyan);
+}
+
+.gs-ui :focus-visible {
+  outline: 3px solid var(--fi-cyan);
+  outline-offset: 3px;
+}
+
+/* Readout */
+.gs-head {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-green);
+  box-shadow: 4px 4px 0 var(--fi-black-shadow);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  max-width: 18rem;
+}
+
+.gs-head h1 {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  color: var(--fi-green);
+  text-transform: uppercase;
+}
+
+.gs-head dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 0.15rem 0.5rem;
+}
+
+.gs-head dt {
+  color: var(--fi-slate);
+  text-transform: uppercase;
+}
+
+.gs-head dd {
+  margin: 0;
+  color: var(--fi-green);
+}
+
+/* Nerves */
+.gs-nerves {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fi-slate);
+}
+
+.gs-nerves-track {
+  display: inline-block;
+  width: 11rem;
+  height: 0.55rem;
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-slate);
+  box-shadow: 3px 3px 0 var(--fi-black-shadow);
+}
+
+.gs-nerves-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--fi-green);
+  transition: width 0.2s steps(8);
+}
+
+.gs-nerves-fill--high {
+  background: var(--fi-magenta);
+}
+
+/* Weed dulls the meter: it reads soft and slow on purpose. */
+.gs-nerves--fuzzy .gs-nerves-fill {
+  filter: blur(2px);
+  transition: width 1.6s linear;
+}
+
+/* Effect timers */
+.gs-timers {
+  position: absolute;
+  left: 1rem;
+  bottom: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.gs-timer {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fi-amber);
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-amber);
+  padding: 0.15rem 0.4rem;
+  width: max-content;
+}
+
+/* Scope */
+.gs-scope {
+  position: absolute;
+  right: 1rem;
+  bottom: -18rem;
+  width: 15rem;
+  height: 15rem;
+  transition: bottom 0.25s steps(6);
+  filter: drop-shadow(5px 5px 0 var(--fi-black-shadow));
+}
+
+.gs-scope--raised {
+  bottom: 1rem;
+}
+
+/* Prompt + toasts */
+.gs-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-cyan);
+  color: var(--fi-cyan);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+
+.gs-toasts {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.gs-toast {
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-green);
+  color: var(--fi-green);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  transition: opacity 0.8s;
+}
+
+.gs-toast--out {
+  opacity: 0;
+}
+
+/* Inventory */
+.gs-inventory {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 20rem;
+  padding: 1rem 1.2rem;
+  background: var(--fi-surface-82);
+  border: 1px solid var(--fi-paper-light);
+  box-shadow: 6px 6px 0 var(--fi-black-shadow);
+  font-size: 0.68rem;
+}
+
+.gs-inventory h2 {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fi-paper-light);
+}
+
+.gs-inventory ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.gs-inventory li {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr 2rem;
+  gap: 0.2rem 0.5rem;
+  align-items: baseline;
+}
+
+.gs-inventory li b {
+  color: var(--fi-amber);
+  text-align: right;
+}
+
+.gs-inventory li i {
+  grid-column: 2 / 4;
+  font-style: normal;
+  color: var(--fi-slate);
+  font-size: 0.6rem;
+}
+
+.gs-item-key {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid var(--fi-cyan);
+  color: var(--fi-cyan);
+}
+
+.gs-inventory-hint {
+  margin: 0.7rem 0 0;
+  color: var(--fi-slate);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+/* Vignette + strike static */
+.gs-vignette {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 42%,
+    rgb(0 0 0 / 0.85) 100%
+  );
+}
+
+.gs-static {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--fi-bg);
+}
+
+.gs-static canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0.85;
+}
+
+.gs-static-label {
+  position: relative;
+  margin: 0;
+  color: var(--fi-maroon);
+  background: var(--fi-bg);
+  border: 1px solid var(--fi-maroon);
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+}
+
+/* Intro / pause */
+.gs-intro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  text-align: center;
+  background: rgb(0 0 0 / 0.78);
+  pointer-events: auto;
+  padding: 1rem;
+}
+
+.gs-intro h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+  color: var(--fi-paper-light);
+  text-shadow: 4px 4px 0 var(--fi-black-shadow);
+}
+
+.gs-intro-note {
+  margin: 0;
+  max-width: 30rem;
+  color: var(--fi-slate);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.gs-intro-fine {
+  font-size: 0.58rem;
+}
+
+.gs-controls {
+  border-collapse: collapse;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+
+.gs-controls th {
+  color: var(--fi-cyan);
+  border: 1px solid var(--fi-surface);
+  padding: 0.25rem 0.6rem;
+  text-align: right;
+  font-weight: 700;
+}
+
+.gs-controls td {
+  color: var(--fi-slate);
+  border: 1px solid var(--fi-surface);
+  padding: 0.25rem 0.9rem 0.25rem 0.4rem;
+  text-align: left;
+}
+
+.gs-intro-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.gs-btn {
+  font-family: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.1rem;
+  background: var(--fi-surface);
+  color: var(--fi-paper-light);
+  border: 1px solid var(--fi-paper-light);
+  box-shadow: 4px 4px 0 var(--fi-black-shadow);
+  cursor: pointer;
+}
+
+.gs-btn--primary {
+  background: var(--fi-green);
+  color: var(--fi-bg);
+  border-color: var(--fi-green);
+}
+
+.gs-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--fi-black-shadow);
+}
+
+@media (max-width: 900px) {
+  .gs-head {
+    max-width: 12rem;
+    font-size: 0.55rem;
+  }
+  .gs-scope {
+    width: 10rem;
+    height: 10rem;
+  }
+}
