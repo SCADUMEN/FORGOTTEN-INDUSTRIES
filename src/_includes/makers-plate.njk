@@ -7,6 +7,9 @@
       <p class="fi-plate-row">
         <span class="am">Human Judgment</span><span class="sep" aria-hidden="true"> · </span><span class="hi">Machine Collaboration</span>
       </p>
+      <p class="fi-plate-row fi-plate-meta" aria-label="Forgotten Industries elsewhere">
+        {%- for social in site.socials %}{% if not loop.first %}<span class="sep" aria-hidden="true"> · </span>{% endif %}<a class="cu" href="{{ social.url }}" rel="me noopener" data-track="{{ social.track }}">{{ social.label }}</a>{% endfor %}
+      </p>
       <p class="fi-plate-row fi-plate-meta">
         <a class="cu" href="/provenance/">Provenance</a><span class="sep" aria-hidden="true"> · </span><a class="cu" href="/plan-du-site/">Plan du Site</a><span class="sep" aria-hidden="true"> · </span><span class="fi-nowrap"><span class="am">Hash</span> <a class="cu" href="{{ site.githubUrl }}/commit/{{ site.gitHash }}" data-track="outbound-commit">{{ site.gitHashShort }}</a></span><span class="sep" aria-hidden="true"> · </span><span class="fi-nowrap"><span class="am">Built</span> <time class="cy" datetime="{{ site.buildTime }}">{{ site.buildStampDateDisplay }} {{ site.buildStampTimeDisplay }} {{ site.buildStampTimeZoneDisplay }}</time></span>
       </p>
