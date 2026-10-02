@@ -279,6 +279,29 @@ module.exports = {
   fieldNotesSubscribeUrl:
     'https://bsky.app/profile/forgotten-industry.bsky.social',
   fieldNotesContact: '@forgotten-industry.bsky.social',
+  youtubeUrl: 'https://www.youtube.com/@Forgotten-Industries',
+  youtubeHandle: '@Forgotten-Industries',
+  instagramUrl: 'https://www.instagram.com/forgotten.industry/',
+  instagramHandle: '@forgotten.industry',
+  // Public profiles, in footer order. Linked with rel="me" so each platform
+  // and the site can vouch for one another.
+  socials: [
+    {
+      label: 'YouTube',
+      url: 'https://www.youtube.com/@Forgotten-Industries',
+      track: 'outbound-youtube',
+    },
+    {
+      label: 'Bluesky',
+      url: 'https://bsky.app/profile/forgotten-industry.bsky.social',
+      track: 'outbound-bluesky',
+    },
+    {
+      label: 'Instagram',
+      url: 'https://www.instagram.com/forgotten.industry/',
+      track: 'outbound-instagram',
+    },
+  ],
   author: 'Matthew Marx',
 
   tagline:
