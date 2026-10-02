@@ -47,6 +47,11 @@ function renderSighting(entry) {
   return item
 }
 
+// The public feed carries confirmed sightings only (PUBLIC_STATUSES in the
+// Worker), so an empty feed is the normal state, not a loading one.
+const FEED_EMPTY_TEXT =
+  'No confirmed sightings yet. Reports are logged as Unverified and appear here once confirmed.'
+
 async function loadFeed() {
   if (!feed) return
   try {
@@ -56,6 +61,7 @@ async function loadFeed() {
 
     feed.replaceChildren()
     if (!sightings.length) {
+      if (feedEmpty) feedEmpty.textContent = FEED_EMPTY_TEXT
       feedEmpty?.removeAttribute('hidden')
       return
     }
