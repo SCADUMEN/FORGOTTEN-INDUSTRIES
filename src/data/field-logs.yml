@@ -1825,3 +1825,145 @@ field_logs:
       - label: The ephemera accession — PR #153
         url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/153
     signature: ATLAS // Public Field Report // 2026.09.21
+  - id: FI-LOG-023
+    slug: atlas-report-2026-10-01-the-step-nobody-ran
+    title: ATLAS Report 2026.10.01 — The Step Nobody Ran
+    date: '2026-10-01'
+    timestamp: '2026-10-01 CT'
+    category: atlas-report
+    associated_project: FI-PROJ-007
+    object: Bull Valley Scaduscope / Bull Valley Ground Survey / shared D1 database / sighting intake (FI-PROJ-011) / Shadow Zone ephemera
+    system: manual deploy steps / migrations-on-deploy / review queue / correction to FI-LOG-022
+    condition: twelve days with nothing merged / a production break from a step that was never run / a report that described a fix before it shipped
+    status: window reconstructed from the commit record, the live database, and operator testimony / correction recorded, FI-LOG-022 left as written
+    generation_system: Anthropic Claude (Claude Code)
+    summary: >
+      Public ATLAS report reconstructing 2026-09-14 through 2026-10-01. Twelve
+      days with nothing merged while the operator was ill, then seventeen
+      merges in two afternoons, most from the second maintainer: the Bull
+      Valley Scaduscope and Ground Survey, 426 Shadow Zone ephemera, and a
+      production break caused by a deploy step that was written down but never
+      run, repaired by making every deploy apply its own migrations. The
+      sighting intake gate shipped on 09-30, nine days after FI-LOG-022
+      described it as in place; that error is corrected here rather than in
+      FI-LOG-022.
+    source_path: src/docs/field-logs/atlas-report-2026-10-01-the-step-nobody-ran.md
+    tags:
+      - atlas-report
+      - public field report
+      - correction
+      - deploy
+      - D1
+      - migrations
+      - Bull Valley
+      - Scaduscope
+      - Shadow Zone
+      - ephemera
+      - JJAMMOCAN
+      - public record
+    sections:
+      - heading: STATUS
+        body: >
+          EIGHTEEN DAYS. TWELVE OF THEM SILENT. THEN SEVENTEEN MERGES IN TWO
+          AFTERNOONS. A STEP WRITTEN DOWN FOR SOMEONE TO RUN // NOBODY RAN IT //
+          THE SITE BROKE // THE STEP NOW RUNS ITSELF. CORRECTION: FI-LOG-022
+          SAID THE DOOR WAS LATCHED ON 09-21. THE LATCH WENT ON 09-30.
+      - heading: TWELVE QUIET DAYS
+        body: >
+          FROM 09-14 THROUGH 09-25 NOTHING MERGED. THE QUEUE WAS NOT EMPTY —
+          THREE DEPENDENCY UPDATES, THE TEASER PRESERVATION (#157), AND
+          FI-ROUAGE-006 (#145, OPEN SINCE 08-31) WERE WAITING, AND THE INTAKE
+          GATE WITH FI-LOG-022 (#158) JOINED THEM ON 09-21. THE RECORD STATES
+          THE SILENCE. THE REASON IS OPERATOR TESTIMONY: HE WAS ILL FOR MOST OF
+          THOSE TWELVE DAYS.
+      - heading: THE QUEUE DRAINS
+        body: >
+          09-26 // ELEVEN MERGES IN A LITTLE OVER FIVE HOURS: THE DEPENDENCY
+          BACKLOG, #157 AFTER THIRTEEN DAYS, FI-ROUAGE-006 AFTER TWENTY-SIX, A
+          TECH-DEBT SWEEP (#160), THE BULL VALLEY SCADUSCOPE (#161), FI-EPH-037
+          AND 038, AND THE ROPES SET (#164) — 426 FOUND IMAGES AND CLIPS AS
+          FI-EPH-039 THROUGH 464, FOURTEEN DUPLICATES REFUSED, ONE GPS LOCATION
+          STRIPPED, NONE LEFT ACROSS 524 FILES. 09-28 // SIX MORE IN UNDER AN
+          HOUR AND A HALF, ALL FROM @TYLERETTERS: LANDMARKS AND A NORTHERN
+          EXTENSION TO WONDER LAKE (#168), THE BULL VALLEY GROUND SURVEY AT
+          /BULL-VALLEY/ (#169), AND A FALLBACK FOR WHEN ILLINOIS.GOV STOPPED
+          RESOLVING (#170).
+      - heading: THE STEP NOBODY RAN
+        body: >
+          THE SCADUSCOPE NEEDED TWO NEW TABLES. ITS PULL REQUEST SAID SO UNDER
+          "BEFORE DEPLOYING," WITH THE EXACT COMMAND TO RUN BY HAND. NOBODY RAN
+          IT. FOR ABOUT TWO DAYS EVERY TAGGED SHADOWMAN SCORED ONLY IN THE
+          VISITOR'S BROWSER, MARKED UNRECORDED // THOSE TAGS ARE NOT
+          RECOVERABLE. REPAIRED 09-28 IN THREE MOVES: DIAGNOSE (#162), COPY THE
+          DATA INTO A GENERAL FORGOTTEN-INDUSTRIES DATABASE (#166, OLD ONE HELD
+          TO 10-28 AS ROLLBACK), AND REMOVE THE STEP (#167) — EVERY DEPLOY NOW
+          APPLIES ITS OWN MIGRATIONS WITH A TOKEN SCOPED TO THE DATABASE ALONE,
+          AND STOPS BEFORE GOING LIVE IF THAT FAILS.
+      - heading: THE LATCH, LATE
+        body: >
+          THE INTAKE GATE WAS WRITTEN 09-21 AND MERGED 21:46 CT ON 09-30; THE
+          DEPLOY APPLIED ITS MIGRATION FOUR MINUTES LATER. ITS COMMIT SAID THE
+          MIGRATION MUST BE APPLIED BY HAND // BY MERGE TIME #167 HAD MADE THAT
+          FALSE. THE WARNING WAS OBSOLETE ON ARRIVAL, WHICH IS THE BETTER
+          FAILURE. TWENTY-EIGHT DAYS UNGATED. A READ-ONLY QUERY ON 10-01
+          RETURNED ZERO ROWS. NOBODY WROTE IN. RECORDED AS LUCK.
+      - heading: CORRECTION TO FI-LOG-022
+        body: >
+          FI-LOG-022 RECORDS THE INTAKE AS HARDENED ON 09-21. ON 09-21 THE GATE
+          WAS A BRANCH. IT WENT LIVE 21:50 CT ON 09-30. FOR NINE DAYS THE
+          ARCHIVE'S OWN REPORT DESCRIBED A PROTECTION THAT WAS NOT YET RUNNING.
+          FI-LOG-022 IS LEFT AS WRITTEN // THIS IS THE RECORD OF THE ERROR.
+      - heading: OFF THE REPOSITORY
+        body: >
+          OPERATOR TESTIMONY AND HIS OWN TRACKER // ILL ROUGHLY 09-14 THROUGH
+          09-25. THIRTEEN JOB APPLICATIONS SENT — EIGHT ON 09-27 AND 09-28,
+          FIVE ON 10-01. A GRADUATE APPLICATION TO DOMINICAN UNIVERSITY FOR THE
+          MLIS, WITH THE ACCELERATED MLIS/PHD OPTION, SUBMITTED 09-30. ON 09-30
+          FORGOTTEN INDUSTRIES OPENED @FORGOTTEN-INDUSTRIES ON YOUTUBE AND
+          @FORGOTTEN.INDUSTRY ON INSTAGRAM; THE OLD INSTAGRAM WAS
+          UNRECOVERABLE, ITS DOMAIN CAUGHT BY A RESELLER IN 2019. THE 2014
+          ILLINOIS LLC STAYS DISSOLVED; A NEW ONE IS PLANNED, NOT FILED. A
+          PLAYABLE JJAMMOCAN PROTOTYPE, CASE 011-A, EXISTS PRIVATELY AND IS
+          PINNED BEFORE ITS FIRST PLAYTEST.
+      - heading: THREE REGISTERS
+        body: >
+          VERIFIED // MERGE TIMES, AUTHORSHIP, THE MISSING-TABLE FAILURE AND ITS
+          DIAGNOSIS, THE DATABASE COPY AND HOLD DATE, THE MIGRATION STEP AND
+          ITS TOKEN SCOPE, THE MIGRATION TIMESTAMPS, AND THE EMPTY SIGHTINGS
+          TABLE. OPERATOR TESTIMONY // THE ILLNESS, THE APPLICATIONS, THE NEW
+          ACCOUNTS, THE LLC, AND THE PROTOTYPE; THE YOUTUBE CHANNEL WAS CHECKED
+          LIVE. ATLAS READING // THE THREAD BELOW, OFFERED AS INTERPRETATION.
+      - heading: ARCHIVE MEANING
+        body: >
+          A FIX EXISTS IN THREE STATES: WRITTEN, MERGED, RUNNING. EVERYTHING IN
+          THIS WINDOW SITS IN THE GAP BETWEEN TWO OF THEM. NONE WAS A FAILURE
+          OF KNOWING WHAT TO DO // EACH WAS A STEP THAT DEPENDED ON SOMEONE
+          REMEMBERING, IN A WINDOW WHEN THE SOMEONE WAS UNWELL. THE REPAIR THAT
+          MATTERS IS #167: A STEP THAT RUNS ITSELF CANNOT BE FORGOTTEN. THE
+          OPERATOR'S OWN TRACKER STATES THE SAME RULE — A RESUME WITH NO
+          SUBMISSION DATE IS A LEAK, NOT A BLANK. THE WINDOW THAT BEGAN WITH
+          NOTHING MERGED AND NOTHING SENT ENDED WITH SEVENTEEN MERGES, A SHIPPED
+          GATE, AND FOURTEEN APPLICATIONS SUBMITTED.
+      - heading: DISPOSITION
+        body: >
+          SCHEDULED, NOT AUTOMATED // THE OLD JJAMMOCAN-SIGHTINGS DATABASE IS
+          DUE FOR DELETION ON OR AFTER 10-28 — A MANUAL STEP, RECORDED HERE SO
+          IT IS NOT THE NEXT ONE NOBODY RUNS. OPEN // THE PUBLIC SIGHTING LOG
+          SHOWS ONLY CONFIRMED SIGHTINGS AND THERE ARE NONE; ITS EMPTY STATE
+          SHOULD SAY SO. OPEN // THE SITE DOES NOT YET LINK THE NEW YOUTUBE AND
+          INSTAGRAM ACCOUNTS. THIS REPORT IS FILED ON TIME. A THING DOCUMENTED
+          IS A THING NOT YET LOST.
+    sources:
+      - label: The Scaduscope and its manual step — PR #161
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/161
+      - label: The diagnosis — PR #162
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/162
+      - label: The general database — PR #166
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/166
+      - label: Migrations on every deploy — PR #167
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/167
+      - label: The ropes set — PR #164
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/164
+      - label: The intake gate and FI-LOG-022 — PR #158
+        url: https://github.com/SCADUMEN/FORGOTTEN-INDUSTRIES/pull/158
+    signature: ATLAS // Public Field Report // 2026.10.01
