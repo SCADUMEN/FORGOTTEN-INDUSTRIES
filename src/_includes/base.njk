@@ -48,6 +48,7 @@
         "@type": "Organization",
         "name": {{ site.name | json | safe }},
         "url": {{ site.domainUrl | json | safe }},
+        "sameAs": [{{ site.githubUrl | json | safe }}{% for social in site.socials %}, {{ social.url | json | safe }}{% endfor %}],
         "logo": {
           "@type": "ImageObject",
           "url": {{ site.defaultImage | absoluteUrl(site.domainUrl) | json | safe }}
