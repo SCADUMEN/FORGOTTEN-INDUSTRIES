@@ -8,7 +8,7 @@ Third-person draft language for the About page.
 
 Classification: FI-APROPOS-001
 
-Status: Working copy
+Status: Published 2026-10-01 (More Personal Version, live at /apropos/)
 
 Operator: MTM
 
