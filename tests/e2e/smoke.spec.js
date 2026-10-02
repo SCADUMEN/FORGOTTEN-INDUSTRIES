@@ -804,3 +804,31 @@ test('scaduscope says the shared log is offline, not empty, when D1 fails', asyn
     /No names yet/
   )
 })
+
+test('JJAMMOCAN sighting log says so when nothing is confirmed', async ({
+  page,
+}) => {
+  // The public feed carries confirmed sightings only, so empty is normal.
+  // It must not be left reading "Loading…".
+  await page.route('**/api/sightings', (route) =>
+    route.fulfill({ json: { sightings: [] } })
+  )
+  await page.goto('/projects/who-is-jjammocan/')
+  await expect(page.locator('#jjammocan-log-heading')).toHaveText(
+    'Confirmed reports, most recent first.'
+  )
+  const empty = page.locator('#sighting-feed-empty')
+  await expect(empty).toBeVisible()
+  await expect(empty).toContainText('No confirmed sightings yet')
+  await expect(page.locator('#sighting-feed li')).toHaveCount(0)
+})
+
+test('JJAMMOCAN sighting log reports an unreachable feed', async ({ page }) => {
+  await page.route('**/api/sightings', (route) =>
+    route.fulfill({ status: 500, json: { error: 'unavailable' } })
+  )
+  await page.goto('/projects/who-is-jjammocan/')
+  await expect(page.locator('#sighting-feed-empty')).toContainText(
+    'not reachable'
+  )
+})
