@@ -56,10 +56,16 @@ test('home page renders', async ({ page }) => {
     'aria-label',
     'Forgotten Industries logo, EST MMXIV'
   )
-  await expect(page.locator('.site-footer a')).toHaveCount(4)
+  await expect(page.locator('.site-footer a')).toHaveCount(7)
   await expect(page.locator('.fi-provenance-plate')).toContainText(
     "FORGOTTEN INDUSTRIES · CONTRE L'OUBLI"
   )
+  // The socials row: site.socials, each linked rel="me".
+  await expect(page.locator('.site-footer a[rel~="me"]')).toHaveText([
+    'YouTube',
+    'Bluesky',
+    'Instagram',
+  ])
   // FORGOTTEN INDUSTRIES links home.
   await expect(
     page.getByRole('link', { name: 'FORGOTTEN INDUSTRIES', exact: true })
@@ -96,7 +102,7 @@ test('home page remains contained on mobile', async ({ page }) => {
   await expect(page.locator('.instrument-strip')).toHaveCount(0)
   await expect(page.locator('.latest-activity')).toHaveCount(0)
   await expect(page.locator('.open-stacks')).toHaveCount(0)
-  await expect(page.locator('.site-footer a')).toHaveCount(4)
+  await expect(page.locator('.site-footer a')).toHaveCount(7)
 })
 
 test('primary section pages share the global maker plate', async ({ page }) => {
@@ -104,7 +110,7 @@ test('primary section pages share the global maker plate', async ({ page }) => {
     const response = await page.goto(route)
     expect(response?.status()).toBe(200)
     await expect(page.locator('.site-footer')).toBeVisible()
-    await expect(page.locator('.site-footer a')).toHaveCount(4)
+    await expect(page.locator('.site-footer a')).toHaveCount(7)
     await expect(page.locator('.fi-provenance-plate')).toContainText('Hash')
     await expect(
       page.getByRole('link', { name: 'Provenance', exact: true })
@@ -796,5 +802,33 @@ test('scaduscope says the shared log is offline, not empty, when D1 fails', asyn
   )
   await expect(page.locator('#bvs-log-everyone-empty')).not.toHaveText(
     /No names yet/
+  )
+})
+
+test('JJAMMOCAN sighting log says so when nothing is confirmed', async ({
+  page,
+}) => {
+  // The public feed carries confirmed sightings only, so empty is normal.
+  // It must not be left reading "Loading…".
+  await page.route('**/api/sightings', (route) =>
+    route.fulfill({ json: { sightings: [] } })
+  )
+  await page.goto('/projects/who-is-jjammocan/')
+  await expect(page.locator('#jjammocan-log-heading')).toHaveText(
+    'Confirmed reports, most recent first.'
+  )
+  const empty = page.locator('#sighting-feed-empty')
+  await expect(empty).toBeVisible()
+  await expect(empty).toContainText('No confirmed sightings yet')
+  await expect(page.locator('#sighting-feed li')).toHaveCount(0)
+})
+
+test('JJAMMOCAN sighting log reports an unreachable feed', async ({ page }) => {
+  await page.route('**/api/sightings', (route) =>
+    route.fulfill({ status: 500, json: { error: 'unavailable' } })
+  )
+  await page.goto('/projects/who-is-jjammocan/')
+  await expect(page.locator('#sighting-feed-empty')).toContainText(
+    'not reachable'
   )
 })
