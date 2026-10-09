@@ -161,6 +161,32 @@ describe('archive crawlability output', () => {
     expect(generatedInventory).toContain('/archive/objects/fi-cl-part-010/')
   })
 
+  it('redirects Search Console 404s to pages that exist', () => {
+    const redirects = fs.readFileSync(path.join(SITE, '_redirects'), 'utf8')
+    const builtFile = (url) =>
+      url.endsWith('/')
+        ? `${url.slice(1)}index.html`
+        : url.endsWith('.html')
+          ? url.slice(1)
+          : `${url.slice(1)}.html`
+    const retired = {
+      '/archive/systems/caselabs-mercury-s8-pedestal-restoration/':
+        '/archive/projects/caselabs-mercury-s8-pedestal-restoration/',
+      '/posts/2026-06-06-perspective-peregrines-and-pang':
+        '/posts/2026-06-10-perspective-peregrines-and-pang.html',
+      '/posts/2014-11-15-instagram-20141115-recovered-case-loop.html':
+        '/social-posts',
+      '/archive/status/operator-identified-electrical-and-leak-validation-pending/':
+        '/archive/status/',
+    }
+    for (const [from, to] of Object.entries(retired)) {
+      expect(redirects).toContain(`${from} ${to} 301`)
+      expect(existsSite(builtFile(from))).toBe(false)
+      expect(existsSite(builtFile(to))).toBe(true)
+    }
+    expect(readSite('robots.txt')).toContain('Disallow: /__operator/')
+  })
+
   it('documents archive compatibility routes without redirect loops', () => {
     const redirects = fs.readFileSync(path.join(SITE, '_redirects'), 'utf8')
     expect(redirects).toContain('/archive /l-archive/ 301')
