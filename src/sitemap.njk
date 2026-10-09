@@ -13,23 +13,31 @@ eleventyExcludeFromCollections: true
   </url>
 {%- endfor %}
 {%- for term in taxonomy.categories %}
+{%- if term.indexable %}
   <url>
     <loc>{{ site.domainUrl }}{{ term.url }}</loc>
   </url>
+{%- endif %}
 {%- endfor %}
 {%- for term in taxonomy.tags %}
+{%- if term.indexable %}
   <url>
     <loc>{{ site.domainUrl }}{{ term.url }}</loc>
   </url>
+{%- endif %}
 {%- endfor %}
 {%- for term in taxonomy.status %}
+{%- if term.indexable %}
   <url>
     <loc>{{ site.domainUrl }}{{ term.url }}</loc>
   </url>
+{%- endif %}
 {%- endfor %}
 {%- for term in taxonomy.systems %}
+{%- if term.indexable %}
   <url>
     <loc>{{ site.domainUrl }}{{ term.url }}</loc>
   </url>
+{%- endif %}
 {%- endfor %}
 </urlset>

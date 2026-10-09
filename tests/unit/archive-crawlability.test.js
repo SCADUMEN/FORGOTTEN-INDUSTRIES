@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createRequire } from 'node:module'
 import { describe, expect, it } from 'vitest'
 
 const ROOT = path.resolve(
@@ -552,5 +553,37 @@ describe('archive crawlability output', () => {
     expect(readSite('projects/caselabs-mercury-s8/index.html')).toContain(
       'href="/forgotten-industries/l-archive/caselabs-s8/"'
     )
+  })
+
+  it('lists only indexable taxonomy terms in the sitemap and noindexes the rest', () => {
+    const require = createRequire(import.meta.url)
+    const taxonomy = require('../../src/_data/taxonomy.cjs')()
+    const sitemap = readSite('sitemap.xml')
+    const locs = new Set(
+      [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+        (match) => new URL(match[1]).pathname
+      )
+    )
+
+    // Status values are narrative source notes; none belong in search.
+    expect([...locs].some((loc) => loc.startsWith('/archive/status/') && loc !== '/archive/status/')).toBe(false)
+
+    for (const kind of ['tags', 'status', 'categories', 'systems']) {
+      for (const term of taxonomy[kind]) {
+        const html = readSite(siteOutputPath(`https://x${term.url}`))
+        const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1]
+        if (term.indexable) {
+          expect(term.records.length, term.url).toBeGreaterThanOrEqual(3)
+          expect(locs.has(term.url), term.url).toBe(true)
+          expect(robots, term.url).toBe('index, follow')
+        } else {
+          // Thin terms keep building at their URL so links never break.
+          expect(locs.has(term.url), term.url).toBe(false)
+          expect(robots, term.url).toBe('noindex, follow')
+        }
+      }
+    }
+
+    expect(taxonomy.tags.find((term) => term.slug === 'caselabs')?.indexable).toBe(true)
   })
 })

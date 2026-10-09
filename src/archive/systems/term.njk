@@ -8,6 +8,7 @@ permalink: "/archive/systems/{{ term.slug }}/"
 eleventyComputed:
   title: "L'Archive / System / {{ term.label }}"
   description: "Archive records in system {{ term.label }}."
+  robots: "{{ 'index, follow' if term.indexable else 'noindex, follow' }}"
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">
