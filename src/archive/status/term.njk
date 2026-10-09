@@ -8,6 +8,7 @@ permalink: "/archive/status/{{ term.slug }}/"
 eleventyComputed:
   title: "L'Archive / Status / {{ term.label }}"
   description: "Archive records with status {{ term.label }}."
+  robots: "{{ 'index, follow' if term.indexable else 'noindex, follow' }}"
 eleventyExcludeFromCollections: true
 ---
 <section class="masthead">

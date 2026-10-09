@@ -48,6 +48,16 @@ function addTerm(map, kind, value, record) {
   map.get(termSlug).records.push(record)
 }
 
+// Source vocabulary stays reachable on the site, but only terms that gather
+// enough records earn a place in search. Status values are narrative source
+// state notes; lifecycle belongs to the controlled axis in taxonomy.yml.
+const MIN_INDEXABLE_RECORDS = 3
+
+function isIndexable(kind, term) {
+  if (kind === 'status') return false
+  return term.records.length >= MIN_INDEXABLE_RECORDS
+}
+
 function recordsFromSearch(searchIndex) {
   return (searchIndex.documents || []).map((record) => ({
     id: compact(record.id),
@@ -116,7 +126,10 @@ module.exports = function () {
   }
 
   const sortTerms = (terms) =>
-    Array.from(terms.values()).sort((a, b) => {
+    Array.from(terms.values(), (term) => ({
+      ...term,
+      indexable: isIndexable(term.kind, term),
+    })).sort((a, b) => {
       if (b.records.length !== a.records.length) {
         return b.records.length - a.records.length
       }

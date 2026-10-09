@@ -206,8 +206,8 @@ function collectSitemapPaths(collection, extras, archive, taxonomy) {
     add(pathname)
   }
 
-  // Fold taxonomy term pages into the tree by their URL path, mirroring the
-  // XML sitemap's categories/tags/status/systems coverage.
+  // Fold indexable taxonomy term pages into the tree by their URL path,
+  // mirroring the XML sitemap's categories/tags/status/systems coverage.
   const taxonomyTerms = [
     ...(taxonomy?.categories || []),
     ...(taxonomy?.tags || []),
@@ -215,7 +215,7 @@ function collectSitemapPaths(collection, extras, archive, taxonomy) {
     ...(taxonomy?.systems || []),
   ]
   for (const term of taxonomyTerms) {
-    if (term?.url) add(canonicalPath(term.url))
+    if (term?.url && term.indexable) add(canonicalPath(term.url))
   }
 
   return paths
