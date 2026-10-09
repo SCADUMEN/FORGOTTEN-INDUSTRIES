@@ -77,7 +77,7 @@
     "prettier-plugin-tailwindcss": "0.8.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "sharp": "0.35.4",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "three": "0.186.1",
     "vite": "8.3.1",
@@ -87,5 +87,9 @@
   "engines": {
     "node": ">=22",
     "npm": ">=10.0.0"
+  },
+  "overrides": {
+    "sharp": "$sharp",
+    "undici": "7.29.1"
   }
 }
