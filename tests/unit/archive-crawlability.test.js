@@ -528,4 +528,29 @@ describe('archive crawlability output', () => {
       ).toBe(1)
     }
   })
+
+  it('serves the CaseLabs S8 parts reference with plain-language meta and live links', () => {
+    const hub = 'forgotten-industries/l-archive/caselabs-s8/index.html'
+    const html = readSite(hub)
+    expect(html).toContain(
+      '<title>CaseLabs Mercury S8: Parts Identification &amp; Restoration Reference'
+    )
+    expect(html).toMatch(/<meta name="description" content="Photographed CaseLabs Mercury S8/)
+
+    // Every internal link on the hub must land on a built file.
+    const internal = hrefs(html).filter(
+      (href) => !/^(https?:|mailto:|#)/.test(href)
+    )
+    expect(internal.length).toBeGreaterThan(10)
+    for (const href of internal) {
+      const resolved = new URL(href, 'https://x/forgotten-industries/l-archive/caselabs-s8/')
+      const file = decodeURIComponent(resolved.pathname).replace(/^\/+/, '')
+      const target = file.endsWith('/') || file === '' ? path.join(file, 'index.html') : file
+      expect(existsSite(target), href).toBe(true)
+    }
+
+    expect(readSite('projects/caselabs-mercury-s8/index.html')).toContain(
+      'href="/forgotten-industries/l-archive/caselabs-s8/"'
+    )
+  })
 })
