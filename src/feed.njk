@@ -1,0 +1,12 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+feedTitle: Forgotten Industries
+feedSubtitle: Everything Forgotten Industries publishes — L'Œuvre manuscripts, ATLAS reports, and YouTube videos — newest first.
+feedPath: /feed.xml
+---
+{#- The feed id predates this template (it was the plugin's metadata.base);
+    keeping it lets readers treat this as the same feed, now carrying more. -#}
+{%- set feedId = site.domainUrl + '/' -%}
+{%- set feedEntries = collections.posts | feedStream(archive.fieldLogs, youtube.videos) -%}
+{% include "atom-feed.njk" %}

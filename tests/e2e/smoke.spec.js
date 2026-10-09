@@ -715,6 +715,18 @@ test('Atom feed is served as XML with entries', async ({ request }) => {
   const body = await response.text()
   expect(body).toContain('<feed')
   expect(body).toContain('<entry>')
+  // The unified feed carries ATLAS reports alongside written work.
+  expect(body).toContain('<category term="atlas"')
+  expect(body).toContain('<category term="oeuvre"')
+})
+
+test('L’Œuvre feed carries written work only', async ({ request }) => {
+  const response = await request.get('/feed/oeuvre.xml')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('xml')
+  const body = await response.text()
+  expect(body).toContain('<category term="oeuvre"')
+  expect(body).not.toContain('<category term="atlas"')
 })
 
 test('sitemap is valid XML with url entries', async ({ request }) => {

@@ -1,0 +1,76 @@
+{
+  "channelId": "UCgcR4nmGKKfbDd87IWFY5tQ",
+  "channelUrl": "https://www.youtube.com/@Forgotten-Industries",
+  "videos": [
+    {
+      "id": "9H6qIsRYWdI",
+      "kind": "short",
+      "title": "This PC hasn't powered on since 2016. Until now.",
+      "url": "https://www.youtube.com/shorts/9H6qIsRYWdI",
+      "published": "2026-10-07T18:54:50+00:00",
+      "updated": "2026-10-07T18:54:57+00:00",
+      "description": "The MSI X99S XPOWER AC + Intel Core i7-5930K, dark since 2016. Last time we said the board wants 8+4 pin CPU power. No AX1500i, no 4-pin: one 8-pin from a 500 W non-modular Thermaltake, and it lights up.\n\nNext: does it POST?\nFull dossier: forgotten-industries.net\n\n#x99 #pcbuilding #retrocomputing #techrestoration\n\nMusic: \"Misdirection\" by The Grey Room / Density & Time (YouTube Audio Library).",
+      "thumbnail": "https://i.ytimg.com/vi/9H6qIsRYWdI/hqdefault.jpg"
+    },
+    {
+      "id": "_t-46Jv9TSo",
+      "kind": "short",
+      "title": "This X99 board wants 8+4 pin power. Our PSUs have 8.",
+      "url": "https://www.youtube.com/shorts/_t-46Jv9TSo",
+      "published": "2026-10-05T21:23:16+00:00",
+      "updated": "2026-10-05T21:24:02+00:00",
+      "description": "The MSI X99S XPOWER AC has an 8-pin and a 4-pin CPU power connector. Both of our known-good power supplies are non-modular with a single 8-pin CPU cable. So out comes a Corsair AX1500i: 1500 W, fully modular, and missing every one of its cables. Modular cables aren't interchangeable between PSUs, so it's a hunt for its own.\n\nNext: the first power-on since 2016.\nFull dossier: forgotten-industries.net\n\n#x99 #pcbuilding #corsair #psu #techrestoration\n\nMusic: \"A Dyin' Breed\" by The Grey Room / Density & Time (YouTube Audio Library).",
+      "thumbnail": "https://i.ytimg.com/vi/_t-46Jv9TSo/hqdefault.jpg"
+    },
+    {
+      "id": "_diEmnwHcnk",
+      "kind": "short",
+      "title": "First boot runs on air. Then this goes on.",
+      "url": "https://www.youtube.com/shorts/_diEmnwHcnk",
+      "published": "2026-10-04T22:58:25+00:00",
+      "updated": "2026-10-05T02:26:35+00:00",
+      "description": "The water-cooling mock-up for the X99 rebuild: an EK Supremacy CPU block and a MOSFET block over the VRM, set in position on the MSI X99S XPOWER AC. Not installed yet. The first power-on since 2016 runs on an air cooler; the loop stays dry until the board boots and passes a leak test.\n\nFull dossier: forgotten-industries.net\n\n#x99 #watercooling #ekwb #pcbuilding #customloop #techrestoration\n\nMusic: \"On The Eve\" by The Grey Room / Density & Time (YouTube Audio Library).",
+      "thumbnail": "https://i.ytimg.com/vi/_diEmnwHcnk/hqdefault.jpg"
+    },
+    {
+      "id": "y1Zq8h5_hek",
+      "kind": "short",
+      "title": "This PC can't show a single pixel without this GPU",
+      "url": "https://www.youtube.com/shorts/y1Zq8h5_hek",
+      "published": "2026-10-04T00:32:37+00:00",
+      "updated": "2026-10-07T07:52:32+00:00",
+      "description": "MSI X99S XPOWER AC + Intel Core i7-5930K. X99 has no onboard graphics,\nso nothing reaches a screen, not even the BIOS, until a graphics card is in.\nTest-bench GPU: PNY GeForce GTX 1060 6GB (2016). Next: the first power-on since 2016.\n\nFull dossier: forgotten-industries.net\n\nMusic: \"Dismantled Toys\" by The Grey Room / Density & Time (YouTube Audio Library).\n\n#x99 #pcbuilding #retrotech #nvidia #gtx1060 #computerhistory #techrestoration",
+      "thumbnail": "https://i.ytimg.com/vi/y1Zq8h5_hek/hqdefault.jpg"
+    },
+    {
+      "id": "vUnPKf6SLZw",
+      "kind": "short",
+      "title": "7 facts about a PC that hasn't booted since 2016",
+      "url": "https://www.youtube.com/shorts/vUnPKf6SLZw",
+      "published": "2026-10-03T16:09:00+00:00",
+      "updated": "2026-10-07T07:53:01+00:00",
+      "description": "MSI X99S XPOWER AC + Intel Core i7-5930K. Last powered: 2016.\nBox, manuals, a new boot drive, a borrowed cooler. Next: the first power-on.\n\nFull dossier: forgotten-industries.net\n\n#x99 #pcbuilding #retrotech #intel #msi #computerhistory #techrestoration",
+      "thumbnail": "https://i.ytimg.com/vi/vUnPKf6SLZw/hqdefault.jpg"
+    },
+    {
+      "id": "PPqe6yqTfUU",
+      "kind": "short",
+      "title": "This PC hasn’t booted since 2016… #pcbuild #retrogaming #x99",
+      "url": "https://www.youtube.com/shorts/PPqe6yqTfUU",
+      "published": "2026-10-03T02:54:01+00:00",
+      "updated": "2026-10-07T07:54:06+00:00",
+      "description": "MSI X99S XPOWER AC + Intel Core i7-5930K. Last powered: 2016.\nYesterday a boot drive, today the cooler. Next: one stick of RAM and the first power-on.\n\nFull dossier: forgotten-industries.net\n\n#pcbuilding #retrotech #x99 #intel #msi #computerhistory #techrestoration",
+      "thumbnail": "https://i.ytimg.com/vi/PPqe6yqTfUU/hqdefault.jpg"
+    },
+    {
+      "id": "4IbUglSYVdE",
+      "kind": "short",
+      "title": "This board ran my machine in 2014. By 2016 it wouldn't boot.",
+      "url": "https://www.youtube.com/shorts/4IbUglSYVdE",
+      "published": "2026-10-02T01:41:55+00:00",
+      "updated": "2026-10-04T23:39:17+00:00",
+      "description": "This board ran my machine in 2014. By 2016 it wouldn't boot. Nobody ever figured out why.\n\nMSI X99S XPOWER AC + Intel Core i7-5930K. Last powered: 2016. New boot drive just fitted.\n\nEpisode 01, soon. forgotten-industries.net",
+      "thumbnail": "https://i.ytimg.com/vi/4IbUglSYVdE/hqdefault.jpg"
+    }
+  ]
+}

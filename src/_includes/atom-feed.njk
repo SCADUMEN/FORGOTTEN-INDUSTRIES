@@ -1,0 +1,33 @@
+{#- Shared Atom document for /feed.xml and /feed/oeuvre.xml. The including
+    template sets feedTitle, feedSubtitle, feedPath, feedId, and feedEntries
+    (from the feedStream filter). Post entries render exactly as the RSS
+    plugin's virtual template did, so their ids and content stay stable. -#}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>{{ feedTitle }}</title>
+  <subtitle>{{ feedSubtitle }}</subtitle>
+  <link href="{{ site.domainUrl }}{{ feedPath }}" rel="self" />
+  <link href="{{ site.domainUrl }}/" />
+  <updated>{{ (feedEntries | first).date | dateToRfc3339 }}</updated>
+  <id>{{ feedId }}</id>
+  <author>
+    <name>Matthew Marx</name>
+  </author>
+  {%- for entry in feedEntries %}
+  <entry>
+    <title>{{ entry.title }}</title>
+    <link href="{{ entry.url }}" />
+    <updated>{{ entry.date | dateToRfc3339 }}</updated>
+    <id>{{ entry.url }}</id>
+    <category term="{{ entry.kind }}" label="{{ entry.label }}" />
+    {%- if entry.summary %}
+    <summary>{{ entry.summary }}</summary>
+    {%- endif %}
+    {%- if entry.post %}
+    <content type="html">{{ entry.post.content | renderTransforms(entry.post.data.page, site.domainUrl + '/') }}</content>
+    {%- else %}
+    <content type="html">{{ entry.html }}</content>
+    {%- endif %}
+  </entry>
+  {%- endfor %}
+</feed>

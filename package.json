@@ -28,6 +28,7 @@
     "verify:derivatives": "node scripts/build_atlas_cell.cjs --check && node scripts/build_media_derivatives.cjs --check",
     "build:derivatives": "node scripts/build_atlas_cell.cjs && node scripts/build_media_derivatives.cjs",
     "vendor:fonts": "node scripts/vendor_fonts.cjs",
+    "sync:youtube": "node scripts/sync_youtube.cjs",
     "build:site": "npm run clean:site && npm run build:derivatives && ruby scripts/build.rb && npm run build:continuance && npm run build:game && eleventy && sh scripts/build_css.sh --minify && npm run build:csp && npm run audit:public",
     "serve:site": "npm run clean:site && npm run build:derivatives && ruby scripts/build.rb && npm run build:continuance && npm run build:game && sh scripts/build_css.sh && eleventy --serve",
     "serve:larchive-private": "node scripts/serve_larchive_private_preview.cjs",

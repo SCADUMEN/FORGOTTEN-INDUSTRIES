@@ -4,9 +4,12 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for url in collections.all | publicSitemapUrls(site.sitemapExtraUrls, site.domainUrl, archive) %}
+{%- for entry in collections.all | publicSitemapEntries(site.sitemapExtraUrls, site.domainUrl, archive, collections.posts) %}
   <url>
-    <loc>{{ url }}</loc>
+    <loc>{{ entry.loc }}</loc>
+    {%- if entry.lastmod %}
+    <lastmod>{{ entry.lastmod }}</lastmod>
+    {%- endif %}
   </url>
 {%- endfor %}
 {%- for term in taxonomy.categories %}
