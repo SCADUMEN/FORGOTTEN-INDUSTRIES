@@ -1,6 +1,8 @@
 import fs from 'node:fs'
 import nodePath from 'node:path'
-import { feedPlugin } from '@11ty/eleventy-plugin-rss'
+import { HtmlBasePlugin } from '@11ty/eleventy'
+import { rssPlugin } from '@11ty/eleventy-plugin-rss'
+import feedEntries from './scripts/lib/feed-entries.cjs'
 import objectMedia from './scripts/lib/object-media.cjs'
 
 const {
@@ -95,6 +97,9 @@ function gatherSitemapPaths(collection, extras, archive) {
     if (!value) return
     const pathname = canonicalPath(value)
     if (pathname === '/sitemap.xml' || pathname === '/robots.txt') return
+    // Site snapshots are preserved copies of earlier site states. They stay
+    // public but are served noindex (src/_headers), so no sitemap lists them.
+    if (pathname.startsWith('/site-snapshots/')) return
     if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) return
     if (!(pathname.endsWith('/') || pathname.endsWith('.html'))) return
     paths.add(pathname)
@@ -123,6 +128,19 @@ function gatherSitemapPaths(collection, extras, archive) {
   }
 
   return [...paths].sort((a, b) => a.localeCompare(b))
+}
+
+// Escape a plain-text body, then linkify internal absolute-path routes
+// (e.g. /maple-leaf-rag-zone/). Bounded by start/space/paren so file paths
+// such as src/docs/ are left untouched. Output is pre-escaped; use with `safe`.
+function linkifyRoutes(value) {
+  if (value == null) return value
+  return feedEntries
+    .escapeHtml(value)
+    .replace(
+      /(^|[\s(])(\/[a-z0-9]+(?:-[a-z0-9]+)*\/)/g,
+      (match, pre, route) => `${pre}<a href="${route}">${route}</a>`
+    )
 }
 
 // Build a single directory-style tree rooted at "/". Every URL path segment
@@ -298,20 +316,20 @@ function postShelf(record) {
 }
 
 export default function (eleventyConfig) {
-  eleventyConfig.addPlugin(feedPlugin, {
-    type: 'atom',
-    outputPath: '/feed.xml',
-    // The internal collection remains "posts"; the public feed covers the
-    // assembled written work layer for URL and reader compatibility.
-    collection: { name: 'posts', limit: 0 },
-    metadata: {
-      title: "Forgotten Industries / L'Œuvre",
-      subtitle:
-        'Assembled manuscripts and doctrine records from Forgotten Industries.',
-      language: 'en',
-      base: 'https://forgotten-industries.net/',
-      author: { name: 'Matthew Marx' },
-    },
+  // The feeds are templates of their own (src/feed.njk for everything,
+  // src/feed-oeuvre.njk for posts only) rather than the plugin's virtual
+  // template, which can carry one collection. These two plugins supply the
+  // filters those templates use and that the virtual template used to pull in.
+  eleventyConfig.addPlugin(HtmlBasePlugin)
+  eleventyConfig.addPlugin(rssPlugin)
+
+  // Every dated thing the site publishes, newest first: posts, ATLAS reports,
+  // and YouTube videos. See scripts/lib/feed-entries.cjs.
+  eleventyConfig.addFilter('feedStream', function (posts, fieldLogs, videos) {
+    return feedEntries.buildFeedStream(
+      { posts, fieldLogs, videos },
+      { linkifyRoutes }
+    )
   })
 
   // Published verbatim at their root URLs (Eleventy strips the input dir).
@@ -389,22 +407,7 @@ export default function (eleventyConfig) {
     return countValue(value)
   })
 
-  // Escape a plain-text body, then linkify internal absolute-path routes
-  // (e.g. /maple-leaf-rag-zone/). Bounded by start/space/paren so file paths
-  // such as src/docs/ are left untouched. Output is pre-escaped; use with `safe`.
-  eleventyConfig.addFilter('linkifyRoutes', function (value) {
-    if (value == null) return value
-    const escaped = String(value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
-    return escaped.replace(
-      /(^|[\s(])(\/[a-z0-9]+(?:-[a-z0-9]+)*\/)/g,
-      (match, pre, route) => `${pre}<a href="${route}">${route}</a>`
-    )
-  })
+  eleventyConfig.addFilter('linkifyRoutes', linkifyRoutes)
 
   eleventyConfig.addFilter('pluralLabel', function (value, singular, plural) {
     return pluralLabelForCount(countValue(value), singular, plural)
@@ -727,6 +730,24 @@ export default function (eleventyConfig) {
     function (collection, extras, base, archive) {
       return gatherSitemapPaths(collection, extras, archive).map((pathname) =>
         canonicalUrl(pathname, base)
+      )
+    }
+  )
+
+  // Sitemap <url> rows with a <lastmod> wherever a real publication date is
+  // known (posts, ATLAS reports, and the indexes that list them).
+  eleventyConfig.addFilter(
+    'publicSitemapEntries',
+    function (collection, extras, base, archive, posts) {
+      const lastmods = feedEntries.sitemapLastmods(
+        { posts, fieldLogs: archive?.fieldLogs },
+        canonicalPath
+      )
+      return gatherSitemapPaths(collection, extras, archive).map(
+        (pathname) => ({
+          loc: canonicalUrl(pathname, base),
+          lastmod: lastmods.get(pathname),
+        })
       )
     }
   )

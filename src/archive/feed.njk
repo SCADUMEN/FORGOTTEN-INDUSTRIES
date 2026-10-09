@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: L'Archive / L'Œuvre Feed
-description: Written-work feed metadata and subscription route for Forgotten Industries.
+description: Atom feeds for Forgotten Industries — everything published, or the written work alone.
 permalink: /archive/feed/
 eleventyExcludeFromCollections: true
 ---
@@ -10,8 +10,9 @@ eleventyExcludeFromCollections: true
     <p class="section-label">L'Archive / Feed</p>
     <h1>RSS / Atom</h1>
     <p class="tagline">
-      The L'Œuvre feed carries assembled written work, not the complete master
-      record.
+      One feed carries everything published: manuscripts, ATLAS reports, and
+      videos. The L'Œuvre feed carries the written work alone. Neither is the
+      complete master record.
     </p>
   </div>
 </section>
@@ -19,14 +20,18 @@ eleventyExcludeFromCollections: true
 <section class="evidence-band">
   <div class="section-inner band-grid">
     <div>
-      <p class="section-label">L'Œuvre feed</p>
-      <h2>Subscribe to the written work. Search the archive.</h2>
+      <p class="section-label">Feeds</p>
+      <h2>Subscribe to the record. Search the archive.</h2>
     </div>
 
     <ul class="link-list">
       <li>
-        <h3><a href="/feed.xml">Forgotten Industries / L'Œuvre</a></h3>
-        <p>The Atom feed for curated manuscripts and doctrine records.</p>
+        <h3><a href="/feed.xml">Forgotten Industries</a></h3>
+        <p>Everything published, newest first: L'Œuvre manuscripts, ATLAS reports, and YouTube videos.</p>
+      </li>
+      <li>
+        <h3><a href="/feed/oeuvre.xml">Forgotten Industries / L'Œuvre</a></h3>
+        <p>Curated manuscripts and doctrine records only.</p>
       </li>
       <li>
         <h3><a href="/archive/posts/">Curated written records</a></h3>

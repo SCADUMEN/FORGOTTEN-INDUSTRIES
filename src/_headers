@@ -18,6 +18,12 @@ https://:version.:subdomain.workers.dev/*
 /assets/*
   Cache-Control: public, max-age=2592000
 
+# Site snapshots preserve earlier states of the site, including older copies
+# of live field logs. They stay public as provenance but are kept out of
+# search so they never compete with the pages they preserve.
+/site-snapshots/*
+  X-Robots-Tag: noindex
+
 /*
   # Honour the declared Content-Type instead of sniffing it.
   X-Content-Type-Options: nosniff

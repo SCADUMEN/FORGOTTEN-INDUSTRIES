@@ -1,0 +1,11 @@
+---
+permalink: /feed/oeuvre.xml
+eleventyExcludeFromCollections: true
+feedTitle: Forgotten Industries / L'Œuvre
+feedSubtitle: Assembled manuscripts and doctrine records from Forgotten Industries.
+feedPath: /feed/oeuvre.xml
+---
+{#- Written work only: the feed /feed.xml carried before it widened. -#}
+{%- set feedId = site.domainUrl + '/feed/oeuvre.xml' -%}
+{%- set feedEntries = collections.posts | feedStream([], []) -%}
+{% include "atom-feed.njk" %}
