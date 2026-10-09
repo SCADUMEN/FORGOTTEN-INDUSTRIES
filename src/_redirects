@@ -14,3 +14,15 @@
 /docs/ai-generation-citation-standard.md /provenance/#citation-standards 301
 # dist/archive.json was a byte-identical alias of the canonical archive JSON.
 /dist/archive.json /dist/forgotten-industries.json 301
+# Retired URLs reported as 404 by Google Search Console (2026-10-08).
+# The pedestal record moved from the systems taxonomy to /archive/projects/.
+/archive/systems/caselabs-mercury-s8-pedestal-restoration/ /archive/projects/caselabs-mercury-s8-pedestal-restoration/ 301
+# The Peregrines doctrine post was re-dated from 06-06 to 06-10.
+/posts/2026-06-06-perspective-peregrines-and-pang /posts/2026-06-10-perspective-peregrines-and-pang.html 301
+/posts/2026-06-06-perspective-peregrines-and-pang.html /posts/2026-06-10-perspective-peregrines-and-pang.html 301
+# Imported Instagram records no longer render per-post pages.
+/posts/2014-11-15-instagram-20141115-recovered-case-loop.html /social-posts 301
+/posts/2016-02-23-instagram-20160223-BCI-vdwhXeE-mercury-s8-test-bench-before-shot-finally-getting-around-to-givin.html /social-posts 301
+# Status term slugs are derived from record wording; reworded statuses retire.
+/archive/status/operator-confirmed-identity-count-and-completeness-pending/ /archive/status/ 301
+/archive/status/operator-identified-electrical-and-leak-validation-pending/ /archive/status/ 301

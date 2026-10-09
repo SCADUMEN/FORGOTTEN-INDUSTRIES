@@ -5,5 +5,7 @@ eleventyExcludeFromCollections: true
 User-agent: *
 Allow: /
 Disallow: /restricted/
+# Operator register is fetched only on localhost; it never exists in production.
+Disallow: /__operator/
 
 Sitemap: {{ site.domainUrl }}/sitemap.xml
