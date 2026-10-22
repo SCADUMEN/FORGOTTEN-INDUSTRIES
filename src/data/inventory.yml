@@ -15450,6 +15450,37 @@ items:
     keep_sell_archive: archive
     date_logged: '2026-09-26'
 
+  - id: FI-EPH-465
+    name: My Dad's Gay!!
+    category: ephemera
+    quantity: 1 digital image
+    associated_project: FI-PROJ-010
+    condition: digital / JPEG, 4032×3024 / operator photograph of a handwritten message wall under violet light
+    status: accessioned / catalogued curio
+    photos:
+      - assets/ephemera/shadow-zone/fi-eph-465-my-dads-gay-blacklight-wall.jpeg
+    notes: >
+      Operator photograph supplied for The Shadow Zone, taken on an iPhone
+      2026-10-21: a textured, painted wall crowded with handwritten messages,
+      lit by a violet lamp. At centre, in retraced ballpoint block capitals:
+      "MY DAD'S GAY!!", signed below "— chip aswell" (reading uncertain; may be
+      "chip as well"). Above it, a partial quotation ends "...lot, nothing's
+      going to change - it's not. - Dr. Seuss, the Lorax" — a paraphrase; the
+      book's line ends "nothing is going to get better. It's not." Around the
+      edges: a vertical "you're..." in heavy dark marker, "You Got THIS!", and
+      "Kayla" with a heart and a date cut off at the frame edge as "3-14-202".
+      Writers are recorded only by the first names or handles they wrote
+      themselves; no one is identified further. The wall's location is not
+      recorded, and the photograph carried no GPS metadata.
+    lifecycle:
+      - date: '2026-10-21'
+        event: accessioned
+        state: persistent L'Archive ephemera record
+        evidence: operator-original iPhone JPEG, byte-identical to the supplied file (sha256 de5e0f6a…0d365) and location-clean (no GPS tags; exif scrub stripped nothing); on-wall text reproduced as found and not endorsed; wall location and writers not recorded
+    estimated_value:
+    keep_sell_archive: archive
+    date_logged: '2026-10-21'
+
   - id: FI-BOOK-001
     accession_number: '001'
     name: LE ZOHAR / Special Pocket-Sized Edition
