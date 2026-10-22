@@ -81,7 +81,7 @@
     "tailwindcss": "4.3.3",
     "three": "0.186.1",
     "vite": "8.3.4",
-    "vitest": "5.0.2",
+    "vitest": "5.0.5",
     "wrangler": "4.141.0"
   },
   "engines": {
