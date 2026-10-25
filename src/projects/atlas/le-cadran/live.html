@@ -1137,14 +1137,21 @@ function rows(pairs) {
     (n ? `<span class="note-s">${n}</span>` : "") + `</span></div>`).join("");
 }
 
+// The readout is set with innerHTML, and much of the trace is text the person
+// at the page typed: the utterance, a proposal's reason, the tier names that
+// come back in faults and notices. All of it is escaped, so typed markup is
+// shown, never parsed. Named apart from face.js's esc() because live.py
+// inlines both files into one script.
+const text = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 function readout(t) {
   const lit = t.positions.filter((p) => p.state !== "dark");
   const prec = t.admitted.length ? t.admitted[0] : null;
-  const seatName = (p) => p ? `${p} ${(t.positions.find((x) => x.position === p) || {}).name || ""}` : "&mdash;";
+  const seatName = (p) => p ? text(`${p} ${(t.positions.find((x) => x.position === p) || {}).name || ""}`) : "&mdash;";
 
   return `
   <div class="group"><h2>Route</h2>${rows([
-    ["taken", t.route || "&mdash;", ""],
+    ["taken", t.route ? text(t.route) : "&mdash;", ""],
     ["Hour &middot; cyan", seatName(prec),
       "precedence" + (prec === t.routeEnd ? " &middot; superimposed" : "")],
     ["Minute &middot; white", seatName(t.routeEnd), "route ended"],
@@ -1153,17 +1160,17 @@ function readout(t) {
       "route aimed"],
   ])}</div>
   <div class="group"><h2>Positions &middot; ${lit.length} of 13 lit</h2>${
-    lit.map((p) => `<div class="row"><span>${p.name}</span>` +
+    lit.map((p) => `<div class="row"><span>${text(p.name)}</span>` +
       `<span class="tag" style="color:${STATE_INK[p.state]}">${p.state.toUpperCase()}</span></div>`).join("")
     || '<div class="none">Routine work convenes no one.</div>'}</div>
   <div class="group"><h2>Why each fired</h2>${
-    lit.map((p) => `<div class="row"><span class="k">${p.position}</span>` +
-      `<span class="k">${p.reason}${p.note ? " &middot; " + p.note : ""}</span></div>`).join("")
+    lit.map((p) => `<div class="row"><span class="k">${text(p.position)}</span>` +
+      `<span class="k">${text(p.reason)}${p.note ? " &middot; " + text(p.note) : ""}</span></div>`).join("")
     || '<div class="none">&mdash;</div>'}</div>
   <div class="group"><h2>Input</h2>
-    <div class="utt">${t.utterance || "&mdash;"}</div>
+    <div class="utt">${t.utterance ? text(t.utterance) : "&mdash;"}</div>
     <div class="row" style="margin-top:10px"><span class="k">armed</span>
-      <span class="k">${t.armed || "&mdash;"}</span></div></div>
+      <span class="k">${t.armed ? text(t.armed) : "&mdash;"}</span></div></div>
   <div class="group"><h2>Mechanisms</h2>${
     D.mechanisms.map((m) => `<div class="row"><span class="k">${m.part}</span>` +
       `<span class="v">${m.owner}<span class="note-s">${m.note}</span></span></div>`).join("")}</div>
@@ -1171,14 +1178,14 @@ function readout(t) {
     t.stages.map((st, i) => {
       const [name, target] = st.split("->");
       return `<li><span class="n">${String(i + 1).padStart(2, "0")}</span>` +
-        `<span>${name}</span>` +
-        (target ? `<span class="to">&rarr; ${target}</span>` : "") + `</li>`;
+        `<span>${text(name)}</span>` +
+        (target ? `<span class="to">&rarr; ${text(target)}</span>` : "") + `</li>`;
     }).join("")}</ol></div>
   <div class="group"><h2>Notices</h2>${
-    t.notices.map((n) => `<div class="row"><span>${n}</span></div>`).join("")
+    t.notices.map((n) => `<div class="row"><span>${text(n)}</span></div>`).join("")
     || '<div class="none">None recorded.</div>'}</div>
   <div class="group"><h2>Faults</h2><div class="fault">${
-    t.failures.map((f) => `<div>${f}</div>`).join("")
+    t.failures.map((f) => `<div>${text(f)}</div>`).join("")
     || '<span class="none">None recorded.</span>'}</div></div>`;
 }
 
