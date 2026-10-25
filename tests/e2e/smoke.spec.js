@@ -307,6 +307,20 @@ test('A Way In renders as the short application-facing route', async ({
   await expect(page.locator('main')).toContainText('A Way In // Le Signal Form')
 })
 
+test('A Way In // Objects With a Past renders as the collectibles route', async ({
+  page,
+}) => {
+  const response = await page.goto('/a-way-in/objects/')
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/Objects With a Past/)
+  await expect(page.locator('main')).toContainText(
+    'Short Form / Curated Entry / Entry 008'
+  )
+  await expect(
+    page.locator('main a[href="/projects/x99-impact-recovery/"]')
+  ).toHaveCount(1)
+})
+
 test('manual shelf publishes Manual 002', async ({ page }) => {
   let response = await page.goto('/hang-on-to-each-other/')
   expect(response?.status()).toBe(200)
