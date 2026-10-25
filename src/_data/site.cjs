@@ -170,6 +170,7 @@ const sitemapExtraUrls = [
   '/inventory/',
   '/rd/',
   '/projects/atlas/',
+  '/projects/atlas/le-cadran/',
   '/projects/continuance/',
   '/projects/caselabs-mercury-s8/',
   '/projects/l-archive-modular-cartridge-system/',
