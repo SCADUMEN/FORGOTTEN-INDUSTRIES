@@ -704,6 +704,12 @@ body.caselabs-restoration-page .reference-masthead h1 {
     var(--fi-paper-light);
 }
 
+/* Le Cadran's dial is a rendered dark plate; paper behind it would show at the
+   corners of the round case, so the figure keeps the archive's black field. */
+.cadran-dial-figure img {
+  background: var(--fi-bg);
+}
+
 .atlas-docent-portrait {
   position: relative;
   aspect-ratio: 12 / 13;

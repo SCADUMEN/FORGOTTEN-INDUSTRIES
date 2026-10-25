@@ -1,0 +1,227 @@
+---
+layout: base.njk
+title: Le Cadran
+description: "Le Cadran, the dial: ATLAS's council laid out as a diver's chronograph. Twelve operating modes instead of hours, one honesty rule, a live instrument, and a hardware case specified but not built."
+canonical: https://forgotten-industries.net/projects/atlas/le-cadran/
+permalink: /projects/atlas/le-cadran/
+image: /assets/atlas/le-cadran-thumbnail.webp
+imageAlt: "Le Cadran, the ATLAS dial: a brass-bezelled chronograph face with twelve council positions."
+---
+<section class="masthead reference-masthead">
+  <div class="section-inner masthead-grid">
+    <div>
+      <p class="section-label">Les Dossiers / FI-PROJ-006 / sub-dossier</p>
+      <h1>Le Cadran</h1>
+      <p class="tagline">A watch face that doesn't tell time. It shows what an AI assistant was actually doing when it answered, and it never shows a state that didn't happen.</p>
+    </div>
+    <figure class="reference-figure cadran-dial-figure">
+      <img src="/projects/atlas/le-cadran/dial.svg" width="820" height="762" alt="Le Cadran under one routing trace: a brass bezel, twelve council positions around the chapter ring with four lit green, cyan and white hands, and undriven subdials labelled as undriven." fetchpriority="high" decoding="async">
+      <figcaption>CDN-01 / Plate 1 / the dial under the trace for "run Publish, security check" / rendered by ATLAS <code>rouage/dial.py</code>, not drawn by hand.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="cadran-what-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Object record / CDN-01</p>
+      <h2 id="cadran-what-heading">Twelve positions that are operating modes, not hours.</h2>
+    </div>
+    <div>
+      <p class="stamp-row" aria-label="Le Cadran status">
+        <span class="stamp">Live in the terminal</span>
+        <span class="stamp stamp-muted">Prototype 0</span>
+        <span class="stamp stamp-muted">Case not built</span>
+      </p>
+      <p class="entry-note">ATLAS runs as one assistant in many modes. Le Conseil names those modes (the skeptic, the archivist, the bloodhound, the smith and the rest) and decides which of them answer a given message. Le Cadran is the dial that shows the outcome: each lit position is a member who actually convened, the hands point to who answered and who took precedence, and anything the system can't measure yet is drawn and labelled <strong>undriven</strong>.</p>
+      <p class="entry-note">It's laid out as a diver's chronograph because every part of that movement carries a real constraint. The bezel turns one way only, which is how Le Sauvegarder works. The crown screws down, so nothing changes by accident. A guarded pusher has to be armed before Le Fripon can be used, and the arming expires.</p>
+      <p class="action-row"><a href="/projects/atlas/le-cadran/live.html">Open the live instrument</a></p>
+      <p class="action-row"><a href="/projects/atlas/le-cadran/sheet.html">Open the full object record (Plates 1–4)</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="cadran-rule-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">The honesty constraint</p>
+      <h2 id="cadran-rule-heading">The display never shows a state the router did not produce.</h2>
+    </div>
+    <div class="callout">
+      <h3>In software it is a discipline.</h3>
+      <p>Every lit element traces back to a field in a routing trace emitted by Le Rouage, the routing train. There's no demo loop, idle animation or startup sweep that lights positions for effect. Dark positions are genuinely dark: the gate did not fire.</p>
+      <h3>In hardware it is a wiring constraint.</h3>
+      <p>The case's LEDs are driven by that same trace, so the physical object can't be finished before the software behind it is. An instrument that displays invented state is a prop.</p>
+      <h3>Undriven is a reading, not a gap.</h3>
+      <p>The registers (Signal, Noise, Gain), the up-and-down reserve (Le Barillet), the calendar (Le Continuant) and the retrograde arc are drawn on the face and marked undriven. They'll light when something real drives them, and not before.</p>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="cadran-live-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label fi-caption-box"><span class="fi-prompt-marker" aria-hidden="true">&gt;</span>LIVE / IN THE BROWSER</p>
+      <h2 id="cadran-live-heading">Type something. The council routes it.</h2>
+    </div>
+    <div>
+      <p class="entry-note">The live instrument runs the same routing train in your browser: <code>train.js</code>, held to the Python <code>rouage.py</code> by a conformance suite. Type a message and the dial and the terminal face redraw from the trace it produces. Matching is by named invocation, so a route needs its verb. Try <code>run Publish</code>, not "publish". The page also takes a proposed member and a reason, standing in for the assistant's own call.</p>
+      <p class="entry-note">Nothing on it is sent anywhere. It's a static page with no network requests, rendered by ATLAS <code>rouage/live.py</code> and published here unchanged.</p>
+      <p class="action-row"><a href="/projects/atlas/le-cadran/live.html">Open Le Cadran · Live</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="cadran-states-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Display / six states</p>
+      <h2 id="cadran-states-heading">Six states, six colours. Red belongs to fault and nothing else.</h2>
+    </div>
+    <ul class="shelf-list">
+      <li>
+        <h3>Dark &middot; unlit</h3>
+        <p>The gate did not fire.</p>
+      </li>
+      <li>
+        <h3>Consulted &middot; yellow</h3>
+        <p>Weighed and contributed, not surfaced.</p>
+      </li>
+      <li>
+        <h3>Active &middot; green</h3>
+        <p>Convened and surfaced.</p>
+      </li>
+      <li>
+        <h3>Sealed &middot; amber</h3>
+        <p>Locked, awaiting the crown.</p>
+      </li>
+      <li>
+        <h3>Held &middot; dim amber-grey</h3>
+        <p>Stopped at the door. Held and consulted once shared a colour, and that was a bug: one was heard, the other never got in.</p>
+      </li>
+      <li>
+        <h3>Dissent &middot; magenta</h3>
+        <p>Le Renégat refusing; the brake is engaged.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="cadran-sequence-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Sequence / 2026</p>
+      <h2 id="cadran-sequence-heading">From a council to a dial to a face in the terminal.</h2>
+    </div>
+    <ol class="progression-list">
+      <li class="complete">
+        <span>08.16</span>
+        <h3>Inception</h3>
+        <p>The council is rebuilt as a diver's movement, and the case is specified the same night, honesty constraint included. A marine chronometer was drafted first and sent back: it has neither a rotating bezel nor a crown.</p>
+      </li>
+      <li class="complete">
+        <span>08.26</span>
+        <h3>The going train</h3>
+        <p>Le Rouage, the router, lands with the first SVG dial (<a href="https://github.com/SCADUMEN/ATLAS/pull/2">#2</a>). Prototype 0 is started: the layout under test, honest by construction.</p>
+      </li>
+      <li class="complete">
+        <span>08.29</span>
+        <h3>The dial catches a bug</h3>
+        <p>Position 12 lit, and the reason engraved on the dial was the exact sentence written to keep him dark. The negative gate was fixed (<a href="https://github.com/SCADUMEN/ATLAS/pull/24">#24</a>).</p>
+      </li>
+      <li class="complete">
+        <span>10.02</span>
+        <h3>A round face in the terminal</h3>
+        <p>The dial is redrawn in character cells; the hands were chosen by L'Opérateur from four candidates (<a href="https://github.com/SCADUMEN/ATLAS/pull/50">#50</a>), then split into a face for glancing and a table for reading (<a href="https://github.com/SCADUMEN/ATLAS/pull/52">#52</a>).</p>
+      </li>
+      <li class="complete">
+        <span>10.09</span>
+        <h3>Every prompt</h3>
+        <p>The train runs on every message through a prompt hook (<a href="https://github.com/SCADUMEN/ATLAS/pull/56">#56</a>), and a stop hook is added to draw the face after the turn settles (<a href="https://github.com/SCADUMEN/ATLAS/pull/59">#59</a>). Its display in a live session is not yet verified.</p>
+      </li>
+      <li class="complete">
+        <span>10.25</span>
+        <h3>Live in the browser</h3>
+        <p>The live page draws the terminal face and takes a proposal (<a href="https://github.com/SCADUMEN/ATLAS/pull/62">#62</a>). This sub-dossier makes the sheet and the instrument public.</p>
+      </li>
+      <li class="active">
+        <span>Next</span>
+        <h3>Prototype 1 / .30 cal</h3>
+        <p>The case: specified, not built.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="cadran-case-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Le Boîtier / the case</p>
+      <h2 id="cadran-case-heading">Prototype 1 goes into a .30 cal ammo can, turned on its side.</h2>
+    </div>
+    <div>
+      <p class="stamp-row" aria-label="Case status">
+        <span class="stamp">Specified</span>
+        <span class="stamp stamp-muted">Not built</span>
+      </p>
+      <p class="entry-note">An M19A1 can laid on its side carries a dial of six to six and a half inches. Behind diffused acrylic batons sit addressable RGB LEDs, one per position, with the hands on a geared stepper and a single-board computer in the three-inch depth. The can's existing latch and hinge become the caseback, so the instrument opens the way its doctrine says a case opens. Pusher, crown and pusher come through the side under a fabricated guard.</p>
+      <p class="entry-note">Prototype 0 comes first: a four-inch round panel showing the existing interface at real size, the cheapest way to find out that a marker is unreadable at arm's length.</p>
+      <div class="callout">
+        <h3>What the case does not do.</h3>
+        <p>It doesn't run the council, store L'Archive, or decide anything. The instrument is read. L'Opérateur decides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="evidence-band" aria-labelledby="cadran-video-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Le Signal / video</p>
+      <h2 id="cadran-video-heading">Le Cadran: A Watch Face That Can't Lie.</h2>
+    </div>
+    <div>
+      <figure class="reference-figure">
+        <a href="https://youtu.be/dmWSWn6cxpQ"><img src="/assets/atlas/le-cadran-thumbnail.webp" width="1280" height="720" alt="Video thumbnail: Le Cadran, a watch face that can't lie." loading="lazy" decoding="async"></a>
+        <figcaption>FI YouTube / 7:41 / voiceover by Matthew / every dial and face shown is a real ATLAS render; the ammo can is a labelled mockup.</figcaption>
+      </figure>
+      <p class="action-row"><a href="https://youtu.be/dmWSWn6cxpQ">Watch the long-form on YouTube</a></p>
+      <p class="action-row"><a href="https://youtube.com/shorts/iiq961A1Cf8">Watch the Short</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="source-band" aria-labelledby="cadran-routes-heading">
+  <div class="section-inner band-grid">
+    <div>
+      <p class="section-label">Routes</p>
+      <h2 id="cadran-routes-heading">Source of truth first. Public record second.</h2>
+    </div>
+    <ul class="link-list">
+      <li>
+        <h3><a href="/projects/atlas/le-cadran/live.html">Le Cadran &middot; Live</a></h3>
+        <p>The interactive dial and terminal face, running the routing train in the browser.</p>
+      </li>
+      <li>
+        <h3><a href="/projects/atlas/le-cadran/sheet.html">Object record CDN-01</a></h3>
+        <p>The full sheet: the dial, five specimen inputs, the terminal face at prompt time and settled, the Le Conseil table, and field notes.</p>
+      </li>
+      <li>
+        <h3><a href="https://github.com/SCADUMEN/ATLAS/tree/main/rouage">ATLAS <code>rouage/</code></a></h3>
+        <p>The routing train, the renderers, and the conformance suite that keeps the Python and JavaScript trains in step.</p>
+      </li>
+      <li>
+        <h3><a href="https://github.com/SCADUMEN/ATLAS/blob/main/hardware/le-boitier.md">Le Boîtier</a></h3>
+        <p>The case specification: controls, display states, enclosure, and the honesty constraint.</p>
+      </li>
+      <li>
+        <h3><a href="/projects/atlas/le-cadran/README.md">Source note</a></h3>
+        <p>Which ATLAS commit these exhibits were rendered from, and their checksums.</p>
+      </li>
+      <li>
+        <h3><a href="/projects/atlas/">ATLAS dossier</a></h3>
+        <p>The operating layer Le Cadran reads out.</p>
+      </li>
+    </ul>
+  </div>
+</section>

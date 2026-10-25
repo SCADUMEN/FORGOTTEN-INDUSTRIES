@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le Cadran &#183; Live</title>
+<style>
+:root {
+  --sheet:  #d2d8ca;
+  --field:  #e2e6db;
+  --rule:   #a9b49c;
+  --soft:   #c0c8b6;
+  --ink:    #1e231b;
+  --dim:    #5b6252;
+  --brass:  #7a6532;
+  --oxide:  #8f3722;
+  --plate:  #0f1317;
+  --display: Rockwell, "Rockwell Nova", "Roboto Slab", Georgia, serif;
+  --body: "Gill Sans", "Gill Sans MT", GillSans, Optima, "Segoe UI", system-ui, sans-serif;
+  --data: Menlo, ui-monospace, "SF Mono", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--ink); font-family: var(--body);
+  font-size: 16px; line-height: 1.6;
+  padding: 40px 28px 96px;
+  background-color: var(--sheet);
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(30,35,27,.05) 23px 24px),
+    repeating-linear-gradient(90deg, transparent 0 23px, rgba(30,35,27,.05) 23px 24px);
+}
+.sheet { max-width: 1180px; margin: 0 auto; }
+
+/* masthead ------------------------------------------------------------- */
+.masthead { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px; flex-wrap: wrap;
+  border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+.mark { font-family: var(--display); font-size: 19px; letter-spacing: .07em;
+  text-transform: uppercase; }
+.ref { font-family: var(--data); font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--dim); }
+.motto { font-family: var(--data); font-size: 10.5px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--brass);
+  border-bottom: 1px solid var(--rule); padding: 7px 0 9px; margin-bottom: 42px; }
+
+/* record head ---------------------------------------------------------- */
+.record { display: grid; grid-template-columns: 232px 1fr; gap: 46px;
+  align-items: start; margin-bottom: 46px; }
+.spine dl { margin: 0; }
+.spine dt { font-family: var(--data); font-size: 10px; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--dim); margin-top: 15px; }
+.spine dt:first-child { margin-top: 0; }
+.spine dd { margin: 3px 0 0; font-size: 14.5px;
+  font-variant-numeric: tabular-nums; }
+.spine dd code { font-size: 12.5px; }
+h1 { font-family: var(--display); font-size: clamp(42px, 6vw, 62px);
+  line-height: 1.02; margin: -8px 0 10px; letter-spacing: -.005em; }
+.deck { font-size: 19px; line-height: 1.45; margin: 0 0 18px; max-width: 30ch; }
+.lede p { margin: 0 0 14px; max-width: 62ch; color: var(--dim); font-size: 15.5px; }
+
+/* plates --------------------------------------------------------------- */
+figure { margin: 0 0 44px; }
+.plate { position: relative; background: var(--plate);
+  border: 1px solid var(--rule); padding: 22px; }
+.reg { position: absolute; width: 15px; height: 15px; border: 0 solid var(--brass); }
+.reg.tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.reg.tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.reg.bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.reg.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.plate svg { display: block; width: 100%; height: auto; }
+/* The scroller sits inside the plate, not on it, so the registration marks
+   stay pinned to the plate's corners instead of scrolling away with the
+   object. Plate 1's dial is capped at a readable size rather than blown up
+   to the sheet width; the strip's svgs sit in figures and still fill. */
+.scroll { overflow-x: auto; }
+.scroll > svg { max-width: 620px; margin: 0 auto; }
+figcaption { font-family: var(--data); font-size: 11px; line-height: 1.6;
+  color: var(--dim); margin-top: 9px; letter-spacing: .04em; }
+figcaption b { color: var(--ink); font-weight: 400; letter-spacing: .14em;
+  text-transform: uppercase; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px; }
+.strip figcaption { margin-top: 7px; text-align: center; }
+
+/* reading -------------------------------------------------------------- */
+h2 { font-family: var(--display); font-size: 15px; letter-spacing: .1em;
+  text-transform: uppercase; margin: 0 0 12px; font-weight: 400;
+  border-bottom: 1px solid var(--rule); padding-bottom: 7px; }
+.reading { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px 42px; margin-bottom: 48px; align-items: start; }
+.group { background: var(--field); border: 1px solid var(--soft); padding: 16px 18px 14px; }
+/* align-items: baseline, not the flex default. Three type sizes in two
+   families sit in this row - a mono label, a body-face owner, a mono note -
+   and stretch puts each at the top of its own box, so no two share a
+   baseline. This is the line that makes the column read as typeset rather
+   than assembled. */
+.row { display: flex; justify-content: space-between; gap: 14px;
+  align-items: baseline;
+  padding: 6px 0; border-bottom: 1px dotted var(--soft); font-size: 14px; }
+.row:last-child { border-bottom: 0; }
+.k { font-family: var(--data); font-size: 11.5px; color: var(--dim);
+  letter-spacing: .06em; white-space: nowrap;
+  font-variant-numeric: tabular-nums; }
+.v { text-align: right; }
+.v .note-s { font-family: var(--data); font-size: 10.5px; color: var(--dim);
+  margin-left: 8px; letter-spacing: .06em; }
+.tag { font-family: var(--data); font-size: 10.5px; letter-spacing: .13em;
+  text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.utt { font-family: var(--data); font-size: 13px; line-height: 1.65;
+  word-break: break-word; }
+.cycle { list-style: none; margin: 0; padding: 0; }
+.cycle li { display: flex; gap: 12px; padding: 4px 0; font-size: 13.5px;
+  align-items: baseline; font-variant-numeric: tabular-nums; }
+.cycle .n { font-family: var(--data); font-size: 10.5px; color: var(--brass);
+  min-width: 20px; }
+.cycle .to { font-family: var(--data); font-size: 10.5px; color: var(--dim);
+  margin-left: auto; }
+.none { color: var(--dim); font-style: italic; font-size: 14px; }
+.fault { color: var(--oxide); font-family: var(--data); font-size: 12.5px;
+  line-height: 1.65; }
+
+/* field notes ---------------------------------------------------------- */
+.notes { border-top: 2px solid var(--ink); padding-top: 26px; }
+.notes .col { columns: 2; column-gap: 44px; max-width: 100%; }
+.notes p { margin: 0 0 15px; font-size: 14.5px; line-height: 1.7;
+  color: var(--dim); break-inside: avoid; }
+.notes b { color: var(--ink); font-weight: 600; }
+code { font-family: var(--data); font-size: .9em; color: var(--brass); }
+footer { margin-top: 52px; border-top: 1px solid var(--rule); padding-top: 14px;
+  display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  font-family: var(--data); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--dim); }
+
+@media (max-width: 860px) {
+  .record { grid-template-columns: 1fr; gap: 28px; }
+  .notes .col { columns: 1; }
+  h1 { margin-top: 0; }
+}
+/* No landscape gate. One was built and removed: it read as an obstacle
+   rather than a courtesy, and a reader who has opened a technical drawing on a
+   phone has already decided they want to look at it on a phone. What actually
+   made the dial usable there is below - the plate holds a legible size and
+   pans, instead of shrinking until its engravings are unreadable. That was
+   always the real fix; the gate was the part in the way. */
+
+/* Phones. The dial is vector and stays sharp at any size, but its engravings
+   are set for a 620px plate - let it shrink to a 375px screen and they drop
+   under 5px and stop being readable. So the object holds a legible minimum
+   and pans instead, which is also how you read a real dial: you move it,
+   you do not shrink it. Only the plate scrolls; the sheet never does. */
+@media (max-width: 700px) {
+  body { padding: 22px 14px 64px; }
+  .plate { padding: 12px; }
+  .scroll > svg { min-width: 560px; max-width: none; }
+  .strip { grid-template-columns: none; grid-auto-flow: column;
+    grid-auto-columns: 190px; }
+  .group { padding: 14px 15px 12px; }
+  .reading { gap: 22px; }
+  figure { margin-bottom: 34px; }
+}
+
+/* terminal plates ------------------------------------------------------ */
+/* The face is character cells, so it is set as cells: one monospace run per
+   line, no wrapping, and a line-height tight enough that the box-drawing
+   frame closes. It pans on a phone for the same reason Plate 1 does. */
+.term { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 22px; }
+.term figure { margin: 0; overflow-x: auto; }
+.term pre { margin: 0; font-family: var(--data); font-size: 12px;
+  line-height: 1.22; color: #8a8a8a; white-space: pre; }
+.term figcaption { color: #9aa08f; }
+.term figcaption b { color: #d2d8ca; }
+@media (max-width: 700px) {
+  .term { grid-template-columns: none; }
+  .term pre { font-size: 11px; }
+}
+
+
+.live { display: grid; grid-template-columns: 1fr 330px; gap: 34px;
+  align-items: start; }
+@media (max-width: 900px) { .live { grid-template-columns: 1fr; } }
+.console { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.console input[type=text] { flex: 1 1 320px; font-family: var(--data);
+  font-size: 14px; padding: 10px 12px; background: var(--field);
+  border: 1px solid var(--rule); color: var(--ink); }
+.console input[type=text]:focus-visible { outline: 2px solid var(--brass);
+  outline-offset: 2px; }
+.console label { font-family: var(--data); font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--dim);
+  display: flex; align-items: center; gap: 7px; cursor: pointer; }
+.hint { font-family: var(--data); font-size: 10.5px; color: var(--dim);
+  letter-spacing: .04em; margin: -6px 0 18px; }
+.hint b { color: var(--ink); font-weight: 400; }
+.chip { font-family: var(--data); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; background: var(--field);
+  border: 1px solid var(--soft); color: var(--dim); padding: 5px 9px;
+  cursor: pointer; }
+.chip:hover, .chip:focus-visible { border-color: var(--brass);
+  color: var(--ink); outline: none; }
+.console select { font-family: var(--data); font-size: 13px; padding: 9px 10px;
+  background: var(--field); border: 1px solid var(--rule); color: var(--ink); }
+.console select:focus-visible { outline: 2px solid var(--brass);
+  outline-offset: 2px; }
+.facefig { margin-top: 10px; }
+.facefig .plate { display: flex; justify-content: center; overflow-x: auto; }
+</style>
+<div class="sheet">
+  <header class="masthead">
+    <div class="mark">Forgotten Industries</div>
+    <div class="ref">Le Cadran &#183; live &#183; ATLAS / Le Conseil</div>
+  </header>
+  <div class="motto">Human judgement // Machine collaboration // Contre l'oubli</div>
+
+  <h1 style="font-size:clamp(34px,5vw,50px);margin:0 0 8px">Le Cadran</h1>
+  <p class="deck">Type something. The council routes it.</p>
+
+  <div class="console">
+    <input type="text" id="utt" autocomplete="off" spellcheck="false"
+           placeholder="run Publish" aria-label="Utterance">
+    <input type="text" id="tier" autocomplete="off" spellcheck="false"
+           placeholder="tiered: (none)" aria-label="Tiered members">
+    <label><input type="checkbox" id="arm"> Arm Le Fripon</label>
+  </div>
+  <div class="console">
+    <select id="member" aria-label="Proposed member">
+      <option value="">propose: (no one)</option></select>
+    <input type="text" id="reason" autocomplete="off" spellcheck="false"
+           placeholder="reason, in your own words" aria-label="Reason">
+  </div>
+  <p class="hint">The train matches <b>named invocation only</b>. A route needs
+  its verb &#8212; <b>run Publish</b>, not &#8220;publish&#8221;. Describing a
+  situation fires nothing on its own: that half of every gate is the
+  barrel's. In a session the barrel proposes by invoking a member's skill with
+  a reason; <b>propose</b> stands in for it here. The reason is admitted in
+  its own words, noted beside the bullet it sits nearest, and refused only as
+  an inverted gate &#8212; closer to a prohibition than to any activation. Le
+  Fripon alone still needs his gate quoted and the crown armed. <b>Tiered</b>
+  names who Le Sceptique tiered this turn, comma-separated &#8212; anyone else
+  admitted holds at Le Sas. Empty leaves Le Sas transparent.</p>
+  <div class="console"><button class="chip" data-eg="run Publish">run Publish</button><button class="chip" data-eg="what happened here">what happened here</button><button class="chip" data-eg="red team my backups">red team my backups</button><button class="chip" data-eg="run Harden">run Harden</button><button class="chip" data-eg="rename this file">rename this file</button><button class="chip" data-eg="run Publish, security check">run Publish, security check</button><button class="chip" data-eg="run Publish" data-tier="Le Curateur">run Publish &#183; tier Le Curateur</button><button class="chip" data-eg="the drive from the estate sale has a swapped controller board and the seller just shrugged" data-member="Le Limier" data-reason="a part was swapped by a previous owner and the seller shrugged when asked why">a seller shrugged &#183; propose Le Limier</button></div>
+
+  <div class="live">
+    <figure><div class="plate"><svg viewBox="0 0 820 762" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+      <linearGradient id="brass" x1="0" y1="0" x2="0.35" y2="1">
+        <stop offset="0" stop-color="#c9a86a"/>
+        <stop offset="0.4" stop-color="#6e5a30"/>
+        <stop offset="0.7" stop-color="#c9a86a"/>
+        <stop offset="1" stop-color="#6e5a30"/>
+      </linearGradient>
+      <radialGradient id="plate" cx="0.5" cy="0.36" r="0.78">
+        <stop offset="0" stop-color="#1e2233"/>
+        <stop offset="1" stop-color="#14161f"/>
+      </radialGradient>
+      <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="2.1" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glowsoft" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="1.0" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+<g transform="rotate(-135 410.0 360.0)"><rect x="715.9" y="341.0" width="56" height="36" rx="12" fill="#2e271f" stroke="#171310" stroke-width="3"/></g>
+<g transform="rotate(-45 410.0 360.0)"><rect x="715.9" y="341.0" width="56" height="36" rx="12" fill="#2e271f" stroke="#171310" stroke-width="3"/></g>
+<g transform="rotate(45 410.0 360.0)"><rect x="715.9" y="341.0" width="56" height="36" rx="12" fill="#2e271f" stroke="#171310" stroke-width="3"/></g>
+<g transform="rotate(135 410.0 360.0)"><rect x="715.9" y="341.0" width="56" height="36" rx="12" fill="#2e271f" stroke="#171310" stroke-width="3"/></g>
+<g transform="rotate(-30 410.0 360.0)"><rect x="727.9" y="339.0" width="30" height="42" rx="5" fill="#2a2416" stroke="#3d3320" stroke-width="2"/><rect x="735.9" y="349.0" width="24" height="22" rx="4" fill="#6e5a30"/></g>
+<g transform="rotate(30 410.0 360.0)"><rect x="731.9" y="349.0" width="26" height="22" rx="4" fill="url(#brass)" stroke="#3d3320" stroke-width="2"/></g>
+<g transform="rotate(0 410.0 360.0)"><rect x="729.9" y="334.0" width="36" height="52" rx="6" fill="url(#brass)" stroke="#3d3320" stroke-width="2.5"/><line x1="736.9" y1="340.0" x2="736.9" y2="380.0" stroke="#3d3320" stroke-width="2"/><line x1="744.4" y1="340.0" x2="744.4" y2="380.0" stroke="#3d3320" stroke-width="2"/><line x1="751.9" y1="340.0" x2="751.9" y2="380.0" stroke="#3d3320" stroke-width="2"/><line x1="759.4" y1="340.0" x2="759.4" y2="380.0" stroke="#3d3320" stroke-width="2"/></g>
+<circle cx="410.0" cy="360.0" r="323.9" fill="#241f1a" stroke="url(#brass)" stroke-width="5"/>
+<line x1="732.9" y1="360.0" x2="724.9" y2="360.0" stroke="#3d3320" stroke-width="3"/>
+<line x1="731.7" y1="388.1" x2="723.7" y2="387.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="728.0" y1="416.1" x2="720.1" y2="414.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="721.9" y1="443.6" x2="714.2" y2="441.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="713.4" y1="470.4" x2="705.9" y2="467.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="702.6" y1="496.4" x2="695.4" y2="493.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="689.6" y1="521.4" x2="682.7" y2="517.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="674.5" y1="545.2" x2="668.0" y2="540.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="657.4" y1="567.5" x2="651.2" y2="562.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="638.3" y1="588.3" x2="632.7" y2="582.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="617.6" y1="607.3" x2="612.4" y2="601.2" stroke="#3d3320" stroke-width="3"/>
+<line x1="595.2" y1="624.5" x2="590.6" y2="617.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="571.5" y1="639.6" x2="567.5" y2="632.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="546.5" y1="652.6" x2="543.1" y2="645.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="520.4" y1="663.4" x2="517.7" y2="655.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="493.6" y1="671.9" x2="491.5" y2="664.2" stroke="#3d3320" stroke-width="3"/>
+<line x1="466.1" y1="678.0" x2="464.7" y2="670.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="438.1" y1="681.7" x2="437.4" y2="673.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="410.0" y1="682.9" x2="410.0" y2="674.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="381.9" y1="681.7" x2="382.6" y2="673.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="353.9" y1="678.0" x2="355.3" y2="670.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="326.4" y1="671.9" x2="328.5" y2="664.2" stroke="#3d3320" stroke-width="3"/>
+<line x1="299.6" y1="663.4" x2="302.3" y2="655.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="273.5" y1="652.6" x2="276.9" y2="645.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="248.6" y1="639.6" x2="252.6" y2="632.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="224.8" y1="624.5" x2="229.4" y2="617.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="202.4" y1="607.3" x2="207.6" y2="601.2" stroke="#3d3320" stroke-width="3"/>
+<line x1="181.7" y1="588.3" x2="187.3" y2="582.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="162.6" y1="567.5" x2="168.8" y2="562.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="145.5" y1="545.2" x2="152.0" y2="540.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="130.4" y1="521.4" x2="137.3" y2="517.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="117.4" y1="496.4" x2="124.6" y2="493.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="106.6" y1="470.4" x2="114.1" y2="467.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="98.1" y1="443.6" x2="105.8" y2="441.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="92.0" y1="416.1" x2="99.9" y2="414.7" stroke="#3d3320" stroke-width="3"/>
+<line x1="88.3" y1="388.1" x2="96.3" y2="387.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="87.1" y1="360.0" x2="95.1" y2="360.0" stroke="#3d3320" stroke-width="3"/>
+<line x1="88.3" y1="331.8" x2="96.3" y2="332.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="92.0" y1="303.9" x2="99.9" y2="305.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="98.1" y1="276.4" x2="105.8" y2="278.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="106.6" y1="249.5" x2="114.1" y2="252.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="117.4" y1="223.5" x2="124.6" y2="226.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="130.4" y1="198.5" x2="137.3" y2="202.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="145.5" y1="174.8" x2="152.0" y2="179.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="162.6" y1="152.4" x2="168.8" y2="157.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="181.7" y1="131.7" x2="187.3" y2="137.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="202.4" y1="112.6" x2="207.6" y2="118.8" stroke="#3d3320" stroke-width="3"/>
+<line x1="224.8" y1="95.5" x2="229.4" y2="102.0" stroke="#3d3320" stroke-width="3"/>
+<line x1="248.5" y1="80.3" x2="252.5" y2="87.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="273.5" y1="67.3" x2="276.9" y2="74.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="299.6" y1="56.6" x2="302.3" y2="64.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="326.4" y1="48.1" x2="328.5" y2="55.8" stroke="#3d3320" stroke-width="3"/>
+<line x1="353.9" y1="42.0" x2="355.3" y2="49.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="381.9" y1="38.3" x2="382.6" y2="46.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="410.0" y1="37.1" x2="410.0" y2="45.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="438.1" y1="38.3" x2="437.4" y2="46.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="466.1" y1="42.0" x2="464.7" y2="49.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="493.6" y1="48.1" x2="491.5" y2="55.8" stroke="#3d3320" stroke-width="3"/>
+<line x1="520.4" y1="56.6" x2="517.7" y2="64.1" stroke="#3d3320" stroke-width="3"/>
+<line x1="546.5" y1="67.3" x2="543.1" y2="74.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="571.5" y1="80.3" x2="567.5" y2="87.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="595.2" y1="95.5" x2="590.6" y2="102.0" stroke="#3d3320" stroke-width="3"/>
+<line x1="617.6" y1="112.6" x2="612.4" y2="118.8" stroke="#3d3320" stroke-width="3"/>
+<line x1="638.3" y1="131.7" x2="632.7" y2="137.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="657.4" y1="152.4" x2="651.2" y2="157.6" stroke="#3d3320" stroke-width="3"/>
+<line x1="674.5" y1="174.8" x2="668.0" y2="179.4" stroke="#3d3320" stroke-width="3"/>
+<line x1="689.6" y1="198.5" x2="682.7" y2="202.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="702.6" y1="223.5" x2="695.4" y2="226.9" stroke="#3d3320" stroke-width="3"/>
+<line x1="713.4" y1="249.5" x2="705.9" y2="252.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="721.9" y1="276.4" x2="714.2" y2="278.5" stroke="#3d3320" stroke-width="3"/>
+<line x1="728.0" y1="303.9" x2="720.1" y2="305.3" stroke="#3d3320" stroke-width="3"/>
+<line x1="731.7" y1="331.8" x2="723.7" y2="332.5" stroke="#3d3320" stroke-width="3"/>
+<circle cx="410.0" cy="360.0" r="278.8" fill="#0f1220" stroke="#3d3320" stroke-width="2"/>
+<circle cx="410.0" cy="360.0" r="311.9" fill="none" stroke="#d9a04a" stroke-width="1.6" opacity="0.5"/>
+<circle cx="410.0" cy="360.0" r="297.9" fill="none" stroke="#d9a04a" stroke-width="1.6" opacity="0.5"/>
+<line x1="410.0" y1="48.1" x2="410.0" y2="62.1" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="442.6" y1="49.8" x2="441.8" y2="57.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="474.8" y1="54.9" x2="473.2" y2="62.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="506.4" y1="63.3" x2="503.9" y2="71.0" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="536.9" y1="75.0" x2="533.6" y2="82.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="566.0" y1="89.9" x2="559.0" y2="102.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="593.3" y1="107.6" x2="588.6" y2="114.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="618.7" y1="128.2" x2="613.3" y2="134.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="641.8" y1="151.3" x2="635.8" y2="156.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="662.3" y1="176.6" x2="655.9" y2="181.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="680.1" y1="204.0" x2="668.0" y2="211.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="694.9" y1="233.1" x2="687.6" y2="236.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="706.6" y1="263.6" x2="699.0" y2="266.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="715.1" y1="295.1" x2="707.3" y2="296.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="720.2" y1="327.4" x2="712.2" y2="328.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="721.9" y1="360.0" x2="707.9" y2="360.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="720.2" y1="392.6" x2="712.2" y2="391.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="715.1" y1="424.8" x2="707.3" y2="423.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="706.6" y1="456.4" x2="699.0" y2="453.9" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="694.9" y1="486.8" x2="687.6" y2="483.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="680.1" y1="515.9" x2="668.0" y2="508.9" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="662.3" y1="543.3" x2="655.9" y2="538.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="641.8" y1="568.7" x2="635.8" y2="563.3" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="618.7" y1="591.8" x2="613.3" y2="585.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="593.3" y1="612.3" x2="588.6" y2="605.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="566.0" y1="630.1" x2="559.0" y2="618.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="536.9" y1="644.9" x2="533.6" y2="637.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="506.4" y1="656.6" x2="503.9" y2="649.0" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="474.8" y1="665.1" x2="473.2" y2="657.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="442.6" y1="670.2" x2="441.8" y2="662.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="410.0" y1="671.9" x2="410.0" y2="657.9" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="377.4" y1="670.2" x2="378.2" y2="662.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="345.2" y1="665.1" x2="346.8" y2="657.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="313.6" y1="656.6" x2="316.1" y2="649.0" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="283.1" y1="644.9" x2="286.4" y2="637.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="254.1" y1="630.1" x2="261.1" y2="618.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="226.7" y1="612.3" x2="231.4" y2="605.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="201.3" y1="591.8" x2="206.7" y2="585.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="178.2" y1="568.7" x2="184.2" y2="563.3" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="157.7" y1="543.3" x2="164.1" y2="538.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="139.9" y1="515.9" x2="152.0" y2="508.9" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="125.1" y1="486.8" x2="132.4" y2="483.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="113.4" y1="456.4" x2="121.0" y2="453.9" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="104.9" y1="424.8" x2="112.7" y2="423.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="99.8" y1="392.6" x2="107.8" y2="391.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="98.1" y1="360.0" x2="112.1" y2="360.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="99.8" y1="327.4" x2="107.8" y2="328.2" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="104.9" y1="295.1" x2="112.7" y2="296.8" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="113.4" y1="263.6" x2="121.0" y2="266.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="125.1" y1="233.1" x2="132.4" y2="236.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="139.9" y1="204.0" x2="152.0" y2="211.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="157.7" y1="176.6" x2="164.1" y2="181.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="178.2" y1="151.3" x2="184.2" y2="156.6" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="201.3" y1="128.2" x2="206.7" y2="134.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="226.7" y1="107.6" x2="231.4" y2="114.1" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="254.0" y1="89.9" x2="261.0" y2="102.0" stroke="#d9a04a" stroke-width="3.5" opacity="0.95"/>
+<line x1="283.1" y1="75.0" x2="286.4" y2="82.4" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="313.6" y1="63.3" x2="316.1" y2="71.0" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="345.2" y1="54.9" x2="346.8" y2="62.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<line x1="377.4" y1="49.8" x2="378.2" y2="57.7" stroke="#d9a04a" stroke-width="2" opacity="0.6"/>
+<text x="659.3" y="221.0" text-anchor="middle" fill="#d9a04a" font-size="15" font-weight="500" opacity="0.95">10</text>
+<text x="659.3" y="508.9" text-anchor="middle" fill="#d9a04a" font-size="15" font-weight="500" opacity="0.95">20</text>
+<text x="410.0" y="652.9" text-anchor="middle" fill="#d9a04a" font-size="15" font-weight="500" opacity="0.95">30</text>
+<text x="160.7" y="508.9" text-anchor="middle" fill="#d9a04a" font-size="15" font-weight="500" opacity="0.95">40</text>
+<text x="160.7" y="221.0" text-anchor="middle" fill="#d9a04a" font-size="15" font-weight="500" opacity="0.95">50</text>
+<path d="M 410.0 44.1 L 399.0 62.1 L 421.0 62.1 Z" fill="#3dff9e" opacity="0.95" filter="url(#glow)"/>
+<text x="410.0" y="74.2" text-anchor="middle" fill="#ab9668" font-size="10" font-family="ui-monospace,monospace" letter-spacing="2">&#9664; LE SAUVEGARDER</text>
+<circle cx="410.0" cy="360.0" r="275.5" fill="url(#plate)" stroke="#2a2f42" stroke-width="3"/>
+<path d="M 198.4 360.0 A 211.6 211.6 0 0 1 621.6 360.0" fill="none" stroke="#232840" stroke-width="9" stroke-linecap="round"/>
+<text x="410.0" y="166.4" text-anchor="middle" fill="#ab9668" font-size="10" font-family="ui-monospace,monospace" letter-spacing="2">UP &#183; DOWN</text>
+<text x="410.0" y="179.4" text-anchor="middle" fill="#7d6f52" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.5">LE BARILLET &#183; UNDRIVEN</text>
+<line data-baton="01" x1="535.5" y1="142.7" x2="522.3" y2="165.4" stroke="#3dff9e" stroke-width="11" stroke-linecap="round" opacity="1" filter="url(#glow)"/>
+<text data-name="01" x="498.4" y="220.8" text-anchor="start" fill="#3dff9e" font-size="14.5" font-weight="500" opacity="1" filter="url(#glowsoft)">Le Sceptique</text>
+<text data-state="01" x="498.4" y="235.8" text-anchor="start" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">01  ACTIVE</text>
+<line data-baton="02" x1="627.3" y1="234.5" x2="604.6" y2="247.6" stroke="#3dff9e" stroke-width="11" stroke-linecap="round" opacity="1" filter="url(#glow)"/>
+<text data-name="02" x="557.2" y="279.6" text-anchor="start" fill="#3dff9e" font-size="14.5" font-weight="500" opacity="1" filter="url(#glowsoft)">Le Curateur</text>
+<text data-state="02" x="557.2" y="294.6" text-anchor="start" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">02  ACTIVE</text>
+<line data-baton="03" x1="660.9" y1="360.0" x2="634.7" y2="360.0" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="03" x="578.7" y="360.0" text-anchor="start" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="03" x="578.7" y="375.0" text-anchor="start" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">03</text>
+<line data-baton="04" x1="627.3" y1="485.4" x2="604.6" y2="472.3" stroke="#7d6f52" stroke-width="11" stroke-linecap="round" opacity="1" filter="url(#glow)"/>
+<text data-name="04" x="557.2" y="440.3" text-anchor="start" fill="#7d6f52" font-size="14.5" font-weight="500" opacity="1" filter="url(#glowsoft)">Le Vigile</text>
+<text data-state="04" x="557.2" y="455.3" text-anchor="start" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">04  HELD</text>
+<line data-baton="05" x1="535.5" y1="577.3" x2="522.3" y2="554.6" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="05" x="498.4" y="499.2" text-anchor="start" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="05" x="498.4" y="514.2" text-anchor="start" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">05</text>
+<line data-baton="06" x1="410.0" y1="610.9" x2="410.0" y2="584.7" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="06" x="410.0" y="520.7" text-anchor="middle" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="06" x="410.0" y="535.7" text-anchor="middle" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">06</text>
+<line data-baton="07" x1="284.5" y1="577.3" x2="297.7" y2="554.6" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="07" x="321.6" y="499.2" text-anchor="end" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="07" x="321.6" y="514.2" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">07</text>
+<line data-baton="08" x1="192.7" y1="485.4" x2="215.4" y2="472.3" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="08" x="262.8" y="440.3" text-anchor="end" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="08" x="262.8" y="455.3" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">08</text>
+<line data-baton="09" x1="159.1" y1="360.0" x2="185.3" y2="360.0" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="09" x="241.3" y="360.0" text-anchor="end" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="09" x="241.3" y="375.0" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">09</text>
+<line data-baton="10" x1="192.7" y1="234.5" x2="215.4" y2="247.6" stroke="#7d6f52" stroke-width="11" stroke-linecap="round" opacity="1" filter="url(#glow)"/>
+<text data-name="10" x="262.8" y="279.6" text-anchor="end" fill="#7d6f52" font-size="14.5" font-weight="500" opacity="1" filter="url(#glowsoft)">Le Messager</text>
+<text data-state="10" x="262.8" y="294.6" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">10  HELD</text>
+<line data-baton="11" x1="284.5" y1="142.7" x2="297.7" y2="165.4" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="11" x="321.6" y="220.8" text-anchor="end" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="11" x="321.6" y="235.8" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">11</text>
+<line data-baton="12" x1="410.0" y1="109.1" x2="410.0" y2="135.3" stroke="#463a24" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+<text data-name="12" x="410.0" y="199.3" text-anchor="middle" fill="#463a24" font-size="14.5" font-weight="500" opacity="0.55">&#183;</text>
+<text data-state="12" x="410.0" y="214.3" text-anchor="middle" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">12</text>
+<text x="410.0" y="478.1" text-anchor="middle" fill="#ab9668" font-size="12" font-family="ui-monospace,monospace" letter-spacing="6">L'ARCHIVE</text>
+<text x="410.0" y="493.1" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="2" opacity="0.8">CHRONOMETER</text>
+<text x="410.0" y="504.1" text-anchor="middle" fill="#7d6f52" font-size="8" font-family="ui-monospace,monospace" letter-spacing="2">UNCERTIFIED</text>
+<circle cx="491.8" cy="248.2" r="27.1" fill="#0e1120" stroke="#2a2f42" stroke-width="2.5"/>
+<text x="491.8" y="246.2" text-anchor="middle" fill="#ab9668" font-size="8.5" font-family="ui-monospace,monospace" letter-spacing="1">SIGNAL</text>
+<text x="491.8" y="258.2" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="0.5">UNDRIVEN</text>
+<circle cx="461.7" cy="294.2" r="27.1" fill="#0e1120" stroke="#2a2f42" stroke-width="2.5"/>
+<text x="461.7" y="292.2" text-anchor="middle" fill="#ab9668" font-size="8.5" font-family="ui-monospace,monospace" letter-spacing="1">NOISE</text>
+<text x="461.7" y="304.2" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="0.5">UNDRIVEN</text>
+<circle cx="521.8" cy="294.2" r="27.1" fill="#0e1120" stroke="#2a2f42" stroke-width="2.5"/>
+<text x="521.8" y="292.2" text-anchor="middle" fill="#ab9668" font-size="8.5" font-family="ui-monospace,monospace" letter-spacing="1">GAIN</text>
+<text x="521.8" y="304.2" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="0.5">UNDRIVEN</text>
+<text x="491.8" y="334.3" text-anchor="middle" fill="#ab9668" font-size="7.5" font-family="ui-monospace,monospace" letter-spacing="1">LE SCEPTIQUE</text>
+<circle cx="330.0" cy="280.0" r="32.8" fill="#0f1220" stroke="#2a2f42" stroke-width="2.5"/>
+<text x="330.0" y="269.0" text-anchor="middle" fill="#ab9668" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.5">LEAP</text>
+<text x="330.0" y="281.0" text-anchor="middle" fill="#ab9668" font-size="7" font-family="ui-monospace,monospace" letter-spacing="0.5" opacity="0.85">LE CONTINUANT</text>
+<text x="330.0" y="293.0" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="1">UNDRIVEN</text>
+<text x="410.0" y="303.6" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1.5" opacity="0.85">DATE</text>
+<rect x="389.0" y="309.6" width="42" height="22" rx="3" fill="#0a0d18" stroke="#2a2f42" stroke-width="2"/>
+<text x="410.0" y="324.1" text-anchor="middle" fill="#7d6f52" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1">UNDRIVEN</text>
+<circle cx="333.5" cy="436.5" r="36.1" fill="#0a0d18" stroke="#2a2f42" stroke-width="2.5"/>
+<g transform="rotate(0 333.5 436.5)" opacity="0.95">
+<line x1="364.5" y1="436.5" x2="357.5" y2="436.5" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="360.4" y1="452.1" x2="354.3" y2="448.6" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="349.0" y1="463.4" x2="345.5" y2="457.4" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="333.5" y1="467.6" x2="333.5" y2="460.6" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="317.9" y1="463.4" x2="321.4" y2="457.4" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="306.5" y1="452.1" x2="312.6" y2="448.6" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="302.4" y1="436.5" x2="309.4" y2="436.5" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="306.5" y1="421.0" x2="312.6" y2="424.5" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="317.9" y1="409.6" x2="321.4" y2="415.7" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="333.5" y1="405.4" x2="333.5" y2="412.4" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="349.0" y1="409.6" x2="345.5" y2="415.7" stroke="#6e5a30" stroke-width="2.5"/>
+<line x1="360.4" y1="421.0" x2="354.3" y2="424.5" stroke="#6e5a30" stroke-width="2.5"/>
+<circle cx="346.6" cy="444.1" r="3.4" fill="url(#brass)"/>
+<circle cx="333.5" cy="451.7" r="3.4" fill="url(#brass)"/>
+<circle cx="320.3" cy="444.1" r="3.4" fill="url(#brass)"/>
+<circle cx="320.3" cy="428.9" r="3.4" fill="url(#brass)"/>
+<circle cx="333.5" cy="421.4" r="3.4" fill="url(#brass)"/>
+<circle cx="346.6" cy="428.9" r="3.4" fill="url(#brass)"/>
+<circle cx="333.5" cy="436.5" r="4" fill="#c9a86a"/>
+</g>
+<text x="333.5" y="382.4" text-anchor="middle" fill="#ab9668" font-size="7.5" font-family="ui-monospace,monospace" letter-spacing="1">LA ROUE À COLONNES</text>
+<text x="333.5" y="392.4" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="1">AT REST</text>
+<line data-hand="hour" x1="410.0" y1="360.0" x2="453.4" y2="284.9" stroke="#35e6ff" stroke-width="5.5" stroke-linecap="round" opacity="0.92"/>
+<text data-legend="precedence" x="464.4" y="265.8" text-anchor="middle" fill="#35e6ff" font-size="7" font-family="ui-monospace,monospace" letter-spacing="1" opacity="0.85">PRECEDENCE</text>
+<line data-hand="split" x1="410.0" y1="360.0" x2="293.3" y2="292.6" stroke="#7d6f52" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="7 5" opacity="0.9"/>
+<text data-legend="aimed" x="349.4" y="325.0" text-anchor="middle" fill="#7d6f52" font-size="7" font-family="ui-monospace,monospace" letter-spacing="1">AIMED</text>
+<line data-hand="minute" x1="410.0" y1="360.0" x2="540.5" y2="284.6" stroke="#e8ecff" stroke-width="4.5" stroke-linecap="round"/>
+<circle cx="410.0" cy="360.0" r="9" fill="#c9a86a"/>
+<circle cx="410.0" cy="360.0" r="3.5" fill="#14161f"/>
+<text x="779.9" y="364.0" fill="#c9a86a" font-size="10" font-family="ui-monospace,monospace" letter-spacing="2" opacity="0.9">MTM</text>
+<text x="50.0" y="727.9" fill="#6e5a30" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">02 PUSHER &#183; LE FRIPON &#183; SEALED</text>
+<text x="410.0" y="727.9" text-anchor="middle" fill="#c9a86a" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">03 CROWN &#183; DELIBERATELY NO ONE</text>
+<text x="770.0" y="727.9" text-anchor="end" fill="#ab9668" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.5">04 PUSHER &#183; RESET</text>
+<text x="173.7" y="478.2" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Intake" opacity="0.62" transform="rotate(64.0 173.7 475.2)">INTAKE</text>
+<text x="147.4" y="349.2" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Identify" opacity="0.62" transform="rotate(-87.0 147.4 346.2)">IDENTIFY</text>
+<text x="187.0" y="223.7" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Build" opacity="0.62" transform="rotate(-58.0 187.0 220.7)">BUILD</text>
+<text x="282.5" y="133.0" text-anchor="middle" fill="#35e6ff" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Publish" opacity="1" transform="rotate(-29.0 282.5 130.0)">PUBLISH</text>
+<text x="410.0" y="100.1" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Exhibit" opacity="0.62" transform="rotate(0.0 410.0 97.1)">EXHIBIT</text>
+<text x="537.5" y="133.0" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Harden" opacity="0.62" transform="rotate(29.0 537.5 130.0)">HARDEN</text>
+<text x="633.0" y="223.7" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Triage" opacity="0.62" transform="rotate(58.0 633.0 220.7)">TRIAGE</text>
+<text x="672.6" y="349.2" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Recover" opacity="0.62" transform="rotate(87.0 672.6 346.2)">RECOVER</text>
+<text x="646.3" y="478.2" text-anchor="middle" fill="#ab9668" font-size="8" font-family="ui-monospace,monospace" letter-spacing="1" data-route="Judgement" opacity="0.62" transform="rotate(296.0 646.3 475.2)">JUDGEMENT</text>
+<text data-band="brake" x="410.0" y="574.8" text-anchor="middle" fill="#ff4fd8" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.5"></text>
+<text data-band="escapement" x="410.0" y="618.3" text-anchor="middle" fill="#ff5470" font-size="10" font-family="ui-monospace,monospace" letter-spacing="1.5">LE SAS &#183; FAULT</text>
+<text data-band="fault" x="410.0" y="571.5" text-anchor="middle" fill="#ff5470" font-size="8" opacity="0.9" font-family="ui-monospace,monospace" letter-spacing="0.5">UNTIERED: 2 ADMITTED MEMBER(S) CARRIED NO TIER AND WERE HELD</text>
+</svg></div>
+      <figcaption><b>Plate 1</b> &#8212; live. Dark positions are genuinely
+      dark: the gate did not fire.</figcaption></figure>
+    <div id="readout"></div>
+  </div>
+
+  <figure class="facefig"><div class="plate term"><pre id="face"></pre></div>
+    <figcaption><b>Plate 2</b> &#8212; the same turn as the terminal face
+    <code>bin/atlas-settle</code> draws after it, named and proposed together.
+    In a session it is drawn only when the train did more than the standing
+    watch. Assembled from <code>face_kit()</code>; <code>test_face_js.py</code>
+    holds it to <code>cadran_face.py</code> byte for byte.</figcaption></figure>
+
+  <footer>
+    <span>Forgotten Industries &#183; ATLAS &#183; Le Conseil</span>
+    <span>A thing documented is a thing not yet lost.</span>
+  </footer>
+</div>
+<script type="module">
+const D = {"cap":4,"precedence":["Le Sauvegarder","Le Vigile","Le Sceptique","Le Renégat","All others"],"strict":["le fripon"],"threshold":30,"filler":["a","an","and","any","are","as","at","be","been","being","but","by","did","do","does","for","from","had","has","have","if","in","into","invoke","is","it","its","no","nor","not","of","on","or","so","some","someone","something","than","that","the","then","these","this","those","to","was","were","when","while","with"],"invoke":["run","take","route"],"routes":{"Intake":["Taxonomiste","Curateur"],"Identify":["Limier","Taxonomiste"],"Build":["Cartographe","Forgeron"],"Publish":["Curateur","Vigile","Messager"],"Exhibit":["Curateur","Messager"],"Harden":["Vigile","Fripon","Vigile"],"Triage":["Renégat","Continuant"],"Recover":["Rédempteur","Forgeron"],"Judgement":[]},"mechanisms":[{"part":"Bezel","owner":"LE SAUVEGARDER","note":"unidirectional"},{"part":"Dial plate","owner":"L'ARCHIVE","note":"ground"},{"part":"Up-and-down arc","owner":"LE BARILLET","note":"undriven"},{"part":"Registers","owner":"SIGNAL · NOISE · GAIN","note":"undriven"},{"part":"Crown","owner":"DELIBERATELY NO ONE","note":"input"},{"part":"Going train","owner":"LE ROUAGE","note":"driving"},{"part":"Escapement","owner":"LE SAS","note":"release"},{"part":"Column wheel","owner":"LA ROUE À COLONNES","note":"verdicts"},{"part":"Brake","owner":"LE FREIN","note":"the halt"},{"part":"Perpetual calendar","owner":"LE CONTINUANT","note":"undriven"},{"part":"Retrograde arc","owner":"LE RÉDEMPTEUR // LE SAUVEGARDER","note":"undriven"},{"part":"Hands","owner":"DELIBERATELY NO ONE","note":"answer"},{"part":"Split-seconds hand","owner":"DELIBERATELY NO ONE","note":"where it was aimed"}],"members":[{"position":"11","name":"Le Continuant","phrases":["Le Continuant","Continuance","the work continues"],"standing":false,"sealed":false,"bullets":["a decision affects future structure, naming, architecture, maintenance, or continuity","a system must remain consistent across versions","the work must survive more than one session","Matthew is fatigued, overextended, or at risk of confusing endurance with obligation","a project needs sustainable rhythm instead of heroic effort","the question is whether to keep going, what to set down, or what pattern must survive","a choice must serve the future operator, not only the current session","work is moving to another machine, a removable drive, or a later session and must carry its own instructions"],"prohibitions":[]},{"position":"12","name":"Le Rédempteur","phrases":["Le Rédempteur","Le Redempteur","how do I fix it?","can I come back to this?"],"standing":false,"sealed":false,"bullets":["something broken, stalled, or abandoned is being re-entered","a previous decision created the problem now being addressed","a pattern of failure is repeating and has been named as such","the question is not only \"how do I fix it?\" but \"can I come back to this?\"","consequence is present in the work and is being worked around rather than through"],"prohibitions":["ordinary difficulty, slow progress, or a hard problem","fatigue or overextension — that is Le Continuant","a project merely being old, dusty, or long-shelved","Matthew being tired, terse, or frustrated","the mere presence of an artifact with history"]},{"position":"01","name":"Le Sceptique","phrases":["Le Sceptique","the airlock","Le Sas","check the gain","how do we know that"],"standing":true,"sealed":false,"bullets":[],"prohibitions":[]},{"position":"02","name":"Le Curateur","phrases":["Le Curateur","the curator","the docent","what's worth showing","what's the through-line"],"standing":false,"sealed":false,"bullets":["preserved material has accumulated without a decision about what it is for","a dossier, essay, restoration log, or field note is being started and the subject is unsettled","the same artifact could belong to several stories and one must be chosen","a body of work needs an order, a sequence, or an entry point","someone unfamiliar is about to encounter the archive and needs a path through it","the archive is complete and still unreadable","raw footage or photographs are being cut down into a short, a video, or a post"],"prohibitions":["Do not invoke during intake, repair, or investigation."]},{"position":"03","name":"Le Taxonomiste","phrases":["Le Taxonomiste","the taxonomist","classify this","how should this be filed"],"standing":false,"sealed":false,"bullets":["a new artifact, file, note, photograph, or record enters the archive","a naming scheme, folder structure, tag vocabulary, or schema is being created or changed","an item does not fit the existing categories","the same thing is being called by two different names in two places","a category is being created for a single item","a label must carry uncertainty rather than resolve it"],"prohibitions":["Do not invoke for one-off files with no retrieval future, or during active repair work when filing would interrupt the sequence."]},{"position":"04","name":"Le Vigile","phrases":["Le Vigile","the watchman","security check","what's exposed"],"standing":false,"sealed":false,"bullets":["credentials, tokens, keys, or passwords appear in a file, a note, or a conversation","something is about to be published, pushed to a public repository, or shared","backup, custody, or single-copy status is in question","hardware is being sold, given away, decommissioned, or recycled","account access, recovery paths, or two-factor coverage is being changed","a photograph or document may contain identifying or sensitive material in the frame","a new service, integration, or agent is being granted access to the archive","a person, a browser agent, or a remote session is being brought into the work","a listing, buyer, employer, or contact may not be what it claims"],"prohibitions":["Do not invoke for routine local file work with no exposure surface."]},{"position":"05","name":"Le Fripon","phrases":["Le Fripon","L'Intrus","red team"],"standing":false,"sealed":true,"bullets":["a backup, recovery, or custody procedure has been designed but never exercised","an access control, permission set, or credential scheme is assumed to work","a publication pipeline could leak more than intended","a recovery plan has never been run end to end","an assumption about safety has hardened into habit"],"prohibitions":[]},{"position":"06","name":"Le Renégat","phrases":["Le Renégat","Le Renegat","the renegade","argue against this","should we even"],"standing":false,"sealed":false,"bullets":["scope has grown past its original statement","a project has been resumed more than twice without reaching a stable state","the effort required has become disproportionate to the value of the object","a plan requires a purchase, a fabrication, or a dependency that the goal does not justify","the reason for continuing is sunk cost, obligation, or identity rather than usefulness","the council has produced a list longer than the available time","the work is being carried because stopping would feel like failure","an offer, purchase, or listing is being weighed on pay, cost, or time against its real return"],"prohibitions":[]},{"position":"07","name":"Le Cartographe","phrases":["Le Cartographe","the cartographer","map this","what depends on what"],"standing":false,"sealed":false,"bullets":["a build, repair, or project has more than three interacting parts","an order of operations matters and has not been established","a change in one component may affect others in non-obvious ways","compatibility between parts, revisions, standards, or formats is in question","a project's blockers are unclear and the next move cannot be identified","provenance runs through multiple owners, systems, or transformations","the same dependency keeps surfacing from different directions","a procedure must cross machines, operating systems, or toolchains to finish"],"prohibitions":["Do not invoke for linear tasks or single-component work."]},{"position":"08","name":"Le Limier","phrases":["Le Limier","the bloodhound","release the hound","reconstruct this","what happened here","Who is X?","Who is JJ Ammo Can?"],"standing":false,"sealed":false,"bullets":["an artifact shows modification, damage, or repair whose cause is unknown","a system failed and the failure sequence has not been established","provenance is broken and must be reasoned across a gap","a file, drive, or archive contains material whose origin is unclear","two records disagree about the same event","a record, a seller, or a previous owner answers the question with a shrug","the Operator asks \"Who is X?\" about a name, a handle, or a mark of unknown origin","a part is non-original, non-standard, or does not match its documentation","something was done to an object by a previous owner and the reason matters"],"prohibitions":["Do not invoke when the history is irrelevant to the decision."]},{"position":"09","name":"Le Forgeron","phrases":["Le Forgeron","the smith","build this","let's make it"],"standing":false,"sealed":false,"bullets":["a part does not exist, is discontinued, or is priced beyond reason and could be fabricated","a repair, adapter, mount, bracket, tray, duct, or pass-through is the next physical step","a procedure needs to become a script, template, or repeatable process","a system has been mapped and the critical path is clear","the judgment phase is complete and the remaining work is making"],"prohibitions":["Do not invoke while the source is unpreserved, the claim is unverified, or the scope is unsettled."]},{"position":"10","name":"Le Messager","phrases":["Le Messager","the messenger","write this up","how do we say this"],"standing":false,"sealed":false,"bullets":["a finding is leaving the archive: a post, page, caption, listing, README, or message","a technical result must be explained to someone without the context","a summary is being made of a larger body of work","a public-facing description of a project is being written or revised","an uncertain finding is being communicated and the uncertainty must survive","something is being shared with a seller, a forum, a buyer, or a reader","an application, résumé, cover letter, or follow-up is being sent"],"prohibitions":["Do not invoke for working notes, bench logs, or internal records."]},{"position":"crown","name":"Le Sauvegarder","phrases":["Le Sauvegarder","the keeper","preserve this","archive first"],"standing":false,"sealed":false,"bullets":["a source file, artifact, component, image, note, or record is at risk","source code, content, or site structure is about to be edited","something needs to be photographed, logged, measured, named, catalogued, backed up, or cited","a decision may destroy context","a project is being edited before its current state has been understood","an artifact — physical, digital, or memory — needs preservation","a fragile thought needs to become a durable record","restoration is tempting but the source has not been examined","a delete, wipe, format, flash, or overwrite is about to run"],"prohibitions":[]}]};
+const INK = {"bg": "#0b0c12", "brass_hi": "#c9a86a", "brass_lo": "#6e5a30", "plate": "#14161f", "edge": "#2a2f42", "ink": "#e8ecff", "dim": "#ab9668", "cyan": "#35e6ff", "amber": "#d9a04a", "active": "#3dff9e", "sealed": "#ffb43d", "held": "#7d6f52", "dark": "#463a24", "consulted": "#e8f04a", "dissent": "#ff4fd8", "fault": "#ff5470"};
+const STATE_INK = {"consulted": "#e8f04a", "active": "#3dff9e", "sealed": "#ffb43d", "held": "#7d6f52", "dissent": "#ff4fd8", "dark": "#463a24"};
+const K = {"width":64,"inner":60,"rows":25,"cr":12,"cc":30,"cells":[[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["▲","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["1",""],["2",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["1",""],["1",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["1",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],["1",""],["0",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["2",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["9",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["3",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],["═",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["L",""],["'",""],["A",""],["R",""],["C",""],["H",""],["I",""],["V",""],["E",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["8",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["4",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["7",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["5",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["0",""],["6",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["▓","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["▓","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]],[[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["▓","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],["░","#af8700"],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""],[" ",""]]],"locked":[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],"markers":{"crown":[12,56],"11":[4,22],"12":[3,31],"01":[4,40],"02":[7,47],"03":[12,49],"04":[17,47],"05":[20,40],"06":[21,31],"07":[20,22],"08":[17,15],"09":[12,13],"10":[7,15]},"bandRows":{"brake":17,"escapement":18},"owners":{"brake":"LE FREIN","escapement":"LE SAS"},"hands":{"split":{"11":[[12,29,"\\"],[11,28,"\\"],[10,27,"\\"],[9,26,"\\"],[8,25,"\\"],[7,24,"\\"],[6,23,"•"]],"12":[[11,30,"|"],[9,30,"|"],[7,30,"|"],[5,30,"•"]],"01":[[12,31,"/"],[11,32,"/"],[10,33,"/"],[9,34,"/"],[8,35,"/"],[7,36,"/"],[6,37,"•"]],"02":[[12,31,"/"],[11,32,"/"],[11,34,"/"],[10,35,"/"],[10,37,"/"],[9,39,"/"],[9,41,"/"],[8,42,"•"]],"03":[[12,31,"-"],[12,33,"-"],[12,35,"-"],[12,37,"-"],[12,39,"-"],[12,41,"-"],[12,43,"-"],[12,44,"•"]],"04":[[12,31,"\\"],[13,32,"\\"],[13,34,"\\"],[14,35,"\\"],[14,37,"\\"],[15,39,"\\"],[15,41,"\\"],[16,42,"•"]],"05":[[12,31,"\\"],[13,32,"\\"],[14,33,"\\"],[15,34,"\\"],[16,35,"\\"],[17,36,"\\"],[18,37,"•"]],"06":[[13,30,"|"],[15,30,"|"],[17,30,"|"],[19,30,"•"]],"07":[[12,29,"/"],[13,28,"/"],[14,27,"/"],[15,26,"/"],[16,25,"/"],[17,24,"/"],[18,23,"•"]],"08":[[12,29,"/"],[13,28,"/"],[13,26,"/"],[14,25,"/"],[14,23,"/"],[15,21,"/"],[15,19,"/"],[16,18,"•"]],"09":[[12,29,"-"],[12,27,"-"],[12,25,"-"],[12,23,"-"],[12,21,"-"],[12,19,"-"],[12,17,"-"],[12,16,"•"]],"10":[[12,29,"\\"],[11,28,"\\"],[11,26,"\\"],[10,25,"\\"],[10,23,"\\"],[9,21,"\\"],[9,19,"\\"],[8,18,"•"]]},"minute":{"11":[[12,29,"\\"],[11,29,"\\"],[11,28,"\\"],[10,28,"\\"],[10,27,"\\"],[9,27,"\\"],[9,26,"\\"],[8,26,"\\"],[8,25,"\\"],[7,25,"\\"],[7,24,"\\"],[6,24,"\\"],[6,23,"•"]],"12":[[11,30,"|"],[10,30,"|"],[9,30,"|"],[8,30,"|"],[7,30,"|"],[6,30,"|"],[5,30,"•"]],"01":[[12,31,"/"],[11,31,"/"],[11,32,"/"],[10,32,"/"],[10,33,"/"],[9,33,"/"],[9,34,"/"],[8,34,"/"],[8,35,"/"],[7,35,"/"],[7,36,"/"],[6,36,"/"],[6,37,"•"]],"02":[[12,31,"/"],[12,32,"/"],[11,32,"/"],[11,33,"/"],[11,34,"/"],[11,35,"/"],[10,35,"/"],[10,36,"/"],[10,37,"/"],[10,38,"/"],[9,39,"/"],[9,40,"/"],[9,41,"/"],[9,42,"/"],[8,42,"•"]],"03":[[12,31,"-"],[12,32,"-"],[12,33,"-"],[12,34,"-"],[12,35,"-"],[12,36,"-"],[12,37,"-"],[12,38,"-"],[12,39,"-"],[12,40,"-"],[12,41,"-"],[12,42,"-"],[12,43,"-"],[12,44,"•"]],"04":[[12,31,"\\"],[12,32,"\\"],[13,32,"\\"],[13,33,"\\"],[13,34,"\\"],[13,35,"\\"],[14,35,"\\"],[14,36,"\\"],[14,37,"\\"],[14,38,"\\"],[15,39,"\\"],[15,40,"\\"],[15,41,"\\"],[15,42,"\\"],[16,42,"•"]],"05":[[12,31,"\\"],[13,31,"\\"],[13,32,"\\"],[14,32,"\\"],[14,33,"\\"],[15,33,"\\"],[15,34,"\\"],[16,34,"\\"],[16,35,"\\"],[17,35,"\\"],[17,36,"\\"],[18,36,"\\"],[18,37,"•"]],"06":[[13,30,"|"],[14,30,"|"],[15,30,"|"],[16,30,"|"],[17,30,"|"],[18,30,"|"],[19,30,"•"]],"07":[[12,29,"/"],[13,29,"/"],[13,28,"/"],[14,28,"/"],[14,27,"/"],[15,27,"/"],[15,26,"/"],[16,26,"/"],[16,25,"/"],[17,25,"/"],[17,24,"/"],[18,24,"/"],[18,23,"•"]],"08":[[12,29,"/"],[12,28,"/"],[13,28,"/"],[13,27,"/"],[13,26,"/"],[13,25,"/"],[14,25,"/"],[14,24,"/"],[14,23,"/"],[14,22,"/"],[15,21,"/"],[15,20,"/"],[15,19,"/"],[15,18,"/"],[16,18,"•"]],"09":[[12,29,"-"],[12,28,"-"],[12,27,"-"],[12,26,"-"],[12,25,"-"],[12,24,"-"],[12,23,"-"],[12,22,"-"],[12,21,"-"],[12,20,"-"],[12,19,"-"],[12,18,"-"],[12,17,"-"],[12,16,"•"]],"10":[[12,29,"\\"],[12,28,"\\"],[11,28,"\\"],[11,27,"\\"],[11,26,"\\"],[11,25,"\\"],[10,25,"\\"],[10,24,"\\"],[10,23,"\\"],[10,22,"\\"],[9,21,"\\"],[9,20,"\\"],[9,19,"\\"],[9,18,"\\"],[8,18,"•"]]},"hour":{"11":[[12,29,"\\"],[11,29,"\\"],[11,28,"\\"],[10,28,"\\"],[10,27,"\\"],[9,27,"\\"],[9,26,"\\"],[8,26,"\\"],[8,25,"\\"],[7,25,"\\"],[7,24,"•"]],"12":[[11,30,"|"],[10,30,"|"],[9,30,"|"],[8,30,"|"],[7,30,"|"],[6,30,"•"]],"01":[[12,31,"/"],[11,31,"/"],[11,32,"/"],[10,32,"/"],[10,33,"/"],[9,33,"/"],[9,34,"/"],[8,34,"/"],[8,35,"/"],[7,35,"/"],[7,36,"•"]],"02":[[12,31,"/"],[12,32,"/"],[11,32,"/"],[11,33,"/"],[11,34,"/"],[11,35,"/"],[10,35,"/"],[10,36,"/"],[10,37,"/"],[10,38,"/"],[10,39,"/"],[9,39,"/"],[9,40,"•"]],"03":[[12,31,"-"],[12,32,"-"],[12,33,"-"],[12,34,"-"],[12,35,"-"],[12,36,"-"],[12,37,"-"],[12,38,"-"],[12,39,"-"],[12,40,"-"],[12,41,"•"]],"04":[[12,31,"\\"],[12,32,"\\"],[13,32,"\\"],[13,33,"\\"],[13,34,"\\"],[13,35,"\\"],[14,35,"\\"],[14,36,"\\"],[14,37,"\\"],[14,38,"\\"],[14,39,"\\"],[15,39,"\\"],[15,40,"•"]],"05":[[12,31,"\\"],[13,31,"\\"],[13,32,"\\"],[14,32,"\\"],[14,33,"\\"],[15,33,"\\"],[15,34,"\\"],[16,34,"\\"],[16,35,"\\"],[17,35,"\\"],[17,36,"•"]],"06":[[13,30,"|"],[14,30,"|"],[15,30,"|"],[16,30,"|"],[17,30,"|"],[18,30,"•"]],"07":[[12,29,"/"],[13,29,"/"],[13,28,"/"],[14,28,"/"],[14,27,"/"],[15,27,"/"],[15,26,"/"],[16,26,"/"],[16,25,"/"],[17,25,"/"],[17,24,"•"]],"08":[[12,29,"/"],[12,28,"/"],[13,28,"/"],[13,27,"/"],[13,26,"/"],[13,25,"/"],[14,25,"/"],[14,24,"/"],[14,23,"/"],[14,22,"/"],[14,21,"/"],[15,21,"/"],[15,20,"•"]],"09":[[12,29,"-"],[12,28,"-"],[12,27,"-"],[12,26,"-"],[12,25,"-"],[12,24,"-"],[12,23,"-"],[12,22,"-"],[12,21,"-"],[12,20,"-"],[12,19,"•"]],"10":[[12,29,"\\"],[12,28,"\\"],[11,28,"\\"],[11,27,"\\"],[11,26,"\\"],[11,25,"\\"],[10,25,"\\"],[10,24,"\\"],[10,23,"\\"],[10,22,"\\"],[10,21,"\\"],[9,21,"\\"],[9,20,"•"]]}},"handOrder":[["split","#87875f"],["minute","#eeeeee"],["hour","#00ffff"]],"marker":{"active":"●","consulted":"◐","sealed":"◆","held":"○","dissent":"✕","dark":"·"},"color":{"active":"#00d787","consulted":"#ffff00","sealed":"#ffaf00","held":"#87875f","dissent":"#ff00ff","dark":"#444444"},"fault":"#ff5f5f","hours":["01","02","03","04","05","06","07","08","09","10","11","12"],"names":{"11":"Le Continuant","12":"Le Rédempteur","01":"Le Sceptique","02":"Le Curateur","03":"Le Taxonomiste","04":"Le Vigile","05":"Le Fripon","06":"Le Renégat","07":"Le Cartographe","08":"Le Limier","09":"Le Forgeron","10":"Le Messager"},"pivot":"◉","title":"LE CADRAN · face","undriven":"UNDRIVEN  registers · up-and-down · calendar"};
+// LE ROUAGE, in the browser. The stage logic only - no gate vocabulary.
+//
+// Every phrase, the roster, the precedence ladder, the cap, the routes and the
+// invocation verbs arrive as `D`, generated from the markdown by rouage/emit.py.
+// Nothing here may hardcode any of them: this file is the algorithm and the
+// doctrine is still the single source.
+//
+// This IS a second implementation of the stages, which is a real cost. It is
+// held honest by rouage/test_conformance.py, which runs the same input matrix
+// through this and through rouage.py and asserts identical traces.
+
+function fold(text) {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+function matches(member, folded) {
+  for (const p of member.phrases) if (folded.includes(fold(p))) return p;
+  return null;
+}
+
+// Stage 2 - EVALUATE. Literal phrases only. The prose bullets are the semantic
+// half and belong to the barrel; reading them here would be interpreting.
+function evaluate(D, utterance, armed) {
+  const folded = fold(utterance);
+  const out = [];
+  for (const m of D.members) {
+    const hit = matches(m, folded);
+    if (m.standing) { out.push({ m, reason: "standing", state: "active", note: "" }); continue; }
+    if (!hit) continue;
+    const sealed = m.sealed && fold(armed || "") !== fold(m.name);
+    out.push({
+      m, reason: `named:${hit}`,
+      state: sealed ? "sealed" : "active",
+      note: sealed ? "named without authorization" : "",
+    });
+  }
+  return out;
+}
+
+// Stage 2b - ROUTE. Deliberate invocation only: every route name is a common
+// English word, so a bare match convenes members out of ordinary prose.
+function takeRoute(D, utterance, trace) {
+  const folded = fold(utterance);
+  const verbs = D.invoke.join("|");
+  const hit = Object.keys(D.routes).find((n) =>
+    new RegExp(`\\b(?:${verbs})\\s+${fold(n).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(folded));
+  if (!hit) return [];
+
+  trace.route = hit;
+  const steps = D.routes[hit];
+  if (!steps.length) {
+    trace.notices.push(`route ${hit}: delegated to protocol, no sequence for the train`);
+    return [];
+  }
+  const resolve = (s) => D.members.find(
+    (m) => fold(m.name) === fold(s) || fold(m.name).endsWith(" " + fold(s)));
+
+  const out = [], seen = new Set();
+  for (const step of steps) {
+    const m = resolve(step);
+    if (!m || seen.has(fold(m.name))) continue;
+    seen.add(fold(m.name));
+    const sealed = m.sealed && fold(trace.armed || "") !== fold(m.name);
+    out.push({
+      m, reason: `route:${hit}`,
+      state: sealed ? "sealed" : "active",
+      note: sealed ? "route step without authorization" : "",
+    });
+  }
+  const resolved = steps.map(resolve).filter(Boolean);
+  trace.routePositions = resolved.map((m) => m.position);
+  trace.routeEnd = resolved.length ? resolved[resolved.length - 1].position : null;
+  trace.routeAimed = trace.routeEnd;
+  trace.notices.push(`route ${hit}: ${steps.join(" -> ")}`);
+  return out;
+}
+
+// Stage 3 - ORDER. Precedence follows irreversibility, and the ladder is
+// doctrine's, not this file's.
+function order(D, cands) {
+  // (ladder index, dial position) - a TUPLE, matching rouage.py. Ranking on
+  // the index alone and leaning on sort stability tie-breaks by roster order
+  // instead of by position, which picks a different member off the ladder and
+  // therefore points the hour hand somewhere else.
+  const rank = (c) => {
+    const i = D.precedence.findIndex((n) => fold(n) === fold(c.m.name));
+    return [i === -1 ? D.precedence.length : i, c.m.position];
+  };
+  return [...cands].sort((a, b) => {
+    const [ra, pa] = rank(a), [rb, pb] = rank(b);
+    return ra - rb || (pa < pb ? -1 : pa > pb ? 1 : 0);
+  });
+}
+
+// Stage 4 - METER. The cap is a ceiling, never a floor; full ring is measured
+// on what matched, not on what survived.
+function meter(D, cands, trace) {
+  const lit = new Set(cands.filter((c) => c.m.position !== "crown").map((c) => c.m.position));
+  if (lit.size === D.members.filter((m) => m.position !== "crown").length) {
+    trace.failures.push(`full ring: ${lit.size} hours matched - discrimination failure in the gates`);
+  }
+  const effective = trace.capAuthorized && trace.capAuthorized > D.cap ? trace.capAuthorized : D.cap;
+  if (effective > D.cap) trace.notices.push(`cap widened by authorization: ${D.cap} -> ${effective}`);
+
+  const counted = cands.filter((c) => !c.m.standing && c.state === "active");
+  counted.forEach((c, i) => {
+    if (i >= effective) { c.state = "held"; c.note = `over cap (${counted.length} convened, cap ${effective})`; }
+  });
+  const over = counted.filter((c) => c.state === "held").length;
+  if (over) trace.failures.push(`over-cap: ${counted.length} convened, cap ${effective}, ${over} held`);
+  return cands;
+}
+
+// Stage 9a. Where the route actually ended, not where it was aimed.
+function settleRouteEnd(trace, cands) {
+  if (!trace.route || !trace.routePositions.length) return;
+  const live = new Set(cands.filter((c) => c.state === "active").map((c) => c.m.position));
+  for (let i = trace.routePositions.length - 1; i >= 0; i--) {
+    const pos = trace.routePositions[i];
+    if (live.has(pos)) {
+      if (pos !== trace.routeEnd) {
+        trace.notices.push(`route ${trace.route}: cut short at ${pos} - ${trace.routeEnd} did not pass`);
+      }
+      trace.routeEnd = pos;
+      return;
+    }
+  }
+  trace.notices.push(`route ${trace.route}: no step survived; the hand indicates nothing`);
+  trace.routeEnd = null;
+}
+
+// Stage 8 - RELEASE. The escapement's Tiered condition: assigning a tier is
+// a person's job, not the train's; checking one exists is, exactly like a
+// proposal's citation or a verdict.
+//
+// `tiered` names the members whose output has been tiered. Anything admitted
+// and absent from that list is held: "untiered material does not pass."
+//
+// `null` means no tiering was supplied and the train cannot know, so it holds
+// nothing and claims nothing. An empty array means tiering was supplied and
+// nothing qualified, which holds everything admitted. Treating "not told" as
+// either of those would be the train inventing a finding.
+function leSas(trace, cands, tiered) {
+  if (tiered === null || tiered === undefined) return;
+  const ok = new Set(tiered.map(fold));
+  for (const c of cands) {
+    if (c.state !== "active" || c.m.standing || c.m.position === "crown") continue;
+    if (!ok.has(fold(c.m.name))) {
+      c.state = "held";
+      c.note = "untiered - did not pass Le Sas";
+    }
+  }
+  const untiered = cands.filter((c) => c.note === "untiered - did not pass Le Sas");
+  if (untiered.length) {
+    trace.failures.push(
+      `untiered: ${untiered.length} admitted member(s) carried no tier and were held`);
+  }
+}
+
+// Python's repr(), for the failure strings. The two engines are compared field
+// by field, so a rejection reported here must read exactly as rouage.py writes
+// it - including the quoting, which Python chooses by content.
+function pyRepr(s) {
+  const q = (s.includes("'") && !s.includes('"')) ? '"' : "'";
+  let out = "";
+  for (const ch of s) {
+    if (ch === "\\") out += "\\\\";
+    else if (ch === q) out += "\\" + ch;
+    else if (ch === "\n") out += "\\n";
+    else if (ch === "\r") out += "\\r";
+    else if (ch === "\t") out += "\\t";
+    else {
+      const c = ch.codePointAt(0);
+      out += (c < 0x20 || c === 0x7f)
+        ? "\\x" + c.toString(16).padStart(2, "0")
+        : ch;
+    }
+  }
+  return q + out + q;
+}
+
+// Citation match, mirroring words()/overlap()/nearest() in rouage.py. The
+// filler words and the threshold arrive in D from le-rouage.md. Integer
+// arithmetic, floored, so neither engine can round a tie the other way.
+function words(D, text) {
+  const filler = new Set(D.filler || []);
+  return new Set((fold(text).match(/[a-z0-9]+/g) || []).filter((w) => !filler.has(w)));
+}
+
+function overlap(a, b) {
+  if (!a.size || !b.size) return 0;
+  let shared = 0;
+  for (const w of a) if (b.has(w)) shared += 1;
+  return Math.floor((200 * shared) / (a.size + b.size));
+}
+
+function nearest(D, citation, lines) {
+  const cited = words(D, citation);
+  let best = "", score = 0;
+  for (const line of lines) {
+    const s = overlap(cited, words(D, line));
+    if (s > score) { best = line; score = s; }
+  }
+  return [best, score];
+}
+
+// Stage 6 - COLLECT. The barrel's half, admitted into the train.
+//
+// This is the one stage whose input the train cannot derive: something read an
+// artifact for meaning and decided a prose bullet fired. That reading happened
+// upstream, in the barrel. What happens here is still a literal string match -
+// the citation against the member's own Activation bullets - which is why the
+// browser may do it at all. Reading the bullets FOR meaning would be
+// interpreting, and this file is forbidden that.
+//
+// Mirrors admit_proposals() in rouage.py, policy (d) Attributed. Every rejection
+// string is duplicated from there deliberately: the conformance test compares
+// them verbatim, so a divergence is a test failure rather than a dial that
+// quietly disagrees with the council.
+function admitProposals(D, trace, proposals, cands, resolvable, requireEvidence) {
+  const admitted = [];
+  const seen = new Set(cands.map((c) => fold(c.m.name)));
+
+  for (const proposal of proposals) {
+    const [name, citation, rawEvidence] = proposal;
+    const evidence = rawEvidence ? rawEvidence.trim() : "";
+
+    const m = D.members.find((x) => fold(x.name) === fold(name));
+    if (!m) {
+      trace.failures.push(`rejected proposal: unknown member ${pyRepr(name)}`);
+      continue;
+    }
+
+    const folded = fold(m.name);
+    if (seen.has(folded)) continue;
+
+    const cited = citation.trim();
+    if ((m.prohibitions || []).includes(cited)) {
+      // An inverted gate: the barrel found the sentence saying DO NOT fire on
+      // this and offered it as grounds to fire. Louder than a typo, and the
+      // trace must not collapse the two.
+      trace.failures.push(
+        `rejected proposal: ${m.name} cited a prohibition, not ` +
+        `an activation - its gate names this as a reason to stay ` +
+        `dark: ${pyRepr(citation)}`);
+      continue;
+    }
+
+    // Attributed, except for the strict list: see admit_proposals().
+    let attribution = "";
+    if ((D.strict || []).includes(folded)) {
+      if (!(m.bullets || []).includes(cited)) {
+        trace.failures.push(
+          `rejected proposal: ${m.name} cited text not found ` +
+          `verbatim in its Activation section: ${pyRepr(citation)}`);
+        continue;
+      }
+    } else if (!cited) {
+      attribution = "uncited";
+    } else if (!(m.bullets || []).includes(cited)) {
+      const [near, score] = nearest(D, cited, m.bullets || []);
+      const [guard, against] = nearest(D, cited, m.prohibitions || []);
+      if (against >= D.threshold && against > score) {
+        trace.failures.push(
+          `rejected proposal: ${m.name} cited a prohibition, ` +
+          `not an activation - its gate names this as a reason to ` +
+          `stay dark: ${pyRepr(citation)} (${against}% to ${pyRepr(guard)})`);
+        continue;
+      }
+      attribution = near ? `nearest ${score}%: ${near}` : "no bullet shares a word";
+    }
+
+    // A citation proves the gate is real; it cannot prove the premise was.
+    // Evidence is an object id the train resolves without reading it.
+    // `resolvable === null` is no verifier at all, which is recorded as
+    // explicitly unchecked - not as a verification that never happened.
+    let note = "";
+    if (evidence) {
+      if (resolvable === null || resolvable === undefined) {
+        note = `evidence ${evidence} (unverified)`;
+      } else if (resolvable.includes(evidence)) {
+        note = `evidence ${evidence}`;
+      } else {
+        trace.failures.push(
+          `rejected proposal: ${m.name} cited evidence that ` +
+          `does not resolve: ${pyRepr(evidence)}`);
+        continue;
+      }
+    } else if (requireEvidence) {
+      trace.failures.push(`rejected proposal: ${m.name} supplied no evidence`);
+      continue;
+    }
+
+    note = [attribution, note].filter(Boolean).join("; ");
+    seen.add(folded);
+    if (m.sealed && fold(trace.armed || "") !== folded) {
+      const unauth = "proposed without authorization";
+      admitted.push({
+        m, reason: `proposed:${cited}`, state: "sealed",
+        note: note ? `${unauth}; ${note}` : unauth,
+      });
+    } else {
+      admitted.push({ m, reason: `proposed:${cited}`, state: "active", note });
+    }
+  }
+  return admitted;
+}
+
+function route(D, utterance, armed = null, capAuthorized = null, opts = {}) {
+  const trace = {
+    utterance, armed, capAuthorized,
+    stages: [], failures: [], notices: [],
+    route: null, routeEnd: null, routeAimed: null, routePositions: [],
+  };
+  trace.stages.push("WIND", "EVALUATE");
+  let cands = evaluate(D, utterance, armed);
+  const routed = takeRoute(D, utterance, trace);
+  if (routed.length) {
+    const seen = new Set(routed.map((c) => fold(c.m.name)));
+    cands = routed.concat(cands.filter((c) => !seen.has(fold(c.m.name))));
+    trace.stages.push("ROUTE->named");
+  }
+  const proposals = opts.proposals || null;
+  if (proposals && proposals.length) {
+    cands = cands.concat(admitProposals(
+      D, trace, proposals, cands,
+      opts.resolvable === undefined ? null : opts.resolvable,
+      Boolean(opts.requireEvidence)));
+  }
+
+  trace.stages.push("ORDER");
+  cands = order(D, cands);
+  trace.stages.push("METER");
+  cands = meter(D, cands, trace);
+  trace.stages.push("LOAD", "COLLECT->barrel", "TIER->01");
+  leSas(trace, cands, opts.tiered === undefined ? null : opts.tiered);
+  settleRouteEnd(trace, cands);
+  trace.stages.push("RELEASE->sas", "DISTRIBUTE", "RECORD->crown");
+
+  trace.admitted = cands
+    .filter((c) => c.state === "active" && c.m.position !== "crown")
+    .map((c) => c.m.position);
+  trace.positions = [...cands]
+    .sort((a, b) => (a.m.position < b.m.position ? -1 : 1))
+    .map((c) => ({ position: c.m.position, name: c.m.name, state: c.state, reason: c.reason, note: c.note }));
+  return trace;
+}
+
+// LE CADRAN, as a face, assembled in the browser.
+//
+// Not a port of cadran_face.py. The geometry - case, majors, numerals,
+// engraving, and every path a hand can take - arrives as K, the kit
+// face_kit() exports, so nothing here can draw a circle differently. What is
+// left is what a trace changes: the marker beside each numeral, the two bands,
+// which hands go down and in what order, and the footer. That assembly is the
+// one thing written twice, and test_face_js.py holds it to face()'s bytes.
+
+// textwrap.wrap(text, width, subsequent_indent=indent), for the one shape the
+// footer gives it: words separated by runs of spaces, none longer than a line.
+// Whitespace is dropped at the start of every line after the first and at the
+// end of every line, as Python's drop_whitespace does. A no-break space is not
+// whitespace there either, which is what keeps "Le" beside its name.
+function wrap(text, width, indent) {
+  const chunks = text.split(/( +)/).filter((c) => c !== "").reverse();
+  const lines = [];
+  while (chunks.length) {
+    const lead = lines.length ? indent : "";
+    const room = width - lead.length;
+    if (lines.length && chunks[chunks.length - 1].trim() === "") chunks.pop();
+    const cur = [];
+    let len = 0;
+    while (chunks.length && len + chunks[chunks.length - 1].length <= room) {
+      const c = chunks.pop();
+      cur.push(c);
+      len += c.length;
+    }
+    if (!cur.length && chunks.length) cur.push(chunks.pop()); // over-long word
+    if (cur.length && cur[cur.length - 1].trim() === "") cur.pop();
+    if (cur.length) lines.push(lead + cur.join(""));
+  }
+  return lines;
+}
+
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function face(K, t) {
+  const cells = K.cells.map((row) => row.map((c) => [c[0], c[1]]));
+  const locked = K.locked.map((row) => row.slice());
+  const put = (r, c, ch, hex, lock = false, force = false) => {
+    if (r < 0 || r >= K.rows || c < 0 || c >= K.inner) return;
+    if (locked[r][c] && !force) return;
+    cells[r][c] = [ch, hex];
+    if (lock) locked[r][c] = 1;
+  };
+  const text = (r, c, s, hex = "") =>
+    [...s].forEach((ch, i) => put(r, c + i, ch, hex, true, true));
+  const centred = (r, s, hex = "") =>
+    text(r, Math.floor((K.inner - [...s].length) / 2), s, hex);
+
+  const seat = Object.fromEntries(t.positions.map((p) => [p.position, p]));
+  const stateOf = (pos) => (seat[pos] ? seat[pos].state : "dark");
+
+  for (const [pos, [r, c]] of Object.entries(K.markers))
+    text(r, c, K.marker[stateOf(pos)], K.color[stateOf(pos)]);
+
+  // The browser train has no column wheel, so nothing is ever halted here;
+  // the band is still drawn from the trace when a trace carries it.
+  const held = (t.halted || []).length;
+  if (held) centred(K.bandRows.brake, `${K.owners.brake} · ${held} HELD`, K.color.dissent);
+  const released = t.stages.some((s) => s.startsWith("RELEASE"));
+  const band = t.failures.length ? "FAULT" : released ? "RELEASED" : "NO RELEASE";
+  centred(K.bandRows.escapement, `${K.owners.escapement} · ${band}`,
+          t.failures.length ? K.fault : "");
+
+  const hour = t.admitted.length ? t.admitted[0] : null;
+  const minute = t.routeEnd;
+  const split = t.routeAimed !== t.routeEnd ? t.routeAimed : null;
+  const at = { split, minute, hour };
+  for (const [kind, hex] of K.handOrder) {
+    const pos = at[kind];
+    if (!pos || !/^\d+$/.test(pos)) continue;
+    for (const [r, c, ch] of K.hands[kind][pos]) put(r, c, ch, hex);
+  }
+  text(K.cr, K.cc, K.pivot);
+
+  // Every glyph the face can hold is one column wide, so code points are the
+  // measure; cadran_face.py's dwidth() guard is what proves that stays true.
+  const framed = (plain, painted) =>
+    `│ ${painted}${" ".repeat(K.inner - [...plain].length)} │`;
+  const row = (r) => {
+    let n = cells[r].length;
+    while (n && cells[r][n - 1][0] === " ") n -= 1;
+    const plain = cells[r].slice(0, n).map((c) => c[0]).join("");
+    let html = "", run = "", hex = "";
+    const flush = () => {
+      if (run) html += hex ? `<span style="color:${hex}">${esc(run)}</span>` : esc(run);
+      run = "";
+    };
+    for (const [ch, h] of cells[r].slice(0, n)) {
+      const code = ch === " " ? "" : h;
+      if (code !== hex) { flush(); hex = code; }
+      run += ch;
+    }
+    flush();
+    return [plain, html];
+  };
+
+  const plainLines = [], htmlLines = [];
+  const add = (plain, html = esc(plain)) => { plainLines.push(plain); htmlLines.push(html); };
+  const top = `┌─ ${K.title} ` + "─".repeat(Math.max(K.width - [...K.title].length - 5, 1)) + "┐";
+  add(top);
+  for (let r = 0; r < K.rows; r++) {
+    const [p, h] = row(r);
+    add(framed(p, p), framed(p, h));
+  }
+  add(framed("", ""));
+
+  const handName = (pos) =>
+    pos ? `${pos} ${seat[pos] ? seat[pos].name : ""}`.trim() : "—";
+  const lit = K.hours.filter((pos) => stateOf(pos) !== "dark")
+    .map((pos) => `${K.marker[stateOf(pos)]} ${pos} ${K.names[pos]}`);
+  if (stateOf("crown") !== "dark") lit.push(`${K.marker[stateOf("crown")]} crown`);
+  const nbsp = " ";
+  const seats = lit.map((e) => e.replaceAll(" ", nbsp)).join("  ") || "none lit";
+  const footer = [
+    ...wrap("SEATS  " + seats, K.inner, " ".repeat(7)).map((l) => l.replaceAll(nbsp, " ")),
+    `HANDS  hour → ${handName(hour)}   minute → ${handName(minute)}`,
+  ];
+  if (split) footer.push(`       split → ${handName(split)} (aimed)`);
+  footer.push(K.undriven);
+  for (const l of footer) add(framed(l, l));
+  add("└" + "─".repeat(K.width - 2) + "┘");
+  add(` INPUT  "${t.utterance}"   armed ${t.armed || "—"}`);
+  return { text: plainLines.join("\n"), html: htmlLines.join("\n") };
+}
+
+// Paint a trace onto the dial that dial.py already drew.
+//
+// This writes values, never geometry. Every element it touches carries a
+// data- hook emitted by dial_svg(), so the case, bezel, subdials and chapter
+// ring are Python's and stay Python's - there is no second renderer to drift.
+
+const svg = document.querySelector(".plate svg");
+const byPos = (sel) => Object.fromEntries(
+  [...svg.querySelectorAll(sel)].map((el) => [el.dataset[Object.keys(el.dataset)[0]], el]));
+
+const batons = byPos("[data-baton]");
+const names = byPos("[data-name]");
+const states = byPos("[data-state]");
+const routeLabels = Object.fromEntries(
+  [...svg.querySelectorAll("[data-route]")].map((el) => [el.dataset.route, el]));
+const legends = Object.fromEntries(
+  [...svg.querySelectorAll("[data-legend]")].map((el) => [el.dataset.legend, el]));
+const bands = Object.fromEntries(
+  [...svg.querySelectorAll("[data-band]")].map((el) => [el.dataset.band, el]));
+const hands = Object.fromEntries(
+  [...svg.querySelectorAll("[data-hand]")].map((el) => [el.dataset.hand, el]));
+
+const cx = +hands.minute.getAttribute("x1");
+const cy = +hands.minute.getAttribute("y1");
+const SIZE = 820;
+
+function polar(r, pos) {
+  const a = (-90 + (parseFloat(pos) % 12) * 30) * Math.PI / 180;
+  return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+}
+
+// A legend has to travel with the hand it names, or it sits where the base
+// render happened to leave it and labels nothing.
+function setHand(name, pos, r, legend, legendR) {
+  const el = hands[name];
+  const lg = legend ? legends[legend] : null;
+  if (!el) return;
+  if (!pos) {
+    el.setAttribute("opacity", "0");
+    if (lg) lg.setAttribute("opacity", "0");
+    return;
+  }
+  const [x, y] = polar(r, pos);
+  el.setAttribute("x2", x.toFixed(1));
+  el.setAttribute("y2", y.toFixed(1));
+  el.setAttribute("opacity", name === "hour" ? "0.92" : "0.9");
+  if (lg) {
+    const [lx, ly] = polar(legendR, pos);
+    lg.setAttribute("x", lx.toFixed(1));
+    lg.setAttribute("y", ly.toFixed(1));
+    lg.setAttribute("opacity", "0.85");
+  }
+}
+
+export function paint(t) {
+  const seat = Object.fromEntries(t.positions.map((p) => [p.position, p]));
+
+  for (const pos of Object.keys(batons)) {
+    const p = seat[pos];
+    const lit = p && p.state !== "dark";
+    const ink = p ? (STATE_INK[p.state] || INK.dark) : INK.dark;
+
+    const b = batons[pos];
+    b.setAttribute("stroke", ink);
+    b.setAttribute("stroke-width", lit ? 11 : 8);
+    b.setAttribute("opacity", lit ? 1 : 0.8);
+    if (lit) b.setAttribute("filter", "url(#glow)"); else b.removeAttribute("filter");
+
+    const n = names[pos];
+    n.textContent = p ? p.name : "·";
+    n.setAttribute("fill", ink);
+    n.setAttribute("opacity", lit ? 1 : 0.55);
+    if (lit) n.setAttribute("filter", "url(#glowsoft)"); else n.removeAttribute("filter");
+
+    states[pos].textContent = lit ? `${pos}  ${p.state.toUpperCase()}` : pos;
+  }
+
+  for (const [name, el] of Object.entries(routeLabels)) {
+    const on = t.route === name;
+    el.setAttribute("fill", on ? INK.cyan : INK.dim);
+    el.setAttribute("opacity", on ? 1 : 0.62);
+    el.setAttribute("font-size", on ? 9 : 8);
+  }
+
+  // Same rule the static dial follows: a hand that would rest under another
+  // is not drawn, because a hand indicating nothing is a hand that lies.
+  // From the precedence-ordered list, never from t.positions - that is sorted
+  // by seat for display, so its first entry is the lowest hour number rather
+  // than the least reversible member.
+  const prec = t.admitted.length ? t.admitted[0] : null;
+  // The hour hand must differ from where the MINUTE hand points, not from
+  // routeEnd - with no route the minute hand falls back to precedence, and
+  // comparing against routeEnd drew a second hand under the first.
+  const minuteAt = t.routeEnd || prec || null;
+  setHand("minute", minuteAt, SIZE * 0.196 - 10);
+  setHand("hour", prec && prec !== minuteAt ? prec : null,
+          SIZE * 0.196 - 74, "precedence", SIZE * 0.196 - 52);
+  setHand("split",
+    t.routeAimed && t.routeAimed !== t.routeEnd ? t.routeAimed : null,
+    SIZE * 0.196 - 26, "aimed", 70);
+
+  // The bands are trace-driven text and exist in the base render whether or
+  // not that trace justified them, so the browser writes or blanks them. An
+  // element cannot be created here; it can only be filled or emptied.
+  const released = t.stages.some((x) => x.startsWith("RELEASE"));
+  const state = t.failures.length ? "FAULT" : released ? "RELEASED" : "NO RELEASE";
+  if (bands.escapement) {
+    bands.escapement.textContent = `LE SAS \u00b7 ${state}`;
+    bands.escapement.setAttribute("fill", t.failures.length ? INK.fault : INK.dim);
+  }
+  if (bands.fault) bands.fault.textContent = t.failures.length ? t.failures[0].toUpperCase() : "";
+  if (bands.brake) bands.brake.textContent = "";
+
+  document.getElementById("readout").innerHTML = readout(t);
+}
+
+function rows(pairs) {
+  return pairs.map(([k, v, n]) =>
+    `<div class="row"><span class="k">${k}</span><span class="v">${v}` +
+    (n ? `<span class="note-s">${n}</span>` : "") + `</span></div>`).join("");
+}
+
+function readout(t) {
+  const lit = t.positions.filter((p) => p.state !== "dark");
+  const prec = t.admitted.length ? t.admitted[0] : null;
+  const seatName = (p) => p ? `${p} ${(t.positions.find((x) => x.position === p) || {}).name || ""}` : "&mdash;";
+
+  return `
+  <div class="group"><h2>Route</h2>${rows([
+    ["taken", t.route || "&mdash;", ""],
+    ["Hour &middot; cyan", seatName(prec),
+      "precedence" + (prec === t.routeEnd ? " &middot; superimposed" : "")],
+    ["Minute &middot; white", seatName(t.routeEnd), "route ended"],
+    ["Split &middot; dashed",
+      t.routeAimed && t.routeAimed !== t.routeEnd ? seatName(t.routeAimed) : "&mdash;",
+      "route aimed"],
+  ])}</div>
+  <div class="group"><h2>Positions &middot; ${lit.length} of 13 lit</h2>${
+    lit.map((p) => `<div class="row"><span>${p.name}</span>` +
+      `<span class="tag" style="color:${STATE_INK[p.state]}">${p.state.toUpperCase()}</span></div>`).join("")
+    || '<div class="none">Routine work convenes no one.</div>'}</div>
+  <div class="group"><h2>Why each fired</h2>${
+    lit.map((p) => `<div class="row"><span class="k">${p.position}</span>` +
+      `<span class="k">${p.reason}${p.note ? " &middot; " + p.note : ""}</span></div>`).join("")
+    || '<div class="none">&mdash;</div>'}</div>
+  <div class="group"><h2>Input</h2>
+    <div class="utt">${t.utterance || "&mdash;"}</div>
+    <div class="row" style="margin-top:10px"><span class="k">armed</span>
+      <span class="k">${t.armed || "&mdash;"}</span></div></div>
+  <div class="group"><h2>Mechanisms</h2>${
+    D.mechanisms.map((m) => `<div class="row"><span class="k">${m.part}</span>` +
+      `<span class="v">${m.owner}<span class="note-s">${m.note}</span></span></div>`).join("")}</div>
+  <div class="group"><h2>Cycle</h2><ol class="cycle">${
+    t.stages.map((st, i) => {
+      const [name, target] = st.split("->");
+      return `<li><span class="n">${String(i + 1).padStart(2, "0")}</span>` +
+        `<span>${name}</span>` +
+        (target ? `<span class="to">&rarr; ${target}</span>` : "") + `</li>`;
+    }).join("")}</ol></div>
+  <div class="group"><h2>Notices</h2>${
+    t.notices.map((n) => `<div class="row"><span>${n}</span></div>`).join("")
+    || '<div class="none">None recorded.</div>'}</div>
+  <div class="group"><h2>Faults</h2><div class="fault">${
+    t.failures.map((f) => `<div>${f}</div>`).join("")
+    || '<span class="none">None recorded.</span>'}</div></div>`;
+}
+
+const utt = document.getElementById("utt");
+const arm = document.getElementById("arm");
+const tier = document.getElementById("tier");
+// Comma-separated names, exactly like repeating --tier on the CLI. An empty
+// field is `null` - no tiering supplied - not `[]` - tiering supplied and
+// nothing qualified. Those hold nothing and everything, respectively, and
+// collapsing them would be the page inventing a finding leSas() refuses to.
+const tiered = () => {
+  const v = tier.value.trim();
+  return v ? v.split(",").map((s) => s.trim()).filter(Boolean) : null;
+};
+// The barrel's half, stood in for by whoever is at the page: one member and a
+// reason in their own words, exactly the pair bin/atlas-settle reads out of a
+// Skill call. No member chosen is no proposal, not an empty one.
+const member = document.getElementById("member");
+const reason = document.getElementById("reason");
+for (const m of D.members) member.add(new Option(`${m.position} ${m.name}`, m.name));
+const proposals = () => (member.value ? [[member.value, reason.value]] : null);
+
+const faceOut = document.getElementById("face");
+const run = () => {
+  const t = route(D, utt.value, arm.checked ? "Le Fripon" : null,
+                  null, { tiered: tiered(), proposals: proposals() });
+  paint(t);
+  faceOut.innerHTML = face(K, t).html;
+};
+utt.addEventListener("input", run);
+arm.addEventListener("change", run);
+tier.addEventListener("input", run);
+member.addEventListener("change", run);
+reason.addEventListener("input", run);
+document.querySelectorAll(".chip").forEach((c) =>
+  c.addEventListener("click", () => {
+    utt.value = c.dataset.eg;
+    tier.value = c.dataset.tier || "";
+    member.value = c.dataset.member || "";
+    reason.value = c.dataset.reason || "";
+    run();
+    utt.focus();
+  }));
+run();
+
+</script>
