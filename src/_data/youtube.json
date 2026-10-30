@@ -3,12 +3,52 @@
   "channelUrl": "https://www.youtube.com/@Forgotten-Industries",
   "videos": [
     {
+      "id": "eyPURiYFCSE",
+      "kind": "short",
+      "title": "I poured my whole archive into oil",
+      "url": "https://www.youtube.com/shorts/eyPURiYFCSE",
+      "published": "2026-10-29T03:30:27+00:00",
+      "updated": "2026-10-29T03:30:29+00:00",
+      "description": "ZOOT pours the Forgotten Industries archive index into a film of oil. Full 6 minutes, uncut: https://youtu.be/H3q-1J1VtaI\n\nMusic: \"A Mystical Experience\" by Unicorn Heads (YouTube Audio Library).\n\n#ForgottenIndustries #ZOOT #visualizer #shorts",
+      "thumbnail": "https://i.ytimg.com/vi/eyPURiYFCSE/hqdefault.jpg"
+    },
+    {
+      "id": "H3q-1J1VtaI",
+      "kind": "episode",
+      "title": "I Poured My Whole Archive Into Oil | 6-Minute Psychedelic Visualizer",
+      "url": "https://www.youtube.com/watch?v=H3q-1J1VtaI",
+      "published": "2026-10-29T03:24:33+00:00",
+      "updated": "2026-10-29T03:24:53+00:00",
+      "description": "ZOOT pours the Forgotten Industries archive index into a film of oil and lets the records surface on their own. Six minutes, uncut, recorded live from the site.\n\nPlay it yourself: https://forgotten-industries.net/zoot/\n\nZOOT was a coding gift from @tyleretters / Northern Information.\nMusic: \"A Mystical Experience\" by Unicorn Heads (YouTube Audio Library).\n\n#ForgottenIndustries #ZOOT #visualizer",
+      "thumbnail": "https://i.ytimg.com/vi/H3q-1J1VtaI/hqdefault.jpg"
+    },
+    {
+      "id": "iiq961A1Cf8",
+      "kind": "short",
+      "title": "A watch face that can't lie",
+      "url": "https://www.youtube.com/shorts/iiq961A1Cf8",
+      "published": "2026-10-25T19:31:23+00:00",
+      "updated": "2026-10-25T20:24:36+00:00",
+      "description": "Le Cadran: a watch face for an AI assistant, with one rule. It never shows a state that didn't happen.\nFull story on the channel.\n\nMusic: \"On The Flip\" by The Grey Room / Density & Time (YouTube Audio Library)\nforgotten-industries.net",
+      "thumbnail": "https://i.ytimg.com/vi/iiq961A1Cf8/hqdefault.jpg"
+    },
+    {
+      "id": "dmWSWn6cxpQ",
+      "kind": "episode",
+      "title": "Le Cadran: A Watch Face That Can't Lie",
+      "url": "https://www.youtube.com/watch?v=dmWSWn6cxpQ",
+      "published": "2026-10-25T19:28:11+00:00",
+      "updated": "2026-10-25T20:24:43+00:00",
+      "description": "I built a watch face for an AI assistant. It has one rule: it never shows a state that didn't happen.\n\nLe Cadran is the dial for ATLAS, the system I use to work with Claude on archive recovery, old hardware, and this channel. This is how it was conceived, how it got built from August to October 2026, and where it goes next: a 4-inch test panel, then a .30 cal ammo can.\n\nEvery dial and face in this video is a real render from the ATLAS code, not an animation.\n\n0:00 This is a watch face\n0:29 What ATLAS is\n1:38 The council was a watch\n2:45 The honesty constraint\n3:30 Building it, August → October\n5:19 Where it stands\n5:41 The hardware: Prototype 0 and 1\n6:26 Who it's for\n7:14 The instrument is read\n\nMusic: \"On The Flip\" by The Grey Room / Density & Time (YouTube Audio Library)\n\nA thing documented is a thing not yet lost.\nforgotten-industries.net",
+      "thumbnail": "https://i.ytimg.com/vi/dmWSWn6cxpQ/hqdefault.jpg"
+    },
+    {
       "id": "R8FogX1h_CI",
       "kind": "short",
       "title": "What's left in the X99 parts bin? #pcbuild #watercooling",
       "url": "https://www.youtube.com/shorts/R8FogX1h_CI",
       "published": "2026-10-22T23:00:38+00:00",
-      "updated": "2026-10-22T23:00:44+00:00",
+      "updated": "2026-10-25T21:36:01+00:00",
       "description": "Digging through the parts bin for an MSI X99S XPOWER AC build that went dark in 2016: a bag labeled \"Intel LGA 2011,\" an EK-RAM Monarch Module Adapter, the MSI driver DVD and the cable-label stickers.\nNext: does it POST?\n\n#x99 #pcbuilding #watercooling #ekwb #retrotech #techrestoration",
       "thumbnail": "https://i.ytimg.com/vi/R8FogX1h_CI/hqdefault.jpg"
     },
@@ -18,7 +58,7 @@
       "title": "Found in my parts bin: a GTX 660 Ti in a full water block #watercooling #pcbuild",
       "url": "https://www.youtube.com/shorts/E9ONDb8jfJY",
       "published": "2026-10-22T01:20:32+00:00",
-      "updated": "2026-10-22T05:49:37+00:00",
+      "updated": "2026-10-24T22:14:15+00:00",
       "description": "An EVGA GeForce GTX 660 Ti (2012) wearing an EK-FC670 GTX full-cover water block, pulled from the parts bin.\nThe 660 Ti uses the same GK104 chip as the GTX 670, so the 670's block fits. Not leak-tested yet.\n\n#watercooling #gtx660ti #ekwb #pcbuilding #retrotech #techrestoration",
       "thumbnail": "https://i.ytimg.com/vi/E9ONDb8jfJY/hqdefault.jpg"
     },
