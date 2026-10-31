@@ -38,6 +38,8 @@ If you found this from an application for writing about collectibles and their h
 
 The general door is **[A Way In](/a-way-in/)**. This one is narrower. Forgotten Industries has been, since 2014, an archive of objects that outlived the moment they were made for: boutique hardware, recovered machines, and the records that prove what they were. Every piece below asks the questions a collector asks. What is this, exactly? Where has it been? How do we know?
 
+**[Entry 009 - Same Number, Different Record](/posts/2026-10-30-same-number-different-record.html)** - one catalog number, sixteen pressings, and the copy on my shelf. Why the label, the barcode, and the database can't tell a vinyl collector which record they're holding, and what a record that carries its own history would change.
+
 **[Entry 007 - Against Forgetting](/posts/2026-10-01-against-forgetting.html)** - a CaseLabs case bought around 2015, sealed in storage for a decade, and opened again not to build with but to understand. The shortest statement of why an object's history matters more than its spec sheet.
 
 **[CaseLabs Mercury S8 Restoration](/projects/caselabs-mercury-s8/)** - long-form documentation of a boutique case from a maker that no longer exists, written as it was taken apart and inventoried, so someone who has never owned one can follow every part back to its place.
