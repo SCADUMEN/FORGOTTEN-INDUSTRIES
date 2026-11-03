@@ -321,6 +321,24 @@ test('A Way In // Objects With a Past renders as the collectibles route', async 
   ).toHaveCount(1)
 })
 
+test('Entry 009 renders and is linked from the collectibles route', async ({
+  page,
+}) => {
+  const response = await page.goto(
+    '/posts/2026-10-30-same-number-different-record.html'
+  )
+  expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle(/Same Number, Different Record/)
+  await expect(page.locator('main')).toContainText('BTV081')
+
+  await page.goto('/a-way-in/objects/')
+  await expect(
+    page.locator(
+      'main a[href="/posts/2026-10-30-same-number-different-record.html"]'
+    )
+  ).toHaveCount(1)
+})
+
 test('manual shelf publishes Manual 002', async ({ page }) => {
   let response = await page.goto('/hang-on-to-each-other/')
   expect(response?.status()).toBe(200)
@@ -619,10 +637,13 @@ test('posts index lists Les Manuscrits', async ({ page }) => {
   let response = await page.goto('/posts/')
   expect(response?.status()).toBe(200)
   await expect(page).toHaveTitle(/Les Manuscrits/)
-  // "A Way In" is the shelf's only entry and carries a custom permalink, so it
-  // is not matched by the dated /posts/ pattern.
-  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(0)
+  // The "A Way In" notes carry custom permalinks, so Entry 009 is the shelf's
+  // only link matched by the dated /posts/ pattern.
+  await expect(page.locator('a[href^="/posts/2026"]')).toHaveCount(1)
   await expect(page.locator('main')).toContainText('A Way In')
+  await expect(page.locator('main')).toContainText(
+    'Same Number, Different Record'
+  )
   await expect(page.locator('main')).not.toContainText(
     "The Machinations of Time / L'Horologist"
   )
