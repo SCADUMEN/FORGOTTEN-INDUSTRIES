@@ -38,6 +38,12 @@ const ZOOT_MEDIA = 'https://assets.the-rn.info'
 // external origin.
 const OPEN_METEO = 'https://api.open-meteo.com'
 
+// Field observations embed reference recordings with the Cornell Lab's own
+// Macaulay Library player (macaulaylibrary.org/asset/<ML#>/embed), the
+// sanctioned way to show their audio with recordist credit. It is the only
+// framed third-party origin; entry 008 (2026-11-07) is the first use.
+const MACAULAY_EMBED = 'https://macaulaylibrary.org'
+
 // A <script> whose type is not a JavaScript type is a data block: the browser
 // never executes it, and CSP does not govern it. The archive's 1000+ JSON-LD
 // provenance blocks fall here and must not be hashed — doing so would bloat the
@@ -94,7 +100,7 @@ function buildPolicy(scriptHashes) {
     "font-src 'self'",
     `media-src 'self' ${ZOOT_MEDIA}`,
     `connect-src 'self' ${CORS_PROXY} ${OPEN_METEO}`,
-    "frame-src 'self'",
+    `frame-src 'self' ${MACAULAY_EMBED}`,
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",

@@ -82,6 +82,8 @@ describe('content security policy', () => {
     )
     // ZOOT streams its mixtape from Northern Information's range-serving host.
     expect(policy).toContain("media-src 'self' https://assets.the-rn.info")
+    // Field observations frame the Macaulay Library's recording player.
+    expect(policy).toContain("frame-src 'self' https://macaulaylibrary.org;")
     // Nothing else may be contacted.
     expect(policy).toContain("img-src 'self'")
     expect(policy).toContain("font-src 'self'")
